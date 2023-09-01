@@ -1,5 +1,51 @@
 # Methodology {part-1-2}
 
+```{r}
+
+# Briefly describe how a zoning atlas is created.
+
+# What are the mandatory fields and what do they mean?
+
+# Explain why a region-by-region analysis is being done.
+
+```
+
 ## How to make a zoning atlas
 
-The methods to standardize zoning ordinances across multiple jurisdictions were first employed in Connecticut in 2021. Dr. Sara Bronin, both an architect and attorney, developed the 
+The methods to standardize zoning ordinances across multiple jurisdictions were first employed in Connecticut in 2021. Dr. Sara Bronin, both an architect and attorney, developed "How To Make A Zoning Atlas" along with Ilya Illyankou to document their initial work on the Connecticut Zoning Atlas, which has led to the founding of the National Zoning Atlas (NZA).
+
+Based out of the Legal Constructs Lab at Cornell University, the NZA team has contributed to a refinement of the zoning atlas methodology into a [2.0 version](https://www.zoningatlas.org/how).
+
+The methodology provides a way to translate and standardize district-specific regulations based on the treatment of certain residential uses. 
+
+*Zoning District Classification*
+
+- Primarily Residential:
+- Mixed with Residential:
+- Nonresidential:
+- Overlay Not Affecting Use:
+
+
+*Residential Treatments*
+
+- Allowed/Conditional:
+- Public Hearing:
+- Prohibited:
+
+- 1-Family:
+- 2-Family:
+- 3-Family:
+- 4+-Family:
+- Affordable Housing:
+- Accessory Dwelling Units:
+- Planned Residential Development:
+
+
+## Why do this on a region-by-region basis?
+
+Housing markets are regional in nature. 
+
+
+
+
+## 

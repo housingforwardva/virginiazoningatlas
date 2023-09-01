@@ -1,26 +1,5 @@
----
-title: "Virginia Zoning Atlas Findings"
-author: "HousingForward Virginia"
-format: html
----
+# About {.unnumbered}
 
-## Quarto
+The Virginia Zoning Atlas is a research project of HousingForward Virginia with support from the Mercatus Center at George Mason University. The Atlas is an ongoing collaborative effort to map and standardize zoning across the Commonwealth. The Atlas helps visualize the impact of zoning on housing development and allows for cross-jurisdictional comparisons for deeper zoning analysis.
 
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
-
-## Running Code
-
-When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
-
-```{r}
-1 + 1
-```
-
-You can add options to executable code like this 
-
-```{r}
-#| echo: false
-2 * 2
-```
-
-The `echo: false` option disables the printing of code (only output is displayed).
+The Virginia Zoning Atlas is part of the larger National Zoning Atlas, which "aims to depict key aspects of zoning codes in an online, user-friendly map.  It will enable comparisons across jurisdictions, illuminate regional and statewide trends, and strengthen national planning for housing production, transportation infrastructure, and climate response." 

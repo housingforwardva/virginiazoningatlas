@@ -1,0 +1,59 @@
+# Hampton Roads {part-2-1}
+
+```{r}
+
+# Describe the Hampton Roads region. 
+
+# What has the housing market been like in recent years? Use news articles and available data to summarize trends.
+
+# Use data from the VZA to summarize the number of districts involved, number of zoning ordinance pages read, and other interesting metrics.
+
+```
+
+The Hampton Roads Planning District Commission is comprised of 17 local governments, including ten independent cities, six counties, and the Town of Smithfield. 
+
+```{r}
+#| label: geo-setup
+#| eval: false
+
+library(mapboxapi)
+library(tigris)
+library(ggspatial)
+library(mapview)
+
+hr_fips <- c("51073", "51093", "51095","51175", "51181", "51199", "51550", "51620", "51650", "51700", "51710", "51735", "51740", "51800", "51810", "51830")
+
+sf_use_s2(TRUE)
+
+options(tigris_use_cache = TRUE)
+
+hr_boundary <- counties("VA") |> 
+  filter(GEOID %in% hr_fips)
+
+mapview(hr_boundary)
+
+```
+
+[Insert table of localities]
+
+
+
+
+## Housing Market
+
+[Summarize some key facts about the Hampton Roads housing market and the 
+
+https://whro.org/news/local-news/36579-hampton-roads-housing-market-due-for-a-slowdown-says-odu
+
+https://www.vpm.org/news/2022-11-07/housing-in-hampton-roads-is-less-affordable-than-northern-virginia-other-pricey
+
+https://whro.org/news/local-news/33171-analyzing-hampton-roads-affordability-a-conversation-with-journalist-jeff-south
+
+
+## Data Collection
+
+Zoning data collection and analysis for the Hampton Roads region took place from April through August 2023. At this time, Gloucester County and the City of Poquoson were going through updates of their zoning ordinances. The findings and presentation of the Hampton Roads portion of the Virginia Zoning Atlas are a point-in-time representation of zoning ordinances during this time.
+
+It is the intent of the Virginia Zoning Atlas to track major changes to zoning ordinances and zoning maps with periodic updates.
+
+## 

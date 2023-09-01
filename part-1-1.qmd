@@ -1,5 +1,16 @@
 # Introduction {part-1-1}
 
+```{r}
+
+# Describe the Virginia Zoning Atlas and the reasons why HFV is taking on this project.
+
+# Then describe the research questions we hope to answer by taking on this project.
+
+# What are our overarching goals?
+
+
+```
+
 ## What is the Virginia Zoning Atlas?
 
 A zoning atlas is a large-scale, interactive map which displays municipal land use ordinance zones, or zoning districts, across all localities in a region, state, or country. The Virginia Zoning Atlas is part of the [National Zoning Atlas](https://zoningatlas.org) Research Collaborative, which seeks to standardize zoning ordinances across the nation to show how restrictive land use policies are affecting housing production and affordability.

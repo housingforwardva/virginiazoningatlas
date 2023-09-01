@@ -1,0 +1,134 @@
+state,fips_state,fips_locality,fips_full,name_long,name_short,cbsa_code,metropolitan_div_code,cbsa_title,central_outlying,metro_micro_nonmetro
+Virginia,51,195,51195,Wise County,Wise,13720,,"Big Stone Gap, VA",Central,Micropolitan Statistical Area
+Virginia,51,720,51720,Norton City,Norton,13720,,"Big Stone Gap, VA",Central,Micropolitan Statistical Area
+Virginia,51,071,51071,Giles County,Giles,13980,,"Blacksburg-Christiansburg, VA",Outlying,Metropolitan Statistical Area
+Virginia,51,121,51121,Montgomery County,Montgomery,13980,,"Blacksburg-Christiansburg, VA",Central,Metropolitan Statistical Area
+Virginia,51,155,51155,Pulaski County,Pulaski,13980,,"Blacksburg-Christiansburg, VA",Outlying,Metropolitan Statistical Area
+Virginia,51,750,51750,Radford City,Radford,13980,,"Blacksburg-Christiansburg, VA",Central,Metropolitan Statistical Area
+Virginia,51,021,51021,Bland County,Bland,14140,,"Bluefield, WV-VA",Outlying,Micropolitan Statistical Area
+Virginia,51,185,51185,Tazewell County,Tazewell,14140,,"Bluefield, WV-VA",Central,Micropolitan Statistical Area
+Virginia,51,003,51003,Albemarle County,Albemarle,16820,,"Charlottesville, VA",Central,Metropolitan Statistical Area
+Virginia,51,065,51065,Fluvanna County,Fluvanna,16820,,"Charlottesville, VA",Outlying,Metropolitan Statistical Area
+Virginia,51,079,51079,Greene County,Greene,16820,,"Charlottesville, VA",Outlying,Metropolitan Statistical Area
+Virginia,51,125,51125,Nelson County,Nelson,16820,,"Charlottesville, VA",Outlying,Metropolitan Statistical Area
+Virginia,51,540,51540,Charlottesville City,Charlottesville,16820,,"Charlottesville, VA",Central,Metropolitan Statistical Area
+Virginia,51,143,51143,Pittsylvania County,Pittsylvania,19260,,"Danville, VA",Central,Micropolitan Statistical Area
+Virginia,51,590,51590,Danville City,Danville,19260,,"Danville, VA",Central,Micropolitan Statistical Area
+Virginia,51,165,51165,Rockingham County,Rockingham,25500,,"Harrisonburg, VA",Central,Metropolitan Statistical Area
+Virginia,51,660,51660,Harrisonburg City,Harrisonburg,25500,,"Harrisonburg, VA",Central,Metropolitan Statistical Area
+Virginia,51,169,51169,Scott County,Scott,28700,,"Kingsport-Bristol, TN-VA",Outlying,Metropolitan Statistical Area
+Virginia,51,191,51191,Washington County,Washington,28700,,"Kingsport-Bristol, TN-VA",Outlying,Metropolitan Statistical Area
+Virginia,51,520,51520,Bristol City,Bristol,28700,,"Kingsport-Bristol, TN-VA",Outlying,Metropolitan Statistical Area
+Virginia,51,009,51009,Amherst County,Amherst,31340,,"Lynchburg, VA",Central,Metropolitan Statistical Area
+Virginia,51,011,51011,Appomattox County,Appomattox,31340,,"Lynchburg, VA",Outlying,Metropolitan Statistical Area
+Virginia,51,019,51019,Bedford County,Bedford,31340,,"Lynchburg, VA",Central,Metropolitan Statistical Area
+Virginia,51,031,51031,Campbell County,Campbell,31340,,"Lynchburg, VA",Central,Metropolitan Statistical Area
+Virginia,51,680,51680,Lynchburg City,Lynchburg,31340,,"Lynchburg, VA",Central,Metropolitan Statistical Area
+Virginia,51,089,51089,Henry County,Henry,32300,,"Martinsville, VA",Central,Micropolitan Statistical Area
+Virginia,51,690,51690,Martinsville City,Martinsville,32300,,"Martinsville, VA",Central,Micropolitan Statistical Area
+Virginia,51,007,51007,Amelia County,Amelia,40060,,"Richmond, VA",Outlying,Metropolitan Statistical Area
+Virginia,51,036,51036,Charles City County,Charles City,40060,,"Richmond, VA",Outlying,Metropolitan Statistical Area
+Virginia,51,041,51041,Chesterfield County,Chesterfield ,40060,,"Richmond, VA",Central,Metropolitan Statistical Area
+Virginia,51,053,51053,Dinwiddie County,Dinwiddie,40060,,"Richmond, VA",Central,Metropolitan Statistical Area
+Virginia,51,075,51075,Goochland County,Goochland,40060,,"Richmond, VA",Outlying,Metropolitan Statistical Area
+Virginia,51,085,51085,Hanover County,Hanover,40060,,"Richmond, VA",Central,Metropolitan Statistical Area
+Virginia,51,087,51087,Henrico County,Henrico,40060,,"Richmond, VA",Central,Metropolitan Statistical Area
+Virginia,51,097,51097,King and Queen County,King and Queen,40060,,"Richmond, VA",Outlying,Metropolitan Statistical Area
+Virginia,51,101,51101,King William County,King William,40060,,"Richmond, VA",Outlying,Metropolitan Statistical Area
+Virginia,51,127,51127,New Kent County,New Kent,40060,,"Richmond, VA",Outlying,Metropolitan Statistical Area
+Virginia,51,145,51145,Powhatan County,Powhatan,40060,,"Richmond, VA",Outlying,Metropolitan Statistical Area
+Virginia,51,149,51149,Prince George County,Prince George,40060,,"Richmond, VA",Central,Metropolitan Statistical Area
+Virginia,51,183,51183,Sussex County,Sussex,40060,,"Richmond, VA",Outlying,Metropolitan Statistical Area
+Virginia,51,570,51570,Colonial Heights City,Colonial Heights,40060,,"Richmond, VA",Central,Metropolitan Statistical Area
+Virginia,51,670,51670,Hopewell City,Hopewell,40060,,"Richmond, VA",Central,Metropolitan Statistical Area
+Virginia,51,730,51730,Petersburg City,Petersburg,40060,,"Richmond, VA",Central,Metropolitan Statistical Area
+Virginia,51,760,51760,Richmond City,Richmond,40060,,"Richmond, VA",Central,Metropolitan Statistical Area
+Virginia,51,023,51023,Botetourt County,Botetourt,40220,,"Roanoke, VA",Central,Metropolitan Statistical Area
+Virginia,51,045,51045,Craig County,Craig,40220,,"Roanoke, VA",Outlying,Metropolitan Statistical Area
+Virginia,51,067,51067,Franklin County,Franklin,40220,,"Roanoke, VA",Outlying,Metropolitan Statistical Area
+Virginia,51,161,51161,Roanoke County,Roanoke,40220,,"Roanoke, VA",Central,Metropolitan Statistical Area
+Virginia,51,770,51770,Roanoke City,Roanoke,40220,,"Roanoke, VA",Central,Metropolitan Statistical Area
+Virginia,51,775,51775,Salem City,Salem,40220,,"Roanoke, VA",Central,Metropolitan Statistical Area
+Virginia,51,015,51015,Augusta County,Augusta,44420,,"Staunton, VA",Central,Metropolitan Statistical Area
+Virginia,51,790,51790,Staunton City,Staunton,44420,,"Staunton, VA",Central,Metropolitan Statistical Area
+Virginia,51,820,51820,Waynesboro City,Waynesboro,44420,,"Staunton, VA",Central,Metropolitan Statistical Area
+Virginia,51,073,51073,Gloucester County,Gloucester,47260,,"Virginia Beach-Norfolk-Newport News, VA-NC",Central,Metropolitan Statistical Area
+Virginia,51,093,51093,Isle of Wight County,Isle of Wight,47260,,"Virginia Beach-Norfolk-Newport News, VA-NC",Outlying,Metropolitan Statistical Area
+Virginia,51,095,51095,James City County,James City,47260,,"Virginia Beach-Norfolk-Newport News, VA-NC",Outlying,Metropolitan Statistical Area
+Virginia,51,115,51115,Mathews County,Mathews,47260,,"Virginia Beach-Norfolk-Newport News, VA-NC",Outlying,Metropolitan Statistical Area
+Virginia,51,175,51175,Southampton County,Southampton,47260,,"Virginia Beach-Norfolk-Newport News, VA-NC",Outlying,Metropolitan Statistical Area
+Virginia,51,199,51199,York County,York,47260,,"Virginia Beach-Norfolk-Newport News, VA-NC",Central,Metropolitan Statistical Area
+Virginia,51,550,51550,Chesapeake City,Chesapeake,47260,,"Virginia Beach-Norfolk-Newport News, VA-NC",Central,Metropolitan Statistical Area
+Virginia,51,620,51620,Franklin City,Franklin,47260,,"Virginia Beach-Norfolk-Newport News, VA-NC",Outlying,Metropolitan Statistical Area
+Virginia,51,650,51650,Hampton City,Hampton,47260,,"Virginia Beach-Norfolk-Newport News, VA-NC",Central,Metropolitan Statistical Area
+Virginia,51,700,51700,Newport News City,Newport News,47260,,"Virginia Beach-Norfolk-Newport News, VA-NC",Central,Metropolitan Statistical Area
+Virginia,51,710,51710,Norfolk City,Norfolk,47260,,"Virginia Beach-Norfolk-Newport News, VA-NC",Central,Metropolitan Statistical Area
+Virginia,51,735,51735,Poquoson City,Poquoson city,47260,,"Virginia Beach-Norfolk-Newport News, VA-NC",Central,Metropolitan Statistical Area
+Virginia,51,740,51740,Portsmouth City,Portsmouth,47260,,"Virginia Beach-Norfolk-Newport News, VA-NC",Central,Metropolitan Statistical Area
+Virginia,51,800,51800,Suffolk City,Suffolk,47260,,"Virginia Beach-Norfolk-Newport News, VA-NC",Central,Metropolitan Statistical Area
+Virginia,51,810,51810,Virginia Beach City,Virginia Beach,47260,,"Virginia Beach-Norfolk-Newport News, VA-NC",Central,Metropolitan Statistical Area
+Virginia,51,830,51830,Williamsburg City,Williamsburg,47260,,"Virginia Beach-Norfolk-Newport News, VA-NC",Outlying,Metropolitan Statistical Area
+Virginia,51,013,51013,Arlington County,Arlington,47900,47894,"Washington-Arlington-Alexandria, DC-VA-MD-WV",Central,Metropolitan Statistical Area
+Virginia,51,043,51043,Clarke County,Clarke,47900,47894,"Washington-Arlington-Alexandria, DC-VA-MD-WV",Outlying,Metropolitan Statistical Area
+Virginia,51,047,51047,Culpeper County,Culpeper,47900,47894,"Washington-Arlington-Alexandria, DC-VA-MD-WV",Outlying,Metropolitan Statistical Area
+Virginia,51,059,51059,Fairfax County,Fairfax,47900,47894,"Washington-Arlington-Alexandria, DC-VA-MD-WV",Central,Metropolitan Statistical Area
+Virginia,51,061,51061,Fauquier County,Fauquier,47900,47894,"Washington-Arlington-Alexandria, DC-VA-MD-WV",Central,Metropolitan Statistical Area
+Virginia,51,107,51107,Loudoun County,Loudoun,47900,47894,"Washington-Arlington-Alexandria, DC-VA-MD-WV",Central,Metropolitan Statistical Area
+Virginia,51,113,51113,Madison County,Madison,47900,47894,"Washington-Arlington-Alexandria, DC-VA-MD-WV",Outlying,Metropolitan Statistical Area
+Virginia,51,153,51153,Prince William County,Prince William,47900,47894,"Washington-Arlington-Alexandria, DC-VA-MD-WV",Central,Metropolitan Statistical Area
+Virginia,51,157,51157,Rappahannock County,Rappahannock,47900,47894,"Washington-Arlington-Alexandria, DC-VA-MD-WV",Outlying,Metropolitan Statistical Area
+Virginia,51,177,51177,Spotsylvania County,Spotsylvania,47900,47894,"Washington-Arlington-Alexandria, DC-VA-MD-WV",Outlying,Metropolitan Statistical Area
+Virginia,51,179,51179,Stafford County,Stafford,47900,47894,"Washington-Arlington-Alexandria, DC-VA-MD-WV",Central,Metropolitan Statistical Area
+Virginia,51,187,51187,Warren County,Warren,47900,47894,"Washington-Arlington-Alexandria, DC-VA-MD-WV",Outlying,Metropolitan Statistical Area
+Virginia,51,510,51510,Alexandria City,Alexandria,47900,47894,"Washington-Arlington-Alexandria, DC-VA-MD-WV",Central,Metropolitan Statistical Area
+Virginia,51,600,51600,Fairfax City,Fairfax,47900,47894,"Washington-Arlington-Alexandria, DC-VA-MD-WV",Central,Metropolitan Statistical Area
+Virginia,51,610,51610,Falls Church City,Falls Church,47900,47894,"Washington-Arlington-Alexandria, DC-VA-MD-WV",Central,Metropolitan Statistical Area
+Virginia,51,630,51630,Fredericksburg City,Fredericksburg,47900,47894,"Washington-Arlington-Alexandria, DC-VA-MD-WV",Outlying,Metropolitan Statistical Area
+Virginia,51,683,51683,Manassas City,Manassas,47900,47894,"Washington-Arlington-Alexandria, DC-VA-MD-WV",Central,Metropolitan Statistical Area
+Virginia,51,685,51685,Manassas Park City,Manassas Park,47900,47894,"Washington-Arlington-Alexandria, DC-VA-MD-WV",Central,Metropolitan Statistical Area
+Virginia,51,069,51069,Frederick County,Frederick,49020,,"Winchester, VA-WV",Central,Metropolitan Statistical Area
+Virginia,51,840,51840,Winchester City,Winchester,49020,,"Winchester, VA-WV",Central,Metropolitan Statistical Area
+Virginia,51,001,51001,Accomack County,Accomack,,,Non-Metro,,Non-Metro
+Virginia,51,005,51005,Alleghany County,Alleghany,,,Non-Metro,,Non-Metro
+Virginia,51,017,51017,Bath County,Bath,,,Non-Metro,,Non-Metro
+Virginia,51,025,51025,Brunswick County,Brunswick,,,Non-Metro,,Non-Metro
+Virginia,51,027,51027,Buchanan County,Buchanan,,,Non-Metro,,Non-Metro
+Virginia,51,029,51029,Buckingham County,Buckingham,,,Non-Metro,,Non-Metro
+Virginia,51,033,51033,Caroline County,Caroline,,,Non-Metro,,Non-Metro
+Virginia,51,035,51035,Carroll County,Carroll,,,Non-Metro,,Non-Metro
+Virginia,51,037,51037,Charlotte County,Charlotte,,,Non-Metro,,Non-Metro
+Virginia,51,049,51049,Cumberland County,Cumberland,,,Non-Metro,,Non-Metro
+Virginia,51,051,51051,Dickenson County,Dickenson,,,Non-Metro,,Non-Metro
+Virginia,51,057,51057,Essex County,Essex,,,Non-Metro,,Non-Metro
+Virginia,51,063,51063,Floyd County,Floyd,,,Non-Metro,,Non-Metro
+Virginia,51,077,51077,Grayson County,Grayson,,,Non-Metro,,Non-Metro
+Virginia,51,081,51081,Greensville County,Greensville,,,Non-Metro,,Non-Metro
+Virginia,51,083,51083,Halifax County,Halifax,,,Non-Metro,,Non-Metro
+Virginia,51,091,51091,Highland County,Highland,,,Non-Metro,,Non-Metro
+Virginia,51,099,51099,King George County,King George,,,Non-Metro,,Non-Metro
+Virginia,51,103,51103,Lancaster County,Lancaster,,,Non-Metro,,Non-Metro
+Virginia,51,105,51105,Lee County,Lee,,,Non-Metro,,Non-Metro
+Virginia,51,109,51109,Louisa County,Louisa,,,Non-Metro,,Non-Metro
+Virginia,51,111,51111,Lunenburg County,Lunenburg,,,Non-Metro,,Non-Metro
+Virginia,51,117,51117,Mecklenburg County,Mecklenburg,,,Non-Metro,,Non-Metro
+Virginia,51,119,51119,Middlesex County,Middlesex,,,Non-Metro,,Non-Metro
+Virginia,51,131,51131,Northampton County,Northampton,,,Non-Metro,,Non-Metro
+Virginia,51,133,51133,Northumberland County,Northumberland,,,Non-Metro,,Non-Metro
+Virginia,51,135,51135,Nottoway County,Nottoway,,,Non-Metro,,Non-Metro
+Virginia,51,137,51137,Orange County,Orange,,,Non-Metro,,Non-Metro
+Virginia,51,139,51139,Page County,Page,,,Non-Metro,,Non-Metro
+Virginia,51,141,51141,Patrick County,Patrick,,,Non-Metro,,Non-Metro
+Virginia,51,147,51147,Prince Edward County,Prince Edward,,,Non-Metro,,Non-Metro
+Virginia,51,159,51159,Richmond County,Richmond,,,Non-Metro,,Non-Metro
+Virginia,51,163,51163,Rockbridge County,Rockbridge,,,Non-Metro,,Non-Metro
+Virginia,51,167,51167,Russell County,Russell,,,Non-Metro,,Non-Metro
+Virginia,51,171,51171,Shenandoah County,Shenandoah,,,Non-Metro,,Non-Metro
+Virginia,51,173,51173,Smyth County,Smyth,,,Non-Metro,,Non-Metro
+Virginia,51,181,51181,Surry County,Surry,,,Non-Metro,,Non-Metro
+Virginia,51,193,51193,Westmoreland County,Westmoreland,,,Non-Metro,,Non-Metro
+Virginia,51,197,51197,Wythe County,Wythe,,,Non-Metro,,Non-Metro
+Virginia,51,530,51530,Buena Vista City,Buena Vista,,,Non-Metro,,Non-Metro
+Virginia,51,580,51580,Covington City,Covington,,,Non-Metro,,Non-Metro
+Virginia,51,595,51595,Emporia City,Emporia,,,Non-Metro,,Non-Metro
+Virginia,51,640,51640,Galax City,Galax,,,Non-Metro,,Non-Metro
+Virginia,51,678,51678,Lexington City,Lexington,,,Non-Metro,,Non-Metro

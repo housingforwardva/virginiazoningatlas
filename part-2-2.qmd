@@ -1,0 +1,461 @@
+# Zoning in Hampton Roads {part-2-2}
+
+```{r}
+
+# Summarize the key findings from the analysis below.
+
+# Describe the housing market in relation to population growth and household trends in the region. 
+
+# Is the population growing or shrinking? What is the typical household size?
+# Are we building the housing to match the growth and typical household?
+
+# Describe economic trends in the region.
+
+# Is there job growth in the region? Are incomes and wages growing or declining?
+# What can the typical renter afford to buy or rent?
+# What can the top occupations afford to buy or rent?
+
+# Describe zoning's impact in Hampton Roads.
+
+# How much of zoned land in Hampton Roads is dedicated to single-family housing only (% of total area)? Total and by locality. Ranked.
+# How much of zoned land in Hampton Roads is primarily residential, mixed with residential, and nonresidential (% of total area)? Total and by locality. Ranked.
+# How much of zoned land in Hampton Roads allows for 2+ family by-right (% of total area)?
+# Housing type by-right by locality
+# Where are there minimum square footage requirements?
+# How much of zoned land in Hampton Roads allows for ADUs by-right?
+# What is the average minimum lot area for each treatment?
+
+
+```
+
+```{r}
+#| label: setup
+
+library(tidyverse)
+library(tidycensus)
+library(ggplot2)
+library(ggiraph)
+library(sf)
+library(leaflet)
+library(FinCal)
+library(hdatools)
+library(scales)
+library(forcats)
+library(kableExtra)
+library(ggtext)
+
+```
+
+## Key Findings
+
+
+
+
+## Housing Market
+
+```{r}
+#| label: fig-hr-city-pop
+#| fig-cap: "Population change in the Hampton Roads region by city"
+
+# Create a visualization that shows population change in the region by city. What localities are seeing the most growth? Which ones are seeing decline?
+
+hr_pop <- read_rds("data/hr/hr_pop.rds") |> 
+  mutate(year = as.numeric(year)) |> 
+  group_by(name_long) |>
+  mutate(diff = value - lag(value),
+         diff = replace_na(diff, 0)) |> 
+  mutate(run_diff = cumsum(diff))|>  
+  filter(run_diff != 0) |> 
+  mutate(year = as.character(year)) |> 
+  mutate(type = case_when(
+    str_detect(name_long, "City") ~ "City",
+    TRUE ~ "County"
+  ))
+
+city_pop <- hr_pop |> 
+  filter(type == "City")
+
+city_pop_bar <- ggplot(city_pop, # Read in the data.
+                  aes(x = year, # Plot the x-axis.
+                      y = run_diff, # Plot the y-axis.
+                      fill = fct_reorder(name_long, run_diff), # Set the variable that will be colored.
+                      data_id = run_diff, # Set the variable that will be used in interactive plot.
+                      tooltip = label_comma()(run_diff))) + # Set the format of the data label on hover.
+  geom_col() + # Set as a bar chart. 
+  geom_col_interactive(size = 2) + # Add interactive geometry for ggiraph widget.
+  theme_hfv() + # Apply custom HFV theme.
+  add_zero_line("y") + # Add darker zero intercept line for emphasis.
+  labs(title = "Population change in the Hampton Roads region by city",
+       subtitle = "From 2010 to 2020",
+       caption = "**Source:** U.S. Census Bureau, Population Estimates Program (PEP).") +
+  scale_y_continuous(label = label_comma()) + # Format the y-axis to show commas.
+  theme(legend.position = "bottom")
+
+
+city_pop_bar
+
+```
+
+
+```{r}
+#| label: fig-hr-city-pop
+#| fig-cap: "Population change in the Hampton Roads region by county"
+
+# Create a visualization that shows population change in the region by county. What localities are seeing the most growth? Which ones are seeing decline?
+
+county_pop <- hr_pop |> 
+  filter(type == "County")
+
+county_pop_bar <- ggplot(county_pop, # Read in the data.
+                  aes(x = year, # Plot the x-axis.
+                      y = run_diff, # Plot the y-axis.
+                      fill = fct_reorder(name_long, run_diff), # Set the variable that will be colored.
+                      data_id = run_diff, # Set the variable that will be used in interactive plot.
+                      tooltip = label_comma()(run_diff))) + # Set the format of the data label on hover.
+  geom_col() + # Set as a bar chart. 
+  geom_col_interactive(size = 2) + # Add interactive geometry for ggiraph widget.
+  theme_hfv() + # Apply custom HFV theme.
+  add_zero_line("y") + # Add darker zero intercept line for emphasis.
+  labs(title = "Population change in the Hampton Roads region by county",
+       subtitle = "From 2010 to 2020",
+       caption = "**Source:** U.S. Census Bureau, Population Estimates Program (PEP).") +
+  scale_y_continuous(label = label_comma()) + # Format the y-axis to show commas.
+  theme(legend.position = "right")
+
+
+county_pop_bar
+
+```
+
+
+```{r}
+#| label: household-size-data
+
+# Create a visualization that shows the change in household size from 2010 to 2021 in each locality. Describe the trend in household size changes. Where are larger households seeing growth? Smaller households?
+
+hr_hhsize <- read_rds("data/hr/hr_hhsize.rds") |> 
+  group_by(NAME, year, tenure, size) |> 
+  summarise(estimate = sum(estimate)) |> 
+  filter(year == 2010 | year == 2021) |> 
+  mutate(year = as.character(year)) |> 
+  pivot_wider(names_from = year,
+              values_from = estimate) |> 
+  mutate(change = `2021` - `2010`)
+
+# Need help visualizing this more efficiently. 
+
+ggplot(hr_hhsize,
+       aes(x = fct_reorder2(NAME, size, change),
+           y = change,
+           fill = NAME)) +
+  geom_col(position = "dodge") +
+  coord_flip() +
+  facet_grid(tenure~size) +
+  theme_hfv()
+
+
+
+```
+
+```{r}
+#| label: fig-bps-hr
+#| fig-cap: "New building permits issued"
+
+# Create a visualization that shows where housing is being built. Where is more diverse housing being built? Where is single-family housing being built the most? How does that compare to population growth in those localities?
+
+hr_bps <- read_rds("data/hr/hr_bps.rds")
+
+
+
+
+```
+
+```{r}
+
+# What have home prices been like?
+
+
+```
+
+```{r}
+
+# What has for-sale home supply been like?
+
+
+```
+
+```{r}
+#| label: fig-hr-rent
+#| fig-cap: "Average asking rent in Hampton Roads"
+
+# What has rent been like in Hampton Roads?
+
+hr_rent <- read_rds("data/hr/hr_costar.rds")
+
+
+```
+
+```{r}
+#| label: fig-hr-rv
+#| fig-cap: "Rental vacancy in Hampton Roads"
+
+
+# What has rental vacancy been like?
+
+hr_rv <- read_rds("data/hr/hr_costar.rds")
+
+
+
+```
+
+## Income and Wages
+
+```{r}
+#| label: fig-emp-lvl
+#| fig-cap: "Employment levels in Hampton Roads"
+
+
+# What have employment levels been like? Are jobs declining or growing?
+
+hr_emp <- read_rds("data/hr/hr_oews.rds")
+
+
+
+``` 
+
+```{r}
+#| label: fig-local-wages
+#| fig-cap: "Average annual wages in Hampton Roads"
+
+# Show how current wages compare to wages in 2016 for each locality. Has there been major changes? What can the avg annual wage afford to rent or buy?
+
+hr_wages <- read_rds("data/hr/hr_oews.rds")
+
+
+
+```
+
+
+```{r}
+#| label: fig-renter-income
+#| fig-cap: "Median renter household income"
+
+# What are renter incomes like? What can a renter afford to rent and buy?
+
+hr_income <- read_rds("data/hr/hr_income.rds")
+
+
+
+```
+
+## Zoning's impact in Hampton Roads
+
+Within increasing housing affordability issues across the region, a diverse and growing supply of housing is needed to meet the needs of a diverse population. Localities have significant control over their supply through their zoning ordinances. 
+
+The following findings are based on the Zoning Atlas Methodology and takes into account the impact of federally-owned lands and wetland areas, which are both prevalent throughout the region. Like our colleagues in New Hampshire, we have sought to exclude areas of land that are not unbuildable. We have excluded all federal land from calculations, as well as area of wetlands and/or water that are 10 continguous area or more.
+
+::: {.callout-note}
+
+*Federal lands* were identified using ESRI Landscape's USA Federal Lands feature layer, which accounted for lands managed by six federal agencies, including: 
+
+- Bureau of Land Management
+- Department of Defense
+- National Park Service
+- US Fish and Wildlife Service
+- US Forest Service
+
+*Wetland/water areas* were identified using the U.S. Fish & Wildlife Service's Seamless Wetlands Data. The wetlands polygon was used and allow polygons with an area of 10 acres or more were utilized as a mask layer to clip from our Hampton Roads zoning district layer file.
+
+:::
+
+```{r}
+#| label: fig-housing-type
+#| fig-cap: "Percent of land zoned by residential category"
+
+# Create a bar char that shows the percentage of zoned in each locality by type (i.e. primarily residential, mixed with residential, nonresidential)
+
+hr_type <- read_rds("data/hr/hr_vza_nogeo.rds") |> 
+  select(jurisdiction, overlay, type, area) |> 
+  filter(overlay == 0)
+
+hr_type_summary <- hr_type |> 
+  group_by(jurisdiction, type) |> 
+  summarise(area = sum(area)) |> 
+  group_by(jurisdiction) |> 
+  mutate(percent = area/sum(area))
+
+ggplot(hr_type_summary,
+       aes(x = fct_reorder2(jurisdiction, type, percent),
+           y = percent,
+           fill = factor(type, levels = c("Nonresidential", "Mixed with Residential", "Primarily Residential")))) +
+  geom_col(position = "stack") +
+  coord_flip() +
+  theme_hfv() +
+  scale_fill_hfv() +
+  theme(legend.position = "right") +
+  labs(title = "Percent of land by type of zoning district",
+       caption = "*Source") +
+  scale_y_continuous(labels = percent_format(), expand = expansion(mult = c(0, 0.01)))
+
+
+```
+
+### Single-Family Detached Housing
+
+```{r}
+
+# Create a bar char that shows the percentage of zoned in each locality that is dedicated to single-family detached only housing.
+
+hr_sfd <- read_rds("data/hr/hr_vza_nogeo.rds") |> # Read in the data.
+  select(jurisdiction, overlay, sfd, area) |> # Select necessary data fields.
+  filter(overlay == 0) |> # Remove overlay districts.
+  group_by(jurisdiction, sfd) |> # Sum the total acres dedicated to single-family detached in each district.
+  summarise(area = sum(area)) |> 
+  group_by(jurisdiction) |> 
+  mutate(percent = area/sum(area)) |> # Calculate what percentage of total developable area is SFD.
+  filter(sfd == "t")
+
+ggplot(hr_sfd,
+       aes(x = reorder(jurisdiction, percent),
+           y = percent,
+           fill = percent)) +
+  geom_col(position = "dodge") +
+  geom_col_interactive(position = "dodge") +
+  geom_text(aes(label = percent(percent, accuracy = 1), color = percent),
+    hjust = -0.2) +
+  theme_hfv() +
+  coord_flip() +
+  scale_y_continuous(expand = expansion(mult = c(0, 0.1))) +
+  scale_fill_gradientn(colours = c("#ADDCB1", "#46A88F", "#207A88", "#0F1A4E")) + # Use custom HFV gradient.
+  scale_color_gradientn(colours = c("#ADDCB1", "#46A88F", "#207A88", "#0F1A4E")) + # Use custom HFV gradient.
+  labs(title = "Percent of developable land dedicated to single-family detached only") +
+  theme(axis.text.x = element_blank())
+
+```
+
+
+### By-Right Housing
+
+```{r}
+#| label: tbl-hr-byright
+#| tbl-cap: "Percent of developable land that welcomes housing type by-right"
+
+# Create a table that shows the percentage of land that allows for each type of treatment by locality
+# https://frontierinstitute.org/reports/the-montana-zoning-atlas-2-0/ use this as an example 
+
+hr_byright_tbl <- read_rds("data/hr/hr_vza_nogeo.rds") |> 
+  select(jurisdiction, abbrvname, overlay, 6:9, area) |> 
+  filter(overlay == 0) |> 
+  group_by(jurisdiction) |> 
+  mutate(total_area = sum(area)) |> 
+  mutate(family1_pct = case_when(
+    family1_treatment == "allowed" ~ area/total_area,
+    TRUE ~ 0
+  ))|> 
+  mutate(family2_pct = case_when(
+    family2_treatment == "allowed" ~ area/total_area,
+    TRUE ~ 0 
+  )) |> 
+  mutate(family3_pct = case_when(
+    family3_treatment == "allowed" ~ area/total_area,
+    TRUE ~ 0 
+  )) |> 
+  mutate(family4_pct = case_when(
+    family4_treatment == "allowed" ~ area/total_area,
+    TRUE ~ 0 
+  )) |> 
+  group_by(jurisdiction) |> 
+  summarise(family1_byright = percent(sum(family1_pct)),
+            family2_byright = percent(sum(family2_pct)),
+            family3_byright = percent(sum(family3_pct)),
+            family4_byright = percent(sum(family4_pct))
+            ) 
+
+
+hr_byright_tbl |>
+  kable(col.names = c("Jurisdiction", "Single-family", "2-family", "3-family", "4+-family"), 
+        align = "lcccc") |> 
+  kable_styling(bootstrap_options = c("striped", "condensed"))
+
+```
+
+```{r}
+
+# Create a bar graph that shows the total amount of zoned land that welcomes 2+ family housing by-right
+
+hr_byright <- read_rds("data/hr/hr_vza_nogeo.rds") |> 
+  select(jurisdiction, abbrvname, overlay, 6:9, area) |> # Select data fields.
+  filter(overlay == 0) |> # Filter out overlay districts.
+  group_by(jurisdiction) |> 
+  mutate(total_area = sum(area)) |> # Calculate the total area of zoned land.
+  filter(family2_treatment == "allowed" & family3_treatment == "allowed" & family4_treatment == "allowed") |> 
+  group_by(jurisdiction) |> 
+  mutate(pct_2plus = area/total_area) |> 
+  group_by(jurisdiction) |> 
+  summarise(pct_2plus = sum(pct_2plus)) |>
+  add_row(jurisdiction = "Smithfield", pct_2plus = 0)
+  
+
+ggplot(hr_byright,
+       aes(x = reorder(jurisdiction, pct_2plus),
+           y = pct_2plus,
+           fill = pct_2plus)) +
+  geom_col() +
+  geom_text(aes(label = percent(pct_2plus, accuracy = 1), color = pct_2plus),
+    hjust = -0.2) +
+  coord_flip() +
+  theme_hfv() +
+  scale_fill_gradientn(colours = c("#ADDCB1", "#46A88F", "#207A88", "#0F1A4E")) + # Use custom HFV gradient.
+  scale_color_gradientn(colours = c("#ADDCB1", "#46A88F", "#207A88", "#0F1A4E")) + # Use custom HFV gradient.
+  scale_y_continuous(expand = expansion(mult = c(0, 0.1))) +
+  labs(title = "Percent of developable land allowing for 2+ family housing by-right")  +
+  theme(axis.text.x = element_blank())
+
+
+```
+### Minimum lot sizes
+
+```{r}
+
+# What is the average minimum lot size for each type of treatment?
+
+
+hr_lots <- read_rds("data/hr/hr_vza_nogeo.rds")|> 
+  select(jurisdiction, abbrvname, overlay, hr_custom_fields_min1, hr_custom_fields_min2,
+         hr_custom_fields_min3, hr_custom_fields_min4) 
+
+
+```
+
+
+## Accessory Dwelling Units
+
+```{r}
+#| label: fig-hr-adus
+#| fig-cap: "Percent of developable land that allows for ADUs by-right"
+
+# Create a table that shows the percentage of land that allows for ADUs by-right
+# https://frontierinstitute.org/reports/the-montana-zoning-atlas-2-0/ use this as an example 
+
+hr_adu <- read_rds("data/hr/hr_vza_nogeo.rds") 
+
+```
+
+```{r}
+#| label: fig-hr-adu-restrictions
+#| fig-cap: "Summary of ADU regulations in Hampton Roads"
+
+# Create a table for the following csv.
+# https://frontierinstitute.org/reports/the-montana-zoning-atlas-2-0/ use this as an example 
+
+hr_adu_summary <- read_csv("data/hr/hr_adu_summary.csv")
+
+
+
+```
+
+
+
+
+
+
