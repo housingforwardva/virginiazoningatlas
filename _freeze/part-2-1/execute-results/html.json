@@ -1,0 +1,14 @@
+{
+  "hash": "31846cd85df5ac456cf8d547c83eb83f",
+  "result": {
+    "markdown": "# Hampton Roads {#part-2-1}\n\n\n::: {.cell}\n\n:::\n\n\nThe Hampton Roads Planning District Commission is comprised of 17 local governments, including ten independent cities, six counties, and the Town of Smithfield. \n\n\n::: {.cell}\n\n:::\n\n\n[Insert table of localities]\n\n\n\n\n## Housing Market\n\n[Summarize some key facts about the Hampton Roads housing market and the \n\nhttps://whro.org/news/local-news/36579-hampton-roads-housing-market-due-for-a-slowdown-says-odu\n\nhttps://www.vpm.org/news/2022-11-07/housing-in-hampton-roads-is-less-affordable-than-northern-virginia-other-pricey\n\nhttps://whro.org/news/local-news/33171-analyzing-hampton-roads-affordability-a-conversation-with-journalist-jeff-south\n\n\n## Data Collection\n\nZoning data collection and analysis for the Hampton Roads region took place from April through August 2023. At this time, Gloucester County and the City of Poquoson were going through updates of their zoning ordinances. The findings and presentation of the Hampton Roads portion of the Virginia Zoning Atlas are a point-in-time representation of zoning ordinances during this time.\n\nIt is the intent of the Virginia Zoning Atlas to track major changes to zoning ordinances and zoning maps with periodic updates.\n\n## ",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

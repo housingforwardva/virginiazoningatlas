@@ -98,7 +98,7 @@ city_pop_bar
 
 
 ```{r}
-#| label: fig-hr-city-pop
+#| label: fig-hr-county-pop
 #| fig-cap: "Population change in the Hampton Roads region by county"
 
 # Create a visualization that shows population change in the region by county. What localities are seeing the most growth? Which ones are seeing decline?
@@ -248,9 +248,18 @@ hr_income <- read_rds("data/hr/hr_income.rds")
 
 ```
 
+```{r}
+
+# What is cost burden like in the region?
+
+hr_cb <- read_rds("data/hr/hr_cb.rds")
+
+
+```
+
 ## Zoning's impact in Hampton Roads
 
-Within increasing housing affordability issues across the region, a diverse and growing supply of housing is needed to meet the needs of a diverse population. Localities have significant control over their supply through their zoning ordinances. 
+With increasing housing affordability issues across the region, a diverse and growing supply of housing is needed to meet the needs of a diverse population. Localities have significant control over their supply through their zoning ordinances. 
 
 The following findings are based on the Zoning Atlas Methodology and takes into account the impact of federally-owned lands and wetland areas, which are both prevalent throughout the region. Like our colleagues in New Hampshire, we have sought to exclude areas of land that are not unbuildable. We have excluded all federal land from calculations, as well as area of wetlands and/or water that are 10 continguous area or more.
 

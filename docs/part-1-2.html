@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.269">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Virginia Zoning Atlas - 2&nbsp; Methodology</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./part-1-3.html" rel="next">
+<link href="./part-1-1.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Methodology</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./img/vza.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Virginia Zoning Atlas</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/housingforwardva/cvpdc" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
+</div>
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">About</a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Introduction</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./part-1-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./part-1-2.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Methodology</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./part-1-3.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Things to keep in mind</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Hampton Roads</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./part-2-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Hampton Roads</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./part-2-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Zoning in Hampton Roads</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#how-to-make-a-zoning-atlas" id="toc-how-to-make-a-zoning-atlas" class="nav-link active" data-scroll-target="#how-to-make-a-zoning-atlas"><span class="toc-section-number">2.1</span>  How to make a zoning atlas</a>
+  <ul class="collapse">
+  <li><a href="#important-definitions" id="toc-important-definitions" class="nav-link" data-scroll-target="#important-definitions"><span class="toc-section-number">2.1.1</span>  Important Definitions</a></li>
+  </ul></li>
+  <li><a href="#why-do-this-on-a-region-by-region-basis" id="toc-why-do-this-on-a-region-by-region-basis" class="nav-link" data-scroll-target="#why-do-this-on-a-region-by-region-basis"><span class="toc-section-number">2.2</span>  Why do this on a region-by-region basis?</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span id="part-1-2" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Methodology</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<div class="cell">
+
+</div>
+<section id="how-to-make-a-zoning-atlas" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="how-to-make-a-zoning-atlas"><span class="header-section-number">2.1</span> How to make a zoning atlas</h2>
+<p>The methods to standardize zoning ordinances across multiple jurisdictions were first employed in Connecticut in 2021. Dr.&nbsp;Sara Bronin, both an architect and attorney, developed “How To Make A Zoning Atlas” along with Ilya Illyankou to document their initial work on the Connecticut Zoning Atlas, which has led to the founding of the National Zoning Atlas (NZA).</p>
+<p>Based out of the Legal Constructs Lab at Cornell University, the NZA team has contributed to a refinement of the zoning atlas methodology into a <a href="https://www.zoningatlas.org/how">2.0 version</a>. This most current methodology was employed in the analysis for the Hampton Roads region in the summer of 2023.</p>
+<p>The methodology provides a way to translate and standardize district-specific regulations based on the treatment of certain residential uses. Currently, the methodology requires analysts to manually read through pages and pages of zoning ordinances. Geographic data needs to be collected and sometimes created. Information can be hard to track down and may only be stored on paper in a physical location in some cases.</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Like the people who write zoning ordinances, we’re human.</p>
+<p>As we conduct our analysis and numerous reviews of the same zoning ordinance, we may not get our analysis right the first or even third time around. We welcome your review and feedback on the accuracy of the data, but also keep in mind that we are following a methodology that may not align with your interpretation of your zoning ordinance. See next section for some of these discrepancies!</p>
+</div>
+</div>
+<section id="important-definitions" class="level3" data-number="2.1.1">
+<h3 data-number="2.1.1" class="anchored" data-anchor-id="important-definitions"><span class="header-section-number">2.1.1</span> Important Definitions</h3>
+<p><em>Zoning District Classification</em></p>
+<ul>
+<li><strong>Primarily Residential</strong> means a district allows for: “housing only; housing and assorted uses customarily allowed in residential areas, including religious institutions and schools; or housing and agricultural uses.”</li>
+<li><strong>Mixed with Residential</strong> means a district allows for: “nonresidential uses and housing, whether the housing is stand-alone housing (e.g., apartment buildings) or housing integrated with nonresidential uses (e.g., buildings with retail on the ground floor and residential above). Nonresidential uses likely to be found in districts also allowing residential uses include retail shops, restaurants, office or medical buildings, performance venues, as well as certain light industrial uses (warehouses, small scale manufacturing, breweries, etc.)”</li>
+<li><strong>Nonresidential</strong> means a district either prohibits “residential uses entirely; or [allows] one accessory dwelling on the same lot as a nonresidential use and no other types of residential housing. Common examples of the latter include an apartment for a retailer to live above her shop or a caretaker apartment for a factory.</li>
+<li><strong>Overlay Not Affecting Use</strong> simply means that an overlay district does not affect the allowable uses in a district. For example, a historic district overlay may require certain design parameters, but does not allow or prohibit additional uses on top of the base zoning district.</li>
+</ul>
+<p><em>Residential Treatments</em></p>
+<ul>
+<li><p><strong>Allowed/Conditional</strong> means that a use is allowed <strong>without a public hearing.</strong> In this case, permission to build is subject to administrative review by a local planner and is typically allowed <strong>by-right</strong> if it meets the conditions of the zoning ordinance.</p></li>
+<li><p><strong>Public Hearing</strong> means that a use requires a public approval process (entitlement) in order to be built. In Virginia, entitlement can take different forms, but is most often a Special or Conditional Use Permit (SUP or CUP), a Special Exception or Variance, or a rezoning.</p></li>
+<li><p><strong>Prohibited</strong> means that a use is <strong>not allowed</strong> within that district.</p></li>
+<li><p><strong>1-Family</strong> refers to a building, including a manufactured or mobile home, with only one dwelling unit. 1-Family is not only detached housing, but also includes attached housing that exist on individual lots (i.e.&nbsp;townhomes, semidetached, etc.).</p></li>
+<li><p><strong>2-Family</strong> refers to two dwelling units within a single or two separate buildings that exist on a single lot. 2-Family zoning allows for two dwellings of equal size. 2-Family is most often referred to as a duplex, semidetached, or two-family dwelling, but is only two family if allowing both units to exist on a single lot.</p></li>
+<li><p><strong>3-Family</strong> refers to three dwelling units within a single building or separate buildings on a single lot. 3-Family is most often referred to as a triplex, but many localities define “multifamily” as a building with 3 or more units.</p></li>
+<li><p><strong>4+-Family</strong> refers to four-or-more dwelling units within a single building or separate buildings on a single lot. 4+-Family is most often referred to as an apartment or multifamily building depending on how a locality defines those terms, but it can also be a fourplex if only containing four dwelling units.</p></li>
+<li><p><strong>Affordable Housing</strong> identifies which districts treat affordable housing differently from housing that is not designated as affordable, or where a district only allows for affordable housing.</p></li>
+<li><p><strong>Accessory Dwelling Units</strong> are defined by the methodology as “a single unit of housing located on the same lot as a principal use, usually a 1-family home, and typically smaller than or in some other way subordinate to that principal use.” But according to the methodology, an ADU not need only be a secondary dwelling related to a 1-family home. It can also be a caretaker’s apartment that is accessory to a nonresidential use like a cemetery.</p></li>
+<li><p><strong>Planned Residential Development (PRD)</strong> “allows for a large number of housing units to be developed in accordance with a coordinated master plan, and offers flexibility with respect to grouping, placement, size, and use of structures. They may be permitted in multiple buildings, may be built on a single large lot or on many smaller lots (e.g., a subdivision on a large tract of land, though note that not all subdivisions are PRDs). They may include cluster developments that are planned to be denser than the zoning district otherwise allows.”</p></li>
+</ul>
+</section>
+</section>
+<section id="why-do-this-on-a-region-by-region-basis" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="why-do-this-on-a-region-by-region-basis"><span class="header-section-number">2.2</span> Why do this on a region-by-region basis?</h2>
+<p>Housing market dynamics are deeply connected to the changing economic and demographic factors of entire regions, rather than a single locality. While renters and buyers may want to live a specific community, the lack of supply and affordability in one community often drives them to search for housing options within a region where they can still be close to their job, friend and family, and community amenities.</p>
+<p>While locality’s think of zoning and land use policy within their boundaries, their policy decisions have impact across an entire region.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./part-1-1.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./part-1-3.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Things to keep in mind</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

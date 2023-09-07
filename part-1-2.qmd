@@ -1,4 +1,4 @@
-# Methodology {part-1-2}
+# Methodology {#part-1-2}
 
 ```{r}
 
@@ -14,38 +14,52 @@
 
 The methods to standardize zoning ordinances across multiple jurisdictions were first employed in Connecticut in 2021. Dr. Sara Bronin, both an architect and attorney, developed "How To Make A Zoning Atlas" along with Ilya Illyankou to document their initial work on the Connecticut Zoning Atlas, which has led to the founding of the National Zoning Atlas (NZA).
 
-Based out of the Legal Constructs Lab at Cornell University, the NZA team has contributed to a refinement of the zoning atlas methodology into a [2.0 version](https://www.zoningatlas.org/how).
+Based out of the Legal Constructs Lab at Cornell University, the NZA team has contributed to a refinement of the zoning atlas methodology into a [2.0 version](https://www.zoningatlas.org/how). This most current methodology was employed in the analysis for the Hampton Roads region in the summer of 2023.
 
-The methodology provides a way to translate and standardize district-specific regulations based on the treatment of certain residential uses. 
+The methodology provides a way to translate and standardize district-specific regulations based on the treatment of certain residential uses. Currently, the methodology requires analysts to manually read through pages and pages of zoning ordinances. Geographic data needs to be collected and sometimes created. Information can be hard to track down and may only be stored on paper in a physical location in some cases.
+
+::: callout-note
+Like the people who write zoning ordinances, we're human.
+
+As we conduct our analysis and numerous reviews of the same zoning ordinance, we may not get our analysis right the first or even third time around. We welcome your review and feedback on the accuracy of the data, but also keep in mind that we are following a methodology that may not align with your interpretation of your zoning ordinance. See next section for some of these discrepancies!
+:::
+
+### Important Definitions
 
 *Zoning District Classification*
 
-- Primarily Residential:
-- Mixed with Residential:
-- Nonresidential:
-- Overlay Not Affecting Use:
-
+-   **Primarily Residential** means a district allows for: "housing only; housing and assorted uses customarily allowed in residential areas, including religious institutions and schools; or housing and agricultural uses."
+-   **Mixed with Residential** means a district allows for: "nonresidential uses and housing, whether the housing is stand-alone housing (e.g., apartment buildings) or housing integrated with nonresidential uses (e.g., buildings with retail on the ground floor and residential above). Nonresidential uses likely to be found in districts also allowing residential uses include retail shops, restaurants, office or medical buildings, performance venues, as well as certain light industrial uses (warehouses, small scale manufacturing, breweries, etc.)"
+-   **Nonresidential** means a district either prohibits "residential uses entirely; or \[allows\] one accessory dwelling on the same lot as a nonresidential use and no other types of residential housing. Common examples of the latter include an apartment for a retailer to live above her shop or a caretaker apartment for a factory.
+-   **Overlay Not Affecting Use** simply means that an overlay district does not affect the allowable uses in a district. For example, a historic district overlay may require certain design parameters, but does not allow or prohibit additional uses on top of the base zoning district.
 
 *Residential Treatments*
 
-- Allowed/Conditional:
-- Public Hearing:
-- Prohibited:
+-   **Allowed/Conditional** means that a use is allowed **without a public hearing.** In this case, permission to build is subject to administrative review by a local planner and is typically allowed **by-right** if it meets the conditions of the zoning ordinance.
 
-- 1-Family:
-- 2-Family:
-- 3-Family:
-- 4+-Family:
-- Affordable Housing:
-- Accessory Dwelling Units:
-- Planned Residential Development:
+-   **Public Hearing** means that a use requires a public approval process (entitlement) in order to be built. In Virginia, entitlement can take different forms, but is most often a Special or Conditional Use Permit (SUP or CUP), a Special Exception or Variance, or a rezoning.
 
+-   **Prohibited** means that a use is **not allowed** within that district.
+
+-   **1-Family** refers to a building, including a manufactured or mobile home, with only one dwelling unit. 1-Family is not only detached housing, but also includes attached housing that exist on individual lots (i.e. townhomes, semidetached, etc.).
+
+-   **2-Family** refers to two dwelling units within a single or two separate buildings that exist on a single lot. 2-Family zoning allows for two dwellings of equal size. 2-Family is most often referred to as a duplex, semidetached, or two-family dwelling, but is only two family if allowing both units to exist on a single lot.
+
+-   **3-Family** refers to three dwelling units within a single building or separate buildings on a single lot. 3-Family is most often referred to as a triplex, but many localities define "multifamily" as a building with 3 or more units.
+
+-   **4+-Family** refers to four-or-more dwelling units within a single building or separate buildings on a single lot. 4+-Family is most often referred to as an apartment or multifamily building depending on how a locality defines those terms, but it can also be a fourplex if only containing four dwelling units.
+
+-   **Affordable Housing** identifies which districts treat affordable housing differently from housing that is not designated as affordable, or where a district only allows for affordable housing.
+
+-   **Accessory Dwelling Units** are defined by the methodology as "a single unit of housing located on the same lot as a principal use, usually a 1-family home, and typically smaller than or in some other way subordinate to that principal use." But according to the methodology, an ADU not need only be a secondary dwelling related to a 1-family home. It can also be a caretaker's apartment that is accessory to a nonresidential use like a cemetery.
+
+-   **Planned Residential Development (PRD)** "allows for a large number of housing units to be developed in accordance with a coordinated master plan, and offers flexibility with respect to grouping, placement, size, and use of structures. They may be permitted in multiple buildings, may be built on a single large lot or on many smaller lots (e.g., a subdivision on a large tract of land, though note that not all subdivisions are PRDs). They may include cluster developments that are planned to be denser than the zoning district otherwise allows."
 
 ## Why do this on a region-by-region basis?
 
-Housing markets are regional in nature. 
+Housing market dynamics are deeply connected to the changing economic and demographic factors of entire regions, rather than a single locality. While renters and buyers may want to live a specific community, the lack of supply and affordability in one community often drives them to search for housing options within a region where they can still be close to their job, friend and family, and community amenities.
+
+While locality's think of zoning and land use policy within their boundaries, their policy decisions have impact across an entire region.
 
 
 
-
-## 
