@@ -50,7 +50,7 @@ hr_bps <- cbps_raw |>
   rename_with(tolower, Type:Value) |> 
   select(fips = GEOID, year, type:units) |> 
   left_join(local_lookup, by = "fips") |> 
-  mutate(type = case_when(
+  mutate(locality_type = case_when(
     str_detect(name_long, "City") ~ "City",
     TRUE ~ "County"
   ))

@@ -55,12 +55,13 @@ library(ggtext)
 
 ```{r}
 #| label: fig-hr-city-pop
-#| fig-cap: "Population change in the Hampton Roads region by city"
+#| fig-cap: "Population change in the Hampton Roads region"
 
 # Create a visualization that shows population change in the region by city. What localities are seeing the most growth? Which ones are seeing decline?
 
 hr_pop <- read_rds("data/hr/hr_pop.rds") |> 
   mutate(year = as.numeric(year)) |> 
+  filter(year >= 2010) |> 
   group_by(name_long) |>
   mutate(diff = value - lag(value),
          diff = replace_na(diff, 0)) |> 
@@ -70,66 +71,34 @@ hr_pop <- read_rds("data/hr/hr_pop.rds") |>
   mutate(type = case_when(
     str_detect(name_long, "City") ~ "City",
     TRUE ~ "County"
-  ))
+  )) |> 
+  filter(year == 2022)
 
-city_pop <- hr_pop |> 
-  filter(type == "City")
 
-city_pop_bar <- ggplot(city_pop, # Read in the data.
-                  aes(x = year, # Plot the x-axis.
+pop_bar <- ggplot(hr_pop, # Read in the data.
+                  aes(x = reorder(name_long, run_diff), # Plot the x-axis.
                       y = run_diff, # Plot the y-axis.
-                      fill = fct_reorder(name_long, run_diff), # Set the variable that will be colored.
+                      fill = name_long, # Set the variable that will be colored.
                       data_id = run_diff, # Set the variable that will be used in interactive plot.
                       tooltip = label_comma()(run_diff))) + # Set the format of the data label on hover.
-  geom_col() + # Set as a bar chart. 
-  geom_col_interactive(size = 2) + # Add interactive geometry for ggiraph widget.
+  geom_col(position = "dodge") + # Set as a bar chart. 
+  geom_col_interactive(position = "dodge") + # Add interactive geometry for ggiraph widget.
+  coord_flip() +
   theme_hfv() + # Apply custom HFV theme.
   add_zero_line("y") + # Add darker zero intercept line for emphasis.
-  labs(title = "Population change in the Hampton Roads region by city",
-       subtitle = "From 2010 to 2020",
+  labs(title = "Population change in the Hampton Roads region",
+       subtitle = "From 2010 to 2022",
        caption = "**Source:** U.S. Census Bureau, Population Estimates Program (PEP).") +
-  scale_y_continuous(label = label_comma()) + # Format the y-axis to show commas.
-  theme(legend.position = "bottom")
+  scale_y_continuous(label = label_comma()) # Format the y-axis to show commas.
 
-
-city_pop_bar
-
-```
-
-
-```{r}
-#| label: fig-hr-county-pop
-#| fig-cap: "Population change in the Hampton Roads region by county"
-
-# Create a visualization that shows population change in the region by county. What localities are seeing the most growth? Which ones are seeing decline?
-
-county_pop <- hr_pop |> 
-  filter(type == "County")
-
-county_pop_bar <- ggplot(county_pop, # Read in the data.
-                  aes(x = year, # Plot the x-axis.
-                      y = run_diff, # Plot the y-axis.
-                      fill = fct_reorder(name_long, run_diff), # Set the variable that will be colored.
-                      data_id = run_diff, # Set the variable that will be used in interactive plot.
-                      tooltip = label_comma()(run_diff))) + # Set the format of the data label on hover.
-  geom_col() + # Set as a bar chart. 
-  geom_col_interactive(size = 2) + # Add interactive geometry for ggiraph widget.
-  theme_hfv() + # Apply custom HFV theme.
-  add_zero_line("y") + # Add darker zero intercept line for emphasis.
-  labs(title = "Population change in the Hampton Roads region by county",
-       subtitle = "From 2010 to 2020",
-       caption = "**Source:** U.S. Census Bureau, Population Estimates Program (PEP).") +
-  scale_y_continuous(label = label_comma()) + # Format the y-axis to show commas.
-  theme(legend.position = "right")
-
-
-county_pop_bar
+pop_bar
 
 ```
 
 
 ```{r}
 #| label: household-size-data
+#| fig-cap: "Change in household size by tenure in Hampton Roads"
 
 # Create a visualization that shows the change in household size from 2010 to 2021 in each locality. Describe the trend in household size changes. Where are larger households seeing growth? Smaller households?
 
@@ -142,16 +111,21 @@ hr_hhsize <- read_rds("data/hr/hr_hhsize.rds") |>
               values_from = estimate) |> 
   mutate(change = `2021` - `2010`)
 
-# Need help visualizing this more efficiently. 
 
 ggplot(hr_hhsize,
-       aes(x = fct_reorder2(NAME, size, change),
+       aes(x = reorder(NAME, change),
            y = change,
-           fill = NAME)) +
-  geom_col(position = "dodge") +
+           fill = size)) +
+  geom_col(position = "stack") +
+  facet_wrap(~tenure) +
+  theme_hfv() +
   coord_flip() +
-  facet_grid(tenure~size) +
-  theme_hfv()
+  scale_fill_hfv() +
+  labs(title = "Change in household size by tenure in Hampton Roads",
+       caption = "**Source:** U.S. Census Bureau. ACS 5-Year Estimates. Table B25009.") +
+  add_zero_line(axis = "y") +
+  theme(legend.position = "top") +
+  scale_y_continuous(labels = number_format(big.mark = ",", style_positive = "plus"))
 
 
 
@@ -159,11 +133,32 @@ ggplot(hr_hhsize,
 
 ```{r}
 #| label: fig-bps-hr
-#| fig-cap: "New building permits issued"
+#| fig-cap: "Total new residential building permits issued from 2010 to 2022"
 
 # Create a visualization that shows where housing is being built. Where is more diverse housing being built? Where is single-family housing being built the most? How does that compare to population growth in those localities?
 
-hr_bps <- read_rds("data/hr/hr_bps.rds")
+hr_bps <- read_rds("data/hr/hr_bps.rds") |> 
+  mutate(type = case_when(
+    type == "2-units" ~ "2-4 units",
+    type == "3-4 units" ~ "2-4 units",
+    TRUE ~ type
+  )) |> 
+  group_by(name_long, type) |> 
+  summarise(units = sum(units))
+
+ggplot(hr_bps,
+       aes(x = reorder(name_long, units),
+           y = units,
+           fill = type)) + 
+  geom_col(position = "stack") +
+  coord_flip() +
+  facet_wrap(~type) +
+  theme_hfv() + 
+  scale_fill_hfv() +
+  scale_y_continuous(labels = number_format(big.mark = ",")) +
+  labs(title = "Total new residential building permits issued in Hampton Roads",
+       subtitle = "From 2010 to 2022",
+       caption = "**Source:** U.S. Census Bureau. Building Permits Survey.")
 
 
 
@@ -211,13 +206,36 @@ hr_rv <- read_rds("data/hr/hr_costar.rds")
 ## Income and Wages
 
 ```{r}
-#| label: fig-emp-lvl
-#| fig-cap: "Employment levels in Hampton Roads"
+#| label: fig-jobs-housing
+#| fig-cap: 
 
 
 # What have employment levels been like? Are jobs declining or growing?
 
-hr_emp <- read_rds("data/hr/hr_oews.rds")
+hr_emp <- read_rds("data/hr/hr_oews.rds") |> 
+  select(year, emp = annual_avg_emplvl, name_long) |> 
+  group_by(year, name_long) |> 
+  summarise(emp = sum(emp)) |> 
+  mutate(year = as.character(year))
+
+hr_hu <- read_rds("data/hr/hr_hu.rds") |> 
+  select(year, value, name_long) |> 
+  mutate(value = as.numeric(value)) |> 
+  group_by(year, name_long) |> 
+  summarise(value = sum(value))
+
+hr_job_housing <- hr_emp |> 
+  inner_join(hr_hu, by = c("name_long", "year")) |> 
+  mutate(ratio = emp/value) |> 
+  filter(year == "2022" | year == "2016")
+
+ggplot(hr_job_housing,
+       aes(x = reorder(name_long, ratio),
+           y = ratio,
+           fill = ratio)) +
+  geom_col(position = "dodge") +
+  facet_wrap(~year) +
+  coord_flip()
 
 
 
@@ -310,6 +328,46 @@ ggplot(hr_type_summary,
 ```
 
 ### Single-Family Detached Housing
+
+```{r}
+
+# Create a map that shows where single-family detached only housing districts are in the region.
+
+
+vza_pal <- colorFactor(palette =c("#8B85CA", "#40C0C0", "#011E41"),
+                       levels = c("Primarily Residential", "Mixed with Residential", "Nonresidential"))
+
+hr_sfd_map <- read_rds("data/hr/hr_vza_geo.rds") |>
+  filter(sfd == "t")
+
+library(leafgl)
+library(sf)
+
+hr_sfd_map <- st_cast(hr_sfd_map, "POLYGON")
+
+zd <- leaflet() |>
+  addTiles() |>
+  addGlPolygons(data = hr_sfd_map,
+              color = ~vza_pal(type),
+              weight = 1,
+              fillOpacity = 0.75,
+              popup = paste0("Jurisdiction: ", hr_sfd_map$jurisdiction,
+                             "<br>",
+                             "District Abbreviation: ", hr_sfd_map$abbrvname)) |>
+  addLegend(labels = c("Primarily Residential", "Mixed with Residential", "Nonresidential"),
+            colors = c("#8B85CA", "#40C0C0", "#011E41"),
+            title = "Type of Zoning District")
+
+# write_rds(zd, "data/hr/hr_sfd_map.rds")
+# 
+# hr_sfd_map <- read_rds("data/hr/hr_sfd_map.rds")
+# 
+# hr_sfd_map |> 
+#   addPolygons()
+
+
+zd
+```
 
 ```{r}
 
@@ -422,11 +480,13 @@ ggplot(hr_byright,
 
 
 ```
+
 ### Minimum lot sizes
 
 ```{r}
 
-# What is the average minimum lot size for each type of treatment?
+# What is the average minimum lot size for each type of treatment? 
+# Blank fields should be treated as NA and should not be included in the mean calculation.
 
 
 hr_lots <- read_rds("data/hr/hr_vza_nogeo.rds")|> 
@@ -450,6 +510,8 @@ hr_adu <- read_rds("data/hr/hr_vza_nogeo.rds")
 
 ```
 
+
+Many localities across Hampton Roads address ADUs in their zoning ordinances, while a few (Chesapeake and Newport News) make no mention of them at all. 
 ```{r}
 #| label: fig-hr-adu-restrictions
 #| fig-cap: "Summary of ADU regulations in Hampton Roads"
@@ -458,6 +520,10 @@ hr_adu <- read_rds("data/hr/hr_vza_nogeo.rds")
 # https://frontierinstitute.org/reports/the-montana-zoning-atlas-2-0/ use this as an example 
 
 hr_adu_summary <- read_csv("data/hr/hr_adu_summary.csv")
+
+hr_adu_summary |> 
+  kable() |> 
+  kable_styling(bootstrap_options = c("striped", "condensed"))
 
 
 

@@ -10,38 +10,28 @@
 
 ```
 
-The Hampton Roads Planning District Commission is comprised of 17 local governments, including ten independent cities, six counties, and the Town of Smithfield. 
+The [Hampton Roads Planning District Commission](https://www.hrpdcva.gov/) is comprised of 17 local governments, including ten independent cities, six counties, and the Town of Smithfield. This analysis also includes the Towns of Windsor and Surry. The other towns in the region, Boykins, Branchville, Capron, Claremont, Courtland, Dendron, Ivor, and Newsoms, were not part of this analysis because their zoning map and/or zoning ordinance were unavailable to us.
 
 ```{r}
-#| label: geo-setup
-#| eval: false
+#| label: fig-hr-map
 
-library(mapboxapi)
-library(tigris)
-library(ggspatial)
-library(mapview)
+library(sf)
+library(leaflet)
 
-hr_fips <- c("51073", "51093", "51095","51175", "51181", "51199", "51550", "51620", "51650", "51700", "51710", "51735", "51740", "51800", "51810", "51830")
+hr_region <- read_rds("data/hr/hr_region.rds")
 
-sf_use_s2(TRUE)
+leaflet(hr_region) |> 
+  addTiles() |> 
+  addPolygons()
 
-options(tigris_use_cache = TRUE)
-
-hr_boundary <- counties("VA") |> 
-  filter(GEOID %in% hr_fips)
-
-mapview(hr_boundary)
 
 ```
 
-[Insert table of localities]
-
-
-
-
 ## Housing Market
 
-[Summarize some key facts about the Hampton Roads housing market and the 
+
+
+[Summarize some key facts about the Hampton Roads housing market and the region as a whole]
 
 https://whro.org/news/local-news/36579-hampton-roads-housing-market-due-for-a-slowdown-says-odu
 
