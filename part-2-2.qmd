@@ -380,7 +380,9 @@ hr_sfd <- read_rds("data/hr/hr_vza_nogeo.rds") |> # Read in the data.
   summarise(area = sum(area)) |> 
   group_by(jurisdiction) |> 
   mutate(percent = area/sum(area)) |> # Calculate what percentage of total developable area is SFD.
-  filter(sfd == "t")
+  filter(sfd == "t") 
+
+
 
 ggplot(hr_sfd,
        aes(x = reorder(jurisdiction, percent),
@@ -397,6 +399,57 @@ ggplot(hr_sfd,
   scale_color_gradientn(colours = c("#ADDCB1", "#46A88F", "#207A88", "#0F1A4E")) + # Use custom HFV gradient.
   labs(title = "Percent of developable land dedicated to single-family detached only") +
   theme(axis.text.x = element_blank())
+
+```
+
+```{r}
+
+hr_bipoc <- read_rds("data/hr/hr_bipoc.rds") |> 
+  st_drop_geometry() |> 
+  arrange(name_long) |> 
+  mutate(bipoc = percent)
+
+hr_sfd <- read_rds("data/hr/hr_vza_nogeo.rds") |> # Read in the data.
+  select(jurisdiction, overlay, sfd, area) |> # Select necessary data fields.
+  filter(overlay == 0) |> # Remove overlay districts.
+  mutate(jurisdiction = case_when(
+    jurisdiction == "Smithfield" ~ "Isle of Wight",
+    jurisdiction == "Windsor" ~ "Isle of Wight",
+    TRUE ~ jurisdiction
+  )) |> 
+  group_by(jurisdiction, sfd) |> # Sum the total acres dedicated to single-family detached in each district.
+  summarise(area = sum(area)) |> 
+  group_by(jurisdiction) |> 
+  mutate(percent = area/sum(area)) |> # Calculate what percentage of total developable area is SFD.
+  filter(sfd == "t") 
+
+hr_sfd_arrange <- hr_sfd |> 
+  arrange(jurisdiction)
+
+sfd_bipoc <- cbind(hr_bipoc, hr_sfd_arrange) |> 
+  mutate(sfd = percent.1) |> 
+  select(jurisdiction, bipoc, sfd) |> 
+  pivot_longer(2:3,
+               names_to = "metric",
+               values_to = "pct") |> 
+  mutate(metric = case_when(
+    metric == "bipoc" ~ "BIPOC population (% of total)",
+    metric == "sfd" ~ "Single-family detached only (% of total developable)"
+  ))
+
+
+ggplot(sfd_bipoc,
+       aes(x = fct_reorder2(jurisdiction, metric, pct),
+           y = pct,
+           fill = metric)) +
+  geom_col(position = "dodge") +
+  coord_flip() +
+  theme_hfv() +
+  scale_y_continuous(labels = percent_format(), expand = expansion(mult = c(0, 0.05))) +
+  theme(legend.position = "top") + 
+  scale_fill_hfv()
+
+
 
 ```
 

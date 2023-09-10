@@ -6,10 +6,17 @@ library(mapview)
 # B25061 Rent Asked
 # B25056 Contract Rent
 
+
+# Hampton Roads localities fips codes.
+
 hr_fips <- c("51073", "51093", "51095","51175", "51181", "51199", "51550", "51620", "51650", "51700", "51710", "51735", "51740", "51800", "51810", "51830")
+
+# Get variables for Rent Asked for 2020 ACS
 
 b25061_vars <- load_variables(2020, "acs5") |>
   filter(str_sub(name, end = 6) %in% "B25061")
+
+# Get raw data using TidyCensus at the Block Group level. 
 
 b25061_raw <- get_acs(
   geography = "block group",
@@ -19,8 +26,10 @@ b25061_raw <- get_acs(
   survey = "acs5",
   cache_table = TRUE
 ) |> 
-  mutate(fips = substr(GEOID, 1, 5)) |> 
-  subset(fips %in% hr_fips)
+  mutate(fips = substr(GEOID, 1, 5)) |> # Create a column for county-level fips
+  subset(fips %in% hr_fips) # Filter for Hampton Roads
+
+# Clean
 
 b25061_vars_clean <- b25061_vars |> 
   separate(label, into = c("est", "total", "rent_asked"), sep = "!!") |> 
@@ -107,15 +116,22 @@ hr_blk_grps <- block_groups("VA") |>
   mutate(ratio = as.numeric(estimate/units)) |> 
   mutate(ratio = ifelse(is.finite(ratio), ratio, NA)) |> 
   left_join(local_lookup, by = "fips") |> 
-  filter(geoid != "511990504011") |> 
-  drop_na(name_long)
+  drop_na(name_long) |> 
+  mutate(label = round(ratio, 2))
+
+hr_ratio <- hr_blk_grps |> 
+  st_drop_geometry() |> 
+  group_by(name_long) |>
+  summarise(units = sum(units),
+            estimate = sum(estimate)) |> 
+  mutate(ratio = estimate/units)
 
 library(RColorBrewer)
 
-rc1 <- colorRampPalette(colors = c("#8B85CA", "#ADDCB1"), space = "Lab")(1)
+rc1 <- colorRampPalette(colors = c("#8B85CA", "#ADDCB1"), space = "Lab")(10)
 
 ## Make vector of colors for values larger than 0 (180 colors)
-rc2 <- colorRampPalette(colors = c("#ADDCB1", "#011E41"), space = "Lab")(50)
+rc2 <- colorRampPalette(colors = c("#ADDCB1", "#011E41"), space = "Lab")(30)
 
 ## Combine the two color palettes
 rampcols <- c(rc1, rc2)
@@ -125,24 +141,29 @@ rampcols <- c(rc1, rc2)
 library(mapview)
 library(leaflet)
 
-pal <- colorNumeric(palette = rampcols, domain = (hr_blk_grps$ratio))
+ratio_bins <- c(0, 0.5, 1, 1.5, 2, 10, 50, 100, 205)
 
-leaflet(hr_blk_grps,) |> 
+pal <- colorBin(palette = "Reds", bins = ratio_bins, domain = (hr_blk_grps$ratio))
+
+hr_jhfit <- leaflet(hr_blk_grps,) |> 
   addPolygons(
               fillColor = ~pal(ratio),
               fillOpacity = 0.8,
+              color = "white",
               weight = 1,
               popup = paste0(
                 "Jurisdiction: ",
                 hr_blk_grps$name_long,
                 "<br>",
-                "Ratio: ", hr_blk_grps$ratio
+                "Ratio: ", hr_blk_grps$label
               )
               ) |> 
   addTiles() |> 
   addLegend("bottomright", pal = pal, values = ~ratio,
             opacity = 1
   )
+
+write_rds(hr_jhfit, "data/hr/hr_jhfit_map.rds")
 
 
 

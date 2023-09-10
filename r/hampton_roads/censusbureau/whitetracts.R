@@ -48,6 +48,26 @@ hr_race <- hr_b03002 |>
   mutate(fips = substr(GEOID, 1, 5)) |> 
   left_join(local_lookup, by = "fips")
 
+# What localities have a large BIPOC population?
+
+hr_bipoc <- hr_b03002 |> 
+  mutate(fips = substr(GEOID, 1, 5)) |> 
+  left_join(local_lookup, by = "fips") |> 
+  group_by(fips, name_long, race) |> 
+  summarise(estimate = sum(estimate)) |> 
+  mutate(race = case_when(
+    race == "White" ~ "White",
+    TRUE ~ "BIPOC"
+  )) |> 
+  group_by(fips, name_long, race) |> 
+  summarise(estimate = sum(estimate)) |> 
+  group_by(fips, name_long) |> 
+  mutate(percent = estimate/sum(estimate)) |> 
+  filter(race == "BIPOC")
+
+write_rds(hr_bipoc, "data/hr/hr_bipoc.rds")
+
 # mapview(hr_race)
 
 write_rds(hr_race, "data/hr/hr_race_tracts.rds")
+st_write(hr_race, "data/hr/hr_race_tracts.gpkg", driver = "GPKG")
