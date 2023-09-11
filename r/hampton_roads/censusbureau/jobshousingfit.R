@@ -2,6 +2,7 @@ library(tidyverse)
 library(tidycensus)
 library(tigris)
 library(mapview)
+library(sf)
 
 # B25061 Rent Asked
 # B25056 Contract Rent
@@ -126,6 +127,9 @@ hr_ratio <- hr_blk_grps |>
             estimate = sum(estimate)) |> 
   mutate(ratio = estimate/units)
 
+write_rds(hr_ratio, "data/hr/hr_ratio.rds")
+write_rds(hr_blk_grps, "data/hr/hr_blk_grps.rds")
+
 library(RColorBrewer)
 
 rc1 <- colorRampPalette(colors = c("#8B85CA", "#ADDCB1"), space = "Lab")(10)
@@ -164,7 +168,6 @@ hr_jhfit <- leaflet(hr_blk_grps,) |>
   )
 
 write_rds(hr_jhfit, "data/hr/hr_jhfit_map.rds")
-
 
 
 mapview(hr_blk_grps, zcol = "ratio")

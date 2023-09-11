@@ -14,9 +14,11 @@ The [Hampton Roads Planning District Commission](https://www.hrpdcva.gov/) is co
 
 ```{r}
 #| label: fig-hr-map
+#| fig-cap: "Hampton Roads"
 
 library(sf)
 library(leaflet)
+library(readr)
 
 hr_region <- read_rds("data/hr/hr_region.rds")
 

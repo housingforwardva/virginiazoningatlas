@@ -103,28 +103,30 @@ pop_bar
 # Create a visualization that shows the change in household size from 2010 to 2021 in each locality. Describe the trend in household size changes. Where are larger households seeing growth? Smaller households?
 
 hr_hhsize <- read_rds("data/hr/hr_hhsize.rds") |> 
-  group_by(NAME, year, tenure, size) |> 
+  group_by(NAME, year, size) |> 
   summarise(estimate = sum(estimate)) |> 
   filter(year == 2010 | year == 2021) |> 
   mutate(year = as.character(year)) |> 
   pivot_wider(names_from = year,
               values_from = estimate) |> 
-  mutate(change = `2021` - `2010`)
-
-
+  mutate(change = `2021` - `2010`) |> 
+  group_by(NAME) |> 
+  mutate(total_chg = sum(change)) |> 
+  mutate(NAME = str_remove_all(NAME, " city"))
+  
+  
 ggplot(hr_hhsize,
-       aes(x = reorder(NAME, change),
+       aes(x = reorder(NAME, total_chg),
            y = change,
            fill = size)) +
   geom_col(position = "stack") +
-  facet_wrap(~tenure) +
   theme_hfv() +
   coord_flip() +
+  facet_wrap(~size, nrow =1) +
   scale_fill_hfv() +
-  labs(title = "Change in household size by tenure in Hampton Roads",
+  labs(title = "Change in household size in Hampton Roads",
        caption = "**Source:** U.S. Census Bureau. ACS 5-Year Estimates. Table B25009.") +
   add_zero_line(axis = "y") +
-  theme(legend.position = "top") +
   scale_y_continuous(labels = number_format(big.mark = ",", style_positive = "plus"))
 
 
@@ -144,10 +146,12 @@ hr_bps <- read_rds("data/hr/hr_bps.rds") |>
     TRUE ~ type
   )) |> 
   group_by(name_long, type) |> 
-  summarise(units = sum(units))
+  summarise(units = sum(units)) |> 
+  group_by(name_long) |> 
+  mutate(total = sum(units))
 
 ggplot(hr_bps,
-       aes(x = reorder(name_long, units),
+       aes(x = reorder(name_long, total),
            y = units,
            fill = type)) + 
   geom_col(position = "stack") +
@@ -203,43 +207,77 @@ hr_rv <- read_rds("data/hr/hr_costar.rds")
 
 ```
 
-## Income and Wages
+## Jobs Market
+
+
+The importance of affordable housing to a thriving economy cannot be overstated, as it directly impacts various facets of economic well-being. By providing stable living conditions and reducing the financial burden on households, affordable housing enhances workforce productivity and stability, ensuring that employees can live close to their workplaces. This proximity not only reduces commuting times but also supports local businesses and stimulates economic growth. Moreover, affordable housing fosters economic mobility, allowing individuals and families to invest in education, job training, and entrepreneurship, ultimately leading to higher incomes and reduced reliance on social services. Affordable housing is an economic catalyst that promotes financial security, encourages consumer spending, and contributes to a more equitable and thriving economy for all.
+
+A Jobs-Housing Fit ratio helps measure the imbalance between low-wage workers and housing that is affordable to them. For example, a ratio of 5.0 means that five low wage workers compete for every one home considered affordable to them. Ratios closer to 1.0 or 2.0 offer more balance assuming that there is only one worker per household. But keep in mind that these ratios are at the jurisdiction-level.
 
 ```{r}
 #| label: fig-jobs-housing
-#| fig-cap: 
+#| fig-cap: "Jobs-Housing Fit in Hampton Roads"
 
 
 # What have employment levels been like? Are jobs declining or growing?
 
-hr_emp <- read_rds("data/hr/hr_oews.rds") |> 
-  select(year, emp = annual_avg_emplvl, name_long) |> 
-  group_by(year, name_long) |> 
-  summarise(emp = sum(emp)) |> 
-  mutate(year = as.character(year))
+hr_jhf <- read_rds("data/hr/hr_ratio.rds") 
 
-hr_hu <- read_rds("data/hr/hr_hu.rds") |> 
-  select(year, value, name_long) |> 
-  mutate(value = as.numeric(value)) |> 
-  group_by(year, name_long) |> 
-  summarise(value = sum(value))
-
-hr_job_housing <- hr_emp |> 
-  inner_join(hr_hu, by = c("name_long", "year")) |> 
-  mutate(ratio = emp/value) |> 
-  filter(year == "2022" | year == "2016")
-
-ggplot(hr_job_housing,
+ggplot(hr_jhf,
        aes(x = reorder(name_long, ratio),
            y = ratio,
            fill = ratio)) +
   geom_col(position = "dodge") +
-  facet_wrap(~year) +
-  coord_flip()
+  geom_text(aes(label = round(ratio, 2), color = ratio), hjust = -0.1) +
+  coord_flip() + 
+  theme_hfv() +
+  scale_y_continuous(expand = expansion(mult = c(0, 0.1)))
 
 
 
 ``` 
+Community-level jobs-housing fit is more indicative of the balance as low wage workers can find more stability from jobs that are close to them. Furthermore, jobs in closer proximity help cut down on traffic congestion.
+
+```{r}
+#| label: fig-hr-ratio-map
+#| fig-cap: "Jobs-Housing Fit Ratio in Hampton Roads by Block Group"
+
+hr_blk_grps <- read_rds("data/hr/hr_blk_grps.rds")
+
+library(RColorBrewer)
+
+rc1 <- colorRampPalette(colors = c("#8B85CA", "#ADDCB1"), space = "Lab")(10)
+
+## Make vector of colors for values larger than 0 (180 colors)
+rc2 <- colorRampPalette(colors = c("#ADDCB1", "#011E41"), space = "Lab")(30)
+
+## Combine the two color palettes
+rampcols <- c(rc1, rc2)
+
+ratio_bins <- c(0, 0.5, 1, 2, 5, 10, 50, 100, 205)
+
+pal <- colorBin(palette = rampcols, bins = ratio_bins, domain = (hr_blk_grps$ratio))
+
+leaflet(hr_blk_grps,) |> 
+  addPolygons(
+              fillColor = ~pal(ratio),
+              fillOpacity = 0.8,
+              color = "white",
+              weight = 1,
+              popup = paste0(
+                "Jurisdiction: ",
+                hr_blk_grps$name_long,
+                "<br>",
+                "Ratio: ", hr_blk_grps$label
+              )
+              ) |> 
+  addTiles() |> 
+  addLegend("bottomright", pal = pal, values = ~ratio,
+            opacity = 1
+  )
+
+
+```
 
 ```{r}
 #| label: fig-local-wages
@@ -404,45 +442,52 @@ ggplot(hr_sfd,
 
 ```{r}
 
+
+
+# Read in data frame 
 hr_bipoc <- read_rds("data/hr/hr_bipoc.rds") |> 
   st_drop_geometry() |> 
   arrange(name_long) |> 
-  mutate(bipoc = percent)
+  mutate(bipoc = percent) |> 
+  select(fips, name_long, bipoc)
 
 hr_sfd <- read_rds("data/hr/hr_vza_nogeo.rds") |> # Read in the data.
   select(jurisdiction, overlay, sfd, area) |> # Select necessary data fields.
   filter(overlay == 0) |> # Remove overlay districts.
   mutate(jurisdiction = case_when(
     jurisdiction == "Smithfield" ~ "Isle of Wight",
-    jurisdiction == "Windsor" ~ "Isle of Wight",
+    jurisdiction == "Windsor" ~ "Isle of Wight", 
+    jurisdiction == "Surry (town)" ~ "Surry",
     TRUE ~ jurisdiction
   )) |> 
   group_by(jurisdiction, sfd) |> # Sum the total acres dedicated to single-family detached in each district.
   summarise(area = sum(area)) |> 
   group_by(jurisdiction) |> 
   mutate(percent = area/sum(area)) |> # Calculate what percentage of total developable area is SFD.
-  filter(sfd == "t") 
+  filter(sfd == "t") |> 
+  ungroup() |> 
+  add_row(jurisdiction = "York", sfd = "f", area = 0, percent = 0)
 
 hr_sfd_arrange <- hr_sfd |> 
   arrange(jurisdiction)
 
 sfd_bipoc <- cbind(hr_bipoc, hr_sfd_arrange) |> 
-  mutate(sfd = percent.1) |> 
-  select(jurisdiction, bipoc, sfd) |> 
-  pivot_longer(2:3,
+  mutate(sfd = percent) |> 
+  select(jurisdiction, bipoc, sfd)|> 
+  pivot_longer(4:5,
                names_to = "metric",
                values_to = "pct") |> 
   mutate(metric = case_when(
     metric == "bipoc" ~ "BIPOC population (% of total)",
     metric == "sfd" ~ "Single-family detached only (% of total developable)"
   ))
-
+  
 
 ggplot(sfd_bipoc,
        aes(x = fct_reorder2(jurisdiction, metric, pct),
            y = pct,
            fill = metric)) +
-  geom_col(position = "dodge") +
+  geom_col() +
   coord_flip() +
   theme_hfv() +
   scale_y_continuous(labels = percent_format(), expand = expansion(mult = c(0, 0.05))) +
