@@ -1,7 +1,20 @@
 # Zoning in Hampton Roads {part-2-2}
 
 ```{r}
+#| label: setup
 
+library(tidyverse)
+library(tidycensus)
+library(ggplot2)
+library(ggiraph)
+library(sf)
+library(leaflet)
+library(FinCal)
+library(hdatools)
+library(scales)
+library(forcats)
+library(kableExtra)
+library(ggtext)
 # Summarize the key findings from the analysis below.
 
 # Describe the housing market in relation to population growth and household trends in the region. 
@@ -27,291 +40,18 @@
 
 
 ```
+### Data Collection
 
-```{r}
-#| label: setup
+Zoning data collection and analysis for the Hampton Roads region took place from April through August 2023. At this time, Gloucester County and the City of Poquoson were going through updates of their zoning ordinances. The findings and presentation of the Hampton Roads portion of the Virginia Zoning Atlas are a point-in-time representation of zoning ordinances during this time. Zoning and geospatial analysis contributions were made by Robert Bennett, Stephen Everard, Audrey Morrison, Orson Lange, and Layne Marshall.
 
-library(tidyverse)
-library(tidycensus)
-library(ggplot2)
-library(ggiraph)
-library(sf)
-library(leaflet)
-library(FinCal)
-library(hdatools)
-library(scales)
-library(forcats)
-library(kableExtra)
-library(ggtext)
-
-```
+It is the intent of the Virginia Zoning Atlas to track major changes to zoning ordinances and zoning maps with periodic updates.
 
 ## Key Findings
 
+- Mixed with Residential zoning districts make up a small percentage of zoned land in most jurisdictions.
+- 
+- 
 
-
-
-## Housing Market
-
-```{r}
-#| label: fig-hr-city-pop
-#| fig-cap: "Population change in the Hampton Roads region"
-
-# Create a visualization that shows population change in the region by city. What localities are seeing the most growth? Which ones are seeing decline?
-
-hr_pop <- read_rds("data/hr/hr_pop.rds") |> 
-  mutate(year = as.numeric(year)) |> 
-  filter(year >= 2010) |> 
-  group_by(name_long) |>
-  mutate(diff = value - lag(value),
-         diff = replace_na(diff, 0)) |> 
-  mutate(run_diff = cumsum(diff))|>  
-  filter(run_diff != 0) |> 
-  mutate(year = as.character(year)) |> 
-  mutate(type = case_when(
-    str_detect(name_long, "City") ~ "City",
-    TRUE ~ "County"
-  )) |> 
-  filter(year == 2022)
-
-
-pop_bar <- ggplot(hr_pop, # Read in the data.
-                  aes(x = reorder(name_long, run_diff), # Plot the x-axis.
-                      y = run_diff, # Plot the y-axis.
-                      fill = name_long, # Set the variable that will be colored.
-                      data_id = run_diff, # Set the variable that will be used in interactive plot.
-                      tooltip = label_comma()(run_diff))) + # Set the format of the data label on hover.
-  geom_col(position = "dodge") + # Set as a bar chart. 
-  geom_col_interactive(position = "dodge") + # Add interactive geometry for ggiraph widget.
-  coord_flip() +
-  theme_hfv() + # Apply custom HFV theme.
-  add_zero_line("y") + # Add darker zero intercept line for emphasis.
-  labs(title = "Population change in the Hampton Roads region",
-       subtitle = "From 2010 to 2022",
-       caption = "**Source:** U.S. Census Bureau, Population Estimates Program (PEP).") +
-  scale_y_continuous(label = label_comma()) # Format the y-axis to show commas.
-
-pop_bar
-
-```
-
-
-```{r}
-#| label: household-size-data
-#| fig-cap: "Change in household size by tenure in Hampton Roads"
-
-# Create a visualization that shows the change in household size from 2010 to 2021 in each locality. Describe the trend in household size changes. Where are larger households seeing growth? Smaller households?
-
-hr_hhsize <- read_rds("data/hr/hr_hhsize.rds") |> 
-  group_by(NAME, year, size) |> 
-  summarise(estimate = sum(estimate)) |> 
-  filter(year == 2010 | year == 2021) |> 
-  mutate(year = as.character(year)) |> 
-  pivot_wider(names_from = year,
-              values_from = estimate) |> 
-  mutate(change = `2021` - `2010`) |> 
-  group_by(NAME) |> 
-  mutate(total_chg = sum(change)) |> 
-  mutate(NAME = str_remove_all(NAME, " city"))
-  
-  
-ggplot(hr_hhsize,
-       aes(x = reorder(NAME, total_chg),
-           y = change,
-           fill = size)) +
-  geom_col(position = "stack") +
-  theme_hfv() +
-  coord_flip() +
-  facet_wrap(~size, nrow =1) +
-  scale_fill_hfv() +
-  labs(title = "Change in household size in Hampton Roads",
-       caption = "**Source:** U.S. Census Bureau. ACS 5-Year Estimates. Table B25009.") +
-  add_zero_line(axis = "y") +
-  scale_y_continuous(labels = number_format(big.mark = ",", style_positive = "plus"))
-
-
-
-```
-
-```{r}
-#| label: fig-bps-hr
-#| fig-cap: "Total new residential building permits issued from 2010 to 2022"
-
-# Create a visualization that shows where housing is being built. Where is more diverse housing being built? Where is single-family housing being built the most? How does that compare to population growth in those localities?
-
-hr_bps <- read_rds("data/hr/hr_bps.rds") |> 
-  mutate(type = case_when(
-    type == "2-units" ~ "2-4 units",
-    type == "3-4 units" ~ "2-4 units",
-    TRUE ~ type
-  )) |> 
-  group_by(name_long, type) |> 
-  summarise(units = sum(units)) |> 
-  group_by(name_long) |> 
-  mutate(total = sum(units))
-
-ggplot(hr_bps,
-       aes(x = reorder(name_long, total),
-           y = units,
-           fill = type)) + 
-  geom_col(position = "stack") +
-  coord_flip() +
-  facet_wrap(~type) +
-  theme_hfv() + 
-  scale_fill_hfv() +
-  scale_y_continuous(labels = number_format(big.mark = ",")) +
-  labs(title = "Total new residential building permits issued in Hampton Roads",
-       subtitle = "From 2010 to 2022",
-       caption = "**Source:** U.S. Census Bureau. Building Permits Survey.")
-
-
-
-
-```
-
-```{r}
-
-# What have home prices been like?
-
-
-```
-
-```{r}
-
-# What has for-sale home supply been like?
-
-
-```
-
-```{r}
-#| label: fig-hr-rent
-#| fig-cap: "Average asking rent in Hampton Roads"
-
-# What has rent been like in Hampton Roads?
-
-hr_rent <- read_rds("data/hr/hr_costar.rds")
-
-
-```
-
-```{r}
-#| label: fig-hr-rv
-#| fig-cap: "Rental vacancy in Hampton Roads"
-
-
-# What has rental vacancy been like?
-
-hr_rv <- read_rds("data/hr/hr_costar.rds")
-
-
-
-```
-
-## Jobs Market
-
-
-The importance of affordable housing to a thriving economy cannot be overstated, as it directly impacts various facets of economic well-being. By providing stable living conditions and reducing the financial burden on households, affordable housing enhances workforce productivity and stability, ensuring that employees can live close to their workplaces. This proximity not only reduces commuting times but also supports local businesses and stimulates economic growth. Moreover, affordable housing fosters economic mobility, allowing individuals and families to invest in education, job training, and entrepreneurship, ultimately leading to higher incomes and reduced reliance on social services. Affordable housing is an economic catalyst that promotes financial security, encourages consumer spending, and contributes to a more equitable and thriving economy for all.
-
-A Jobs-Housing Fit ratio helps measure the imbalance between low-wage workers and housing that is affordable to them. For example, a ratio of 5.0 means that five low wage workers compete for every one home considered affordable to them. Ratios closer to 1.0 or 2.0 offer more balance assuming that there is only one worker per household. But keep in mind that these ratios are at the jurisdiction-level.
-
-```{r}
-#| label: fig-jobs-housing
-#| fig-cap: "Jobs-Housing Fit in Hampton Roads"
-
-
-# What have employment levels been like? Are jobs declining or growing?
-
-hr_jhf <- read_rds("data/hr/hr_ratio.rds") 
-
-ggplot(hr_jhf,
-       aes(x = reorder(name_long, ratio),
-           y = ratio,
-           fill = ratio)) +
-  geom_col(position = "dodge") +
-  geom_text(aes(label = round(ratio, 2), color = ratio), hjust = -0.1) +
-  coord_flip() + 
-  theme_hfv() +
-  scale_y_continuous(expand = expansion(mult = c(0, 0.1)))
-
-
-
-``` 
-Community-level jobs-housing fit is more indicative of the balance as low wage workers can find more stability from jobs that are close to them. Furthermore, jobs in closer proximity help cut down on traffic congestion.
-
-```{r}
-#| label: fig-hr-ratio-map
-#| fig-cap: "Jobs-Housing Fit Ratio in Hampton Roads by Block Group"
-
-hr_blk_grps <- read_rds("data/hr/hr_blk_grps.rds")
-
-library(RColorBrewer)
-
-rc1 <- colorRampPalette(colors = c("#8B85CA", "#ADDCB1"), space = "Lab")(10)
-
-## Make vector of colors for values larger than 0 (180 colors)
-rc2 <- colorRampPalette(colors = c("#ADDCB1", "#011E41"), space = "Lab")(30)
-
-## Combine the two color palettes
-rampcols <- c(rc1, rc2)
-
-ratio_bins <- c(0, 0.5, 1, 2, 5, 10, 50, 100, 205)
-
-pal <- colorBin(palette = rampcols, bins = ratio_bins, domain = (hr_blk_grps$ratio))
-
-leaflet(hr_blk_grps,) |> 
-  addPolygons(
-              fillColor = ~pal(ratio),
-              fillOpacity = 0.8,
-              color = "white",
-              weight = 1,
-              popup = paste0(
-                "Jurisdiction: ",
-                hr_blk_grps$name_long,
-                "<br>",
-                "Ratio: ", hr_blk_grps$label
-              )
-              ) |> 
-  addTiles() |> 
-  addLegend("bottomright", pal = pal, values = ~ratio,
-            opacity = 1
-  )
-
-
-```
-
-```{r}
-#| label: fig-local-wages
-#| fig-cap: "Average annual wages in Hampton Roads"
-
-# Show how current wages compare to wages in 2016 for each locality. Has there been major changes? What can the avg annual wage afford to rent or buy?
-
-hr_wages <- read_rds("data/hr/hr_oews.rds")
-
-
-
-```
-
-
-```{r}
-#| label: fig-renter-income
-#| fig-cap: "Median renter household income"
-
-# What are renter incomes like? What can a renter afford to rent and buy?
-
-hr_income <- read_rds("data/hr/hr_income.rds")
-
-
-
-```
-
-```{r}
-
-# What is cost burden like in the region?
-
-hr_cb <- read_rds("data/hr/hr_cb.rds")
-
-
-```
 
 ## Zoning's impact in Hampton Roads
 
@@ -359,7 +99,7 @@ ggplot(hr_type_summary,
   scale_fill_hfv() +
   theme(legend.position = "right") +
   labs(title = "Percent of land by type of zoning district",
-       caption = "*Source") +
+       caption = "*Source:** HousingForward Virginia, Virginia Zoning Atlas.") +
   scale_y_continuous(labels = percent_format(), expand = expansion(mult = c(0, 0.01)))
 
 
@@ -367,7 +107,10 @@ ggplot(hr_type_summary,
 
 ### Single-Family Detached Housing
 
+
 ```{r}
+#| label: fig-sfd-map
+#| fig-cap: "Single-family detached only zoning in Hampton Roads"
 
 # Create a map that shows where single-family detached only housing districts are in the region.
 
@@ -383,7 +126,7 @@ library(sf)
 
 hr_sfd_map <- st_cast(hr_sfd_map, "POLYGON")
 
-zd <- leaflet() |>
+leaflet() |>
   addTiles() |>
   addGlPolygons(data = hr_sfd_map,
               color = ~vza_pal(type),
@@ -404,10 +147,11 @@ zd <- leaflet() |>
 #   addPolygons()
 
 
-zd
 ```
 
 ```{r}
+#| label: fig-sfd-bar
+#| fig-cap: "Percent of developable land dedicated to single-family detached only"
 
 # Create a bar char that shows the percentage of zoned in each locality that is dedicated to single-family detached only housing.
 
@@ -428,7 +172,7 @@ ggplot(hr_sfd,
            fill = percent)) +
   geom_col(position = "dodge") +
   geom_col_interactive(position = "dodge") +
-  geom_text(aes(label = percent(percent, accuracy = 1), color = percent),
+  geom_text(aes(label = percent(percent, 1), color = percent),
     hjust = -0.2) +
   theme_hfv() +
   coord_flip() +
@@ -441,58 +185,65 @@ ggplot(hr_sfd,
 ```
 
 ```{r}
-
+#| label: fig-bipoc-sfd
+#| fig-cap: "Percentage of SFD-only land compared to BIPOC population"
+#| eval: false
 
 
 # Read in data frame 
-hr_bipoc <- read_rds("data/hr/hr_bipoc.rds") |> 
-  st_drop_geometry() |> 
-  arrange(name_long) |> 
-  mutate(bipoc = percent) |> 
-  select(fips, name_long, bipoc)
-
-hr_sfd <- read_rds("data/hr/hr_vza_nogeo.rds") |> # Read in the data.
-  select(jurisdiction, overlay, sfd, area) |> # Select necessary data fields.
-  filter(overlay == 0) |> # Remove overlay districts.
-  mutate(jurisdiction = case_when(
-    jurisdiction == "Smithfield" ~ "Isle of Wight",
-    jurisdiction == "Windsor" ~ "Isle of Wight", 
-    jurisdiction == "Surry (town)" ~ "Surry",
-    TRUE ~ jurisdiction
-  )) |> 
-  group_by(jurisdiction, sfd) |> # Sum the total acres dedicated to single-family detached in each district.
-  summarise(area = sum(area)) |> 
-  group_by(jurisdiction) |> 
-  mutate(percent = area/sum(area)) |> # Calculate what percentage of total developable area is SFD.
-  filter(sfd == "t") |> 
-  ungroup() |> 
-  add_row(jurisdiction = "York", sfd = "f", area = 0, percent = 0)
-
-hr_sfd_arrange <- hr_sfd |> 
-  arrange(jurisdiction)
-
-sfd_bipoc <- cbind(hr_bipoc, hr_sfd_arrange) |> 
-  mutate(sfd = percent) |> 
-  select(jurisdiction, bipoc, sfd)|> 
-  pivot_longer(4:5,
-               names_to = "metric",
-               values_to = "pct") |> 
-  mutate(metric = case_when(
-    metric == "bipoc" ~ "BIPOC population (% of total)",
-    metric == "sfd" ~ "Single-family detached only (% of total developable)"
-  ))
-  
-
-ggplot(sfd_bipoc,
-       aes(x = fct_reorder2(jurisdiction, metric, pct),
-           y = pct,
-           fill = metric)) +
-  geom_col() +
-  coord_flip() +
-  theme_hfv() +
-  scale_y_continuous(labels = percent_format(), expand = expansion(mult = c(0, 0.05))) +
-  theme(legend.position = "top") + 
-  scale_fill_hfv()
+# hr_bipoc <- read_rds("data/hr/hr_bipoc.rds") |> 
+#   st_drop_geometry() |> 
+#   arrange(name_long) |> 
+#   mutate(bipoc = percent) |> 
+#   select(fips, name_long, bipoc)
+# 
+# hr_sfd <- read_rds("data/hr/hr_vza_nogeo.rds") |> # Read in the data.
+#   select(jurisdiction, overlay, sfd, area) |> # Select necessary data fields.
+#   filter(overlay == 0) |> # Remove overlay districts.
+#   mutate(jurisdiction = case_when(
+#     jurisdiction == "Smithfield" ~ "Isle of Wight",
+#     jurisdiction == "Windsor" ~ "Isle of Wight", 
+#     jurisdiction == "Surry (town)" ~ "Surry",
+#     TRUE ~ jurisdiction
+#   )) |> 
+#   group_by(jurisdiction, sfd) |> # Sum the total acres dedicated to single-family detached in each district.
+#   summarise(area = sum(area)) |> 
+#   group_by(jurisdiction) |> 
+#   mutate(percent = area/sum(area)) |> # Calculate what percentage of total developable area is SFD.
+#   filter(sfd == "t") |> 
+#   ungroup() |> 
+#   add_row(jurisdiction = "York", sfd = "f", area = 0, percent = 0)
+# 
+# hr_sfd_arrange <- hr_sfd |> 
+#   arrange(jurisdiction)
+# 
+# sfd_bipoc <- cbind(hr_bipoc, hr_sfd_arrange) |> 
+#   mutate(sfd = percent) |> 
+#   select(jurisdiction, bipoc, sfd)
+# 
+# # |> 
+# #   pivot_longer(4:5,
+# #                names_to = "metric",
+# #                values_to = "pct") |> 
+# #   mutate(metric = case_when(
+# #     metric == "bipoc" ~ "BIPOC population (% of total)",
+# #     metric == "sfd" ~ "Single-family detached only (% of total developable)"
+# #   ))
+#   
+# 
+# ggplot(sfd_bipoc,
+#        aes(x = bipoc,
+#            y = sfd)) +
+#   geom_point() +
+#   geom_smooth(method=lm)
+# 
+# +
+#   coord_flip() +
+#   theme_hfv() +
+#   scale_y_continuous(labels = percent_format(), expand = expansion(mult = c(0, 0.05))) +
+#   theme(legend.position = "top") + 
+#   scale_fill_hfv() +
+#   labs(title = "Percentage of SFD-only land compared to BIPOC population")
 
 
 
@@ -545,6 +296,8 @@ hr_byright_tbl |>
 ```
 
 ```{r}
+#| label: fig-2plus
+#| fig-cap: "Percent of developable land allowing for 2+ family housing by-right" 
 
 # Create a bar graph that shows the total amount of zoned land that welcomes 2+ family housing by-right
 
@@ -566,7 +319,7 @@ ggplot(hr_byright,
            y = pct_2plus,
            fill = pct_2plus)) +
   geom_col() +
-  geom_text(aes(label = percent(pct_2plus, accuracy = 1), color = pct_2plus),
+  geom_text(aes(label = percent(pct_2plus, 1), color = pct_2plus),
     hjust = -0.2) +
   coord_flip() +
   theme_hfv() +
@@ -578,6 +331,9 @@ ggplot(hr_byright,
 
 
 ```
+
+
+
 
 ### Minimum lot sizes
 

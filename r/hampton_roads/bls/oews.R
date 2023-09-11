@@ -44,6 +44,7 @@ hr_oews <- hr_oews |>
   mutate(ho = (third_ho/12) - 250) |> 
   mutate(ho_price = abs(pv(int_rate/12, 360, 0, ho, 0)))
 
+
 write_rds(hr_oews, "data/hr/hr_oews.rds")
 
 
