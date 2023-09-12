@@ -42,9 +42,24 @@ library(ggtext)
 ```
 ### Data Collection
 
-Zoning data collection and analysis for the Hampton Roads region took place from April through August 2023. At this time, Gloucester County and the City of Poquoson were going through updates of their zoning ordinances. The findings and presentation of the Hampton Roads portion of the Virginia Zoning Atlas are a point-in-time representation of zoning ordinances during this time. Zoning and geospatial analysis contributions were made by Robert Bennett, Stephen Everard, Audrey Morrison, Orson Lange, and Layne Marshall.
+Zoning data collection and analysis for the Hampton Roads region took place from April through August 2023. At this time, Gloucester County and the City of Poquoson were going through updates of their zoning ordinances. The findings and presentation of the Hampton Roads portion of the Virginia Zoning Atlas are a point-in-time representation of zoning ordinances during this time. Zoning and geospatial analysis contributions were made by Christopher Newport University students: Robert Bennett, Stephen Everard, Audrey Morrison, Orson Lange, and Layne Marshall.
 
 It is the intent of the Virginia Zoning Atlas to track major changes to zoning ordinances and zoning maps with periodic updates.
+
+```{r}
+#| label: tbl-hr-zoning-summary
+#| tbl-cap: "Summary of zoning ordinances in Hampton Roads"
+
+# Read in csv of zoning summary for Hampton Roads.
+hr_zoning_summary <- read_csv("data/hr/hr_zoning_summary.csv")
+
+
+hr_zoning_summary |> 
+  kable(col.names = c("Jurisdiction", "County or equivalent", "Government Type", "Date of Zoning Ordinance", "Number of Pages", "Number of base and overlay districts"), align = "lllccc") |> 
+  kable_styling(bootstrap_options = c("striped", "condensed"))
+
+
+```
 
 ## Key Findings
 
@@ -295,6 +310,8 @@ hr_byright_tbl |>
 
 ```
 
+
+
 ```{r}
 #| label: fig-2plus
 #| fig-cap: "Percent of developable land allowing for 2+ family housing by-right" 
@@ -330,9 +347,17 @@ ggplot(hr_byright,
   theme(axis.text.x = element_blank())
 
 
+
+
 ```
 
 
+```{r}
+
+# Create a map that shows where 2 + family housing is allowed by-right in the region.
+
+
+```
 
 
 ### Minimum lot sizes
@@ -383,8 +408,12 @@ hr_adu_summary |>
 
 ```
 
+## Access to Transit
+
+```{r}
 
 
 
 
 
+```

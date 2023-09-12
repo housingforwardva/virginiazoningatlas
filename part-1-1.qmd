@@ -21,13 +21,13 @@ A zoning atlas is a large-scale, interactive map which displays municipal land u
 
 HousingForward Virginia (HFV) has been a go-to resource for governments, non-profits, and private companies with a vested interest in affordable housing across the Commonwealth. [Sourcebook](https://housingforwardva.org/toolkits/sourcebook/), our free, online compendium of demographic and housing data, has been used to better understand housing needs. In addition, our [Inclusionary Zoning Guidebook](https://housingforwardva.org/focused-initiatives/inclusionary-housing/) has helped educate Virginians on the opportunities and challenges of implementing inclusionary zoning. Furthermore, our contract research work has taken us across Virginia to understand the discussions and debates over zoning and the overall housing needs of Virginians.
 
-The growing focus on land use practices and their impact on affordable housing has presented HFV with an opportunity to help Virginians better understand this connection. The VZA is aligned with our mission to provide free and impactful resources to better understand housing needs. But it is our hope that the VZA will provide boundless opportunities to others interested in exploring Virginia's land use patterns and the zoning regulations that have created them.
+The growing focus on land use practices and their impact on affordable housing has presented HFV with an opportunity to help Virginians better understand this connection. The VZA is aligned with our mission to provide free and impactful resources to better understand housing needs. But it is our hope that the VZA will provide opportunities to others interested in exploring Virginia's land use patterns and the zoning regulations that have created them.
 
 ### How restrictive are zoning regulations in Virginia?
 
 ![](img/zoning_map.png){fig-align="center"}
 
-The purpose of the Virginia Zoning Atlas is to answer major questions related to land use practices and housing development in the Commonwealth. By standardizing zoning districts across Virginia, HFV will be able to answer several questions important to the work of our audience, including:
+The purpose of the Virginia Zoning Atlas is to answer major questions related to land use practices and housing development in the Commonwealth. By standardizing information about zoning districts across Virginia, HFV will be able to answer several questions important to the work of our audience, including:
 
 -   How much developable land is dedicated to single-family detached housing?
 -   Where in Virginia is it easiest to build small homes or starter homes?
@@ -38,4 +38,4 @@ The VZA will allow for comparisons across jurisdictions and open the door to inv
 
 ## Who is the Virginia Zoning Atlas for?
 
-The current iteration of the zoning analysis methodology is geared towards residential uses. Therefore, the atlas will largely benefit those who have an interest in housing (e.g. developers, builders, housing nonprofits, advocates, land use attorneys, etc.). The map will detail where different types of residential uses are allowed by-right, required to have a public approval process, or prohibited.
+The current iteration of the zoning analysis methodology is geared towards residential uses. Therefore, the atlas will largely benefit those who have an interest in housing and planning (e.g. planners, local and state officials, developers, builders, housing nonprofits, advocates, land use attorneys, etc.). The map will detail where different types of residential uses are allowed by-right, required to have a public approval process, or prohibited.

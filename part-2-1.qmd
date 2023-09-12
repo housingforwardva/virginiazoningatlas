@@ -1,4 +1,4 @@
-# Hampton Roads {#part-2-1}
+# Hampton Roads Population and Housing Trends {#part-2-1}
 
 ```{r} 
 #| label: setup
