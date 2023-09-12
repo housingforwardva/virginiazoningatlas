@@ -1,4 +1,4 @@
-# Hampton Roads Population and Housing Trends {#part-2-1}
+# Population and Housing Trends {#part-2-1}
 
 ```{r} 
 #| label: setup
@@ -42,7 +42,7 @@ hr_region <- read_rds("data/hr/hr_region.rds")
 # Map in leaflet.
 
 leaflet(hr_region) |> 
-  addTiles() |> # Add basemap
+  addProviderTiles(providers$CartoDB.Positron) |> # Add basemap
   addPolygons(fillColor = "#011E41", # Set polygon fill color.
               weight = 1, # Set polygon outline weight.
               color = "white", # Set polygon outline color.

@@ -12,9 +12,7 @@
 
 ## How to make a zoning atlas
 
-The methods to standardize zoning ordinances across multiple jurisdictions were first employed in Connecticut in 2021. Sara Bronin, an architect and attorney, worked with Ilya Ilyankou to develop the Connecticut Zoning Atlas, and Bronin went on to found the National Zoning Atlas (NZA). The NZA team has drafted a How to Make a Zoning Atlas guide to be used by all NZA project collaborators.
-
-Based out of the Legal Constructs Lab at Cornell University, the NZA team has contributed to a refinement of the zoning atlas methodology into a [2.0 version](https://www.zoningatlas.org/how). This most current methodology was employed in the analysis for the Hampton Roads region in the summer of 2023.
+The methods to standardize zoning ordinances across multiple jurisdictions were first employed in Connecticut in 2021. Sara Bronin, an architect and attorney, worked with Ilya Ilyankou to develop the Connecticut Zoning Atlas, and Bronin went on to found the National Zoning Atlas (NZA). The NZA team has drafted a [How to Make a Zoning Atlas]((https://www.zoningatlas.org/how)) guide to be used by all NZA project collaborators.
 
 The methodology provides a way to translate and standardize district-specific regulations based on the treatment of certain residential uses. Currently, the methodology requires analysts to manually read through pages and pages of zoning ordinances. Geographic data needs to be collected and sometimes created. Information can be hard to track down and may only be stored on paper in a physical location in some cases.
 
