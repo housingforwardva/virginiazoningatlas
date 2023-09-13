@@ -1,0 +1,17 @@
+# Things to keep in mind {#part-1-3}
+
+```{r}
+
+# Address common concerns about the Virginia Zoning Atlas. 
+
+# Where might there be confusion? What does the Atlas show and what does it not show?
+
+```
+
+To standardize complex zoning ordinances, not only across Virginia but the entire nation, requires a rigorous adherence to common definitions and interpretations. The methodology developed by National Zoning Atlas team requires a specific reading of zoning ordinances that may not coincide with your or even a locality's interpretation of their zoning ordinance.
+
+## 1-Family Treatment
+
+Based on the methodology, "1-family housing means a building, including a mobile home or a manufactured home, with only one dwelling unit. 1-family zoning permits one such building on each lot."
+
+This includes townhouse or rowhouse development where each unit sits on an individual lot. For many localities, this type of development may seen as 

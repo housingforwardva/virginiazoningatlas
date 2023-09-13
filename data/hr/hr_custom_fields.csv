@@ -1,0 +1,567 @@
+id,jurisdiction,abbrvname,overlay,min1,min2,min3,min4,sfd,thonly
+"25390",James City,M-2,FALSE, ,  ,  ,  ,  f,  f
+"25394",James City,PL,FALSE, ,  ,  ,  ,  f,  f
+"25380",James City,R-1,FALSE," 0.34",  ,  ,  ,  t,  f
+"25391",James City,RT,FALSE, ,  ,  ,  ,  f,  f
+"25381",James City,R-2,FALSE," 0.23","  0.34","  0","  0",  f,  f
+"25386",James City,R-8,FALSE," 3","  3",  ,  ,  f,  f
+"25387",James City,LB,FALSE, ,  ,  ,  ,  f,  f
+"25389",James City,M-1,FALSE, ,  ,  ,  ,  f,  f
+"25383",James City,R-4,FALSE," 0","  0","  0","  0",  f,  f
+"25385",James City,R-6,FALSE," 1",  ,  ,  ,  t,  f
+"25388",James City,B-1,FALSE, ,  ,  ,  ,  f,  f
+"25393",James City,MU,FALSE," 0","  0","  0","  0",  f,  f
+"25384",James City,R-5,FALSE," 0","  0","  0","  0",  f,  t
+"25379",James City,A-1,FALSE," 20","  20",  ,  ,  f,  f
+"25395",James City,EO,FALSE," 0","  0","  0","  0",  f,  t
+"25396",James City,PUD-C,FALSE," 0","  0","  0","  0",  f,  t
+"25392",James City,PUD-R,FALSE," 0","  0","  0","  0",  f,  f
+"25382",James City,R-3,FALSE," 0","  0","  0","  0",  f,  f
+"25397",James City,AA,TRUE, ,  ,  ,  ,  f,  f
+"25242",Surry - Surry (town),R-3,FALSE," 0.46","  0.51","  0.56","  0.61",  f,  f
+"25243",Surry - Surry (town),C-1,FALSE, ,  ,"  0","  0",  f,  f
+"25241",Surry - Surry (town),R-2,FALSE," 0.46",  ,  ,  ,  t,  f
+"33599",Surry - Surry (town),CB,TRUE, ,  ,  ,  ,  f,  f
+"25240",Surry - Surry (town),R-1,FALSE," 0.75",  ,  ,  ,  t,  f
+"25223",Surry,A-R,FALSE," 0.69","  1","  1","  1",  t,  f
+"25233",Surry,CB,TRUE, ,  ,  ,  ,  f,  f
+"25232",Surry,HP,TRUE, ,  ,  ,  ,  f,  f
+"25231",Surry,Planned Development,FALSE," 0","  0","  0","  0",  f,  f
+"25226",Surry,R-2,FALSE," 0.46","  0.69","  1","  1",  f,  f
+"25227",Surry,B-1,FALSE, ,  ,  ,  ,  f,  f
+"25229",Surry,M-1,FALSE, ,  ,  ,  ,  f,  f
+"25230",Surry,M-2,FALSE, ,  ,  ,  ,  f,  f
+"25224",Surry,RVC,FALSE," 0.18","  0.27","  1","  1",  f,  f
+"25225",Surry,R-1,FALSE," 0.23","  0.34","  1","  1",  f,  f
+"25228",Surry,B-2,FALSE, ,  ,  ,  ,  f,  f
+"25234",Surry,Floodplain,TRUE, ,  ,  ,  ,  ,  
+"25222",Surry,A-L,FALSE," 0.69",  ,  ,  ,  t,  f
+"26989",Franklin (city),PERCC,FALSE," 0","  0","  0","  0",  f,  f
+"25255",Franklin (city),B-1,FALSE," 0.17","  0.17",  ,  ,  f,  f
+"25259",Franklin (city),B-3A,FALSE," 0.07","  0.17",  ,  ,  f,  f
+"25257",Franklin (city),Office and Institutional,FALSE, ,  ,  ,  ,  f,  f
+"25258",Franklin (city),B-3,FALSE, ,  ,  ,  ,  f,  f
+"25262",Franklin (city),RC,FALSE, ,  ,  ,  ,  f,  f
+"25264",Franklin (city),Residential Planned Unit Development,FALSE," 0","  0","  0","  0",  f,  f
+"25265",Franklin (city),AA,TRUE, ,  ,  ,  ,NA,NA
+"25248",Franklin (city),R-OA,FALSE," 0.34",  ,  ,  ,  t,  f
+"25247",Franklin (city),R-O,FALSE," 0.46",  ,  ,  ,  t,  f
+"25250",Franklin (city),R-1A,FALSE," 0.06","  0.27","  5","  5",  f,  f
+"25251",Franklin (city),R-1B,FALSE," 0.17",  ,  ,  ,  t,  f
+"25253",Franklin (city),R-UR,FALSE," 0.04",  ,  ,  ,  f,  f
+"25254",Franklin (city),R-3,FALSE," 0.07",  ,  ,  ,  f,  t
+"25261",Franklin (city),M-2,FALSE, ,  ,  ,  ,  f,  f
+"25260",Franklin (city),M-1,FALSE, ,  ,  ,  ,  f,  f
+"25249",Franklin (city),R-1,FALSE," 0.23",  ,  ,  ,  t,  f
+"25252",Franklin (city),R-2,FALSE," 0.17","  0.17",  ,  ,  f,  f
+"25256",Franklin (city),B-2,FALSE," 0.17","  0.17",  ,  ,  f,  f
+"8832",Gloucester,C-1,FALSE, ,  ,  ,  ,  f,  f
+"8841",Gloucester,B-4,FALSE, ,  ,  ,  ,  f,  f
+"8845",Gloucester,MH-1,FALSE," 5",  ,  ,  ,  f,  f
+"8838",Gloucester,MF-1,FALSE," 0.05","  0.11","  0.11","  0.11",  f,  f
+"8843",Gloucester,H-1,TRUE, ,  ,  ,  ,  f,  f
+"8844",Gloucester,HCDD,TRUE, ,  ,  ,  ,  f,  f
+"8839",Gloucester,B-1,FALSE, ,  ,  ,  ,  f,  f
+"8833",Gloucester,C-2,FALSE," 5",  ,  ,  ,  t,  f
+"8842",Gloucester,I-1,FALSE, ,  ,  ,  ,  f,  f
+"8837",Gloucester,SF-1,FALSE," 0.23",  ,  ,  ,  t,  f
+"17060",Gloucester,RMX,FALSE," 0.06","  0.06","  0.06","  0.06",  f,  t
+"8840",Gloucester,B-2,FALSE," 0.06","  0.06","  0.06","  0.06",  f,  t
+"8836",Gloucester,SC-1,FALSE," 2",  ,  ,  ,  t,  f
+"8835",Gloucester,RC-2,FALSE," 5",  ,  ,  ,  t,  f
+"8846",Gloucester,PUD-1,FALSE, ,  ,  ,  ,  f,  f
+"8834",Gloucester,RC-1,FALSE," 5",  ,  ,  ,  t,  f
+"25422",Williamsburg,AP,TRUE, ,  ,  ,  ,  f,  f
+"25398",Williamsburg,RS-1,FALSE," 0.4",  ,  ,  ,  t,  f
+"25399",Williamsburg,RS-2,FALSE," 0.23",  ,  ,  ,  t,  f
+"25402",Williamsburg,RM-2,FALSE," 0","  0","  0","  0",  f,  f
+"25401",Williamsburg,RM-1,FALSE," 0","  0","  0","  0",  f,  f
+"25417",Williamsburg,WM,FALSE, ,  ,  ,  ,  f,  f
+"25420",Williamsburg,PDU,FALSE," 0","  0","  0","  0",  f,  f
+"25409",Williamsburg,B-2,FALSE," 0","  0","  0","  0",  f,  t
+"25423",Williamsburg,CP,TRUE, ,  ,  ,  ,  f,  f
+"25416",Williamsburg,MS,FALSE," 0.23",  ,  ,  ,  t,  f
+"25406",Williamsburg,LB-3,FALSE," 0","  0","  0","  0",  f,  f
+"25419",Williamsburg,PDC,FALSE, ,  ,  ,  ,  f,  f
+"25412",Williamsburg,ED,FALSE," 0","  0","  0","  0",  f,  t
+"25415",Williamsburg,CW,FALSE," 0",  ,  ,  ,  f,  f
+"25414",Williamsburg,I,FALSE, ,  ,  ,  ,  f,  f
+"25872",Williamsburg,PUD,FALSE, ,  ,  ,  ,  f,  f
+"25400",Williamsburg,RS-3,FALSE," 0.11",  ,  ,  ,  t,  f
+"25403",Williamsburg,RDT,FALSE," 0","  0","  0","  0",  f,  f
+"25404",Williamsburg,LB-1,FALSE," 0","  0","  0","  0",  f,  f
+"25405",Williamsburg,LB-2,FALSE," 0","  0","  0","  0",  f,  f
+"25408",Williamsburg,B-1,FALSE," 0","  0","  0","  0",  f,  f
+"25407",Williamsburg,LB-4,FALSE, ,  ,  ,  ,  f,  f
+"25410",Williamsburg,B-4,FALSE, ,  ,"  0","  0",  f,  f
+"25413",Williamsburg,ED-2,FALSE," 0",  ,"  0","  0",  f,  t
+"34343",Williamsburg,Archaeological Protection,TRUE, ,  ,  ,  ,  f,  f
+"25411",Williamsburg,B-3,FALSE, ,  ,"  0","  0",  f,  f
+"25418",Williamsburg,PDR,FALSE," 0","  0","  0","  0",  f,  f
+"25421",Williamsburg,PDH,FALSE, ,  ,  ,  ,  f,  f
+"34700",Chesapeake,Great Bridge Historic Gateway,TRUE, ,  ,  ,  ,  f,  f
+"34304",Chesapeake,CBPA,TRUE, ,  ,  ,  ,  f,  f
+"34307",Chesapeake,Suburban,TRUE, ,  ,  ,  ,  ,  
+"26641",Chesapeake,B-3,FALSE, ,  ,  ,  ,  f,  f
+"3725",Chesapeake,A-1,FALSE," 3",  ,  ,  ,  t,  f
+"12360",Chesapeake,R-15s,FALSE," 0.34",  ,  ,  ,  t,  f
+"12377",Chesapeake,M-3,FALSE, ,  ,  ,  ,NA,NA
+"12371",Chesapeake,AC,FALSE, ,  ,  ,  ,  f,  
+"12376",Chesapeake,M-2,FALSE, ,  ,  ,  ,  f,  f
+"26637",Chesapeake,R-SFA,FALSE," 0.14",  ,  ,  ,  t,  f
+"3722",Chesapeake,C-1,FALSE, ,  ,  ,  ,  f,  f
+"3723",Chesapeake,C-2,FALSE, ,  ,  ,  ,  f,  f
+"3724",Chesapeake,C-3,FALSE, ,  ,  ,  ,NA,NA
+"12365",Chesapeake,R-10,FALSE," 0.23","  0.30",  ,  ,  f,  f
+"12378",Chesapeake,PUD,FALSE," 0","  0","  0","  0",  f,  f
+"12370",Chesapeake,O-I,FALSE, ,"  0.23","  0.23","  0.23",  f,  
+"26635",Chesapeake,R-8s,FALSE," 0.18",  ,  ,  ,  t,  f
+"12375",Chesapeake,M-1,FALSE, ,  ,  ,  ,  f,  f
+"34701",Chesapeake,HC,TRUE, ,  ,  ,  ,NA,NA
+"12373",Chesapeake,B-2,FALSE, ,  ,  ,  ,  f,  f
+"12380",Chesapeake,MXD-U,FALSE, ,  ,  ,"  0",  f,  
+"12357",Chesapeake,R-40(a)s,FALSE," 0.80",  ,  ,  ,  t,  f
+"12361",Chesapeake,R-15(a)s,FALSE," 0.27",  ,  ,  ,  t,  f
+"12359",Chesapeake,R-25(a)s,FALSE," 0.34",  ,  ,  ,  t,  f
+"12356",Chesapeake,R-40s,FALSE," 0.92",  ,  ,  ,  t,  f
+"12369",Chesapeake,R-MF-2,FALSE, ,"  0.34","  0.34","  0.34",  f,  f
+"26640",Chesapeake,B-4,FALSE, ,  ,  ,  ,  f,  f
+"12358",Chesapeake,R-25s,FALSE," 0.57",  ,  ,  ,  t,  f
+"34308",Chesapeake,Rural,TRUE, ,  ,  ,  ,  f,  f
+"34305",Chesapeake,Fentress Airfield,TRUE, ,  ,  ,  ,  f,  f
+"34303",Chesapeake,South Norfolk Business,TRUE, ,  ,  ,  ,  f,  f
+"34306",Chesapeake,Urban,TRUE, ,  ,  ,  ,  f,  f
+"34318",Chesapeake,TCOD,TRUE, ,  ,  ,  ,NA,NA
+"12364",Chesapeake,R-10s,FALSE," 0.23",  ,  ,  ,  t,  f
+"12362",Chesapeake,R-12s,FALSE," 0.28",  ,  ,  ,  t,  f
+"12363",Chesapeake,R-12(a)s,FALSE," 0.23",  ,  ,  ,  t,  f
+"26634",Chesapeake,R-15,FALSE," 0.28",  ,  ,  ,  t,  f
+"26638",Chesapeake,R-40,FALSE," 0.92",  ,  ,  ,  t,  f
+"26636",Chesapeake,R-6,FALSE," 0.14",  ,  ,  ,  t,  f
+"12372",Chesapeake,B-1,FALSE, ,"  0.34","  0.34","  0.34",  f,  f
+"12374",Chesapeake,B-5,FALSE," 0","  0","  0","  0",  f,  f
+"12366",Chesapeake,R-8,FALSE," 0.18",  ,  ,  ,  t,  f
+"35241",Chesapeake,Chesapeake Aboretum Historic and Cultural Preservation Overlay,TRUE, ,  ,  ,  ,NA,NA
+"3726",Chesapeake,RE-1,FALSE," 3",  ,  ,  ,  t,  f
+"12368",Chesapeake,R-MF-1,FALSE, ,"  0.34","  0.34","  0.34",  f,  f
+"34302",Chesapeake,South Norfolk Historic and Cultural Preservation,TRUE, ,  ,  ,  ,NA,NA
+"26639",Chesapeake,R-TH-1,FALSE," 0.03",  ,  ,  ,  f,  t
+"25373",Windsor,O-R,FALSE," 0.16","  0.16","  0.16","  0.16",  f,  f
+"25375",Windsor,A-1,FALSE," 5",  ,  ,  ,  t,  f
+"25376",Windsor,P,FALSE, ,  ,  ,  ,  f,  f
+"25369",Windsor,R-1,FALSE," 0.34","  0.34","  0.34","  0.34",  f,  f
+"25371",Windsor,MHP,FALSE," 0.17","  0.17",  ,  ,  f,  f
+"25372",Windsor,HDR,FALSE," 0.2","  0.2","  0.2","  0.2",  f,  f
+"25374",Windsor,PUD,FALSE," 0.2","  0.2","  0.2","  0.2",  f,  f
+"25377",Windsor,B-1,FALSE," 0.2","  0.2","  0.2","  0.2",  f,  f
+"25368",Windsor,M-1,FALSE, ,  ,  ,  ,  f,  f
+"25370",Windsor,LDR,FALSE," 1.38",  ,  ,  ,  t,  f
+"25378",Windsor,B-2,FALSE," 0.34","  0.34","  0.34","  0.34",  f,  f
+"36378",Windsor,R-3,FALSE," 0",  ,  ,  ,  t,  f
+"36377",Windsor,R-2,FALSE," 0","  0","  0","  0",  f,  f
+"25356",Smithfield,HR-C,FALSE, ,  ,  ,  ,  f,  f
+"25350",Smithfield,S-R,FALSE," 0.18",  ,  ,  ,  t,  f
+"25351",Smithfield,DN-R,FALSE," 0.14","  0.09",  ,  ,  f,  f
+"25352",Smithfield,A-R,FALSE," 0.03",  ,  ,  ,  f,  f
+"25361",Smithfield,I-2,FALSE, ,  ,  ,  ,  f,  f
+"25348",Smithfield,C-C,FALSE," 0.92",  ,  ,  ,  t,  f
+"25358",Smithfield,PMUD,FALSE," 0","  0","  0","  0",NA,NA
+"25362",Smithfield,HP-O,TRUE, ,  ,  ,  ,NA,NA
+"25363",Smithfield,E-C,TRUE, ,  ,  ,  ,  f,  f
+"25364",Smithfield,FP-O,TRUE, ,  ,  ,  ,NA,NA
+"25365",Smithfield,CB-O,TRUE, ,  ,  ,  ,NA,NA
+"25349",Smithfield,N-R,FALSE," 0.34",  ,  ,  ,  t,  f
+"25353",Smithfield,MF-R,FALSE," 0.03",  ,"  0","  0",  f,  f
+"35954",Smithfield,ECO,TRUE, ,  ,  ,  ,NA,NA
+"35951",Smithfield,C-I,FALSE, ,  ,  ,  ,  f,  f
+"25366",Smithfield,MH-P,FALSE," 0.09",  ,  ,  ,  f,  f
+"25355",Smithfield,D,FALSE," 0","  0","  0","  0",  f,  f
+"25354",Smithfield,R-O,FALSE," 0.34",  ,  ,  ,  f,  f
+"25357",Smithfield,PS-C,FALSE, ,  ,  ,  ,  f,  f
+"25359",Smithfield,I-1,FALSE, ,  ,  ,  ,  f,  f
+"25338",Isle of Wight,GIC,FALSE, ,  ,  ,  ,  f,  f
+"25347",Isle of Wight,FPMO,TRUE, ,  ,  ,  ,NA,NA
+"25336",Isle of Wight,LI,FALSE, ,  ,  ,  ,  f,  f
+"25343",Isle of Wight,PD-IP,FALSE, ,  ,  ,  ,  f,  f
+"25344",Isle of Wight,HCO,TRUE, ,  ,  ,  ,NA,NA
+"25346",Isle of Wight,HO,TRUE, ,  ,  ,  ,NA,NA
+"25337",Isle of Wight,GI,FALSE, ,  ,  ,  ,  f,  f
+"25335",Isle of Wight,GC,FALSE, ,  ,  ,  ,  f,  f
+"25341",Isle of Wight,PD-CP,FALSE, ,  ,  ,  ,  f,  f
+"25328",Isle of Wight,RR,FALSE," 0.92","  0.92",  ,  ,  f,  f
+"25329",Isle of Wight,VC,FALSE," 0.34","  0.34","  0.68","  0.85",  f,  f
+"25330",Isle of Wight,NC,FALSE," 0.34","  0.34","  0.68","  0.85",  f,  f
+"25331",Isle of Wight,SE,FALSE," 0.46","  0.69","  0.92","  1.15",  f,  f
+"25345",Isle of Wight,NDSO,TRUE, ,  ,  ,  ,NA,NA
+"25327",Isle of Wight,RAC,FALSE," 0.92","  0.92","  1.84","  2.3",  f,  f
+"25334",Isle of Wight,LC,FALSE, ,  ,  ,  ,  f,  f
+"25339",Isle of Wight,PD-R,FALSE," 0.18","  0.18","  0.23","  0.23",  f,  f
+"25342",Isle of Wight,PD-MX,FALSE," 0","  0","  0","  0",  f,  f
+"25332",Isle of Wight,SR,FALSE," 0.34","  0.34","  0.34","  0.34",  f,  f
+"25333",Isle of Wight,UR,FALSE," 0.27","  0.27","  0.27","  0.27",  f,  f
+"25340",Isle of Wight,PD-MH,FALSE," 0.14",  ,  ,  ,  f,  f
+"18642",Newport News,R4,FALSE," 0.15",  ,  ,  ,  t,  f
+"18658",Newport News,M1,FALSE, ,  ,  ,  ,  f,  f
+"19306",Newport News,Southeast Community Resource Area Overlay,TRUE, ,  ,  ,  ,  ,  
+"19299",Newport News,Neighborhood Conservation,TRUE," 0.06","  0.23",  ,  ,  f,  f
+"18584",Newport News,R2,FALSE," 0.27",  ,  ,  ,  t,  f
+"18583",Newport News,R1,FALSE," 0.46",  ,  ,  ,  t,  f
+"18647",Newport News,R8,FALSE," 0.03","  0.18","  0","  0",  f,  t
+"18649",Newport News,P1,FALSE, ,  ,  ,  ,  f,  f
+"18653",Newport News,C1,FALSE," 0","  0","  0","  0",  f,  f
+"18648",Newport News,R9,FALSE," 0",  ,"  0.92","  0.92",  f,  t
+"18585",Newport News,R3,FALSE," 0.21",  ,  ,  ,  t,  f
+"18644",Newport News,R5,FALSE," 0.03","  0.09","  0","  0",  f,  f
+"18645",Newport News,R6,FALSE," 0.09",  ,  ,  ,  f,  f
+"19296",Newport News,Lee Hall Corridor Overlay,TRUE, ,  ,  ,  ,  f,  f
+"18657",Newport News,C5,FALSE, ,  ,  ,  ,  f,  f
+"18656",Newport News,C4,FALSE," 0","  0","  0","  0",  f,  f
+"18654",Newport News,C2,FALSE, ,  ,  ,  ,  f,  f
+"18655",Newport News,C3,FALSE," 0","  0","  0","  0",  f,  f
+"19298",Newport News,MRCN,TRUE," 0","  0","  0","  0",  f,  f
+"19304",Newport News,North End/Huntington Heights Historic,TRUE, ,  ,  ,  ,  f,  f
+"19302",Newport News,Neotraditional Overlay,TRUE," 0","  0","  0","  0",  f,  f
+"19305",Newport News,Oyster Point Urban Core,TRUE, ,  ,"  0","  0",  f,  f
+"18652",Newport News,O3,FALSE, ,  ,  ,  ,  f,  f
+"18651",Newport News,O2,FALSE, ,  ,  ,  ,  f,  f
+"19297",Newport News,Lower Jefferson Avenue Urban Corridor Overlay,TRUE," 0",  ,"  0","  0",  f,  f
+"18646",Newport News,R7,FALSE," 0.03","  0.18","  0","  0",  f,  t
+"18650",Newport News,O1,FALSE," 0.15",  ,"  0","  0",  f,  f
+"19294",Newport News,Airport Horizontal,TRUE, ,  ,  ,  ,  f,  f
+"19295",Newport News,Hilton Village Historic,TRUE, ,  ,  ,  ,  f,  f
+"18659",Newport News,M2,FALSE, ,  ,  ,  ,  f,  f
+"33614",Portsmouth,MX/EMP,FALSE, ,  ,  ,  ,  f,  f
+"25289",Portsmouth,MU-H,FALSE," 0","  0.23","  0.23","  0.23",  f,  t
+"25285",Portsmouth,UR,FALSE," 0","  0.17","  0.17","  0.17",  f,  f
+"25293",Portsmouth,C,FALSE, ,  ,  ,  ,  f,  f
+"25303",Portsmouth,DD,TRUE, ,  ,  ,  ,NA,NA
+"25305",Portsmouth,E,TRUE, ,  ,  ,  ,NA,NA
+"25306",Portsmouth,CBPA,TRUE, ,  ,  ,  ,NA,NA
+"25307",Portsmouth,FP,FALSE, ,  ,  ,  ,NA,NA
+"33959",Portsmouth,Olde Towne - HR,FALSE," 0.07","  0.07","  0.10","  0.14",  f,  f
+"33961",Portsmouth,Cradock - HLB,FALSE," 0.10","  0.10","  0.31","  0.38",  f,  f
+"25284",Portsmouth,GR,FALSE," 0.29","  0.29","  0.29","  0.29",  f,  f
+"25290",Portsmouth,IL,FALSE, ,  ,  ,  ,  f,  f
+"33953",Portsmouth,Port Norfolk - HLB,FALSE," 0.13","  0.13","  0.19","  0.26",  f,  f
+"25291",Portsmouth,IN,FALSE, ,  ,  ,  ,  f,  f
+"25304",Portsmouth,I,TRUE, ,  ,  ,  ,NA,NA
+"25302",Portsmouth,MP,TRUE, ,  ,  ,  ,  f,  f
+"25292",Portsmouth,WF,FALSE, ,  ,  ,"  0",  f,  f
+"33958",Portsmouth,Truxtun - HLB,FALSE," 0.06","  0.06","  0.06","  0.10",  f,  f
+"33954",Portsmouth,Port Norfolk - HR,FALSE," 0.13","  0.13","  0.19","  0.26",  f,  f
+"33960",Portsmouth,Olde Towne - HLO,FALSE," 0.07","  0.07","  0.10","  0.14",  f,  f
+"33822",Portsmouth,D1-SD,FALSE, ,  ,  ,  ,  f,  f
+"33962",Portsmouth,Cradock - HR,FALSE," 0.10","  0.10","  0.31","  0.38",  f,  f
+"33956",Portsmouth,Park View - HR,FALSE," 0.07","  0.07","  0.10","  0.14",  f,  f
+"33963",Portsmouth,Park View - HLB,FALSE," 0.07","  0.07","  0.10","  0.14",  f,  f
+"25287",Portsmouth,NMU,FALSE," 0","  0.11","  0.11","  0.11",  f,  f
+"25299",Portsmouth,D1-T5,FALSE, ,"  0","  0","  0",  f,  f
+"25300",Portsmouth,D1-T6,FALSE, ,"  0","  0","  0",  f,  f
+"25297",Portsmouth,D1-T3,FALSE," 0","  0","  0","  0",  f,  f
+"25288",Portsmouth,GMU,FALSE," 0","  0.23","  0.23","  0.23",  f,  t
+"25298",Portsmouth,D1-T4,FALSE," 0","  0","  0","  0",  f,  f
+"25286",Portsmouth,UR-M,FALSE," 0","  0.17","  0.17","  0.17",  f,  f
+"33957",Portsmouth,Truxtun - HR,FALSE," 0.06","  0.06","  0.06","  0.10",  f,  f
+"33955",Portsmouth,Park View - HLO,FALSE," 0.07","  0.07","  0.10","  0.14",  f,  f
+"25283",Portsmouth,NR,FALSE," 0.69",  ,  ,  ,  t,  f
+"3439",Rockbridge,C-1,FALSE,,NA,NA,NA,NA,NA
+"25878",Winchester,LR,FALSE,,NA,NA,NA,NA,NA
+"25879",Winchester,MR,FALSE,,NA,NA,NA,NA,NA
+"25880",Winchester,HR,FALSE,,NA,NA,NA,NA,NA
+"25895",Winchester,EIP,FALSE,,NA,NA,NA,NA,NA
+"25889",Winchester,PUD,FALSE,,NA,NA,NA,NA,NA
+"25881",Winchester,HR-1,FALSE,,NA,NA,NA,NA,NA
+"25886",Winchester,CM-1,FALSE,,NA,NA,NA,NA,NA
+"25887",Winchester,M-1,FALSE,,NA,NA,NA,NA,NA
+"25888",Winchester,M-2,FALSE,,NA,NA,NA,NA,NA
+"25892",Winchester,MC,FALSE,,NA,NA,NA,NA,NA
+"25893",Winchester,HW,TRUE,,NA,NA,NA,NA,NA
+"25894",Winchester,HE-1,FALSE,,NA,NA,NA,NA,NA
+"25896",Winchester,FP,TRUE,,NA,NA,NA,NA,NA
+"25897",Winchester,CE,TRUE,,NA,NA,NA,NA,NA
+"25426",Suffolk,RE,FALSE," 3",  ,  ,  ,  t,  f
+"25424",Suffolk,C,FALSE, ,  ,  ,  ,  f,  f
+"25436",Suffolk,MUC-40,FALSE," 0.03",  ,"  0","  0",  f,  t
+"25452",Suffolk,MUD,FALSE," 0","  0","  0","  0",  f,  f
+"25449",Suffolk,HC,TRUE, ,  ,  ,  ,  f,  f
+"25425",Suffolk,A,FALSE," 1",  ,  ,  ,  t,  f
+"25431",Suffolk,RC,FALSE," 0.03","  0.14","  0.14","  0.14",  f,  f
+"25437",Suffolk,B-1,FALSE," 0.03",  ,"  0.11","  0.11",  f,  t
+"25441",Suffolk,M-1,FALSE, ,  ,  ,  ,  f,  f
+"25444",Suffolk,VC,FALSE," 0.03","  0.11","  0.11","  0.11",  f,  f
+"25450",Suffolk,SCOD,TRUE, ,  ,  ,  ,NA,NA
+"25432",Suffolk,RU,FALSE," 0.03","  0.09","  0.09","  0.09",  f,  f
+"25435",Suffolk,RU-24,FALSE," 0.03",  ,"  0","  0",  f,  t
+"25438",Suffolk,B-2,FALSE, ,  ,  ,  ,  f,  f
+"33936",Suffolk,FRRD,FALSE," 0",  ,"  0","  0",  f,  f
+"25433",Suffolk,RU-12,FALSE," 0.03","  0.08","  0.08","  0.08",  f,  f
+"25440",Suffolk,CP,FALSE, ,  ,  ,  ,  f,  f
+"25446",Suffolk,TND,FALSE," 0","  0","  0","  0",  f,  f
+"25439",Suffolk,O-I,FALSE, ,  ,  ,  ,  f,  f
+"25442",Suffolk,M-2,FALSE, ,  ,  ,  ,  f,  f
+"25447",Suffolk,F,TRUE, ,  ,  ,  ,  f,  f
+"25445",Suffolk,PD,FALSE," 0","  0","  0","  0",  f,  f
+"25448",Suffolk,CB,TRUE, ,  ,  ,  ,  f,  f
+"25434",Suffolk,RU-18,FALSE," 0.03","  0","  0","  0",  f,  t
+"25430",Suffolk,RM,FALSE," 0.03","  0.23",  ,  ,  f,  f
+"25427",Suffolk,RR,FALSE," 1",  ,  ,  ,  t,  f
+"25428",Suffolk,RL,FALSE," 0.69",  ,  ,  ,  t,  f
+"25443",Suffolk,CBD,FALSE," 0","  0","  0","  0",  f,  f
+"25429",Suffolk,RLM,FALSE," 0.34",  ,  ,  ,  t,  f
+"25451",Suffolk,AO,TRUE, ,  ,  ,  ,  f,  f
+"18700",York,GB,FALSE, ,"  0.46","  0.46","  0.46",  f,  f
+"18699",York,LB,FALSE, ,"  0.46","  0.46","  0.46",  f,  f
+"18711",York,WMP,TRUE, ,  ,  ,  ,  f,  f
+"18696",York,RMF,FALSE," 0.04","  0.04","  0","  0",  f,  f
+"18704",York,IG,FALSE, ,  ,  ,  ,  f,  f
+"18707",York,ASM,TRUE, ,  ,  ,  ,  f,  f
+"18713",York,Route 17 Corridor,TRUE, ,  ,  ,  ,  f,  f
+"18703",York,IL,FALSE, ,  ,  ,  ,  f,  f
+"18710",York,TCM,TRUE, ,  ,  ,  ,  f,  f
+"18705",York,PDR,FALSE," 0","  0","  0","  0",  f,  f
+"18695",York,R7,FALSE," 0.17",  ,  ,  ,  f,  f
+"18708",York,FMA,TRUE, ,  ,  ,  ,  f,  f
+"18692",York,R33,FALSE," 0.76",  ,  ,  ,  f,  f
+"18694",York,R13,FALSE," 0.31",  ,  ,  ,  f,  f
+"18706",York,PDMU,FALSE," 0","  0","  0","  0",  f,  f
+"18690",York,RC,FALSE," 5","  0",  ,  ,  f,  f
+"18693",York,R20,FALSE," 0.46",  ,  ,  ,  f,  f
+"18691",York,RR,FALSE," 1",  ,  ,  ,  f,  f
+"18698",York,NB,FALSE, ,  ,  ,  ,  f,  f
+"18701",York,WCI,FALSE, ,  ,  ,  ,  f,  f
+"18702",York,EO,FALSE, ,"  0.46","  0.46","  0.46",  f,  f
+"18712",York,Yorktown Historic,TRUE, ,  ,  ,  ,  f,  f
+"18714",York,Commercial Corridor Revitalization,TRUE, ,  ,  ,  ,  f,  f
+"18709",York,HRM,TRUE, ,  ,  ,  ,  f,  f
+"18697",York,YVA,FALSE," 0","  0","  0","  0",  f,  f
+"33932",Hampton,FM-2,FALSE," 0","  0",  ,  ,  f,  f
+"19231",Hampton,M-3,FALSE, ,  ,  ,  ,  f,  f
+"25667",Hampton,R-11,FALSE," 0.21",  ,  ,  ,  t,  f
+"25622",Hampton,O-HP,TRUE, ,  ,  ,  ,  f,  f
+"25877",Hampton,MD-4,FALSE," 0",  ,"  0","  0",  f,  t
+"25616",Hampton,O-AICUZ,TRUE, ,  ,  ,  ,  f,  f
+"25621",Hampton,O-IH,TRUE, ,  ,  ,  ,  f,  f
+"25875",Hampton,MD-2,FALSE," 1",  ,"  1","  1",  f,  f
+"25876",Hampton,MD-3,FALSE," 2",  ,"  2","  2",  f,  f
+"25662",Hampton,R-33,FALSE," 0.76",  ,  ,  ,  t,  f
+"25620",Hampton,O-MVC,TRUE, ,  ,  ,  ,  f,  f
+"25617",Hampton,O-CBP,TRUE, ,  ,  ,  ,  f,  f
+"25618",Hampton,O-CC,TRUE, ,  ,  ,  ,  f,  f
+"26412",Hampton,C-3,FALSE, ,  ,  ,  ,  f,  f
+"19172",Hampton,R-43,FALSE," 1",  ,  ,  ,  t,  f
+"25666",Hampton,R-13,FALSE," 0.27",  ,  ,  ,  t,  f
+"25669",Hampton,R-8,FALSE," 0.09","  0.14",  ,  ,  f,  f
+"19230",Hampton,M-2,FALSE, ,  ,  ,  ,  f,  f
+"33908",Hampton,LFA-1,FALSE, ,  ,  ,  ,  f,  f
+"33927",Hampton,PO-2,FALSE, ,  ,  ,  ,  f,  f
+"33915",Hampton,BB-1,FALSE," 0.05","  0.05",  ,  ,  f,  f
+"26411",Hampton,C-2,FALSE," 0.46",  ,"  0.46","  0.46",  f,  f
+"26410",Hampton,C-1,FALSE," 0.46",  ,"  0.46","  0.46",  f,  f
+"33916",Hampton,BB-2,FALSE," 0.05","  0.05","  0.14","  0.14",  f,  f
+"33914",Hampton,RT-1,FALSE," 0","  0.09","  0","  0",  f,  f
+"33931",Hampton,FM-1,FALSE," 0","  0",  ,  ,  f,  f
+"33933",Hampton,FM-3,FALSE," 0","  0","  0","  0",  f,  f
+"33934",Hampton,FM-4,FALSE, ,  ,  ,  ,  f,  f
+"33921",Hampton,HRC-2,FALSE, ,  ,  ,  ,  f,  f
+"33922",Hampton,HRC-3,FALSE, ,  ,  ,  ,  f,  f
+"33935",Hampton,LBP,FALSE, ,  ,  ,  ,  f,  f
+"33909",Hampton,LFA-2,FALSE, ,  ,  ,  ,  f,  f
+"33910",Hampton,LFA-3,FALSE, ,  ,  ,  ,  f,  f
+"33911",Hampton,LFA-4,FALSE, ,  ,  ,  ,  f,  f
+"33913",Hampton,LFA-6,FALSE, ,  ,  ,  ,  f,  f
+"19229",Hampton,M-1,FALSE, ,  ,  ,  ,  f,  f
+"33912",Hampton,LFA-5,FALSE," 0",  ,  ,  ,  t,  f
+"25874",Hampton,MD-1,FALSE," 0.46",  ,"  0.46","  0.46",  f,  t
+"33928",Hampton,PH-1,FALSE," 0",  ,"  0","  0",  f,  t
+"33923",Hampton,DT-1,FALSE," 0","  0","  0","  0",  f,  f
+"33924",Hampton,DT-2,FALSE," 0","  0","  0","  0",  f,  f
+"33925",Hampton,DT-3,FALSE," 0",  ,"  0","  0",  f,  f
+"33930",Hampton,PH-3,FALSE," 0",  ,"  0","  0",  f,  t
+"33929",Hampton,PH-2,FALSE," 0",  ,"  0","  0",  f,  t
+"33926",Hampton,PO-1,FALSE, ,  ,  ,  ,  f,  f
+"25664",Hampton,R-22,FALSE," 0.50",  ,  ,  ,  t,  f
+"25665",Hampton,R-15,FALSE," 0.34",  ,  ,  ,  t,  f
+"25670",Hampton,R-4,FALSE," 0.09",  ,  ,  ,  t,  f
+"19173",Hampton,R-R,FALSE," 0.14",  ,  ,  ,  t,  f
+"19171",Hampton,R-LL,FALSE," 2.5",  ,  ,  ,  t,  f
+"25873",Hampton,R-M,FALSE," 0.09","  0.09","  0.14","  0.14",  f,  f
+"33919",Hampton,BB-5,FALSE, ,  ,"  0.34","  0.34",  f,  f
+"33920",Hampton,HRC-1,FALSE, ,  ,  ,  ,  f,  f
+"25668",Hampton,R-9,FALSE," 0.14",  ,  ,  ,  t,  f
+"25619",Hampton,O-FZ,TRUE, ,  ,  ,  ,  f,  f
+"33917",Hampton,BB-3,FALSE," 0.06","  0.05","  0.14","  0.14",  f,  f
+"33918",Hampton,BB-4,FALSE, ,  ,"  0.14","  0.14",  f,  f
+"18641",Virginia Beach,OB,TRUE," 0.11",  ,  ,  ,  f,  f
+"18615",Virginia Beach,A-12,FALSE," 0.03","  0.23","  0.23","  0.23",  f,  t
+"18603",Virginia Beach,AG-1,FALSE," 1",  ,  ,  ,  t,  f
+"18606",Virginia Beach,R-30,FALSE," 0.69",  ,  ,  ,  t,  f
+"18614",Virginia Beach,R-2.5,FALSE," 0.03",  ,  ,  ,  f,  t
+"18622",Virginia Beach,B-1,FALSE, ,  ,  ,  ,  f,  f
+"18625",Virginia Beach,B-3,FALSE, ,  ,  ,  ,  f,  f
+"18628",Virginia Beach,B-4K,FALSE," 0.23",  ,"  0.92","  0.92",  f,  t
+"18621",Virginia Beach,O-2,FALSE, ,  ,  ,  ,  f,  f
+"27419",Virginia Beach,SD,TRUE, ,  ,  ,  ,  f,  f
+"18607",Virginia Beach,R-20,FALSE," 0.46",  ,  ,  ,  t,  f
+"18611",Virginia Beach,R-5D,FALSE," 0.11","  0.11",  ,  ,  f,  f
+"18626",Virginia Beach,B-4,FALSE," 0.03",  ,"  0.92","  0.92",  f,  t
+"18617",Virginia Beach,A-24,FALSE," 0.03","  0.23","  0.46","  0.46",  f,  t
+"28724",Virginia Beach,RT-3,FALSE," 0.11","  0.23","  0.11","  0.11",  f,  f
+"18605",Virginia Beach,R-40,FALSE," 0.55",  ,  ,  ,  t,  f
+"18613",Virginia Beach,R-5S,FALSE," 0.11",  ,  ,  ,  t,  f
+"32701",Virginia Beach,AICUZ,TRUE, ,  ,  ,  ,  f,  f
+"18632",Virginia Beach,PD-H2,TRUE, ,  ,  ,  ,  f,  f
+"18612",Virginia Beach,R-5R,FALSE," 0.11","  0.11",  ,  ,  f,  f
+"28725",Virginia Beach,RT-4,FALSE," 0.11","  0.11","  0.23","  0.23",  f,  f
+"18629",Virginia Beach,I-1,FALSE, ,  ,  ,  ,  f,  f
+"26413",Virginia Beach,R-7.5,FALSE," 0.17",  ,  ,  ,  t,  f
+"33285",Virginia Beach,NE,TRUE, ,  ,  ,  ,  f,  f
+"18624",Virginia Beach,B-2,FALSE, ,  ,  ,  ,  f,  f
+"18608",Virginia Beach,R-15,FALSE," 0.34",  ,  ,  ,  t,  f
+"18630",Virginia Beach,I-2,FALSE, ,  ,  ,  ,  f,  f
+"33319",Virginia Beach,OR,FALSE," 0.03","  0.07","  0.11","  0.11",  f,  f
+"18602",Virginia Beach,P-1,FALSE, ,  ,  ,  ,  f,  f
+"18604",Virginia Beach,AG-2,FALSE," 1",  ,  ,  ,  t,  f
+"18618",Virginia Beach,A-36,FALSE," 0.15","  0.23","  0.92","  0.92",  f,  t
+"18616",Virginia Beach,A-18,FALSE," 0.03","  0.23","  0.01","  0.01",  f,  t
+"18609",Virginia Beach,R-10,FALSE," 0.23",  ,  ,  ,  t,  f
+"27418",Virginia Beach,HK,TRUE, ,  ,  ,  ,  f,  f
+"18640",Virginia Beach,STR,TRUE, ,  ,  ,  ,  f,  f
+"18639",Virginia Beach,CBC,FALSE, ,  ,"  0","  0",  f,  f
+"18620",Virginia Beach,O-1,FALSE, ,  ,  ,  ,  f,  f
+"18631",Virginia Beach,PD-H1,FALSE," 0.03","  0","  0.23","  0.23",  f,  t
+"18627",Virginia Beach,B-4C,FALSE, ,  ,"  0.23","  0.23",  f,  f
+"18619",Virginia Beach,H-1,FALSE, ,  ,  ,  ,  f,  f
+"18623",Virginia Beach,B-1A,FALSE, ,  ,  ,  ,  f,  f
+"18633",Virginia Beach,RT-1,FALSE, ,  ,  ,  ,  f,  f
+"25246",Southampton - Branchville,B-1,FALSE, ,  ,  ,  ,NA,NA
+"25244",Southampton - Branchville,R-1,FALSE," 0.34",  ,  ,  ,NA,NA
+"25245",Southampton - Branchville,R-2,FALSE," 0.23","  0.27","  0.32","  0.37",NA,NA
+"25218",Southampton,M-1,FALSE, ,  ,  ,  ,  f,  f
+"25214",Southampton,B-1,FALSE, ,  ,  ,  ,  f,  f
+"25217",Southampton,P-OI,FALSE, ,  ,  ,  ,  f,  f
+"25221",Southampton,FP,TRUE, ,  ,  ,  ,  f,  f
+"25219",Southampton,M-2,FALSE, ,  ,  ,  ,  f,  f
+"25207",Southampton,A-1,FALSE," 0.92",,  ,  ,  t,  f
+"25215",Southampton,B-2,FALSE, ,  ,  ,  ,  f,  f
+"25208",Southampton,A-2,FALSE," 0.92",  ,  ,  ,  t,  f
+"25213",Southampton,RR,FALSE," 0.92",  ,  ,  ,  t,  f
+"25210",Southampton,RCR,FALSE," 0.14",  ,  ,  ,  t,  f
+"25209",Southampton,R-MH,FALSE," 0.23",  ,  ,  ,  f,  f
+"25211",Southampton,R-1,FALSE," 0.46",  ,  ,  ,  t,  f
+"34309",Southampton,B-4,FALSE, ,  ,  ,  ,  f,  f
+"25216",Southampton,B-3,FALSE, ,  ,  ,  ,  f,  f
+"25220",Southampton,M-3,FALSE, ,  ,  ,  ,  f,  f
+"25212",Southampton,R-2,FALSE," 0.04","  0.27","  0.32","  0.37",  f,  f
+"25281",Poquoson,FMA,TRUE, ,  ,  ,  ,  f,  f
+"25268",Poquoson,R-1,FALSE," 0.46",  ,  ,  ,  t,  f
+"25275",Poquoson,B-2,FALSE, ,  ,  ,  ,  f,  f
+"25282",Poquoson,Technology Zone Overlay,TRUE, ,  ,  ,  ,  f,  f
+"25280",Poquoson,EMA,TRUE, ,  ,  ,  ,  f,  f
+"25270",Poquoson,R-3,FALSE," 0","  0","  0","  0",  f,  t
+"25266",Poquoson,C-1,FALSE," 0.46",  ,  ,  ,  t,  f
+"25267",Poquoson,R-S,FALSE," 0.61",  ,  ,  ,  t,  f
+"25269",Poquoson,R-2,FALSE," 0.41",  ,  ,  ,  t,  f
+"25274",Poquoson,B-1,FALSE, ,  ,  ,  ,  f,  f
+"25277",Poquoson,G-C,FALSE, ,  ,  ,  ,  f,  f
+"25279",Poquoson,Architectural Control,TRUE, ,  ,  ,  ,  f,  f
+"33332",Poquoson,V-C,FALSE," 0","  0","  0","  0",  f,  f
+"33331",Poquoson,R&D,FALSE, ,  ,  ,  ,  f,  f
+"25272",Poquoson,PUD-W,TRUE," 0","  0","  0","  0",  f,  f
+"25273",Poquoson,PUD-MU,TRUE," 0","  0","  0","  0",  f,  f
+"25271",Poquoson,POSCD,TRUE, ,  ,  ,  ,  ,  
+"12445",Norfolk,I-DW,FALSE, ,  ,  ,  ,  f,  f
+"12446",Norfolk,HC-G1,FALSE," 0.06",  ,  ,  ,  t,  f
+"12438",Norfolk,D-MU,FALSE," 0",  ,"  0","  0",  f,  t
+"35722",Norfolk,Coastal Character,TRUE, ,  ,  ,  ,  f,  f
+"12465",Norfolk,ASO/AICUZ,TRUE, ,  ,  ,  ,NA,NA
+"12471",Norfolk,BCRO,TRUE, ,  ,  ,  ,  f,  f
+"12434",Norfolk,BC-O,FALSE, ,  ,  ,  ,  f,  f
+"12452",Norfolk,IN,FALSE, ,  ,  ,  ,  f,  f
+"12453",Norfolk,IN-C,FALSE, ,  ,  ,  ,  f,  f
+"12456",Norfolk,RESOURCE,FALSE, ,  ,  ,  ,  f,  f
+"12469",Norfolk,HO-Downtown,TRUE, ,  ,  ,  ,  f,  f
+"12481",Norfolk,URO,TRUE, ,  ,  ,  ,  f,  f
+"12480",Norfolk,CRO,TRUE, ,  ,  ,  ,  f,  f
+"12430",Norfolk,C-N,FALSE, ,  ,"  0.11","  0.11",  f,  f
+"35333",Norfolk,PDR-7,FALSE," 0",  ,  ,  ,  t,  f
+"26032",Norfolk,PDMU-3,FALSE," 0","  0","  0","  0",  f,  f
+"26033",Norfolk,PDMU-4,FALSE," 0","  0","  0","  0",  f,  f
+"12474",Norfolk,PCO-21st Street,TRUE, ,  ,  ,  ,  f,  f
+"35721",Norfolk,Downtown Character,TRUE, ,  ,  ,  ,  f,  f
+"26009",Norfolk,PD-BCR,FALSE," 0.07","  0.05","  0.12","  0.12",  f,  f
+"12425",Norfolk,SF-T,FALSE," 0.09",  ,  ,  ,  t,  f
+"12424",Norfolk,SF-10,FALSE," 0.09",  ,  ,  ,  t,  f
+"12423",Norfolk,SF-6,FALSE," 0.14",  ,  ,  ,  t,  f
+"12426",Norfolk,R-C,FALSE," 0.11","  0.11","  0","  0",  f,  f
+"35719",Norfolk,Suburban Character,TRUE, ,  ,  ,  ,  f,  f
+"26026",Norfolk,PD-R Church Street Station,FALSE, ,  ,  ,"  0",  f,  f
+"12440",Norfolk,D-FN,FALSE," 0",  ,"  0","  0",  f,  t
+"12441",Norfolk,D-SP,FALSE," 0","  0","  0","  0",  f,  f
+"12467",Norfolk,FPCH-O,TRUE, ,  ,  ,  ,  f,  f
+"12459",Norfolk,EBH,FALSE," 0.04",  ,"  0","  0",  f,  t
+"12463",Norfolk,G-1,FALSE," 0",  ,"  0","  0",  f,  f
+"12451",Norfolk,HC-EF,FALSE, ,  ,"  0.11","  0.11",  f,  f
+"12449",Norfolk,HC-WF1,FALSE," 0.04","  0.09","  0.11","  0.14",  f,  f
+"12450",Norfolk,HC-WF2,FALSE," 0.04","  0.09","  0.11","  0.11",  f,  f
+"12482",Norfolk,HL,TRUE, ,  ,  ,  ,  f,  f
+"12470",Norfolk,HO-N&W,TRUE, ,  ,  ,  ,  f,  f
+"12444",Norfolk,I-W,FALSE, ,  ,  ,  ,  f,  f
+"12428",Norfolk,MF-AC,FALSE," 0.18",  ,"  0.18","  0.18",  f,  t
+"12429",Norfolk,MF-HR,FALSE," 0.11",  ,"  0.18","  0.18",  f,  f
+"12427",Norfolk,MF-NS,FALSE," 0.11","  0.17","  0.18","  0.18",  f,  f
+"12476",Norfolk,PCO-35th Street,TRUE, ,  ,  ,  ,  f,  f
+"12473",Norfolk,PCO-Colley,TRUE, ,  ,  ,  ,  f,  f
+"12477",Norfolk,PCO-Lafayette,TRUE, ,  ,  ,  ,  f,  f
+"12458",Norfolk,MW,FALSE," 0",  ,"  0","  0",  f,  f
+"12475",Norfolk,PCO-Riverview,TRUE, ,  ,  ,  ,  f,  f
+"12464",Norfolk,PD,FALSE," 0",  ,  ,  ,  f,  t
+"26023",Norfolk,PD-MU 1st Bay,FALSE, ,  ,"  0","  0",  f,  f
+"26011",Norfolk,PD-MU East Beach,FALSE," 0","  0","  0","  0",  f,  f
+"26012",Norfolk,PD-MU Spectrum at Willoughby,FALSE," 0","  0","  0","  0",  f,  t
+"26024",Norfolk,PD-MU WE,FALSE, ,  ,"  0","  0",  f,  f
+"35329",Norfolk,PDR-10,FALSE," 0",  ,  ,  ,  t,  f
+"35330",Norfolk,PDR-11,FALSE, ,  ,"  0","  0",  f,  f
+"35332",Norfolk,PDR-6,FALSE, ,  ,  ,"  0",  f,  f
+"35331",Norfolk,PDR-5,FALSE," 0","  0","  0","  0",  f,  f
+"35334",Norfolk,PDR-8,FALSE, ,"  0","  0","  0",  f,  f
+"35335",Norfolk,PDR-9,FALSE, ,  ,"  0","  0",  f,  f
+"26029",Norfolk,PD-R Azalea Garden Place,FALSE," 0",  ,  ,  ,  f,  t
+"26016",Norfolk,PD-R LCA,FALSE, ,  ,  ,"  0",  f,  f
+"26028",Norfolk,PD-R Pinewell Station,FALSE, ,  ,  ,"  0",  f,  f
+"26020",Norfolk,PD-R Edward St.,FALSE, ,  ,  ,"  0",  f,  f
+"26017",Norfolk,PD-R River House,FALSE, ,  ,  ,"  0",  f,  f
+"26027",Norfolk,PD-R Talbot Hall,FALSE," 0",  ,  ,  ,  t,  f
+"26018",Norfolk,PD-R WM,FALSE," 0",  ,  ,"  0",  f,  t
+"26015",Norfolk,PD-R River's Edge at Berkley,FALSE, ,  ,  ,"  0",  f,  f
+"26022",Norfolk,PD-R Pickett Farms,FALSE, ,  ,  ,"  0",  f,  f
+"26021",Norfolk,PD-R Park Crescent,FALSE, ,  ,  ,"  0",  f,  f
+"35724",Norfolk,Picadillly Mews Residential Siting Overlay,TRUE, ,  ,  ,  ,  f,  f
+"12462",Norfolk,TOD-S,FALSE," 0.11","  0.17","  0","  0",  f,  f
+"26031",Norfolk,PDMU-2,FALSE," 0","  0","  0","  0",  f,  f
+"12443",Norfolk,I-G,FALSE, ,  ,  ,  ,  f,  f
+"12435",Norfolk,BC-I,FALSE, ,  ,  ,  ,  f,  f
+"12442",Norfolk,I-L,FALSE, ,  ,  ,  ,  f,  f
+"12433",Norfolk,O,FALSE, ,  ,  ,  ,  f,  f
+"12457",Norfolk,MI,FALSE, ,  ,  ,  ,  f,  f
+"26019",Norfolk,PD-R Promenade Pointe,FALSE, ,  ,"  0","  0",NA,NA
+"12422",Norfolk,SF-4,FALSE," 0.22",  ,  ,  ,  t,  f
+"12455",Norfolk,OSP,FALSE, ,  ,  ,  ,  f,  f
+"12431",Norfolk,C-C,FALSE, ,  ,"  0.11","  0.11",  f,  f
+"12448",Norfolk,HC-G3,FALSE," 0.04","  0.09","  0.11","  0.11",  f,  f
+"12447",Norfolk,HC-G2,FALSE," 0.04","  0.09","  0.11","  0.11",  f,  f
+"35720",Norfolk,Traditional Character,TRUE, ,  ,  ,  ,  f,  f
+"12461",Norfolk,TOD-C,FALSE," 0.11","  0.17",  ,  ,  f,  t
+"12466",Norfolk,CBPA-O,TRUE, ,  ,  ,  ,  f,  f
+"12437",Norfolk,D-BC,FALSE," 0",  ,"  0","  0",  f,  t
+"26013",Norfolk,CSEC PD,FALSE, ,  ,"  0","  0",  f,  f
+"12436",Norfolk,D-W,FALSE, ,  ,"  0","  0",  f,  f
+"12454",Norfolk,A,FALSE, ,  ,  ,  ,  f,  f
+"12439",Norfolk,D-AD,FALSE," 0",  ,"  0","  0",  f,  t
+"26010",Norfolk,PD Harbor Walk,FALSE, ,  ,"  0","  0",  f,  f
+"12432",Norfolk,C-R,FALSE, ,  ,"  0.69","  0.69",NA,NA
+"26025",Norfolk,PD-R Campostella Station,FALSE," 0",  ,  ,"  0",  f,  f
+"26030",Norfolk,PDMU-1,FALSE," 0","  0","  0","  0",  f,  f
+"12421",Norfolk,SF-2,FALSE," 0.46",  ,  ,  ,  t,  f
+"26014",Norfolk,PD-MU Taylor's Landing,FALSE, ,  ,"  0","  0",  f,  f
+"12479",Norfolk,IRIO,TRUE, ,  ,  ,  ,  f,  f
+"12478",Norfolk,NRO,TRUE, ,  ,  ,  ,  f,  f

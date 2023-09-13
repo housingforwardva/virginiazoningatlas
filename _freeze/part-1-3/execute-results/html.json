@@ -1,0 +1,16 @@
+{
+  "hash": "5dbd7f027414cb63aa3ea6bcd2ef738d",
+  "result": {
+    "markdown": "# Things to keep in mind {#part-1-3}\n\n\n::: {.cell}\n\n:::\n\n\nTo standardize complex zoning ordinances, not only across Virginia but the entire nation, requires a rigorous adherence to common definitions and interpretations. The methodology developed by National Zoning Atlas team requires a specific reading of zoning ordinances that may not coincide with your or even a locality's interpretation of their zoning ordinance.\n\n## 1-Family Treatment\n\nBased on the methodology, \"1-family housing means a building, including a mobile home or a manufactured home, with only one dwelling unit. 1-family zoning permits one such building on each lot.\"\n\nThis includes townhouse or rowhouse development where each unit sits on an individual lot. For many localities, this type of development may seen as \n",
+    "supporting": [
+      "part-1-3_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
