@@ -40,40 +40,46 @@ library(ggtext)
 
 
 ```
+
 ### Data Collection
 
-Zoning data collection and analysis for the Hampton Roads region took place from April through August 2023. At this time, Gloucester County and the City of Poquoson were going through updates of their zoning ordinances. The findings and presentation of the Hampton Roads portion of the Virginia Zoning Atlas are a point-in-time representation of zoning ordinances during this time. Zoning and geospatial analysis contributions were made by Christopher Newport University students: Robert Bennett, Stephen Everard, Audrey Morrison, Orson Lange, and Layne Marshall. Eric Mai and Maria Dougherty were the project leads for the region.
+Zoning data collection and analysis for the Hampton Roads region took place from April through August 2023. At this time, Gloucester County and the City of Poquoson were going through updates of their zoning ordinances. The findings and presentation of the Hampton Roads portion of the Virginia Zoning Atlas are a point-in-time representation of zoning ordinances during this time. This analysis also includes the Towns of Windsor and Surry. The other towns in the region, Boykins, Branchville, Capron, Claremont, Courtland, Dendron, Ivor, and Newsoms, were not part of this analysis because their zoning map and/or zoning ordinance were unavailable to us.
+
+Zoning and geospatial analysis contributions were made by Christopher Newport University students: Robert Bennett, Stephen Everard, Audrey Morrison, Orson Lange, and Layne Marshall. Eric Mai and Maria Dougherty were the project leads for the region.
 
 It is the intent of the Virginia Zoning Atlas to track major changes to zoning ordinances and zoning maps with periodic updates.
 
+### Thanks to the sponsors of the Hampton Roads regional work
+
+![](img/hr_sponsor_banner.png)
+
 ## Key Findings
 
-- Mixed with Residential zoning districts make up a small percentage of zoned land in most jurisdictions.
-- 
-- 
-
+-   Mixed with Residential zoning districts make up a small percentage of zoned land in most jurisdictions.
+-   
+-   
 
 ## Zoning's impact in Hampton Roads
 
-With increasing housing affordability issues across the region, a diverse and growing supply of housing is needed to meet the needs of a diverse population. Localities have significant control over their supply through their zoning ordinances. 
+With increasing housing affordability issues across the region, a diverse and growing supply of housing is needed to meet the needs of a diverse population. Localities have significant control over their supply through their zoning ordinances.
 
 The following findings are based on the Zoning Atlas Methodology and takes into account the impact of federally-owned lands and wetland areas, which are both prevalent throughout the region. Like our colleagues in New Hampshire, we have sought to exclude areas of land that are not unbuildable. We have excluded all federal land from calculations, as well as area of wetlands and/or water that are 10 contiguous area or more.
 
-::: {.callout-note}
+::: callout-note
+*Federal lands* were identified using ESRI Landscape's USA Federal Lands feature layer, which accounted for lands managed by six federal agencies, including:
 
-*Federal lands* were identified using ESRI Landscape's USA Federal Lands feature layer, which accounted for lands managed by six federal agencies, including: 
-
-- Bureau of Land Management
-- Department of Defense
-- National Park Service
-- US Fish and Wildlife Service
-- US Forest Service
+-   Bureau of Land Management
+-   Department of Defense
+-   National Park Service
+-   US Fish and Wildlife Service
+-   US Forest Service
 
 *Wetland/water areas* were identified using the U.S. Fish & Wildlife Service's Seamless Wetlands Data. The wetlands polygon was used and allow polygons with an area of 10 acres or more were utilized as a mask layer to clip from our Hampton Roads zoning district layer file.
-
 :::
 
-Overlay districts, which are districts that may change the regulations of a base zoning district, were not a part of this analysis. Few overlay districts in the Hampton Roads region affect the uses of the base zoning district. 
+Overlay districts, which are districts that may change the regulations of a base zoning district, were not a part of this analysis. Few overlay districts in the Hampton Roads region affect the uses of the base zoning district.
+
+## Zoning Ordinances in Hampton Roads
 
 ```{r}
 #| label: tbl-hr-zoning-summary
@@ -98,7 +104,7 @@ Zoning ordinances see amendments made over the years that eliminate, add, or ref
 #| label: fig-housing-type
 #| fig-cap: "Percent of land zoned by residential category"
 
-# Create a bar char that shows the percentage of zoned in each locality by type (i.e. primarily residential, mixed with residential, nonresidential)
+# Create a bar chart that shows the percentage of zoned in each locality by type (i.e. primarily residential, mixed with residential, nonresidential)
 
 hr_type <- read_rds("data/hr/hr_vza_nogeo.rds") |> 
   select(jurisdiction, overlay, type, area) |> 
@@ -131,12 +137,12 @@ ggplot(hr_type_summary,
 
 
 ```
+
 Roughly 90 percent of developable land is **Primarily Residential**. This includes prime agricultural land in the southern parts of Hampton Roads, where the preservation of open space and natural resources is a vital part of the region. Only three percent of the region's developable land is classified as **Mixed with Residential**. Locally, Williamsburg (22%), York County (14%), and Newport News (13%) have the largest proportions of Mixed with Residential zoning types, while Surry County (0%), Southampton County (0%), and Isle of Wight County (less than 1%) have the least.
 
-Walkable, mixed use communities are [increasingly desirable among all age groups](https://www.strongtowns.org/journal/2023/7/25/realtors-buyers-will-pay-extra-for-walkable-neighborhoods). The ability to reach work, shopping, and leisure activities within walking distance supports healthy communities, but also supports diverse local business and job opportunities (think of areas like like Ghent in Norfolk or the ViBe District in Virginia Beach). 
+Walkable, mixed use communities are [increasingly desirable among all age groups](https://www.strongtowns.org/journal/2023/7/25/realtors-buyers-will-pay-extra-for-walkable-neighborhoods). The ability to reach work, shopping, and leisure activities within walking distance supports healthy communities, but also supports diverse local business and job opportunities (think of areas like like Ghent in Norfolk or the ViBe District in Virginia Beach).
 
-
-### Single-Family Detached Housing
+## Single-Family Detached Housing
 
 While single-family detached housing is a dream many aspire to, barriers to homeownership are making it difficult for many Hampton Roads residents to purchase a home.The previous section highlighted those challenges with current wages and high rental costs that are further limiting the ability to save for a home purchase. Furthermore, single-family detached only zoning can have major implications on equity and economic opportunity. Allowing for more diverse types of housing in single-family detached only zoning districts can help provide greater access to high opportunity areas for a diverse range of households - both in terms of race and ethnicity, and income.
 
@@ -148,35 +154,22 @@ While single-family detached housing is a dream many aspire to, barriers to home
 
 
 vza_pal <- colorFactor(palette =c("#8B85CA", "#40C0C0", "#011E41"),
-                       levels = c("Primarily Residential", "Mixed with Residential", "Nonresidential"))
+                       levels = c("R", "M", "R"))
 
-hr_sfd_map <- read_rds("data/hr/hr_vza_geo.rds") |>
-  filter(sfd == "t")
-
-library(leafgl)
-library(sf)
-
-hr_sfd_map <- st_cast(hr_sfd_map, "POLYGON")
+hr_sfd_map <- read_rds("data/hr/hr_sfd_only_map.rds")
 
 leaflet() |>
   addTiles() |>
-  addGlPolygons(data = hr_sfd_map,
+  addPolygons(data = hr_sfd_map,
               color = ~vza_pal(type),
               weight = 1,
-              fillOpacity = 0.75,
+              fillOpacity = 0.80,
               popup = paste0("Jurisdiction: ", hr_sfd_map$jurisdiction,
                              "<br>",
                              "District Abbreviation: ", hr_sfd_map$abbrvname)) |>
   addLegend(labels = c("Primarily Residential", "Mixed with Residential", "Nonresidential"),
             colors = c("#8B85CA", "#40C0C0", "#011E41"),
             title = "Type of Zoning District")
-
-# write_rds(zd, "data/hr/hr_sfd_map.rds")
-# 
-# hr_sfd_map <- read_rds("data/hr/hr_sfd_map.rds")
-# 
-# hr_sfd_map |> 
-#   addPolygons()
 
 
 ```
@@ -283,7 +276,65 @@ ggplot(hr_sfd,
 
 
 ```
-### By-Right Housing
+
+### Minimum lot sizes
+
+Making generalizations about minimum lot sizes is difficult due to their variations depending on development context. Smaller lot sizes are more reasonable where public water and sewer infrastructure exist, while large lot sizes are more conducive to private well and septic systems. In some cases, smaller lot sizes can be reached by undertaking cluster development techniques that help preserve open space or a planned residential development. 
+
+We focused on the lot requirements for single-family detached homes, as many experts have referenced the importance of reducing lot sizes to promote affordability and reduce impacts on the environment.
+
+:::{.callout-note}
+
+The following chart focuses on single-family detached only zoning districts.
+
+In order to conduct an analysis with varying minimum lot requirements depending on district context (i.e. connection to public water and sewer, or requirements dependent on predominant lot size), we captured the minimum and maximum value listed. For example, a locality may require a minimum lot area of 0.69 acres if not connected to public infrastructure, but would require a minimum lot area of 0.23 if connected. Therefore, we collected the minimum value (0.23 acres) and the maximum value (0.69 acres). We then averaged the minimum value and the maximum value within each jurisdiction.
+
+This provides a general range of the minimum lot area required for housing in single-family detached only zoning districts.
+
+:::
+
+
+```{r}
+#| label: fig-sfd-min
+#| fig-cap: "Average minimum lot area requirements in single-family detached only districts"
+
+
+# What is the average minimum lot size for each type of treatment? 
+# Blank fields should be treated as NA and should not be included in the mean calculation.
+
+
+hr_lots <- read_csv("data/hr/hr_sfd_minlot.csv") |> 
+  mutate(min1 = as.numeric(min1),
+         max1 = as.numeric(max1)) |> 
+  group_by(jurisdiction) |> 
+  summarise(mean1min = round(mean(min1, na.rm = TRUE), 2),
+            mean1max = round(mean(max1, na.rm = TRUE), 2)) |> 
+  mutate(max = mean1max) |> 
+  pivot_longer(2:3,
+               names_to = "metric",
+               values_to = "avg") |> 
+  mutate(metric = case_when(
+    metric == "mean1min" ~ "Minimum value",
+    metric == "mean1max" ~ "Maximum value"
+  ))
+  
+
+ggplot(hr_lots,
+       aes(x = reorder(jurisdiction, max),
+           y = avg,
+           color = metric)) +
+  geom_point() +
+  coord_flip() +
+  labs(title = "Average minimum lot area requirements in single-family detached only districts",
+       subtitle = "*In Acres*") +
+  theme_hfv() +
+  scale_y_continuous(breaks = seq(0, 4, 0.5)) +
+  theme(legend.position = "top") +
+  scale_color_hfv()
+
+```
+
+## By-Right Housing
 
 When housing development requires a public hearing process, it can often come up against opposition from existing community members who have a preconceived notions about the impacts of increased density or new neighbors. The entitlement process, whether through a special use permit (or conditional use permit), variance, or rezoning can increase development costs and lead to project uncertainty. At a time when new housing is needed across the region, allowing for housing by-right (without a public hearing process) can streamline development and ensure that the housing supply is aligned with the demand.
 
@@ -330,8 +381,8 @@ hr_byright_tbl |>
 
 ```
 
-Overwhelmingly, single-family is welcomed (without a public hearing) in nearly every locality by a wide margin, while 2+ family housing is only allowed by-right by less than seven percent in most localities. Areas like Newport News, Norfolk, and Williamsburg stand out as allowing much more than their neighbors. Portsmouth is notable for its allowance of duplexes and triplexes.
- 
+Overwhelmingly, single-family is welcomed (without a public hearing) in nearly every locality by a wide margin, while 2+ family housing is only allowed by-right by less than seven percent in most localities. Areas like Newport News, Norfolk, and Williamsburg stand out as allowing much more than their neighbors. Portsmouth is notable for its allowance of duplexes and triplexes. But overall, only about two percent of developable land in Hampton Roads allows for 2+ family housing by-right. 
+
 ```{r}
 #| label: fig-2plus
 #| fig-cap: "Percent of developable land allowing for 2+ family housing by-right" 
@@ -349,7 +400,14 @@ hr_byright <- read_rds("data/hr/hr_vza_nogeo.rds") |>
   group_by(jurisdiction) |> 
   summarise(pct_2plus = sum(pct_2plus)) |>
   add_row(jurisdiction = "Smithfield", pct_2plus = 0)
-  
+
+hr_byright_summary <- read_rds("data/hr/hr_vza_nogeo.rds") |> 
+  select(jurisdiction, abbrvname, overlay, 6:9, area) |> # Select data fields.
+  filter(overlay == 0) |> # Filter out overlay districts.
+  mutate(total_area = sum(area)) |> # Calculate the total area of zoned land.
+  filter(family2_treatment == "allowed" & family3_treatment == "allowed" & family4_treatment == "allowed") |> 
+  mutate(total_2plus = sum(area)) |> 
+  mutate(pct2plus = total_2plus/total_area)
 
 ggplot(hr_byright,
        aes(x = reorder(jurisdiction, pct_2plus),
@@ -370,6 +428,7 @@ ggplot(hr_byright,
 
 
 ```
+The map below shows the location of zoning districts that allow for 2+ family by-right. 
 
 ```{r}
 #| label: fig-byr2-map
@@ -386,23 +445,16 @@ hr_byr2
 ```
 
 
-### Minimum lot sizes
-
-```{r}
-
-# What is the average minimum lot size for each type of treatment? 
-# Blank fields should be treated as NA and should not be included in the mean calculation.
-
-
-hr_lots <- read_rds("data/hr/hr_vza_nogeo.rds")|> 
-  select(jurisdiction, abbrvname, overlay, hr_custom_fields_min1, hr_custom_fields_min2,
-         hr_custom_fields_min3, hr_custom_fields_min4) 
-
-
-```
-
-
 ## Accessory Dwelling Units
+
+Accessory dwelling units (ADUs) have been a growing interest among homeowners as they look for ways to increase income, house a family member with special needs, or simply make their home more functional for their family. 
+
+:::{.callout-caution}
+
+Remember that the National Zoning Atlas Methodology includes caretaker or watchman's quarters associated with a nonresidential use. It also includes a single dwelling above a commercial or retail use.
+
+:::
+
 
 ```{r}
 #| label: fig-hr-adus
@@ -411,12 +463,35 @@ hr_lots <- read_rds("data/hr/hr_vza_nogeo.rds")|>
 # Create a table that shows the percentage of land that allows for ADUs by-right
 # https://frontierinstitute.org/reports/the-montana-zoning-atlas-2-0/ use this as an example 
 
-hr_adu <- read_rds("data/hr/hr_vza_nogeo.rds") 
+hr_adu <- read_rds("data/hr/hr_vza_nogeo.rds") |> 
+  select(jurisdiction, overlay, accessory_treatment, area) |> 
+  filter(overlay == 0) |> 
+  group_by(jurisdiction) |> 
+  mutate(total_area = sum(area)) |> 
+  filter(accessory_treatment == "allowed") |> 
+  group_by(jurisdiction, total_area)  |> 
+  summarise(area = sum(area)) |> 
+  mutate(pct = area/total_area) |> 
+  ungroup() |> 
+  add_row(jurisdiction = "Surry (town)", total_area = 0, area = 0, pct = 0)
+
+ggplot(hr_adu,
+       aes(x = reorder(jurisdiction, pct),
+           y = pct,
+           fill = pct)) +
+  geom_col() +
+  coord_flip() +
+  theme_hfv() +
+  labs(title = "Percent of developable land allowing for ADUs by-right")  +
+  scale_fill_gradientn(colours = c("#ADDCB1", "#46A88F", "#207A88", "#0F1A4E")) + # Use custom HFV gradient.
+  scale_color_gradientn(colours = c("#ADDCB1", "#46A88F", "#207A88", "#0F1A4E")) # Use custom HFV gradient.
+  
 
 ```
 
+Many localities across Hampton Roads address ADUs in their zoning ordinances, while a few (the Town of Surry, Chesapeake and Newport News) make no mention of them at all. It is also important to note that while localities may be generous with the allowance of ADUs, others place additional restrictions on how they can be used.
 
-Many localities across Hampton Roads address ADUs in their zoning ordinances, while a few (Chesapeake and Newport News) make no mention of them at all. 
+
 ```{r}
 #| label: fig-hr-adu-restrictions
 #| fig-cap: "Summary of ADU regulations in Hampton Roads"
@@ -424,15 +499,18 @@ Many localities across Hampton Roads address ADUs in their zoning ordinances, wh
 # Create a table for the following csv.
 # https://frontierinstitute.org/reports/the-montana-zoning-atlas-2-0/ use this as an example 
 
-hr_adu_summary <- read_csv("data/hr/hr_adu_summary.csv")
+hr_adu_summary <- read_csv("data/hr/hr_adu_summary.csv") |> 
+  select(jurisdiction, attached, detached, owner_occupancy, rental_prohibition, elderly_family, admin_permit)
 
 hr_adu_summary |> 
-  kable() |> 
+  kable(col.names = c("Jurisdiction", "Attached Allowed", "Detached Allowed", "Owner Occupancy Requirement", "Rental Prohibited", "Elderly or Family Requirement", "Administrative Permit")) |> 
   kable_styling(bootstrap_options = c("striped", "condensed"))
 
 
 
 ```
+
+The City of Virginia Beach is notable because it has two different instances of ADUs in its zoning ordinance: [Flex Suites](https://library.municode.com/va/virginia_beach/codes/code_of_ordinances?nodeId=CO_APXAZOOR_ART5REDI_S507FLSU) and [ancillary single-family dwellings](https://library.municode.com/va/virginia_beach/codes/code_of_ordinances?nodeId=CO_APXAZOOR_ART19OLBEOVDI_S1903USRE).
 
 ## Access to Transit
 
@@ -447,6 +525,8 @@ The following map shows zoned land that allows for 2+ family housing by-right in
 #| fig-cap: "Hampton Roads Transit bus stops and zoned land allowing for 2+ family housing by-right"
 
 pal <- colorFactor(palette =c("#8B85CA", "#40C0C0"),levels = c("R", "M"))
+transit_pal <-colorFactor(palette = c("#B1005F", "#E0592A", "#FFC658"), levels = c("WATA", "Hampton Roads Transit", "Suffolk Transit"))
+
 
 hr_transit_map <- read_rds("data/hr/hr_transit_map.rds")
 
@@ -455,4 +535,38 @@ hr_transit_map
 
 
 ```
+
 This map shows that many 2+ housing options are made available within bus stops, but there are still opportunities to increase transit access throughout the region by upzoning in strategic areas and/or expanding transit service.
+
+## Affordable housing need
+
+Housing affordability is important to households at all income-levels. But for low-wage workers, affordable housing can prevent housing instability in times of personal or economic crisis. Housing at higher densities often faces opposition from existing residents due to misconceptions about its impact on their community. The public approval process often prevents this type of housing from being constructed, especially affordable housing, in places where low-income households need it the most. 
+
+The map below shows Census Block Groups where more the jobs-housing fit ratio is greater than 2.0 (i.e. where there are more than two low-wage workers for every unit of affordable rental housing). And it shows where 4+ family housing can be built by-right.
+```{r}
+#| label: fig-by4-jhf
+#| fig-cap: "Zoning districts allowing for 4+ family by-right and Census Block Groups with a Jobs-Housing Fit above 2.0"
+
+housing_needed <- read_rds("data/hr/hr_blk_grps.rds") |> 
+  filter(ratio > 2 | ratio == NA)
+
+pal <- colorFactor(palette =c("#8B85CA", "#40C0C0"),levels = c("R", "M"))
+
+hr_byr4 <- read_rds("data/hr/hr_byr4_map.rds")
+
+hr_byr4 |> 
+  addPolygons(data = housing_needed,
+              fillColor = "#FFC658",
+              fillOpacity = 0.5,
+              color = "white",
+              weight = 1,
+              popup = paste0(
+                "Jurisdiction: ",
+                housing_needed$name_long,
+                "<br>",
+                "Ratio: ", housing_needed$label),
+              group = "Jobs-Housing Fit Ratio")
+
+```
+
+There are many areas of the region where 4+ family must go through the public approval process, particularly in areas where it is needed the most. With housing cost burden a growing issue for renters in the region, 

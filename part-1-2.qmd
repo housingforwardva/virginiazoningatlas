@@ -12,7 +12,7 @@
 
 ## How to make a zoning atlas
 
-The methods to standardize zoning ordinances across multiple jurisdictions were first employed in Connecticut in 2021. Sara Bronin, an architect and attorney, worked with Ilya Ilyankou to develop the Connecticut Zoning Atlas, and Bronin went on to found the National Zoning Atlas (NZA). The NZA team has drafted a [How to Make a Zoning Atlas]((https://www.zoningatlas.org/how)) guide to be used by all NZA project collaborators.
+The methods to standardize zoning ordinances across multiple jurisdictions were first employed in Connecticut in 2021. Sara Bronin, an architect and attorney, worked with Ilya Ilyankou to develop the Connecticut Zoning Atlas, and Bronin went on to found the National Zoning Atlas (NZA). The NZA team has drafted a [How to Make a Zoning Atlas](https://www.zoningatlas.org/how) guide to be used by all NZA project collaborators.
 
 The methodology provides a way to translate and standardize district-specific regulations based on the treatment of certain residential uses. Currently, the methodology requires analysts to manually read through pages and pages of zoning ordinances. Geographic data needs to be collected and sometimes created. Information can be hard to track down and may only be stored on paper in a physical location in some cases.
 
@@ -33,7 +33,7 @@ As we conduct our analysis and numerous reviews of the same zoning ordinance, we
 
 *Residential Treatments*
 
--   **Allowed/Conditional** means that a use is allowed **without a public hearing.** In this case, permission to build is subject to administrative review by a local planner and is typically allowed **by-right** if it meets the conditions of the zoning ordinance.
+-   **Allowed/Conditional** means that a use is allowed **without a public hearing.** In this case, permission to build is subject to administrative review by a local planner and is typically allowed **by-right** if it meets the conditions of the zoning ordinance. It is important to understand that the word "Conditional" here should not be associated with a Conditional Use Permit!
 
 -   **Public Hearing** means that a use requires a public approval process (entitlement) in order to be built. In Virginia, entitlement can take different forms, but is most often a Special or Conditional Use Permit (SUP or CUP), a Special Exception or Variance, or a rezoning.
 

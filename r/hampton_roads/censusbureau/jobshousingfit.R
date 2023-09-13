@@ -91,14 +91,14 @@ affordable_units <- rbind(b25056_data, b25061_data) |>
   summarise(units = sum(estimate))
 
 
-hr_od_blocks <- read_rds("data/va_od_block.rds") |> 
-  mutate(geoid = substr(geoid,1, 12)) |> 
-  filter(variable == "SE01") |> 
-  group_by(fips, geoid, label) |> 
-  summarise(estimate = sum(estimate)) |> 
-  right_join(affordable_units, by = "geoid")
-
-write_rds(hr_od_blocks, "data/hr/hr_od_blk_grps.rds")
+# hr_od_blocks <- read_rds("data/va_od_block.rds") |> 
+#   mutate(geoid = substr(geoid,1, 12)) |> 
+#   filter(variable == "SE01") |> 
+#   group_by(fips, geoid, label) |> 
+#   summarise(estimate = sum(estimate)) |> 
+#   right_join(affordable_units, by = "geoid")
+# 
+# write_rds(hr_od_blocks, "data/hr/hr_od_blk_grps.rds")
 
 hr_od <- read_rds("data/hr/hr_od_blk_grps.rds")
 
@@ -110,7 +110,7 @@ local_lookup <- read_csv("data/local_lookup.csv") |>
   mutate(fips = as.character(fips)) |> 
   subset(fips %in% hr_fips)
 
-hr_blk_grps <- block_groups("VA") |>
+hr_blk_grps <- block_groups("VA", cb = TRUE) |>
   mutate(geoid = GEOID) |> 
   right_join(hr_od, by = "geoid") |> 
   select(fips, geoid, units, estimate) |> 
