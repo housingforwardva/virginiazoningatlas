@@ -10,8 +10,8 @@ library(sf)
 library(leaflet)
 library(shinyWidgets)
 
-zoning <- st_read("gloucester_zoning.geojson", quiet = TRUE) |> 
-  clean_names()
+zoning <- readr::read_rds("zoning_simple.rds") |>
+  st_cast("MULTIPOLYGON")
   
 
 # Define UI for application that draws a histogram
