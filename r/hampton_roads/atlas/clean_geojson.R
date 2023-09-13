@@ -49,7 +49,20 @@ hr_vza_geomap <- hr_vza_geo |>
   mutate(sfd = str_trim(hr_custom_fields_sfd))  # Trim whitespace from the sfd column.
 
 
+hr_vza_raw <- hr_vza |> 
+  mutate(type = case_when( # Correct the labels for Type of Zoning District field.
+    type == "X" ~ "Nonresidential",
+    type == "R" ~ "Primarily Residential",
+    type == "M" ~ "Mixed with Residential",
+    type == "O" ~ "Overlay Not Affecting Use"
+  )) |> 
+  mutate(jurisdiction = case_when( # Fix the label for the Town of Surry.
+    jurisdiction == "Surry - Surry (town)" ~ "Surry (town)",
+    TRUE ~ jurisdiction
+  )) |> 
+  mutate(sfd = str_trim(hr_custom_fields_sfd))  # Trim whitespace from the sfd column.
 
 
 write_rds(hr_vza_mapped, "data/hr/hr_vza_nogeo.rds", compress = "none") # Write to rds.
 write_rds(hr_vza_geomap, "data/hr/hr_vza_geo.rds", compress = "none")
+write_csv(hr_vza_raw, "data/hr/hr_vza_data.csv")

@@ -1,0 +1,88 @@
+﻿jurisdiction,county,jurisdiction_id,hr_custom_fields_overlay,overlay,abbrvname,acres,family1_minlotacres,min1,max1,family2_minlotacres,family3_minlotacres,family4_minlotacres,name,area,sfd
+James City,James City County,2145,FALSE,0,R-1,4860.77991,0.34 public water/sewer; 0.40 pub. sewer; 0.46 pub. water; 0.69 well/sewer,0.34,0.69,,,,Limited Residential,4571.031,t
+James City,James City County,2145,FALSE,0,R-6,284.9981971,1,1,1,,,,Low Density Residential,271.963,t
+Surry (town),Surry County,2161,FALSE,0,R-2,304.7586478,0.46,0.46,0.46,,,,Medium Density Residential,304.759,t
+Surry (town),Surry County,2161,FALSE,0,R-1,226.0651499,0.75,0.75,0.75,,,,Low Density Residential,217.656,t
+Surry,Surry County,2158,FALSE,0,A-R,167464.888,1 existing public road; 0.69 new subdivision road,0.69,1,1 existing public road; 0.69 new subdivision road,1 existing public road; 0.69 new subdivision road,1 existing public road; 0.69 new subdivision road,Agricultural-Rural,149051.441,t
+Surry,Surry County,2158,FALSE,0,A-L,1985.214048,0.69,0.69,0.69,,,,Agricultural Limited,1944.256,t
+Franklin (city),Franklin city,2139,FALSE,0,R-OA,312.7176353,0.34,0.34,0.34,,,,One-Family Residence,312.718,t
+Franklin (city),Franklin city,2139,FALSE,0,R-O,2791.723484,0.46,0.46,0.46,,,,One-Family Residence,2497.041,t
+Franklin (city),Franklin city,2139,FALSE,0,R-1,342.2853515,0.23,0.23,0.23,,,,One-Family Residence,341.384,t
+Gloucester,Gloucester County,2140,FALSE,0,C-2,18737.76958,5,5,5,,,,Bayside,14832.59,t
+Gloucester,Gloucester County,2140,FALSE,0,SF-1,9496.055286,0.23 public water/sewer; 0.69 well/septic,0.23,0.69,,,,Single-Family Detached Residential,9135.005,t
+Gloucester,Gloucester County,2140,FALSE,0,SC-1,43946.84211,2,2,2,,,,Suburban Countryside,41293.055,t
+Gloucester,Gloucester County,2140,FALSE,0,RC-2,7653.78817,5,5,5,,,,Rural Conservation,5049.967,t
+Gloucester,Gloucester County,2140,FALSE,0,RC-1,49713.30867,5,5,5,,,,Rural Countryside,46221.309,t
+Williamsburg,Williamsburg city,2163,FALSE,0,RS-1,1322.612124,0.4; 0.46 avg. for subdivisions of 2+,0.4,0.46,,,,Single-Family Dwelling,1273.345,t
+Williamsburg,Williamsburg city,2163,FALSE,0,RS-2,700.8737054,0.23; 0.29 avg. for subdivisions 2+,0.23,0.29,,,,Single-Family Dwelling,694.148,t
+Williamsburg,Williamsburg city,2163,FALSE,0,MS,409.6106795,0.23,0.23,0.23,,,,Museum Support,391.242,t
+Williamsburg,Williamsburg city,2163,FALSE,0,RS-3,63.77808566,0.11; 0.17 avg. for subdivision of 2+,0.11,0.17,,,,Single-Family Dwelling,63.086,t
+Chesapeake,Chesapeake city,1550,FALSE,0,A-1,104440.6206,3; 1 if near residence occupied prior to 1995,1,3,,,,Agricultural,62232.912,t
+Chesapeake,Chesapeake city,1550,FALSE,0,R-15s,15210.42954,0.34,0.34,0.34,,,,Residential,13668.133,t
+Chesapeake,Chesapeake city,1550,FALSE,0,R-SFA,270.8015664,0.14,0.14,,,,,Residential,270.192,t
+Chesapeake,Chesapeake city,1550,FALSE,0,R-8s,4111.171029,0.18,0.18,0.18,,,,Residential,3665.972,t
+Chesapeake,Chesapeake city,1550,FALSE,0,R-15(a)s,322.0690718,"0.28, if no more than 25% of lots are less than 0.34",0.28,0.28,,,,Residential,261.059,t
+Chesapeake,Chesapeake city,1550,FALSE,0,R-25(a)s,57.29008006,0.34. if no more than 25% of lots are less than 0.57,0.34,0.34,,,,Residential,57.29,t
+Chesapeake,Chesapeake city,1550,FALSE,0,R-40s,8.186505769,0.92,0.92,0.92,,,,Residential,7.801,t
+Chesapeake,Chesapeake city,1550,FALSE,0,R-25s,8.34452884,0.57,0.57,0.57,,,,Residential,8.345,t
+Chesapeake,Chesapeake city,1550,FALSE,0,R-10s,7626.165041,0.23,0.23,0.23,0.3,,,Residential,6951.33,t
+Chesapeake,Chesapeake city,1550,FALSE,0,R-12s,944.4289452,0.27,0.27,0.27,,,,Residential,928.978,t
+Chesapeake,Chesapeake city,1550,FALSE,0,R-12(a)s,2524.900098,"0.23, if no more than 25% of lots are less than 0.27",0.23,0.23,,,,Residential,2440.861,t
+Chesapeake,Chesapeake city,1550,FALSE,0,R-15,1325.370024,"0.28, if no more than 25% of lots are less than 0.34",0.28,0.28,,,,Residential,1278.207,t
+Chesapeake,Chesapeake city,1550,FALSE,0,R-40,5.415504788,0.92,0.92,0.92,,,,Residential,5.416,t
+Chesapeake,Chesapeake city,1550,FALSE,0,R-6,1486.703386,0.14,0.14,0.14,,,,Residential,1450.533,t
+Chesapeake,Chesapeake city,1550,FALSE,0,R-8,166.4014418,0.18,0.18,0.18,,,,Residential,153.204,t
+Chesapeake,Chesapeake city,1550,FALSE,0,RE-1,2765.93961,3,3,3,,,,Residential Estate,2452.03,t
+Windsor,Isle of Wight County,2144,FALSE,0,A-1,0,5,5,5,,,,General Agricultural,1102.476,t
+Windsor,Isle of Wight County,2144,FALSE,0,LDR,0,1.38,1.38,1.38,,,,Low-Density Residential,109.39,t
+Windsor,Isle of Wight County,2144,FALSE,0,R-3,10.03307991,,,,,,,Residential,10.033,t
+Smithfield,Isle of Wight County,2143,FALSE,0,S-R,1199.100534,"0.27, conventional; 0.18, cluster",0.18,0.27,,,,Suburban Residential,1004.363,t
+Smithfield,Isle of Wight County,2143,FALSE,0,C-C,1932.41037,0.92,0.92,0.92,,,,Community Conservation,1743.09,t
+Smithfield,Isle of Wight County,2143,FALSE,0,N-R,1179.612559,0.34,0.34,0.34,,,,Neighborhood Residential,1094.997,t
+Isle of Wight,Isle of Wight County,2142,FALSE,0,SE,68.74333203,0.46 public water and/or sewer; 0.69 well/septic,0.46,0.69,0.69 public water and/or sewer; 1.03 well/septic,0.92 public water and/or sewer; 1.38 well/septic,1.15 public water and/or sewer; 1.72 well/septic,Suburban Estate,66.261,t
+Newport News,Newport News city,2146,FALSE,0,R4,5338.11138,0.15,0.15,0.15,,,,Single-Family Dwelling,5271.177,t
+Newport News,Newport News city,2146,FALSE,0,R2,2636.231448,0.27,0.27,0.27,,,,Single-Family Dwelling,2548.718,t
+Newport News,Newport News city,2146,FALSE,0,R1,8597.157864,0.46,0.46,0.46,,,,Single-Family Dwelling,1134.554,t
+Newport News,Newport News city,2146,FALSE,0,R3,5925.833869,0.21,0.21,0.21,,,,Single-Family Dwelling,5869.135,t
+Portsmouth,Portsmouth city,2149,FALSE,0,NR,57.28132082,0.69,0.69,0.69,,,,Neighborhood Residential,57.237,t
+Suffolk,Suffolk city,2157,FALSE,0,RE,15203.13345,3,3,3,,,,Rural Estate,12853.472,t
+Suffolk,Suffolk city,2157,FALSE,0,A,159164.8953,1,1,1,,,,Agricultural,132947.136,t
+Suffolk,Suffolk city,2157,FALSE,0,RR,5391.082371,1,1,1,,,,Rural Residential,4167.537,t
+Suffolk,Suffolk city,2157,FALSE,0,RL,4477.150551,0.69,0.69,0.69,,,,Residential Low Density,3758.602,t
+Suffolk,Suffolk city,2157,FALSE,0,RLM,7721.239764,0.34,0.34,0.34,,,,Residential Low-Medium Density,6958.697,t
+Hampton,Hampton city,2141,FALSE,0,R-11,8470.376446,0.21,0.21,0.21,,,,One Family Residential,7953.551,t
+Hampton,Hampton city,2141,FALSE,0,R-33,1744.243685,0.76,0.76,0.76,,,,One Family Residential,1149.933,t
+Hampton,Hampton city,2141,FALSE,0,R-13,8445.509708,0.27,0.27,0.27,,,,One Family Residential,4921.8,t
+Hampton,Hampton city,2141,FALSE,0,LFA-5,28.53300645,,,,,,,Langley Flight Approach Limited Residential,28.053,t
+Hampton,Hampton city,2141,FALSE,0,R-22,118.9305378,0.5,0.5,0.5,,,,One Family Residential,118.931,t
+Hampton,Hampton city,2141,FALSE,0,R-15,408.5881904,0.34,0.34,0.34,,,,One Family Residential,256.894,t
+Hampton,Hampton city,2141,FALSE,0,R-4,28.80045467,0.09 alley; 0.11 alley corner; 0.11 no alley,0.09,0.11,,,,One Family Residential,28.455,t
+Hampton,Hampton city,2141,FALSE,0,R-R,125.6388602,0.14,0.14,0.14,,,,Rural One Family Residential,99.146,t
+Hampton,Hampton city,2141,FALSE,0,R-9,3205.454178,0.14,0.14,0.14,,,,One Family Residential,3157.51,t
+Virginia Beach,Virginia Beach city,2162,FALSE,0,AG-1,45333.25678,1,1,1,,,,Agricultural,23147.144,t
+Virginia Beach,Virginia Beach city,2162,FALSE,0,R-30,1306.951376,"0.69; 0.55 outside of water, marsh, or wetlands",0.55,0.69,,,,Residential,1255.773,t
+Virginia Beach,Virginia Beach city,2162,FALSE,0,R-20,4488.259855,0.46,,,,,,Residential,4201.717,t
+Virginia Beach,Virginia Beach city,2162,FALSE,0,R-40,4667.425347,"0.92; 0.55 outside of water, marsh, or wetlands",0.55,0.92,,,,Residential,4468.334,t
+Virginia Beach,Virginia Beach city,2162,FALSE,0,R-5S,275.8111729,0.11,0.11,0.11,,,,Residential,265.903,t
+Virginia Beach,Virginia Beach city,2162,FALSE,0,R-7.5,8468.005404,0.17,0.17,0.17,,,,Residential,7917.712,t
+Virginia Beach,Virginia Beach city,2162,FALSE,0,R-15,4465.189027,0.34,0.34,0.34,,,,Residential,3317.744,t
+Virginia Beach,Virginia Beach city,2162,FALSE,0,AG-2,16349.56856,1,1,1,,,,Agricultural ,13363.147,t
+Virginia Beach,Virginia Beach city,2162,FALSE,0,R-10,9147.760007,0.23,0.23,0.23,,,,Residential ,8383.077,t
+Southampton,Southampton County,2150,FALSE,0,A-1,341054.2903,0.92,0.92,0.92,,,,Agricultural,294019.117,t
+Southampton,Southampton County,2150,FALSE,0,A-2,21930.91083,0.92,0.92,0.92,,,,Agricultural,18672.458,t
+Southampton,Southampton County,2150,FALSE,0,RR,1774.806621,0.92,0.92,0.92,,,,Rural Residential,1672.971,t
+Southampton,Southampton County,2150,FALSE,0,RCR,18.67830986,0.14,0.14,0.14,,,,Recreational Residential,18.646,t
+Southampton,Southampton County,2150,FALSE,0,R-1,5302.974418,"0.46, public water/sewer; 0.69, well/septic",0.46,0.69,,,,Residential,4925.385,t
+Poquoson,Poquoson city,2148,FALSE,0,R-1,1868.757579,0.46 public water/sewer; 2 well/septic,0.46,2,,,,Residential,1606.846,t
+Poquoson,Poquoson city,2148,FALSE,0,C-1,3813.877426,"0.46, public water/sewer; 2, well/septic",0.46,2,,,,Conservation,178.004,t
+Poquoson,Poquoson city,2148,FALSE,0,R-S,1368.009625,"0.61, public water/sewer; 2, well/septic",0.61,2,,,,Residential,1336.206,t
+Poquoson,Poquoson city,2148,FALSE,0,R-2,1397.151,0.41 public water/sewer; 2 well/septic,0.61,2,,,,Residential,888.869,t
+Norfolk,Norfolk city,2147,FALSE,0,HC-G1,31.76072733,0.06,0.06,0.06,,,,Ghent Historic and Cultural Conservation,31.761,t
+Norfolk,Norfolk city,2147,FALSE,0,PDR-7,76.93795846,,,,,,,Planned Development Residential,76.938,t
+Norfolk,Norfolk city,2147,FALSE,0,SF-T,1772.19165,"0.09 - 0.11, based on the predominant pattern",0.09,0.11,,,,Single Family - Traditional,1760.493,t
+Norfolk,Norfolk city,2147,FALSE,0,SF-10,1768.349882,"0.09 - 0.11, based on predominant pattern",0.09,0.11,,,,Single Family 10,1756.66,t
+Norfolk,Norfolk city,2147,FALSE,0,SF-6,4818.577631,"0.14 - 0.16, based on predominant pattern",0.14,0.16,,,,Single Family 6,4724.708,t
+Norfolk,Norfolk city,2147,FALSE,0,PDR-10,4.889138793,,,,,,,Planned Development Residential,4.889,t
+Norfolk,Norfolk city,2147,FALSE,0,PD-R Talbot Hall,6.177620747,,,,,,,Talbot Hall Residential Planned Development,5.726,t
+Norfolk,Norfolk city,2147,FALSE,0,SF-4,955.1905158,"0.22 - 0.34, based on predominant pattern",0.22,0.34,,,,Single Family 4,932.109,t
+Norfolk,Norfolk city,2147,FALSE,0,SF-2,278.8124284,"0.46 - 0.57, based on predominant pattern",0.46,0.57,,,,Single Family 2,274.811,t
