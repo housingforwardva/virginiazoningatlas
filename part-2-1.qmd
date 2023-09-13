@@ -29,7 +29,7 @@ library(zoo)
 
 ```
 
-The [Hampton Roads Planning District Commission](https://www.hrpdcva.gov/) is comprised of 17 local governments, including ten independent cities, six counties, and the Town of Smithfield. This analysis also includes the Towns of Windsor and Surry. The other towns in the region, Boykins, Branchville, Capron, Claremont, Courtland, Dendron, Ivor, and Newsoms, were not part of this analysis because their zoning map and/or zoning ordinance were unavailable to us.
+The [Hampton Roads Planning District Commission](https://www.hrpdcva.gov/) is comprised of 17 local governments, including ten independent cities, six counties, and the Town of Smithfield. 
 
 ```{r}
 #| label: fig-hr-map

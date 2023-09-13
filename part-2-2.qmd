@@ -42,7 +42,9 @@ library(ggtext)
 ```
 ### Data Collection
 
-Zoning data collection and analysis for the Hampton Roads region took place from April through August 2023. At this time, Gloucester County and the City of Poquoson were going through updates of their zoning ordinances. The findings and presentation of the Hampton Roads portion of the Virginia Zoning Atlas are a point-in-time representation of zoning ordinances during this time. Zoning and geospatial analysis contributions were made by Christopher Newport University students: Robert Bennett, Stephen Everard, Audrey Morrison, Orson Lange, and Layne Marshall. Eric Mai and Maria Dougherty were the project leads for the region.
+Zoning data collection and analysis for the Hampton Roads region took place from April through August 2023. At this time, Gloucester County and the City of Poquoson were going through updates of their zoning ordinances. The findings and presentation of the Hampton Roads portion of the Virginia Zoning Atlas are a point-in-time representation of zoning ordinances during this time. This analysis also includes the Towns of Windsor and Surry. The other towns in the region, Boykins, Branchville, Capron, Claremont, Courtland, Dendron, Ivor, and Newsoms, were not part of this analysis because their zoning map and/or zoning ordinance were unavailable to us.
+
+Zoning and geospatial analysis contributions were made by Christopher Newport University students: Robert Bennett, Stephen Everard, Audrey Morrison, Orson Lange, and Layne Marshall. Eric Mai and Maria Dougherty were the project leads for the region.
 
 It is the intent of the Virginia Zoning Atlas to track major changes to zoning ordinances and zoning maps with periodic updates.
 
@@ -98,7 +100,7 @@ Zoning ordinances see amendments made over the years that eliminate, add, or ref
 #| label: fig-housing-type
 #| fig-cap: "Percent of land zoned by residential category"
 
-# Create a bar char that shows the percentage of zoned in each locality by type (i.e. primarily residential, mixed with residential, nonresidential)
+# Create a bar chart that shows the percentage of zoned in each locality by type (i.e. primarily residential, mixed with residential, nonresidential)
 
 hr_type <- read_rds("data/hr/hr_vza_nogeo.rds") |> 
   select(jurisdiction, overlay, type, area) |> 
@@ -395,8 +397,11 @@ hr_byr2
 
 
 hr_lots <- read_rds("data/hr/hr_vza_nogeo.rds")|> 
-  select(jurisdiction, abbrvname, overlay, hr_custom_fields_min1, hr_custom_fields_min2,
+  select(jurisdiction, abbrvname, overlay, type, hr_custom_fields_min1, hr_custom_fields_min2,
          hr_custom_fields_min3, hr_custom_fields_min4) 
+
+hr_min1 <- hr_lots |> 
+  group_by(jurisdiction)
 
 
 ```
