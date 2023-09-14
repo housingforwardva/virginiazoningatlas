@@ -298,7 +298,6 @@ This provides a general range of the minimum lot area required for housing in si
 #| label: fig-sfd-min
 #| fig-cap: "Average minimum lot area requirements in single-family detached only districts"
 
-
 # What is the average minimum lot size for each type of treatment? 
 # Blank fields should be treated as NA and should not be included in the mean calculation.
 
@@ -325,11 +324,11 @@ ggplot(hr_lots,
            color = metric)) +
   geom_point() +
   coord_flip() +
-  labs(title = "Average minimum lot area requirements in single-family detached only districts",
-       subtitle = "*In Acres*") +
+  labs(title = "Minimum lot area requirements in single-family detached only districts",
+       subtitle = "*Average minimum and maximum in acres*") +
   theme_hfv() +
   scale_y_continuous(breaks = seq(0, 4, 0.5)) +
-  theme(legend.position = "top") +
+  theme(legend.position = "right") +
   scale_color_hfv()
 
 ```
