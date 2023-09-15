@@ -224,7 +224,11 @@ hr_bps <- read_rds("data/hr/hr_bps.rds") |>
   summarise(units = sum(units)) |> 
   group_by(name_long) |> 
   mutate(total = sum(units)) |> 
-  mutate(name_long = str_remove(name_long, " City"))
+  mutate(name_long = str_remove(name_long, " City")) |> 
+  mutate(name_long = case_when(
+    name_long == "James County" ~ "James City County",
+    TRUE ~ name_long
+  ))
 
 hr_bps_summary <- hr_bps |> 
   group_by(type) |> 
@@ -251,18 +255,103 @@ ggplot(hr_bps,
 
 The bulk of new residential permits from 2010 to 2022 were single-family housing (64%), while most of the 5+ multifamily housing was constructed in Virginia Beach and Norfolk during this time. Throughout the region, few if any 2-4 unit housing (2%), typically referred to as [Missing Middle Housing](https://wparch.com/projects/urban-design-planning/missing-middle-pattern-book/), was constructed.
 
+Before the pandemic, home prices throughout the median single-family home price was \$250,000 in Q2 2019. Record low interest rates in across the nation during the pandemic led to a heated housing market as many millennials entered homeownership. With interest rate increases in recent months, the home sales have decreased, but prices and competition have not.
 
+As of Q2 2023, the median home price in the region sits at \$335,000. The biggest jumps in price were in James City County, Williamsburg, and Surry County. James City County has the highest median home price in the region at \$459,000, followed by York County (\$410,560) and Poquoson (\$400,000).
+)
 
 ```{r}
+#| label: fig-hr-price
+#| fig-cap: "Median home sales price in Hampton Roads"
 
 # What have home prices been like?
 
+# How to add arrows indicating direction on line segments??
+
+hr_var_price <- read_rds("data/hr/hr_var.rds") |> 
+  select(geography, period, name, med_price) |> 
+  mutate(year = substr(period, 1, 4)) |> 
+  mutate(year = as.numeric(year)) |> 
+  filter(period == "2023-06-30" | period == "2019-06-30") |> 
+  mutate(period = as.character(period)) |> 
+  select(geography, name, med_price, period) |> 
+  pivot_wider(names_from = period, 
+              values_from = med_price) |> 
+  mutate(latest = `2023-06-30`) |> 
+  pivot_longer(3:4,
+               names_to = "period",
+               values_to = "med_price") |> 
+  mutate(name = case_when(
+    name == "Virginia Beach-Norfolk-Newport News MSA" ~ "VB-Norfolk-NN MSA",
+    TRUE ~ name
+  )) |> 
+  mutate(name = str_remove(name, " City"))  |> 
+  mutate(name = case_when(
+    name == "James County" ~ "James City County",
+    TRUE ~ name
+  ))
+  
+
+
+ggplot(hr_var_price,
+       aes(x = reorder(name, latest),
+           y = med_price,
+           color  = period)) +
+  geom_point() +
+  coord_flip() +
+  theme_hfv() +
+  labs(title = "Median home sales price in Hampton Roads",
+       caption = "**Source:** Virginia REALTORS.") +
+  scale_y_continuous(labels = dollar_format()) +
+  scale_color_hfv()
+  
+
 
 ```
+Days on Market (DOM) is an indicator of how long it takes for a home to sell after being listed. Lower DOM can be indicative of higher demand and a heated market. A median DOM of 30 has been [suggested as indicating a balanced market](https://virginiarealtors.org/2022/04/14/is-five-months-of-supply-really-the-sign-of-a-healthy-housing-market/#:~:text=One%20possibility%20would%20be%20to,around%2030%20was%20in%202017). Before the pandemic (Q2 2019), the median days on market in many localities sat around 30. As of Q2 2023, the majority of localities have a median DOM below 15 days. In higher priced markets like Williamsburg, James City County, York County, and Virginia Beach, the median DOM is fewer than 10 days.
 
 ```{r}
+#| label: fig-hr-dom
+#| fig-cap: "Median days on market in Hampton Roads"
 
 # What has for-sale home supply been like?
+
+# How to add arrows indicating direction on line segments??
+
+hr_var_dom <- read_rds("data/hr/hr_var.rds") |> 
+  select(geography, name, period, med_dom)  |> 
+  mutate(year = substr(period, 1, 4)) |> 
+  mutate(year = as.numeric(year)) |> 
+  filter(period == "2023-06-30" | period == "2019-06-30") |> 
+  mutate(period = as.character(period)) |> 
+  select(geography, name, med_dom, period) |> 
+  pivot_wider(names_from = period, 
+              values_from = med_dom) |> 
+  mutate(latest = `2023-06-30`) |> 
+  pivot_longer(c(`2023-06-30`, `2019-06-30`),
+               names_to = "period",
+               values_to = "med_dom") |> 
+  mutate(name = case_when(
+    name == "Virginia Beach-Norfolk-Newport News MSA" ~ "VB-Norfolk-NN MSA",
+    TRUE ~ name
+  )) |> 
+  mutate(name = str_remove(name, " City"))  |> 
+  mutate(name = case_when(
+    name == "James County" ~ "James City County",
+    TRUE ~ name
+  ))
+
+ggplot(hr_var_dom,
+       aes(x = reorder(name, latest),
+           y = med_dom,
+           color = period)) +
+  geom_point() +
+  coord_flip() +
+  theme_hfv() +
+  labs(title = "Median days on market in Hampton Roads",
+       caption = "**Source:** Virginia REALTORS.")  +
+  scale_color_hfv()
+
 
 
 ```
@@ -518,7 +607,7 @@ hr_income |>
   
 
 ```
-The typical renter in most localities would struggle to afford the average asking rent (\$1,384 in Q2 2023) in the region and would struggle further to afford homeownership. Even with a higher median renter income in jurisdictions like Poquoson, York County, and Virginia Beach, renter households still face challenges. 
+The typical renter in most localities would struggle to afford the average asking rent (\$1,384 in Q2 2023) in the region and would struggle further to afford homeownership. Even with a higher median renter income in jurisdictions like Poquoson, York County, and Virginia Beach, renter households still face challenges. Based on these incomes, the typical renter could not afford the median sales price in the region of \$335,000. At best, the typical renter in Poquoson could afford the median sales price in Portsmouth, but nowhere else. 
 
 ```{r}
 
