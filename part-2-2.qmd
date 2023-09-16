@@ -94,12 +94,6 @@ hr_zoning_summary |>
   kable_styling(bootstrap_options = c("striped", "condensed"))
 
 
-formattable::formattable(hr_zoning_summary,  list(
-  `
-  
-))
-
-
 ```
 
 Zoning ordinances see amendments made over the years that eliminate, add, or refine language to better meet the needs of the community. But comprehensive rewrites following a comprehensive planning process can help ensure that zoning regulations align with future land use goals and changing demographics. From the table above, you can see that several localities have updated their zoning ordinances in recent years, while others have not had comprehensive update in decades.

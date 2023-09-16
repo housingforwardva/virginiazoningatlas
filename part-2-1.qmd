@@ -121,7 +121,9 @@ In most jurisdictions across Hampton Roads, households have been getting smaller
 Households are also aging in Hampton Roads. From 2010 to 2021, there was an increase of nearly 60,000 householders age 65 or older. There was only an increase of about 5,000 householders between the ages of 45 to 64 years old, while there was a net loss of householders 44 years old or younger. The loss of younger households in the region has significant impacts on the vitality of the region, leading to decreases in the labor force and tax base. As noted by Hamilton Lombard of the University of Virginia Weldon Cooper Center for Public Service, ["The military brings lots of young people to the area... but the region doesn’t offer enough other opportunities to retain them."](https://whro.org/news/local-news/40455-migration-into-flood-prone-areas-has-skyrocketed-but-hampton-roads-bucks-national-trend-new-analysis-shows?utm_source=enewsletter&utm_medium=enews&utm_term=text&utm_campaign=230816) 
 
 
-```{r}
+```{r} 
+#| label: fig-age
+#| fig-cap: "Change in householders  by age in Hampton Roads"
 
 hr_age <- read_rds("data/hr/hr_b25007.rds") |> 
   mutate(age = case_when(
