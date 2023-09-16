@@ -49,15 +49,15 @@ Zoning and geospatial analysis contributions were made by Christopher Newport Un
 
 It is the intent of the Virginia Zoning Atlas to track major changes to zoning ordinances and zoning maps with periodic updates.
 
-### Thanks to the sponsors of the Hampton Roads regional work
+### Sponsors
 
 ![](img/hr_sponsor_banner.png)
 
 ## Key Findings
 
--   Mixed with Residential zoning districts make up a small percentage of zoned land in most jurisdictions.
--   
--   
+-   Mixed with Residential zoning districts make up a small percentage of zoned land in most jurisdictions and only 3 percent of total developable land in the region.
+-   Sixty-nine percent of land in Hampton Roads is dedicated to single-family detached only housing zoning districts. In many localities, the percentage is much higher.
+-   The percent of land that you can build 2+ family housing is but a fraction of total developable land in most localities in Hampton Roads. Newport News (12%), Norfolk (11%), and Williamsburg (9%) stand out among their neighbors, but not by much.
 
 ## Zoning's impact in Hampton Roads
 
@@ -92,6 +92,12 @@ hr_zoning_summary <- read_csv("data/hr/hr_zoning_summary.csv")
 hr_zoning_summary |> 
   kable(col.names = c("Jurisdiction", "County or equivalent", "Government Type", "Date of Zoning Ordinance", "Number of Pages", "Number of base and overlay districts"), align = "lllccc") |> 
   kable_styling(bootstrap_options = c("striped", "condensed"))
+
+
+formattable::formattable(hr_zoning_summary,  list(
+  `
+  
+))
 
 
 ```
@@ -188,7 +194,9 @@ hr_sfd <- read_rds("data/hr/hr_vza_nogeo.rds") |> # Read in the data.
   group_by(jurisdiction, sfd) |> # Sum the total acres dedicated to single-family detached in each district.
   summarise(area = sum(area)) |> 
   group_by(jurisdiction) |> 
-  mutate(percent = area/sum(area)) |> # Calculate what percentage of total developable area is SFD.
+  mutate(percent = area/sum(area)) |> 
+  ungroup() |> 
+  mutate(total_hr = sum(area)) |> # Calculate what percentage of total developable area is SFD.
   filter(sfd == "t") 
 
 
@@ -442,7 +450,25 @@ hr_byr2 <- read_rds("data/hr/hr_byr_map.rds")
 hr_byr2 
 
 ```
+## Other Requirements
 
+In Hampton Roads, the additional regulations that localities place on different types of housing vary greatly. It is difficult to make one-to-one comparisons with specific requirements like minimum lot size, setbacks, and lot coverage, even with the National Zoning Atlas Methodology. 
+
+
+```{r}
+
+# Summarize some key requirements.
+
+# Minimum parking requirements for 4+ family in each locality
+
+# There are four localities that have minimum square footage requirements. Highlight those and what they require. Hampton, Poquoson, Franklin (for some), Southampton (for some)
+
+
+
+
+
+
+```
 
 ## Accessory Dwelling Units
 

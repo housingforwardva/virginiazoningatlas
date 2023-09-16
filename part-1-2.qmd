@@ -17,9 +17,13 @@ The methods to standardize zoning ordinances across multiple jurisdictions were 
 The methodology provides a way to translate and standardize district-specific regulations based on the treatment of certain residential uses. Currently, the methodology requires analysts to manually read through pages and pages of zoning ordinances. Geographic data needs to be collected and sometimes created. Information can be hard to track down and may only be stored on paper in a physical location in some cases.
 
 ::: callout-note
+
+## Be kind!
+
 Like the people who write zoning ordinances, we're human.
 
 As we conduct our analysis and numerous reviews of the same zoning ordinance, we may not get our analysis right the first or even third time around. We welcome your review and feedback on the accuracy of the data, but also keep in mind that we are following a methodology that may not align with your interpretation of your zoning ordinance. See next section for some of these discrepancies!
+
 :::
 
 ### Important Definitions
@@ -53,11 +57,25 @@ As we conduct our analysis and numerous reviews of the same zoning ordinance, we
 
 -   **Planned Residential Development (PRD)** "allows for a large number of housing units to be developed in accordance with a coordinated master plan, and offers flexibility with respect to grouping, placement, size, and use of structures. They may be permitted in multiple buildings, may be built on a single large lot or on many smaller lots (e.g., a subdivision on a large tract of land, though note that not all subdivisions are PRDs). They may include cluster developments that are planned to be denser than the zoning district otherwise allows."
 
+
 ## Why do this on a region-by-region basis?
 
 Housing market dynamics are deeply connected to the changing economic and demographic factors of entire regions, rather than a single locality. While renters and buyers may want to live a specific community, the lack of supply and affordability in one community often drives them to search for housing options within a region where they can still be close to their job, friend and family, and community amenities.
 
 While localities think of zoning and land use policy within their boundaries, their policy decisions have impact across an entire region.
+
+
+## Collaborative Team
+
+Currently, the Virginia Zoning Atlas is a collaborative effort of HousingForward Virginia and the Mercatus Center at George Mason University. We welcome additional partners to help complete the atlas.
+
+- State Director, Eric Mai (HousingForward Virginia)
+- Lead Zoning Analyst, Maria Dougherty (HousingForward Virginia)
+- Regional Leads, Eli Kahn & Emily Hamilton (Mercatus Center)
+
+Funding for the Virginia Zoning Atlas was provided by HousingForward Virginia supporters: Virginia Housing, the Mercatus Center at George Mason University, Williamsburg Health Foundation, Sentara, the Virginia REALTORS, VCDC, LISC Hampton Roads, Atlantic Union Bank, and Virginia Community Capital.
+
+
 
 
 

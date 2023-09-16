@@ -58,11 +58,6 @@ leaflet(hr_region) |>
 
 Although Hampton Roads is relatively more affordable than other regions across the nation and even the Commonwealth, wages and incomes have failed to keep pace with growing housing demand. These challenges are most impacting renter households, even those with higher incomes. 
 
-
-
-
-
-
 ## Population Trends
 
 From 2010 to 2022, the Hampton Roads has grown by over 85,000 new people (a five percent increase). Much of the growth in the region has been in less urban parts of the region, like James City County (+21%), Suffolk (+16%), Isle of Wight County (+14%), and Chesapeake (+14%). Some areas like Surry County (-7%) and even the City of Norfolk (-4%) had population decrease.
@@ -451,7 +446,7 @@ ggplot(hr_rv,
 
 The importance of affordable housing to a thriving economy cannot be overstated, as it directly impacts various facets of economic well-being. By providing stable living conditions and reducing the financial burden on households, affordable housing enhances workforce productivity and stability, ensuring that employees can live close to their workplaces. This proximity not only reduces commuting times but also supports local businesses and stimulates economic growth. Moreover, affordable housing fosters economic mobility, allowing individuals and families to invest in education, job training, and entrepreneurship, ultimately leading to higher incomes and reduced reliance on social services. Affordable housing is an economic catalyst that promotes financial security, encourages consumer spending, and contributes to a more equitable and thriving economy for all.
 
-A Jobs-Housing Fit ratio helps measure the imbalance between low-wage workers and housing that is affordable to them. For example, a ratio of 5.0 means that five low wage workers compete for every one home considered affordable to them. Ratios closer to 1.0 or 2.0 offer more balance assuming that there is only one worker per household. But keep in mind that these ratios are at the jurisdiction-level.
+A Jobs-Housing Fit ratio helps measure the imbalance between low-wage jobs and housing that is affordable to those jobs. For example, a ratio of 5.0 means that there are five low-wage jobs for every unit of housing that is affordable at that wage. Ratios closer to 1.0 or 2.0 offer more balance assuming that there is only one worker per household. When ratios are high, this means that more low-wage workers need to commute in for work, putting additional pressure on Hampton Roads traffic. But keep in mind that these ratios are at the jurisdiction-level.
 
 ```{r}
 #| label: fig-jobs-housing
@@ -477,7 +472,7 @@ ggplot(hr_jhf,
 
 
 ``` 
-Community-level jobs-housing fit is more indicative of the balance as low wage workers can find more stability from jobs that are close to them. This means that they can both live and work within a community, rather than having to commute out or move away to be closer to a job. Locating jobs closer to housing means shorter commute times for workers, but also overall reductions in traffic congestion. Public transportation infrastructure close to where low wage workers live and work can further help with economic stability and reduced traffic.
+As the jobs market shifts with the changing economy, we can better see the balance or imbalance at the Census Block Group-level. The Census Block Group is a more reasonable way to measure the Jobs-Housing Fit ratio as it can better account for employment centers at the neighborhood-scale. Locating jobs closer to housing means shorter commute times for workers, but also overall reductions in traffic congestion. Public transportation infrastructure close to where low wage workers live and work can further help with economic stability and reduced traffic.
 
 :::{.caution-note}
 
@@ -506,9 +501,9 @@ rc2 <- colorRampPalette(colors = c("#ADDCB1", "#011E41"), space = "Lab")(30)
 ## Combine the two color palettes
 rampcols <- c(rc1, rc2)
 
-ratio_bins <- c(0, 0.5, 1, 2, 5, 10, 50, 100, 205)
+ratio_bins <- c(0, 0.5, 1, 2, 5, 10, 50, 100, 550)
 
-pal <- colorBin(palette = rampcols, bins = ratio_bins, domain = (hr_blk_grps$ratio))
+pal <- colorBin(palette = rampcols, bins = ratio_bins, domain = (hr_blk_grps$ratio), na.color = "#011E41")
 
 leaflet(hr_blk_grps,) |> 
   addPolygons(

@@ -91,14 +91,15 @@ affordable_units <- rbind(b25056_data, b25061_data) |>
   summarise(units = sum(estimate))
 
 
-# hr_od_blocks <- read_rds("data/va_od_block.rds") |> 
-#   mutate(geoid = substr(geoid,1, 12)) |> 
-#   filter(variable == "SE01") |> 
-#   group_by(fips, geoid, label) |> 
-#   summarise(estimate = sum(estimate)) |> 
-#   right_join(affordable_units, by = "geoid")
-# 
-# write_rds(hr_od_blocks, "data/hr/hr_od_blk_grps.rds")
+hr_od_blocks <- read_rds("data/va_od_block.rds") |>
+  mutate(geoid = substr(w_geocode,1, 12)) |>
+  mutate(fips = w_fips) |> 
+  filter(variable == "SE01") |>
+  group_by(fips, geoid, label) |>
+  summarise(estimate = sum(estimate)) |>
+  right_join(affordable_units, by = "geoid")
+
+write_rds(hr_od_blocks, "data/hr/hr_od_blk_grps.rds")
 
 hr_od <- read_rds("data/hr/hr_od_blk_grps.rds")
 
@@ -147,7 +148,7 @@ library(leaflet)
 
 ratio_bins <- c(0, 0.5, 1, 1.5, 2, 10, 50, 100, 205)
 
-pal <- colorBin(palette = "Reds", bins = ratio_bins, domain = (hr_blk_grps$ratio))
+pal <- colorBin(palette = "Reds", bins = ratio_bins, domain = (hr_blk_grps$ratio), na.color = "#011E41")
 
 hr_jhfit <- leaflet(hr_blk_grps,) |> 
   addPolygons(
