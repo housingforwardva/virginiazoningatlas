@@ -128,7 +128,7 @@ Households are also aging in Hampton Roads. From 2010 to 2021, there was an incr
 
 ```{r}
 #| label: fig-age
-#| fig-cap: "Change in householders  by age in Hampton Roads"
+#| fig-cap: "Change in householders by age in Hampton Roads"
 
 hr_age <- read_rds("data/hr/hr_b25007.rds") |> 
   mutate(age = case_when(
@@ -146,7 +146,7 @@ hr_age <- read_rds("data/hr/hr_b25007.rds") |>
               values_from = estimate) |> 
   mutate(chg = `2021` - `2010`)
 
-subtitle_text <- "<span style = 'color:#259591'><b>Senior households</b></span> have grown significantly from 2010 to 2021, while millenial households are declining"
+subtitle_text <- "<span style = 'color:#259591'><b>Senior households</b></span> have grown <b>significantly</b> from 2010 to 2021"
 
 
 ggplot(hr_age,
