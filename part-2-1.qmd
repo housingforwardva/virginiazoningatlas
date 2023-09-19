@@ -1,6 +1,6 @@
 # Population and Housing Trends {#part-2-1}
 
-```{r} 
+```{r}
 #| label: setup
 
 # Load necessary packages.
@@ -19,6 +19,7 @@ library(kableExtra)
 library(ggtext)
 library(readr)
 library(zoo)
+library(patchwork)
 
 
 # Describe the Hampton Roads region. 
@@ -29,7 +30,7 @@ library(zoo)
 
 ```
 
-The [Hampton Roads Planning District Commission](https://www.hrpdcva.gov/) is comprised of 17 local governments, including ten independent cities, six counties, and the Town of Smithfield. 
+The [Hampton Roads Planning District Commission](https://www.hrpdcva.gov/) is comprised of 17 local governments, including ten independent cities, six counties, and the Town of Smithfield.
 
 ```{r}
 #| label: fig-hr-map
@@ -56,7 +57,7 @@ leaflet(hr_region) |>
 
 "[Housing in Hampton Roads is less affordable than Northern Virginia, other pricey areas](https://www.vpm.org/news/2022-11-07/housing-in-hampton-roads-is-less-affordable-than-northern-virginia-other-pricey)" by Ryan Murphy of WHRO brought major attention to the challenges faced by Hampton Roads residents. In Hampton Roads, 34 percent of households were cost-burdened in 2021, three percentage points more than households in the Washington, D.C. Metro Area (an area often cited for its unaffordability).
 
-Although Hampton Roads is relatively more affordable than other regions across the nation and even the Commonwealth, wages and incomes have failed to keep pace with growing housing demand. These challenges are most impacting renter households, even those with higher incomes. 
+Although Hampton Roads is relatively more affordable than other regions across the nation and even the Commonwealth, wages and incomes have failed to keep pace with growing housing demand. These challenges are most impacting renter households, even those with higher incomes.
 
 ## Population Trends
 
@@ -94,7 +95,11 @@ hr_pop_total <- read_rds("data/hr/hr_pop.rds") |>
   mutate(change = total_2022 - total_2010) |> 
   mutate(pchg = change/total_2010) |> 
   mutate(lpchg = (`2022` - `2010`)/`2010`) |> 
-  mutate(name_long = str_remove(name_long, " City"))
+  mutate(name_long = str_remove(name_long, " City")) |> 
+  mutate(name_long = case_when(
+    name_long == "James County" ~ "James City County",
+    TRUE ~ name_long
+  ))
          
 
 ggplot(hr_pop_total, # Read in the data.
@@ -102,7 +107,7 @@ ggplot(hr_pop_total, # Read in the data.
                       y = lpchg, # Plot the y-axis.
                       fill = lpchg)) + # Set the variable that will be colored.
   geom_col(position = "dodge") + # Set as a bar chart. 
-  geom_text(aes(label = percent(lpchg, 1), hjust = ifelse(lpchg >= 0, 0, 1), color = lpchg)) +
+  geom_text(aes(label = percent(lpchg, 2), hjust = ifelse(lpchg >= 0, 0, 1), color = lpchg)) +
   coord_flip() +
   theme_hfv() + # Apply custom HFV theme.
   add_zero_line("y") + # Add darker zero intercept line for emphasis.
@@ -116,12 +121,12 @@ ggplot(hr_pop_total, # Read in the data.
 
 
 ```
-In most jurisdictions across Hampton Roads, households have been getting smaller. From 2010 to 2021, the largest increases in households were among 1- and 2-person households, especially in Virginia Beach and Chesapeake. Three-person and 4-person or more households saw little growth, and in many cases declines during this time frame. Smaller household sizes have been [linked to growing financial challenges](https://www.pewresearch.org/short-reads/2015/05/08/ideal-size-of-the-american-family/). 
 
-Households are also aging in Hampton Roads. From 2010 to 2021, there was an increase of nearly 60,000 householders age 65 or older. There was only an increase of about 5,000 householders between the ages of 45 to 64 years old, while there was a net loss of householders 44 years old or younger. The loss of younger households in the region has significant impacts on the vitality of the region, leading to decreases in the labor force and tax base. As noted by Hamilton Lombard of the University of Virginia Weldon Cooper Center for Public Service, ["The military brings lots of young people to the area... but the region doesn’t offer enough other opportunities to retain them."](https://whro.org/news/local-news/40455-migration-into-flood-prone-areas-has-skyrocketed-but-hampton-roads-bucks-national-trend-new-analysis-shows?utm_source=enewsletter&utm_medium=enews&utm_term=text&utm_campaign=230816) 
+In most jurisdictions across Hampton Roads, households have been getting smaller. From 2010 to 2021, the largest increases in households were among 1- and 2-person households, especially in Virginia Beach and Chesapeake. Three-person and 4-person or more households saw little growth, and in many cases declines during this time frame. Smaller household sizes have been [linked to growing financial challenges](https://www.pewresearch.org/short-reads/2015/05/08/ideal-size-of-the-american-family/).
 
+Households are also aging in Hampton Roads. From 2010 to 2021, there was an increase of nearly 60,000 householders age 65 or older. There was only an increase of about 5,000 householders between the ages of 45 to 64 years old, while there was a net loss of householders 44 years old or younger. The loss of younger households in the region has significant impacts on the vitality of the region, leading to decreases in the labor force and tax base. As noted by Hamilton Lombard of the University of Virginia Weldon Cooper Center for Public Service, ["The military brings lots of young people to the area... but the region doesn't offer enough other opportunities to retain them."](https://whro.org/news/local-news/40455-migration-into-flood-prone-areas-has-skyrocketed-but-hampton-roads-bucks-national-trend-new-analysis-shows?utm_source=enewsletter&utm_medium=enews&utm_term=text&utm_campaign=230816)
 
-```{r} 
+```{r}
 #| label: fig-age
 #| fig-cap: "Change in householders  by age in Hampton Roads"
 
@@ -141,21 +146,31 @@ hr_age <- read_rds("data/hr/hr_b25007.rds") |>
               values_from = estimate) |> 
   mutate(chg = `2021` - `2010`)
 
+subtitle_text <- "<span style = 'color:#259591'><b>Senior households</b></span> have grown significantly from 2010 to 2021, while millenial households are declining"
+
 
 ggplot(hr_age,
        aes(x = age,
            y = chg,
-           fill = chg)) + 
+           fill = age)) + 
   geom_col() +
-  geom_text(aes(label = number_format(big.mark = ",", style_positive = "plus", style_negative = "minus")(chg), hjust = ifelse(chg >= 0, 0, 1), color = chg)) +
+  geom_text(aes(label = number_format(big.mark = ",", style_positive = "plus", style_negative = "minus")(chg), hjust = ifelse(chg >= 0, 0, 1), color = age)) +
   coord_flip() + 
   theme_hfv() +
-  scale_fill_gradientn(colours = c("#ADDCB1", "#46A88F", "#207A88", "#0F1A4E")) +
-  scale_color_gradientn(colours = c("#ADDCB1", "#46A88F", "#207A88", "#0F1A4E")) +
-  labs(title = "Change in households by age",
-       subtitle = "*From 2010 to 2021*",
+  scale_fill_hfv() +
+  scale_color_hfv() +
+  labs(title = "Change in householders by age",
+       subtitle = subtitle_text,
        caption = "**Source:** U.S. Census Bureau, ACS, 5-Year Estimates, Table B25007.") +
-  scale_y_continuous(labels = number_format(big.mark = ",", style_positive = "plus", style_negative = "minus"), limits = c(-10000, 70000))
+  scale_y_continuous(labels = number_format(big.mark = ",", style_positive = "plus", style_negative = "minus"), limits = c(-10000, 70000), breaks = seq(-10000, 70000, by = 10000)) + 
+  theme(panel.grid.major.y = element_line(color = "white"),
+        panel.grid.major.x = element_line(color = "#f5f5f5",size = 0.1)) +
+  plot_annotation(
+    theme = theme(
+    plot.subtitle = element_markdown(
+       margin = margin(b = 0.4, unit = 'cm'),
+        size = 11.5
+    )))
   
 
 
@@ -179,6 +194,7 @@ hr_hhsize <- read_rds("data/hr/hr_hhsize.rds") |>
   mutate(total_chg = sum(change)) |> 
   mutate(NAME = str_remove_all(NAME, " city"))
   
+subtitle_text <- "<span style = 'color:#011E41'><b>1-person</b></span> and <span style = 'color:#40C0C0'><b>2-person</span> households have grown the most from 2010 to 2021"
   
 ggplot(hr_hhsize,
        aes(x = reorder(NAME, total_chg),
@@ -190,10 +206,19 @@ ggplot(hr_hhsize,
   facet_wrap(~size, nrow =1) +
   scale_fill_hfv() +
   labs(title = "Change in household size in Hampton Roads",
-       subtitle = "From 2010 to 2021",
+       subtitle = subtitle_text,
        caption = "**Source:** U.S. Census Bureau. ACS 5-Year Estimates. Table B25009.") +
   add_zero_line(axis = "y") +
-  scale_y_continuous(labels = number_format(big.mark = ",", style_positive = "plus"))
+  scale_y_continuous(labels = number_format(big.mark = ",", style_positive = "plus")) + 
+  theme(panel.grid.major.y = element_line(color = "white"),
+        panel.grid.major.x = element_line(color = "#f5f5f5",size = 0.1)) +
+  plot_annotation(
+    theme = theme(
+    plot.subtitle = element_markdown(
+       margin = margin(b = 0.4, unit = 'cm'),
+        size = 11.5
+    )))
+  
 
 
 
@@ -231,6 +256,8 @@ hr_bps_summary <- hr_bps |>
   group_by(type) |> 
   summarise(units = sum(units)) |> 
   mutate(pct = units/sum(units))
+
+subtitle_text <- "Few, if any, <span style = 'color:#40C0C0'><b>2-4 unit housing</span> has been built between 2010 to 2022"
   
 
 ggplot(hr_bps,
@@ -242,10 +269,20 @@ ggplot(hr_bps,
   facet_wrap(~type) +
   theme_hfv() + 
   scale_fill_hfv() +
-  scale_y_continuous(labels = number_format(big.mark = ",")) +
+  scale_y_continuous(labels = number_format(big.mark = ",", style_positive = "plus")) +
   labs(title = "Total new residential building permits issued in Hampton Roads",
-       subtitle = "From 2010 to 2022",
-       caption = "**Source:** U.S. Census Bureau. Building Permits Survey.")
+       subtitle = subtitle_text,
+       caption = "**Source:** U.S. Census Bureau. Building Permits Survey.") + 
+  theme(panel.grid.major.y = element_line(color = "white"),
+        panel.grid.major.x = element_line(color = "#f5f5f5",size = 0.1),
+        axis.text.x = element_text(angle = 90)) +
+  plot_annotation(
+    theme = theme(
+    plot.subtitle = element_markdown(
+       margin = margin(b = 0.4, unit = 'cm'),
+        size = 11.5
+    )))
+  
 
 
 ```
@@ -254,8 +291,7 @@ The bulk of new residential permits from 2010 to 2022 were single-family housing
 
 Before the pandemic, home prices throughout the median single-family home price was \$250,000 in Q2 2019. Record low interest rates in across the nation during the pandemic led to a heated housing market as many millennials entered homeownership. With interest rate increases in recent months, the home sales have decreased, but prices and competition have not.
 
-As of Q2 2023, the median home price in the region sits at \$335,000. The biggest jumps in price were in James City County, Williamsburg, and Surry County. James City County has the highest median home price in the region at \$459,000, followed by York County (\$410,560) and Poquoson (\$400,000).
-)
+As of Q2 2023, the median home price in the region sits at \$335,000. The biggest jumps in price were in James City County, Williamsburg, and Surry County. James City County has the highest median home price in the region at \$459,000, followed by York County (\$410,560) and Poquoson (\$400,000). )
 
 ```{r}
 #| label: fig-hr-price
@@ -288,23 +324,35 @@ hr_var_price <- read_rds("data/hr/hr_var.rds") |>
     TRUE ~ name
   ))
   
+subtitle_text <- "In <span style = 'color:#011E41'><b>Q2 2019</b></span> and <span style = 'color:#40C0C0'><b>Q2 2023</span>"
 
 
 ggplot(hr_var_price,
        aes(x = reorder(name, latest),
            y = med_price,
            color  = period)) +
+  geom_line(size = 1, color = "grey") +
   geom_point() +
   coord_flip() +
   theme_hfv() +
   labs(title = "Median home sales price in Hampton Roads",
+       subtitle = subtitle_text,
        caption = "**Source:** Virginia REALTORS.") +
-  scale_y_continuous(labels = dollar_format()) +
-  scale_color_hfv()
+  scale_y_continuous(labels = dollar_format(), limits = c(100000, 500000)) +
+  scale_color_hfv() +
+  plot_annotation(
+    theme = theme(
+    plot.subtitle = element_markdown(
+       margin = margin(b = 0.4, unit = 'cm'),
+        size = 11.5
+    ))) + 
+  theme(panel.grid.major.y = element_line(color = "white"),
+        panel.grid.major.x = element_line(color = "#f5f5f5",size = 0.1))
   
 
 
 ```
+
 Days on Market (DOM) is an indicator of how long it takes for a home to sell after being listed. Lower DOM can be indicative of higher demand and a heated market. A median DOM of 30 has been [suggested as indicating a balanced market](https://virginiarealtors.org/2022/04/14/is-five-months-of-supply-really-the-sign-of-a-healthy-housing-market/#:~:text=One%20possibility%20would%20be%20to,around%2030%20was%20in%202017). Before the pandemic (Q2 2019), the median days on market in many localities sat around 30. As of Q2 2023, the majority of localities have a median DOM below 15 days. In higher priced markets like Williamsburg, James City County, York County, and Virginia Beach, the median DOM is fewer than 10 days.
 
 ```{r}
@@ -314,6 +362,9 @@ Days on Market (DOM) is an indicator of how long it takes for a home to sell aft
 # What has for-sale home supply been like?
 
 # How to add arrows indicating direction on line segments??
+subtitle_text <- "In <span style = 'color:#011E41'><b>Q2 2019</b></span> and <span style = 'color:#40C0C0'><b>Q2 2023</span>"
+
+library(patchwork)
 
 hr_var_dom <- read_rds("data/hr/hr_var.rds") |> 
   select(geography, name, period, med_dom)  |> 
@@ -342,12 +393,23 @@ ggplot(hr_var_dom,
        aes(x = reorder(name, latest),
            y = med_dom,
            color = period)) +
+  geom_line(size = 1, color = "grey") +
   geom_point() +
   coord_flip() +
   theme_hfv() +
   labs(title = "Median days on market in Hampton Roads",
+       subtitle = subtitle_text,
        caption = "**Source:** Virginia REALTORS.")  +
-  scale_color_hfv()
+  scale_color_hfv() +
+  plot_annotation(
+    theme = theme(
+    plot.subtitle = element_markdown(
+       margin = margin(b = 0.4, unit = 'cm'),
+        size = 11.5
+    ))) + 
+  theme(panel.grid.major.y = element_line(color = "white"),
+        panel.grid.major.x = element_line(color = "#f5f5f5",size = 0.1))
+  
 
 
 
@@ -363,6 +425,8 @@ hr_tenure <- read_rds("data/hr/hr_b25003.rds") |>
   mutate(year = as.character(year)) |> 
   mutate(NAME = str_remove(NAME, " city"))
 
+subtitle_text <- "In <span style = 'color:#011E41'><b>2010</b></span> and <span style = 'color:#40C0C0'><b>2021</span>"
+
 ggplot(hr_tenure,
        aes(x = reorder(NAME, pct),
            y = pct)) +
@@ -372,16 +436,24 @@ ggplot(hr_tenure,
   theme_hfv() +
   scale_y_continuous(labels = percent_format()) +
   labs(title = "Percent of renter households in Hampton Roads",
+       subtitle = subtitle_text,
        caption = "**Source:** U.S. Census Bureau, ACS, 5-Year Estimates, Table B25003.") +
-  theme(legend.position = "top") +
-  scale_color_hfv()
+  scale_color_hfv() +
+  plot_annotation(
+    theme = theme(
+    plot.subtitle = element_markdown(
+       margin = margin(b = 0.4, unit = 'cm'),
+        size = 11.5
+    ))) + 
+  theme(panel.grid.major.y = element_line(color = "white"),
+        panel.grid.major.x = element_line(color = "#f5f5f5",size = 0.1))
 
 
 ```
 
 The Hampton Roads rental market experienced stark changes during the COVID-19 pandemic, with significant leaps in average asking rent from 2021 to 2022. Previously, average asking rent had increased by \$10 to \$30 annually, but from 2021 to 2022, rent had increased by over \$100. By Q2 2023, the average asking rent was \$1,384, which would require a household to make \$55,360 to afford and not be cost-burdened.
 
-**For context, the HUD Area Median Income (AMI) limit for a two-person household at 50% AMI in the region is $37,400.**
+**For context, the HUD Area Median Income (AMI) limit for a two-person household at 50% AMI in the region is \$37,400.**
 
 ```{r}
 #| label: fig-hr-rent
@@ -395,7 +467,8 @@ hr_rent <- read_rds("data/hr/hr_costar.rds") |>
 
 ggplot(hr_rent,
        aes(x = quarters,
-           y = rent)) +
+           y = rent,
+           color = rent)) +
   geom_line() +
   geom_point() +
   theme_hfv() +
@@ -405,12 +478,14 @@ ggplot(hr_rent,
   theme(axis.text.x = element_text(angle = 90)) +
   labs(title = "Average asking rent in Hampton Roads",
        subtitle = "*Not adjusted for inflation*",
-       caption = "**Source:** CoStar Group, Inc.")
+       caption = "**Source:** CoStar Group, Inc.") + 
+  scale_color_gradientn(colours = c("#ADDCB1", "#46A88F", "#207A88", "#0F1A4E"))
+
 
 
 ```
 
-The rising rental prices are a sign of increasing demand. Subsequently, rental vacancy rates took a tumble from 2020 to 2021, with a historic low of 3.2% in Q2 and Q3 of 2021. Vacancy rates have since increased to 5.7% in Q2 2023 - still lower than any quarter before 2019. 
+The rising rental prices are a sign of increasing demand. Subsequently, rental vacancy rates took a tumble from 2020 to 2021, with a historic low of 3.2% in Q2 and Q3 of 2021. Vacancy rates have since increased to 5.7% in Q2 2023 - still lower than any quarter before 2019.
 
 ```{r}
 #| label: fig-hr-rv
@@ -431,7 +506,7 @@ ggplot(hr_rv,
   geom_point() +
   theme_hfv() +
   scale_y_continuous(labels = percent_format()) +
-  scale_x_yearqtr(breaks = seq(from = min(hr_rent$quarters), to = max(hr_rent$quarters), by = 1),
+  scale_x_yearqtr(breaks = seq(from = min(hr_rv$quarters), to = max(hr_rv$quarters), by = 1),
                   format = '%Y-Q%q') +
   theme(axis.text.x = element_text(angle = 90)) +
   labs(title = "Rental vacancy rate in Hampton Roads",
@@ -444,7 +519,6 @@ ggplot(hr_rv,
 ```
 
 ## Jobs Market
-
 
 The importance of affordable housing to a thriving economy cannot be overstated, as it directly impacts various facets of economic well-being. By providing stable living conditions and reducing the financial burden on households, affordable housing enhances workforce productivity and stability, ensuring that employees can live close to their workplaces. This proximity not only reduces commuting times but also supports local businesses and stimulates economic growth. Moreover, affordable housing fosters economic mobility, allowing individuals and families to invest in education, job training, and entrepreneurship, ultimately leading to higher incomes and reduced reliance on social services. Affordable housing is an economic catalyst that promotes financial security, encourages consumer spending, and contributes to a more equitable and thriving economy for all.
 
@@ -469,20 +543,22 @@ ggplot(hr_jhf,
   theme_hfv() +
   scale_y_continuous(expand = expansion(mult = c(0, 0.1))) +
   labs(title = "Jobs-Housing Fit in Hampton Roads.",
-       caption = "**Source:** U.S. Census Bureau. Longitudinal Employer-Household Dynamics & ACS, 5-Year Estimates, Table B25056 and B25061.")
+       caption = "**Source:** U.S. Census Bureau. Longitudinal Employer-Household Dynamics & ACS, 5-Year Estimates, Table B25056 and B25061.") + 
+  scale_fill_gradientn(colours = c("#ADDCB1", "#46A88F", "#207A88", "#0F1A4E")) + 
+  scale_color_gradientn(colours = c("#ADDCB1", "#46A88F", "#207A88", "#0F1A4E"))
 
 
 
-``` 
+```
+
 As the jobs market shifts with the changing economy, we can better see the balance or imbalance at the Census Block Group-level. The Census Block Group is a more reasonable way to measure the Jobs-Housing Fit ratio as it can better account for employment centers at the neighborhood-scale. Locating jobs closer to housing means shorter commute times for workers, but also overall reductions in traffic congestion. Public transportation infrastructure close to where low wage workers live and work can further help with economic stability and reduced traffic.
 
-:::{.caution-note}
+::: caution-note
+## Jobs-Housing Fit In Hampton Roads
 
-
-The map below shows the job-housing fit ratio at the Census Block Group-level based on a median earnings in 2020 for individuals with a high school degree in the Virginia Beach-Norfolk-Newport News, VA-NC Metro Area (Virginia part), which was \$32,507. Affordable rent at this earnings would be \$812.67. 
+The map below shows the job-housing fit ratio at the Census Block Group-level based on a median earnings in 2020 for individuals with a high school degree in the Virginia Beach-Norfolk-Newport News, VA-NC Metro Area (Virginia part), which was \$32,507. Affordable rent at this earnings would be \$812.67.
 
 Areas that are marked as NA have no affordable units.
-
 :::
 
 Many localities in Hampton Roads seemingly have a balanced ratio as a whole, but drilling down to the community-level shows that almost all localities have imbalanced areas (i.e. areas that have more low wage workers than housing affordable to those workers).
@@ -543,10 +619,11 @@ library(formattable)
 
 hr_occ <- read_rds("data/hr/hr_occ.rds") |> 
   select(occ_title, emp = tot_emp_2022, wage = a_median_2022, rent, ho_price) |> 
-  mutate(emp = label_number(big.mark = ",")(emp),
-         wage = dollar_format()(wage),
-         rent = dollar_format()(rent),
-         ho_price = dollar_format()(ho_price))
+  mutate(`Total Employment` = label_number(big.mark = ",")(emp),
+         `Average Annual Wage` = dollar_format()(wage),
+         `Affordable Rent` = dollar_format()(rent),
+         `Affordable Home Price` = dollar_format()(ho_price)) |> 
+  select(Industry = occ_title, `Total Employment`, `Average Annual Wage`, `Affordable Rent`, `Affordable Home Price`)
          
 
 hr_occ |> 
@@ -561,19 +638,30 @@ hr_occ |>
   kableExtra::kable_styling(
     bootstrap_options = c("hover", "condensed", "responsive", "striped")
     )
-  
+
+# unit.scale = function(x) (x - min(x)) / (max(x) - min(x))
+# 
+# occ_table <- formattable(
+#   hr_occ,
+#   align = c("l", "c", "c", "c", "c"),
+#   list(
+#     Industry = formatter("span", style = ~style(color = "grey", font.weight = "bold")), 
+#        `Total Employment` = color_bar("#ADDCB1", fun = unit.scale)))
+# 
+# 
+# occ_table
 
 ```
-:::{.callout-note}
 
+::: callout-note
 Determining what is affordable to a person can depend on a multitude of factors, but for the purposes of this analysis we made several assumptions to make informed estimates.
 
 For renters, we calculated what a monthly rent at 30% of an individual's income.
 
 For homebuyers, we calculated a home price based on a 30-year fixed rate mortgage at 7.18% (which was the U.S. weekly average as of August 31, 2023), a 3% minimum down payment, and a monthly tax and insurance of \$250.
-
 :::
-Renter
+
+
 ```{r}
 #| label: tbl-renter-income
 #| tbl-cap: "What can the typical renter afford in Hampton Roads?"
@@ -604,13 +692,8 @@ hr_income |>
   
 
 ```
-The typical renter in most localities would struggle to afford the average asking rent (\$1,384 in Q2 2023) in the region and would struggle further to afford homeownership. Even with a higher median renter income in jurisdictions like Poquoson, York County, and Virginia Beach, renter households still face challenges. Based on these incomes, the typical renter could not afford the median sales price in the region of \$335,000. At best, the typical renter in Poquoson could afford the median sales price in Portsmouth, but nowhere else. 
 
-```{r}
-
-# Should probably consider adding in something about median household income by race in the region?
-
-```
+The typical renter in most localities would struggle to afford the average asking rent (\$1,384 in Q2 2023) in the region and would struggle further to afford homeownership. Even with a higher median renter income in jurisdictions like Poquoson, York County, and Virginia Beach, renter households still face challenges. Based on these incomes, the typical renter could not afford the median sales price in the region of \$335,000. At best, the typical renter in Poquoson could afford the median sales price in Portsmouth, but nowhere else.
 
 Affordability challenges have continuously affected renter households the most in Hampton Roads. Over 50 percent of renters in the region are cost-burdened compared to 23 percent of homeowners. In recent years, cost burden has been affecting more and more higher income households. These trends can be directly tied to an increasing number of higher income households competing in the rental market due to lifestyle choices, but more often challenges in the homeownership market.
 
@@ -653,6 +736,60 @@ ggplot(hr_cb,
   
 
 ```
+Housing affordability is also an issue of equity...
 
+```{r}
+#| label: fig-race-inc
+#| fig-cap: "Median household income by race and ethnicity in Hampton Roads"
 
+# Should probably consider adding in something about median household income by race in the region?
 
+hr_race_inc <- read_rds("data/hr/hr_b19013.rds") |> 
+  filter(year == 2021)
+
+subtitle_text <- "In 2021, the wealth gap between <span style = 'color:#B1005F'><b>WHITE</b></span> and <span style = 'color:#40C0C0'><b>BLACK</span> households was <b>over $33,000 </b>"
+
+ggplot(hr_race_inc,
+       aes(x = reorder(race, estimate),
+           y = estimate,
+           fill = race)) +
+  geom_col(position = "dodge") +
+  theme_hfv() +
+  scale_fill_hfv() +
+  coord_flip() +
+  scale_y_continuous(labels = dollar_format(), expand = expansion(mult = c(0, 0.1))) + 
+  theme(panel.grid.major.y = element_line(color = "white"),
+        panel.grid.major.x = element_line(color = "#f5f5f5",size = 0.1)) +
+  labs(title = "Median household income by race and ethnicity",
+       subtitle = subtitle_text,
+       caption = "**Source:** U.S. Census Bureau, ACS, 5-Year Estimates, Table B19013B-H.") +
+  plot_annotation(
+    theme = theme(
+    plot.subtitle = element_markdown(
+       margin = margin(b = 0.4, unit = 'cm'),
+        size = 11.5
+    )))
+
+```
+```{r}
+#| label: fig-race-afford
+#| fig-cap: "Housing affordability by race and ethnicity"
+
+# Should probably consider adding in something about median household income by race in the region?
+
+hr_race_inc <- read_rds("data/hr/hr_b19013.rds") |> 
+  filter(year == 2021) |> 
+  select(race, rent, ho_price) |> 
+  mutate(rent = dollar(rent),
+         ho_price = dollar(ho_price))
+
+hr_race_inc <- hr_race_inc[order(hr_race_inc$rent, decreasing = TRUE),]
+
+hr_race_inc |> 
+  kable(row.names = FALSE,
+        col.names = c("Household Race/Ethnicity", "Affordable Rent", "Affordable Home Price"),
+        align = "lcc") |> 
+  kableExtra::kable_styling(
+    bootstrap_options = c("hover", "condensed", "responsive", "striped")
+    )
+```
