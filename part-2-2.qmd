@@ -90,7 +90,7 @@ hr_zoning_summary <- read_csv("data/hr/hr_zoning_summary.csv")
 
 
 hr_zoning_summary |> 
-  kable(col.names = c("Jurisdiction", "County or equivalent", "Government Type", "Date of Zoning Ordinance", "Number of Pages", "Number of base and overlay districts"), align = "lllccc") |> 
+  kbl(col.names = c("Jurisdiction", "County or equivalent", "Government Type", "Date of Zoning Ordinance", "Number of Pages", "Number of base and overlay districts"), align = "lllccc") |> 
   kable_styling(bootstrap_options = c("striped", "condensed"))
 
 
@@ -463,6 +463,42 @@ In Hampton Roads, the additional regulations that localities place on different 
 
 
 ```
+
+### Minimum dwelling square footage
+
+Two jurisdictions, the cities of Hampton and Poquoson, have minimum square footage requirements for housing. In Poquoson, the single-family minimum square footage requirement ranges from 950 square feet to 1,300 square feet. These are modest size homes that are typical.
+
+In Hampton, the minimum square footage ranges from 800 to 2,250 square feet. Large square footage requirements of 2,000 or more square feet exist in the R-13, R-22, and R-33 zoning districts (they also exist in the R-43 and R-LL districts, but they are not mapped).
+
+Visit the link [here](https://www.forbes.com/sites/instituteforjustice/2022/05/17/rules-requiring-people-to-buy-big-homes-are-pricing-americans-out-of-the-housing-market/?sh=7a5cd209f358) to learn more about how minimum dwelling sizes are impacting affordability.
+
+### Parking minimums
+
+When it comes to multifamily housing development, parking requirements can add up, reducing density, [increasing costs](https://www.brookings.edu/articles/parking-requirements-and-foundations-are-driving-up-the-cost-of-multifamily-housing/), and encouraging more frequent personal vehicle travel. Surface parking lots take up valuable developable land, while parking structures are quite costly.
+
+Eliminating or reducing parking minimums has gained [momentum across the nation](https://www.afslaw.com/perspectives/managing-automotive-blog/spaced-out-the-shift-away-minimum-parking-requirements). 
+
+The table below shows minimum parking requirements for multifamily housing developments of 4 or more units in each Hampton Roads locality:
+
+```{r}
+#| label: tbl-hr-parking
+#| tbl-cap: "Minimum parking requirements for "multifamily" housing in Hampton Roads"
+
+hr_parking <- read_csv("data/hr/hr_vza_parking.csv")
+
+hr_parking |> 
+  kbl(col.names = c("Jurisdiction", "1-Bedroom", "2-Bedroom", "3-Bedroom", "Vistor Space/Unit"),
+      align = "lcccc") |> 
+  kable_styling(bootstrap_options = c("striped", "condensed"))
+
+```
+Many jurisdictions in Hampton Roads adhere to similar off-street parking requirements for multifamily housing developments. Suffolk is notable for having the lowest parking minimums for multifamily housing, but, no jurisdiction has eliminated parking minimums.
+
+Newport News is notable because they have no parking requirements listed for multifamily buildings other than multiple-family attached buildings (i.e. garden-style apartments). Norfolk's parking requirements are wholly dependent on which Character District the zoning district lies within, therefore it ranges from 1.5 to 1.75 spaces.
+
+Planning for housing around public transportation routes can reduce traffic congestion and also increase community vitality. Light rail (like the Tide in Norfolk) or Bus Rapid Transit (BRT) can help make public transportation faster, more efficient, and attractive to a broad range of residents. 
+
+Visit the link [here](https://www.planning.org/planning/2018/oct/peopleoverparking/) to hear from a planner's perspective on parking.
 
 ## Accessory Dwelling Units
 
