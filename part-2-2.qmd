@@ -140,7 +140,25 @@ ggplot(hr_type_summary,
 
 Roughly 90 percent of developable land is **Primarily Residential**. This includes prime agricultural land in the southern parts of Hampton Roads, where the preservation of open space and natural resources is a vital part of the region. Only three percent of the region's developable land is classified as **Mixed with Residential**. Locally, Williamsburg (22%), York County (14%), and Newport News (13%) have the largest proportions of Mixed with Residential zoning types, while Surry County (0%), Southampton County (0%), and Isle of Wight County (less than 1%) have the least.
 
-Walkable, mixed use communities are [increasingly desirable among all age groups](https://www.strongtowns.org/journal/2023/7/25/realtors-buyers-will-pay-extra-for-walkable-neighborhoods). The ability to reach work, shopping, and leisure activities within walking distance supports healthy communities, but also supports diverse local business and job opportunities (think of areas like like Ghent in Norfolk or the ViBe District in Virginia Beach).
+***Williamsburg has the greatest percentage of Mixed with Residential zoning in the region.***
+
+![The City of Williamsburg by type of zoning district](img/williamsburg_highlight.png){fig-align="center"}
+
+***Surry County and Southampton County have no zoning districts that allow for a mix of residential and nonresidential uses.***
+
+![Surry County by type of zoning district](img/surry_highlight.png){fig-align="center"}
+
+![Southampton County by type of zoning district](img/southampton_highlight.png){fig-align="center"}
+
+Walkable, mixed use communities are [increasingly desirable among all age groups](https://www.strongtowns.org/journal/2023/7/25/realtors-buyers-will-pay-extra-for-walkable-neighborhoods). The ability to reach work, shopping, and leisure activities within walking distance supports healthy communities, but also supports diverse local business and job opportunities (think of areas like like Ghent in Norfolk or the ViBe District in Virginia Beach). These neighborhoods have a mix of zoning districts, as well as single districts that allow for a diverse range of uses.
+
+![Intersection of Colley Ave and W. 23rd Street in Norfolk](img/colley_23rd_norfolk.png)
+
+Downtown areas in many cities across the nation have seen resurgences in recent years due to investment by local businesses and entrepreneurs. In addition, the construction of new housing or adaptive reuse of older buildings has also spurred the move to downtowns by people of all ages.
+
+While there are constraints to downtown development in places like Newport News, increasing mixed use zoning
+
+![Downtown Newport News](img/downtown_newportnews.png)
 
 ## Single-Family Detached Housing
 
@@ -281,20 +299,17 @@ ggplot(hr_sfd,
 
 ### Minimum lot sizes
 
-Making generalizations about minimum lot sizes is difficult due to their variations depending on development context. Smaller lot sizes are more reasonable where public water and sewer infrastructure exist, while large lot sizes are more conducive to private well and septic systems. In some cases, smaller lot sizes can be reached by undertaking cluster development techniques that help preserve open space or a planned residential development. 
+Making generalizations about minimum lot sizes is difficult due to their variations depending on development context. Smaller lot sizes are more reasonable where public water and sewer infrastructure exist, while large lot sizes are more conducive to private well and septic systems. In some cases, smaller lot sizes can be reached by undertaking cluster development techniques that help preserve open space or a planned residential development.
 
 We focused on the lot requirements for single-family detached homes, as many experts have referenced the importance of reducing lot sizes to promote affordability and reduce impacts on the environment.
 
-:::{.callout-note}
-
+::: callout-note
 The following chart focuses on single-family detached only zoning districts.
 
 In order to conduct an analysis with varying minimum lot requirements depending on district context (i.e. connection to public water and sewer, or requirements dependent on predominant lot size), we captured the minimum and maximum value listed. For example, a locality may require a minimum lot area of 0.69 acres if not connected to public infrastructure, but would require a minimum lot area of 0.23 if connected. Therefore, we collected the minimum value (0.23 acres) and the maximum value (0.69 acres). We then averaged the minimum value and the maximum value within each jurisdiction.
 
 This provides a general range of the minimum lot area required for housing in single-family detached only zoning districts.
-
 :::
-
 
 ```{r}
 #| label: fig-sfd-min
@@ -382,7 +397,7 @@ hr_byright_tbl |>
 
 ```
 
-Overwhelmingly, single-family is welcomed (without a public hearing) in nearly every locality by a wide margin, while 2+ family housing is only allowed by-right by less than seven percent in most localities. Areas like Newport News, Norfolk, and Williamsburg stand out as allowing much more than their neighbors. Portsmouth is notable for its allowance of duplexes and triplexes. But overall, only about two percent of developable land in Hampton Roads allows for 2+ family housing by-right. 
+Overwhelmingly, single-family is welcomed (without a public hearing) in nearly every locality by a wide margin, while 2+ family housing is only allowed by-right by less than seven percent in most localities. Areas like Newport News, Norfolk, and Williamsburg stand out as allowing much more than their neighbors. Portsmouth is notable for its allowance of duplexes and triplexes. But overall, only about two percent of developable land in Hampton Roads allows for 2+ family housing by-right.
 
 ```{r}
 #| label: fig-2plus
@@ -429,7 +444,8 @@ ggplot(hr_byright,
 
 
 ```
-The map below shows the location of zoning districts that allow for 2+ family by-right. 
+
+The map below shows the location of zoning districts that allow for 2+ family by-right.
 
 ```{r}
 #| label: fig-byr2-map
@@ -444,10 +460,18 @@ hr_byr2 <- read_rds("data/hr/hr_byr_map.rds")
 hr_byr2 
 
 ```
+
+Urban areas like the City of Hampton stand out for the lack of developable land that allows for 4+-Family housing by-right. Although largely built out, there are many opportunities where redevelopment of older commercial strips could be rezoned to include a mix of housing and commercial uses, like areas around the Hampton Convention Center or Peninsula Town Center.
+
+![Where 4+-Family is allowed by-right in Hampton](img/hampton_highlight.png)
+
+Virginia Beach also has opportunities along its major corridors like Virginia Beach Boulevard, Princess Anne Road, and Laskin Road.
+
+![Where 4+-Family is allowed by-right in Virginia Beach](img/vb_highlight.png)
+
 ## Other Requirements
 
-In Hampton Roads, the additional regulations that localities place on different types of housing vary greatly. It is difficult to make one-to-one comparisons with specific requirements like minimum lot size, setbacks, and lot coverage, even with the National Zoning Atlas Methodology. 
-
+In Hampton Roads, the additional regulations that localities place on different types of housing vary greatly. It is difficult to make one-to-one comparisons with specific requirements like minimum lot size, setbacks, and lot coverage, even with the National Zoning Atlas Methodology.
 
 ```{r}
 
@@ -476,13 +500,13 @@ Visit the link [here](https://www.forbes.com/sites/instituteforjustice/2022/05/1
 
 When it comes to multifamily housing development, parking requirements can add up, reducing density, [increasing costs](https://www.brookings.edu/articles/parking-requirements-and-foundations-are-driving-up-the-cost-of-multifamily-housing/), and encouraging more frequent personal vehicle travel. Surface parking lots take up valuable developable land, while parking structures are quite costly.
 
-Eliminating or reducing parking minimums has gained [momentum across the nation](https://www.afslaw.com/perspectives/managing-automotive-blog/spaced-out-the-shift-away-minimum-parking-requirements). 
+Eliminating or reducing parking minimums has gained [momentum across the nation](https://www.afslaw.com/perspectives/managing-automotive-blog/spaced-out-the-shift-away-minimum-parking-requirements).
 
 The table below shows minimum parking requirements for multifamily housing developments of 4 or more units in each Hampton Roads locality:
 
 ```{r}
-#| label: tbl-hr-parking
-#| tbl-cap: "Minimum parking requirements for "multifamily" housing in Hampton Roads"
+#| label: tbl-min-parking
+#| tbl-cap: "Minimum parking requirements for 'multifamily' housing in Hampton Roads"
 
 hr_parking <- read_csv("data/hr/hr_vza_parking.csv")
 
@@ -492,24 +516,22 @@ hr_parking |>
   kable_styling(bootstrap_options = c("striped", "condensed"))
 
 ```
+
 Many jurisdictions in Hampton Roads adhere to similar off-street parking requirements for multifamily housing developments. Suffolk is notable for having the lowest parking minimums for multifamily housing, but, no jurisdiction has eliminated parking minimums.
 
 Newport News is notable because they have no parking requirements listed for multifamily buildings other than multiple-family attached buildings (i.e. garden-style apartments). Norfolk's parking requirements are wholly dependent on which Character District the zoning district lies within, therefore it ranges from 1.5 to 1.75 spaces.
 
-Planning for housing around public transportation routes can reduce traffic congestion and also increase community vitality. Light rail (like the Tide in Norfolk) or Bus Rapid Transit (BRT) can help make public transportation faster, more efficient, and attractive to a broad range of residents. 
+Planning for housing around public transportation routes can reduce traffic congestion and also increase community vitality. Light rail (like the Tide in Norfolk) or Bus Rapid Transit (BRT) can help make public transportation faster, more efficient, and attractive to a broad range of residents.
 
 Visit the link [here](https://www.planning.org/planning/2018/oct/peopleoverparking/) to hear from a planner's perspective on parking.
 
 ## Accessory Dwelling Units
 
-Accessory dwelling units (ADUs) have been a growing interest among homeowners as they look for ways to increase income, house a family member with special needs, or simply make their home more functional for their family. 
+Accessory dwelling units (ADUs) have been a growing interest among homeowners as they look for ways to increase income, house a family member with special needs, or simply make their home more functional for their family.
 
-:::{.callout-caution}
-
+::: callout-caution
 Remember that the National Zoning Atlas Methodology includes caretaker or watchman's quarters associated with a nonresidential use. It also includes a single dwelling above a commercial or retail use.
-
 :::
-
 
 ```{r}
 #| label: fig-hr-adus
@@ -546,10 +568,9 @@ ggplot(hr_adu,
 
 Many localities across Hampton Roads address ADUs in their zoning ordinances, while a few (the Town of Surry, Chesapeake and Newport News) make no mention of them at all. It is also important to note that while localities may be generous with the allowance of ADUs, others place additional restrictions on how they can be used.
 
-
 ```{r}
-#| label: fig-hr-adu-restrictions
-#| fig-cap: "Summary of ADU regulations in Hampton Roads"
+#| label: tbl-hr-adu-restrictions
+#| tbl-cap: "Summary of ADU regulations in Hampton Roads"
 
 # Create a table for the following csv.
 # https://frontierinstitute.org/reports/the-montana-zoning-atlas-2-0/ use this as an example 
@@ -566,6 +587,10 @@ hr_adu_summary |>
 ```
 
 The City of Virginia Beach is notable because it has two different instances of ADUs in its zoning ordinance: [Flex Suites](https://library.municode.com/va/virginia_beach/codes/code_of_ordinances?nodeId=CO_APXAZOOR_ART5REDI_S507FLSU) and [ancillary single-family dwellings](https://library.municode.com/va/virginia_beach/codes/code_of_ordinances?nodeId=CO_APXAZOOR_ART19OLBEOVDI_S1903USRE).
+
+ADU regulations aren't standard across the region, while some do not even allow for them. Places like Newport News could benefit from ADUs to support an aging population.
+
+![Where ADUs are allowed by-right](img/adu_highlight.png){fig-align="center"}
 
 ## Access to Transit
 
@@ -595,9 +620,10 @@ This map shows that many 2+ housing options are made available within bus stops,
 
 ## Affordable housing need
 
-Housing affordability is important to households at all income-levels. But for low-wage workers, affordable housing can prevent housing instability in times of personal or economic crisis. Housing at higher densities often faces opposition from existing residents due to misconceptions about its impact on their community. The public approval process often prevents this type of housing from being constructed, especially affordable housing, in places where low-income households need it the most. 
+Housing affordability is important to households at all income-levels. But for low-wage workers, affordable housing can prevent housing instability in times of personal or economic crisis. Housing at higher densities often faces opposition from existing residents due to misconceptions about its impact on their community. The public approval process often prevents this type of housing from being constructed, especially affordable housing, in places where low-income households need it the most.
 
 The map below shows Census Block Groups where more the jobs-housing fit ratio is greater than 2.0 (i.e. where there are more than two low-wage workers for every unit of affordable rental housing). And it shows where 4+ family housing can be built by-right.
+
 ```{r}
 #| label: fig-by4-jhf
 #| fig-cap: "Zoning districts allowing for 4+ family by-right and Census Block Groups with a Jobs-Housing Fit above 2.0"
@@ -624,4 +650,4 @@ hr_byr4 |>
 
 ```
 
-There are many areas of the region where 4+ family must go through the public approval process, particularly in areas where it is needed the most. With housing cost burden a growing issue for renters in the region, 
+There are many areas of the region where 4+ family must go through the public approval process, particularly in areas where it is needed the most. With housing cost burden a growing issue for renters in the region,
