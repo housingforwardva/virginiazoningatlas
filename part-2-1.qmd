@@ -36,9 +36,9 @@ The [Hampton Roads Planning District Commission](https://www.hrpdcva.gov/) is co
 #| label: fig-hr-map
 #| fig-cap: "Hampton Roads"
 
-# Load Hampton Roads geospatial file.
+# The following is a map of Hampton Roads localities including towns.
 
-hr_region <- read_rds("data/hr/hr_region.rds")
+hr_region <- read_rds("data/hr/hr_region.rds") # Load in Hampton Roads geojson as rds.
 
 # Map in leaflet.
 
@@ -49,7 +49,6 @@ leaflet(hr_region) |>
               color = "white", # Set polygon outline color.
               fillOpacity = 0.8, # Set polygon fill color transparency.
               popup = hr_region$Jurisdiction) # Set pop-up to jurisdiction name.
-
 
 ```
 
@@ -84,24 +83,23 @@ From 2010 to 2022, the Hampton Roads has grown by over 85,000 new people (a five
 #   )) |> 
 #   filter(year == 2022)
 
-hr_pop_total <- read_rds("data/hr/hr_pop.rds") |> 
-  mutate(year = as.numeric(year)) |> 
-  filter(year == 2010 | year == 2022) |> 
-  select(name_long, year, value) |> 
-  pivot_wider(names_from = year,
+hr_pop_total <- read_rds("data/hr/hr_pop.rds") |> # Load in population data for Hampton Roads.
+  mutate(year = as.numeric(year)) |> # Convert the year column to a number instead of character.
+  filter(year == 2010 | year == 2022) |> # Filter for earliest and latest year.
+  select(name_long, year, value) |> # Select only needed fields.
+  pivot_wider(names_from = year, 
               values_from = value) |> 
   mutate(total_2010 = sum(`2010`),
          total_2022 = sum(`2022`)) |> 
-  mutate(change = total_2022 - total_2010) |> 
-  mutate(pchg = change/total_2010) |> 
-  mutate(lpchg = (`2022` - `2010`)/`2010`) |> 
-  mutate(name_long = str_remove(name_long, " City")) |> 
-  mutate(name_long = case_when(
+  mutate(change = total_2022 - total_2010) |> # Calculate change in population for entire region.
+  mutate(pchg = change/total_2010) |> # Calculate percent change in population for entire region.
+  mutate(lpchg = (`2022` - `2010`)/`2010`) |> # Calculate percent change for each locality.
+  mutate(name_long = str_remove(name_long, " City")) |> # Remove " City" from each locality.
+  mutate(name_long = case_when( # Add back in City to James City County.
     name_long == "James County" ~ "James City County",
     TRUE ~ name_long
   ))
          
-
 ggplot(hr_pop_total, # Read in the data.
                   aes(x = reorder(name_long, lpchg), # Plot the x-axis.
                       y = lpchg, # Plot the y-axis.
@@ -118,8 +116,6 @@ ggplot(hr_pop_total, # Read in the data.
   scale_fill_gradientn(colours = c("#ADDCB1", "#46A88F", "#207A88", "#0F1A4E")) +
   scale_color_gradientn(colours = c("#ADDCB1", "#46A88F", "#207A88", "#0F1A4E"))
 
-
-
 ```
 
 In most jurisdictions across Hampton Roads, households have been getting smaller. From 2010 to 2021, the largest increases in households were among 1- and 2-person households, especially in Virginia Beach and Chesapeake. Three-person and 4-person or more households saw little growth, and in many cases declines during this time frame. Smaller household sizes have been [linked to growing financial challenges](https://www.pewresearch.org/short-reads/2015/05/08/ideal-size-of-the-american-family/).
@@ -130,8 +126,8 @@ Households are also aging in Hampton Roads. From 2010 to 2021, there was an incr
 #| label: fig-age
 #| fig-cap: "Change in householders by age in Hampton Roads"
 
-hr_age <- read_rds("data/hr/hr_b25007.rds") |> 
-  mutate(age = case_when(
+hr_age <- read_rds("data/hr/hr_b25007.rds") |> # Load in saved data for age of householders in Hampton Roads.
+  mutate(age = case_when( # Create fewer age groupings.
     age == "Householder 15 to 24 years" ~ "34 years or below",
     age == "Householder 35 to 44 years" ~ "35 to 44 years",
     age == "Householder 45 to 54 years" ~ "45 to 64 years",
@@ -139,22 +135,24 @@ hr_age <- read_rds("data/hr/hr_b25007.rds") |>
     age == "Householder 60 to 64 years" ~ "45 to 64 years",
     TRUE ~ "65 years and over"
   )) |> 
-  group_by(year, age) |> 
-  summarise(estimate = sum(estimate)) |> 
-  filter(year == 2010 | year == 2021) |> 
-  pivot_wider(names_from = year,
+  group_by(year, age) |> # Group by age year and age.
+  summarise(estimate = sum(estimate)) |> # Aggregate.
+  filter(year == 2010 | year == 2021) |> # Filter for latest and earliest year.
+  pivot_wider(names_from = year, # Pivot to calculate the change.
               values_from = estimate) |> 
-  mutate(chg = `2021` - `2010`)
+  mutate(chg = `2021` - `2010`) # Caclulate the change from 2010 to 2021.
 
 subtitle_text <- "<span style = 'color:#259591'><b>Senior households</b></span> have grown <b>significantly</b> from 2010 to 2021"
-
 
 ggplot(hr_age,
        aes(x = age,
            y = chg,
            fill = age)) + 
   geom_col() +
-  geom_text(aes(label = number_format(big.mark = ",", style_positive = "plus", style_negative = "minus")(chg), hjust = ifelse(chg >= 0, 0, 1), color = age)) +
+  geom_text(aes(label = number_format(big.mark = ",", 
+                                      style_positive = "plus", 
+                                      style_negative = "minus")(chg), 
+                hjust = ifelse(chg >= 0, 0, 1), color = age)) +
   coord_flip() + 
   theme_hfv() +
   scale_fill_hfv() +
@@ -172,8 +170,6 @@ ggplot(hr_age,
         size = 11.5
     )))
   
-
-
 ```
 
 ```{r}
@@ -182,17 +178,17 @@ ggplot(hr_age,
 
 # Create a visualization that shows the change in household size from 2010 to 2021 in each locality. Describe the trend in household size changes. Where are larger households seeing growth? Smaller households?
 
-hr_hhsize <- read_rds("data/hr/hr_hhsize.rds") |> 
-  group_by(NAME, year, size) |> 
+hr_hhsize <- read_rds("data/hr/hr_hhsize.rds") |> # Read in household size data.
+  group_by(NAME, year, size) |> # Aggregate to locality, year, and household size.
   summarise(estimate = sum(estimate)) |> 
-  filter(year == 2010 | year == 2021) |> 
-  mutate(year = as.character(year)) |> 
+  filter(year == 2010 | year == 2021) |> # Filter for latest and earliest years.
+  mutate(year = as.character(year)) |> # Convert year to a character.
   pivot_wider(names_from = year,
               values_from = estimate) |> 
-  mutate(change = `2021` - `2010`) |> 
-  group_by(NAME) |> 
-  mutate(total_chg = sum(change)) |> 
-  mutate(NAME = str_remove_all(NAME, " city"))
+  mutate(change = `2021` - `2010`) |> # Calculate the change from 2010 to 2021.
+  group_by(NAME) |> # Group by locality. 
+  mutate(total_chg = sum(change)) |> # Calculate total change in order to order bar chart.
+  mutate(NAME = str_remove_all(NAME, " city")) # Remove " city" from all locality names.
   
 subtitle_text <- "<span style = 'color:#011E41'><b>1-person</b></span> and <span style = 'color:#40C0C0'><b>2-person</span> households have grown the most from 2010 to 2021"
   
@@ -218,9 +214,6 @@ ggplot(hr_hhsize,
        margin = margin(b = 0.4, unit = 'cm'),
         size = 11.5
     )))
-  
-
-
 
 ```
 
@@ -236,30 +229,31 @@ These trends among many others drive housing demand. As you read further, it is 
 
 # Create a visualization that shows where housing is being built. Where is more diverse housing being built? Where is single-family housing being built the most? How does that compare to population growth in those localities?
 
-hr_bps <- read_rds("data/hr/hr_bps.rds") |> 
-  mutate(type = case_when(
+hr_bps <- read_rds("data/hr/hr_bps.rds") |> # Load in Building Permits Survey data.
+  mutate(type = case_when( # Group "Missing Middle" housing together.
     type == "2-units" ~ "2-4 units",
     type == "3-4 units" ~ "2-4 units",
     TRUE ~ type
   )) |> 
-  group_by(name_long, type) |> 
+  group_by(name_long, type) |> # Aggregate to locality and housing type.
   summarise(units = sum(units)) |> 
-  group_by(name_long) |> 
-  mutate(total = sum(units)) |> 
-  mutate(name_long = str_remove(name_long, " City")) |> 
-  mutate(name_long = case_when(
+  group_by(name_long) |> # Group by locality.
+  mutate(total = sum(units)) |> # Calculate the total number of new permits for entire time period.
+  mutate(name_long = str_remove(name_long, " City")) |> # Remove " City" from locality names.
+  mutate(name_long = case_when( # Add "City" back to James City County.
     name_long == "James County" ~ "James City County",
     TRUE ~ name_long
   ))
 
+# Summarize the percentage of units developed by type for the narrative.
+
 hr_bps_summary <- hr_bps |> 
-  group_by(type) |> 
+  group_by(type) |> # Aggregate by housing type.
   summarise(units = sum(units)) |> 
-  mutate(pct = units/sum(units))
+  mutate(pct = units/sum(units)) # Calculate the percentage of type of units for the region.
 
 subtitle_text <- "Few, if any, <span style = 'color:#40C0C0'><b>2-4 unit housing</span> has been built between 2010 to 2022"
   
-
 ggplot(hr_bps,
        aes(x = reorder(name_long, total),
            y = units,
@@ -291,7 +285,7 @@ The bulk of new residential permits from 2010 to 2022 were single-family housing
 
 Before the pandemic, home prices throughout the median single-family home price was \$250,000 in Q2 2019. Record low interest rates in across the nation during the pandemic led to a heated housing market as many millennials entered homeownership. With interest rate increases in recent months, the home sales have decreased, but prices and competition have not.
 
-As of Q2 2023, the median home price in the region sits at \$335,000. The biggest jumps in price were in James City County, Williamsburg, and Surry County. James City County has the highest median home price in the region at \$459,000, followed by York County (\$410,560) and Poquoson (\$400,000). )
+As of Q2 2023, the median home price in the region sits at \$335,000. The biggest jumps in price were in James City County, Williamsburg, and Surry County. James City County has the highest median home price in the region at \$459,000, followed by York County (\$410,560) and Poquoson (\$400,000).
 
 ```{r}
 #| label: fig-hr-price
@@ -302,15 +296,15 @@ As of Q2 2023, the median home price in the region sits at \$335,000. The bigges
 # How to add arrows indicating direction on line segments??
 
 hr_var_price <- read_rds("data/hr/hr_var.rds") |> 
-  select(geography, period, name, med_price) |> 
+  select(geography, period, name, adj_price) |> 
   mutate(year = substr(period, 1, 4)) |> 
   mutate(year = as.numeric(year)) |> 
-  filter(period == "2023-06-30" | period == "2019-06-30") |> 
+  filter(period == "2023 Q2" | period == "2019 Q2") |> 
   mutate(period = as.character(period)) |> 
-  select(geography, name, med_price, period) |> 
+  select(geography, name, adj_price, period) |> 
   pivot_wider(names_from = period, 
-              values_from = med_price) |> 
-  mutate(latest = `2023-06-30`) |> 
+              values_from = adj_price) |> 
+  mutate(latest = `2023 Q2`) |> 
   pivot_longer(3:4,
                names_to = "period",
                values_to = "med_price") |> 
@@ -331,13 +325,14 @@ ggplot(hr_var_price,
        aes(x = reorder(name, latest),
            y = med_price,
            color  = period)) +
+  theme_hfv() +
   geom_line(size = 1, color = "grey") +
   geom_point() +
+  geom_text(data = subset(hr_var_price, name %in% c("James City County",  "VB-Norfolk-NN MSA", "Portsmouth")),aes(label = dollar(med_price), hjust = ifelse(period == "2023 Q2", -0.25, 1.25))) +
   coord_flip() +
-  theme_hfv() +
   labs(title = "Median home sales price in Hampton Roads",
        subtitle = subtitle_text,
-       caption = "**Source:** Virginia REALTORS.") +
+       caption = "**Source:** Virginia REALTORS, adjusted to Q2 2023 dollars.") +
   scale_y_continuous(labels = dollar_format(), limits = c(100000, 500000)) +
   scale_color_hfv() +
   plot_annotation(
@@ -347,7 +342,7 @@ ggplot(hr_var_price,
         size = 11.5
     ))) + 
   theme(panel.grid.major.y = element_line(color = "white"),
-        panel.grid.major.x = element_line(color = "#f5f5f5",size = 0.1))
+        panel.grid.major.x = element_line(color = "#dadada",size = 0.2))
   
 
 
@@ -370,13 +365,13 @@ hr_var_dom <- read_rds("data/hr/hr_var.rds") |>
   select(geography, name, period, med_dom)  |> 
   mutate(year = substr(period, 1, 4)) |> 
   mutate(year = as.numeric(year)) |> 
-  filter(period == "2023-06-30" | period == "2019-06-30") |> 
+  filter(period == "2023 Q2" | period == "2019 Q2") |> 
   mutate(period = as.character(period)) |> 
   select(geography, name, med_dom, period) |> 
   pivot_wider(names_from = period, 
               values_from = med_dom) |> 
-  mutate(latest = `2023-06-30`) |> 
-  pivot_longer(c(`2023-06-30`, `2019-06-30`),
+  mutate(latest = `2023 Q2`) |> 
+  pivot_longer(c(`2023 Q2`, `2019 Q2`),
                names_to = "period",
                values_to = "med_dom") |> 
   mutate(name = case_when(
@@ -390,16 +385,18 @@ hr_var_dom <- read_rds("data/hr/hr_var.rds") |>
   ))
 
 ggplot(hr_var_dom,
-       aes(x = reorder(name, latest),
+       aes(x = reorder(name, -latest),
            y = med_dom,
            color = period)) +
   geom_line(size = 1, color = "grey") +
   geom_point() +
-  coord_flip() +
   theme_hfv() +
+  geom_text(data = subset(hr_var_dom, name %in% c("Williamsburg",  "VB-Norfolk-NN MSA", "Surry County")),aes(label = med_dom, hjust = ifelse(period == "2023 Q2", 1.50, -0.5))) +
+  coord_flip() +
   labs(title = "Median days on market in Hampton Roads",
        subtitle = subtitle_text,
        caption = "**Source:** Virginia REALTORS.")  +
+  scale_y_continuous(limits = c(0, 130)) +
   scale_color_hfv() +
   plot_annotation(
     theme = theme(
@@ -408,13 +405,13 @@ ggplot(hr_var_dom,
         size = 11.5
     ))) + 
   theme(panel.grid.major.y = element_line(color = "white"),
-        panel.grid.major.x = element_line(color = "#f5f5f5",size = 0.1))
+        panel.grid.major.x = element_line(color = "#dadada",size = 0.2))
   
 
 
 
 ```
-
+With increasing challenges to homeownership, the percentage of renters has been growing in nearly every Hampton Roads locality, with the Cities of Franklin and Williamsburg and James City County being the exceptions. The biggest leaps in the percentage of renters were in Newport News, Portsmouth, Suffolk, and York County. The increasing number of renters across the region has resulted in 
 ```{r}
 #| label: fig-pct-renter
 #| fig-cap: "Percent of renter households in Hampton Roads"
@@ -430,7 +427,7 @@ subtitle_text <- "In <span style = 'color:#011E41'><b>2010</b></span> and <span 
 ggplot(hr_tenure,
        aes(x = reorder(NAME, pct),
            y = pct)) +
-  geom_line()+
+  geom_line(size = 1, color = "grey") +
   geom_point(aes(color = year), size = 2) +
   coord_flip() +
   theme_hfv() +
@@ -446,7 +443,7 @@ ggplot(hr_tenure,
         size = 11.5
     ))) + 
   theme(panel.grid.major.y = element_line(color = "white"),
-        panel.grid.major.x = element_line(color = "#f5f5f5",size = 0.1))
+        panel.grid.major.x = element_line(color = "#dadada",size = 0.1))
 
 
 ```
@@ -462,24 +459,40 @@ The Hampton Roads rental market experienced stark changes during the COVID-19 pa
 # What has rent been like in Hampton Roads?
 
 hr_rent <- read_rds("data/hr/hr_costar.rds") |> 
-  select(period, rent) |> 
-  mutate(quarters = as.yearqtr(period))
+  select(period, rent, adj_price) |> 
+  mutate(quarters = as.yearqtr(period)) |> 
+  pivot_longer(2:3,
+               names_to = "rent",
+               values_to = "dollars")
+
+subtitle_text <- "In <span style = 'color:#011E41'><b>Q2 2023 dollars</b></span> and <span style = 'color:#40C0C0'><b>current dollars</span>"
 
 ggplot(hr_rent,
        aes(x = quarters,
-           y = rent,
-           color = rent)) +
+           y = dollars,
+           color = rent,
+           linetype = rent)) +
   geom_line() +
   geom_point() +
   theme_hfv() +
   scale_y_continuous(labels = dollar_format()) +
-  scale_x_yearqtr(breaks = seq(from = min(hr_rent$quarters), to = max(hr_rent$quarters), by = 1),
-                  format = '%Y-Q%q') +
+  scale_x_yearqtr(breaks = seq(from = min(hr_rent$quarters), 
+                               to = max(hr_rent$quarters), 
+                               by = 1),format = '%Y-Q%q') +
   theme(axis.text.x = element_text(angle = 90)) +
   labs(title = "Average asking rent in Hampton Roads",
-       subtitle = "*Not adjusted for inflation*",
-       caption = "**Source:** CoStar Group, Inc.") + 
-  scale_color_gradientn(colours = c("#ADDCB1", "#46A88F", "#207A88", "#0F1A4E"))
+       subtitle = subtitle_text,
+       caption = "**Source:** CoStar Group, Inc.") +
+  scale_color_hfv()  +
+  plot_annotation(
+    theme = theme(
+    plot.subtitle = element_markdown(
+       margin = margin(b = 0.4, unit = 'cm'),
+        size = 11.5
+    ))) + 
+  theme(panel.grid.major.y = element_line(color = "#dadada", size = 0.1),
+        panel.grid.major.x = element_line(color = "#dadada",size = 0.1))
+  # scale_color_gradientn(colours = c("#ADDCB1", "#46A88F", "#207A88", "#0F1A4E"))
 
 
 
@@ -736,7 +749,7 @@ ggplot(hr_cb,
   
 
 ```
-Housing affordability is also an issue of equity...
+Housing affordability in Hampton Roads is also an issue of racial equity. In the region, the typical Black households makes over $33,000 less than the typical white household. This wide wealth gap has persisted across time and contributes to a disproportionate number of individuals identifying as Black represented in [Point-in-Time counts of homelessness](https://www.hamptonroadsendshomelessness.org/) and housing cost burden.
 
 ```{r}
 #| label: fig-race-inc
@@ -771,6 +784,8 @@ ggplot(hr_race_inc,
     )))
 
 ```
+Based on these median household incomes, what a typical Black household could afford in terms of rent and home purchase would far less than the typical white household. While a typical Black household in 2021 would barely be able to afford the average asking rent during that period, the typical white household would have no issue. In terms of home purchase, the average white household in the region could afford over \$100,000 more than a Black household.
+
 ```{r}
 #| label: fig-race-afford
 #| fig-cap: "Housing affordability by race and ethnicity"
@@ -793,3 +808,5 @@ hr_race_inc |>
     bootstrap_options = c("hover", "condensed", "responsive", "striped")
     )
 ```
+
+With a wide racial wealth gap and increasing housing costs, the issue of more diverse housing is also an issue of racial and ethnic diversity. With a prevalence of single-family detached housing that is becoming more and more out of reach for many, the exclusion of diverse housing effectively excludes diverse populations.

@@ -1,0 +1,13 @@
+---
+format:
+  revealjs:
+    incremental: true
+    self-contained: true
+    theme: simple
+    height: 900
+    width: 1400
+    slide-number: true
+title: "Hampton Roads Zoning Atlas"
+author: "HousingForward Virginia"
+date: 2023-10-13
+---
