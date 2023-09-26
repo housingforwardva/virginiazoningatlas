@@ -11,3 +11,17 @@ title: "Hampton Roads Zoning Atlas"
 author: "HousingForward Virginia"
 date: 2023-10-13
 ---
+
+## Zoning 101
+
+Some text about zoning
+
+
+## Zoning in Hampton Roads
+
+Some text
+
+
+## Type of Zoning District
+
+Some text about districts
