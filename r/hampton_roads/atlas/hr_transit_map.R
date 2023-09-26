@@ -11,7 +11,6 @@ pal <- colorFactor(palette =c("#8B85CA", "#40C0C0"),levels = c("R", "M"))
 transit_pal <-colorFactor(palette = c("#B1005F", "#E0592A", "#FFC658"), levels = c("WATA", "Hampton Roads Transit", "Suffolk Transit"))
 
 hr_transit_map <- leaflet(hr_byright2) |> 
-  addProviderTiles(providers$CartoDB.Positron) |> 
   addPolygons(weight = 1,
              color = ~pal(type),
              fillColor = ~pal(type),
@@ -51,8 +50,11 @@ hr_transit_map <- leaflet(hr_byright2) |>
   addLayersControl(
     overlayGroups = c("Transit Stops", "1/4 mile buffer"),
     options = layersControlOptions(collapsed = FALSE)
-  )
+  ) 
 
 hr_transit_map
 
+
+
 write_rds(hr_transit_map, "data/hr/hr_transit_map.rds")
+

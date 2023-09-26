@@ -11,7 +11,6 @@ hr_adu <- ms_simplify(hr_adu, keep = 0.3)
 pal <- colorFactor(palette =c("#8B85CA", "#40C0C0", "#011E41"),levels = c("R", "M", "X"))
 
 hr_adu_map <- leaflet(hr_adu) |> 
-  addProviderTiles(providers$CartoDB.Positron) |> 
   addPolygons(weight = 1,
               color = ~pal(type),
               fillColor = ~pal(type),
