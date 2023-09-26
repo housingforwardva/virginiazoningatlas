@@ -23,6 +23,16 @@ HousingForward Virginia (HFV) has been a go-to resource for governments, non-pro
 
 The growing focus on land use practices and their impact on affordable housing has presented HFV with an opportunity to help Virginians better understand this connection. The VZA is aligned with our mission to provide free and impactful resources to better understand housing needs. But it is our hope that the VZA will provide opportunities to others interested in exploring Virginia's land use patterns and the zoning regulations that have created them.
 
+::: callout-note
+## But what is zoning?!
+
+Not sure about what zoning is? Or how it impacts housing affordability? Or even why you should care?
+
+ZONED IN is HousingForward Virginia's zoning education initiative, which focuses on breaking down what zoning is in simple language, while also exploring the ways in which zoning impacts housing, livability, and equity.
+
+Visit our ZONED IN Landing Page [here](https://housingforwardva.org/focused-initiatives/zoning/) to learn more.
+:::
+
 ### How restrictive are zoning regulations in Virginia?
 
 ![](img/zoning_map.png){fig-align="center"}
@@ -39,3 +49,9 @@ The VZA will allow for comparisons across jurisdictions and open the door to inv
 ## Who is the Virginia Zoning Atlas for?
 
 The current iteration of the zoning analysis methodology is geared towards residential uses. Therefore, the atlas will largely benefit those who have an interest in housing and planning (e.g. planners, local and state officials, developers, builders, housing nonprofits, advocates, land use attorneys, etc.). The map will detail where different types of residential uses are allowed by-right, required to have a public approval process, or prohibited.
+
+## Zoning Atlas Impact
+
+Zoning atlases have been gaining national recognition to help local and state officials make better policy decisions that are informed by data. A [Law360 article](https://www.law360.com/real-estate-authority/articles/1712572/zoning-atlases-will-aid-state-housing-reform-advocates-say) highlighted the work of The Frontier Institute and the Montana Zoning Atlas, specifically quoting state legislators who cited the atlas as helping to draft and pass statewide zoning reform.
+
+[NOVOGRADAC](https://www.novoco.com/notes-from-novogradac/national-zoning-atlas-could-contribute-zoning-law-reform-policy-analysis) also pointed to zoning atlas projects as an important tool for policy analysis in support of reform at the local and state-level.

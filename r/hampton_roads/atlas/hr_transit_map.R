@@ -2,12 +2,13 @@ library(tidyverse)
 library(sf)
 library(leaflet)
 
-transit <- st_read("data/hr/hr_transit.geojson")
-transit_buff <- st_read("data/hr/hr_qmile_transitbuffer.geojson")
+transit <- st_read("data/hr/hr_transit_all.geojson")
+transit_buff <- st_read("data/hr/hr_qrtr_buffers.geojson")
 hr_byright2 <- st_read("data/hr/hr_byright2.geojson")
 hr_region <- st_read("data/hr/hr_region.geojson")
 
 pal <- colorFactor(palette =c("#8B85CA", "#40C0C0"),levels = c("R", "M"))
+transit_pal <-colorFactor(palette = c("#B1005F", "#E0592A", "#FFC658"), levels = c("WATA", "Hampton Roads Transit", "Suffolk Transit"))
 
 hr_transit_map <- leaflet(hr_byright2) |> 
   addProviderTiles(providers$CartoDB.Positron) |> 
@@ -16,10 +17,11 @@ hr_transit_map <- leaflet(hr_byright2) |>
              fillColor = ~pal(type),
              fillOpacity = 0.9) |> 
   addCircleMarkers(data = transit,
-              color = "#011E41",
+              color = ~transit_pal(service),
               radius = 0.15,
               fillOpacity = 1,
-              group = "HRT Transit Stop") |> 
+              fillColor = ~transit_pal(service),
+              group = "Transit Stops") |> 
   addPolygons(data = transit_buff,
               color = "white",
               weight = 0.5,
@@ -31,8 +33,8 @@ hr_transit_map <- leaflet(hr_byright2) |>
             colors = c("#8B85CA", "#40C0C0"),
             title = "Type of Zoning District") |> 
   addLegend(data = transit,
-            labels = "HRT Transit Stop",
-            color = "#011E41",
+            labels = c("WATA", "Hampton Roads Transit", "Suffolk Transit"),
+            color = c("#B1005F", "#E0592A", "#FFC658"),
             group = "HRT Bus Stop") |> 
   addLegend(data = transit_buff,
             labels = "1/4 mile buffer",
@@ -47,7 +49,7 @@ hr_transit_map <- leaflet(hr_byright2) |>
           zoom = 12) |> 
   # Layers control
   addLayersControl(
-    overlayGroups = c("HRT Bus Stop", "1/4 mile buffer"),
+    overlayGroups = c("Transit Stops", "1/4 mile buffer"),
     options = layersControlOptions(collapsed = FALSE)
   )
 
