@@ -31,12 +31,11 @@ va_od_block <- grab_lodes(
    )
 
 va_od_block_label <- va_od_block |> 
-  select(year, state, w_geocode, h_geocode, 3:12) |> 
-  pivot_longer(5:14,
+  select(year, state, geoid = h_geocode, 3:12) |> 
+  pivot_longer(4:13,
                names_to = "variable",
                values_to = "estimate") |> 
-  mutate(w_fips = substr(w_geocode, 1, 5)) |> 
-  mutate(h_fips = substr(h_geocode, 1, 5)) |> 
+  mutate(fips = substr(geoid, 1, 5)) |> 
   mutate(label = case_when(
     variable == "S000" ~ "Total number of jobs",
     variable == "SA01" ~ "Number of jobs of workers age 29 or younger",
