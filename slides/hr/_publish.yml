@@ -1,0 +1,4 @@
+- source: hr_slides.qmd
+  quarto-pub:
+    - id: 364d0e7c-9eff-4468-a47d-e400595ffb52
+      url: 'https://quartopub.com/sites/ericvmai/hampton-roads-zoning-atlas'
