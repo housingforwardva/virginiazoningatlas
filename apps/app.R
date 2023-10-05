@@ -21,20 +21,25 @@ library(janitor)
 
 # subs <- readr::read_rds("data/subdivisions.rds")
 
+## Note from Eric: hr_vza_simple.rds needs the "jurisdiction" and "tooltip" fields to
+## create a tooltip.
+
 zoning <- readr::read_rds("data/hr_vza_simple.rds") |>
   st_cast("MULTIPOLYGON") %>%
     dplyr::mutate(fill_color = dplyr::case_when(
-      type == "R" ~ "#40C0C0",
-      type == "M" ~ "#A29DD4",
-      type == "X" ~ "#999999",
+      type == "R" ~ "#8B85CA",
+      type == "M" ~ "#40C0C0",
+      type == "X" ~ "#011E41",
       TRUE ~ "#FFFFFF"
     ), 
     highlight_color = dplyr::case_when(
-      type == "R" ~ "#40C0C0ff",
-      type == "M" ~ "#A29DD4ff",
-      type == "X" ~ "#999999ff",
+      type == "R" ~ "#8B85CAff",
+      type == "M" ~ "#40C0C0ff",
+      type == "X" ~ "#011E41ff",
       TRUE ~ "#FFFFFFff"
-    ))
+    )) 
+
+
 
 transit <- sf::st_read("data/hr_transit_all.geojson")
 
@@ -44,10 +49,20 @@ type_choices <- c(
   "Public Hearing" = "hearing"
 )
 
+selected_type <- c(
+  "Allowed/Conditional" = "allowed",
+  "Public Hearing" = "hearing"
+)
+
 accessory_choices <- c(
   "Allowed As of Right" = "allowed",
   "Allowed Only After Public Hearing" = "hearing",
   "Prohibited" = "prohibited"
+)
+
+selected_accessory <- c(
+  "Allowed As of Right" = "allowed",
+  "Allowed Only After Public Hearing" = "hearing"
 )
 
 
@@ -103,7 +118,7 @@ ui <- page_fluid(
             checkboxGroupInput("single_family_options",
                                label = NULL,
                                choices = type_choices, 
-                               selected = type_choices)
+                               selected = selected_type)
               )
           ),
       checkboxInput("two_family", "2-Family Housing"),
@@ -113,7 +128,7 @@ ui <- page_fluid(
             checkboxGroupInput("two_family_options",
                                label = NULL,
                                choices = type_choices, 
-                               selected = type_choices)
+                               selected = selected_type)
           )
           ),
       checkboxInput("three_family", "3-Family Housing"),
@@ -123,7 +138,7 @@ ui <- page_fluid(
             checkboxGroupInput("three_family_options",
                                label = NULL,
                                choices = type_choices, 
-                               selected = type_choices)
+                               selected = selected_type)
           )
         ),
       checkboxInput("four_family", "4+ Family Housing"),
@@ -133,7 +148,7 @@ ui <- page_fluid(
             checkboxGroupInput("four_family_options",
                                label = NULL,
                                choices = type_choices, 
-                               selected = type_choices)
+                               selected = selected_type)
           )
           ),
       checkboxInput("accessory", "Accessory Dwelling Units"),
@@ -143,7 +158,7 @@ ui <- page_fluid(
             checkboxGroupInput("accessory_options",
                                label = NULL,
                                choices = accessory_choices, 
-                               selected = accessory_choices)
+                               selected = selected_accessory)
           )
         ),
       hr(),
@@ -178,7 +193,7 @@ server <- function(input, output, session) {
       add_scatterplot_layer(data = transit, get_position = geometry, name = "Public Transit", 
                             radius_min_pixels = 2, visible = FALSE, 
                             id = "transit_layer", 
-                            get_fill_color = scale_color_category(service, palette = c("#E41A1C", "#377EB8", "#4DAF4A")))
+                            get_fill_color = scale_color_category(service, palette = c("#ffd179", "#ff8e91", "#e67a54")))
   })
   
   observeEvent(input$opacity, {
