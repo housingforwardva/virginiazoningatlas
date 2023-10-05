@@ -7,7 +7,8 @@ format:
     height: 900
     width: 1400
     slide-number: true
-    logo: ../img/hfv_logo.jpg
+    logo: ../img/hfv_icon.png
+    from: markdown+emoji
 title: "Hampton Roads Zoning Atlas"
 author: "HousingForward Virginia"
 date: 2023-10-13
@@ -17,15 +18,12 @@ title-slide-attributes:
 
 ---
 
-## Zoning 101 {background-color="#40C0C0"}
-
 ```{r}
 #| label: setup
 #| echo: false
 
 library(tidyverse)
 library(tidycensus)
-library(ggplot2)
 library(ggiraph)
 library(sf)
 library(leaflet)
@@ -35,12 +33,63 @@ library(scales)
 library(forcats)
 library(kableExtra)
 library(ggtext)
-library(readr)
 library(zoo)
 library(patchwork)
+
 ```
 
-[Some text about zoning]{.white_text}
+# Zoning 101
+
+## Hook 1
+
+Have you ever wondered why...
+
+- A gas station went up on that corner instead of a new park?
+- The mall has so much parking around it?
+- That new apartment building is so tall?
+
+## Hook 2
+
+...it’s ZONING!
+
+- Zoning is a collection of local laws that tell property owners what they can and can’t do with their property
+- Makes total sense that we want to collectively influence what gets built where, right?
+
+## Problem
+
+Unfortunately...
+
+- The regulatory fabric that shapes our community isn’t producing the results we need
+- Zoning codes (and the development process) are difficult for average people to wrap their head around
+- Many communities still have zoning schemes rooted in early 20th century racist planning practices
+
+## Goals
+
+- Know where zoning came from
+- Understand the nuts and bolts of zoning
+- Be ready to dive into the VZA
+
+## Origins
+
+- "Usual" story (improve living conditions in cities)
+- "Actual" story
+
+[Hopkins v. City of Richmond](https://cite.case.law/va/117/692/)
+
+## Virginia
+
+```
+
+1908: Richmond's first zoning ordinance (heights and arrangements)
+1910: Upheld by Virginia Supreme Court (inspired 1916 NYC ordinance)
+1911: Richmond's segregation zoning ordinance
+
+```
+
+
+
+
+# Virginia Zoning Atlas
 
 ## What's a zoning atlas?
 

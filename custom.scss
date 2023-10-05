@@ -1,7 +1,6 @@
 /*-- scss:defaults --*/
 
-
-// HFV Color base-palette
+// HFV palette
 
 $theme-hfvshadow: #011E41;
 $theme-hfvsky: #40C0C0;
@@ -9,10 +8,15 @@ $theme-hfvlilac: #8B85CA;
 $theme-hfvgrass: #259591;
 $theme-hfvberry: #B1005F;
 
-// color-scheme
+// import fonts
 
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
-// fonts
+// set fonts
+
+$font-family-sans-serif: 'Open Sans', sans-serif;
+$presentation-heading-font: 'Poppins', serif;
 
 .teal_highlight {
   color: $theme_hfvsky;
