@@ -301,7 +301,8 @@ ggplot(hr_hhsize,
 
 ## Hampton Roads isn't building diverse housing.
 
-::::{.columns}
+:::: {.columns}
+
 :::{.column width="40%} 
 
 -   Single-family housing or apartments make up the majority of new builds. 
@@ -310,7 +311,9 @@ ggplot(hr_hhsize,
 :::
 
 ::: {.column width="60%"}
+
 :::{.fragment}
+
 ```{r}
 #| label: bps-hr
 
@@ -365,10 +368,16 @@ ggplot(hr_bps,
     )))
 
 ```
+
 :::
+
 :::
 
 ::::
+
+
+
+
 
 ## Home prices have increased everywhere.
 
@@ -379,6 +388,7 @@ ggplot(hr_bps,
 :::
 
 :::{.column width="70%"}
+
 :::{.fragment}
 ```{r}
 #| label: hr-price
@@ -438,7 +448,9 @@ ggplot(hr_var_price,
 :::
 
 :::
+
 ::::
+
 ## Average rent is approaching \$1,400.
 
 ::::{.columns}
@@ -677,7 +689,7 @@ ggplot(hr_sfd,
 
 ```
 
-## Newport News welcomes the most diverse housing types by-right within the same zoning districts. {.center}
+## Newport News welcomes the most Missing Middle housing by-right. {.center}
 
 :::{.fragment}
 ![](../img/hr/newport_news_highlight.gif)
@@ -713,7 +725,8 @@ ggplot(hr_byright,
   scale_fill_gradientn(colours = c("#ADDCB1", "#46A88F", "#207A88", "#0F1A4E")) + # Use custom HFV gradient.
   scale_color_gradientn(colours = c("#ADDCB1", "#46A88F", "#207A88", "#0F1A4E")) + # Use custom HFV gradient.
   scale_y_continuous(expand = expansion(mult = c(0, 0.1))) +
-  labs(title = "Percent of developable land allowing for 2+ family housing by-right")  +
+  labs(title = "Percent of developable land allowing for 2+ family housing by-right",
+       caption = "**Source:** HousingForward Virginia, Virginia Zoning Atlas.")  +
   theme(axis.text.x = element_blank())
 
 ```
@@ -748,7 +761,7 @@ ggplot(hr_byright,
   scale_fill_gradientn(colours = c("#ADDCB1", "#46A88F", "#207A88", "#0F1A4E")) + # Use custom HFV gradient.
   scale_color_gradientn(colours = c("#ADDCB1", "#46A88F", "#207A88", "#0F1A4E")) + # Use custom HFV gradient.
   scale_y_continuous(expand = expansion(mult = c(0, 0.1))) +
-  labs(caption = "**Source: ** HousingForward Virginia, Virginia Zoning Atlas.")+
+  labs(caption = "**Source:** HousingForward Virginia, Virginia Zoning Atlas.")+
   theme(axis.text.x = element_blank())
 
 ```
@@ -786,7 +799,7 @@ ggplot(hr_adu,
   geom_text(aes(label = percent(pct, accuracy = 0.1), color = pct, hjust = -0.2)) +
   coord_flip() +
   theme_hfv(base_size = 15) +
-  labs(caption = "**Source: ** HousingForward Virginia, Virginia Zoning Atlas.")+
+  labs(caption = "**Source:** HousingForward Virginia, Virginia Zoning Atlas.") +
   scale_y_continuous(labels = percent_format(), expand = expansion(mult = c(0, 0.1))) +
   scale_fill_gradientn(colours = c("#ADDCB1", "#46A88F", "#207A88", "#0F1A4E")) + # Use custom HFV gradient.
   scale_color_gradientn(colours = c("#ADDCB1", "#46A88F", "#207A88", "#0F1A4E")) + # Use custom HFV gradient.
