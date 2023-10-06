@@ -2,13 +2,15 @@ library(tidyverse)
 library(geojsonsf)
 library(sf)
 
-# Clean the zoning atlas data for analysis in R.
+# Clean the zoning atlas data for analysis in R. 
+
+# Create a data table with zoning analysis data without geometry ----
 
 hr_vza <- geojson_sf("data/hr/hr_vza_developable.geojson") |> # Load in geojson, which has had areas of wetlands/water (10 contiguous acres or more) and federal lands clipped.
   st_drop_geometry() # Drop the geometry, as it is not needed for the analysis.
 
 
-hr_vza_mapped <- hr_vza |> 
+hr_vza_data <- hr_vza |> 
   select(id, type, abbrvname, name, overlay, # Select the fields needed for analysis.
          family1_treatment, family2_treatment, family3_treatment, family4_treatment,
          accessory_treatment, plannedresidential_treatment,
@@ -26,6 +28,8 @@ hr_vza_mapped <- hr_vza |>
     TRUE ~ jurisdiction
   )) |> 
   mutate(sfd = str_trim(hr_custom_fields_sfd))  # Trim whitespace from the sfd column.
+
+# Create a data table with zoning analysis data with geometry ----
 
 hr_vza_geo <- geojson_sf("data/hr/hr_vza_developable.geojson") # Load in geojson, which has had areas of wetlands/water (10 contiguous acres or more) and federal lands clipped.
 
@@ -48,7 +52,6 @@ hr_vza_geomap <- hr_vza_geo |>
   )) |> 
   mutate(sfd = str_trim(hr_custom_fields_sfd))  # Trim whitespace from the sfd column.
 
-
 hr_vza_raw <- hr_vza |> 
   mutate(type = case_when( # Correct the labels for Type of Zoning District field.
     type == "X" ~ "Nonresidential",
@@ -62,7 +65,8 @@ hr_vza_raw <- hr_vza |>
   )) |> 
   mutate(sfd = str_trim(hr_custom_fields_sfd))  # Trim whitespace from the sfd column.
 
+# Write to rds.
 
-write_rds(hr_vza_mapped, "data/hr/hr_vza_nogeo.rds", compress = "none") # Write to rds.
+write_rds(hr_vza_data, "data/hr/hr_vza_nogeo.rds", compress = "none") 
 write_rds(hr_vza_geomap, "data/hr/hr_vza_geo.rds", compress = "none")
 write_csv(hr_vza_raw, "data/hr/hr_vza_data.csv")

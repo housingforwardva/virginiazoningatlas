@@ -110,6 +110,9 @@ hr_zoning_summary |>
 
 Zoning ordinances see amendments made over the years that eliminate, add, or refine language to better meet the needs of the community. But comprehensive rewrites following a comprehensive planning process can help ensure that zoning regulations align with future land use goals and changing demographics. From the table above, you can see that several localities have updated their zoning ordinances in recent years, while others have not had comprehensive update in decades.
 
+Subjectively, we found that many zoning ordinances had varying degrees of "readability." We considered the language employed (i.e. did it overuse legal jargon?), the ease of which information needed could be found, and the use of images or graphics. Chesapeake's zoning ordinance stood out to us as being overly complicated due to its use of [a nontraditional use table](https://library.municode.com/va/chesapeake/codes/zoning?nodeId=ZO_ART6REDI_S6-2102TAPECOUSREDI). [York County's zoning ordinance](https://library.municode.com/va/york_county/codes/code_of_ordinances?nodeId=CD_ORD_CH24.1ZO) was relatively straightforward.
+
+
 ## Type of zoning district
 
 ```{r}
@@ -238,7 +241,7 @@ In most Hampton Roads localities, the majority of developable land is dedicated 
 :::{.callout-note}
 ## Notable Jurisdiction
 
-Isle of Wight County is notable among its neighbors because it allows for two-family housing throughout many parts of the county, even in areas where single-family detached is predominant. The catch, however, is that it more than often has to go through the conditional use permit process.
+Isle of Wight County is notable among its neighbors because it allows for two-family housing throughout many parts of the county, even in areas where single-family detached is predominant. The catch, however, is that it has to go through the conditional use permit process.
 :::
 
 ```{r}

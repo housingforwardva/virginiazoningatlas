@@ -1,6 +1,7 @@
 library(tidyverse)
 library(FinCal)
 
+
 hr_fips <- c("51073", "51093", "51095","51175", "51181", "51199", "51550", "51620", "51650", "51700", "51710", "51735", "51740", "51800", "51810", "51830")
 
 local_lookup <- read_csv("data/local_lookup.csv") |> 
@@ -10,6 +11,8 @@ local_lookup <- read_csv("data/local_lookup.csv") |>
 
 years <- 2016:2022
 
+# Create function to pull QCEW data.
+
 qcewGetAreaData <- function(year, qtr, area) {
   url <- "http://data.bls.gov/cew/data/api/YEAR/QTR/area/AREA.csv"
   url <- sub("YEAR", year, url, ignore.case=FALSE)
@@ -17,6 +20,8 @@ qcewGetAreaData <- function(year, qtr, area) {
   url <- sub("AREA", toupper(area), url, ignore.case=FALSE)
   read.csv(url, header = TRUE, sep = ",", quote="\"", dec=".", na.strings=" ", skip=0)
 }
+
+# Pull data for all years and areas.
 
 qcew_data <- map_dfr(hr_fips, function(hr_fips){
   yearly_data <- map_dfr(years, function(yr){
@@ -27,6 +32,8 @@ qcew_data <- map_dfr(hr_fips, function(hr_fips){
       mutate(year = yr)
   })
 }) 
+
+# Select necessary fields and then join to lookup table.
 
 hr_oews <- qcew_data |> 
   select(fips = area_fips, year, annual_avg_emplvl, annual_avg_wkly_wage,avg_annual_pay) |> 

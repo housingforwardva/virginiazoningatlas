@@ -713,11 +713,15 @@ hr_occ_tbl
 ```
 
 ::: callout-note
+
+### Measuring affordability
+
 Determining what is affordable to a person can depend on a multitude of factors, but for the purposes of this analysis we made several assumptions to make informed estimates.
 
-For renters, we calculated what a monthly rent at 30% of an individual's income.
+For renters, we calculated what a monthly rent at 30 percent of an individual's gross income. This is based on the Department of Housing and Urban Development's (HUD) definition of affordable housing.
 
-For homebuyers, we calculated a home price based on a 30-year fixed rate mortgage at 7.18% (which was the U.S. weekly average as of August 31, 2023), a 3% minimum down payment, and a monthly tax and insurance of \$250.
+For homebuyers, we calculated a home price based on a 30-year fixed rate mortgage at 7.18% (which was the U.S. weekly average as of August 31, 2023), a 3% minimum down payment, and a monthly tax and insurance of \$250. In addition, we assumed that a household would pay no more than 28 percent of their gross income due to lender preference for the [28/36 rule](https://www.businessinsider.com/personal-finance/28-36-rule-mortgages).
+
 :::
 
 
