@@ -21,7 +21,17 @@ A zoning atlas is a large-scale, interactive map which displays municipal land u
 
 HousingForward Virginia (HFV) has been a go-to resource for governments, non-profits, and private companies with a vested interest in affordable housing across the Commonwealth. [Sourcebook](https://housingforwardva.org/toolkits/sourcebook/), our free, online compendium of demographic and housing data, has been used to better understand housing needs. In addition, our [Inclusionary Zoning Guidebook](https://housingforwardva.org/focused-initiatives/inclusionary-housing/) has helped educate Virginians on the opportunities and challenges of implementing inclusionary zoning. Furthermore, our contract research work has taken us across Virginia to understand the discussions and debates over zoning and the overall housing needs of Virginians.
 
-The growing focus on land use practices and their impact on affordable housing has presented HFV with an opportunity to help Virginians better understand this connection. The VZA is aligned with our mission to provide free and impactful resources to better understand housing needs. But it is our hope that the VZA will provide opportunities to others interested in exploring Virginia's land use patterns and the zoning regulations that have created them.
+The growing focus on land use practices and their impact on affordable housing has presented HFV with an opportunity to help Virginians better understand this connection. The VZA is aligned with our mission to provide free and impactful resources to better understand housing needs. It is our hope that the VZA will provide opportunities to others interested in exploring Virginia's land use patterns and the zoning regulations that have created them.
+
+::: callout-note
+## But what is zoning?!
+
+Not sure about what zoning is? Or how it impacts housing affordability? Or even why you should care?
+
+ZONED IN is HousingForward Virginia's zoning education initiative, which focuses on breaking down what zoning is in simple language, while also exploring the ways in which zoning impacts housing, livability, and equity.
+
+Visit our ZONED IN Landing Page [here](https://housingforwardva.org/focused-initiatives/zoning/) to learn more.
+:::
 
 ### How restrictive are zoning regulations in Virginia?
 
@@ -36,10 +46,14 @@ The purpose of the Virginia Zoning Atlas is to answer major questions related to
 
 The VZA will allow for comparisons across jurisdictions and open the door to investigations of land use policies beyond just housing. With standardization, we can better understand patterns at the regional and statewide levels.
 
+As many localities take on zoning reform, the VZA can be used to track zoning over time to see how some Virginia jurisdictions may become less restrictive with their zoning.
+
 ## Who is the Virginia Zoning Atlas for?
 
 The current iteration of the zoning analysis methodology is geared towards residential uses. Therefore, the atlas will largely benefit those who have an interest in housing and planning (e.g. planners, local and state officials, developers, builders, housing nonprofits, advocates, land use attorneys, etc.). The map will detail where different types of residential uses are allowed by-right, required to have a public approval process, or prohibited.
 
-# Thanks to our generous sponsors
+## Zoning Atlas Impact
 
+Zoning atlases have been gaining national recognition to help local and state officials make better policy decisions that are informed by data. A [Law360 article](https://www.law360.com/real-estate-authority/articles/1712572/zoning-atlases-will-aid-state-housing-reform-advocates-say) highlighted the work of [The Frontier Institute](https://frontierinstitute.org/) and the [Montana Zoning Atlas](https://frontierinstitute.org/reports/the-montana-zoning-atlas-2-0/), specifically quoting state legislators who cited the atlas as helping to draft and pass statewide zoning reform.
 
+[NOVOGRADAC](https://www.novoco.com/notes-from-novogradac/national-zoning-atlas-could-contribute-zoning-law-reform-policy-analysis) also pointed to zoning atlas projects as an important tool for policy analysis in support of reform at the local and state-level.

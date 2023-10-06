@@ -12,11 +12,13 @@
 
 ## How to make a zoning atlas
 
-The methods to standardize zoning ordinances across multiple jurisdictions were first employed in Connecticut in 2021. Sara Bronin, an architect and attorney, worked with Ilya Ilyankou to develop the Connecticut Zoning Atlas, and Bronin went on to found the National Zoning Atlas (NZA). The NZA team has drafted a [How to Make a Zoning Atlas]((https://www.zoningatlas.org/how)) guide to be used by all NZA project collaborators.
+The methods to standardize zoning ordinances across multiple jurisdictions were first employed in Connecticut in 2021. Sara Bronin, an architect and attorney, worked with Ilya Ilyankou to develop the [Connecticut Zoning Atlas](https://www.desegregatect.org/atlas), and Bronin went on to found the [National Zoning Atlas (NZA)](https://www.zoningatlas.org). The NZA team has drafted a [How to Make a Zoning Atlas](https://www.zoningatlas.org/how) guide to be used by all NZA project collaborators.
 
 The methodology provides a way to translate and standardize district-specific regulations based on the treatment of certain residential uses. Currently, the methodology requires analysts to manually read through pages and pages of zoning ordinances. Geographic data needs to be collected and sometimes created. Information can be hard to track down and may only be stored on paper in a physical location in some cases.
 
 ::: callout-note
+## Be kind!
+
 Like the people who write zoning ordinances, we're human.
 
 As we conduct our analysis and numerous reviews of the same zoning ordinance, we may not get our analysis right the first or even third time around. We welcome your review and feedback on the accuracy of the data, but also keep in mind that we are following a methodology that may not align with your interpretation of your zoning ordinance. See next section for some of these discrepancies!
@@ -26,14 +28,23 @@ As we conduct our analysis and numerous reviews of the same zoning ordinance, we
 
 *Zoning District Classification*
 
--   **Primarily Residential** means a district allows for: "housing only; housing and assorted uses customarily allowed in residential areas, including religious institutions and schools; or housing and agricultural uses."
--   **Mixed with Residential** means a district allows for: "nonresidential uses and housing, whether the housing is stand-alone housing (e.g., apartment buildings) or housing integrated with nonresidential uses (e.g., buildings with retail on the ground floor and residential above). Nonresidential uses likely to be found in districts also allowing residential uses include retail shops, restaurants, office or medical buildings, performance venues, as well as certain light industrial uses (warehouses, small scale manufacturing, breweries, etc.)"
--   **Nonresidential** means a district either prohibits "residential uses entirely; or \[allows\] one accessory dwelling on the same lot as a nonresidential use and no other types of residential housing. Common examples of the latter include an apartment for a retailer to live above her shop or a caretaker apartment for a factory.
--   **Overlay Not Affecting Use** simply means that an overlay district does not affect the allowable uses in a district. For example, a historic district overlay may require certain design parameters, but does not allow or prohibit additional uses on top of the base zoning district.
+![](img/primary_res.jpeg)
+
+[**Primarily Residential**]{style="color: #8B85CA"} means a district allows for: "housing only; housing and assorted uses customarily allowed in residential areas, including religious institutions and schools; or housing and agricultural uses."
+
+![](img/mixed_res.jpeg)
+
+[**Mixed with Residential**]{style="color: #40C0C0"} means a district allows for: "nonresidential uses and housing, whether the housing is stand-alone housing (e.g., apartment buildings) or housing integrated with nonresidential uses (e.g., buildings with retail on the ground floor and residential above). Nonresidential uses likely to be found in districts also allowing residential uses include retail shops, restaurants, office or medical buildings, performance venues, as well as certain light industrial uses (warehouses, small scale manufacturing, breweries, etc.)"
+
+![](img/non_res.jpeg)
+
+[**Nonresidential**]{style="color: #011E41"} means a district either prohibits "residential uses entirely; or \[allows\] one accessory dwelling on the same lot as a nonresidential use and no other types of residential housing. Common examples of the latter include an apartment for a retailer to live above her shop or a caretaker apartment for a factory.
+
+**Overlay Not Affecting Use** simply means that an overlay district does not affect the allowable uses in a district. For example, a historic district overlay may require certain design parameters, but does not allow or prohibit additional uses on top of the base zoning district.
 
 *Residential Treatments*
 
--   **Allowed/Conditional** means that a use is allowed **without a public hearing.** In this case, permission to build is subject to administrative review by a local planner and is typically allowed **by-right** if it meets the conditions of the zoning ordinance.
+-   **Allowed/Conditional** means that a use is allowed **without a public hearing.** In this case, permission to build is subject to administrative review by a local planner and is typically allowed [**by-right**](https://www.planetizen.com/definition/right-development) if it meets the conditions of the zoning ordinance. It is important to understand that the word "Conditional" here should not be associated with a Conditional Use Permit!
 
 -   **Public Hearing** means that a use requires a public approval process (entitlement) in order to be built. In Virginia, entitlement can take different forms, but is most often a Special or Conditional Use Permit (SUP or CUP), a Special Exception or Variance, or a rezoning.
 
@@ -41,11 +52,11 @@ As we conduct our analysis and numerous reviews of the same zoning ordinance, we
 
 -   **1-Family** refers to a building, including a manufactured or mobile home, with only one dwelling unit. 1-Family is not only detached housing, but also includes attached housing that exist on individual lots (i.e. townhomes, semidetached, etc.).
 
--   **2-Family** refers to two dwelling units within a single or two separate buildings that exist on a single lot. 2-Family zoning allows for two dwellings of equal size. 2-Family is most often referred to as a duplex, semidetached, or two-family dwelling, but is only two family if allowing both units to exist on a single lot.
+-   **2-Family** refers to two dwelling units within a single or two separate buildings that exist on **a single lot**. 2-Family zoning allows for two dwellings of equal size. 2-Family is most often referred to as a duplex, semidetached, or two-family dwelling, but is only two family if allowing both units to exist on **a single lot**.
 
--   **3-Family** refers to three dwelling units within a single building or separate buildings on a single lot. 3-Family is most often referred to as a triplex, but many localities define "multifamily" as a building with 3 or more units.
+-   **3-Family** refers to three dwelling units within a single building or separate buildings on **a single lot**. 3-Family is most often referred to as a triplex, but many localities define "multifamily" as a building with 3 or more units.
 
--   **4+-Family** refers to four-or-more dwelling units within a single building or separate buildings on a single lot. 4+-Family is most often referred to as an apartment or multifamily building depending on how a locality defines those terms, but it can also be a fourplex if only containing four dwelling units.
+-   **4+-Family** refers to four-or-more dwelling units within a single building or separate buildings **on a single lot**. 4+-Family is most often referred to as an apartment or multifamily building depending on how a locality defines those terms, but it can also be a fourplex if only containing four dwelling units.
 
 -   **Affordable Housing** identifies which districts treat affordable housing differently from housing that is not designated as affordable, or where a district only allows for affordable housing.
 
@@ -59,5 +70,12 @@ Housing market dynamics are deeply connected to the changing economic and demogr
 
 While localities think of zoning and land use policy within their boundaries, their policy decisions have impact across an entire region.
 
+## Collaborative Team
 
+Currently, the Virginia Zoning Atlas is a collaborative effort of HousingForward Virginia and the Mercatus Center at George Mason University. We welcome additional partners to help complete the atlas.
 
+-   State Director, Eric Mai (HousingForward Virginia)
+-   Lead Zoning Analyst, Maria Dougherty (HousingForward Virginia)
+-   Regional Leads, Eli Kahn & Emily Hamilton (Mercatus Center)
+
+Funding for the Virginia Zoning Atlas was provided by HousingForward Virginia supporters: Virginia Housing, the Mercatus Center at George Mason University, Williamsburg Health Foundation, Sentara, the Virginia REALTORS, VCDC, LISC Hampton Roads, Atlantic Union Bank, and Virginia Community Capital.

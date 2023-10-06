@@ -1,14 +1,16 @@
 library(tidyverse)
 library(sf)
 library(leaflet)
+library(rmapshaper)
 
 hr_byright2 <- st_read("data/hr/hr_byright2.geojson")
+
+hr_byright2 <- ms_simplify(hr_byright2, keep = 0.3)
 
 
 pal <- colorFactor(palette =c("#8B85CA", "#40C0C0"),levels = c("R", "M"))
 
 hr_byr_map <- leaflet(hr_byright2) |> 
-  addProviderTiles(providers$CartoDB.Positron) |> 
   addPolygons(weight = 1,
               color = ~pal(type),
               fillColor = ~pal(type),

@@ -10,6 +10,7 @@ format:
   html:
     theme:
       - lumen
+      - custom.scss
     grid: 
       sidebar-width: 350px
     fontsize: "100%"

@@ -1,0 +1,75 @@
+/*-- scss:defaults --*/
+
+// HFV palette
+
+$theme-hfvshadow: #011E41;
+$theme-hfvsky: #40C0C0;
+$theme-hfvlilac: #8B85CA;
+$theme-hfvgrass: #259591;
+$theme-hfvberry: #B1005F;
+
+// import fonts
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+// set fonts
+
+$font-family-sans-serif: 'Open Sans', sans-serif;
+$presentation-heading-font: 'Poppins', serif;
+
+.teal_highlight {
+  color: $theme_hfvsky;
+  font-weight: bold;
+}
+
+#title-slide {
+  
+  .title{
+  font-size: 100px !important;
+  font-weight: bold;
+  color: white !important;
+  background-color: #011E4175;
+  }
+  
+  .quarto-title-author-name {
+  font-size: 50px;
+  color: white !important;
+  background-color: #011E4175;
+  }
+  
+  .date {
+  font-size: 30px;
+  color: white !important;
+  background-color: #011E4175;
+  }
+  
+}
+
+
+/*-- scss:rules --*/
+
+.white_text {
+  color: #FFFFFF;
+}
+
+.white_title {
+  color: #FFFFFF;
+  font-size: 300%;
+  font-weight: bold;
+}
+
+.primary-res {
+  color: $theme-hfvlilac;
+  font-weight: bold;
+}
+
+.mixed-res {
+  color: $theme-hfvsky;
+  font-weight: bold;
+}
+
+.non-res {
+  color: $theme-hfvshadow;
+  font-weight: bold;
+}
