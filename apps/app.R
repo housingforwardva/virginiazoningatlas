@@ -49,10 +49,6 @@ type_choices <- c(
   "Public Hearing" = "hearing"
 )
 
-selected_type <- c(
-  "Allowed/Conditional" = "allowed",
-  "Public Hearing" = "hearing"
-)
 
 accessory_choices <- c(
   "Allowed As of Right" = "allowed",
@@ -60,10 +56,7 @@ accessory_choices <- c(
   "Prohibited" = "prohibited"
 )
 
-selected_accessory <- c(
-  "Allowed As of Right" = "allowed",
-  "Allowed Only After Public Hearing" = "hearing"
-)
+
 
 
 # pal <- colorFactor(palette = c("#40C0C0", "#A29DD4", "#999999"),
@@ -118,7 +111,7 @@ ui <- page_fluid(
             checkboxGroupInput("single_family_options",
                                label = NULL,
                                choices = type_choices, 
-                               selected = selected_type)
+                               selected = type_choices)
               )
           ),
       checkboxInput("two_family", "2-Family Housing"),
@@ -128,7 +121,7 @@ ui <- page_fluid(
             checkboxGroupInput("two_family_options",
                                label = NULL,
                                choices = type_choices, 
-                               selected = selected_type)
+                               selected = type_choices)
           )
           ),
       checkboxInput("three_family", "3-Family Housing"),
@@ -138,7 +131,7 @@ ui <- page_fluid(
             checkboxGroupInput("three_family_options",
                                label = NULL,
                                choices = type_choices, 
-                               selected = selected_type)
+                               selected = type_choices)
           )
         ),
       checkboxInput("four_family", "4+ Family Housing"),
@@ -148,7 +141,7 @@ ui <- page_fluid(
             checkboxGroupInput("four_family_options",
                                label = NULL,
                                choices = type_choices, 
-                               selected = selected_type)
+                               selected = type_choices)
           )
           ),
       checkboxInput("accessory", "Accessory Dwelling Units"),
@@ -158,7 +151,7 @@ ui <- page_fluid(
             checkboxGroupInput("accessory_options",
                                label = NULL,
                                choices = accessory_choices, 
-                               selected = selected_accessory)
+                               selected = accessory_choices)
           )
         ),
       hr(),
@@ -186,7 +179,7 @@ server <- function(input, output, session) {
       add_polygon_layer(data = zoning, get_fill_color = fill_color, opacity = 0.8, 
                         id = "zoning_layer", get_polygon = geometry, get_line_color = "#ffffff",
                         get_line_width = 10, pickable = TRUE, auto_highlight = TRUE, highlight_color = highlight_color,
-                        tooltip = name, name = "Zoning") %>%
+                        tooltip = c(Abbreviation, Zoning, Jurisdiction, Notes), name = "About") %>%
       # add_polygon_layer(data = subs, name = "County subdivision", stroked = TRUE, filled = FALSE, pickable = TRUE, 
       #                   auto_highlight = TRUE, get_line_color = "#ffffffff", get_polygon = geometry, 
       #                   get_line_width = 20) %>%

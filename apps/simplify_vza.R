@@ -5,8 +5,12 @@ library(rmapshaper)
 hr_vza <- st_read("data/hr/hr_vza_developable.geojson")
 
 sparse <- hr_vza |>
-  select(id, type, name, overlay, family1_treatment:family4_treatment,
-         hr_custom_fields_sfd, accessory_treatment)
+  select(id, type, abbrvname, tooltipnotes, jurisdiction, name, overlay, family1_treatment:family4_treatment,
+         hr_custom_fields_sfd, accessory_treatment) |> 
+  mutate(Zoning = name,
+         Abbreviation = abbrvname,
+         Jurisdiction = jurisdiction,
+         Notes = tooltipnotes)
 
 simple <- ms_simplify(sparse, keep = 0.1)
 
