@@ -298,6 +298,51 @@ server <- function(input, output, session) {
       update_polygon_layer(data = zoning_filter(), id = "zoning_layer")
   })
   
+  observeEvent(input$single_family, {
+    if (input$single_family) {
+      selected_values <- setdiff(input$single_family_options, "prohibited")
+      updateCheckboxGroupInput(session, "single_family_options", selected = selected_values)
+    } else {
+      updateCheckboxGroupInput(session, "single_family_options", selected = type_choices)
+    }
+  })
+  
+  observeEvent(input$two_family, {
+    if (input$two_family) {
+      selected_values <- setdiff(input$two_family_options, "prohibited")
+      updateCheckboxGroupInput(session, "two_family_options", selected = selected_values)
+    } else {
+      updateCheckboxGroupInput(session, "two_family_options", selected = type_choices)
+    }
+  })
+  
+  observeEvent(input$three_family, {
+    if (input$three_family) {
+      selected_values <- setdiff(input$three_family_options, "prohibited")
+      updateCheckboxGroupInput(session, "three_family_options", selected = selected_values)
+    } else {
+      updateCheckboxGroupInput(session, "three_family_options", selected = type_choices)
+    }
+  })
+  
+  observeEvent(input$four_family, {
+    if (input$four_family) {
+      selected_values <- setdiff(input$four_family_options, "prohibited")
+      updateCheckboxGroupInput(session, "four_family_options", selected = selected_values)
+    } else {
+      updateCheckboxGroupInput(session, "four_family_options", selected = type_choices)
+    }
+  })
+  
+  observeEvent(input$accessory, {
+    if (input$accessory) {
+      selected_values <- setdiff(input$accessory_options, "prohibited")
+      updateCheckboxGroupInput(session, "accessory_options", selected = selected_values)
+    } else {
+      updateCheckboxGroupInput(session, "accessory_options", selected = type_choices)
+    }
+  })
+  
   observeEvent(input$transit_stops, {
     proxy <- rdeck_proxy("map")
     
