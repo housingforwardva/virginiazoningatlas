@@ -43,6 +43,8 @@ zoning <- readr::read_rds("data/hr_vza_simple.rds") |>
 
 transit <- sf::st_read("data/hr_transit_all.geojson")
 
+juris <- readr::read_rds("data/hr_boundaries.rds")
+
 type_choices <- c(
   "Prohibited" = "prohibited",
   "Allowed/Conditional" = "allowed",
@@ -233,9 +235,9 @@ server <- function(input, output, session) {
                         id = "zoning_layer", get_polygon = geometry, get_line_color = "#ffffff",
                         get_line_width = 10, pickable = TRUE, auto_highlight = TRUE, highlight_color = highlight_color,
                         tooltip = c(Abbreviation, Zoning, Jurisdiction, Notes), name = "About") %>%
-      # add_polygon_layer(data = subs, name = "County subdivision", stroked = TRUE, filled = FALSE, pickable = TRUE, 
-      #                   auto_highlight = TRUE, get_line_color = "#ffffffff", get_polygon = geometry, 
-      #                   get_line_width = 20) %>%
+      add_polygon_layer(data = juris, name = "Jurisdiction", stroked = TRUE, filled = FALSE, pickable = TRUE,
+                        auto_highlight = TRUE, get_line_color = "#f2e70a", get_polygon = geometry,
+                        get_line_width = 100) %>%
       add_scatterplot_layer(data = transit, get_position = geometry, name = "Public Transit", 
                             radius_min_pixels = 2, visible = FALSE, 
                             id = "transit_layer", 
