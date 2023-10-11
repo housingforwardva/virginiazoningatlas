@@ -1,0 +1,13 @@
+name: va_zoning_atlas
+title: va_zoning_atlas
+username:
+account: walkerke
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 10098484
+bundleId: 7767212
+url: https://walkerke.shinyapps.io/va_zoning_atlas/
+when: 1696515750.41472
+lastSyncTime: 1696515750.41473
+asMultiple: FALSE
+asStatic: FALSE

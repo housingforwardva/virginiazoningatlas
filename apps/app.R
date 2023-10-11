@@ -92,6 +92,45 @@ ui <- page_fluid(
         font-size: 0.8em;   /* Adjust as needed for font size */
         margin-bottom: 2px;
       }
+      
+      .my-legend {
+        display: block;
+        margin-bottom: 10px;
+      }
+      
+      .my-legend .legend-scale ul {
+        margin: 0;
+        margin-bottom: 5px;
+        padding: 0;
+        float: left;
+        list-style: none;
+        display: block;
+        }
+      .my-legend .legend-scale ul li {
+        font-size: 80%;
+        list-style: none;
+        margin-left: 0;
+        line-height: 18px;
+        margin-bottom: 2px;
+        display: block;
+        }
+      .my-legend ul.legend-labels li span {
+        display: block;
+        float: left;
+        height: 16px;
+        width: 30px;
+        margin-right: 5px;
+        margin-left: 0;
+        border: 1px solid #999;
+        }
+      .my-legend .legend-source {
+        font-size: 70%;
+        color: #999;
+        clear: both;
+        }
+      .my-legend a {
+        color: #777;
+        }
     "))
   ),
   fluidRow( 
@@ -104,6 +143,21 @@ ui <- page_fluid(
       p("This interactive map shows how outdated zoning laws make it hard to build diverse, affordable housing."),
       p("Use checkboxes below to filter zones in the map. Click a town to see what % of its territory satisfies selected criteria.", style = "font-size: 80%;"),
       p("Type of Zoning District", style = "color: gray; font-weight: bold; margin-bottom: 5px;"),
+      div(class = "my-legend",
+          HTML(
+            "
+            <div class='legend-scale'>
+              <ul class='legend-labels'>
+                <li><span style='background:#8B85CA;'></span>Primarily Residential</li>
+                <li><span style='background:#40C0C0;'></span>Mixed with Residential</li>
+                <li><span style='background:#011E41ff;'></span>Nonresidential</li>
+              </ul>
+            </div>
+            "
+          )),
+      br(),
+      br(),
+      br(),
       checkboxInput("single_family", "1-Family Housing"),
       div(class = "checkbox-opts", 
           conditionalPanel(
@@ -173,8 +227,7 @@ server <- function(input, output, session) {
   
   output$map <- renderRdeck({
     rdeck(map_style = mapbox_light(), theme = "light",
-          initial_view_state = view_state(center = c(-76.6814467, 37.4091757),
-                                          zoom = 9.5),
+          initial_bounds = zoning,
           layer_selector = FALSE) %>%
       add_polygon_layer(data = zoning, get_fill_color = fill_color, opacity = 0.8, 
                         id = "zoning_layer", get_polygon = geometry, get_line_color = "#ffffff",
