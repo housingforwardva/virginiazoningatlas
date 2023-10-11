@@ -1,17 +1,28 @@
-/*-- scss:defaults --*/
-
-// HFV palette
-
-$theme-hfvshadow: #011E41;
-$theme-hfvsky: #40C0C0;
-$theme-hfvlilac: #8B85CA;
-$theme-hfvgrass: #259591;
-$theme-hfvberry: #B1005F;
-
 // import fonts
 
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+/*-- scss:defaults --*/
+
+// custom colors
+
+$hfv-shadow: #1a3454;
+$hfv-sky: #53c6c6;
+$hfv-lilac: #9691cf;
+$hfv-grass: #3a9f9c;
+$hfv-berry: #B1005F;
+$hfv-desert: #e66b3f;
+
+$hfv-shadow-muted: #808ea0;
+$hfv-sky-muted: #9fdfdf;
+
+// global colors
+
+$body-bg: #FFFCF0;
+$body-color: #1C1B1A;
+$link-color: $hfv-sky;
+
 
 // set fonts
 
@@ -23,28 +34,22 @@ $presentation-heading-font: 'Poppins', serif;
   font-weight: bold;
 }
 
-#title-slide {
-  
-  .title{
-  font-size: 100px !important;
-  font-weight: bold;
-  color: white !important;
-  background-color: #011E4175;
-  }
-  
-  .quarto-title-author-name {
-  font-size: 50px;
-  color: white !important;
-  background-color: #011E4175;
-  }
-  
-  .date {
-  font-size: 30px;
-  color: white !important;
-  background-color: #011E4175;
-  }
-  
-}
+// presentation colors
+
+$presentation-heading-color: $hfv-shadow;
+
+// presentation fonts
+
+$presentation-heading-font: 'Poppins', serif;
+$presentation-heading-line-height: 1.2;
+
+// font sizes
+
+$presentation-font-size-root: 45px;
+
+// other
+
+$presentation-title-slide-text-align: left;
 
 
 /*-- scss:rules --*/
@@ -72,4 +77,82 @@ $presentation-heading-font: 'Poppins', serif;
 .non-res {
   color: $theme-hfvshadow;
   font-weight: bold;
+}
+
+.reveal h1, h2, h3 {
+  padding-bottom: 0.5em;
+}
+
+.reveal p {
+  padding-bottom: 0.8em;
+}
+
+.reveal h3 {
+  font-size: 1em;
+}
+
+// slide variants
+
+#title-slide {
+  
+  .title {
+    font-size: 2em;
+    color: $body-bg;
+    padding-bottom: 0.25em !important;
+  }
+  
+  .subtitle {
+    font-size: 1.25em;
+    color: $body-bg;
+    padding-bottom: 1em;
+  }
+  
+  .author, .affiliation, .date {
+    font-size: 0.9em;
+    color: $hfv-shadow-muted !important;
+    padding-bottom: 0em !important;
+  }
+
+  .logo {
+    opacity: 95%;
+    padding-top: 0px;
+  }
+
+}
+
+// custom text class
+// use to [style text]{.custom}
+
+.custom {
+  color: $hfv-sky;
+  font-weight: bold;
+}
+
+// presentation footer
+
+.reveal .footer {
+  background-color: $presentation-heading-color !important;
+  color: $body-bg;
+  line-height: 1em;
+  display: block;
+  position: fixed;
+  bottom: 0px !important;
+  padding-bottom: 0px !important;
+  padding-top: 12px !important;
+  margin-bottom: 0px !important;
+  width: 100%;
+  text-align: center;
+  font-size: 18px;
+  z-index: 2 !important;
+}
+
+.reveal .progress {
+  height: 5px !important;
+  background-color: $presentation-heading-color !important;
+}
+
+.reveal .slide-logo {
+  margin-bottom: 5px !important;
+  opacity: 80%;
+  z-index: 3 !important;
 }
