@@ -3,12 +3,14 @@ format:
   revealjs:
     incremental: true
     self-contained: true
-    theme: [simple, ../custom.scss]
+    theme: ../custom.scss
     height: 900
     width: 1400
-    slide-number: true
-    logo: ../img/hfv_icon.png
+    margin: 0.10
+    slide-number: c/t
+    logo: ../img/hfv_icon_white.png
     from: markdown+emoji
+    footer: "Hampton Roads Zoning Atlas Forum | October 13, 2023"
 title: "Hampton Roads Zoning Atlas"
 author: "HousingForward Virginia"
 date: 2023-10-13
@@ -94,16 +96,16 @@ Unfortunately...
 ## What's a zoning atlas?
 
 ::: columns
-::: {.column width="30%"}
+::: {.column width="30%" .fragment}
 An interactive map that shows how local zoning district regulations impact certain types of housing.
 :::
 
-::: {.column width="70%"}
+::: {.column width="70%" .fragment}
 ![Connecticut Zoning Atlas](../img/ct_atlas.gif)
 :::
 :::
 
-## How is it made?
+## How is it made? {.r-fit-text}
 
 ::: columns
 ::: {.column width="60%"}
@@ -117,33 +119,31 @@ An interactive map that shows how local zoning district regulations impact certa
 :::
 :::
 
-::: {.column width="40%"}
-::: fragment
+::: {.column width="40%" .fragment}
 ![How it feels to do zoning analysis](../img/vza_methods.jpg)
-:::
 :::
 :::
 
 ## Goals of the zoning atlas
 
-::: columns
-::: {.column width="40%"}
-::: incremental
--   Standardize zoning information to show how jurisdictions and the region treats housing following a national methodology
--   Help make zoning more accessible for people to understand
--   Make comparisons across jurisdictional, and even state lines
--   Help implement and track zoning reforms
-:::
-:::
+. . .
 
-::: {.column width="60%"}
-::: fragment
-![](../img/nza.png){width="10%" fig-align="right"}
+Standardize zoning information to show how jurisdictions are treating housing
 
-![](../img/nza_map.png)
-:::
-:::
-:::
+. . .
+
+
+Help make zoning more accessible for everyday people
+
+. . .
+
+Make comparisons across jurisdictions, and even state lines
+
+. . .
+
+Help implement and track zoning reforms
+
+
 
 ## What does the atlas show us?
 
@@ -158,8 +158,8 @@ An interactive map that shows how local zoning district regulations impact certa
 :::
 :::
 
-::: {.column width="60%"}
-::: fragment
+::: {.column width="60%" .fragment}
+
 -   How are different types of housing treated?
     -   1-Family
     -   2-Family
@@ -168,27 +168,26 @@ An interactive map that shows how local zoning district regulations impact certa
     -   Accessory Dwelling Units
 
 :::
-:::
 ::::
 
 ## What's allowed by-right?
 
 ::::{.columns}
 
-:::{.column width="30%"}
-:::{.fragment}
+:::{.column width="30%" .fragment}
+
 One of the most impactful features of the Atlas is the ability to show us how restrictive certain districts are.
-:::
+
 :::
 
 :::{.column width="70%"}
 :::{.incremental}
 
--   Is it **"Allowed/Conditional"**?
-    -   It's by-right or as-of-right, meaning as long as it conforms to zoning and building requirements, all it takes is administrative approval.
--   Does it require a **"Public Hearing"**?
+-   :thumbsup: Is it **"Allowed/Conditional"**?
+    -   Meaning as long as it conforms to zoning and building requirements, all it takes is administrative approval.
+-   :ear: Does it require a **"Public Hearing"**?
     -   A public hearing process like a rezoning, special/conditional use permit, or a variance/special exception. 
--   **Prohibited**
+-   :no_entry_sign: **Prohibited**
     -   It's not allowed at all in the district.
 
 :::
@@ -204,7 +203,7 @@ One of the most impactful features of the Atlas is the ability to show us how re
 
 :::{.column width="40%" .white_text}
 
-The public approval process can be costly to both developers and residents.
+The public approval process can be costly to both developers, residents, and communities.
 
 ![](../img/nimby.jpg)
 
@@ -228,13 +227,14 @@ The public approval process can be costly to both developers and residents.
 [Why should Hampton Roads care about zoning for housing?]{.white_title}
 
 
-## Hampton Roads is aging.
+## Hampton Roads is not only getting older, it's losing young people.
 
-::: columns
-::: {.column width="60%"}
-:::{.fragment}
 ```{r}
 #| label: age
+#| message: false
+#| cache: true
+#| fig-width: 10
+#| fig-align: center
 
 hr_age <- read_rds("../data/hr/hr_b25007.rds") |> # Load in saved data for age of householders in Hampton Roads.
   mutate(age = case_when( # Create fewer age groupings.
@@ -281,28 +281,15 @@ ggplot(hr_age,
     )))
   
 ```
-:::
-:::
-
-::: {.column width="40%"}
--   Seniors need downsizing and active living options.
--   Millennials and younger Gen X need a reason to stay.
-:::
-:::
 
 ## Smaller households are the norm.
 
-::: columns
-::: {.column width="40%"}
-:::{.incremental}
--   1- and 2-person households have been increasing across the board.
-:::
-:::
-
-::: {.column width="60%"}
-:::{.fragment}
 ```{r}
 #| label: household-size-data
+#| message: false
+#| cache: true
+#| fig-width: 10
+#| fig-align: center
 
 # Create a visualization that shows the change in household size from 2010 to 2021 in each locality. Describe the trend in household size changes. Where are larger households seeing growth? Smaller households?
 
@@ -344,27 +331,15 @@ ggplot(hr_hhsize,
     )))
 
 ```
-:::
-:::
-::::
 
 ## Hampton Roads isn't building diverse housing.
 
-:::: {.columns}
-
-:::{.column width="40%} 
-
--   Single-family housing or apartments make up the majority of new builds. 
--   "Missing Middle" options are missing!
-
-:::
-
-::: {.column width="60%"}
-
-:::{.fragment}
-
 ```{r}
 #| label: bps-hr
+#| message: false
+#| cache: true
+#| fig-width: 10
+#| fig-align: center
 
 # Create a visualization that shows where housing is being built. Where is more diverse housing being built? Where is single-family housing being built the most? How does that compare to population growth in those localities?
 
@@ -418,29 +393,15 @@ ggplot(hr_bps,
 
 ```
 
-:::
-
-:::
-
-::::
-
-
-
-
 
 ## Home prices have increased everywhere.
 
-::::{.columns}
-
-:::{.column width="30%"}
--   Especially in areas like James City County, Williamsburg, and Surry County.
-:::
-
-:::{.column width="70%"}
-
-:::{.fragment}
 ```{r}
 #| label: hr-price
+#| message: false
+#| cache: true
+#| fig-width: 10
+#| fig-align: center
 
 # What have home prices been like?
 # How to add arrows indicating direction on line segments??
@@ -494,24 +455,15 @@ ggplot(hr_var_price,
         panel.grid.major.x = element_line(color = "#dadada",size = 0.2))
   
 ```
-:::
-
-:::
-
-::::
 
 ## Average rent is approaching \$1,400.
 
-::::{.columns}
-
-:::{.column width="30%"}
--   Rent spiked during COVID, but continues to grow with increasing renters.
-:::
-
-:::{.column width="70%"}
-:::{.fragment}
 ```{r}
 #| label: hr-rent
+#| message: false
+#| cache: true
+#| fig-width: 10
+#| fig-align: center
 
 # What has rent been like in Hampton Roads?
 
@@ -552,15 +504,10 @@ ggplot(hr_rent,
   # scale_color_gradientn(colours = c("#ADDCB1", "#46A88F", "#207A88", "#0F1A4E"))
 
 ```
-:::
-:::
-::::
 
 ## The Top 5 Occupations would struggle to buy a home on their own.
 
-Four out of the five couldn't afford the average rent by hundreds of dollars.
 
-:::{.fragment}
 ```{r}
 #| label: occ-plot
 
@@ -588,20 +535,16 @@ hr_occ_tbl <- hr_occ |>
 
 hr_occ_tbl
 ```
-:::
+
 
 ## The racial wealth gap is still wide in Hampton Roads.
 
-::::{.columns}
-
-:::{.column width="30%"}
--   Homeownership for the typical Black and Hispanic households is out of reach.
-:::
-
-:::{.column width="70%"}
-:::{.fragment}
 ```{r}
 #| label: race-inc
+#| message: false
+#| cache: true
+#| fig-width: 10
+#| fig-align: center
 
 hr_race_inc <- read_rds("../data/hr/hr_b19013.rds") |> 
   filter(year == 2021)
@@ -630,9 +573,7 @@ ggplot(hr_race_inc,
     )))
 
 ```
-:::
-:::
-::::
+
 
 ## Why does this all matter to housing? {background-color="#40C0C0"}
 
@@ -658,9 +599,12 @@ ggplot(hr_race_inc,
 
 York County (14%) and Newport News (13%) follow.
 
-:::{.fragment}
 ```{r}
 #| label: housing-type
+#| message: false
+#| cache: true
+#| fig-width: 10
+#| fig-align: center
 
 hr_type <- read_rds("../data/hr/hr_vza_nogeo.rds") |> 
   select(jurisdiction, overlay, type, area) |> 
@@ -692,9 +636,6 @@ ggplot(hr_type_summary,
 
 
 ```
-:::
-
-
 
 ## 69% of land in the region is dedicated to single-family detached only zoning. {.center}
 
@@ -706,6 +647,10 @@ ggplot(hr_type_summary,
 
 ```{r}
 #| label: sfd-bar
+#| message: false
+#| cache: true
+#| fig-width: 10
+#| fig-align: center
 
 hr_sfd <- read_rds("../data/hr/hr_vza_nogeo.rds") |> # Read in the data.
   select(jurisdiction, overlay, sfd, area) |> # Select necessary data fields.
@@ -746,9 +691,12 @@ ggplot(hr_sfd,
 
 ## But even in Newport News, the percentage is relatively low.
 
-:::{.fragment}
 ```{r}
 #| label: 2plus
+#| message: false
+#| cache: true
+#| fig-width: 10
+#| fig-align: center
 
 hr_byright <- read_rds("../data/hr/hr_vza_nogeo.rds") |> 
   select(jurisdiction, abbrvname, overlay, 6:9, area) |> # Select data fields.
@@ -779,12 +727,15 @@ ggplot(hr_byright,
   theme(axis.text.x = element_blank())
 
 ```
-:::
 
 ## Norfolk welcomes the most 4+-family housing by-right. {.center}
-:::{.fragment}
+
 ```{r}
 #| label: 4plus
+#| message: false
+#| cache: true
+#| fig-width: 10
+#| fig-align: center
 
 
 hr_byright <- read_rds("../data/hr/hr_vza_nogeo.rds") |> 
@@ -814,12 +765,15 @@ ggplot(hr_byright,
   theme(axis.text.x = element_blank())
 
 ```
-:::
 
 ## Accessory Dwelling Units (ADUs) are allowed by-right in many jurisdictions.
-:::{.fragment}
+
 ```{r}
 #| label: hr-adus-exc
+#| message: false
+#| cache: true
+#| fig-width: 10
+#| fig-align: center
 
 
 hr_adu <- read_rds("../data/hr/hr_vza_nogeo.rds") |> 
@@ -855,7 +809,6 @@ ggplot(hr_adu,
   theme(axis.text.x = element_blank())
 
 ```
-:::
 
 ## But ADU regulations vary across the region and are often very prescriptive.
 :::{.incremental}
@@ -869,9 +822,12 @@ ggplot(hr_adu,
 
 All areas of Hampton Roads have a shortage of affordable rentals to support low-wage jobs.
 
-:::{.fragment}
 ```{r}
 #| label: by4-jhf
+#| message: false
+#| cache: true
+#| fig-width: 10
+#| fig-align: center
 
 
 housing_needed <- read_rds("../data/hr/hr_blk_grps.rds") |> 
@@ -901,15 +857,19 @@ fit_map <- hr_byr4 |>
 fit_map |> 
   addProviderTiles(providers$CartoDB.Positron)
 ```
-:::
+
 
 ## Transit and multifamily housing {.center}
 
 Public transit serves many areas that are already zoned by-right for 4+-Family Housing. But there are more opportunities for transit oriented development.
 
-:::{.fragment}
+
 ```{r}
 #| label: transit-map
+#| message: false
+#| cache: true
+#| fig-width: 10
+#| fig-align: center
 
 
 pal <- colorFactor(palette =c("#8B85CA", "#40C0C0"),levels = c("R", "M"))
@@ -923,7 +883,6 @@ hr_transit_map |>
 
 ```
 
-:::
 
 ## What now?
 
