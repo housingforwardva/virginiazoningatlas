@@ -1,4 +1,5 @@
 library(shiny)
+library(shinyalert)
 library(rdeck)
 library(bslib)
 library(sf)
@@ -57,6 +58,8 @@ accessory_choices <- c(
   "Allowed Only After Public Hearing" = "hearing",
   "Prohibited" = "prohibited"
 )
+
+
 
 local_list <- sort(unique(zoning$jurisdiction))
 
@@ -146,12 +149,13 @@ ui <- page_fluid(
   ),
   fluidRow( 
     style = "height: 100%", 
-    # absolutePanel(
-    #   width = "200px",
-    #   top = 20, right = 20,
-    #   class = "floating-panel",
-    #   textOutput("text")
-    # ),
+    absolutePanel(
+      width = "200px",
+      top = 20, right = 20,
+      class = "floating-panel",
+      textOutput("text")
+    ),
+    useShinyalert(),
     absolutePanel(
       width = "300px",
       class = "floating-panel",
@@ -159,11 +163,11 @@ ui <- page_fluid(
       img(src = "hfv_logo.png", style = "width: 150px;"),
       p("This interactive map shows how outdated zoning laws make it hard to build diverse, affordable housing."),
       p("Use checkboxes below to filter zones in the map. Use the drop down to focus in on a specific jurisdiction.", style = "font-size: 80%;"),
-      # pickerInput("select_juris",
-      #             label = "Select Jurisdiction",
-      #             multiple = TRUE,
-      #             choices = local_list,
-      #             selected = local_list),
+      pickerInput("select_juris",
+                  label = "Select Jurisdiction",
+                  multiple = TRUE,
+                  choices = local_list,
+                  selected = local_list),
       p("Type of Zoning District", style = "color: gray; font-weight: bold; margin-bottom: 5px;"),
       div(class = "my-legend",
           HTML(
@@ -245,7 +249,23 @@ ui <- page_fluid(
 
 server <- function(input, output, session) {
   
-
+  shinyalert("Disclaimer", 
+             "<b>HousingForward Virginia</b> created the Virginia Zoning Atlas for public informational purposes only. 
+             Given the huge amount of info it contains and the possibility of changing conditions (in zoning codes, 
+             parcel/jurisdiction boundaries, & state laws), here's our disclaimer!: We hereby present this map 
+             without any warranty, either express or implied, about its validity or accuracy, or its suitability 
+             for legal, engineering, or land survey purposes. As we all know, zoning is fluid. If you notice an error, 
+             we encourage you to contact us.", 
+             type = "warning",
+             html = TRUE)
+  
+  shinyalert("Beta Version", 
+             "The following iteration of the Virginia Zoning Atlas is a beta version. The final iteration of the 
+             Virginia Zoning Atlas will seek to employ additional functionality and information not currently 
+             presented.", 
+             type = "info",
+             html = TRUE)
+  
   
   output$map <- renderRdeck({
     rdeck(map_style = mapbox_light(), theme = "light",
@@ -280,7 +300,7 @@ server <- function(input, output, session) {
     f3_opts <- input$three_family_options
     f4_opts <- input$four_family_options
     acc_opts <- input$accessory_options
-    # locality <- input$select_juris
+    locality <- input$select_juris
     
     output <- zoning %>%
       dplyr::filter(
@@ -288,8 +308,8 @@ server <- function(input, output, session) {
         family2_treatment %in% f2_opts,
         family3_treatment %in% f3_opts,
         family4_treatment %in% f4_opts,
-        accessory_treatment %in% acc_opts
-        # jurisdiction %in% locality
+        accessory_treatment %in% acc_opts,
+        jurisdiction %in% locality
       ) |> 
       dplyr::mutate(selected_area = sum(area)) |> 
       dplyr::mutate(total_jurisdiction = sum(unique(total_area))) |> 
@@ -384,13 +404,13 @@ server <- function(input, output, session) {
     }
   })
   
-  # output$text <- renderText({
-  #   
-  #   pct_value <- unique(zoning_filter()$pct)
-  # 
-  #   paste("Percent of total developable land:", pct_value)
-  #   
-  # })
+  output$text <- renderText({
+
+    pct_value <- unique(zoning_filter()$pct)
+
+    paste("Percent of total developable land:", pct_value)
+
+  })
   
 }
 

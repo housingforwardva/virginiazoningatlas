@@ -13,9 +13,13 @@ sparse <- hr_vza |>
          Jurisdiction = jurisdiction,
          Notes = tooltipnotes) |> 
   group_by(jurisdiction) |> 
-  mutate(total_area = sum(area)) 
+  mutate(total_area = sum(area)) |> 
+  mutate(accessory_treatment = case_when(
+    accessory_treatment == "nomention" ~ "prohibited",
+    TRUE ~ accessory_treatment
+  ))
 
-simple <- ms_simplify(sparse, keep = 0.38)
+simple <- ms_simplify(sparse, keep = 0.1, keep_shapes = TRUE)
 
 write_rds(st_cast(simple, "MULTIPOLYGON"), "apps/hr_vza_simple.rds")
 
