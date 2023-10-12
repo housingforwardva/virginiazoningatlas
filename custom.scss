@@ -19,20 +19,14 @@ $hfv-sky-muted: #9fdfdf;
 
 // global colors
 
-$body-bg: #FFFCF0;
+$body-bg: #FFFFFF;
 $body-color: #1C1B1A;
 $link-color: $hfv-sky;
-
 
 // set fonts
 
 $font-family-sans-serif: 'Open Sans', sans-serif;
 $presentation-heading-font: 'Poppins', serif;
-
-.teal_highlight {
-  color: $hfv-sky;
-  font-weight: bold;
-}
 
 // presentation colors
 
@@ -64,6 +58,11 @@ $presentation-title-slide-text-align: left;
   font-weight: bold;
 }
 
+.teal_highlight {
+  color: $hfv-sky;
+  font-weight: bold;
+}
+
 .primary-res {
   color: $hfv-lilac;
   font-weight: bold;
@@ -91,10 +90,17 @@ $presentation-title-slide-text-align: left;
   font-size: 1em;
 }
 
+.slide-center {
+  text-align: center !important;
+}
+
 // slide variants
 
 #title-slide {
-  
+
+  top: 0 !important;
+  bottom: 0 !important;
+
   .title {
     font-size: 2em;
     color: $body-bg;
@@ -109,23 +115,16 @@ $presentation-title-slide-text-align: left;
   
   .author, .affiliation, .date {
     font-size: 0.9em;
-    color: $hfv-shadow-muted !important;
+    color: $body-bg !important;
     padding-bottom: 0em !important;
   }
 
-  .logo {
+  .logo-title {
     opacity: 95%;
-    padding-top: 0px;
+    position: absolute !important;
+    bottom: 0px !important;
   }
 
-}
-
-// custom text class
-// use to [style text]{.custom}
-
-.custom {
-  color: $hfv-sky;
-  font-weight: bold;
 }
 
 // presentation footer
