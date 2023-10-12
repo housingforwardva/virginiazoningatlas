@@ -21,8 +21,8 @@ library(janitor)
 
 # subs <- readr::read_rds("data/subdivisions.rds")
 
-## Note from Eric: hr_vza_simple.rds needs the "jurisdiction" and "tooltip" fields to
-## create a tooltip.
+
+Sys.setenv(MAPBOX_ACCESS_TOKEN = 'pk.eyJ1IjoiZXJpY3ZtYWkiLCJhIjoiY2w0c3Vqb2YzMTR5azNjbHBqZ3Q1NnJ2MyJ9.XfTxH1fXIz15XvQFlYXzWg')
 
 zoning <- readr::read_rds("data/hr_vza_simple.rds") |>
   st_cast("MULTIPOLYGON") %>%
@@ -58,7 +58,7 @@ accessory_choices <- c(
   "Prohibited" = "prohibited"
 )
 
-
+local_list <- sort(unique(zoning$jurisdiction))
 
 
 # pal <- colorFactor(palette = c("#40C0C0", "#A29DD4", "#999999"),
@@ -133,17 +133,37 @@ ui <- page_fluid(
       .my-legend a {
         color: #777;
         }
+        
+        .selectize-input {
+        font-size: 10pt;
+        }
+      
+      .selectize-dropdown {
+        font-size: 10pt;
+        } 
+      
     "))
   ),
   fluidRow( 
     style = "height: 100%", 
+    # absolutePanel(
+    #   width = "200px",
+    #   top = 20, right = 20,
+    #   class = "floating-panel",
+    #   textOutput("text")
+    # ),
     absolutePanel(
       width = "300px",
       class = "floating-panel",
       top = 20, left = 20, 
       img(src = "hfv_logo.png", style = "width: 150px;"),
       p("This interactive map shows how outdated zoning laws make it hard to build diverse, affordable housing."),
-      p("Use checkboxes below to filter zones in the map. Click a town to see what % of its territory satisfies selected criteria.", style = "font-size: 80%;"),
+      p("Use checkboxes below to filter zones in the map. Use the drop down to focus in on a specific jurisdiction.", style = "font-size: 80%;"),
+      # pickerInput("select_juris",
+      #             label = "Select Jurisdiction",
+      #             multiple = TRUE,
+      #             choices = local_list,
+      #             selected = local_list),
       p("Type of Zoning District", style = "color: gray; font-weight: bold; margin-bottom: 5px;"),
       div(class = "my-legend",
           HTML(
@@ -230,7 +250,8 @@ server <- function(input, output, session) {
   output$map <- renderRdeck({
     rdeck(map_style = mapbox_light(), theme = "light",
           initial_bounds = zoning,
-          layer_selector = FALSE) %>%
+          layer_selector = FALSE,
+          click = "selectJurisdiction") %>%
       add_polygon_layer(data = zoning, get_fill_color = fill_color, opacity = 0.8, 
                         id = "zoning_layer", get_polygon = geometry, get_line_color = "#ffffff",
                         get_line_width = 10, pickable = TRUE, auto_highlight = TRUE, highlight_color = highlight_color,
@@ -243,6 +264,7 @@ server <- function(input, output, session) {
                             id = "transit_layer", 
                             get_fill_color = scale_color_category(service, palette = c("#ffd179", "#ff8e91", "#e67a54")))
   })
+  
   
   observeEvent(input$opacity, {
     rdeck_proxy("map") %>%
@@ -258,6 +280,7 @@ server <- function(input, output, session) {
     f3_opts <- input$three_family_options
     f4_opts <- input$four_family_options
     acc_opts <- input$accessory_options
+    # locality <- input$select_juris
     
     output <- zoning %>%
       dplyr::filter(
@@ -266,7 +289,13 @@ server <- function(input, output, session) {
         family3_treatment %in% f3_opts,
         family4_treatment %in% f4_opts,
         accessory_treatment %in% acc_opts
-      )
+        # jurisdiction %in% locality
+      ) |> 
+      dplyr::mutate(selected_area = sum(area)) |> 
+      dplyr::mutate(total_jurisdiction = sum(unique(total_area))) |> 
+      dplyr::mutate(pct = scales::percent(selected_area/total_jurisdiction), accuracy = 0.1)
+
+                         
     
     output
     
@@ -354,6 +383,14 @@ server <- function(input, output, session) {
         update_scatterplot_layer(id = "transit_layer", visible = FALSE)
     }
   })
+  
+  # output$text <- renderText({
+  #   
+  #   pct_value <- unique(zoning_filter()$pct)
+  # 
+  #   paste("Percent of total developable land:", pct_value)
+  #   
+  # })
   
 }
 

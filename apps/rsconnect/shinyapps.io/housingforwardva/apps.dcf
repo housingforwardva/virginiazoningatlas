@@ -1,0 +1,12 @@
+name: apps
+title: apps
+username: housingforwardva
+account: housingforwardva
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 10165296
+bundleId: 7791846
+url: https://housingforwardva.shinyapps.io/apps/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE

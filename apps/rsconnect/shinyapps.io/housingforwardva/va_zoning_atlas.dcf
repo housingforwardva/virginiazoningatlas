@@ -1,0 +1,12 @@
+name: va_zoning_atlas
+title: va_zoning_atlas
+username: housingforwardva
+account: housingforwardva
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 10165491
+bundleId: 7791903
+url: https://housingforwardva.shinyapps.io/va_zoning_atlas/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE

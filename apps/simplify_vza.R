@@ -6,13 +6,16 @@ hr_vza <- st_read("data/hr/hr_vza_developable.geojson")
 
 sparse <- hr_vza |>
   select(id, type, abbrvname, tooltipnotes, jurisdiction, name, overlay, family1_treatment:family4_treatment,
-         hr_custom_fields_sfd, accessory_treatment) |> 
+         hr_custom_fields_sfd, accessory_treatment, area) |> 
+  filter(overlay == FALSE) |> 
   mutate(Zoning = name,
          Abbreviation = abbrvname,
          Jurisdiction = jurisdiction,
-         Notes = tooltipnotes)
+         Notes = tooltipnotes) |> 
+  group_by(jurisdiction) |> 
+  mutate(total_area = sum(area)) 
 
-simple <- ms_simplify(sparse, keep = 0.1)
+simple <- ms_simplify(sparse, keep = 0.38)
 
 write_rds(st_cast(simple, "MULTIPOLYGON"), "apps/hr_vza_simple.rds")
 
