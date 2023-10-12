@@ -52,12 +52,18 @@ type_choices <- c(
   "Public Hearing" = "hearing"
 )
 
-
 accessory_choices <- c(
   "Allowed As of Right" = "allowed",
   "Allowed Only After Public Hearing" = "hearing",
   "Prohibited" = "prohibited"
 )
+
+base_map <- c(
+  "Light" = mapbox_light(),
+  "Satellite" = mapbox_satellite()
+)
+
+base_selected <- "Light"
 
 
 
@@ -162,7 +168,7 @@ ui <- page_fluid(
       top = 20, left = 20, 
       img(src = "hfv_logo.png", style = "width: 150px;"),
       p("This interactive map shows how outdated zoning laws make it hard to build diverse, affordable housing."),
-      p("Use checkboxes below to filter zones in the map. Use the drop down to focus in on a specific jurisdiction.", style = "font-size: 80%;"),
+      p("Use checkboxes below to filter zones in the map. Use the drop down to focus in on a specific jurisdiction or multiple.", style = "font-size: 80%;"),
       pickerInput("select_juris",
                   label = "Select Jurisdiction",
                   multiple = TRUE,
@@ -236,9 +242,13 @@ ui <- page_fluid(
         ),
       hr(),
       checkboxInput("transit_stops", "Show transit stops", value = FALSE),
+      selectInput("basemap", "Choose basemap",
+                  choices = base_map,
+                  selected = base_selected),
       chooseSliderSkin("Flat", color = "#40C0C0"),
       sliderInput("opacity", "Zone opacity", min = 0, max = 100, 
                   value = 80, ticks = FALSE)
+
     ), 
     mainPanel(
       width = 12,
@@ -268,10 +278,9 @@ server <- function(input, output, session) {
   
   
   output$map <- renderRdeck({
-    rdeck(map_style = mapbox_light(), theme = "light",
+    rdeck(map_style = input$basemap, theme = "light",
           initial_bounds = zoning,
-          layer_selector = FALSE,
-          click = "selectJurisdiction") %>%
+          layer_selector = FALSE) %>%
       add_polygon_layer(data = zoning, get_fill_color = fill_color, opacity = 0.8, 
                         id = "zoning_layer", get_polygon = geometry, get_line_color = "#ffffff",
                         get_line_width = 10, pickable = TRUE, auto_highlight = TRUE, highlight_color = highlight_color,
