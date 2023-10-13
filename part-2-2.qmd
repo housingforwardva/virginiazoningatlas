@@ -87,6 +87,8 @@ The following findings are based on the [Zoning Atlas Methodology](https://www.z
 -   US Fish and Wildlife Service
 -   US Forest Service
 
+Camp Peary is notably missing from this data and was added on 10/13/2023. Thanks, Earl Anderson!
+
 **Wetland/water areas** were identified using the [U.S. Fish & Wildlife Service's Seamless Wetlands Data](https://www.fws.gov/program/national-wetlands-inventory/data-download). The wetlands polygon was used and allow polygons with an area of 10 acres or more were utilized as a mask layer to clip from our Hampton Roads zoning district layer file.
 :::
 
@@ -166,7 +168,7 @@ girafe(ggobj = type_plot,
 
 ```
 
-Roughly 90 percent of developable land is [Primarily Residential]{.primary-res} . This includes prime agricultural land in the southern parts of Hampton Roads, where the preservation of open space and natural resources is a vital part of the region. Only three percent of the region's developable land is classified as [Mixed with Residential]{.mixed-res}. Locally, **Williamsburg (22%), York County (14%), and Newport News (13%)** have the **largest proportions of** [Mixed with Residential]{.mixed-res} **zoning types**, while Surry County (0%), Southampton County (0%), and Isle of Wight County (less than 1%) have the least.
+Roughly 90 percent of developable land is [Primarily Residential]{.primary-res} . This includes prime agricultural land in the southern parts of Hampton Roads, where the preservation of open space and natural resources is a vital part of the region. Only three percent of the region's developable land is classified as [Mixed with Residential]{.mixed-res}. Locally, **Williamsburg (22%), York County (17%), and Newport News (13%)** have the **largest proportions of** [Mixed with Residential]{.mixed-res} **zoning types**, while Surry County (0%), Southampton County (0%), and Isle of Wight County (less than 1%) have the least.
 
 ***Williamsburg has the greatest percentage of Mixed with Residential zoning in the region.***
 
@@ -242,6 +244,8 @@ In most Hampton Roads localities, the majority of developable land is dedicated 
 ## Notable Jurisdiction
 
 Isle of Wight County is notable among its neighbors because it allows for two-family housing throughout many parts of the county, even in areas where single-family detached is predominant. The catch, however, is that it has to go through the conditional use permit process.
+
+York County allows for single-family attached duplexes in a [Cluster Techniques Open Space Development](https://library.municode.com/va/york_county/codes/code_of_ordinances?nodeId=CD_ORD_CH24.1ZO_ARTIVPESTUS_DIV1REUS_S24.1-402STOPSPDECLTE) through the special use permit. 
 :::
 
 ```{r}
@@ -259,8 +263,8 @@ hr_sfd <- read_rds("data/hr/hr_vza_nogeo.rds") |> # Read in the data.
   mutate(percent = area/sum(area)) |> 
   ungroup() |> 
   mutate(total_hr = sum(area)) |> # Calculate what percentage of total developable area is SFD.
-  filter(sfd == "t") 
-
+  filter(sfd == "t") |> 
+  add_row(jurisdiction = "York County", sfd = "t", percent = 0, total_hr = 1406413)
 
 
 ggplot(hr_sfd,
