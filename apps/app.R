@@ -40,7 +40,7 @@ zoning <- readr::read_rds("data/hr_vza_simple.rds") |>
       TRUE ~ "#FFFFFFff"
     )) 
 
-
+fed <- sf::st_read("data/fed_lands.geojson")
 
 transit <- sf::st_read("data/hr_transit_all.geojson")
 
@@ -116,7 +116,8 @@ ui <- page_fluid(
         float: left;
         list-style: none;
         display: block;
-        }
+      }
+        
       .my-legend .legend-scale ul li {
         font-size: 80%;
         list-style: none;
@@ -124,7 +125,8 @@ ui <- page_fluid(
         line-height: 18px;
         margin-bottom: 2px;
         display: block;
-        }
+      }
+        
       .my-legend ul.legend-labels li span {
         display: block;
         float: left;
@@ -133,31 +135,33 @@ ui <- page_fluid(
         margin-right: 5px;
         margin-left: 0;
         border: 1px solid #999;
-        }
+      }
+        
       .my-legend .legend-source {
         font-size: 70%;
         color: #999;
         clear: both;
-        }
+      }
+        
       .my-legend a {
         color: #777;
-        }
+      }
         
-        .selectize-input {
-        font-size: 10pt;
-        }
       
       .selectize-dropdown {
-        font-size: 10pt;
-        } 
+        font-size: 0.8em;
+      } 
+      
+    
+        
       
     "))
   ),
   fluidRow( 
     style = "height: 100%", 
-    absolutePanel(
-      width = "200px",
-      top = 20, right = 20,
+    fixedPanel(
+      width = "300px",
+      top = 900, left = 20,
       class = "floating-panel",
       textOutput("text")
     ),
@@ -168,12 +172,7 @@ ui <- page_fluid(
       top = 20, left = 20, 
       img(src = "hfv_logo.png", style = "width: 150px;"),
       p("This interactive map shows how outdated zoning laws make it hard to build diverse, affordable housing."),
-      p("Use checkboxes below to filter zones in the map. Use the drop down to focus in on a specific jurisdiction or multiple.", style = "font-size: 80%;"),
-      pickerInput("select_juris",
-                  label = "Select Jurisdiction",
-                  multiple = TRUE,
-                  choices = local_list,
-                  selected = local_list),
+      p("Use checkboxes below to filter zoning districts in the map.", style = "font-size: 80%;"),
       p("Type of Zoning District", style = "color: gray; font-weight: bold; margin-bottom: 5px;"),
       div(class = "my-legend",
           HTML(
@@ -241,7 +240,15 @@ ui <- page_fluid(
           )
         ),
       hr(),
+      p("Use the drop down to focus in on a specific jurisdiction or multiple.", style = "font-size: 80%;"),
+      pickerInput("select_juris",
+                  label = "Select Jurisdiction",
+                  multiple = TRUE,
+                  choices = local_list,
+                  selected = local_list),
+      hr(),
       checkboxInput("transit_stops", "Show transit stops", value = FALSE),
+      hr(),
       selectInput("basemap", "Choose basemap",
                   choices = base_map,
                   selected = base_selected),
@@ -284,10 +291,13 @@ server <- function(input, output, session) {
       add_polygon_layer(data = zoning, get_fill_color = fill_color, opacity = 0.8, 
                         id = "zoning_layer", get_polygon = geometry, get_line_color = "#ffffff",
                         get_line_width = 10, pickable = TRUE, auto_highlight = TRUE, highlight_color = highlight_color,
-                        tooltip = c(Abbreviation, Zoning, Jurisdiction, Notes), name = "About") %>%
+                        tooltip = c(Abbreviation, Zoning, Jurisdiction, Notes), name = "Zoning") %>%
       add_polygon_layer(data = juris, name = "Jurisdiction", stroked = TRUE, filled = FALSE, pickable = TRUE,
                         auto_highlight = TRUE, get_line_color = "#f2e70a", get_polygon = geometry,
-                        get_line_width = 100) %>%
+                        get_line_width = 100) |> 
+      add_polygon_layer(data = fed, opacity = 0.5, filled = TRUE, get_fill_color = "#A9A9A9", get_polygon = geometry, get_line_color = "#ffffff",
+                        get_line_width = 10, pickable = TRUE, auto_highlight = TRUE, highlight_color = "#606060",
+                        tooltip = c(Agency, Name), name = "Federal Land") %>%
       add_scatterplot_layer(data = transit, get_position = geometry, name = "Public Transit", 
                             radius_min_pixels = 2, visible = FALSE, 
                             id = "transit_layer", 
