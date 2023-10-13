@@ -152,20 +152,18 @@ ui <- page_fluid(
         font-size: 0.8em;
       } 
       
-    
-        
-      
     "))
   ),
   fluidRow( 
     style = "height: 100%", 
-    fixedPanel(
-      width = "300px",
-      top = 900, left = 20,
-      class = "floating-panel",
-      textOutput("text")
-    ),
     useShinyalert(),
+    absolutePanel(
+      width = "150px",
+      class = "floating-panel",
+      bottom = 50, right = 20, 
+      selectInput("basemap", "Choose basemap",
+                  choices = base_map,
+                  selected = base_selected)),
     absolutePanel(
       width = "300px",
       class = "floating-panel",
@@ -199,6 +197,7 @@ ui <- page_fluid(
                                selected = type_choices)
               )
           ),
+      style = "font-size: 0.9em",
       checkboxInput("two_family", "2-Family Housing"),
       div(class = "checkbox-opts",
           conditionalPanel(
@@ -249,17 +248,15 @@ ui <- page_fluid(
       hr(),
       checkboxInput("transit_stops", "Show transit stops", value = FALSE),
       hr(),
-      selectInput("basemap", "Choose basemap",
-                  choices = base_map,
-                  selected = base_selected),
       chooseSliderSkin("Flat", color = "#40C0C0"),
       sliderInput("opacity", "Zone opacity", min = 0, max = 100, 
-                  value = 80, ticks = FALSE)
-
+                  value = 80, ticks = FALSE),
+      br(),
+      textOutput("text")
     ), 
     mainPanel(
       width = 12,
-      rdeckOutput("map", width = "95%", height = "95vh")
+      rdeckOutput("map", width = "99%", height = "98vh")
     )
   )
 )
@@ -279,7 +276,10 @@ server <- function(input, output, session) {
   shinyalert("Beta Version", 
              "The following iteration of the Virginia Zoning Atlas is a beta version. The final iteration of the 
              Virginia Zoning Atlas will seek to employ additional functionality and information not currently 
-             presented.", 
+             presented.
+             
+             For example, what you see does not currently account for zoning district overlays, which in some localities 
+             impact building requirements.", 
              type = "info",
              html = TRUE)
   
@@ -427,7 +427,7 @@ server <- function(input, output, session) {
 
     pct_value <- unique(zoning_filter()$pct)
 
-    paste("Percent of total developable land:", pct_value)
+    paste("Percent of total developable land based on selected districts:", pct_value)
 
   })
   
