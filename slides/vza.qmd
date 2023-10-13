@@ -869,8 +869,8 @@ hr_transit_map |>
 - Visit our Virginia Zoning Atlas page for full findings.
 - Use the Virginia Zoning Atlas as a resource.
 - Give us feedback on how we can expand this resource to support housing.
-- https://housingforwardva.github.io/virginiazoningatlas/
-- 
+
+(https://housingforwardva.github.io/virginiazoningatlas/)
 
 :::
 

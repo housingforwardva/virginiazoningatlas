@@ -36,7 +36,7 @@ title-slide-attributes:
 
 {{< include ../slides/vza.qmd >}}
 
-## Lunch {.slide-center}
+## Lunch sponsor {.slide-center}
 
 <!-- Linda opens lunch -->
 
