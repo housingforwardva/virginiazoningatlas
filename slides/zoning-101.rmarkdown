@@ -1,0 +1,129 @@
+## Have you ever wondered why... {.center}
+
+::: {style="text-size:1.4em"}
+
+[A gas station went up on that corner instead of a new park?]{.fragment .fade-in-then-semi-out}
+
+[The mall has so much parking around it?]{.fragment .fade-in-then-semi-out}
+
+[That new apartment building is so tall?]{.fragment .fade-in-then-semi-out}
+
+:::
+
+## ...it’s ZONING! {.center}
+
+::: {.r-fit-text}
+*Zoning* refers to a collection of local laws that<br>
+tell property owners what they can and can’t do<br>
+with their property.
+:::
+
+## This makes some sense, right? {.center}
+
+[Well...]{.fragment}
+
+---
+
+![](../img/sf.png){.absolute top=0 left=0 height="800"}
+
+::: aside
+Excerpt of San Francisco zoning code via [@anniefryman](https://twitter.com/anniefryman/status/1710076275640217634)
+:::
+
+---
+
+![](../img/seattle.jpg){.absolute top=0 left=0 height="800"}
+
+::: aside
+Poster promoting Seattle’s original 1923 zoning ordinance and its introduction of “single-family” zoning via [Architect Magazine](https://www.architectmagazine.com/practice/rick-mohler-a-reckoning-with-single-family-zonings-impact-on-racial-equityand-on-architects-livelihood_o)
+:::
+
+---
+
+
+```{r}
+#| echo: false
+#| message: false
+#| cache: true
+#| fig-width: 7
+#| fig-align: center
+
+library(tidyverse)
+library(hdatools)
+library(scales)
+library(zoo)
+
+starts <- read_csv("../data/starts.csv") |> 
+  arrange(DATE) |> 
+  mutate(mov_avg = rollmean(HOUST_POP, 120, align = "right", fill = NA))
+
+ggplot(starts, aes(x = as.Date(DATE))) +
+  geom_line(aes(y = HOUST_POP), color = "#B1005F", linewidth = 0.8) +
+  geom_line(aes(y = mov_avg), color = "#B1005F", linetype = 2, linewidth = 1, alpha = 0.5) +
+  scale_x_date(
+    date_breaks = "10 years",
+    date_labels = "%Y",
+    limits = c(as.Date("1962-01-01"), Sys.Date()),
+    expand = c(0.03, 0.03)
+  ) +
+  scale_y_continuous(labels = label_percent()) +
+  labs(
+    title = "We Don't Build Them Like We Used To",
+    subtitle = "Monthly housing starts as share of population",
+    caption = "**Sources:** U.S. Census Bureau and U.S. Department of Housing and Urban Development."
+  ) +
+  add_zero_line("y") +
+  theme_hfv(base_size = 24)
+
+```
+
+
+## In 20 minutes... {.center}
+
+::: {style="text-size:1.4em"}
+
+[1. Know where zoning came from]{.fragment .fade-in-then-semi-out}
+
+[2. Understand the nuts and bolts]{.fragment .fade-in-then-semi-out}
+
+[3. Be ready to dive into the VZA]{.fragment .fade-in-then-semi-out}
+
+:::
+
+# [Zoning's origin [story]{.fragment .strike fragment-index=2}]{.fragment fragment-index=1} [stories]{.fragment fragment-index=2}
+
+---
+
+![](../img/nyc-1.jpg){.absolute top=0 left=0 height="800"}
+
+::: aside
+Pre-1916 skyscrapers in New York City via [The Skyscraper Museum](https://old.skyscraper.org/zoning/)
+:::
+
+---
+
+![](../img/nyc-2.png){.absolute top=0 left=0 height="800"}
+
+::: aside
+March 1916 "Shall We Save New York?" advertisement in *New York Times* via [The Skyscraper Museum](https://old.skyscraper.org/zoning/)
+:::
+
+---
+
+![](../img/nyc-3.png){.absolute top=0 left=0 height="800"}
+
+::: aside
+Graph of the 1916 New York City zoning ordinance with an example elevation for an 80-foot street in a 2½-times height district via [Wikipedia](https://en.wikipedia.org/wiki/1916_Zoning_Resolution)
+:::
+
+## Virginia
+
+[Hopkins v. City of Richmond](https://cite.case.law/va/117/692/)
+
+```
+
+1908: Richmond's first zoning ordinance (heights and arrangements)
+1910: Upheld by Virginia Supreme Court (inspired 1916 NYC ordinance)
+1911: Richmond's segregation zoning ordinance
+
+```

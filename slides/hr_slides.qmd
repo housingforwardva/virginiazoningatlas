@@ -28,7 +28,7 @@ title-slide-attributes:
 
 <!-- JTK slides -->
 
-<!-- {{< include ../slides/zoning-101.qmd >}} -->
+{{< include ../slides/zoning-101.qmd >}}
 
 # Virginia Zoning Atlas
 

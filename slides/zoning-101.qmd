@@ -1,45 +1,208 @@
-## Hook 1
+## Have you ever wondered why... {.center}
 
-Have you ever wondered why...
+::: {style="text-size:1.4em"}
 
-- A gas station went up on that corner instead of a new park?
-- The mall has so much parking around it?
-- That new apartment building is so tall?
+[A gas station went up on that corner instead of a new park?]{.fragment .fade-in-then-semi-out}
 
-## Hook 2
+[The mall has so much parking around it?]{.fragment .fade-in-then-semi-out}
 
-...it’s ZONING!
+[That new apartment building is so tall?]{.fragment .fade-in-then-semi-out}
 
-- Zoning is a collection of local laws that tell property owners what they can and can’t do with their property
-- Makes total sense that we want to collectively influence what gets built where, right?
+:::
 
-## Problem
+## ...it’s ZONING! {.center}
 
-Unfortunately...
+::: {.r-fit-text}
+*Zoning* refers to a collection of local laws that<br>
+tell property owners what they can and can’t do<br>
+with their property.
+:::
 
-- The regulatory fabric that shapes our community isn’t producing the results we need
-- Zoning codes (and the development process) are difficult for average people to wrap their head around
-- Many communities still have zoning schemes rooted in early 20th century racist planning practices
+## This makes some sense, right? {.center}
 
-## Goals
+[Well...]{.fragment}
 
-- Know where zoning came from
-- Understand the nuts and bolts of zoning
-- Be ready to dive into the VZA
+---
 
-## Origins
+![](../img/sf.png){.absolute top=0 left=0 height="700"}
 
-- "Usual" story (improve living conditions in cities)
-- "Actual" story
+::: aside
+Excerpt of San Francisco zoning code via [@anniefryman](https://twitter.com/anniefryman/status/1710076275640217634)
+:::
 
-[Hopkins v. City of Richmond](https://cite.case.law/va/117/692/)
+---
 
-## Virginia
+![](../img/seattle.jpg){.absolute top=0 left=0 height="700"}
+
+::: aside
+Poster promoting Seattle’s original 1923 zoning ordinance and its introduction of “single-family” zoning via [Architect Magazine](https://www.architectmagazine.com/practice/rick-mohler-a-reckoning-with-single-family-zonings-impact-on-racial-equityand-on-architects-livelihood_o)
+:::
+
+---
+
+```{r}
+#| echo: false
+#| message: false
+#| cache: true
+#| fig-width: 7
+#| fig-align: center
+
+library(tidyverse)
+library(hdatools)
+library(scales)
+library(zoo)
+
+starts <- read_csv("../data/starts.csv") |> 
+  arrange(DATE) |> 
+  mutate(mov_avg = rollmean(HOUST_POP, 120, align = "right", fill = NA))
+
+ggplot(starts, aes(x = as.Date(DATE))) +
+  geom_line(aes(y = HOUST_POP), color = "#B1005F", linewidth = 0.8) +
+  geom_line(aes(y = mov_avg), color = "#B1005F", linetype = 2, linewidth = 1, alpha = 0.5) +
+  scale_x_date(
+    date_breaks = "10 years",
+    date_labels = "%Y",
+    limits = c(as.Date("1962-01-01"), Sys.Date()),
+    expand = c(0.03, 0.03)
+  ) +
+  scale_y_continuous(labels = label_percent()) +
+  labs(
+    title = "We Don't Build Them Like We Used To",
+    subtitle = "Monthly housing starts as share of population",
+    caption = "**Sources:** U.S. Census Bureau and U.S. Department of Housing and Urban Development."
+  ) +
+  add_zero_line("y") +
+  theme_hfv(base_size = 24)
 
 ```
 
-1908: Richmond's first zoning ordinance (heights and arrangements)
-1910: Upheld by Virginia Supreme Court (inspired 1916 NYC ordinance)
-1911: Richmond's segregation zoning ordinance
+## In 20 minutes... {.center}
 
-```
+::: {style="text-size:1.4em"}
+
+[1. Know where zoning came from]{.fragment .fade-in-then-semi-out}
+
+[2. Understand the nuts and bolts]{.fragment .fade-in-then-semi-out}
+
+[3. Be ready to dive into the VZA]{.fragment .fade-in-then-semi-out}
+
+:::
+
+# Zoning's origin [story]{.fragment .strike fragment-index=2} [stories]{.fragment fragment-index=2}
+
+---
+
+![](../img/nyc-1.jpg){.absolute top=0 left=0 height="700"}
+
+::: aside
+Pre-1916 skyscrapers in New York City via [The Skyscraper Museum](https://old.skyscraper.org/zoning/)
+:::
+
+---
+
+![](../img/nyc-2.png){.absolute top=0 left=0 height="700"}
+
+::: aside
+March 1916 "Shall We Save New York?" advertisement in *New York Times* via [The Skyscraper Museum](https://old.skyscraper.org/zoning/)
+:::
+
+---
+
+![](../img/nyc-3.png){.absolute top=0 left=0 height="700"}
+
+::: aside
+Graph of the 1916 New York City zoning ordinance with an example elevation for an 80-foot street in a 2½-times height district via [Wikipedia](https://en.wikipedia.org/wiki/1916_Zoning_Resolution)
+:::
+
+---
+
+![](../img/szea.png){.absolute top=0 left=0 height="700"}
+
+::: aside
+1922 Standard State Zoning Enabling Act via [American Planning Association](https://www.planning.org/growingsmart/enablingacts/)
+:::
+
+## :balance_scale: *Euclid v. Ambler*
+
+[Ambler Realty Co. sues Village of Euclid, Ohio after new zoning ordinance significantly limits ability for industrial development on tract of land they own.]{.fragment .fade-in-then-semi-out}
+
+[Plaintiffs assert "enforcement would constitute an unconstitutional taking" without due process.]{.fragment .fade-in-then-semi-out}
+
+[Case goes before U.S. Supreme Court in 1926.]{.fragment .fade-in-then-semi-out}
+
+[[Zoning found CONSTITUTIONAL]{style="color:#3a9f9c;font-weight:bold"} as reasonable part of local government's power to promote public health, safety, and general welfare.]{.fragment}
+
+## By mid-century, most local governments in America have a zoning ordinance. {.center}
+
+## Wait, SCOTUS said what? {.center}
+
+::: {.fragment}
+
+> [. . . very often [the apartment house is a mere parasite]{.highlight-sky}, constructed in order to take advantage of the open spaces and attractive surroundings created by the residential character of [single-family neighborhoods]]{style="text-size:3em;font-style: italic"}
+
+[Majority opinion by Justice Sutherland in *Village of Euclid v. Ambler Realty Co.*, 272 U.S. 365 (1926)]{style="text-size:0.5rem; color:#6f6f6f"}
+
+:::
+
+# Let's go back...
+
+## Pre-NYC zoning activity
+
+[[**1885:** Modesto, California]{style="color:#9691cf"}<br>Local ordinance prohibits public laundry facilities (run primarily by Chinese immigrants) in city limits.]{.fragment}
+
+[[**1908:** Richmond, Virginia]{style="color:#9691cf"}<br>New regulations created to govern height and arrangement of buildings.]{.fragment}
+
+- *Upheld by Virginia Supreme Court.*
+- *Literal inspiration for NYC's 1916 ordinance.*
+
+## 1910 Baltimore segregation ordinance
+
+::: {.fragment}
+
+> [Blacks should be quarantined in isolated slums in order to reduce the incidence of civil disturbance, to prevent the spread of communicable disease into the nearby White neighborhoods, and to protect property values among the White majority.]{style="text-size:3em;font-style: italic"}
+
+[--- Mayor J. Barry Mahool, May 1911]{style="text-size:0.5rem; color:#6f6f6f"}
+
+[First zoning ordinance explicitly referencing race.]{.fragment}
+
+:::
+
+## 1911 Richmond segregation ordinance
+
+::: {.fragment}
+
+> [To secure for white and colored people respectively the separate location of residences for each race.]{style="text-size:3em;font-style: italic"}
+
+:::
+
+[Unlawful for a person to live on a block where more houses are occupied by persons of another race.]{.fragment}
+
+[Town of Ashland passes same ordinance five months later.]{.fragment}
+
+[:balance_scale: *Hopkins v. City of Richmond*<br>
+Virginia Supreme Court upholds ordinance 1915.]{.fragment}
+
+## :balance_scale: *Buchanan v. Warley* {.center}
+
+[In 1917, U.S. Supreme Court rules racial segregation zoning laws unconstitutional.]{.fragment .fade-in-then-semi-out}
+
+## 
+
+
+
+
+## "Euclidian" zoning
+
+![](../img/use-table.png){.absolute top=0 left=0 height="600"}
+
+::: aside
+City of Portsmouth [Use Table](https://www.portsmouthva.gov/2222/Use-Permits)
+:::
+
+---
+
+![](../img/euclid-site.png){.absolute top=0 left=0 height="700"}
+
+::: aside
+The Ambler Realty tract in Euclid, Ohio today
+:::
