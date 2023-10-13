@@ -17,7 +17,6 @@ format:
     template-partials:
       - toc.html
     toc-title: "On this page"
-    include-in-header: gt.html
   # pdf:
   #   documentclass: scrreprt
   #   mainfont: "Open Sans"
