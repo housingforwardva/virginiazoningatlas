@@ -1,54 +1,54 @@
 id,jurisdiction,abbrvname,overlay,family1_treatment,family2_treatment,family3_treatment,family4_treatment,area
-25384,James City,R-5,0,prohibited,allowed,allowed,allowed,787.601
-25242,Surry (town),R-3,0,allowed,allowed,allowed,allowed,8.076
-25250,Franklin (city),R-1A,0,allowed,allowed,allowed,allowed,60.79
-8838,Gloucester,MF-1,0,allowed,allowed,allowed,allowed,192.505
-17060,Gloucester,RMX,0,allowed,allowed,allowed,allowed,10.908
-8840,Gloucester,B-2,0,allowed,allowed,allowed,allowed,224.817
-25402,Williamsburg,RM-2,0,allowed,allowed,allowed,allowed,163.183
-25412,Williamsburg,ED,0,allowed,allowed,allowed,allowed,217.74
-25404,Williamsburg,LB-1,0,allowed,allowed,allowed,allowed,37.298
-25408,Williamsburg,B-1,0,allowed,allowed,allowed,allowed,41.733
-12370,Chesapeake,O-I,0,prohibited,allowed,allowed,allowed,1104.817
-12369,Chesapeake,R-MF-2,0,prohibited,allowed,allowed,allowed,46.144
-12372,Chesapeake,B-1,0,prohibited,allowed,allowed,allowed,899.138
-12374,Chesapeake,B-5,0,prohibited,allowed,allowed,allowed,16.369
-12368,Chesapeake,R-MF-1,0,prohibited,allowed,allowed,allowed,2918.934
-36377,Windsor,R-2,0,allowed,allowed,allowed,allowed,66.874
-25333,Isle of Wight,UR,0,allowed,allowed,allowed,allowed,90.27
-18647,Newport News,R8,0,allowed,allowed,allowed,allowed,723.71
-18644,Newport News,R5,0,allowed,allowed,allowed,allowed,1739.376
-18655,Newport News,C3,0,allowed,allowed,allowed,allowed,238.19
-18646,Newport News,R7,0,allowed,allowed,allowed,allowed,1641.441
-25300,Portsmouth,D1-T6,0,prohibited,allowed,allowed,allowed,64.792
-25298,Portsmouth,D1-T4,0,allowed,allowed,allowed,allowed,50.964
-25431,Suffolk,RC,0,allowed,allowed,allowed,allowed,556.711
-25432,Suffolk,RU,0,allowed,allowed,allowed,allowed,1346.16
-25433,Suffolk,RU-12,0,allowed,allowed,allowed,allowed,82.184
-25434,Suffolk,RU-18,0,allowed,allowed,allowed,allowed,9.486
-18696,York,RMF,0,allowed,allowed,allowed,allowed,539.7
-33916,Hampton,BB-2,0,allowed,allowed,allowed,allowed,17.185
-33923,Hampton,DT-1,0,allowed,allowed,allowed,allowed,137.359
-33924,Hampton,DT-2,0,allowed,allowed,allowed,allowed,24.239
-18615,Virginia Beach,A-12,0,allowed,allowed,allowed,allowed,2733.905
-18617,Virginia Beach,A-24,0,allowed,allowed,allowed,allowed,362.157
-28724,Virginia Beach,RT-3,0,allowed,allowed,allowed,allowed,32.674
-33319,Virginia Beach,OR,0,allowed,allowed,allowed,allowed,384.758
-18618,Virginia Beach,A-36,0,allowed,allowed,allowed,allowed,297.913
-18616,Virginia Beach,A-18,0,allowed,allowed,allowed,allowed,1606.691
-25212,Southampton,R-2,0,allowed,allowed,allowed,allowed,186.258
-25270,Poquoson,R-3,0,allowed,allowed,allowed,allowed,60.894
-26032,Norfolk,PDMU-3,0,allowed,allowed,allowed,allowed,18.783
-26009,Norfolk,PD-BCR,0,allowed,allowed,allowed,allowed,65.854
-12426,Norfolk,R-C,0,allowed,allowed,allowed,allowed,541.814
-12441,Norfolk,D-SP,0,allowed,allowed,allowed,allowed,20.867
-12449,Norfolk,HC-WF1,0,allowed,allowed,allowed,allowed,11.57
-12450,Norfolk,HC-WF2,0,allowed,allowed,allowed,allowed,5.692
-12427,Norfolk,MF-NS,0,allowed,allowed,allowed,allowed,1526.574
-26011,Norfolk,PD-MU East Beach,0,allowed,allowed,allowed,allowed,85.323
-26012,Norfolk,PD-MU Spectrum at Willoughby,0,allowed,allowed,allowed,allowed,12.018
-35331,Norfolk,PDR-5,0,allowed,allowed,allowed,allowed,18.523
-35334,Norfolk,PDR-8,0,prohibited,allowed,allowed,allowed,11.926
-12448,Norfolk,HC-G3,0,allowed,allowed,allowed,allowed,0.299
-12447,Norfolk,HC-G2,0,allowed,allowed,allowed,allowed,55.667
-26030,Norfolk,PDMU-1,0,allowed,allowed,allowed,allowed,180.176
+25384,James City,R-5,0,prohibited,allowed,allowed,allowed,787.6005206223942
+25242,Surry (town),R-3,0,allowed,allowed,allowed,allowed,8.076480156758077
+25250,Franklin (city),R-1A,0,allowed,allowed,allowed,allowed,60.790198461065955
+8838,Gloucester,MF-1,0,allowed,allowed,allowed,allowed,192.50533376427416
+17060,Gloucester,RMX,0,allowed,allowed,allowed,allowed,10.90770816702565
+8840,Gloucester,B-2,0,allowed,allowed,allowed,allowed,224.81714076878168
+25402,Williamsburg,RM-2,0,allowed,allowed,allowed,allowed,163.18251225538864
+25412,Williamsburg,ED,0,allowed,allowed,allowed,allowed,217.74005698712637
+25404,Williamsburg,LB-1,0,allowed,allowed,allowed,allowed,37.297757917417485
+25408,Williamsburg,B-1,0,allowed,allowed,allowed,allowed,41.7328400091657
+12370,Chesapeake,O-I,0,prohibited,allowed,allowed,allowed,1104.816570753581
+12369,Chesapeake,R-MF-2,0,prohibited,allowed,allowed,allowed,46.14354022018367
+12372,Chesapeake,B-1,0,prohibited,allowed,allowed,allowed,899.1381318172614
+12374,Chesapeake,B-5,0,prohibited,allowed,allowed,allowed,16.369147948511024
+12368,Chesapeake,R-MF-1,0,prohibited,allowed,allowed,allowed,2918.933691638435
+36377,Windsor,R-2,0,allowed,allowed,allowed,allowed,66.87358894645439
+25333,Isle of Wight,UR,0,allowed,allowed,allowed,allowed,90.26970783658425
+18647,Newport News,R8,0,allowed,allowed,allowed,allowed,723.709918265902
+18644,Newport News,R5,0,allowed,allowed,allowed,allowed,1739.3755351739055
+18655,Newport News,C3,0,allowed,allowed,allowed,allowed,238.18953012074223
+18646,Newport News,R7,0,allowed,allowed,allowed,allowed,1641.4413791499358
+25300,Portsmouth,D1-T6,0,prohibited,allowed,allowed,allowed,64.7916524427194
+25298,Portsmouth,D1-T4,0,allowed,allowed,allowed,allowed,50.96386404454914
+25431,Suffolk,RC,0,allowed,allowed,allowed,allowed,556.7109964845715
+25432,Suffolk,RU,0,allowed,allowed,allowed,allowed,1346.1599929175277
+25433,Suffolk,RU-12,0,allowed,allowed,allowed,allowed,82.18396511599803
+25434,Suffolk,RU-18,0,allowed,allowed,allowed,allowed,9.485658182004062
+18696,York,RMF,0,allowed,allowed,allowed,allowed,539.7003009254263
+33916,Hampton,BB-2,0,allowed,allowed,allowed,allowed,17.184571732434527
+33923,Hampton,DT-1,0,allowed,allowed,allowed,allowed,137.35891816854075
+33924,Hampton,DT-2,0,allowed,allowed,allowed,allowed,24.23925029462726
+18615,Virginia Beach,A-12,0,allowed,allowed,allowed,allowed,2733.9049385691737
+18617,Virginia Beach,A-24,0,allowed,allowed,allowed,allowed,362.1567912251889
+28724,Virginia Beach,RT-3,0,allowed,allowed,allowed,allowed,32.67358663764979
+33319,Virginia Beach,OR,0,allowed,allowed,allowed,allowed,384.7583359377504
+18618,Virginia Beach,A-36,0,allowed,allowed,allowed,allowed,297.91299204528485
+18616,Virginia Beach,A-18,0,allowed,allowed,allowed,allowed,1606.6906388086616
+25212,Southampton,R-2,0,allowed,allowed,allowed,allowed,186.25817598391149
+25270,Poquoson,R-3,0,allowed,allowed,allowed,allowed,60.894175040844225
+26032,Norfolk,PDMU-3,0,allowed,allowed,allowed,allowed,18.783062242758252
+26009,Norfolk,PD-BCR,0,allowed,allowed,allowed,allowed,65.85444994798718
+12426,Norfolk,R-C,0,allowed,allowed,allowed,allowed,541.8135262154956
+12441,Norfolk,D-SP,0,allowed,allowed,allowed,allowed,20.866656255861145
+12449,Norfolk,HC-WF1,0,allowed,allowed,allowed,allowed,11.570167167923232
+12450,Norfolk,HC-WF2,0,allowed,allowed,allowed,allowed,5.692260049735346
+12427,Norfolk,MF-NS,0,allowed,allowed,allowed,allowed,1526.5743407008706
+26011,Norfolk,PD-MU East Beach,0,allowed,allowed,allowed,allowed,85.32301246201854
+26012,Norfolk,PD-MU Spectrum at Willoughby,0,allowed,allowed,allowed,allowed,12.017718219291911
+35331,Norfolk,PDR-5,0,allowed,allowed,allowed,allowed,18.52286052523625
+35334,Norfolk,PDR-8,0,prohibited,allowed,allowed,allowed,11.925625176524356
+12448,Norfolk,HC-G3,0,allowed,allowed,allowed,allowed,0.2991025803444728
+12447,Norfolk,HC-G2,0,allowed,allowed,allowed,allowed,55.66728739239806
+26030,Norfolk,PDMU-1,0,allowed,allowed,allowed,allowed,180.17621728000307
