@@ -11,4 +11,13 @@ The Virginia Zoning Atlas is part of the larger National Zoning Atlas, which "ai
 # The Mercatus Center at George Mason University
 [The Mercatus Center](https://www.mercatus.org) is a research center at George Mason University that advances knowledge about how markets solve problems and help us lead happier, healthier, and richer lives. For more than 40 years, Mercatus has supported leading talent and scholarship in the mainline economics tradition, applying rigorous research to real-world concerns. Through our continuing efforts to bridge the gap between theory and practice, we strive to realize a world where markets operate at their full potential to increase abundance, civility, and well-being.
 
+# The Virginia Zoning Atlas
+
+Visit the full screen version by clicking [here](https://housingforwardva.shinyapps.io/va_zoning_atlas/).
+
+```{=html}
+
+<iframe id="vza" src="https://housingforwardva.shinyapps.io/va_zoning_atlas/" style="border: none; width: 700px; height: 550px" frameborder="0"></iframe>
+
+```
 
