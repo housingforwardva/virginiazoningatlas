@@ -18,6 +18,58 @@ library(patchwork)
 
 ```
 
+## Why do we care about zoning? {.center}
+
+:::{.r-stack}
+
+![](../img/news_1.png){.fragment fig-align="center"}
+
+![](../img/news_2.png){.fragment fig-align="center"}
+
+![](../img/news_3.png){.fragment fig-align="center"}
+
+![](../img/news_4.png){.fragment fig-align="center"}
+
+![](../img/news_5.png){.fragment fig-align="center"}
+
+![](../img/news_6.png){.fragment fig-align="center"}
+
+![](../img/news_7.png){.fragment fig-align="center"}
+:::
+
+## But zoning isn't easy to understand {.center}
+
+:::{.r-stack}
+
+![](../img/zoning_complex1.png){.fragment fig-align="center"}
+
+![](../img/zoning_complex2.png){.fragment fig-align="center"}
+
+![](../img/zoning_complex3.png){.fragment fig-align="center"}
+
+![](../img/zoning_complex4.png){.fragment fig-align="center"}
+
+![](../img/zoning_complex5.png){.fragment fig-align="center"}
+:::
+
+## Zoning Atlases are here to help! {.center}
+
+:::{.r-stack}
+
+![](../img/atlas_1.png){.fragment fig-align="center"}
+
+![](../img/atlas_3.png){.fragment fig-align="center"}
+
+![](../img/atlas_4.png){.fragment fig-align="center"}
+
+![](../img/atlas_5.png){.fragment fig-align="center"}
+
+![](../img/atlas_2.png){.fragment fig-align="center"}
+:::
+
+
+
+
 ## What's a zoning atlas?
 
 ::: columns
@@ -809,3 +861,23 @@ hr_transit_map |>
 ```
 
 ## What now?
+
+::::{.columns}
+
+:::{.column width="50% .incremental}
+
+- Visit our Virginia Zoning Atlas page for full findings.
+- Use the Virginia Zoning Atlas as a resource.
+- Give us feedback on how we can expand this resource to support housing.
+- https://housingforwardva.github.io/virginiazoningatlas/
+- 
+
+:::
+
+:::{.column width="50%" .fragment}
+
+!["Findings and Atlas"](../img/githubio.png)
+
+:::
+
+::::

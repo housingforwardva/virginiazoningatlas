@@ -34,7 +34,7 @@ title-slide-attributes:
 
 <!-- EVM slides -->
 
-<!-- {{< include ../slides/vza.qmd >}} -->
+{{< include ../slides/vza.qmd >}}
 
 ## Lunch {.slide-center}
 
