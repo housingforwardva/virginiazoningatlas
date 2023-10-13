@@ -17,7 +17,7 @@ Visit the full screen version by clicking [here](https://housingforwardva.shinya
 
 ```{=html}
 
-<iframe id="vza" src="https://housingforwardva.shinyapps.io/va_zoning_atlas/" style="border: none; width: 700px; height: 550px" frameborder="0"></iframe>
+<iframe id="vza" src="https://housingforwardva.shinyapps.io/va_zoning_atlas/" style="border: none; width: 700px; height: 1000px" frameborder="0"></iframe>
 
 ```
 
