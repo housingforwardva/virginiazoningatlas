@@ -24,7 +24,7 @@ with their property.
 
 ---
 
-![](../img/sf.png){.absolute top=0 left=0 height="800"}
+![](../img/sf.png){.absolute top=0 left=0 height="700"}
 
 ::: aside
 Excerpt of San Francisco zoning code via [@anniefryman](https://twitter.com/anniefryman/status/1710076275640217634)
@@ -32,7 +32,7 @@ Excerpt of San Francisco zoning code via [@anniefryman](https://twitter.com/anni
 
 ---
 
-![](../img/seattle.jpg){.absolute top=0 left=0 height="800"}
+![](../img/seattle.jpg){.absolute top=0 left=0 height="700"}
 
 ::: aside
 Poster promoting Seattle’s original 1923 zoning ordinance and its introduction of “single-family” zoning via [Architect Magazine](https://www.architectmagazine.com/practice/rick-mohler-a-reckoning-with-single-family-zonings-impact-on-racial-equityand-on-architects-livelihood_o)
@@ -90,11 +90,11 @@ ggplot(starts, aes(x = as.Date(DATE))) +
 
 :::
 
-# [Zoning's origin [story]{.fragment .strike fragment-index=2}]{.fragment fragment-index=1} [stories]{.fragment fragment-index=2}
+# Zoning's origin [story]{.fragment .strike fragment-index=2} [stories]{.fragment fragment-index=2}
 
 ---
 
-![](../img/nyc-1.jpg){.absolute top=0 left=0 height="800"}
+![](../img/nyc-1.jpg){.absolute top=0 left=0 height="700"}
 
 ::: aside
 Pre-1916 skyscrapers in New York City via [The Skyscraper Museum](https://old.skyscraper.org/zoning/)
@@ -102,7 +102,7 @@ Pre-1916 skyscrapers in New York City via [The Skyscraper Museum](https://old.sk
 
 ---
 
-![](../img/nyc-2.png){.absolute top=0 left=0 height="800"}
+![](../img/nyc-2.png){.absolute top=0 left=0 height="700"}
 
 ::: aside
 March 1916 "Shall We Save New York?" advertisement in *New York Times* via [The Skyscraper Museum](https://old.skyscraper.org/zoning/)
@@ -110,20 +110,143 @@ March 1916 "Shall We Save New York?" advertisement in *New York Times* via [The 
 
 ---
 
-![](../img/nyc-3.png){.absolute top=0 left=0 height="800"}
+![](../img/nyc-3.png){.absolute top=0 left=0 height="700"}
 
 ::: aside
 Graph of the 1916 New York City zoning ordinance with an example elevation for an 80-foot street in a 2½-times height district via [Wikipedia](https://en.wikipedia.org/wiki/1916_Zoning_Resolution)
 :::
 
-## Virginia
+---
 
-[Hopkins v. City of Richmond](https://cite.case.law/va/117/692/)
+![](../img/szea.png){.absolute top=0 left=0 height="700"}
 
-```
+::: aside
+1922 Standard State Zoning Enabling Act via [American Planning Association](https://www.planning.org/growingsmart/enablingacts/)
+:::
 
-1908: Richmond's first zoning ordinance (heights and arrangements)
-1910: Upheld by Virginia Supreme Court (inspired 1916 NYC ordinance)
-1911: Richmond's segregation zoning ordinance
+## :balance_scale: *Euclid v. Ambler*
 
-```
+[Ambler Realty Co. sues Village of Euclid, Ohio after new zoning ordinance significantly limits ability for industrial development on tract of land they own.]{.fragment .fade-in-then-semi-out}
+
+[Plaintiffs assert "enforcement would constitute an unconstitutional taking" without due process.]{.fragment .fade-in-then-semi-out}
+
+[Case goes before U.S. Supreme Court in 1926.]{.fragment .fade-in-then-semi-out}
+
+[[Zoning found CONSTITUTIONAL]{style="color:#3a9f9c;font-weight:bold"} as reasonable part of local government's power to promote public health, safety, and general welfare.]{.fragment}
+
+## By mid-century, most local governments in America have a zoning ordinance. {.center}
+
+## Wait, SCOTUS said what? {.center}
+
+::: {.fragment}
+
+> [. . . very often [the apartment house is a mere parasite]{.highlight-sky}, constructed in order to take advantage of the open spaces and attractive surroundings created by the residential character of [single-family neighborhoods]]{style="text-size:3em;font-style: italic"}
+
+[Majority opinion by Justice Sutherland in *Village of Euclid v. Ambler Realty Co.*, 272 U.S. 365 (1926)]{style="text-size:0.5rem; color:#6f6f6f"}
+
+:::
+
+# Let's go back...
+
+## Pre-NYC zoning activity
+
+[[**1885:** Modesto, California]{style="color:#9691cf"}<br>Local ordinance prohibits public laundry facilities (run primarily by Chinese immigrants) in city limits.]{.fragment}
+
+[[**1908:** Richmond, Virginia]{style="color:#9691cf"}<br>New regulations created to govern height and arrangement of buildings.]{.fragment}
+
+- *Upheld by Virginia Supreme Court.*
+- *Literal inspiration for NYC's 1916 ordinance.*
+
+## 1910 Baltimore segregation ordinance
+
+::: {.fragment}
+
+> [Blacks should be quarantined in isolated slums in order to reduce the incidence of civil disturbance, to prevent the spread of communicable disease into the nearby White neighborhoods, and to protect property values among the White majority.]{style="text-size:3em;font-style: italic"}
+
+[--- Mayor J. Barry Mahool, May 1911]{style="text-size:0.5rem; color:#6f6f6f"}
+
+[First zoning ordinance explicitly referencing race.]{.fragment}
+
+:::
+
+## 1911 Richmond segregation ordinance
+
+::: {.fragment}
+
+> [To secure for white and colored people respectively the separate location of residences for each race.]{style="text-size:3em;font-style: italic"}
+
+:::
+
+[Unlawful for a person to live on a block where more houses are occupied by persons of another race.]{.fragment}
+
+[Town of Ashland passes same ordinance five months later.]{.fragment}
+
+[:balance_scale: *Hopkins v. City of Richmond*<br>
+Virginia Supreme Court upholds ordinance 1915.]{.fragment}
+
+## :balance_scale: *Buchanan v. Warley* {.center}
+
+[In 1917, U.S. Supreme Court rules racial segregation zoning laws unconstitutional.]{.fragment .fade-in-then-semi-out}
+
+## Then what? {.center}
+
+::: {style="text-size:1.4em"}
+
+[Economic segregation]{.fragment .fade-in-then-semi-out}
+
+[Segregation by omission]{.fragment .fade-in-then-semi-out}
+
+[Redlining and restrictive covenants]{.fragment .fade-in-then-semi-out}
+
+:::
+
+---
+
+![](../img/roanoke.png){.absolute top=0 left=0 height="700"}
+
+::: aside
+1928 Roanoke land use plan designated Black neighborhoods but did not zone them for residential use<br>[Shaping the City from Below](https://www.semanticscholar.org/paper/Shaping-the-City-from-Below%3A-Urban-Planning-and-for-Harmon/977941625de5a37cc8f6692f315d84774b359ecb/figure/12)
+:::
+
+# How zoning works today
+
+## Legal framework in Virginia
+
+[State code grants localities broad powers to regulate land uses if they:]{.fragment .fade-in-then-semi-out}
+
+[:ballot_box_with_check: Create a planning commission]{.fragment .fade-in-then-semi-out}
+
+[:ballot_box_with_check: Adopt a comprehensive plan (and future land use map) ]{.fragment .fade-in-then-semi-out}
+
+[:ballot_box_with_check: Adopt a zoning ordinance]{.fragment .fade-in-then-semi-out}
+
+[:ballot_box_with_check: Establish a board of zoning appeals]{.fragment .fade-in-then-semi-out}
+
+::: aside
+Va. Code Ann. § 15.2-2200 through 15.2-2329
+:::
+
+## Planning ahead, acting today
+
+[The comprehensive plan defines and maps **future land use categories** across a locality]{.fragment .fade-in-then-semi-out}
+
+[Planners use this guidance to create specific **zoning districts** in a legal ordinance and assign them to all parcels appropriately]{.fragment .fade-in-then-semi-out}
+
+[Regulations within the zoning ordinance provide the **development potential** for every property owner]{.fragment .fade-in-then-semi-out}
+
+## Yes, no, and maybe
+
+![](../img/use-table.png){.absolute top=0 left=0 height="600"}
+
+::: aside
+"Euclidean" zoning demonstrated by the City of Portsmouth [Use Table](https://www.portsmouthva.gov/2222/Use-Permits)
+:::
+
+---
+
+![](../img/euclid-site.png){.absolute top=0 left=0 height="700"}
+
+::: aside
+The Ambler Realty tract in Euclid, Ohio today
+:::
+

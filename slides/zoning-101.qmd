@@ -186,18 +186,91 @@ Virginia Supreme Court upholds ordinance 1915.]{.fragment}
 
 [In 1917, U.S. Supreme Court rules racial segregation zoning laws unconstitutional.]{.fragment .fade-in-then-semi-out}
 
-## 
+## Then what? {.center}
 
+---
 
-
-
-## "Euclidian" zoning
-
-![](../img/use-table.png){.absolute top=0 left=0 height="600"}
+![](../img/roanoke.png){.absolute top=0 left=0 height="700"}
 
 ::: aside
-City of Portsmouth [Use Table](https://www.portsmouthva.gov/2222/Use-Permits)
+1928 Roanoke land use plan designated Black neighborhoods but did not zone them for residential use<br>[Shaping the City from Below](https://www.semanticscholar.org/paper/Shaping-the-City-from-Below%3A-Urban-Planning-and-for-Harmon/977941625de5a37cc8f6692f315d84774b359ecb/figure/12)
 :::
+
+---
+
+![](../img/sfz.png){.absolute top=0 left=0 height="700"}
+
+::: aside
+Areas of single-family homes and all other types of homes in Minneapolis via [New York Times](https://www.nytimes.com/interactive/2019/06/18/upshot/cities-across-america-question-single-family-zoning.html)
+:::
+
+# How zoning works today
+
+## Legal framework in Virginia
+
+[State code grants localities broad powers to regulate land uses if they:]{.fragment}
+
+[:ballot_box_with_check: Create a planning commission]{.fragment .fade-in-then-semi-out}
+
+[:ballot_box_with_check: Adopt a comprehensive plan (and future land use map) ]{.fragment .fade-in-then-semi-out}
+
+[:ballot_box_with_check: Adopt a zoning ordinance]{.fragment .fade-in-then-semi-out}
+
+[:ballot_box_with_check: Establish a board of zoning appeals]{.fragment .fade-in-then-semi-out}
+
+::: aside
+Va. Code Ann. § 15.2-2200 through 15.2-2329
+:::
+
+## Planning ahead, acting today
+
+[The comprehensive plan defines and maps **future land use categories** across a locality]{.fragment .fade-in-then-semi-out}
+
+[Planners use this guidance to create specific **zoning districts** in a legal ordinance and assign them to all parcels appropriately]{.fragment .fade-in-then-semi-out}
+
+[Regulations within the zoning ordinance provide the **development potential** for every property owner]{.fragment .fade-in-then-semi-out}
+
+## Yes, no, and maybe
+
+![](../img/use-table.jpg){.absolute top=0 left=0 height="600"}
+
+::: aside
+"Euclidean" zoning demonstrated by the City of Portsmouth [Use Table](https://www.portsmouthva.gov/2222/Use-Permits)
+:::
+
+---
+
+## What can you do with your property?
+
+[[**By-right**]{style="color:#3a9f9c"}<br>Meet all the requirements and all you need is a building permit. No special approval or public hearing required.]{.fragment}
+
+[[**Special use permit**]{style="color:#e66b3f"}<br>Submit an application for an otherwise unallowable use, to be reviewed by staff and go to planning commission and legislative body for approval at public hearings.]{.fragment}
+
+## What can you do with your property?
+
+[[**Zoning variance**]{style="color:#9691cf"}<br>Submit request for exemption from specific aspect of zoning ordinance, to be reviewed and approved by board of zoning appeals.]{.fragment}
+
+[[**Other conditions**]{style="color:#1a3454"}<br>Proposals for certain development scenarios may also require site plans, subdivision plats, and other materials to be reviewed and approved by the local government.]{.fragment}
+
+# Before you zone out...
+
+## The good {.center}
+
+[:heavy_check_mark: Allows communities to effectively guide their growth]{.fragment .fade-in-then-semi-out}
+
+[:heavy_check_mark: Offers residents opportunities to get involved in their communities]{.fragment .fade-in-then-semi-out}
+
+[:heavy_check_mark: Can prevent unwise developments]{.fragment .fade-in-then-semi-out}
+
+## The bad {.center}
+
+[:x: Regulations can be complex and burdensome]{.fragment .fade-in-then-semi-out}
+
+[:x: Zoning remains highly exclusionary in many places]{.fragment .fade-in-then-semi-out}
+
+[:x: Minority of loud residents have veto pathway]{.fragment .fade-in-then-semi-out}
+
+# Remember Euclid?
 
 ---
 
