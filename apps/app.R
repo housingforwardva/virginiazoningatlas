@@ -266,23 +266,28 @@ ui <- page_fluid(
 
 server <- function(input, output, session) {
   
-  shinyalert("Disclaimer", 
+  shinyalert("Disclaimer",
              "<b>HousingForward Virginia</b> created the Virginia Zoning Atlas for public informational purposes only. 
              Given the huge amount of info it contains and the possibility of changing conditions (in zoning codes, 
              parcel/jurisdiction boundaries, & state laws), here's our disclaimer!: We hereby present this map 
              without any warranty, either express or implied, about its validity or accuracy, or its suitability 
              for legal, engineering, or land survey purposes. As we all know, zoning is fluid. If you notice an error, 
-             we encourage you to contact us.", 
+             we encourage you to <a href = 'mailto:eric@housingforwardva.org?subject = Virginia Zoning Atlas'> contact us </a>.",
              type = "warning",
              html = TRUE)
   
   shinyalert("Beta Version", 
              "The following iteration of the Virginia Zoning Atlas is a beta version. The final iteration of the 
              Virginia Zoning Atlas will seek to employ additional functionality and information not currently 
-             presented.
+             presented.<br>
              
              For example, what you see does not currently account for zoning district overlays, which in some localities 
-             impact building requirements.", 
+             impacts building requirements.", 
+             type = "info",
+             html = TRUE)
+  
+  shinyalert("Best Viewing Experience", 
+             "The Virginia Zoning Atlas is best viewed on a desktop, laptop, or tablet.", 
              type = "info",
              html = TRUE)
   
