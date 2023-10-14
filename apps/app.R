@@ -42,6 +42,8 @@ zoning <- readr::read_rds("data/hr_vza_simple.rds") |>
 
 fed <- sf::st_read("data/fed_lands.geojson")
 
+flood <- sf::st_read("data/flood.geojson")
+
 transit <- sf::st_read("data/hr_transit_all.geojson")
 
 juris <- readr::read_rds("data/hr_boundaries.rds")
@@ -247,6 +249,7 @@ ui <- page_fluid(
                   selected = local_list),
       hr(),
       checkboxInput("transit_stops", "Show transit stops", value = FALSE),
+      checkboxInput("flood", "Show 1% Annual Flood Hazard", value = FALSE),
       hr(),
       chooseSliderSkin("Flat", color = "#40C0C0"),
       sliderInput("opacity", "Zone opacity", min = 0, max = 100, 
@@ -298,6 +301,9 @@ server <- function(input, output, session) {
       add_polygon_layer(data = fed, opacity = 0.5, filled = TRUE, get_fill_color = "#A9A9A9", get_polygon = geometry, get_line_color = "#ffffff",
                         get_line_width = 10, pickable = TRUE, auto_highlight = TRUE, highlight_color = "#606060",
                         tooltip = c(Agency, Name), name = "Federal Land") %>%
+      add_polygon_layer(data = flood, opacity = 0.5, filled = TRUE, get_fill_color = "#5E1914", get_polygon = geometry,
+                        get_line_color = "#ffffff", get_line_width = 10, pickable = FALSE, name = "Flood Hazard", id = "flood",
+                        visible = FALSE) |> 
       add_scatterplot_layer(data = transit, get_position = geometry, name = "Public Transit", 
                             radius_min_pixels = 2, visible = FALSE, 
                             id = "transit_layer", 
@@ -420,6 +426,18 @@ server <- function(input, output, session) {
     } else {
       proxy %>% 
         update_scatterplot_layer(id = "transit_layer", visible = FALSE)
+    }
+  })
+  
+  observeEvent(input$flood, {
+    proxy <- rdeck_proxy("map")
+    
+    if (input$flood) {
+      proxy %>%
+        update_polygon_layer(id = "flood", visible = TRUE)
+    } else {
+      proxy %>% 
+        update_polygon_layer(id = "flood", visible = FALSE)
     }
   })
   
