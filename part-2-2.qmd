@@ -76,7 +76,7 @@ It is the intent of the Virginia Zoning Atlas to track major changes to zoning o
 
 With increasing housing affordability issues across the region, a diverse and growing supply of housing is needed to meet the needs of a diverse population. Localities have significant control over their supply through their zoning ordinances.
 
-The following findings are based on the [Zoning Atlas Methodology](https://www.zoningatlas.org/how) and takes into account the impact of federally-owned lands and wetland areas, which are both prevalent throughout the region. Like our colleagues in [New Hampshire](https://www.anselm.edu/about/offices-centers-institutes/centers-institutes/center-ethics-society/nh-zoning-atlas), we have sought to exclude areas of land that are not unbuildable. We have excluded all federal land from calculations, as well as area of wetlands and/or water that are 10 contiguous acres or more.
+The following findings are based on the [Zoning Atlas Methodology](https://www.zoningatlas.org/how) and takes into account the impact of federally-owned lands and wetland areas, which are both prevalent throughout the region. Like our colleagues in [New Hampshire](https://www.anselm.edu/about/offices-centers-institutes/centers-institutes/center-ethics-society/nh-zoning-atlas), we have sought to exclude areas of land that are not buildable. We have excluded all federal land from calculations, as well as area of wetlands and/or water that are 10 contiguous acres or more.
 
 ::: callout-note
 **Federal lands** were identified using [ESRI Landscape's USA Federal Lands feature layer](https://hub.arcgis.com/maps/esri::usa-federal-lands), which accounted for lands managed by six federal agencies, including:
