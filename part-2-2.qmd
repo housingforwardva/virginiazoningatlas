@@ -264,7 +264,7 @@ hr_sfd <- read_rds("data/hr/hr_vza_nogeo.rds") |> # Read in the data.
   ungroup() |> 
   mutate(total_hr = sum(area)) |> # Calculate what percentage of total developable area is SFD.
   filter(sfd == "t") |> 
-  add_row(jurisdiction = "York County", sfd = "t", percent = 0, total_hr = 1406413)
+  add_row(jurisdiction = "York", sfd = "t", percent = 0, total_hr = 1406413)
 
 
 ggplot(hr_sfd,
