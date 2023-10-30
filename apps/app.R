@@ -22,8 +22,7 @@ library(janitor)
 
 # subs <- readr::read_rds("data/subdivisions.rds")
 
-
-Sys.setenv(MAPBOX_ACCESS_TOKEN = 'pk.eyJ1IjoiZXJpY3ZtYWkiLCJhIjoiY2w0c3Vqb2YzMTR5azNjbHBqZ3Q1NnJ2MyJ9.XfTxH1fXIz15XvQFlYXzWg')
+MAPBOX_ACCESS_TOKEN = Sys.getenv("MAPBOX_ACCESS_TOKEN")
 
 zoning <- readr::read_rds("data/hr_vza_simple.rds") |>
   st_cast("MULTIPOLYGON") %>%
@@ -158,7 +157,6 @@ ui <- page_fluid(
   ),
   fluidRow( 
     style = "height: 100%", 
-    useShinyalert(),
     absolutePanel(
       width = "150px",
       class = "floating-panel",
