@@ -15,6 +15,8 @@ The Virginia Zoning Atlas is part of the larger National Zoning Atlas, which "ai
 
 Visit the full screen version by clicking [here](https://housingforwardva.shinyapps.io/va_zoning_atlas/).
 
+To see how the Virginia Zoning Atlas was built and the data we used, you can visit our GitHub Repository [here](https://github.com/housingforwardva/virginiazoningatlas).
+
 ```{=html}
 
 <iframe id="vza" src="https://housingforwardva.shinyapps.io/va_zoning_atlas/" style="border: none; width: 700px; height: 1000px" frameborder="0"></iframe>

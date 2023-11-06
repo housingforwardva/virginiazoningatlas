@@ -807,7 +807,7 @@ This map shows that many 2+ housing options are made available within bus stops,
 
 Housing affordability is important to households at all income-levels. But for low-wage workers, affordable housing can prevent housing instability in times of personal or economic crisis. Housing at higher densities often faces opposition from existing residents due to misconceptions about its impact on their community. The public approval process often prevents this type of housing from being constructed, especially affordable housing, in places where low-income households need it the most.
 
-The map below shows Census Block Groups where more the jobs-housing fit ratio is greater than 2.0 (i.e. where there are more than two low-wage workers for every unit of affordable rental housing) or NA (i.e. where there are no units affordable to low-wage workers). And it shows where 4+ family housing can be built by-right.
+The map below shows Census Block Groups where the jobs-housing fit ratio is greater than 2.0 (i.e. where there are more than two low-wage workers for every unit of affordable rental housing) or NA (i.e. where there are no units affordable to low-wage workers). And it shows where 4+ family housing can be built by-right.
 
 ```{r}
 #| label: fig-by4-jhf
@@ -841,7 +841,7 @@ fit_map |>
   addProviderTiles(providers$CartoDB.Positron)
 ```
 
-There are many areas of the region where 4+ family must go through the public approval process, particularly in areas where it is needed the most. The public approval process for denser and more affordable housing options often faces opposition from Not-in-My-Backyard (NIMBY) residents. These opponents, often the most vocal in the room, can influence elected officials in the face of the overwhelming need among low- and moderate-income residents in the region.
+There are many areas of the region where 4+ family must go through the public approval process, particularly in areas where it is needed the most. 
 
 ## What now?
 
