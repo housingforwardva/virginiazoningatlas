@@ -1,4 +1,4 @@
 - source: hr_slides.qmd
   netlify:
     - id: c7b49c27-0fe6-423f-83e2-5eab9cda238e
-      url: 'https://kaleidoscopic-sundae-13b80a.netlify.app'
+      url: 'https://hr-vza.netlify.app'
