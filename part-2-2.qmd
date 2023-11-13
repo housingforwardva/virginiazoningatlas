@@ -505,7 +505,7 @@ ggplot(hr_byright,
   scale_color_gradientn(colours = c("#ADDCB1", "#46A88F", "#207A88", "#0F1A4E")) + # Use custom HFV gradient.
   scale_y_continuous(expand = expansion(mult = c(0, 0.1))) +
   labs(title = "Percent of developable land allowing for 2+ family housing by-right",
-       caption = "**Source: ** HousingForward Virginia, Virginia Zoning Atlas.")  +
+       caption = "**Source:** HousingForward Virginia, Virginia Zoning Atlas.")  +
   theme(axis.text.x = element_blank())
 
 
@@ -570,7 +570,7 @@ ggplot(hr_byright,
   scale_color_gradientn(colours = c("#ADDCB1", "#46A88F", "#207A88", "#0F1A4E")) + # Use custom HFV gradient.
   scale_y_continuous(expand = expansion(mult = c(0, 0.1))) +
   labs(title = "Percent of developable land allowing for 4+ family housing by-right",
-       caption = "**Source: ** HousingForward Virginia, Virginia Zoning Atlas.")+
+       caption = "**Source:** HousingForward Virginia, Virginia Zoning Atlas.")+
   theme(axis.text.x = element_blank())
 
 
@@ -726,7 +726,7 @@ ggplot(hr_adu,
   coord_flip() +
   theme_hfv() +
   labs(title = "Percent of developable land allowing for ADUs by-right in Primarily Residential",
-       caption = "**Source: ** HousingForward Virginia, Virginia Zoning Atlas.")  +
+       caption = "**Source:** HousingForward Virginia, Virginia Zoning Atlas.")  +
   scale_y_continuous(labels = percent_format(), expand = expansion(mult = c(0, 0.1))) +
   scale_fill_gradientn(colours = c("#ADDCB1", "#46A88F", "#207A88", "#0F1A4E")) + # Use custom HFV gradient.
   scale_color_gradientn(colours = c("#ADDCB1", "#46A88F", "#207A88", "#0F1A4E")) + # Use custom HFV gradient.
