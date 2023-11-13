@@ -401,7 +401,7 @@ lot_plot <- ggplot(hr_lots,
   coord_flip() +
   labs(title = "Mininum lot requirements in single-family detached only districts",
        subtitle = subtitle_text,
-       caption = "**Source: ** HousingForward Virginia, Virginia Zoning Atlas.") +
+       caption = "**Source:** HousingForward Virginia, Virginia Zoning Atlas.") +
   theme_hfv() +
   scale_y_continuous(breaks = seq(0, 4, 0.5)) +
   scale_color_hfv() +
