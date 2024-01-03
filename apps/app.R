@@ -75,8 +75,15 @@ local_list <- sort(unique(zoning$jurisdiction))
 #                    levels = c("Primarily Residential", "Mixed with Residential", "Nonresidential"))
 
 ui <- page_fluid(
-  # Ensure the content takes the full width and height of the screen
+  
   tags$head(
+    
+    # Add Google Analytics script (https://shiny.posit.co/r/articles/build/google-analytics/)
+    
+    includeHTML("vza-google-analytics.html"),
+    
+    # Ensure the content takes the full width and height of the screen
+    
     tags$style(HTML("
       /* Full-screen map styling */
       #map {
