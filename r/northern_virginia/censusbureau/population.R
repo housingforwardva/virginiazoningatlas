@@ -1,12 +1,12 @@
 library(tidyverse)
 library(tidycensus)
 
-hr_fips <- c("51073", "51093", "51095","51175", "51181", "51199", "51550", "51620", "51650", "51700", "51710", "51735", "51740", "51800", "51810", "51830")
+nova_fips <- c("51013", "51059", "51107", "51153", "51510", "51600", "51610", "51683", "51685")
 
 local_lookup <- read_csv("data/local_lookup.csv") |> 
   select(fips = fips_full, name_long) |> 
   mutate(fips = as.character(fips)) |> 
-  subset(fips %in% hr_fips)
+  subset(fips %in% nova_fips)
 
 # Get population estimates from the Population Estimates Program (PEP) from 2010 to 2019. 2021 data are set to be released in March 2023. 
 
@@ -77,7 +77,10 @@ census_clean <- census_raw |>
   )
 
 population_data <- rbind(pep_total_clean, census_clean, pep_2020s) |> 
-  subset(fips %in% hr_fips) |> 
+  subset(fips %in% nova_fips) |> 
   left_join(local_lookup, by = "fips")
 
-write_rds(population_data, "data/hr/hr_pop.rds")
+write_rds(population_data, "data/nova/nova_pop.rds")
+write_csv(population_data, "data/nova/nova_pop.csv")
+
+

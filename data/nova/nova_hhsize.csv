@@ -1,0 +1,1639 @@
+NAME,fips,year,tenure,size,estimate,name_long
+Arlington County,51013,2010,Homeowner,1-person,14604,Arlington County
+Arlington County,51013,2010,Homeowner,2-person,14487,Arlington County
+Arlington County,51013,2010,Homeowner,3-person,6235,Arlington County
+Arlington County,51013,2010,Homeowner,4-person or more,5346,Arlington County
+Arlington County,51013,2010,Homeowner,4-person or more,1613,Arlington County
+Arlington County,51013,2010,Homeowner,4-person or more,609,Arlington County
+Arlington County,51013,2010,Homeowner,4-person or more,274,Arlington County
+Arlington County,51013,2010,Renter,1-person,23578,Arlington County
+Arlington County,51013,2010,Renter,2-person,15239,Arlington County
+Arlington County,51013,2010,Renter,3-person,5561,Arlington County
+Arlington County,51013,2010,Renter,4-person or more,2925,Arlington County
+Arlington County,51013,2010,Renter,4-person or more,811,Arlington County
+Arlington County,51013,2010,Renter,4-person or more,462,Arlington County
+Arlington County,51013,2010,Renter,4-person or more,148,Arlington County
+Fairfax County,51059,2010,Homeowner,1-person,56789,Fairfax County
+Fairfax County,51059,2010,Homeowner,2-person,87929,Fairfax County
+Fairfax County,51059,2010,Homeowner,3-person,49465,Fairfax County
+Fairfax County,51059,2010,Homeowner,4-person or more,48729,Fairfax County
+Fairfax County,51059,2010,Homeowner,4-person or more,20348,Fairfax County
+Fairfax County,51059,2010,Homeowner,4-person or more,7187,Fairfax County
+Fairfax County,51059,2010,Homeowner,4-person or more,4001,Fairfax County
+Fairfax County,51059,2010,Renter,1-person,36138,Fairfax County
+Fairfax County,51059,2010,Renter,2-person,29251,Fairfax County
+Fairfax County,51059,2010,Renter,3-person,17698,Fairfax County
+Fairfax County,51059,2010,Renter,4-person or more,13974,Fairfax County
+Fairfax County,51059,2010,Renter,4-person or more,5912,Fairfax County
+Fairfax County,51059,2010,Renter,4-person or more,2756,Fairfax County
+Fairfax County,51059,2010,Renter,4-person or more,1591,Fairfax County
+Loudoun County,51107,2010,Homeowner,1-person,12993,Loudoun County
+Loudoun County,51107,2010,Homeowner,2-person,21343,Loudoun County
+Loudoun County,51107,2010,Homeowner,3-person,14614,Loudoun County
+Loudoun County,51107,2010,Homeowner,4-person or more,17603,Loudoun County
+Loudoun County,51107,2010,Homeowner,4-person or more,7379,Loudoun County
+Loudoun County,51107,2010,Homeowner,4-person or more,2079,Loudoun County
+Loudoun County,51107,2010,Homeowner,4-person or more,1011,Loudoun County
+Loudoun County,51107,2010,Renter,1-person,7168,Loudoun County
+Loudoun County,51107,2010,Renter,2-person,4801,Loudoun County
+Loudoun County,51107,2010,Renter,3-person,2729,Loudoun County
+Loudoun County,51107,2010,Renter,4-person or more,2041,Loudoun County
+Loudoun County,51107,2010,Renter,4-person or more,796,Loudoun County
+Loudoun County,51107,2010,Renter,4-person or more,440,Loudoun County
+Loudoun County,51107,2010,Renter,4-person or more,333,Loudoun County
+Prince William County,51153,2010,Homeowner,1-person,13872,Prince William County
+Prince William County,51153,2010,Homeowner,2-person,28779,Prince William County
+Prince William County,51153,2010,Homeowner,3-person,17241,Prince William County
+Prince William County,51153,2010,Homeowner,4-person or more,18164,Prince William County
+Prince William County,51153,2010,Homeowner,4-person or more,8819,Prince William County
+Prince William County,51153,2010,Homeowner,4-person or more,3883,Prince William County
+Prince William County,51153,2010,Homeowner,4-person or more,2614,Prince William County
+Prince William County,51153,2010,Renter,1-person,8107,Prince William County
+Prince William County,51153,2010,Renter,2-person,7433,Prince William County
+Prince William County,51153,2010,Renter,3-person,6245,Prince William County
+Prince William County,51153,2010,Renter,4-person or more,4754,Prince William County
+Prince William County,51153,2010,Renter,4-person or more,2746,Prince William County
+Prince William County,51153,2010,Renter,4-person or more,1276,Prince William County
+Prince William County,51153,2010,Renter,4-person or more,946,Prince William County
+Alexandria city,51510,2010,Homeowner,1-person,11955,Alexandria City
+Alexandria city,51510,2010,Homeowner,2-person,10574,Alexandria City
+Alexandria city,51510,2010,Homeowner,3-person,3164,Alexandria City
+Alexandria city,51510,2010,Homeowner,4-person or more,2419,Alexandria City
+Alexandria city,51510,2010,Homeowner,4-person or more,668,Alexandria City
+Alexandria city,51510,2010,Homeowner,4-person or more,169,Alexandria City
+Alexandria city,51510,2010,Homeowner,4-person or more,154,Alexandria City
+Alexandria city,51510,2010,Renter,1-person,16895,Alexandria City
+Alexandria city,51510,2010,Renter,2-person,9865,Alexandria City
+Alexandria city,51510,2010,Renter,3-person,4037,Alexandria City
+Alexandria city,51510,2010,Renter,4-person or more,2633,Alexandria City
+Alexandria city,51510,2010,Renter,4-person or more,639,Alexandria City
+Alexandria city,51510,2010,Renter,4-person or more,372,Alexandria City
+Alexandria city,51510,2010,Renter,4-person or more,194,Alexandria City
+Fairfax city,51600,2010,Homeowner,1-person,1342,Fairfax City
+Fairfax city,51600,2010,Homeowner,2-person,2521,Fairfax City
+Fairfax city,51600,2010,Homeowner,3-person,761,Fairfax City
+Fairfax city,51600,2010,Homeowner,4-person or more,826,Fairfax City
+Fairfax city,51600,2010,Homeowner,4-person or more,520,Fairfax City
+Fairfax city,51600,2010,Homeowner,4-person or more,145,Fairfax City
+Fairfax city,51600,2010,Homeowner,4-person or more,33,Fairfax City
+Fairfax city,51600,2010,Renter,1-person,766,Fairfax City
+Fairfax city,51600,2010,Renter,2-person,637,Fairfax City
+Fairfax city,51600,2010,Renter,3-person,357,Fairfax City
+Fairfax city,51600,2010,Renter,4-person or more,372,Fairfax City
+Fairfax city,51600,2010,Renter,4-person or more,131,Fairfax City
+Fairfax city,51600,2010,Renter,4-person or more,73,Fairfax City
+Fairfax city,51600,2010,Renter,4-person or more,40,Fairfax City
+Falls Church city,51610,2010,Homeowner,1-person,767,Falls Church City
+Falls Church city,51610,2010,Homeowner,2-person,947,Falls Church City
+Falls Church city,51610,2010,Homeowner,3-person,477,Falls Church City
+Falls Church city,51610,2010,Homeowner,4-person or more,598,Falls Church City
+Falls Church city,51610,2010,Homeowner,4-person or more,162,Falls Church City
+Falls Church city,51610,2010,Homeowner,4-person or more,35,Falls Church City
+Falls Church city,51610,2010,Homeowner,4-person or more,20,Falls Church City
+Falls Church city,51610,2010,Renter,1-person,731,Falls Church City
+Falls Church city,51610,2010,Renter,2-person,444,Falls Church City
+Falls Church city,51610,2010,Renter,3-person,207,Falls Church City
+Falls Church city,51610,2010,Renter,4-person or more,178,Falls Church City
+Falls Church city,51610,2010,Renter,4-person or more,89,Falls Church City
+Falls Church city,51610,2010,Renter,4-person or more,25,Falls Church City
+Falls Church city,51610,2010,Renter,4-person or more,26,Falls Church City
+Manassas city,51683,2010,Homeowner,1-person,1158,Manassas City
+Manassas city,51683,2010,Homeowner,2-person,2348,Manassas City
+Manassas city,51683,2010,Homeowner,3-person,1771,Manassas City
+Manassas city,51683,2010,Homeowner,4-person or more,1422,Manassas City
+Manassas city,51683,2010,Homeowner,4-person or more,824,Manassas City
+Manassas city,51683,2010,Homeowner,4-person or more,216,Manassas City
+Manassas city,51683,2010,Homeowner,4-person or more,264,Manassas City
+Manassas city,51683,2010,Renter,1-person,1055,Manassas City
+Manassas city,51683,2010,Renter,2-person,634,Manassas City
+Manassas city,51683,2010,Renter,3-person,878,Manassas City
+Manassas city,51683,2010,Renter,4-person or more,292,Manassas City
+Manassas city,51683,2010,Renter,4-person or more,461,Manassas City
+Manassas city,51683,2010,Renter,4-person or more,112,Manassas City
+Manassas city,51683,2010,Renter,4-person or more,297,Manassas City
+Manassas Park city,51685,2010,Homeowner,1-person,419,Manassas Park City
+Manassas Park city,51685,2010,Homeowner,2-person,842,Manassas Park City
+Manassas Park city,51685,2010,Homeowner,3-person,611,Manassas Park City
+Manassas Park city,51685,2010,Homeowner,4-person or more,593,Manassas Park City
+Manassas Park city,51685,2010,Homeowner,4-person or more,326,Manassas Park City
+Manassas Park city,51685,2010,Homeowner,4-person or more,109,Manassas Park City
+Manassas Park city,51685,2010,Homeowner,4-person or more,93,Manassas Park City
+Manassas Park city,51685,2010,Renter,1-person,359,Manassas Park City
+Manassas Park city,51685,2010,Renter,2-person,232,Manassas Park City
+Manassas Park city,51685,2010,Renter,3-person,361,Manassas Park City
+Manassas Park city,51685,2010,Renter,4-person or more,128,Manassas Park City
+Manassas Park city,51685,2010,Renter,4-person or more,90,Manassas Park City
+Manassas Park city,51685,2010,Renter,4-person or more,36,Manassas Park City
+Manassas Park city,51685,2010,Renter,4-person or more,7,Manassas Park City
+Arlington County,51013,2011,Homeowner,1-person,14279,Arlington County
+Arlington County,51013,2011,Homeowner,2-person,14468,Arlington County
+Arlington County,51013,2011,Homeowner,3-person,6562,Arlington County
+Arlington County,51013,2011,Homeowner,4-person or more,5247,Arlington County
+Arlington County,51013,2011,Homeowner,4-person or more,1657,Arlington County
+Arlington County,51013,2011,Homeowner,4-person or more,642,Arlington County
+Arlington County,51013,2011,Homeowner,4-person or more,241,Arlington County
+Arlington County,51013,2011,Renter,1-person,23340,Arlington County
+Arlington County,51013,2011,Renter,2-person,16001,Arlington County
+Arlington County,51013,2011,Renter,3-person,5577,Arlington County
+Arlington County,51013,2011,Renter,4-person or more,3059,Arlington County
+Arlington County,51013,2011,Renter,4-person or more,841,Arlington County
+Arlington County,51013,2011,Renter,4-person or more,379,Arlington County
+Arlington County,51013,2011,Renter,4-person or more,143,Arlington County
+Fairfax County,51059,2011,Homeowner,1-person,54576,Fairfax County
+Fairfax County,51059,2011,Homeowner,2-person,89445,Fairfax County
+Fairfax County,51059,2011,Homeowner,3-person,49494,Fairfax County
+Fairfax County,51059,2011,Homeowner,4-person or more,49342,Fairfax County
+Fairfax County,51059,2011,Homeowner,4-person or more,19891,Fairfax County
+Fairfax County,51059,2011,Homeowner,4-person or more,7214,Fairfax County
+Fairfax County,51059,2011,Homeowner,4-person or more,3821,Fairfax County
+Fairfax County,51059,2011,Renter,1-person,35590,Fairfax County
+Fairfax County,51059,2011,Renter,2-person,31246,Fairfax County
+Fairfax County,51059,2011,Renter,3-person,18511,Fairfax County
+Fairfax County,51059,2011,Renter,4-person or more,14817,Fairfax County
+Fairfax County,51059,2011,Renter,4-person or more,6666,Fairfax County
+Fairfax County,51059,2011,Renter,4-person or more,3073,Fairfax County
+Fairfax County,51059,2011,Renter,4-person or more,1884,Fairfax County
+Loudoun County,51107,2011,Homeowner,1-person,12199,Loudoun County
+Loudoun County,51107,2011,Homeowner,2-person,21922,Loudoun County
+Loudoun County,51107,2011,Homeowner,3-person,16029,Loudoun County
+Loudoun County,51107,2011,Homeowner,4-person or more,17727,Loudoun County
+Loudoun County,51107,2011,Homeowner,4-person or more,7569,Loudoun County
+Loudoun County,51107,2011,Homeowner,4-person or more,2484,Loudoun County
+Loudoun County,51107,2011,Homeowner,4-person or more,1057,Loudoun County
+Loudoun County,51107,2011,Renter,1-person,7186,Loudoun County
+Loudoun County,51107,2011,Renter,2-person,5681,Loudoun County
+Loudoun County,51107,2011,Renter,3-person,3149,Loudoun County
+Loudoun County,51107,2011,Renter,4-person or more,2552,Loudoun County
+Loudoun County,51107,2011,Renter,4-person or more,1114,Loudoun County
+Loudoun County,51107,2011,Renter,4-person or more,501,Loudoun County
+Loudoun County,51107,2011,Renter,4-person or more,591,Loudoun County
+Prince William County,51153,2011,Homeowner,1-person,13931,Prince William County
+Prince William County,51153,2011,Homeowner,2-person,28823,Prince William County
+Prince William County,51153,2011,Homeowner,3-person,17518,Prince William County
+Prince William County,51153,2011,Homeowner,4-person or more,18498,Prince William County
+Prince William County,51153,2011,Homeowner,4-person or more,9082,Prince William County
+Prince William County,51153,2011,Homeowner,4-person or more,3846,Prince William County
+Prince William County,51153,2011,Homeowner,4-person or more,2638,Prince William County
+Prince William County,51153,2011,Renter,1-person,8168,Prince William County
+Prince William County,51153,2011,Renter,2-person,7554,Prince William County
+Prince William County,51153,2011,Renter,3-person,5922,Prince William County
+Prince William County,51153,2011,Renter,4-person or more,5370,Prince William County
+Prince William County,51153,2011,Renter,4-person or more,3257,Prince William County
+Prince William County,51153,2011,Renter,4-person or more,1428,Prince William County
+Prince William County,51153,2011,Renter,4-person or more,1135,Prince William County
+Alexandria city,51510,2011,Homeowner,1-person,11904,Alexandria City
+Alexandria city,51510,2011,Homeowner,2-person,10295,Alexandria City
+Alexandria city,51510,2011,Homeowner,3-person,3133,Alexandria City
+Alexandria city,51510,2011,Homeowner,4-person or more,2372,Alexandria City
+Alexandria city,51510,2011,Homeowner,4-person or more,759,Alexandria City
+Alexandria city,51510,2011,Homeowner,4-person or more,258,Alexandria City
+Alexandria city,51510,2011,Homeowner,4-person or more,147,Alexandria City
+Alexandria city,51510,2011,Renter,1-person,17002,Alexandria City
+Alexandria city,51510,2011,Renter,2-person,10108,Alexandria City
+Alexandria city,51510,2011,Renter,3-person,4183,Alexandria City
+Alexandria city,51510,2011,Renter,4-person or more,2874,Alexandria City
+Alexandria city,51510,2011,Renter,4-person or more,711,Alexandria City
+Alexandria city,51510,2011,Renter,4-person or more,322,Alexandria City
+Alexandria city,51510,2011,Renter,4-person or more,149,Alexandria City
+Fairfax city,51600,2011,Homeowner,1-person,1355,Fairfax City
+Fairfax city,51600,2011,Homeowner,2-person,2306,Fairfax City
+Fairfax city,51600,2011,Homeowner,3-person,782,Fairfax City
+Fairfax city,51600,2011,Homeowner,4-person or more,784,Fairfax City
+Fairfax city,51600,2011,Homeowner,4-person or more,428,Fairfax City
+Fairfax city,51600,2011,Homeowner,4-person or more,166,Fairfax City
+Fairfax city,51600,2011,Homeowner,4-person or more,59,Fairfax City
+Fairfax city,51600,2011,Renter,1-person,698,Fairfax City
+Fairfax city,51600,2011,Renter,2-person,629,Fairfax City
+Fairfax city,51600,2011,Renter,3-person,377,Fairfax City
+Fairfax city,51600,2011,Renter,4-person or more,538,Fairfax City
+Fairfax city,51600,2011,Renter,4-person or more,244,Fairfax City
+Fairfax city,51600,2011,Renter,4-person or more,63,Fairfax City
+Fairfax city,51600,2011,Renter,4-person or more,41,Fairfax City
+Falls Church city,51610,2011,Homeowner,1-person,671,Falls Church City
+Falls Church city,51610,2011,Homeowner,2-person,938,Falls Church City
+Falls Church city,51610,2011,Homeowner,3-person,462,Falls Church City
+Falls Church city,51610,2011,Homeowner,4-person or more,620,Falls Church City
+Falls Church city,51610,2011,Homeowner,4-person or more,196,Falls Church City
+Falls Church city,51610,2011,Homeowner,4-person or more,56,Falls Church City
+Falls Church city,51610,2011,Homeowner,4-person or more,23,Falls Church City
+Falls Church city,51610,2011,Renter,1-person,786,Falls Church City
+Falls Church city,51610,2011,Renter,2-person,472,Falls Church City
+Falls Church city,51610,2011,Renter,3-person,310,Falls Church City
+Falls Church city,51610,2011,Renter,4-person or more,174,Falls Church City
+Falls Church city,51610,2011,Renter,4-person or more,57,Falls Church City
+Falls Church city,51610,2011,Renter,4-person or more,13,Falls Church City
+Falls Church city,51610,2011,Renter,4-person or more,29,Falls Church City
+Manassas city,51683,2011,Homeowner,1-person,1322,Manassas City
+Manassas city,51683,2011,Homeowner,2-person,2287,Manassas City
+Manassas city,51683,2011,Homeowner,3-person,1721,Manassas City
+Manassas city,51683,2011,Homeowner,4-person or more,1304,Manassas City
+Manassas city,51683,2011,Homeowner,4-person or more,710,Manassas City
+Manassas city,51683,2011,Homeowner,4-person or more,173,Manassas City
+Manassas city,51683,2011,Homeowner,4-person or more,366,Manassas City
+Manassas city,51683,2011,Renter,1-person,1198,Manassas City
+Manassas city,51683,2011,Renter,2-person,907,Manassas City
+Manassas city,51683,2011,Renter,3-person,757,Manassas City
+Manassas city,51683,2011,Renter,4-person or more,392,Manassas City
+Manassas city,51683,2011,Renter,4-person or more,332,Manassas City
+Manassas city,51683,2011,Renter,4-person or more,213,Manassas City
+Manassas city,51683,2011,Renter,4-person or more,190,Manassas City
+Manassas Park city,51685,2011,Homeowner,1-person,477,Manassas Park City
+Manassas Park city,51685,2011,Homeowner,2-person,738,Manassas Park City
+Manassas Park city,51685,2011,Homeowner,3-person,591,Manassas Park City
+Manassas Park city,51685,2011,Homeowner,4-person or more,473,Manassas Park City
+Manassas Park city,51685,2011,Homeowner,4-person or more,340,Manassas Park City
+Manassas Park city,51685,2011,Homeowner,4-person or more,100,Manassas Park City
+Manassas Park city,51685,2011,Homeowner,4-person or more,148,Manassas Park City
+Manassas Park city,51685,2011,Renter,1-person,425,Manassas Park City
+Manassas Park city,51685,2011,Renter,2-person,250,Manassas Park City
+Manassas Park city,51685,2011,Renter,3-person,383,Manassas Park City
+Manassas Park city,51685,2011,Renter,4-person or more,223,Manassas Park City
+Manassas Park city,51685,2011,Renter,4-person or more,84,Manassas Park City
+Manassas Park city,51685,2011,Renter,4-person or more,6,Manassas Park City
+Manassas Park city,51685,2011,Renter,4-person or more,0,Manassas Park City
+Arlington County,51013,2012,Homeowner,1-person,14407,Arlington County
+Arlington County,51013,2012,Homeowner,2-person,13996,Arlington County
+Arlington County,51013,2012,Homeowner,3-person,6535,Arlington County
+Arlington County,51013,2012,Homeowner,4-person or more,5220,Arlington County
+Arlington County,51013,2012,Homeowner,4-person or more,1689,Arlington County
+Arlington County,51013,2012,Homeowner,4-person or more,575,Arlington County
+Arlington County,51013,2012,Homeowner,4-person or more,274,Arlington County
+Arlington County,51013,2012,Renter,1-person,23450,Arlington County
+Arlington County,51013,2012,Renter,2-person,16534,Arlington County
+Arlington County,51013,2012,Renter,3-person,5482,Arlington County
+Arlington County,51013,2012,Renter,4-person or more,3214,Arlington County
+Arlington County,51013,2012,Renter,4-person or more,1019,Arlington County
+Arlington County,51013,2012,Renter,4-person or more,424,Arlington County
+Arlington County,51013,2012,Renter,4-person or more,173,Arlington County
+Fairfax County,51059,2012,Homeowner,1-person,53355,Fairfax County
+Fairfax County,51059,2012,Homeowner,2-person,88813,Fairfax County
+Fairfax County,51059,2012,Homeowner,3-person,50202,Fairfax County
+Fairfax County,51059,2012,Homeowner,4-person or more,47940,Fairfax County
+Fairfax County,51059,2012,Homeowner,4-person or more,19613,Fairfax County
+Fairfax County,51059,2012,Homeowner,4-person or more,7279,Fairfax County
+Fairfax County,51059,2012,Homeowner,4-person or more,3726,Fairfax County
+Fairfax County,51059,2012,Renter,1-person,36766,Fairfax County
+Fairfax County,51059,2012,Renter,2-person,31569,Fairfax County
+Fairfax County,51059,2012,Renter,3-person,19793,Fairfax County
+Fairfax County,51059,2012,Renter,4-person or more,16516,Fairfax County
+Fairfax County,51059,2012,Renter,4-person or more,7255,Fairfax County
+Fairfax County,51059,2012,Renter,4-person or more,3436,Fairfax County
+Fairfax County,51059,2012,Renter,4-person or more,2189,Fairfax County
+Loudoun County,51107,2012,Homeowner,1-person,11255,Loudoun County
+Loudoun County,51107,2012,Homeowner,2-person,23249,Loudoun County
+Loudoun County,51107,2012,Homeowner,3-person,17053,Loudoun County
+Loudoun County,51107,2012,Homeowner,4-person or more,18173,Loudoun County
+Loudoun County,51107,2012,Homeowner,4-person or more,8035,Loudoun County
+Loudoun County,51107,2012,Homeowner,4-person or more,2642,Loudoun County
+Loudoun County,51107,2012,Homeowner,4-person or more,1069,Loudoun County
+Loudoun County,51107,2012,Renter,1-person,7035,Loudoun County
+Loudoun County,51107,2012,Renter,2-person,6056,Loudoun County
+Loudoun County,51107,2012,Renter,3-person,3568,Loudoun County
+Loudoun County,51107,2012,Renter,4-person or more,3242,Loudoun County
+Loudoun County,51107,2012,Renter,4-person or more,1588,Loudoun County
+Loudoun County,51107,2012,Renter,4-person or more,629,Loudoun County
+Loudoun County,51107,2012,Renter,4-person or more,601,Loudoun County
+Prince William County,51153,2012,Homeowner,1-person,14386,Prince William County
+Prince William County,51153,2012,Homeowner,2-person,29018,Prince William County
+Prince William County,51153,2012,Homeowner,3-person,17363,Prince William County
+Prince William County,51153,2012,Homeowner,4-person or more,18261,Prince William County
+Prince William County,51153,2012,Homeowner,4-person or more,8934,Prince William County
+Prince William County,51153,2012,Homeowner,4-person or more,3919,Prince William County
+Prince William County,51153,2012,Homeowner,4-person or more,2525,Prince William County
+Prince William County,51153,2012,Renter,1-person,8523,Prince William County
+Prince William County,51153,2012,Renter,2-person,7916,Prince William County
+Prince William County,51153,2012,Renter,3-person,6460,Prince William County
+Prince William County,51153,2012,Renter,4-person or more,6024,Prince William County
+Prince William County,51153,2012,Renter,4-person or more,3437,Prince William County
+Prince William County,51153,2012,Renter,4-person or more,1715,Prince William County
+Prince William County,51153,2012,Renter,4-person or more,1162,Prince William County
+Alexandria city,51510,2012,Homeowner,1-person,11397,Alexandria City
+Alexandria city,51510,2012,Homeowner,2-person,10540,Alexandria City
+Alexandria city,51510,2012,Homeowner,3-person,3046,Alexandria City
+Alexandria city,51510,2012,Homeowner,4-person or more,2230,Alexandria City
+Alexandria city,51510,2012,Homeowner,4-person or more,790,Alexandria City
+Alexandria city,51510,2012,Homeowner,4-person or more,256,Alexandria City
+Alexandria city,51510,2012,Homeowner,4-person or more,144,Alexandria City
+Alexandria city,51510,2012,Renter,1-person,16902,Alexandria City
+Alexandria city,51510,2012,Renter,2-person,10546,Alexandria City
+Alexandria city,51510,2012,Renter,3-person,4461,Alexandria City
+Alexandria city,51510,2012,Renter,4-person or more,2880,Alexandria City
+Alexandria city,51510,2012,Renter,4-person or more,1019,Alexandria City
+Alexandria city,51510,2012,Renter,4-person or more,359,Alexandria City
+Alexandria city,51510,2012,Renter,4-person or more,159,Alexandria City
+Fairfax city,51600,2012,Homeowner,1-person,1180,Fairfax City
+Fairfax city,51600,2012,Homeowner,2-person,2555,Fairfax City
+Fairfax city,51600,2012,Homeowner,3-person,805,Fairfax City
+Fairfax city,51600,2012,Homeowner,4-person or more,830,Fairfax City
+Fairfax city,51600,2012,Homeowner,4-person or more,380,Fairfax City
+Fairfax city,51600,2012,Homeowner,4-person or more,179,Fairfax City
+Fairfax city,51600,2012,Homeowner,4-person or more,29,Fairfax City
+Fairfax city,51600,2012,Renter,1-person,593,Fairfax City
+Fairfax city,51600,2012,Renter,2-person,704,Fairfax City
+Fairfax city,51600,2012,Renter,3-person,399,Fairfax City
+Fairfax city,51600,2012,Renter,4-person or more,551,Fairfax City
+Fairfax city,51600,2012,Renter,4-person or more,227,Fairfax City
+Fairfax city,51600,2012,Renter,4-person or more,52,Fairfax City
+Fairfax city,51600,2012,Renter,4-person or more,35,Fairfax City
+Falls Church city,51610,2012,Homeowner,1-person,754,Falls Church City
+Falls Church city,51610,2012,Homeowner,2-person,972,Falls Church City
+Falls Church city,51610,2012,Homeowner,3-person,398,Falls Church City
+Falls Church city,51610,2012,Homeowner,4-person or more,648,Falls Church City
+Falls Church city,51610,2012,Homeowner,4-person or more,182,Falls Church City
+Falls Church city,51610,2012,Homeowner,4-person or more,59,Falls Church City
+Falls Church city,51610,2012,Homeowner,4-person or more,11,Falls Church City
+Falls Church city,51610,2012,Renter,1-person,801,Falls Church City
+Falls Church city,51610,2012,Renter,2-person,432,Falls Church City
+Falls Church city,51610,2012,Renter,3-person,302,Falls Church City
+Falls Church city,51610,2012,Renter,4-person or more,220,Falls Church City
+Falls Church city,51610,2012,Renter,4-person or more,35,Falls Church City
+Falls Church city,51610,2012,Renter,4-person or more,20,Falls Church City
+Falls Church city,51610,2012,Renter,4-person or more,23,Falls Church City
+Manassas city,51683,2012,Homeowner,1-person,1296,Manassas City
+Manassas city,51683,2012,Homeowner,2-person,2369,Manassas City
+Manassas city,51683,2012,Homeowner,3-person,1788,Manassas City
+Manassas city,51683,2012,Homeowner,4-person or more,1125,Manassas City
+Manassas city,51683,2012,Homeowner,4-person or more,713,Manassas City
+Manassas city,51683,2012,Homeowner,4-person or more,196,Manassas City
+Manassas city,51683,2012,Homeowner,4-person or more,355,Manassas City
+Manassas city,51683,2012,Renter,1-person,1245,Manassas City
+Manassas city,51683,2012,Renter,2-person,836,Manassas City
+Manassas city,51683,2012,Renter,3-person,641,Manassas City
+Manassas city,51683,2012,Renter,4-person or more,632,Manassas City
+Manassas city,51683,2012,Renter,4-person or more,387,Manassas City
+Manassas city,51683,2012,Renter,4-person or more,260,Manassas City
+Manassas city,51683,2012,Renter,4-person or more,168,Manassas City
+Manassas Park city,51685,2012,Homeowner,1-person,436,Manassas Park City
+Manassas Park city,51685,2012,Homeowner,2-person,793,Manassas Park City
+Manassas Park city,51685,2012,Homeowner,3-person,542,Manassas Park City
+Manassas Park city,51685,2012,Homeowner,4-person or more,443,Manassas Park City
+Manassas Park city,51685,2012,Homeowner,4-person or more,303,Manassas Park City
+Manassas Park city,51685,2012,Homeowner,4-person or more,124,Manassas Park City
+Manassas Park city,51685,2012,Homeowner,4-person or more,175,Manassas Park City
+Manassas Park city,51685,2012,Renter,1-person,426,Manassas Park City
+Manassas Park city,51685,2012,Renter,2-person,253,Manassas Park City
+Manassas Park city,51685,2012,Renter,3-person,389,Manassas Park City
+Manassas Park city,51685,2012,Renter,4-person or more,290,Manassas Park City
+Manassas Park city,51685,2012,Renter,4-person or more,96,Manassas Park City
+Manassas Park city,51685,2012,Renter,4-person or more,7,Manassas Park City
+Manassas Park city,51685,2012,Renter,4-person or more,0,Manassas Park City
+Arlington County,51013,2013,Homeowner,1-person,14403,Arlington County
+Arlington County,51013,2013,Homeowner,2-person,13901,Arlington County
+Arlington County,51013,2013,Homeowner,3-person,5985,Arlington County
+Arlington County,51013,2013,Homeowner,4-person or more,5547,Arlington County
+Arlington County,51013,2013,Homeowner,4-person or more,1842,Arlington County
+Arlington County,51013,2013,Homeowner,4-person or more,608,Arlington County
+Arlington County,51013,2013,Homeowner,4-person or more,368,Arlington County
+Arlington County,51013,2013,Renter,1-person,23853,Arlington County
+Arlington County,51013,2013,Renter,2-person,17061,Arlington County
+Arlington County,51013,2013,Renter,3-person,5617,Arlington County
+Arlington County,51013,2013,Renter,4-person or more,3431,Arlington County
+Arlington County,51013,2013,Renter,4-person or more,1149,Arlington County
+Arlington County,51013,2013,Renter,4-person or more,542,Arlington County
+Arlington County,51013,2013,Renter,4-person or more,147,Arlington County
+Fairfax County,51059,2013,Homeowner,1-person,52981,Fairfax County
+Fairfax County,51059,2013,Homeowner,2-person,89518,Fairfax County
+Fairfax County,51059,2013,Homeowner,3-person,49255,Fairfax County
+Fairfax County,51059,2013,Homeowner,4-person or more,47560,Fairfax County
+Fairfax County,51059,2013,Homeowner,4-person or more,18911,Fairfax County
+Fairfax County,51059,2013,Homeowner,4-person or more,7359,Fairfax County
+Fairfax County,51059,2013,Homeowner,4-person or more,3583,Fairfax County
+Fairfax County,51059,2013,Renter,1-person,35712,Fairfax County
+Fairfax County,51059,2013,Renter,2-person,33162,Fairfax County
+Fairfax County,51059,2013,Renter,3-person,20125,Fairfax County
+Fairfax County,51059,2013,Renter,4-person or more,17855,Fairfax County
+Fairfax County,51059,2013,Renter,4-person or more,8137,Fairfax County
+Fairfax County,51059,2013,Renter,4-person or more,3624,Fairfax County
+Fairfax County,51059,2013,Renter,4-person or more,2126,Fairfax County
+Loudoun County,51107,2013,Homeowner,1-person,11341,Loudoun County
+Loudoun County,51107,2013,Homeowner,2-person,23807,Loudoun County
+Loudoun County,51107,2013,Homeowner,3-person,16880,Loudoun County
+Loudoun County,51107,2013,Homeowner,4-person or more,19079,Loudoun County
+Loudoun County,51107,2013,Homeowner,4-person or more,8014,Loudoun County
+Loudoun County,51107,2013,Homeowner,4-person or more,2969,Loudoun County
+Loudoun County,51107,2013,Homeowner,4-person or more,1010,Loudoun County
+Loudoun County,51107,2013,Renter,1-person,6956,Loudoun County
+Loudoun County,51107,2013,Renter,2-person,6272,Loudoun County
+Loudoun County,51107,2013,Renter,3-person,3681,Loudoun County
+Loudoun County,51107,2013,Renter,4-person or more,3534,Loudoun County
+Loudoun County,51107,2013,Renter,4-person or more,1852,Loudoun County
+Loudoun County,51107,2013,Renter,4-person or more,900,Loudoun County
+Loudoun County,51107,2013,Renter,4-person or more,702,Loudoun County
+Prince William County,51153,2013,Homeowner,1-person,14314,Prince William County
+Prince William County,51153,2013,Homeowner,2-person,29348,Prince William County
+Prince William County,51153,2013,Homeowner,3-person,17041,Prince William County
+Prince William County,51153,2013,Homeowner,4-person or more,18432,Prince William County
+Prince William County,51153,2013,Homeowner,4-person or more,9661,Prince William County
+Prince William County,51153,2013,Homeowner,4-person or more,4159,Prince William County
+Prince William County,51153,2013,Homeowner,4-person or more,2551,Prince William County
+Prince William County,51153,2013,Renter,1-person,8919,Prince William County
+Prince William County,51153,2013,Renter,2-person,7485,Prince William County
+Prince William County,51153,2013,Renter,3-person,6935,Prince William County
+Prince William County,51153,2013,Renter,4-person or more,6926,Prince William County
+Prince William County,51153,2013,Renter,4-person or more,3423,Prince William County
+Prince William County,51153,2013,Renter,4-person or more,2153,Prince William County
+Prince William County,51153,2013,Renter,4-person or more,1095,Prince William County
+Alexandria city,51510,2013,Homeowner,1-person,11367,Alexandria City
+Alexandria city,51510,2013,Homeowner,2-person,10144,Alexandria City
+Alexandria city,51510,2013,Homeowner,3-person,3137,Alexandria City
+Alexandria city,51510,2013,Homeowner,4-person or more,2410,Alexandria City
+Alexandria city,51510,2013,Homeowner,4-person or more,843,Alexandria City
+Alexandria city,51510,2013,Homeowner,4-person or more,258,Alexandria City
+Alexandria city,51510,2013,Homeowner,4-person or more,178,Alexandria City
+Alexandria city,51510,2013,Renter,1-person,16721,Alexandria City
+Alexandria city,51510,2013,Renter,2-person,10823,Alexandria City
+Alexandria city,51510,2013,Renter,3-person,4664,Alexandria City
+Alexandria city,51510,2013,Renter,4-person or more,2953,Alexandria City
+Alexandria city,51510,2013,Renter,4-person or more,1349,Alexandria City
+Alexandria city,51510,2013,Renter,4-person or more,325,Alexandria City
+Alexandria city,51510,2013,Renter,4-person or more,197,Alexandria City
+Fairfax city,51600,2013,Homeowner,1-person,1171,Fairfax City
+Fairfax city,51600,2013,Homeowner,2-person,2259,Fairfax City
+Fairfax city,51600,2013,Homeowner,3-person,982,Fairfax City
+Fairfax city,51600,2013,Homeowner,4-person or more,838,Fairfax City
+Fairfax city,51600,2013,Homeowner,4-person or more,311,Fairfax City
+Fairfax city,51600,2013,Homeowner,4-person or more,177,Fairfax City
+Fairfax city,51600,2013,Homeowner,4-person or more,74,Fairfax City
+Fairfax city,51600,2013,Renter,1-person,658,Fairfax City
+Fairfax city,51600,2013,Renter,2-person,635,Fairfax City
+Fairfax city,51600,2013,Renter,3-person,551,Fairfax City
+Fairfax city,51600,2013,Renter,4-person or more,602,Fairfax City
+Fairfax city,51600,2013,Renter,4-person or more,134,Fairfax City
+Fairfax city,51600,2013,Renter,4-person or more,74,Fairfax City
+Fairfax city,51600,2013,Renter,4-person or more,26,Fairfax City
+Falls Church city,51610,2013,Homeowner,1-person,653,Falls Church City
+Falls Church city,51610,2013,Homeowner,2-person,1008,Falls Church City
+Falls Church city,51610,2013,Homeowner,3-person,439,Falls Church City
+Falls Church city,51610,2013,Homeowner,4-person or more,642,Falls Church City
+Falls Church city,51610,2013,Homeowner,4-person or more,185,Falls Church City
+Falls Church city,51610,2013,Homeowner,4-person or more,47,Falls Church City
+Falls Church city,51610,2013,Homeowner,4-person or more,7,Falls Church City
+Falls Church city,51610,2013,Renter,1-person,962,Falls Church City
+Falls Church city,51610,2013,Renter,2-person,416,Falls Church City
+Falls Church city,51610,2013,Renter,3-person,391,Falls Church City
+Falls Church city,51610,2013,Renter,4-person or more,166,Falls Church City
+Falls Church city,51610,2013,Renter,4-person or more,69,Falls Church City
+Falls Church city,51610,2013,Renter,4-person or more,25,Falls Church City
+Falls Church city,51610,2013,Renter,4-person or more,10,Falls Church City
+Manassas city,51683,2013,Homeowner,1-person,1272,Manassas City
+Manassas city,51683,2013,Homeowner,2-person,2501,Manassas City
+Manassas city,51683,2013,Homeowner,3-person,1777,Manassas City
+Manassas city,51683,2013,Homeowner,4-person or more,1110,Manassas City
+Manassas city,51683,2013,Homeowner,4-person or more,664,Manassas City
+Manassas city,51683,2013,Homeowner,4-person or more,202,Manassas City
+Manassas city,51683,2013,Homeowner,4-person or more,339,Manassas City
+Manassas city,51683,2013,Renter,1-person,1111,Manassas City
+Manassas city,51683,2013,Renter,2-person,895,Manassas City
+Manassas city,51683,2013,Renter,3-person,651,Manassas City
+Manassas city,51683,2013,Renter,4-person or more,725,Manassas City
+Manassas city,51683,2013,Renter,4-person or more,406,Manassas City
+Manassas city,51683,2013,Renter,4-person or more,310,Manassas City
+Manassas city,51683,2013,Renter,4-person or more,109,Manassas City
+Manassas Park city,51685,2013,Homeowner,1-person,544,Manassas Park City
+Manassas Park city,51685,2013,Homeowner,2-person,702,Manassas Park City
+Manassas Park city,51685,2013,Homeowner,3-person,565,Manassas Park City
+Manassas Park city,51685,2013,Homeowner,4-person or more,458,Manassas Park City
+Manassas Park city,51685,2013,Homeowner,4-person or more,262,Manassas Park City
+Manassas Park city,51685,2013,Homeowner,4-person or more,180,Manassas Park City
+Manassas Park city,51685,2013,Homeowner,4-person or more,114,Manassas Park City
+Manassas Park city,51685,2013,Renter,1-person,413,Manassas Park City
+Manassas Park city,51685,2013,Renter,2-person,365,Manassas Park City
+Manassas Park city,51685,2013,Renter,3-person,352,Manassas Park City
+Manassas Park city,51685,2013,Renter,4-person or more,304,Manassas Park City
+Manassas Park city,51685,2013,Renter,4-person or more,154,Manassas Park City
+Manassas Park city,51685,2013,Renter,4-person or more,22,Manassas Park City
+Manassas Park city,51685,2013,Renter,4-person or more,0,Manassas Park City
+Arlington County,51013,2014,Homeowner,1-person,14410,Arlington County
+Arlington County,51013,2014,Homeowner,2-person,14164,Arlington County
+Arlington County,51013,2014,Homeowner,3-person,6061,Arlington County
+Arlington County,51013,2014,Homeowner,4-person or more,5718,Arlington County
+Arlington County,51013,2014,Homeowner,4-person or more,1905,Arlington County
+Arlington County,51013,2014,Homeowner,4-person or more,596,Arlington County
+Arlington County,51013,2014,Homeowner,4-person or more,303,Arlington County
+Arlington County,51013,2014,Renter,1-person,24171,Arlington County
+Arlington County,51013,2014,Renter,2-person,17897,Arlington County
+Arlington County,51013,2014,Renter,3-person,5718,Arlington County
+Arlington County,51013,2014,Renter,4-person or more,3374,Arlington County
+Arlington County,51013,2014,Renter,4-person or more,1268,Arlington County
+Arlington County,51013,2014,Renter,4-person or more,565,Arlington County
+Arlington County,51013,2014,Renter,4-person or more,114,Arlington County
+Fairfax County,51059,2014,Homeowner,1-person,52243,Fairfax County
+Fairfax County,51059,2014,Homeowner,2-person,88742,Fairfax County
+Fairfax County,51059,2014,Homeowner,3-person,49769,Fairfax County
+Fairfax County,51059,2014,Homeowner,4-person or more,47232,Fairfax County
+Fairfax County,51059,2014,Homeowner,4-person or more,18535,Fairfax County
+Fairfax County,51059,2014,Homeowner,4-person or more,7025,Fairfax County
+Fairfax County,51059,2014,Homeowner,4-person or more,3610,Fairfax County
+Fairfax County,51059,2014,Renter,1-person,36345,Fairfax County
+Fairfax County,51059,2014,Renter,2-person,34469,Fairfax County
+Fairfax County,51059,2014,Renter,3-person,20695,Fairfax County
+Fairfax County,51059,2014,Renter,4-person or more,18314,Fairfax County
+Fairfax County,51059,2014,Renter,4-person or more,8745,Fairfax County
+Fairfax County,51059,2014,Renter,4-person or more,4014,Fairfax County
+Fairfax County,51059,2014,Renter,4-person or more,2056,Fairfax County
+Loudoun County,51107,2014,Homeowner,1-person,11394,Loudoun County
+Loudoun County,51107,2014,Homeowner,2-person,24039,Loudoun County
+Loudoun County,51107,2014,Homeowner,3-person,16987,Loudoun County
+Loudoun County,51107,2014,Homeowner,4-person or more,19918,Loudoun County
+Loudoun County,51107,2014,Homeowner,4-person or more,7973,Loudoun County
+Loudoun County,51107,2014,Homeowner,4-person or more,3224,Loudoun County
+Loudoun County,51107,2014,Homeowner,4-person or more,1127,Loudoun County
+Loudoun County,51107,2014,Renter,1-person,7285,Loudoun County
+Loudoun County,51107,2014,Renter,2-person,6502,Loudoun County
+Loudoun County,51107,2014,Renter,3-person,4043,Loudoun County
+Loudoun County,51107,2014,Renter,4-person or more,3971,Loudoun County
+Loudoun County,51107,2014,Renter,4-person or more,2171,Loudoun County
+Loudoun County,51107,2014,Renter,4-person or more,852,Loudoun County
+Loudoun County,51107,2014,Renter,4-person or more,561,Loudoun County
+Prince William County,51153,2014,Homeowner,1-person,15063,Prince William County
+Prince William County,51153,2014,Homeowner,2-person,29134,Prince William County
+Prince William County,51153,2014,Homeowner,3-person,16884,Prince William County
+Prince William County,51153,2014,Homeowner,4-person or more,19182,Prince William County
+Prince William County,51153,2014,Homeowner,4-person or more,9600,Prince William County
+Prince William County,51153,2014,Homeowner,4-person or more,4198,Prince William County
+Prince William County,51153,2014,Homeowner,4-person or more,2696,Prince William County
+Prince William County,51153,2014,Renter,1-person,8914,Prince William County
+Prince William County,51153,2014,Renter,2-person,7864,Prince William County
+Prince William County,51153,2014,Renter,3-person,6854,Prince William County
+Prince William County,51153,2014,Renter,4-person or more,7477,Prince William County
+Prince William County,51153,2014,Renter,4-person or more,3564,Prince William County
+Prince William County,51153,2014,Renter,4-person or more,2106,Prince William County
+Prince William County,51153,2014,Renter,4-person or more,1201,Prince William County
+Alexandria city,51510,2014,Homeowner,1-person,11148,Alexandria City
+Alexandria city,51510,2014,Homeowner,2-person,10049,Alexandria City
+Alexandria city,51510,2014,Homeowner,3-person,3407,Alexandria City
+Alexandria city,51510,2014,Homeowner,4-person or more,2236,Alexandria City
+Alexandria city,51510,2014,Homeowner,4-person or more,816,Alexandria City
+Alexandria city,51510,2014,Homeowner,4-person or more,286,Alexandria City
+Alexandria city,51510,2014,Homeowner,4-person or more,204,Alexandria City
+Alexandria city,51510,2014,Renter,1-person,17026,Alexandria City
+Alexandria city,51510,2014,Renter,2-person,11078,Alexandria City
+Alexandria city,51510,2014,Renter,3-person,4696,Alexandria City
+Alexandria city,51510,2014,Renter,4-person or more,3030,Alexandria City
+Alexandria city,51510,2014,Renter,4-person or more,1462,Alexandria City
+Alexandria city,51510,2014,Renter,4-person or more,312,Alexandria City
+Alexandria city,51510,2014,Renter,4-person or more,166,Alexandria City
+Fairfax city,51600,2014,Homeowner,1-person,1259,Fairfax City
+Fairfax city,51600,2014,Homeowner,2-person,2214,Fairfax City
+Fairfax city,51600,2014,Homeowner,3-person,1096,Fairfax City
+Fairfax city,51600,2014,Homeowner,4-person or more,882,Fairfax City
+Fairfax city,51600,2014,Homeowner,4-person or more,194,Fairfax City
+Fairfax city,51600,2014,Homeowner,4-person or more,193,Fairfax City
+Fairfax city,51600,2014,Homeowner,4-person or more,106,Fairfax City
+Fairfax city,51600,2014,Renter,1-person,585,Fairfax City
+Fairfax city,51600,2014,Renter,2-person,683,Fairfax City
+Fairfax city,51600,2014,Renter,3-person,497,Fairfax City
+Fairfax city,51600,2014,Renter,4-person or more,506,Fairfax City
+Fairfax city,51600,2014,Renter,4-person or more,180,Fairfax City
+Fairfax city,51600,2014,Renter,4-person or more,57,Fairfax City
+Fairfax city,51600,2014,Renter,4-person or more,28,Fairfax City
+Falls Church city,51610,2014,Homeowner,1-person,627,Falls Church City
+Falls Church city,51610,2014,Homeowner,2-person,1027,Falls Church City
+Falls Church city,51610,2014,Homeowner,3-person,430,Falls Church City
+Falls Church city,51610,2014,Homeowner,4-person or more,591,Falls Church City
+Falls Church city,51610,2014,Homeowner,4-person or more,195,Falls Church City
+Falls Church city,51610,2014,Homeowner,4-person or more,51,Falls Church City
+Falls Church city,51610,2014,Homeowner,4-person or more,12,Falls Church City
+Falls Church city,51610,2014,Renter,1-person,970,Falls Church City
+Falls Church city,51610,2014,Renter,2-person,396,Falls Church City
+Falls Church city,51610,2014,Renter,3-person,445,Falls Church City
+Falls Church city,51610,2014,Renter,4-person or more,119,Falls Church City
+Falls Church city,51610,2014,Renter,4-person or more,71,Falls Church City
+Falls Church city,51610,2014,Renter,4-person or more,25,Falls Church City
+Falls Church city,51610,2014,Renter,4-person or more,7,Falls Church City
+Manassas city,51683,2014,Homeowner,1-person,1336,Manassas City
+Manassas city,51683,2014,Homeowner,2-person,2642,Manassas City
+Manassas city,51683,2014,Homeowner,3-person,1570,Manassas City
+Manassas city,51683,2014,Homeowner,4-person or more,1150,Manassas City
+Manassas city,51683,2014,Homeowner,4-person or more,669,Manassas City
+Manassas city,51683,2014,Homeowner,4-person or more,222,Manassas City
+Manassas city,51683,2014,Homeowner,4-person or more,347,Manassas City
+Manassas city,51683,2014,Renter,1-person,1160,Manassas City
+Manassas city,51683,2014,Renter,2-person,916,Manassas City
+Manassas city,51683,2014,Renter,3-person,687,Manassas City
+Manassas city,51683,2014,Renter,4-person or more,751,Manassas City
+Manassas city,51683,2014,Renter,4-person or more,398,Manassas City
+Manassas city,51683,2014,Renter,4-person or more,280,Manassas City
+Manassas city,51683,2014,Renter,4-person or more,146,Manassas City
+Manassas Park city,51685,2014,Homeowner,1-person,653,Manassas Park City
+Manassas Park city,51685,2014,Homeowner,2-person,611,Manassas Park City
+Manassas Park city,51685,2014,Homeowner,3-person,535,Manassas Park City
+Manassas Park city,51685,2014,Homeowner,4-person or more,544,Manassas Park City
+Manassas Park city,51685,2014,Homeowner,4-person or more,248,Manassas Park City
+Manassas Park city,51685,2014,Homeowner,4-person or more,208,Manassas Park City
+Manassas Park city,51685,2014,Homeowner,4-person or more,94,Manassas Park City
+Manassas Park city,51685,2014,Renter,1-person,424,Manassas Park City
+Manassas Park city,51685,2014,Renter,2-person,357,Manassas Park City
+Manassas Park city,51685,2014,Renter,3-person,255,Manassas Park City
+Manassas Park city,51685,2014,Renter,4-person or more,295,Manassas Park City
+Manassas Park city,51685,2014,Renter,4-person or more,192,Manassas Park City
+Manassas Park city,51685,2014,Renter,4-person or more,84,Manassas Park City
+Manassas Park city,51685,2014,Renter,4-person or more,26,Manassas Park City
+Arlington County,51013,2015,Homeowner,1-person,14366,Arlington County
+Arlington County,51013,2015,Homeowner,2-person,14446,Arlington County
+Arlington County,51013,2015,Homeowner,3-person,5996,Arlington County
+Arlington County,51013,2015,Homeowner,4-person or more,6047,Arlington County
+Arlington County,51013,2015,Homeowner,4-person or more,1889,Arlington County
+Arlington County,51013,2015,Homeowner,4-person or more,581,Arlington County
+Arlington County,51013,2015,Homeowner,4-person or more,372,Arlington County
+Arlington County,51013,2015,Renter,1-person,24834,Arlington County
+Arlington County,51013,2015,Renter,2-person,18298,Arlington County
+Arlington County,51013,2015,Renter,3-person,5876,Arlington County
+Arlington County,51013,2015,Renter,4-person or more,3573,Arlington County
+Arlington County,51013,2015,Renter,4-person or more,1474,Arlington County
+Arlington County,51013,2015,Renter,4-person or more,601,Arlington County
+Arlington County,51013,2015,Renter,4-person or more,88,Arlington County
+Fairfax County,51059,2015,Homeowner,1-person,51628,Fairfax County
+Fairfax County,51059,2015,Homeowner,2-person,88535,Fairfax County
+Fairfax County,51059,2015,Homeowner,3-person,49280,Fairfax County
+Fairfax County,51059,2015,Homeowner,4-person or more,47092,Fairfax County
+Fairfax County,51059,2015,Homeowner,4-person or more,18955,Fairfax County
+Fairfax County,51059,2015,Homeowner,4-person or more,6515,Fairfax County
+Fairfax County,51059,2015,Homeowner,4-person or more,3688,Fairfax County
+Fairfax County,51059,2015,Renter,1-person,36446,Fairfax County
+Fairfax County,51059,2015,Renter,2-person,34397,Fairfax County
+Fairfax County,51059,2015,Renter,3-person,21311,Fairfax County
+Fairfax County,51059,2015,Renter,4-person or more,19540,Fairfax County
+Fairfax County,51059,2015,Renter,4-person or more,9079,Fairfax County
+Fairfax County,51059,2015,Renter,4-person or more,3843,Fairfax County
+Fairfax County,51059,2015,Renter,4-person or more,2046,Fairfax County
+Loudoun County,51107,2015,Homeowner,1-person,12135,Loudoun County
+Loudoun County,51107,2015,Homeowner,2-person,24429,Loudoun County
+Loudoun County,51107,2015,Homeowner,3-person,17477,Loudoun County
+Loudoun County,51107,2015,Homeowner,4-person or more,20638,Loudoun County
+Loudoun County,51107,2015,Homeowner,4-person or more,8174,Loudoun County
+Loudoun County,51107,2015,Homeowner,4-person or more,3499,Loudoun County
+Loudoun County,51107,2015,Homeowner,4-person or more,1109,Loudoun County
+Loudoun County,51107,2015,Renter,1-person,7427,Loudoun County
+Loudoun County,51107,2015,Renter,2-person,6784,Loudoun County
+Loudoun County,51107,2015,Renter,3-person,4008,Loudoun County
+Loudoun County,51107,2015,Renter,4-person or more,4095,Loudoun County
+Loudoun County,51107,2015,Renter,4-person or more,2302,Loudoun County
+Loudoun County,51107,2015,Renter,4-person or more,856,Loudoun County
+Loudoun County,51107,2015,Renter,4-person or more,499,Loudoun County
+Prince William County,51153,2015,Homeowner,1-person,15055,Prince William County
+Prince William County,51153,2015,Homeowner,2-person,28975,Prince William County
+Prince William County,51153,2015,Homeowner,3-person,17921,Prince William County
+Prince William County,51153,2015,Homeowner,4-person or more,19313,Prince William County
+Prince William County,51153,2015,Homeowner,4-person or more,9508,Prince William County
+Prince William County,51153,2015,Homeowner,4-person or more,4245,Prince William County
+Prince William County,51153,2015,Homeowner,4-person or more,2727,Prince William County
+Prince William County,51153,2015,Renter,1-person,9554,Prince William County
+Prince William County,51153,2015,Renter,2-person,8163,Prince William County
+Prince William County,51153,2015,Renter,3-person,6580,Prince William County
+Prince William County,51153,2015,Renter,4-person or more,7747,Prince William County
+Prince William County,51153,2015,Renter,4-person or more,3758,Prince William County
+Prince William County,51153,2015,Renter,4-person or more,2008,Prince William County
+Prince William County,51153,2015,Renter,4-person or more,1240,Prince William County
+Alexandria city,51510,2015,Homeowner,1-person,11068,Alexandria City
+Alexandria city,51510,2015,Homeowner,2-person,10200,Alexandria City
+Alexandria city,51510,2015,Homeowner,3-person,3505,Alexandria City
+Alexandria city,51510,2015,Homeowner,4-person or more,2205,Alexandria City
+Alexandria city,51510,2015,Homeowner,4-person or more,996,Alexandria City
+Alexandria city,51510,2015,Homeowner,4-person or more,279,Alexandria City
+Alexandria city,51510,2015,Homeowner,4-person or more,157,Alexandria City
+Alexandria city,51510,2015,Renter,1-person,16948,Alexandria City
+Alexandria city,51510,2015,Renter,2-person,11359,Alexandria City
+Alexandria city,51510,2015,Renter,3-person,5104,Alexandria City
+Alexandria city,51510,2015,Renter,4-person or more,3095,Alexandria City
+Alexandria city,51510,2015,Renter,4-person or more,1491,Alexandria City
+Alexandria city,51510,2015,Renter,4-person or more,360,Alexandria City
+Alexandria city,51510,2015,Renter,4-person or more,112,Alexandria City
+Fairfax city,51600,2015,Homeowner,1-person,1239,Fairfax City
+Fairfax city,51600,2015,Homeowner,2-person,2010,Fairfax City
+Fairfax city,51600,2015,Homeowner,3-person,1169,Fairfax City
+Fairfax city,51600,2015,Homeowner,4-person or more,990,Fairfax City
+Fairfax city,51600,2015,Homeowner,4-person or more,232,Fairfax City
+Fairfax city,51600,2015,Homeowner,4-person or more,160,Fairfax City
+Fairfax city,51600,2015,Homeowner,4-person or more,125,Fairfax City
+Fairfax city,51600,2015,Renter,1-person,442,Fairfax City
+Fairfax city,51600,2015,Renter,2-person,805,Fairfax City
+Fairfax city,51600,2015,Renter,3-person,545,Fairfax City
+Fairfax city,51600,2015,Renter,4-person or more,491,Fairfax City
+Fairfax city,51600,2015,Renter,4-person or more,181,Fairfax City
+Fairfax city,51600,2015,Renter,4-person or more,63,Fairfax City
+Fairfax city,51600,2015,Renter,4-person or more,15,Fairfax City
+Falls Church city,51610,2015,Homeowner,1-person,597,Falls Church City
+Falls Church city,51610,2015,Homeowner,2-person,1103,Falls Church City
+Falls Church city,51610,2015,Homeowner,3-person,412,Falls Church City
+Falls Church city,51610,2015,Homeowner,4-person or more,648,Falls Church City
+Falls Church city,51610,2015,Homeowner,4-person or more,194,Falls Church City
+Falls Church city,51610,2015,Homeowner,4-person or more,60,Falls Church City
+Falls Church city,51610,2015,Homeowner,4-person or more,17,Falls Church City
+Falls Church city,51610,2015,Renter,1-person,1063,Falls Church City
+Falls Church city,51610,2015,Renter,2-person,516,Falls Church City
+Falls Church city,51610,2015,Renter,3-person,350,Falls Church City
+Falls Church city,51610,2015,Renter,4-person or more,115,Falls Church City
+Falls Church city,51610,2015,Renter,4-person or more,63,Falls Church City
+Falls Church city,51610,2015,Renter,4-person or more,17,Falls Church City
+Falls Church city,51610,2015,Renter,4-person or more,11,Falls Church City
+Manassas city,51683,2015,Homeowner,1-person,1367,Manassas City
+Manassas city,51683,2015,Homeowner,2-person,2772,Manassas City
+Manassas city,51683,2015,Homeowner,3-person,1560,Manassas City
+Manassas city,51683,2015,Homeowner,4-person or more,1161,Manassas City
+Manassas city,51683,2015,Homeowner,4-person or more,631,Manassas City
+Manassas city,51683,2015,Homeowner,4-person or more,237,Manassas City
+Manassas city,51683,2015,Homeowner,4-person or more,260,Manassas City
+Manassas city,51683,2015,Renter,1-person,1295,Manassas City
+Manassas city,51683,2015,Renter,2-person,878,Manassas City
+Manassas city,51683,2015,Renter,3-person,493,Manassas City
+Manassas city,51683,2015,Renter,4-person or more,866,Manassas City
+Manassas city,51683,2015,Renter,4-person or more,411,Manassas City
+Manassas city,51683,2015,Renter,4-person or more,348,Manassas City
+Manassas city,51683,2015,Renter,4-person or more,154,Manassas City
+Manassas Park city,51685,2015,Homeowner,1-person,657,Manassas Park City
+Manassas Park city,51685,2015,Homeowner,2-person,701,Manassas Park City
+Manassas Park city,51685,2015,Homeowner,3-person,648,Manassas Park City
+Manassas Park city,51685,2015,Homeowner,4-person or more,563,Manassas Park City
+Manassas Park city,51685,2015,Homeowner,4-person or more,344,Manassas Park City
+Manassas Park city,51685,2015,Homeowner,4-person or more,240,Manassas Park City
+Manassas Park city,51685,2015,Homeowner,4-person or more,93,Manassas Park City
+Manassas Park city,51685,2015,Renter,1-person,365,Manassas Park City
+Manassas Park city,51685,2015,Renter,2-person,392,Manassas Park City
+Manassas Park city,51685,2015,Renter,3-person,216,Manassas Park City
+Manassas Park city,51685,2015,Renter,4-person or more,241,Manassas Park City
+Manassas Park city,51685,2015,Renter,4-person or more,144,Manassas Park City
+Manassas Park city,51685,2015,Renter,4-person or more,80,Manassas Park City
+Manassas Park city,51685,2015,Renter,4-person or more,39,Manassas Park City
+Arlington County,51013,2016,Homeowner,1-person,14034,Arlington County
+Arlington County,51013,2016,Homeowner,2-person,14775,Arlington County
+Arlington County,51013,2016,Homeowner,3-person,6088,Arlington County
+Arlington County,51013,2016,Homeowner,4-person or more,6596,Arlington County
+Arlington County,51013,2016,Homeowner,4-person or more,1994,Arlington County
+Arlington County,51013,2016,Homeowner,4-person or more,615,Arlington County
+Arlington County,51013,2016,Homeowner,4-person or more,429,Arlington County
+Arlington County,51013,2016,Renter,1-person,25331,Arlington County
+Arlington County,51013,2016,Renter,2-person,18765,Arlington County
+Arlington County,51013,2016,Renter,3-person,6154,Arlington County
+Arlington County,51013,2016,Renter,4-person or more,3653,Arlington County
+Arlington County,51013,2016,Renter,4-person or more,1536,Arlington County
+Arlington County,51013,2016,Renter,4-person or more,582,Arlington County
+Arlington County,51013,2016,Renter,4-person or more,155,Arlington County
+Fairfax County,51059,2016,Homeowner,1-person,51439,Fairfax County
+Fairfax County,51059,2016,Homeowner,2-person,88633,Fairfax County
+Fairfax County,51059,2016,Homeowner,3-person,49281,Fairfax County
+Fairfax County,51059,2016,Homeowner,4-person or more,47114,Fairfax County
+Fairfax County,51059,2016,Homeowner,4-person or more,18497,Fairfax County
+Fairfax County,51059,2016,Homeowner,4-person or more,6650,Fairfax County
+Fairfax County,51059,2016,Homeowner,4-person or more,3737,Fairfax County
+Fairfax County,51059,2016,Renter,1-person,36813,Fairfax County
+Fairfax County,51059,2016,Renter,2-person,34313,Fairfax County
+Fairfax County,51059,2016,Renter,3-person,21602,Fairfax County
+Fairfax County,51059,2016,Renter,4-person or more,20031,Fairfax County
+Fairfax County,51059,2016,Renter,4-person or more,9227,Fairfax County
+Fairfax County,51059,2016,Renter,4-person or more,3805,Fairfax County
+Fairfax County,51059,2016,Renter,4-person or more,2216,Fairfax County
+Loudoun County,51107,2016,Homeowner,1-person,12585,Loudoun County
+Loudoun County,51107,2016,Homeowner,2-person,24989,Loudoun County
+Loudoun County,51107,2016,Homeowner,3-person,17911,Loudoun County
+Loudoun County,51107,2016,Homeowner,4-person or more,21559,Loudoun County
+Loudoun County,51107,2016,Homeowner,4-person or more,8780,Loudoun County
+Loudoun County,51107,2016,Homeowner,4-person or more,3560,Loudoun County
+Loudoun County,51107,2016,Homeowner,4-person or more,1272,Loudoun County
+Loudoun County,51107,2016,Renter,1-person,7427,Loudoun County
+Loudoun County,51107,2016,Renter,2-person,6965,Loudoun County
+Loudoun County,51107,2016,Renter,3-person,4460,Loudoun County
+Loudoun County,51107,2016,Renter,4-person or more,4252,Loudoun County
+Loudoun County,51107,2016,Renter,4-person or more,2220,Loudoun County
+Loudoun County,51107,2016,Renter,4-person or more,761,Loudoun County
+Loudoun County,51107,2016,Renter,4-person or more,332,Loudoun County
+Prince William County,51153,2016,Homeowner,1-person,15765,Prince William County
+Prince William County,51153,2016,Homeowner,2-person,28663,Prince William County
+Prince William County,51153,2016,Homeowner,3-person,17896,Prince William County
+Prince William County,51153,2016,Homeowner,4-person or more,19192,Prince William County
+Prince William County,51153,2016,Homeowner,4-person or more,9470,Prince William County
+Prince William County,51153,2016,Homeowner,4-person or more,4360,Prince William County
+Prince William County,51153,2016,Homeowner,4-person or more,2946,Prince William County
+Prince William County,51153,2016,Renter,1-person,9706,Prince William County
+Prince William County,51153,2016,Renter,2-person,8750,Prince William County
+Prince William County,51153,2016,Renter,3-person,6639,Prince William County
+Prince William County,51153,2016,Renter,4-person or more,7924,Prince William County
+Prince William County,51153,2016,Renter,4-person or more,3625,Prince William County
+Prince William County,51153,2016,Renter,4-person or more,1915,Prince William County
+Prince William County,51153,2016,Renter,4-person or more,1251,Prince William County
+Alexandria city,51510,2016,Homeowner,1-person,10908,Alexandria City
+Alexandria city,51510,2016,Homeowner,2-person,10521,Alexandria City
+Alexandria city,51510,2016,Homeowner,3-person,3809,Alexandria City
+Alexandria city,51510,2016,Homeowner,4-person or more,2238,Alexandria City
+Alexandria city,51510,2016,Homeowner,4-person or more,934,Alexandria City
+Alexandria city,51510,2016,Homeowner,4-person or more,212,Alexandria City
+Alexandria city,51510,2016,Homeowner,4-person or more,88,Alexandria City
+Alexandria city,51510,2016,Renter,1-person,17380,Alexandria City
+Alexandria city,51510,2016,Renter,2-person,11288,Alexandria City
+Alexandria city,51510,2016,Renter,3-person,5124,Alexandria City
+Alexandria city,51510,2016,Renter,4-person or more,3305,Alexandria City
+Alexandria city,51510,2016,Renter,4-person or more,1606,Alexandria City
+Alexandria city,51510,2016,Renter,4-person or more,500,Alexandria City
+Alexandria city,51510,2016,Renter,4-person or more,150,Alexandria City
+Fairfax city,51600,2016,Homeowner,1-person,1218,Fairfax City
+Fairfax city,51600,2016,Homeowner,2-person,2053,Fairfax City
+Fairfax city,51600,2016,Homeowner,3-person,1171,Fairfax City
+Fairfax city,51600,2016,Homeowner,4-person or more,939,Fairfax City
+Fairfax city,51600,2016,Homeowner,4-person or more,338,Fairfax City
+Fairfax city,51600,2016,Homeowner,4-person or more,178,Fairfax City
+Fairfax city,51600,2016,Homeowner,4-person or more,95,Fairfax City
+Fairfax city,51600,2016,Renter,1-person,462,Fairfax City
+Fairfax city,51600,2016,Renter,2-person,798,Fairfax City
+Fairfax city,51600,2016,Renter,3-person,566,Fairfax City
+Fairfax city,51600,2016,Renter,4-person or more,426,Fairfax City
+Fairfax city,51600,2016,Renter,4-person or more,146,Fairfax City
+Fairfax city,51600,2016,Renter,4-person or more,79,Fairfax City
+Fairfax city,51600,2016,Renter,4-person or more,7,Fairfax City
+Falls Church city,51610,2016,Homeowner,1-person,668,Falls Church City
+Falls Church city,51610,2016,Homeowner,2-person,1020,Falls Church City
+Falls Church city,51610,2016,Homeowner,3-person,487,Falls Church City
+Falls Church city,51610,2016,Homeowner,4-person or more,626,Falls Church City
+Falls Church city,51610,2016,Homeowner,4-person or more,288,Falls Church City
+Falls Church city,51610,2016,Homeowner,4-person or more,55,Falls Church City
+Falls Church city,51610,2016,Homeowner,4-person or more,18,Falls Church City
+Falls Church city,51610,2016,Renter,1-person,1090,Falls Church City
+Falls Church city,51610,2016,Renter,2-person,613,Falls Church City
+Falls Church city,51610,2016,Renter,3-person,242,Falls Church City
+Falls Church city,51610,2016,Renter,4-person or more,95,Falls Church City
+Falls Church city,51610,2016,Renter,4-person or more,75,Falls Church City
+Falls Church city,51610,2016,Renter,4-person or more,18,Falls Church City
+Falls Church city,51610,2016,Renter,4-person or more,6,Falls Church City
+Manassas city,51683,2016,Homeowner,1-person,1154,Manassas City
+Manassas city,51683,2016,Homeowner,2-person,2673,Manassas City
+Manassas city,51683,2016,Homeowner,3-person,1646,Manassas City
+Manassas city,51683,2016,Homeowner,4-person or more,1168,Manassas City
+Manassas city,51683,2016,Homeowner,4-person or more,618,Manassas City
+Manassas city,51683,2016,Homeowner,4-person or more,245,Manassas City
+Manassas city,51683,2016,Homeowner,4-person or more,223,Manassas City
+Manassas city,51683,2016,Renter,1-person,1240,Manassas City
+Manassas city,51683,2016,Renter,2-person,874,Manassas City
+Manassas city,51683,2016,Renter,3-person,486,Manassas City
+Manassas city,51683,2016,Renter,4-person or more,993,Manassas City
+Manassas city,51683,2016,Renter,4-person or more,547,Manassas City
+Manassas city,51683,2016,Renter,4-person or more,361,Manassas City
+Manassas city,51683,2016,Renter,4-person or more,202,Manassas City
+Manassas Park city,51685,2016,Homeowner,1-person,567,Manassas Park City
+Manassas Park city,51685,2016,Homeowner,2-person,743,Manassas Park City
+Manassas Park city,51685,2016,Homeowner,3-person,503,Manassas Park City
+Manassas Park city,51685,2016,Homeowner,4-person or more,651,Manassas Park City
+Manassas Park city,51685,2016,Homeowner,4-person or more,319,Manassas Park City
+Manassas Park city,51685,2016,Homeowner,4-person or more,239,Manassas Park City
+Manassas Park city,51685,2016,Homeowner,4-person or more,90,Manassas Park City
+Manassas Park city,51685,2016,Renter,1-person,418,Manassas Park City
+Manassas Park city,51685,2016,Renter,2-person,467,Manassas Park City
+Manassas Park city,51685,2016,Renter,3-person,222,Manassas Park City
+Manassas Park city,51685,2016,Renter,4-person or more,217,Manassas Park City
+Manassas Park city,51685,2016,Renter,4-person or more,171,Manassas Park City
+Manassas Park city,51685,2016,Renter,4-person or more,73,Manassas Park City
+Manassas Park city,51685,2016,Renter,4-person or more,50,Manassas Park City
+Arlington County,51013,2017,Homeowner,1-person,14629,Arlington County
+Arlington County,51013,2017,Homeowner,2-person,14891,Arlington County
+Arlington County,51013,2017,Homeowner,3-person,6137,Arlington County
+Arlington County,51013,2017,Homeowner,4-person or more,6904,Arlington County
+Arlington County,51013,2017,Homeowner,4-person or more,1996,Arlington County
+Arlington County,51013,2017,Homeowner,4-person or more,595,Arlington County
+Arlington County,51013,2017,Homeowner,4-person or more,373,Arlington County
+Arlington County,51013,2017,Renter,1-person,25481,Arlington County
+Arlington County,51013,2017,Renter,2-person,18938,Arlington County
+Arlington County,51013,2017,Renter,3-person,6306,Arlington County
+Arlington County,51013,2017,Renter,4-person or more,3891,Arlington County
+Arlington County,51013,2017,Renter,4-person or more,1546,Arlington County
+Arlington County,51013,2017,Renter,4-person or more,505,Arlington County
+Arlington County,51013,2017,Renter,4-person or more,118,Arlington County
+Fairfax County,51059,2017,Homeowner,1-person,51873,Fairfax County
+Fairfax County,51059,2017,Homeowner,2-person,89156,Fairfax County
+Fairfax County,51059,2017,Homeowner,3-person,49457,Fairfax County
+Fairfax County,51059,2017,Homeowner,4-person or more,47622,Fairfax County
+Fairfax County,51059,2017,Homeowner,4-person or more,18611,Fairfax County
+Fairfax County,51059,2017,Homeowner,4-person or more,6209,Fairfax County
+Fairfax County,51059,2017,Homeowner,4-person or more,3779,Fairfax County
+Fairfax County,51059,2017,Renter,1-person,36075,Fairfax County
+Fairfax County,51059,2017,Renter,2-person,34324,Fairfax County
+Fairfax County,51059,2017,Renter,3-person,21176,Fairfax County
+Fairfax County,51059,2017,Renter,4-person or more,19910,Fairfax County
+Fairfax County,51059,2017,Renter,4-person or more,9019,Fairfax County
+Fairfax County,51059,2017,Renter,4-person or more,3839,Fairfax County
+Fairfax County,51059,2017,Renter,4-person or more,2330,Fairfax County
+Loudoun County,51107,2017,Homeowner,1-person,13543,Loudoun County
+Loudoun County,51107,2017,Homeowner,2-person,26324,Loudoun County
+Loudoun County,51107,2017,Homeowner,3-person,18414,Loudoun County
+Loudoun County,51107,2017,Homeowner,4-person or more,22087,Loudoun County
+Loudoun County,51107,2017,Homeowner,4-person or more,8887,Loudoun County
+Loudoun County,51107,2017,Homeowner,4-person or more,3826,Loudoun County
+Loudoun County,51107,2017,Homeowner,4-person or more,1356,Loudoun County
+Loudoun County,51107,2017,Renter,1-person,7423,Loudoun County
+Loudoun County,51107,2017,Renter,2-person,7795,Loudoun County
+Loudoun County,51107,2017,Renter,3-person,4166,Loudoun County
+Loudoun County,51107,2017,Renter,4-person or more,4174,Loudoun County
+Loudoun County,51107,2017,Renter,4-person or more,2097,Loudoun County
+Loudoun County,51107,2017,Renter,4-person or more,871,Loudoun County
+Loudoun County,51107,2017,Renter,4-person or more,336,Loudoun County
+Prince William County,51153,2017,Homeowner,1-person,16028,Prince William County
+Prince William County,51153,2017,Homeowner,2-person,29548,Prince William County
+Prince William County,51153,2017,Homeowner,3-person,18423,Prince William County
+Prince William County,51153,2017,Homeowner,4-person or more,19672,Prince William County
+Prince William County,51153,2017,Homeowner,4-person or more,9883,Prince William County
+Prince William County,51153,2017,Homeowner,4-person or more,4259,Prince William County
+Prince William County,51153,2017,Homeowner,4-person or more,3135,Prince William County
+Prince William County,51153,2017,Renter,1-person,9675,Prince William County
+Prince William County,51153,2017,Renter,2-person,8276,Prince William County
+Prince William County,51153,2017,Renter,3-person,6393,Prince William County
+Prince William County,51153,2017,Renter,4-person or more,7504,Prince William County
+Prince William County,51153,2017,Renter,4-person or more,3411,Prince William County
+Prince William County,51153,2017,Renter,4-person or more,1798,Prince William County
+Prince William County,51153,2017,Renter,4-person or more,1301,Prince William County
+Alexandria city,51510,2017,Homeowner,1-person,11322,Alexandria City
+Alexandria city,51510,2017,Homeowner,2-person,10543,Alexandria City
+Alexandria city,51510,2017,Homeowner,3-person,4049,Alexandria City
+Alexandria city,51510,2017,Homeowner,4-person or more,2410,Alexandria City
+Alexandria city,51510,2017,Homeowner,4-person or more,984,Alexandria City
+Alexandria city,51510,2017,Homeowner,4-person or more,189,Alexandria City
+Alexandria city,51510,2017,Homeowner,4-person or more,79,Alexandria City
+Alexandria city,51510,2017,Renter,1-person,17429,Alexandria City
+Alexandria city,51510,2017,Renter,2-person,11150,Alexandria City
+Alexandria city,51510,2017,Renter,3-person,4711,Alexandria City
+Alexandria city,51510,2017,Renter,4-person or more,3395,Alexandria City
+Alexandria city,51510,2017,Renter,4-person or more,1752,Alexandria City
+Alexandria city,51510,2017,Renter,4-person or more,468,Alexandria City
+Alexandria city,51510,2017,Renter,4-person or more,182,Alexandria City
+Fairfax city,51600,2017,Homeowner,1-person,1358,Fairfax City
+Fairfax city,51600,2017,Homeowner,2-person,1857,Fairfax City
+Fairfax city,51600,2017,Homeowner,3-person,1164,Fairfax City
+Fairfax city,51600,2017,Homeowner,4-person or more,986,Fairfax City
+Fairfax city,51600,2017,Homeowner,4-person or more,317,Fairfax City
+Fairfax city,51600,2017,Homeowner,4-person or more,145,Fairfax City
+Fairfax city,51600,2017,Homeowner,4-person or more,122,Fairfax City
+Fairfax city,51600,2017,Renter,1-person,513,Fairfax City
+Fairfax city,51600,2017,Renter,2-person,859,Fairfax City
+Fairfax city,51600,2017,Renter,3-person,568,Fairfax City
+Fairfax city,51600,2017,Renter,4-person or more,378,Fairfax City
+Fairfax city,51600,2017,Renter,4-person or more,156,Fairfax City
+Fairfax city,51600,2017,Renter,4-person or more,65,Fairfax City
+Fairfax city,51600,2017,Renter,4-person or more,11,Fairfax City
+Falls Church city,51610,2017,Homeowner,1-person,669,Falls Church City
+Falls Church city,51610,2017,Homeowner,2-person,1003,Falls Church City
+Falls Church city,51610,2017,Homeowner,3-person,583,Falls Church City
+Falls Church city,51610,2017,Homeowner,4-person or more,556,Falls Church City
+Falls Church city,51610,2017,Homeowner,4-person or more,294,Falls Church City
+Falls Church city,51610,2017,Homeowner,4-person or more,55,Falls Church City
+Falls Church city,51610,2017,Homeowner,4-person or more,18,Falls Church City
+Falls Church city,51610,2017,Renter,1-person,931,Falls Church City
+Falls Church city,51610,2017,Renter,2-person,635,Falls Church City
+Falls Church city,51610,2017,Renter,3-person,308,Falls Church City
+Falls Church city,51610,2017,Renter,4-person or more,117,Falls Church City
+Falls Church city,51610,2017,Renter,4-person or more,133,Falls Church City
+Falls Church city,51610,2017,Renter,4-person or more,6,Falls Church City
+Falls Church city,51610,2017,Renter,4-person or more,0,Falls Church City
+Manassas city,51683,2017,Homeowner,1-person,1271,Manassas City
+Manassas city,51683,2017,Homeowner,2-person,2736,Manassas City
+Manassas city,51683,2017,Homeowner,3-person,1600,Manassas City
+Manassas city,51683,2017,Homeowner,4-person or more,1276,Manassas City
+Manassas city,51683,2017,Homeowner,4-person or more,657,Manassas City
+Manassas city,51683,2017,Homeowner,4-person or more,252,Manassas City
+Manassas city,51683,2017,Homeowner,4-person or more,187,Manassas City
+Manassas city,51683,2017,Renter,1-person,1159,Manassas City
+Manassas city,51683,2017,Renter,2-person,1084,Manassas City
+Manassas city,51683,2017,Renter,3-person,428,Manassas City
+Manassas city,51683,2017,Renter,4-person or more,1004,Manassas City
+Manassas city,51683,2017,Renter,4-person or more,422,Manassas City
+Manassas city,51683,2017,Renter,4-person or more,274,Manassas City
+Manassas city,51683,2017,Renter,4-person or more,190,Manassas City
+Manassas Park city,51685,2017,Homeowner,1-person,584,Manassas Park City
+Manassas Park city,51685,2017,Homeowner,2-person,755,Manassas Park City
+Manassas Park city,51685,2017,Homeowner,3-person,659,Manassas Park City
+Manassas Park city,51685,2017,Homeowner,4-person or more,527,Manassas Park City
+Manassas Park city,51685,2017,Homeowner,4-person or more,329,Manassas Park City
+Manassas Park city,51685,2017,Homeowner,4-person or more,289,Manassas Park City
+Manassas Park city,51685,2017,Homeowner,4-person or more,81,Manassas Park City
+Manassas Park city,51685,2017,Renter,1-person,393,Manassas Park City
+Manassas Park city,51685,2017,Renter,2-person,397,Manassas Park City
+Manassas Park city,51685,2017,Renter,3-person,198,Manassas Park City
+Manassas Park city,51685,2017,Renter,4-person or more,204,Manassas Park City
+Manassas Park city,51685,2017,Renter,4-person or more,225,Manassas Park City
+Manassas Park city,51685,2017,Renter,4-person or more,112,Manassas Park City
+Manassas Park city,51685,2017,Renter,4-person or more,25,Manassas Park City
+Arlington County,51013,2018,Homeowner,1-person,14639,Arlington County
+Arlington County,51013,2018,Homeowner,2-person,14608,Arlington County
+Arlington County,51013,2018,Homeowner,3-person,6254,Arlington County
+Arlington County,51013,2018,Homeowner,4-person or more,7145,Arlington County
+Arlington County,51013,2018,Homeowner,4-person or more,1912,Arlington County
+Arlington County,51013,2018,Homeowner,4-person or more,663,Arlington County
+Arlington County,51013,2018,Homeowner,4-person or more,283,Arlington County
+Arlington County,51013,2018,Renter,1-person,26233,Arlington County
+Arlington County,51013,2018,Renter,2-person,19875,Arlington County
+Arlington County,51013,2018,Renter,3-person,6783,Arlington County
+Arlington County,51013,2018,Renter,4-person or more,4293,Arlington County
+Arlington County,51013,2018,Renter,4-person or more,1372,Arlington County
+Arlington County,51013,2018,Renter,4-person or more,507,Arlington County
+Arlington County,51013,2018,Renter,4-person or more,149,Arlington County
+Fairfax County,51059,2018,Homeowner,1-person,52195,Fairfax County
+Fairfax County,51059,2018,Homeowner,2-person,88500,Fairfax County
+Fairfax County,51059,2018,Homeowner,3-person,50625,Fairfax County
+Fairfax County,51059,2018,Homeowner,4-person or more,48088,Fairfax County
+Fairfax County,51059,2018,Homeowner,4-person or more,18599,Fairfax County
+Fairfax County,51059,2018,Homeowner,4-person or more,6438,Fairfax County
+Fairfax County,51059,2018,Homeowner,4-person or more,3901,Fairfax County
+Fairfax County,51059,2018,Renter,1-person,36474,Fairfax County
+Fairfax County,51059,2018,Renter,2-person,34563,Fairfax County
+Fairfax County,51059,2018,Renter,3-person,20818,Fairfax County
+Fairfax County,51059,2018,Renter,4-person or more,19240,Fairfax County
+Fairfax County,51059,2018,Renter,4-person or more,8929,Fairfax County
+Fairfax County,51059,2018,Renter,4-person or more,3953,Fairfax County
+Fairfax County,51059,2018,Renter,4-person or more,2124,Fairfax County
+Loudoun County,51107,2018,Homeowner,1-person,13890,Loudoun County
+Loudoun County,51107,2018,Homeowner,2-person,26619,Loudoun County
+Loudoun County,51107,2018,Homeowner,3-person,19250,Loudoun County
+Loudoun County,51107,2018,Homeowner,4-person or more,23661,Loudoun County
+Loudoun County,51107,2018,Homeowner,4-person or more,8582,Loudoun County
+Loudoun County,51107,2018,Homeowner,4-person or more,3843,Loudoun County
+Loudoun County,51107,2018,Homeowner,4-person or more,1668,Loudoun County
+Loudoun County,51107,2018,Renter,1-person,7538,Loudoun County
+Loudoun County,51107,2018,Renter,2-person,8129,Loudoun County
+Loudoun County,51107,2018,Renter,3-person,4419,Loudoun County
+Loudoun County,51107,2018,Renter,4-person or more,4329,Loudoun County
+Loudoun County,51107,2018,Renter,4-person or more,2064,Loudoun County
+Loudoun County,51107,2018,Renter,4-person or more,923,Loudoun County
+Loudoun County,51107,2018,Renter,4-person or more,394,Loudoun County
+Prince William County,51153,2018,Homeowner,1-person,16240,Prince William County
+Prince William County,51153,2018,Homeowner,2-person,30006,Prince William County
+Prince William County,51153,2018,Homeowner,3-person,18686,Prince William County
+Prince William County,51153,2018,Homeowner,4-person or more,20209,Prince William County
+Prince William County,51153,2018,Homeowner,4-person or more,9713,Prince William County
+Prince William County,51153,2018,Homeowner,4-person or more,4410,Prince William County
+Prince William County,51153,2018,Homeowner,4-person or more,3547,Prince William County
+Prince William County,51153,2018,Renter,1-person,9714,Prince William County
+Prince William County,51153,2018,Renter,2-person,8857,Prince William County
+Prince William County,51153,2018,Renter,3-person,5989,Prince William County
+Prince William County,51153,2018,Renter,4-person or more,6715,Prince William County
+Prince William County,51153,2018,Renter,4-person or more,3480,Prince William County
+Prince William County,51153,2018,Renter,4-person or more,1547,Prince William County
+Prince William County,51153,2018,Renter,4-person or more,1360,Prince William County
+Alexandria city,51510,2018,Homeowner,1-person,11382,Alexandria City
+Alexandria city,51510,2018,Homeowner,2-person,10883,Alexandria City
+Alexandria city,51510,2018,Homeowner,3-person,4089,Alexandria City
+Alexandria city,51510,2018,Homeowner,4-person or more,2372,Alexandria City
+Alexandria city,51510,2018,Homeowner,4-person or more,983,Alexandria City
+Alexandria city,51510,2018,Homeowner,4-person or more,178,Alexandria City
+Alexandria city,51510,2018,Homeowner,4-person or more,102,Alexandria City
+Alexandria city,51510,2018,Renter,1-person,17807,Alexandria City
+Alexandria city,51510,2018,Renter,2-person,11532,Alexandria City
+Alexandria city,51510,2018,Renter,3-person,4759,Alexandria City
+Alexandria city,51510,2018,Renter,4-person or more,3454,Alexandria City
+Alexandria city,51510,2018,Renter,4-person or more,1726,Alexandria City
+Alexandria city,51510,2018,Renter,4-person or more,533,Alexandria City
+Alexandria city,51510,2018,Renter,4-person or more,179,Alexandria City
+Fairfax city,51600,2018,Homeowner,1-person,1234,Fairfax City
+Fairfax city,51600,2018,Homeowner,2-person,1959,Fairfax City
+Fairfax city,51600,2018,Homeowner,3-person,1145,Fairfax City
+Fairfax city,51600,2018,Homeowner,4-person or more,1085,Fairfax City
+Fairfax city,51600,2018,Homeowner,4-person or more,408,Fairfax City
+Fairfax city,51600,2018,Homeowner,4-person or more,173,Fairfax City
+Fairfax city,51600,2018,Homeowner,4-person or more,62,Fairfax City
+Fairfax city,51600,2018,Renter,1-person,602,Fairfax City
+Fairfax city,51600,2018,Renter,2-person,761,Fairfax City
+Fairfax city,51600,2018,Renter,3-person,440,Fairfax City
+Fairfax city,51600,2018,Renter,4-person or more,418,Fairfax City
+Fairfax city,51600,2018,Renter,4-person or more,182,Fairfax City
+Fairfax city,51600,2018,Renter,4-person or more,76,Fairfax City
+Fairfax city,51600,2018,Renter,4-person or more,8,Fairfax City
+Falls Church city,51610,2018,Homeowner,1-person,712,Falls Church City
+Falls Church city,51610,2018,Homeowner,2-person,979,Falls Church City
+Falls Church city,51610,2018,Homeowner,3-person,630,Falls Church City
+Falls Church city,51610,2018,Homeowner,4-person or more,554,Falls Church City
+Falls Church city,51610,2018,Homeowner,4-person or more,306,Falls Church City
+Falls Church city,51610,2018,Homeowner,4-person or more,42,Falls Church City
+Falls Church city,51610,2018,Homeowner,4-person or more,20,Falls Church City
+Falls Church city,51610,2018,Renter,1-person,764,Falls Church City
+Falls Church city,51610,2018,Renter,2-person,587,Falls Church City
+Falls Church city,51610,2018,Renter,3-person,346,Falls Church City
+Falls Church city,51610,2018,Renter,4-person or more,194,Falls Church City
+Falls Church city,51610,2018,Renter,4-person or more,115,Falls Church City
+Falls Church city,51610,2018,Renter,4-person or more,13,Falls Church City
+Falls Church city,51610,2018,Renter,4-person or more,0,Falls Church City
+Manassas city,51683,2018,Homeowner,1-person,1335,Manassas City
+Manassas city,51683,2018,Homeowner,2-person,2758,Manassas City
+Manassas city,51683,2018,Homeowner,3-person,1836,Manassas City
+Manassas city,51683,2018,Homeowner,4-person or more,1269,Manassas City
+Manassas city,51683,2018,Homeowner,4-person or more,608,Manassas City
+Manassas city,51683,2018,Homeowner,4-person or more,279,Manassas City
+Manassas city,51683,2018,Homeowner,4-person or more,216,Manassas City
+Manassas city,51683,2018,Renter,1-person,1280,Manassas City
+Manassas city,51683,2018,Renter,2-person,1052,Manassas City
+Manassas city,51683,2018,Renter,3-person,375,Manassas City
+Manassas city,51683,2018,Renter,4-person or more,1077,Manassas City
+Manassas city,51683,2018,Renter,4-person or more,338,Manassas City
+Manassas city,51683,2018,Renter,4-person or more,147,Manassas City
+Manassas city,51683,2018,Renter,4-person or more,179,Manassas City
+Manassas Park city,51685,2018,Homeowner,1-person,493,Manassas Park City
+Manassas Park city,51685,2018,Homeowner,2-person,824,Manassas Park City
+Manassas Park city,51685,2018,Homeowner,3-person,583,Manassas Park City
+Manassas Park city,51685,2018,Homeowner,4-person or more,579,Manassas Park City
+Manassas Park city,51685,2018,Homeowner,4-person or more,286,Manassas Park City
+Manassas Park city,51685,2018,Homeowner,4-person or more,233,Manassas Park City
+Manassas Park city,51685,2018,Homeowner,4-person or more,100,Manassas Park City
+Manassas Park city,51685,2018,Renter,1-person,580,Manassas Park City
+Manassas Park city,51685,2018,Renter,2-person,305,Manassas Park City
+Manassas Park city,51685,2018,Renter,3-person,185,Manassas Park City
+Manassas Park city,51685,2018,Renter,4-person or more,214,Manassas Park City
+Manassas Park city,51685,2018,Renter,4-person or more,200,Manassas Park City
+Manassas Park city,51685,2018,Renter,4-person or more,98,Manassas Park City
+Manassas Park city,51685,2018,Renter,4-person or more,26,Manassas Park City
+Arlington County,51013,2019,Homeowner,1-person,14537,Arlington County
+Arlington County,51013,2019,Homeowner,2-person,15040,Arlington County
+Arlington County,51013,2019,Homeowner,3-person,6220,Arlington County
+Arlington County,51013,2019,Homeowner,4-person or more,6911,Arlington County
+Arlington County,51013,2019,Homeowner,4-person or more,2093,Arlington County
+Arlington County,51013,2019,Homeowner,4-person or more,646,Arlington County
+Arlington County,51013,2019,Homeowner,4-person or more,305,Arlington County
+Arlington County,51013,2019,Renter,1-person,27382,Arlington County
+Arlington County,51013,2019,Renter,2-person,20446,Arlington County
+Arlington County,51013,2019,Renter,3-person,6925,Arlington County
+Arlington County,51013,2019,Renter,4-person or more,4564,Arlington County
+Arlington County,51013,2019,Renter,4-person or more,1342,Arlington County
+Arlington County,51013,2019,Renter,4-person or more,511,Arlington County
+Arlington County,51013,2019,Renter,4-person or more,110,Arlington County
+Fairfax County,51059,2019,Homeowner,1-person,52315,Fairfax County
+Fairfax County,51059,2019,Homeowner,2-person,89111,Fairfax County
+Fairfax County,51059,2019,Homeowner,3-person,50787,Fairfax County
+Fairfax County,51059,2019,Homeowner,4-person or more,48482,Fairfax County
+Fairfax County,51059,2019,Homeowner,4-person or more,18604,Fairfax County
+Fairfax County,51059,2019,Homeowner,4-person or more,6212,Fairfax County
+Fairfax County,51059,2019,Homeowner,4-person or more,4017,Fairfax County
+Fairfax County,51059,2019,Renter,1-person,36860,Fairfax County
+Fairfax County,51059,2019,Renter,2-person,34769,Fairfax County
+Fairfax County,51059,2019,Renter,3-person,21000,Fairfax County
+Fairfax County,51059,2019,Renter,4-person or more,19986,Fairfax County
+Fairfax County,51059,2019,Renter,4-person or more,8661,Fairfax County
+Fairfax County,51059,2019,Renter,4-person or more,3612,Fairfax County
+Fairfax County,51059,2019,Renter,4-person or more,2085,Fairfax County
+Loudoun County,51107,2019,Homeowner,1-person,13898,Loudoun County
+Loudoun County,51107,2019,Homeowner,2-person,27727,Loudoun County
+Loudoun County,51107,2019,Homeowner,3-person,20197,Loudoun County
+Loudoun County,51107,2019,Homeowner,4-person or more,23710,Loudoun County
+Loudoun County,51107,2019,Homeowner,4-person or more,9275,Loudoun County
+Loudoun County,51107,2019,Homeowner,4-person or more,3929,Loudoun County
+Loudoun County,51107,2019,Homeowner,4-person or more,1664,Loudoun County
+Loudoun County,51107,2019,Renter,1-person,7812,Loudoun County
+Loudoun County,51107,2019,Renter,2-person,8296,Loudoun County
+Loudoun County,51107,2019,Renter,3-person,4320,Loudoun County
+Loudoun County,51107,2019,Renter,4-person or more,4579,Loudoun County
+Loudoun County,51107,2019,Renter,4-person or more,2011,Loudoun County
+Loudoun County,51107,2019,Renter,4-person or more,828,Loudoun County
+Loudoun County,51107,2019,Renter,4-person or more,391,Loudoun County
+Prince William County,51153,2019,Homeowner,1-person,16362,Prince William County
+Prince William County,51153,2019,Homeowner,2-person,30705,Prince William County
+Prince William County,51153,2019,Homeowner,3-person,19070,Prince William County
+Prince William County,51153,2019,Homeowner,4-person or more,20138,Prince William County
+Prince William County,51153,2019,Homeowner,4-person or more,10229,Prince William County
+Prince William County,51153,2019,Homeowner,4-person or more,4242,Prince William County
+Prince William County,51153,2019,Homeowner,4-person or more,3315,Prince William County
+Prince William County,51153,2019,Renter,1-person,9977,Prince William County
+Prince William County,51153,2019,Renter,2-person,8772,Prince William County
+Prince William County,51153,2019,Renter,3-person,6182,Prince William County
+Prince William County,51153,2019,Renter,4-person or more,6845,Prince William County
+Prince William County,51153,2019,Renter,4-person or more,3501,Prince William County
+Prince William County,51153,2019,Renter,4-person or more,1478,Prince William County
+Prince William County,51153,2019,Renter,4-person or more,1184,Prince William County
+Alexandria city,51510,2019,Homeowner,1-person,11600,Alexandria City
+Alexandria city,51510,2019,Homeowner,2-person,11099,Alexandria City
+Alexandria city,51510,2019,Homeowner,3-person,4047,Alexandria City
+Alexandria city,51510,2019,Homeowner,4-person or more,2610,Alexandria City
+Alexandria city,51510,2019,Homeowner,4-person or more,941,Alexandria City
+Alexandria city,51510,2019,Homeowner,4-person or more,201,Alexandria City
+Alexandria city,51510,2019,Homeowner,4-person or more,55,Alexandria City
+Alexandria city,51510,2019,Renter,1-person,17548,Alexandria City
+Alexandria city,51510,2019,Renter,2-person,11692,Alexandria City
+Alexandria city,51510,2019,Renter,3-person,4723,Alexandria City
+Alexandria city,51510,2019,Renter,4-person or more,3729,Alexandria City
+Alexandria city,51510,2019,Renter,4-person or more,1743,Alexandria City
+Alexandria city,51510,2019,Renter,4-person or more,456,Alexandria City
+Alexandria city,51510,2019,Renter,4-person or more,154,Alexandria City
+Fairfax city,51600,2019,Homeowner,1-person,1141,Fairfax City
+Fairfax city,51600,2019,Homeowner,2-person,2066,Fairfax City
+Fairfax city,51600,2019,Homeowner,3-person,1064,Fairfax City
+Fairfax city,51600,2019,Homeowner,4-person or more,1044,Fairfax City
+Fairfax city,51600,2019,Homeowner,4-person or more,481,Fairfax City
+Fairfax city,51600,2019,Homeowner,4-person or more,143,Fairfax City
+Fairfax city,51600,2019,Homeowner,4-person or more,65,Fairfax City
+Fairfax city,51600,2019,Renter,1-person,616,Fairfax City
+Fairfax city,51600,2019,Renter,2-person,762,Fairfax City
+Fairfax city,51600,2019,Renter,3-person,655,Fairfax City
+Fairfax city,51600,2019,Renter,4-person or more,351,Fairfax City
+Fairfax city,51600,2019,Renter,4-person or more,115,Fairfax City
+Fairfax city,51600,2019,Renter,4-person or more,61,Fairfax City
+Fairfax city,51600,2019,Renter,4-person or more,13,Fairfax City
+Falls Church city,51610,2019,Homeowner,1-person,702,Falls Church City
+Falls Church city,51610,2019,Homeowner,2-person,963,Falls Church City
+Falls Church city,51610,2019,Homeowner,3-person,589,Falls Church City
+Falls Church city,51610,2019,Homeowner,4-person or more,572,Falls Church City
+Falls Church city,51610,2019,Homeowner,4-person or more,305,Falls Church City
+Falls Church city,51610,2019,Homeowner,4-person or more,66,Falls Church City
+Falls Church city,51610,2019,Homeowner,4-person or more,7,Falls Church City
+Falls Church city,51610,2019,Renter,1-person,878,Falls Church City
+Falls Church city,51610,2019,Renter,2-person,690,Falls Church City
+Falls Church city,51610,2019,Renter,3-person,367,Falls Church City
+Falls Church city,51610,2019,Renter,4-person or more,195,Falls Church City
+Falls Church city,51610,2019,Renter,4-person or more,133,Falls Church City
+Falls Church city,51610,2019,Renter,4-person or more,26,Falls Church City
+Falls Church city,51610,2019,Renter,4-person or more,0,Falls Church City
+Manassas city,51683,2019,Homeowner,1-person,1586,Manassas City
+Manassas city,51683,2019,Homeowner,2-person,2606,Manassas City
+Manassas city,51683,2019,Homeowner,3-person,1765,Manassas City
+Manassas city,51683,2019,Homeowner,4-person or more,1422,Manassas City
+Manassas city,51683,2019,Homeowner,4-person or more,603,Manassas City
+Manassas city,51683,2019,Homeowner,4-person or more,252,Manassas City
+Manassas city,51683,2019,Homeowner,4-person or more,296,Manassas City
+Manassas city,51683,2019,Renter,1-person,1258,Manassas City
+Manassas city,51683,2019,Renter,2-person,1063,Manassas City
+Manassas city,51683,2019,Renter,3-person,350,Manassas City
+Manassas city,51683,2019,Renter,4-person or more,1008,Manassas City
+Manassas city,51683,2019,Renter,4-person or more,302,Manassas City
+Manassas city,51683,2019,Renter,4-person or more,204,Manassas City
+Manassas city,51683,2019,Renter,4-person or more,183,Manassas City
+Manassas Park city,51685,2019,Homeowner,1-person,457,Manassas Park City
+Manassas Park city,51685,2019,Homeowner,2-person,814,Manassas Park City
+Manassas Park city,51685,2019,Homeowner,3-person,528,Manassas Park City
+Manassas Park city,51685,2019,Homeowner,4-person or more,509,Manassas Park City
+Manassas Park city,51685,2019,Homeowner,4-person or more,285,Manassas Park City
+Manassas Park city,51685,2019,Homeowner,4-person or more,272,Manassas Park City
+Manassas Park city,51685,2019,Homeowner,4-person or more,194,Manassas Park City
+Manassas Park city,51685,2019,Renter,1-person,556,Manassas Park City
+Manassas Park city,51685,2019,Renter,2-person,278,Manassas Park City
+Manassas Park city,51685,2019,Renter,3-person,291,Manassas Park City
+Manassas Park city,51685,2019,Renter,4-person or more,211,Manassas Park City
+Manassas Park city,51685,2019,Renter,4-person or more,143,Manassas Park City
+Manassas Park city,51685,2019,Renter,4-person or more,88,Manassas Park City
+Manassas Park city,51685,2019,Renter,4-person or more,15,Manassas Park City
+Arlington County,51013,2020,Homeowner,1-person,14622,Arlington County
+Arlington County,51013,2020,Homeowner,2-person,15443,Arlington County
+Arlington County,51013,2020,Homeowner,3-person,6149,Arlington County
+Arlington County,51013,2020,Homeowner,4-person or more,6706,Arlington County
+Arlington County,51013,2020,Homeowner,4-person or more,2277,Arlington County
+Arlington County,51013,2020,Homeowner,4-person or more,761,Arlington County
+Arlington County,51013,2020,Homeowner,4-person or more,247,Arlington County
+Arlington County,51013,2020,Renter,1-person,28082,Arlington County
+Arlington County,51013,2020,Renter,2-person,21927,Arlington County
+Arlington County,51013,2020,Renter,3-person,6348,Arlington County
+Arlington County,51013,2020,Renter,4-person or more,4098,Arlington County
+Arlington County,51013,2020,Renter,4-person or more,1376,Arlington County
+Arlington County,51013,2020,Renter,4-person or more,474,Arlington County
+Arlington County,51013,2020,Renter,4-person or more,94,Arlington County
+Fairfax County,51059,2020,Homeowner,1-person,55204,Fairfax County
+Fairfax County,51059,2020,Homeowner,2-person,89209,Fairfax County
+Fairfax County,51059,2020,Homeowner,3-person,51029,Fairfax County
+Fairfax County,51059,2020,Homeowner,4-person or more,48359,Fairfax County
+Fairfax County,51059,2020,Homeowner,4-person or more,19714,Fairfax County
+Fairfax County,51059,2020,Homeowner,4-person or more,6334,Fairfax County
+Fairfax County,51059,2020,Homeowner,4-person or more,3579,Fairfax County
+Fairfax County,51059,2020,Renter,1-person,38043,Fairfax County
+Fairfax County,51059,2020,Renter,2-person,35111,Fairfax County
+Fairfax County,51059,2020,Renter,3-person,19892,Fairfax County
+Fairfax County,51059,2020,Renter,4-person or more,18267,Fairfax County
+Fairfax County,51059,2020,Renter,4-person or more,8673,Fairfax County
+Fairfax County,51059,2020,Renter,4-person or more,3359,Fairfax County
+Fairfax County,51059,2020,Renter,4-person or more,1880,Fairfax County
+Loudoun County,51107,2020,Homeowner,1-person,13992,Loudoun County
+Loudoun County,51107,2020,Homeowner,2-person,27726,Loudoun County
+Loudoun County,51107,2020,Homeowner,3-person,20673,Loudoun County
+Loudoun County,51107,2020,Homeowner,4-person or more,25511,Loudoun County
+Loudoun County,51107,2020,Homeowner,4-person or more,9671,Loudoun County
+Loudoun County,51107,2020,Homeowner,4-person or more,3861,Loudoun County
+Loudoun County,51107,2020,Homeowner,4-person or more,1585,Loudoun County
+Loudoun County,51107,2020,Renter,1-person,8105,Loudoun County
+Loudoun County,51107,2020,Renter,2-person,8641,Loudoun County
+Loudoun County,51107,2020,Renter,3-person,4946,Loudoun County
+Loudoun County,51107,2020,Renter,4-person or more,4400,Loudoun County
+Loudoun County,51107,2020,Renter,4-person or more,2000,Loudoun County
+Loudoun County,51107,2020,Renter,4-person or more,938,Loudoun County
+Loudoun County,51107,2020,Renter,4-person or more,516,Loudoun County
+Prince William County,51153,2020,Homeowner,1-person,16398,Prince William County
+Prince William County,51153,2020,Homeowner,2-person,31360,Prince William County
+Prince William County,51153,2020,Homeowner,3-person,18107,Prince William County
+Prince William County,51153,2020,Homeowner,4-person or more,21146,Prince William County
+Prince William County,51153,2020,Homeowner,4-person or more,10295,Prince William County
+Prince William County,51153,2020,Homeowner,4-person or more,4675,Prince William County
+Prince William County,51153,2020,Homeowner,4-person or more,3351,Prince William County
+Prince William County,51153,2020,Renter,1-person,9980,Prince William County
+Prince William County,51153,2020,Renter,2-person,9017,Prince William County
+Prince William County,51153,2020,Renter,3-person,6446,Prince William County
+Prince William County,51153,2020,Renter,4-person or more,7438,Prince William County
+Prince William County,51153,2020,Renter,4-person or more,3550,Prince William County
+Prince William County,51153,2020,Renter,4-person or more,1620,Prince William County
+Prince William County,51153,2020,Renter,4-person or more,776,Prince William County
+Alexandria city,51510,2020,Homeowner,1-person,12041,Alexandria City
+Alexandria city,51510,2020,Homeowner,2-person,10832,Alexandria City
+Alexandria city,51510,2020,Homeowner,3-person,4159,Alexandria City
+Alexandria city,51510,2020,Homeowner,4-person or more,2610,Alexandria City
+Alexandria city,51510,2020,Homeowner,4-person or more,981,Alexandria City
+Alexandria city,51510,2020,Homeowner,4-person or more,239,Alexandria City
+Alexandria city,51510,2020,Homeowner,4-person or more,69,Alexandria City
+Alexandria city,51510,2020,Renter,1-person,18114,Alexandria City
+Alexandria city,51510,2020,Renter,2-person,11920,Alexandria City
+Alexandria city,51510,2020,Renter,3-person,4683,Alexandria City
+Alexandria city,51510,2020,Renter,4-person or more,3182,Alexandria City
+Alexandria city,51510,2020,Renter,4-person or more,1656,Alexandria City
+Alexandria city,51510,2020,Renter,4-person or more,687,Alexandria City
+Alexandria city,51510,2020,Renter,4-person or more,116,Alexandria City
+Fairfax city,51600,2020,Homeowner,1-person,1379,Fairfax City
+Fairfax city,51600,2020,Homeowner,2-person,2014,Fairfax City
+Fairfax city,51600,2020,Homeowner,3-person,1084,Fairfax City
+Fairfax city,51600,2020,Homeowner,4-person or more,1034,Fairfax City
+Fairfax city,51600,2020,Homeowner,4-person or more,391,Fairfax City
+Fairfax city,51600,2020,Homeowner,4-person or more,157,Fairfax City
+Fairfax city,51600,2020,Homeowner,4-person or more,56,Fairfax City
+Fairfax city,51600,2020,Renter,1-person,776,Fairfax City
+Fairfax city,51600,2020,Renter,2-person,741,Fairfax City
+Fairfax city,51600,2020,Renter,3-person,640,Fairfax City
+Fairfax city,51600,2020,Renter,4-person or more,263,Fairfax City
+Fairfax city,51600,2020,Renter,4-person or more,123,Fairfax City
+Fairfax city,51600,2020,Renter,4-person or more,49,Fairfax City
+Fairfax city,51600,2020,Renter,4-person or more,44,Fairfax City
+Falls Church city,51610,2020,Homeowner,1-person,872,Falls Church City
+Falls Church city,51610,2020,Homeowner,2-person,910,Falls Church City
+Falls Church city,51610,2020,Homeowner,3-person,597,Falls Church City
+Falls Church city,51610,2020,Homeowner,4-person or more,619,Falls Church City
+Falls Church city,51610,2020,Homeowner,4-person or more,263,Falls Church City
+Falls Church city,51610,2020,Homeowner,4-person or more,51,Falls Church City
+Falls Church city,51610,2020,Homeowner,4-person or more,0,Falls Church City
+Falls Church city,51610,2020,Renter,1-person,905,Falls Church City
+Falls Church city,51610,2020,Renter,2-person,590,Falls Church City
+Falls Church city,51610,2020,Renter,3-person,422,Falls Church City
+Falls Church city,51610,2020,Renter,4-person or more,224,Falls Church City
+Falls Church city,51610,2020,Renter,4-person or more,153,Falls Church City
+Falls Church city,51610,2020,Renter,4-person or more,20,Falls Church City
+Falls Church city,51610,2020,Renter,4-person or more,5,Falls Church City
+Manassas city,51683,2020,Homeowner,1-person,1557,Manassas City
+Manassas city,51683,2020,Homeowner,2-person,2640,Manassas City
+Manassas city,51683,2020,Homeowner,3-person,1807,Manassas City
+Manassas city,51683,2020,Homeowner,4-person or more,1554,Manassas City
+Manassas city,51683,2020,Homeowner,4-person or more,871,Manassas City
+Manassas city,51683,2020,Homeowner,4-person or more,220,Manassas City
+Manassas city,51683,2020,Homeowner,4-person or more,409,Manassas City
+Manassas city,51683,2020,Renter,1-person,1173,Manassas City
+Manassas city,51683,2020,Renter,2-person,942,Manassas City
+Manassas city,51683,2020,Renter,3-person,299,Manassas City
+Manassas city,51683,2020,Renter,4-person or more,869,Manassas City
+Manassas city,51683,2020,Renter,4-person or more,342,Manassas City
+Manassas city,51683,2020,Renter,4-person or more,239,Manassas City
+Manassas city,51683,2020,Renter,4-person or more,144,Manassas City
+Manassas Park city,51685,2020,Homeowner,1-person,493,Manassas Park City
+Manassas Park city,51685,2020,Homeowner,2-person,820,Manassas Park City
+Manassas Park city,51685,2020,Homeowner,3-person,412,Manassas Park City
+Manassas Park city,51685,2020,Homeowner,4-person or more,420,Manassas Park City
+Manassas Park city,51685,2020,Homeowner,4-person or more,238,Manassas Park City
+Manassas Park city,51685,2020,Homeowner,4-person or more,178,Manassas Park City
+Manassas Park city,51685,2020,Homeowner,4-person or more,229,Manassas Park City
+Manassas Park city,51685,2020,Renter,1-person,600,Manassas Park City
+Manassas Park city,51685,2020,Renter,2-person,325,Manassas Park City
+Manassas Park city,51685,2020,Renter,3-person,210,Manassas Park City
+Manassas Park city,51685,2020,Renter,4-person or more,215,Manassas Park City
+Manassas Park city,51685,2020,Renter,4-person or more,345,Manassas Park City
+Manassas Park city,51685,2020,Renter,4-person or more,51,Manassas Park City
+Manassas Park city,51685,2020,Renter,4-person or more,60,Manassas Park City
+Arlington County,51013,2021,Homeowner,1-person,14838,Arlington County
+Arlington County,51013,2021,Homeowner,2-person,15208,Arlington County
+Arlington County,51013,2021,Homeowner,3-person,6272,Arlington County
+Arlington County,51013,2021,Homeowner,4-person or more,6963,Arlington County
+Arlington County,51013,2021,Homeowner,4-person or more,2197,Arlington County
+Arlington County,51013,2021,Homeowner,4-person or more,618,Arlington County
+Arlington County,51013,2021,Homeowner,4-person or more,212,Arlington County
+Arlington County,51013,2021,Renter,1-person,28803,Arlington County
+Arlington County,51013,2021,Renter,2-person,21694,Arlington County
+Arlington County,51013,2021,Renter,3-person,6572,Arlington County
+Arlington County,51013,2021,Renter,4-person or more,3949,Arlington County
+Arlington County,51013,2021,Renter,4-person or more,1621,Arlington County
+Arlington County,51013,2021,Renter,4-person or more,437,Arlington County
+Arlington County,51013,2021,Renter,4-person or more,144,Arlington County
+Fairfax County,51059,2021,Homeowner,1-person,56445,Fairfax County
+Fairfax County,51059,2021,Homeowner,2-person,90878,Fairfax County
+Fairfax County,51059,2021,Homeowner,3-person,52170,Fairfax County
+Fairfax County,51059,2021,Homeowner,4-person or more,49710,Fairfax County
+Fairfax County,51059,2021,Homeowner,4-person or more,20523,Fairfax County
+Fairfax County,51059,2021,Homeowner,4-person or more,6458,Fairfax County
+Fairfax County,51059,2021,Homeowner,4-person or more,3893,Fairfax County
+Fairfax County,51059,2021,Renter,1-person,39268,Fairfax County
+Fairfax County,51059,2021,Renter,2-person,37358,Fairfax County
+Fairfax County,51059,2021,Renter,3-person,20577,Fairfax County
+Fairfax County,51059,2021,Renter,4-person or more,17872,Fairfax County
+Fairfax County,51059,2021,Renter,4-person or more,8531,Fairfax County
+Fairfax County,51059,2021,Renter,4-person or more,3269,Fairfax County
+Fairfax County,51059,2021,Renter,4-person or more,1721,Fairfax County
+Loudoun County,51107,2021,Homeowner,1-person,13920,Loudoun County
+Loudoun County,51107,2021,Homeowner,2-person,28691,Loudoun County
+Loudoun County,51107,2021,Homeowner,3-person,20900,Loudoun County
+Loudoun County,51107,2021,Homeowner,4-person or more,26365,Loudoun County
+Loudoun County,51107,2021,Homeowner,4-person or more,9927,Loudoun County
+Loudoun County,51107,2021,Homeowner,4-person or more,3606,Loudoun County
+Loudoun County,51107,2021,Homeowner,4-person or more,1827,Loudoun County
+Loudoun County,51107,2021,Renter,1-person,8372,Loudoun County
+Loudoun County,51107,2021,Renter,2-person,9108,Loudoun County
+Loudoun County,51107,2021,Renter,3-person,5004,Loudoun County
+Loudoun County,51107,2021,Renter,4-person or more,4558,Loudoun County
+Loudoun County,51107,2021,Renter,4-person or more,1894,Loudoun County
+Loudoun County,51107,2021,Renter,4-person or more,922,Loudoun County
+Loudoun County,51107,2021,Renter,4-person or more,596,Loudoun County
+Prince William County,51153,2021,Homeowner,1-person,17447,Prince William County
+Prince William County,51153,2021,Homeowner,2-person,32664,Prince William County
+Prince William County,51153,2021,Homeowner,3-person,18915,Prince William County
+Prince William County,51153,2021,Homeowner,4-person or more,22137,Prince William County
+Prince William County,51153,2021,Homeowner,4-person or more,11083,Prince William County
+Prince William County,51153,2021,Homeowner,4-person or more,4899,Prince William County
+Prince William County,51153,2021,Homeowner,4-person or more,4068,Prince William County
+Prince William County,51153,2021,Renter,1-person,10635,Prince William County
+Prince William County,51153,2021,Renter,2-person,8613,Prince William County
+Prince William County,51153,2021,Renter,3-person,6873,Prince William County
+Prince William County,51153,2021,Renter,4-person or more,7334,Prince William County
+Prince William County,51153,2021,Renter,4-person or more,3688,Prince William County
+Prince William County,51153,2021,Renter,4-person or more,1449,Prince William County
+Prince William County,51153,2021,Renter,4-person or more,683,Prince William County
+Alexandria city,51510,2021,Homeowner,1-person,12579,Alexandria City
+Alexandria city,51510,2021,Homeowner,2-person,10831,Alexandria City
+Alexandria city,51510,2021,Homeowner,3-person,4422,Alexandria City
+Alexandria city,51510,2021,Homeowner,4-person or more,2622,Alexandria City
+Alexandria city,51510,2021,Homeowner,4-person or more,1103,Alexandria City
+Alexandria city,51510,2021,Homeowner,4-person or more,224,Alexandria City
+Alexandria city,51510,2021,Homeowner,4-person or more,76,Alexandria City
+Alexandria city,51510,2021,Renter,1-person,19412,Alexandria City
+Alexandria city,51510,2021,Renter,2-person,12560,Alexandria City
+Alexandria city,51510,2021,Renter,3-person,4531,Alexandria City
+Alexandria city,51510,2021,Renter,4-person or more,3349,Alexandria City
+Alexandria city,51510,2021,Renter,4-person or more,1610,Alexandria City
+Alexandria city,51510,2021,Renter,4-person or more,785,Alexandria City
+Alexandria city,51510,2021,Renter,4-person or more,120,Alexandria City
+Fairfax city,51600,2021,Homeowner,1-person,1351,Fairfax City
+Fairfax city,51600,2021,Homeowner,2-person,2160,Fairfax City
+Fairfax city,51600,2021,Homeowner,3-person,1153,Fairfax City
+Fairfax city,51600,2021,Homeowner,4-person or more,1079,Fairfax City
+Fairfax city,51600,2021,Homeowner,4-person or more,456,Fairfax City
+Fairfax city,51600,2021,Homeowner,4-person or more,102,Fairfax City
+Fairfax city,51600,2021,Homeowner,4-person or more,87,Fairfax City
+Fairfax city,51600,2021,Renter,1-person,769,Fairfax City
+Fairfax city,51600,2021,Renter,2-person,744,Fairfax City
+Fairfax city,51600,2021,Renter,3-person,653,Fairfax City
+Fairfax city,51600,2021,Renter,4-person or more,338,Fairfax City
+Fairfax city,51600,2021,Renter,4-person or more,120,Fairfax City
+Fairfax city,51600,2021,Renter,4-person or more,45,Fairfax City
+Fairfax city,51600,2021,Renter,4-person or more,33,Fairfax City
+Falls Church city,51610,2021,Homeowner,1-person,789,Falls Church City
+Falls Church city,51610,2021,Homeowner,2-person,900,Falls Church City
+Falls Church city,51610,2021,Homeowner,3-person,524,Falls Church City
+Falls Church city,51610,2021,Homeowner,4-person or more,691,Falls Church City
+Falls Church city,51610,2021,Homeowner,4-person or more,275,Falls Church City
+Falls Church city,51610,2021,Homeowner,4-person or more,50,Falls Church City
+Falls Church city,51610,2021,Homeowner,4-person or more,0,Falls Church City
+Falls Church city,51610,2021,Renter,1-person,879,Falls Church City
+Falls Church city,51610,2021,Renter,2-person,701,Falls Church City
+Falls Church city,51610,2021,Renter,3-person,405,Falls Church City
+Falls Church city,51610,2021,Renter,4-person or more,219,Falls Church City
+Falls Church city,51610,2021,Renter,4-person or more,159,Falls Church City
+Falls Church city,51610,2021,Renter,4-person or more,33,Falls Church City
+Falls Church city,51610,2021,Renter,4-person or more,5,Falls Church City
+Manassas city,51683,2021,Homeowner,1-person,1836,Manassas City
+Manassas city,51683,2021,Homeowner,2-person,2642,Manassas City
+Manassas city,51683,2021,Homeowner,3-person,1953,Manassas City
+Manassas city,51683,2021,Homeowner,4-person or more,1693,Manassas City
+Manassas city,51683,2021,Homeowner,4-person or more,671,Manassas City
+Manassas city,51683,2021,Homeowner,4-person or more,322,Manassas City
+Manassas city,51683,2021,Homeowner,4-person or more,491,Manassas City
+Manassas city,51683,2021,Renter,1-person,1192,Manassas City
+Manassas city,51683,2021,Renter,2-person,927,Manassas City
+Manassas city,51683,2021,Renter,3-person,369,Manassas City
+Manassas city,51683,2021,Renter,4-person or more,779,Manassas City
+Manassas city,51683,2021,Renter,4-person or more,304,Manassas City
+Manassas city,51683,2021,Renter,4-person or more,258,Manassas City
+Manassas city,51683,2021,Renter,4-person or more,125,Manassas City
+Manassas Park city,51685,2021,Homeowner,1-person,521,Manassas Park City
+Manassas Park city,51685,2021,Homeowner,2-person,819,Manassas Park City
+Manassas Park city,51685,2021,Homeowner,3-person,604,Manassas Park City
+Manassas Park city,51685,2021,Homeowner,4-person or more,421,Manassas Park City
+Manassas Park city,51685,2021,Homeowner,4-person or more,371,Manassas Park City
+Manassas Park city,51685,2021,Homeowner,4-person or more,196,Manassas Park City
+Manassas Park city,51685,2021,Homeowner,4-person or more,233,Manassas Park City
+Manassas Park city,51685,2021,Renter,1-person,679,Manassas Park City
+Manassas Park city,51685,2021,Renter,2-person,319,Manassas Park City
+Manassas Park city,51685,2021,Renter,3-person,258,Manassas Park City
+Manassas Park city,51685,2021,Renter,4-person or more,259,Manassas Park City
+Manassas Park city,51685,2021,Renter,4-person or more,312,Manassas Park City
+Manassas Park city,51685,2021,Renter,4-person or more,77,Manassas Park City
+Manassas Park city,51685,2021,Renter,4-person or more,86,Manassas Park City
+Arlington County,51013,2022,Homeowner,1-person,14794,Arlington County
+Arlington County,51013,2022,Homeowner,2-person,15663,Arlington County
+Arlington County,51013,2022,Homeowner,3-person,6350,Arlington County
+Arlington County,51013,2022,Homeowner,4-person or more,7158,Arlington County
+Arlington County,51013,2022,Homeowner,4-person or more,2185,Arlington County
+Arlington County,51013,2022,Homeowner,4-person or more,548,Arlington County
+Arlington County,51013,2022,Homeowner,4-person or more,144,Arlington County
+Arlington County,51013,2022,Renter,1-person,29812,Arlington County
+Arlington County,51013,2022,Renter,2-person,21786,Arlington County
+Arlington County,51013,2022,Renter,3-person,6528,Arlington County
+Arlington County,51013,2022,Renter,4-person or more,3563,Arlington County
+Arlington County,51013,2022,Renter,4-person or more,1689,Arlington County
+Arlington County,51013,2022,Renter,4-person or more,504,Arlington County
+Arlington County,51013,2022,Renter,4-person or more,163,Arlington County
+Fairfax County,51059,2022,Homeowner,1-person,56336,Fairfax County
+Fairfax County,51059,2022,Homeowner,2-person,92235,Fairfax County
+Fairfax County,51059,2022,Homeowner,3-person,51893,Fairfax County
+Fairfax County,51059,2022,Homeowner,4-person or more,50352,Fairfax County
+Fairfax County,51059,2022,Homeowner,4-person or more,20454,Fairfax County
+Fairfax County,51059,2022,Homeowner,4-person or more,6556,Fairfax County
+Fairfax County,51059,2022,Homeowner,4-person or more,3822,Fairfax County
+Fairfax County,51059,2022,Renter,1-person,40912,Fairfax County
+Fairfax County,51059,2022,Renter,2-person,38068,Fairfax County
+Fairfax County,51059,2022,Renter,3-person,19338,Fairfax County
+Fairfax County,51059,2022,Renter,4-person or more,16952,Fairfax County
+Fairfax County,51059,2022,Renter,4-person or more,8666,Fairfax County
+Fairfax County,51059,2022,Renter,4-person or more,3709,Fairfax County
+Fairfax County,51059,2022,Renter,4-person or more,1551,Fairfax County
+Loudoun County,51107,2022,Homeowner,1-person,13990,Loudoun County
+Loudoun County,51107,2022,Homeowner,2-person,29347,Loudoun County
+Loudoun County,51107,2022,Homeowner,3-person,21437,Loudoun County
+Loudoun County,51107,2022,Homeowner,4-person or more,27568,Loudoun County
+Loudoun County,51107,2022,Homeowner,4-person or more,9980,Loudoun County
+Loudoun County,51107,2022,Homeowner,4-person or more,3278,Loudoun County
+Loudoun County,51107,2022,Homeowner,4-person or more,1675,Loudoun County
+Loudoun County,51107,2022,Renter,1-person,8979,Loudoun County
+Loudoun County,51107,2022,Renter,2-person,8890,Loudoun County
+Loudoun County,51107,2022,Renter,3-person,5615,Loudoun County
+Loudoun County,51107,2022,Renter,4-person or more,4344,Loudoun County
+Loudoun County,51107,2022,Renter,4-person or more,1952,Loudoun County
+Loudoun County,51107,2022,Renter,4-person or more,887,Loudoun County
+Loudoun County,51107,2022,Renter,4-person or more,607,Loudoun County
+Prince William County,51153,2022,Homeowner,1-person,18390,Prince William County
+Prince William County,51153,2022,Homeowner,2-person,32578,Prince William County
+Prince William County,51153,2022,Homeowner,3-person,19505,Prince William County
+Prince William County,51153,2022,Homeowner,4-person or more,22232,Prince William County
+Prince William County,51153,2022,Homeowner,4-person or more,11893,Prince William County
+Prince William County,51153,2022,Homeowner,4-person or more,5070,Prince William County
+Prince William County,51153,2022,Homeowner,4-person or more,3490,Prince William County
+Prince William County,51153,2022,Renter,1-person,10623,Prince William County
+Prince William County,51153,2022,Renter,2-person,9394,Prince William County
+Prince William County,51153,2022,Renter,3-person,6606,Prince William County
+Prince William County,51153,2022,Renter,4-person or more,6946,Prince William County
+Prince William County,51153,2022,Renter,4-person or more,3865,Prince William County
+Prince William County,51153,2022,Renter,4-person or more,1323,Prince William County
+Prince William County,51153,2022,Renter,4-person or more,701,Prince William County
+Alexandria city,51510,2022,Homeowner,1-person,12600,Alexandria City
+Alexandria city,51510,2022,Homeowner,2-person,11058,Alexandria City
+Alexandria city,51510,2022,Homeowner,3-person,4109,Alexandria City
+Alexandria city,51510,2022,Homeowner,4-person or more,2725,Alexandria City
+Alexandria city,51510,2022,Homeowner,4-person or more,1072,Alexandria City
+Alexandria city,51510,2022,Homeowner,4-person or more,293,Alexandria City
+Alexandria city,51510,2022,Homeowner,4-person or more,76,Alexandria City
+Alexandria city,51510,2022,Renter,1-person,19825,Alexandria City
+Alexandria city,51510,2022,Renter,2-person,12744,Alexandria City
+Alexandria city,51510,2022,Renter,3-person,4869,Alexandria City
+Alexandria city,51510,2022,Renter,4-person or more,3360,Alexandria City
+Alexandria city,51510,2022,Renter,4-person or more,1295,Alexandria City
+Alexandria city,51510,2022,Renter,4-person or more,731,Alexandria City
+Alexandria city,51510,2022,Renter,4-person or more,61,Alexandria City
+Fairfax city,51600,2022,Homeowner,1-person,1324,Fairfax City
+Fairfax city,51600,2022,Homeowner,2-person,2024,Fairfax City
+Fairfax city,51600,2022,Homeowner,3-person,1036,Fairfax City
+Fairfax city,51600,2022,Homeowner,4-person or more,1220,Fairfax City
+Fairfax city,51600,2022,Homeowner,4-person or more,446,Fairfax City
+Fairfax city,51600,2022,Homeowner,4-person or more,81,Fairfax City
+Fairfax city,51600,2022,Homeowner,4-person or more,100,Fairfax City
+Fairfax city,51600,2022,Renter,1-person,743,Fairfax City
+Fairfax city,51600,2022,Renter,2-person,858,Fairfax City
+Fairfax city,51600,2022,Renter,3-person,701,Fairfax City
+Fairfax city,51600,2022,Renter,4-person or more,404,Fairfax City
+Fairfax city,51600,2022,Renter,4-person or more,103,Fairfax City
+Fairfax city,51600,2022,Renter,4-person or more,53,Fairfax City
+Fairfax city,51600,2022,Renter,4-person or more,36,Fairfax City
+Falls Church city,51610,2022,Homeowner,1-person,747,Falls Church City
+Falls Church city,51610,2022,Homeowner,2-person,875,Falls Church City
+Falls Church city,51610,2022,Homeowner,3-person,660,Falls Church City
+Falls Church city,51610,2022,Homeowner,4-person or more,567,Falls Church City
+Falls Church city,51610,2022,Homeowner,4-person or more,307,Falls Church City
+Falls Church city,51610,2022,Homeowner,4-person or more,35,Falls Church City
+Falls Church city,51610,2022,Homeowner,4-person or more,0,Falls Church City
+Falls Church city,51610,2022,Renter,1-person,1125,Falls Church City
+Falls Church city,51610,2022,Renter,2-person,743,Falls Church City
+Falls Church city,51610,2022,Renter,3-person,338,Falls Church City
+Falls Church city,51610,2022,Renter,4-person or more,211,Falls Church City
+Falls Church city,51610,2022,Renter,4-person or more,98,Falls Church City
+Falls Church city,51610,2022,Renter,4-person or more,30,Falls Church City
+Falls Church city,51610,2022,Renter,4-person or more,4,Falls Church City
+Manassas city,51683,2022,Homeowner,1-person,2211,Manassas City
+Manassas city,51683,2022,Homeowner,2-person,2795,Manassas City
+Manassas city,51683,2022,Homeowner,3-person,1942,Manassas City
+Manassas city,51683,2022,Homeowner,4-person or more,1685,Manassas City
+Manassas city,51683,2022,Homeowner,4-person or more,711,Manassas City
+Manassas city,51683,2022,Homeowner,4-person or more,371,Manassas City
+Manassas city,51683,2022,Homeowner,4-person or more,521,Manassas City
+Manassas city,51683,2022,Renter,1-person,1237,Manassas City
+Manassas city,51683,2022,Renter,2-person,724,Manassas City
+Manassas city,51683,2022,Renter,3-person,361,Manassas City
+Manassas city,51683,2022,Renter,4-person or more,493,Manassas City
+Manassas city,51683,2022,Renter,4-person or more,288,Manassas City
+Manassas city,51683,2022,Renter,4-person or more,358,Manassas City
+Manassas city,51683,2022,Renter,4-person or more,143,Manassas City
+Manassas Park city,51685,2022,Homeowner,1-person,697,Manassas Park City
+Manassas Park city,51685,2022,Homeowner,2-person,900,Manassas Park City
+Manassas Park city,51685,2022,Homeowner,3-person,502,Manassas Park City
+Manassas Park city,51685,2022,Homeowner,4-person or more,403,Manassas Park City
+Manassas Park city,51685,2022,Homeowner,4-person or more,401,Manassas Park City
+Manassas Park city,51685,2022,Homeowner,4-person or more,203,Manassas Park City
+Manassas Park city,51685,2022,Homeowner,4-person or more,205,Manassas Park City
+Manassas Park city,51685,2022,Renter,1-person,757,Manassas Park City
+Manassas Park city,51685,2022,Renter,2-person,343,Manassas Park City
+Manassas Park city,51685,2022,Renter,3-person,250,Manassas Park City
+Manassas Park city,51685,2022,Renter,4-person or more,150,Manassas Park City
+Manassas Park city,51685,2022,Renter,4-person or more,290,Manassas Park City
+Manassas Park city,51685,2022,Renter,4-person or more,32,Manassas Park City
+Manassas Park city,51685,2022,Renter,4-person or more,88,Manassas Park City

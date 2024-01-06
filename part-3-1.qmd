@@ -1,0 +1,816 @@
+# Population and Housing Trends {#part-2-1}
+
+```{r}
+#| label: setup
+
+# Load necessary packages.
+
+library(tidyverse)
+library(tidycensus)
+library(ggplot2)
+library(ggiraph)
+library(sf)
+library(leaflet)
+library(FinCal)
+library(hdatools)
+library(scales)
+library(forcats)
+library(kableExtra)
+library(ggtext)
+library(readr)
+library(zoo)
+library(patchwork)
+
+
+# Describe the Northern Virginia region.
+
+# What has the housing market been like in recent years? Use news articles and available data to summarize trends.
+
+# Use data from the VZA to summarize the number of districts involved, number of zoning ordinance pages read, and other interesting metrics.
+
+# FIPS CODES - c(51013, 51059, 51107, 51153, 51510, 51600, 51610, 51683, 51685)
+
+```
+
+
+```{r}
+#| label: fig-nova-map
+#| fig-cap: "Northern Virginia"
+
+# The following is a map of Northern Virginia localities including towns.
+
+nova_region <- read_rds("data/nova/nova_region.rds") # Load in Northern Virginia geojson as rds.
+
+# Map in leaflet.
+
+leaflet(nova_region) |> 
+  addProviderTiles(providers$CartoDB.Positron) |> # Add basemap
+  addPolygons(fillColor = "#011E41", # Set polygon fill color.
+              weight = 1, # Set polygon outline weight.
+              color = "white", # Set polygon outline color.
+              fillOpacity = 0.8, # Set polygon fill color transparency.
+              popup = nova_region$Jurisdiction) # Set pop-up to jurisdiction name.
+
+```
+
+## Summary
+
+
+
+## Population Trends
+
+```{r}
+#| label: fig-nova-city-pop
+#| fig-cap: "Population change in the Northern Virginia region"
+
+# Create a visualization that shows population change in the region by city. What localities are seeing the most growth? Which ones are seeing decline?
+
+# nova_pop <- read_rds("data/nova/nova_pop.rds") |> 
+#   mutate(year = as.numeric(year)) |> 
+#   filter(year >= 2010) |> 
+#   group_by(name_long) |>
+#   mutate(diff = value - lag(value),
+#          diff = replace_na(diff, 0)) |> 
+#   mutate(run_diff = cumsum(diff))|>  
+#   filter(run_diff != 0) |> 
+#   mutate(year = as.character(year)) |> 
+#   mutate(type = case_when(
+#     str_detect(name_long, "City") ~ "City",
+#     TRUE ~ "County"
+#   )) |> 
+#   filter(year == 2022)
+
+nova_pop_total <- read_rds("data/nova/nova_pop.rds") |> # Load in population data for Northern Virginia.
+  mutate(year = as.numeric(year)) |> # Convert the year column to a number instead of character.
+  filter(year == 2010 | year == 2022) |> # Filter for earliest and latest year.
+  select(name_long, year, value) |> # Select only needed fields.
+  pivot_wider(names_from = year, 
+              values_from = value) |> 
+  mutate(total_2010 = sum(`2010`),
+         total_2022 = sum(`2022`)) |> 
+  mutate(change = total_2022 - total_2010) |> # Calculate change in population for entire region.
+  mutate(pchg = change/total_2010) |> # Calculate percent change in population for entire region.
+  mutate(lpchg = (`2022` - `2010`)/`2010`) |> # Calculate percent change for each locality.
+  mutate(name_long = str_remove(name_long, " City")) |> # Remove " City" from each locality.
+  mutate(name_long = case_when( # Add back in City to James City County.
+    name_long == "Fairfax" ~ "Fairfax City",
+    TRUE ~ name_long
+  ))
+         
+ggplot(nova_pop_total, # Read in the data.
+                  aes(x = reorder(name_long, lpchg), # Plot the x-axis.
+                      y = lpchg, # Plot the y-axis.
+                      fill = lpchg)) + # Set the variable that will be colored.
+  geom_col(position = "dodge") + # Set as a bar chart. 
+  geom_text(aes(label = percent(lpchg, 2), hjust = ifelse(lpchg >= 0, 0, 1), color = lpchg)) +
+  coord_flip() +
+  theme_hfv() + # Apply custom HFV theme.
+  add_zero_line("y") + # Add darker zero intercept line for emphasis.
+  labs(title = "Percent population change in the Northern Virginia region",
+       subtitle = "From 2010 to 2022",
+       caption = "**Source:** U.S. Census Bureau, Population Estimates Program (PEP).") +
+  scale_y_continuous(label = percent_format(), expand = expansion(mult = c(0, 0.1))) + 
+  scale_fill_gradientn(colours = c("#ADDCB1", "#46A88F", "#207A88", "#0F1A4E")) +
+  scale_color_gradientn(colours = c("#ADDCB1", "#46A88F", "#207A88", "#0F1A4E"))
+
+```
+
+```{r}
+#| label: fig-age
+#| fig-cap: "Change in householders by age in Northern Virginia"
+
+nova_age <- read_rds("data/nova/nova_b25007.rds") |> # Load in saved data for age of householders in Northern Virginia.
+  mutate(age = case_when( # Create fewer age groupings.
+    age == "Householder 15 to 24 years" ~ "34 years or below",
+    age == "Householder 35 to 44 years" ~ "35 to 44 years",
+    age == "Householder 45 to 54 years" ~ "45 to 64 years",
+    age == "Householder 55 to 59 years" ~ "45 to 64 years",
+    age == "Householder 60 to 64 years" ~ "45 to 64 years",
+    TRUE ~ "65 years and over"
+  )) |> 
+  group_by(year, age) |> # Group by age year and age.
+  summarise(estimate = sum(estimate)) |> # Aggregate.
+  filter(year == 2010 | year == 2022) |> # Filter for latest and earliest year.
+  pivot_wider(names_from = year, # Pivot to calculate the change.
+              values_from = estimate) |> 
+  mutate(chg = `2022` - `2010`) # Caclulate the change from 2010 to 2021.
+
+subtitle_text <- "<span style = 'color:#259591'><b>Senior households</b></span> have grown <b>significantly</b> from 2010 to 2022"
+
+ggplot(nova_age,
+       aes(x = age,
+           y = chg,
+           fill = age)) + 
+  geom_col() +
+  geom_text(aes(label = number_format(big.mark = ",", 
+                                      style_positive = "plus", 
+                                      style_negative = "minus")(chg), 
+                hjust = ifelse(chg >= 0, 0, 1), color = age)) +
+  coord_flip() + 
+  theme_hfv() +
+  scale_fill_hfv() +
+  scale_color_hfv() +
+  labs(title = "Change in householders by age",
+       subtitle = subtitle_text,
+       caption = "**Source:** U.S. Census Bureau, ACS, 5-Year Estimates, Table B25007.") +
+  scale_y_continuous(labels = number_format(big.mark = ",", style_positive = "plus", style_negative = "minus"), limits = c(-10000, 70000), breaks = seq(-10000, 70000, by = 10000)) + 
+  theme(panel.grid.major.y = element_line(color = "white"),
+        panel.grid.major.x = element_line(color = "#f5f5f5",size = 0.1)) +
+  plot_annotation(
+    theme = theme(
+    plot.subtitle = element_markdown(
+       margin = margin(b = 0.4, unit = 'cm'),
+        size = 11.5
+    )))
+  
+```
+
+```{r}
+#| label: household-size-data
+#| fig-cap: "Change in household size by tenure in Northern Virginia"
+
+# Create a visualization that shows the change in household size from 2010 to 2021 in each locality. Describe the trend in household size changes. Where are larger households seeing growth? Smaller households?
+
+nova_hhsize <- read_rds("data/nova/nova_hhsize.rds") |> # Read in household size data.
+  group_by(NAME, year, size) |> # Aggregate to locality, year, and household size.
+  summarise(estimate = sum(estimate)) |> 
+  filter(year == 2010 | year == 2022) |> # Filter for latest and earliest years.
+  mutate(year = as.character(year)) |> # Convert year to a character.
+  pivot_wider(names_from = year,
+              values_from = estimate) |> 
+  mutate(change = `2022` - `2010`) |> # Calculate the change from 2010 to 2022.
+  group_by(NAME) |> # Group by locality. 
+  mutate(total_chg = sum(change)) |> # Calculate total change in order to order bar chart.
+  mutate(NAME = str_remove_all(NAME, " city")) # Remove " city" from all locality names.
+  
+subtitle_text <- "<span style = 'Household sizes are growing the most in the counties"
+  
+ggplot(nova_hhsize,
+       aes(x = reorder(NAME, total_chg),
+           y = change,
+           fill = size)) +
+  geom_col(position = "stack") +
+  theme_hfv() +
+  coord_flip() +
+  facet_wrap(~size, nrow =1) +
+  scale_fill_hfv() +
+  labs(title = "Change in household size in Northern Virginia",
+       subtitle = subtitle_text,
+       caption = "**Source:** U.S. Census Bureau. ACS 5-Year Estimates. Table B25009.") +
+  add_zero_line(axis = "y") +
+  scale_y_continuous(labels = number_format(big.mark = ",", style_positive = "plus")) + 
+  theme(panel.grid.major.y = element_line(color = "white"),
+        panel.grid.major.x = element_line(color = "#f5f5f5",size = 0.1)) +
+  plot_annotation(
+    theme = theme(
+    plot.subtitle = element_markdown(
+       margin = margin(b = 0.4, unit = 'cm'),
+        size = 11.5
+    )))
+
+```
+
+
+## Housing Market
+
+```{r}
+#| label: fig-bps-nova
+#| fig-cap: "Total new residential building permits issued from 2010 to 2022"
+
+# Create a visualization that shows where housing is being built. Where is more diverse housing being built? Where is single-family housing being built the most? How does that compare to population growth in those localities?
+
+nova_bps <- read_rds("data/nova/nova_bps.rds") |> # Load in Building Permits Survey data.
+  mutate(type = case_when( # Group "Missing Middle" housing together.
+    type == "2-units" ~ "2-4 units",
+    type == "3-4 units" ~ "2-4 units",
+    TRUE ~ type
+  )) |> 
+  group_by(name_long, type) |> # Aggregate to locality and housing type.
+  summarise(units = sum(units)) |> 
+  group_by(name_long) |> # Group by locality.
+  mutate(total = sum(units)) |> # Calculate the total number of new permits for entire time period.
+  mutate(name_long = str_remove(name_long, " City")) |> # Remove " City" from locality names.
+  mutate(name_long = case_when( # Add "City" back to James City County.
+    name_long == "Fairfax" ~ "Fairfax City",
+    TRUE ~ name_long
+  ))
+
+# Summarize the percentage of units developed by type for the narrative.
+
+nova_bps_summary <- nova_bps |> 
+  group_by(type) |> # Aggregate by housing type.
+  summarise(units = sum(units)) |> 
+  mutate(pct = units/sum(units)) # Calculate the percentage of type of units for the region.
+
+subtitle_text <- "Few, if any, <span style = 'color:#40C0C0'><b>2-4 unit housing</span> has been built between 2010 to 2022"
+  
+bps_plot <- ggplot(nova_bps,
+       aes(x = reorder(name_long, total),
+           y = units,
+           fill = type,
+           data_id = units,
+           tooltip = number_format(big.mark =",")(units))) + 
+  geom_col_interactive(position = "stack") +
+  coord_flip() +
+  facet_wrap(~type) +
+  theme_hfv() + 
+  scale_fill_hfv() +
+  scale_y_continuous(labels = number_format(big.mark = ",", style_positive = "plus")) +
+  labs(title = "Total new residential building permits issued in Northern Virginia",
+       subtitle = subtitle_text,
+       caption = "**Source:** U.S. Census Bureau. Building Permits Survey.") + 
+  theme(panel.grid.major.y = element_line(color = "white"),
+        panel.grid.major.x = element_line(color = "#f5f5f5",size = 0.1),
+        axis.text.x = element_text(angle = 90)) +
+  plot_annotation(
+    theme = theme(
+    plot.subtitle = element_markdown(
+       margin = margin(b = 0.4, unit = 'cm'),
+        size = 11.5
+    )))
+
+girafe(ggobj = bps_plot,
+       height_svg = 4)
+
+
+```
+
+
+
+```{r}
+#| label: fig-nova-price
+#| fig-cap: "Median home sales price in Northern Virginia"
+
+# What have home prices been like?
+
+# How to add arrows indicating direction on line segments??
+
+nova_var_price <- read_rds("data/nova/nova_var.rds") |> 
+  select(geography, period, name, adj_price) |> 
+  mutate(year = substr(period, 1, 4)) |> 
+  mutate(year = as.numeric(year)) |> 
+  filter(period == "2023 Q2" | period == "2019 Q2") |> 
+  mutate(period = as.character(period)) |> 
+  select(geography, name, adj_price, period) |> 
+  pivot_wider(names_from = period, 
+              values_from = adj_price) |> 
+  mutate(latest = `2023 Q2`) |> 
+  pivot_longer(3:4,
+               names_to = "period",
+               values_to = "med_price") |> 
+  mutate(name = case_when(
+    name == "Virginia Beach-Norfolk-Newport News MSA" ~ "VB-Norfolk-NN MSA",
+    TRUE ~ name
+  )) |> 
+  mutate(name = str_remove(name, " City"))  |> 
+  mutate(name = case_when(
+    name == "Fairfax" ~ "Fairfax City",
+    TRUE ~ name
+  ))
+  
+subtitle_text <- "In <span style = 'color:#011E41'><b>Q2 2019</b></span> and <span style = 'color:#40C0C0'><b>Q2 2023</span>"
+
+
+price_plot <- ggplot(nova_var_price,
+       aes(x = reorder(name, latest),
+           y = med_price,
+           color  = period)) +
+  theme_hfv() +
+  geom_line(linewidth = 1, color = "grey") +
+  geom_point_interactive(aes(
+           data_id = med_price,
+           tooltip = dollar_format()(med_price))) +
+  geom_text(data = subset(nova_var_price, 
+                          name %in% c("Washington MSA")),
+            aes(label = dollar(med_price),
+                hjust = ifelse(period == "2023 Q2", -0.25, 1.25)), 
+            size = 3) +
+  coord_flip() +
+  labs(title = "Median home sales price in Northern Virginia",
+       subtitle = subtitle_text,
+       caption = "**Source:** Virginia REALTORS, adjusted to Q2 2023 dollars.") +
+  scale_y_continuous(labels = dollar_format(), limits = c(300000, 1100000)) +
+  scale_color_hfv() +
+  plot_annotation(
+    theme = theme(
+    plot.subtitle = element_markdown(
+       margin = margin(b = 0.4, unit = 'cm'),
+        size = 11.5
+    ))) + 
+  theme(panel.grid.major.y = element_line(color = "white"),
+        panel.grid.major.x = element_line(color = "#dadada",size = 0.2))
+  
+girafe(ggobj = price_plot,
+       height_svg = 4)
+
+```
+
+```{r}
+#| label: fig-nova-dom
+#| fig-cap: "Median days on market in Northern Virginia"
+
+# What has for-sale home supply been like?
+
+# How to add arrows indicating direction on line segments??
+subtitle_text <- "In <span style = 'color:#011E41'><b>Q2 2018</b></span> and <span style = 'color:#40C0C0'><b>Q2 2023</span>"
+
+library(patchwork)
+
+nova_var_dom <- read_rds("data/nova/nova_var.rds") |> 
+  select(geography, name, period, med_dom)  |> 
+  mutate(year = substr(period, 1, 4)) |> 
+  mutate(year = as.numeric(year)) |> 
+  filter(period == "2023 Q2" | period == "2018 Q2") |> 
+  mutate(period = as.character(period)) |> 
+  select(geography, name, med_dom, period) |> 
+  pivot_wider(names_from = period, 
+              values_from = med_dom) |> 
+  mutate(latest = `2023 Q2`) |> 
+  pivot_longer(c(`2023 Q2`, `2018 Q2`),
+               names_to = "period",
+               values_to = "med_dom") |> 
+  mutate(name = str_remove(name, " City"))  |> 
+  mutate(name = case_when(
+    name == "Fairfax" ~ "Fairfax City",
+    TRUE ~ name
+  ))
+
+dom_plot <- ggplot(nova_var_dom,
+       aes(x = reorder(name, -latest),
+           y = med_dom,
+           color = period)) +
+  geom_line(size = 1, color = "grey") +
+  geom_point_interactive(aes(
+    data_id = med_dom,
+    tooltip = med_dom)) +
+  theme_hfv() +
+  geom_text(data = subset(nova_var_dom, 
+                          name %in% c("Washington MSA")), 
+            aes(label = med_dom, hjust = ifelse(period == "2023 Q2", 1.50, -0.5)),
+            size = 3) +
+  coord_flip() +
+  labs(title = "Median days on market in Northern Virginia",
+       subtitle = subtitle_text,
+       caption = "**Source:** Virginia REALTORS.")  +
+  scale_y_continuous(limits = c(0, 30)) +
+  scale_color_hfv() +
+  plot_annotation(
+    theme = theme(
+    plot.subtitle = element_markdown(
+       margin = margin(b = 0.4, unit = 'cm'),
+        size = 11.5
+    ))) + 
+  theme(panel.grid.major.y = element_line(color = "white"),
+        panel.grid.major.x = element_line(color = "#dadada",size = 0.2))
+
+girafe(ggobj = dom_plot,
+       height_svg = 4)
+  
+
+
+
+```
+
+```{r}
+#| label: fig-pct-renter
+#| fig-cap: "Percent of renter households in Northern Virginia"
+
+nova_tenure <- read_rds("data/nova/nova_b25003.rds") |> 
+  filter(year == 2010 | year == 2022) |> 
+  filter(tenure == "Renter") |> 
+  mutate(year = as.character(year)) |> 
+  mutate(NAME = str_remove(NAME, " city"))
+
+subtitle_text <- "In <span style = 'color:#011E41'><b>2010</b></span> and <span style = 'color:#40C0C0'><b>2022</span>"
+
+tenure_plot <- ggplot(nova_tenure,
+       aes(x = reorder(NAME, pct),
+           y = pct,
+           color = year)) +
+  geom_line(size = 1, color = "grey") +
+  geom_point_interactive(aes(color = year,
+                             data_id = pct,
+                             tooltip = percent_format(accuracy = 1)(pct)), 
+                         size = 2) +
+  coord_flip() +
+  theme_hfv() +
+  scale_y_continuous(labels = percent_format()) +
+  labs(title = "Percent of renter households in Northern Virginia",
+       subtitle = subtitle_text,
+       caption = "**Source:** U.S. Census Bureau, ACS, 5-Year Estimates, Table B25003.") +
+  scale_color_hfv() +
+  plot_annotation(
+    theme = theme(
+    plot.subtitle = element_markdown(
+       margin = margin(b = 0.4, unit = 'cm'),
+        size = 11.5
+    ))) + 
+  theme(panel.grid.major.y = element_line(color = "white"),
+        panel.grid.major.x = element_line(color = "#dadada",size = 0.1))
+
+girafe(ggobj = tenure_plot,
+       height_svg = 4)
+
+
+```
+
+
+```{r}
+#| label: fig-nova-rent
+#| fig-cap: "Average asking rent in Northern Virginia"
+
+# What has rent been like in Northern Virginia?
+
+nova_rent <- read_rds("data/nova/nova_costar.rds") |> 
+  select(period, rent, adj_price) |> 
+  mutate(quarters = as.yearqtr(period)) |> 
+  pivot_longer(2:3,
+               names_to = "rent",
+               values_to = "dollars")
+
+subtitle_text <- "In <span style = 'color:#011E41'><b>Q4 2023 dollars</b></span> and <span style = 'color:#40C0C0'><b>current dollars</span>"
+
+rent_plot <- ggplot(nova_rent,
+       aes(x = quarters,
+           y = dollars,
+           color = rent,
+           linetype = rent)) +
+  geom_line() +
+  geom_point_interactive(aes(
+    data_id = dollars,
+    tooltip = dollar_format()(dollars)
+  )) +
+  theme_hfv() +
+  scale_y_continuous(labels = dollar_format()) +
+  scale_x_yearqtr(breaks = seq(from = min(nova_rent$quarters), 
+                               to = max(nova_rent$quarters), 
+                               by = 1),format = '%Y-Q%q') +
+  theme(axis.text.x = element_text(angle = 90)) +
+  labs(title = "Average asking rent in Northern Virginia",
+       subtitle = subtitle_text,
+       caption = "**Source:** CoStar Group, Inc.") +
+  scale_color_hfv()  +
+  plot_annotation(
+    theme = theme(
+    plot.subtitle = element_markdown(
+       margin = margin(b = 0.4, unit = 'cm'),
+        size = 11.5
+    ))) + 
+  theme(panel.grid.major.y = element_line(color = "#dadada", size = 0.1),
+        panel.grid.major.x = element_line(color = "#dadada",size = 0.1))
+  # scale_color_gradientn(colours = c("#ADDCB1", "#46A88F", "#207A88", "#0F1A4E"))
+
+girafe(ggobj = rent_plot,
+       height_svg = 4)
+
+```
+
+
+```{r}
+#| label: fig-nova-rv
+#| fig-cap: "Rental vacancy in Northern Virginia"
+
+
+# What has rental vacancy been like?
+
+nova_rv <- read_rds("data/nova/nova_costar.rds") |> 
+  select(period, vacancy_rate) |> 
+  mutate(quarters = as.yearqtr(period))
+
+vacancy_plot <- ggplot(nova_rv,
+       aes(x = quarters,
+           y = vacancy_rate,
+           color = vacancy_rate)) +
+  geom_line() +
+  geom_point_interactive(aes(
+    data_id = vacancy_rate,
+    tooltip = percent_format(accuracy = 0.01)(vacancy_rate)
+  )) +
+  theme_hfv() +
+  scale_y_continuous(labels = percent_format()) +
+  scale_x_yearqtr(breaks = seq(from = min(nova_rv$quarters), to = max(nova_rv$quarters), by = 1),
+                  format = '%Y-Q%q') +
+  theme(axis.text.x = element_text(angle = 90)) +
+  labs(title = "Rental vacancy rate in Northern Virginia",
+       caption = "**Source:** CoStar Group, Inc.") + 
+  scale_color_gradientn(colours = c("#ADDCB1", "#46A88F", "#207A88", "#0F1A4E"))
+
+girafe(ggobj = vacancy_plot,
+       height_svg = 4)
+
+
+```
+
+## Jobs Market
+
+The importance of affordable housing to a thriving economy cannot be overstated, as it directly impacts various facets of economic well-being. By providing stable living conditions and reducing the financial burden on households, affordable housing enhances workforce productivity and stability, ensuring that employees can live close to their workplaces. This proximity not only reduces commuting times but also supports local businesses and stimulates economic growth. Moreover, affordable housing fosters economic mobility, allowing individuals and families to invest in education, job training, and entrepreneurship, ultimately leading to higher incomes and reduced reliance on social services. Affordable housing is an economic catalyst that promotes financial security, encourages consumer spending, and contributes to a more equitable and thriving economy for all.
+
+A Jobs-Housing Fit ratio helps measure the imbalance between low-wage jobs and housing that is affordable to those jobs. 
+
+-   The ratio is calculated by dividing the number of low-wage jobs by the number of housing units that are affordable at that wage level.
+-   A ratio of 1.0 would mean a perfect fit: one low-wage job for each affordable housing unit, assuming one worker per household.
+-   Ratios closer to 1.0 or 2.0 are generally considered more balanced. They indicate that the local housing market is better suited to meet the needs of low-wage earners.
+-   High ratios, such as 5.0, indicate an imbalance. In this case, there are five low-wage jobs for every one unit of affordable housing, suggesting that many workers may have to commute from other areas or choose housing that is unaffordable to them.
+
+For example, a ratio of 5.0 means that there are five low-wage jobs for every unit of housing that is affordable at that wage. Ratios closer to 1.0 or 2.0 offer more balance assuming that there is only one worker per household. When ratios are high, this means that more low-wage workers need to commute in for work, putting additional pressure on Northern Virginia traffic. But keep in mind that these ratios are at the jurisdiction-level.
+
+```{r}
+#| label: fig-jobs-housing
+#| fig-cap: "Jobs-Housing Fit in Northern Virginia"
+
+
+# What have employment levels been like? Are jobs declining or growing?
+
+nova_jhf <- read_rds("data/nova/nova_ratio.rds") 
+
+ggplot(nova_jhf,
+       aes(x = reorder(name_long, ratio),
+           y = ratio,
+           fill = ratio)) +
+  geom_col(position = "dodge") +
+  geom_text(aes(label = round(ratio, 2), color = ratio), hjust = -0.1) +
+  coord_flip() + 
+  theme_hfv() +
+  scale_y_continuous(expand = expansion(mult = c(0, 0.1))) +
+  labs(title = "Jobs-Housing Fit in Northern Virginia.",
+       caption = "**Source:** U.S. Census Bureau. Longitudinal Employer-Household Dynamics & ACS, 5-Year Estimates, Table B25056 and B25061.") + 
+  scale_fill_gradientn(colours = c("#ADDCB1", "#46A88F", "#207A88", "#0F1A4E")) + 
+  scale_color_gradientn(colours = c("#ADDCB1", "#46A88F", "#207A88", "#0F1A4E"))
+
+
+
+```
+
+
+
+```{r}
+#| label: fig-nova-ratio-map
+#| fig-cap: "Jobs-Housing Fit Ratio in Northern Virginia by Block Group"
+
+nova_blk_grps <- read_rds("data/nova/nova_blk_grps.rds")
+
+library(RColorBrewer)
+
+rc1 <- colorRampPalette(colors = c("#8B85CA", "#ADDCB1"), space = "Lab")(10)
+
+## Make vector of colors for values larger than 0 (180 colors)
+rc2 <- colorRampPalette(colors = c("#ADDCB1", "#011E41"), space = "Lab")(30)
+
+## Combine the two color palettes
+rampcols <- c(rc1, rc2)
+
+ratio_bins <- c(0, 0.5, 1, 2, 5, 10, 50, 100, 550)
+
+pal <- colorBin(palette = rampcols, bins = ratio_bins, domain = (nova_blk_grps$ratio), na.color = "#011E41")
+
+leaflet(nova_blk_grps,) |> 
+  addPolygons(
+              fillColor = ~pal(ratio),
+              fillOpacity = 0.8,
+              color = "white",
+              weight = 1,
+              popup = paste0(
+                "Jurisdiction: ",
+                nova_blk_grps$name_long,
+                "<br>",
+                "Ratio: ", nova_blk_grps$label
+              )
+              ) |> 
+  addTiles() |> 
+  addLegend(title = "Jobs-Housing Fit",
+            "bottomright", 
+            pal = pal, 
+            values = ~ratio,
+            opacity = 1
+  )
+
+
+```
+
+
+```{r}
+#| label: tbl-local-wages
+#| tbl-cap: "Top 5 occupations in Northern Virginia in 2022"
+
+# What can current wages afford in Northern Virginia?
+
+library(formattable)
+
+nova_occ <- read_rds("data/nova/nova_occ.rds") |> 
+  select(occ_title, emp = tot_emp_2022, wage = a_median_2022, rent, ho_price) |> 
+  mutate(`Total Employment` = label_number(big.mark = ",")(emp),
+         `Average Annual Wage` = dollar_format()(wage),
+         `Affordable Rent` = dollar_format()(rent),
+         `Affordable Home Price` = dollar_format()(ho_price)) |> 
+  select(Industry = occ_title, `Total Employment`, `Average Annual Wage`, `Affordable Rent`, `Affordable Home Price`)
+         
+
+nova_occ_tbl <- nova_occ |> 
+  kable(col.names = c(
+    "Industry",
+    "Total Employment",
+    "Annual Median Wage",
+    "Affordable Rent",
+    "Affordable Home Price"),
+    align = "lcccc"
+  ) |> 
+  kableExtra::kable_styling(
+    bootstrap_options = c("hover", "condensed", "responsive", "striped")
+    )
+
+nova_occ_tbl
+
+# unit.scale = function(x) (x - min(x)) / (max(x) - min(x))
+# 
+# occ_table <- formattable(
+#   nova_occ,
+#   align = c("l", "c", "c", "c", "c"),
+#   list(
+#     Industry = formatter("span", style = ~style(color = "grey", font.weight = "bold")), 
+#        `Total Employment` = color_bar("#ADDCB1", fun = unit.scale)))
+# 
+# 
+# occ_table
+
+```
+
+::: callout-note
+
+### Measuring affordability
+
+Determining what is affordable to a person can depend on a multitude of factors, but for the purposes of this analysis we made several assumptions to make informed estimates.
+
+For renters, we calculated what a monthly rent at 30 percent of an individual's gross income. This is based on the Department of Housing and Urban Development's (HUD) definition of affordable housing.
+
+For homebuyers, we calculated a home price based on a 30-year fixed rate mortgage at 7.18% (which was the U.S. weekly average as of August 31, 2023), a 3% minimum down payment, and a monthly tax and insurance of \$250. In addition, we assumed that a household would pay no more than 28 percent of their gross income due to lender preference for the [28/36 rule](https://www.businessinsider.com/personal-finance/28-36-rule-mortgages).
+
+:::
+
+
+```{r}
+#| label: tbl-renter-income
+#| tbl-cap: "What can the typical renter afford in Northern Virginia?"
+
+
+# What are renter incomes like? What can a renter afford to rent and buy?
+
+nova_income <- read_rds("data/nova/nova_income.rds") |> 
+  select(NAME, estimate, rent, ho_price) |> 
+  mutate(estimate = dollar_format()(estimate),
+         rent = dollar_format()(rent),
+         ho_price = dollar_format()(ho_price)) |> 
+  mutate(NAME = str_remove(NAME, ", Virginia"),
+         NAME = str_remove(NAME, " city")) |> 
+  arrange(desc(estimate))
+
+nova_income |> 
+  kable(col.names = c(
+    "Jurisdiction",
+    "Median Renter Household Income",
+    "Affordable Rent",
+    "Affordable Home Price"),
+    align = "lccc"
+  ) |> 
+  kableExtra::kable_styling(
+    bootstrap_options = c("hover", "condensed", "responsive", "striped")
+    ) 
+  
+
+```
+
+```{r}
+#| label: fig-nova-cb
+#| fig-cap: "Cost burden by income and tenure in Northern Virginia"
+
+# What is cost burden like in the region?
+
+nova_cb <- read_rds("data/nova/nova_cb.rds")|> 
+  mutate(income = case_when(
+    income == "Less than $20,000" ~ "Less than $35,000",
+    income == "$20,000 to $34,999" ~ "Less than $35,000",
+    TRUE ~ income
+  )) |> 
+  group_by(year, tenure, income, cb) |> 
+  summarise(estimate = sum(estimate)) |> 
+  group_by(year, tenure) |> 
+  mutate(pct = estimate/sum(estimate)) |> 
+  filter(cb == "Cost-burdened") |> 
+  mutate(year = as.character(year))
+
+
+ggplot(nova_cb,
+       aes(x = year,
+           y = pct, 
+           fill = (factor(income, levels = c("Less than $35,000", "$35,000 to $49,999", "$50,000 to $74,999", "$75,000 or more"))))) +
+  geom_col(position = position_stack(reverse = TRUE)) +
+  facet_wrap(~tenure) +
+  labs(title = "Cost burden by income in Northern Virginia",
+       subtitle = "*Percent of total households by tenure*",
+       caption = "**Source:** U.S. Census Bureau, ACS, 5-Year Estimates, Table B25106.") +
+  theme_hfv() +
+  scale_fill_hfv() +
+  scale_y_continuous(labels = percent_format(), breaks = seq(0, 0.6, by = .10), limits = c(0, 0.6)) +
+  theme(legend.position = "right",
+        axis.text.x = element_text(angle = 90, vjust = 0.5))
+  
+
+```
+
+```{r}
+#| label: fig-race-inc
+#| fig-cap: "Median household income by race and ethnicity in Northern Virginia"
+
+# Should probably consider adding in something about median household income by race in the region?
+
+nova_race_inc <- read_rds("data/nova/nova_b19013.rds") |> 
+  filter(year == 2022)
+
+subtitle_text <- "In 2022, the wealth gap between <span style = 'color:#B1005F'><b>WHITE</b></span> and <span style = 'color:#40C0C0'><b>BLACK</span> households was <b>over $55,000 </b>"
+
+ggplot(nova_race_inc,
+       aes(x = reorder(race, estimate),
+           y = estimate,
+           fill = race)) +
+  geom_col(position = "dodge") +
+  theme_hfv() +
+  scale_fill_hfv() +
+  coord_flip() +
+  scale_y_continuous(labels = dollar_format(), expand = expansion(mult = c(0, 0.1))) + 
+  theme(panel.grid.major.y = element_line(color = "white"),
+        panel.grid.major.x = element_line(color = "#f5f5f5",size = 0.1)) +
+  labs(title = "Median household income by race and ethnicity",
+       subtitle = subtitle_text,
+       caption = "**Source:** U.S. Census Bureau, ACS, 5-Year Estimates, Table B19013B-H.") +
+  plot_annotation(
+    theme = theme(
+    plot.subtitle = element_markdown(
+       margin = margin(b = 0.4, unit = 'cm'),
+        size = 11.5
+    )))
+
+```
+
+
+```{r}
+#| label: fig-race-afford
+#| fig-cap: "Housing affordability by race and ethnicity"
+
+# Should probably consider adding in something about median household income by race in the region?
+
+nova_race_inc <- read_rds("data/nova/nova_b19013.rds") |> 
+  filter(year == 2022) |> 
+  select(race, rent, ho_price) |> 
+  mutate(rent = dollar(rent),
+         ho_price = dollar(ho_price))
+
+nova_race_inc <- nova_race_inc[order(nova_race_inc$rent, decreasing = TRUE),]
+
+nova_race_inc |> 
+  kable(row.names = FALSE,
+        col.names = c("Household Race/Ethnicity", "Affordable Rent", "Affordable Home Price"),
+        align = "lcc") |> 
+  kableExtra::kable_styling(
+    bootstrap_options = c("hover", "condensed", "responsive", "striped")
+    )
+```
+

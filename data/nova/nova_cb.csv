@@ -1,0 +1,2341 @@
+NAME,year,tenure,income,cb,estimate
+Alexandria city,2010,Homeowner,"$20,000 to $34,999",Cost-burdened,836
+Alexandria city,2010,Homeowner,"$20,000 to $34,999",Not cost-burdened,425
+Alexandria city,2010,Homeowner,"$35,000 to $49,999",Cost-burdened,881
+Alexandria city,2010,Homeowner,"$35,000 to $49,999",Not cost-burdened,848
+Alexandria city,2010,Homeowner,"$50,000 to $74,999",Cost-burdened,1936
+Alexandria city,2010,Homeowner,"$50,000 to $74,999",Not cost-burdened,1616
+Alexandria city,2010,Homeowner,"$75,000 or more",Cost-burdened,3971
+Alexandria city,2010,Homeowner,"$75,000 or more",Not cost-burdened,17357
+Alexandria city,2010,Homeowner,"Less than $20,000",Cost-burdened,1037
+Alexandria city,2010,Homeowner,"Less than $20,000",Not cost-burdened,140
+Alexandria city,2010,Renter,"$20,000 to $34,999",Cost-burdened,3808
+Alexandria city,2010,Renter,"$20,000 to $34,999",Not cost-burdened,419
+Alexandria city,2010,Renter,"$35,000 to $49,999",Cost-burdened,3585
+Alexandria city,2010,Renter,"$35,000 to $49,999",Not cost-burdened,1453
+Alexandria city,2010,Renter,"$50,000 to $74,999",Cost-burdened,2363
+Alexandria city,2010,Renter,"$50,000 to $74,999",Not cost-burdened,5506
+Alexandria city,2010,Renter,"$75,000 or more",Cost-burdened,712
+Alexandria city,2010,Renter,"$75,000 or more",Not cost-burdened,12038
+Alexandria city,2010,Renter,"Less than $20,000",Cost-burdened,3366
+Alexandria city,2010,Renter,"Less than $20,000",Not cost-burdened,349
+Alexandria city,2011,Homeowner,"$20,000 to $34,999",Cost-burdened,1008
+Alexandria city,2011,Homeowner,"$20,000 to $34,999",Not cost-burdened,404
+Alexandria city,2011,Homeowner,"$35,000 to $49,999",Cost-burdened,865
+Alexandria city,2011,Homeowner,"$35,000 to $49,999",Not cost-burdened,697
+Alexandria city,2011,Homeowner,"$50,000 to $74,999",Cost-burdened,1670
+Alexandria city,2011,Homeowner,"$50,000 to $74,999",Not cost-burdened,1565
+Alexandria city,2011,Homeowner,"$75,000 or more",Cost-burdened,3672
+Alexandria city,2011,Homeowner,"$75,000 or more",Not cost-burdened,17862
+Alexandria city,2011,Homeowner,"Less than $20,000",Cost-burdened,954
+Alexandria city,2011,Homeowner,"Less than $20,000",Not cost-burdened,121
+Alexandria city,2011,Renter,"$20,000 to $34,999",Cost-burdened,3504
+Alexandria city,2011,Renter,"$20,000 to $34,999",Not cost-burdened,441
+Alexandria city,2011,Renter,"$35,000 to $49,999",Cost-burdened,3460
+Alexandria city,2011,Renter,"$35,000 to $49,999",Not cost-burdened,1371
+Alexandria city,2011,Renter,"$50,000 to $74,999",Cost-burdened,3163
+Alexandria city,2011,Renter,"$50,000 to $74,999",Not cost-burdened,5324
+Alexandria city,2011,Renter,"$75,000 or more",Cost-burdened,876
+Alexandria city,2011,Renter,"$75,000 or more",Not cost-burdened,12503
+Alexandria city,2011,Renter,"Less than $20,000",Cost-burdened,3171
+Alexandria city,2011,Renter,"Less than $20,000",Not cost-burdened,401
+Alexandria city,2012,Homeowner,"$20,000 to $34,999",Cost-burdened,982
+Alexandria city,2012,Homeowner,"$20,000 to $34,999",Not cost-burdened,326
+Alexandria city,2012,Homeowner,"$35,000 to $49,999",Cost-burdened,813
+Alexandria city,2012,Homeowner,"$35,000 to $49,999",Not cost-burdened,628
+Alexandria city,2012,Homeowner,"$50,000 to $74,999",Cost-burdened,1596
+Alexandria city,2012,Homeowner,"$50,000 to $74,999",Not cost-burdened,1618
+Alexandria city,2012,Homeowner,"$75,000 or more",Cost-burdened,3402
+Alexandria city,2012,Homeowner,"$75,000 or more",Not cost-burdened,18059
+Alexandria city,2012,Homeowner,"Less than $20,000",Cost-burdened,876
+Alexandria city,2012,Homeowner,"Less than $20,000",Not cost-burdened,57
+Alexandria city,2012,Renter,"$20,000 to $34,999",Cost-burdened,3946
+Alexandria city,2012,Renter,"$20,000 to $34,999",Not cost-burdened,370
+Alexandria city,2012,Renter,"$35,000 to $49,999",Cost-burdened,3720
+Alexandria city,2012,Renter,"$35,000 to $49,999",Not cost-burdened,1186
+Alexandria city,2012,Renter,"$50,000 to $74,999",Cost-burdened,3401
+Alexandria city,2012,Renter,"$50,000 to $74,999",Not cost-burdened,4642
+Alexandria city,2012,Renter,"$75,000 or more",Cost-burdened,1087
+Alexandria city,2012,Renter,"$75,000 or more",Not cost-burdened,13373
+Alexandria city,2012,Renter,"Less than $20,000",Cost-burdened,3052
+Alexandria city,2012,Renter,"Less than $20,000",Not cost-burdened,424
+Alexandria city,2013,Homeowner,"$20,000 to $34,999",Cost-burdened,835
+Alexandria city,2013,Homeowner,"$20,000 to $34,999",Not cost-burdened,345
+Alexandria city,2013,Homeowner,"$35,000 to $49,999",Cost-burdened,649
+Alexandria city,2013,Homeowner,"$35,000 to $49,999",Not cost-burdened,716
+Alexandria city,2013,Homeowner,"$50,000 to $74,999",Cost-burdened,1585
+Alexandria city,2013,Homeowner,"$50,000 to $74,999",Not cost-burdened,1786
+Alexandria city,2013,Homeowner,"$75,000 or more",Cost-burdened,3017
+Alexandria city,2013,Homeowner,"$75,000 or more",Not cost-burdened,18579
+Alexandria city,2013,Homeowner,"Less than $20,000",Cost-burdened,726
+Alexandria city,2013,Homeowner,"Less than $20,000",Not cost-burdened,56
+Alexandria city,2013,Renter,"$20,000 to $34,999",Cost-burdened,3976
+Alexandria city,2013,Renter,"$20,000 to $34,999",Not cost-burdened,265
+Alexandria city,2013,Renter,"$35,000 to $49,999",Cost-burdened,3884
+Alexandria city,2013,Renter,"$35,000 to $49,999",Not cost-burdened,883
+Alexandria city,2013,Renter,"$50,000 to $74,999",Cost-burdened,3814
+Alexandria city,2013,Renter,"$50,000 to $74,999",Not cost-burdened,3953
+Alexandria city,2013,Renter,"$75,000 or more",Cost-burdened,1174
+Alexandria city,2013,Renter,"$75,000 or more",Not cost-burdened,14181
+Alexandria city,2013,Renter,"Less than $20,000",Cost-burdened,3101
+Alexandria city,2013,Renter,"Less than $20,000",Not cost-burdened,546
+Alexandria city,2014,Homeowner,"$20,000 to $34,999",Cost-burdened,892
+Alexandria city,2014,Homeowner,"$20,000 to $34,999",Not cost-burdened,321
+Alexandria city,2014,Homeowner,"$35,000 to $49,999",Cost-burdened,656
+Alexandria city,2014,Homeowner,"$35,000 to $49,999",Not cost-burdened,649
+Alexandria city,2014,Homeowner,"$50,000 to $74,999",Cost-burdened,1644
+Alexandria city,2014,Homeowner,"$50,000 to $74,999",Not cost-burdened,1672
+Alexandria city,2014,Homeowner,"$75,000 or more",Cost-burdened,2642
+Alexandria city,2014,Homeowner,"$75,000 or more",Not cost-burdened,18968
+Alexandria city,2014,Homeowner,"Less than $20,000",Cost-burdened,627
+Alexandria city,2014,Homeowner,"Less than $20,000",Not cost-burdened,28
+Alexandria city,2014,Renter,"$20,000 to $34,999",Cost-burdened,3902
+Alexandria city,2014,Renter,"$20,000 to $34,999",Not cost-burdened,317
+Alexandria city,2014,Renter,"$35,000 to $49,999",Cost-burdened,4472
+Alexandria city,2014,Renter,"$35,000 to $49,999",Not cost-burdened,768
+Alexandria city,2014,Renter,"$50,000 to $74,999",Cost-burdened,3517
+Alexandria city,2014,Renter,"$50,000 to $74,999",Not cost-burdened,3953
+Alexandria city,2014,Renter,"$75,000 or more",Cost-burdened,1369
+Alexandria city,2014,Renter,"$75,000 or more",Not cost-burdened,14635
+Alexandria city,2014,Renter,"Less than $20,000",Cost-burdened,3071
+Alexandria city,2014,Renter,"Less than $20,000",Not cost-burdened,499
+Alexandria city,2015,Homeowner,"$20,000 to $34,999",Cost-burdened,816
+Alexandria city,2015,Homeowner,"$20,000 to $34,999",Not cost-burdened,301
+Alexandria city,2015,Homeowner,"$35,000 to $49,999",Cost-burdened,632
+Alexandria city,2015,Homeowner,"$35,000 to $49,999",Not cost-burdened,535
+Alexandria city,2015,Homeowner,"$50,000 to $74,999",Cost-burdened,1747
+Alexandria city,2015,Homeowner,"$50,000 to $74,999",Not cost-burdened,1659
+Alexandria city,2015,Homeowner,"$75,000 or more",Cost-burdened,2639
+Alexandria city,2015,Homeowner,"$75,000 or more",Not cost-burdened,19222
+Alexandria city,2015,Homeowner,"Less than $20,000",Cost-burdened,644
+Alexandria city,2015,Homeowner,"Less than $20,000",Not cost-burdened,106
+Alexandria city,2015,Renter,"$20,000 to $34,999",Cost-burdened,3686
+Alexandria city,2015,Renter,"$20,000 to $34,999",Not cost-burdened,364
+Alexandria city,2015,Renter,"$35,000 to $49,999",Cost-burdened,4598
+Alexandria city,2015,Renter,"$35,000 to $49,999",Not cost-burdened,739
+Alexandria city,2015,Renter,"$50,000 to $74,999",Cost-burdened,3658
+Alexandria city,2015,Renter,"$50,000 to $74,999",Not cost-burdened,3957
+Alexandria city,2015,Renter,"$75,000 or more",Cost-burdened,1492
+Alexandria city,2015,Renter,"$75,000 or more",Not cost-burdened,15333
+Alexandria city,2015,Renter,"Less than $20,000",Cost-burdened,2895
+Alexandria city,2015,Renter,"Less than $20,000",Not cost-burdened,558
+Alexandria city,2016,Homeowner,"$20,000 to $34,999",Cost-burdened,744
+Alexandria city,2016,Homeowner,"$20,000 to $34,999",Not cost-burdened,293
+Alexandria city,2016,Homeowner,"$35,000 to $49,999",Cost-burdened,650
+Alexandria city,2016,Homeowner,"$35,000 to $49,999",Not cost-burdened,573
+Alexandria city,2016,Homeowner,"$50,000 to $74,999",Cost-burdened,1691
+Alexandria city,2016,Homeowner,"$50,000 to $74,999",Not cost-burdened,1552
+Alexandria city,2016,Homeowner,"$75,000 or more",Cost-burdened,2662
+Alexandria city,2016,Homeowner,"$75,000 or more",Not cost-burdened,19731
+Alexandria city,2016,Homeowner,"Less than $20,000",Cost-burdened,630
+Alexandria city,2016,Homeowner,"Less than $20,000",Not cost-burdened,76
+Alexandria city,2016,Renter,"$20,000 to $34,999",Cost-burdened,4008
+Alexandria city,2016,Renter,"$20,000 to $34,999",Not cost-burdened,317
+Alexandria city,2016,Renter,"$35,000 to $49,999",Cost-burdened,4762
+Alexandria city,2016,Renter,"$35,000 to $49,999",Not cost-burdened,678
+Alexandria city,2016,Renter,"$50,000 to $74,999",Cost-burdened,3870
+Alexandria city,2016,Renter,"$50,000 to $74,999",Not cost-burdened,3699
+Alexandria city,2016,Renter,"$75,000 or more",Cost-burdened,1523
+Alexandria city,2016,Renter,"$75,000 or more",Not cost-burdened,15608
+Alexandria city,2016,Renter,"Less than $20,000",Cost-burdened,3081
+Alexandria city,2016,Renter,"Less than $20,000",Not cost-burdened,662
+Alexandria city,2017,Homeowner,"$20,000 to $34,999",Cost-burdened,713
+Alexandria city,2017,Homeowner,"$20,000 to $34,999",Not cost-burdened,279
+Alexandria city,2017,Homeowner,"$35,000 to $49,999",Cost-burdened,772
+Alexandria city,2017,Homeowner,"$35,000 to $49,999",Not cost-burdened,666
+Alexandria city,2017,Homeowner,"$50,000 to $74,999",Cost-burdened,1597
+Alexandria city,2017,Homeowner,"$50,000 to $74,999",Not cost-burdened,1571
+Alexandria city,2017,Homeowner,"$75,000 or more",Cost-burdened,2905
+Alexandria city,2017,Homeowner,"$75,000 or more",Not cost-burdened,20308
+Alexandria city,2017,Homeowner,"Less than $20,000",Cost-burdened,568
+Alexandria city,2017,Homeowner,"Less than $20,000",Not cost-burdened,70
+Alexandria city,2017,Renter,"$20,000 to $34,999",Cost-burdened,3905
+Alexandria city,2017,Renter,"$20,000 to $34,999",Not cost-burdened,237
+Alexandria city,2017,Renter,"$35,000 to $49,999",Cost-burdened,4587
+Alexandria city,2017,Renter,"$35,000 to $49,999",Not cost-burdened,671
+Alexandria city,2017,Renter,"$50,000 to $74,999",Cost-burdened,3757
+Alexandria city,2017,Renter,"$50,000 to $74,999",Not cost-burdened,3306
+Alexandria city,2017,Renter,"$75,000 or more",Cost-burdened,1446
+Alexandria city,2017,Renter,"$75,000 or more",Not cost-burdened,16428
+Alexandria city,2017,Renter,"Less than $20,000",Cost-burdened,2938
+Alexandria city,2017,Renter,"Less than $20,000",Not cost-burdened,665
+Alexandria city,2018,Homeowner,"$20,000 to $34,999",Cost-burdened,729
+Alexandria city,2018,Homeowner,"$20,000 to $34,999",Not cost-burdened,264
+Alexandria city,2018,Homeowner,"$35,000 to $49,999",Cost-burdened,762
+Alexandria city,2018,Homeowner,"$35,000 to $49,999",Not cost-burdened,495
+Alexandria city,2018,Homeowner,"$50,000 to $74,999",Cost-burdened,1562
+Alexandria city,2018,Homeowner,"$50,000 to $74,999",Not cost-burdened,1541
+Alexandria city,2018,Homeowner,"$75,000 or more",Cost-burdened,2982
+Alexandria city,2018,Homeowner,"$75,000 or more",Not cost-burdened,20818
+Alexandria city,2018,Homeowner,"Less than $20,000",Cost-burdened,631
+Alexandria city,2018,Homeowner,"Less than $20,000",Not cost-burdened,59
+Alexandria city,2018,Renter,"$20,000 to $34,999",Cost-burdened,3667
+Alexandria city,2018,Renter,"$20,000 to $34,999",Not cost-burdened,296
+Alexandria city,2018,Renter,"$35,000 to $49,999",Cost-burdened,4136
+Alexandria city,2018,Renter,"$35,000 to $49,999",Not cost-burdened,672
+Alexandria city,2018,Renter,"$50,000 to $74,999",Cost-burdened,4061
+Alexandria city,2018,Renter,"$50,000 to $74,999",Not cost-burdened,3232
+Alexandria city,2018,Renter,"$75,000 or more",Cost-burdened,1817
+Alexandria city,2018,Renter,"$75,000 or more",Not cost-burdened,17280
+Alexandria city,2018,Renter,"Less than $20,000",Cost-burdened,3213
+Alexandria city,2018,Renter,"Less than $20,000",Not cost-burdened,613
+Alexandria city,2019,Homeowner,"$20,000 to $34,999",Cost-burdened,696
+Alexandria city,2019,Homeowner,"$20,000 to $34,999",Not cost-burdened,217
+Alexandria city,2019,Homeowner,"$35,000 to $49,999",Cost-burdened,796
+Alexandria city,2019,Homeowner,"$35,000 to $49,999",Not cost-burdened,483
+Alexandria city,2019,Homeowner,"$50,000 to $74,999",Cost-burdened,1456
+Alexandria city,2019,Homeowner,"$50,000 to $74,999",Not cost-burdened,1443
+Alexandria city,2019,Homeowner,"$75,000 or more",Cost-burdened,3003
+Alexandria city,2019,Homeowner,"$75,000 or more",Not cost-burdened,21676
+Alexandria city,2019,Homeowner,"Less than $20,000",Cost-burdened,605
+Alexandria city,2019,Homeowner,"Less than $20,000",Not cost-burdened,52
+Alexandria city,2019,Renter,"$20,000 to $34,999",Cost-burdened,3629
+Alexandria city,2019,Renter,"$20,000 to $34,999",Not cost-burdened,325
+Alexandria city,2019,Renter,"$35,000 to $49,999",Cost-burdened,3543
+Alexandria city,2019,Renter,"$35,000 to $49,999",Not cost-burdened,358
+Alexandria city,2019,Renter,"$50,000 to $74,999",Cost-burdened,4338
+Alexandria city,2019,Renter,"$50,000 to $74,999",Not cost-burdened,3087
+Alexandria city,2019,Renter,"$75,000 or more",Cost-burdened,1885
+Alexandria city,2019,Renter,"$75,000 or more",Not cost-burdened,18342
+Alexandria city,2019,Renter,"Less than $20,000",Cost-burdened,3029
+Alexandria city,2019,Renter,"Less than $20,000",Not cost-burdened,551
+Alexandria city,2020,Homeowner,"$20,000 to $34,999",Cost-burdened,827
+Alexandria city,2020,Homeowner,"$20,000 to $34,999",Not cost-burdened,218
+Alexandria city,2020,Homeowner,"$35,000 to $49,999",Cost-burdened,813
+Alexandria city,2020,Homeowner,"$35,000 to $49,999",Not cost-burdened,426
+Alexandria city,2020,Homeowner,"$50,000 to $74,999",Cost-burdened,1402
+Alexandria city,2020,Homeowner,"$50,000 to $74,999",Not cost-burdened,1414
+Alexandria city,2020,Homeowner,"$75,000 or more",Cost-burdened,2819
+Alexandria city,2020,Homeowner,"$75,000 or more",Not cost-burdened,22336
+Alexandria city,2020,Homeowner,"Less than $20,000",Cost-burdened,516
+Alexandria city,2020,Homeowner,"Less than $20,000",Not cost-burdened,33
+Alexandria city,2020,Renter,"$20,000 to $34,999",Cost-burdened,3862
+Alexandria city,2020,Renter,"$20,000 to $34,999",Not cost-burdened,150
+Alexandria city,2020,Renter,"$35,000 to $49,999",Cost-burdened,3474
+Alexandria city,2020,Renter,"$35,000 to $49,999",Not cost-burdened,457
+Alexandria city,2020,Renter,"$50,000 to $74,999",Cost-burdened,4390
+Alexandria city,2020,Renter,"$50,000 to $74,999",Not cost-burdened,2789
+Alexandria city,2020,Renter,"$75,000 or more",Cost-burdened,1970
+Alexandria city,2020,Renter,"$75,000 or more",Not cost-burdened,18805
+Alexandria city,2020,Renter,"Less than $20,000",Cost-burdened,3297
+Alexandria city,2020,Renter,"Less than $20,000",Not cost-burdened,380
+Alexandria city,2021,Homeowner,"$20,000 to $34,999",Cost-burdened,829
+Alexandria city,2021,Homeowner,"$20,000 to $34,999",Not cost-burdened,205
+Alexandria city,2021,Homeowner,"$35,000 to $49,999",Cost-burdened,888
+Alexandria city,2021,Homeowner,"$35,000 to $49,999",Not cost-burdened,325
+Alexandria city,2021,Homeowner,"$50,000 to $74,999",Cost-burdened,1237
+Alexandria city,2021,Homeowner,"$50,000 to $74,999",Not cost-burdened,1412
+Alexandria city,2021,Homeowner,"$75,000 or more",Cost-burdened,3094
+Alexandria city,2021,Homeowner,"$75,000 or more",Not cost-burdened,23137
+Alexandria city,2021,Homeowner,"Less than $20,000",Cost-burdened,500
+Alexandria city,2021,Homeowner,"Less than $20,000",Not cost-burdened,18
+Alexandria city,2021,Renter,"$20,000 to $34,999",Cost-burdened,3402
+Alexandria city,2021,Renter,"$20,000 to $34,999",Not cost-burdened,217
+Alexandria city,2021,Renter,"$35,000 to $49,999",Cost-burdened,3008
+Alexandria city,2021,Renter,"$35,000 to $49,999",Not cost-burdened,295
+Alexandria city,2021,Renter,"$50,000 to $74,999",Cost-burdened,5015
+Alexandria city,2021,Renter,"$50,000 to $74,999",Not cost-burdened,2602
+Alexandria city,2021,Renter,"$75,000 or more",Cost-burdened,2687
+Alexandria city,2021,Renter,"$75,000 or more",Not cost-burdened,19864
+Alexandria city,2021,Renter,"Less than $20,000",Cost-burdened,4072
+Alexandria city,2021,Renter,"Less than $20,000",Not cost-burdened,272
+Alexandria city,2022,Homeowner,"$20,000 to $34,999",Cost-burdened,776
+Alexandria city,2022,Homeowner,"$20,000 to $34,999",Not cost-burdened,89
+Alexandria city,2022,Homeowner,"$35,000 to $49,999",Cost-burdened,707
+Alexandria city,2022,Homeowner,"$35,000 to $49,999",Not cost-burdened,217
+Alexandria city,2022,Homeowner,"$50,000 to $74,999",Cost-burdened,1357
+Alexandria city,2022,Homeowner,"$50,000 to $74,999",Not cost-burdened,1169
+Alexandria city,2022,Homeowner,"$75,000 or more",Cost-burdened,3234
+Alexandria city,2022,Homeowner,"$75,000 or more",Not cost-burdened,23580
+Alexandria city,2022,Homeowner,"Less than $20,000",Cost-burdened,555
+Alexandria city,2022,Homeowner,"Less than $20,000",Not cost-burdened,20
+Alexandria city,2022,Renter,"$20,000 to $34,999",Cost-burdened,3137
+Alexandria city,2022,Renter,"$20,000 to $34,999",Not cost-burdened,223
+Alexandria city,2022,Renter,"$35,000 to $49,999",Cost-burdened,3061
+Alexandria city,2022,Renter,"$35,000 to $49,999",Not cost-burdened,303
+Alexandria city,2022,Renter,"$50,000 to $74,999",Cost-burdened,4730
+Alexandria city,2022,Renter,"$50,000 to $74,999",Not cost-burdened,1763
+Alexandria city,2022,Renter,"$75,000 or more",Cost-burdened,3758
+Alexandria city,2022,Renter,"$75,000 or more",Not cost-burdened,21019
+Alexandria city,2022,Renter,"Less than $20,000",Cost-burdened,3983
+Alexandria city,2022,Renter,"Less than $20,000",Not cost-burdened,197
+Arlington County,2010,Homeowner,"$20,000 to $34,999",Cost-burdened,1070
+Arlington County,2010,Homeowner,"$20,000 to $34,999",Not cost-burdened,464
+Arlington County,2010,Homeowner,"$35,000 to $49,999",Cost-burdened,1265
+Arlington County,2010,Homeowner,"$35,000 to $49,999",Not cost-burdened,778
+Arlington County,2010,Homeowner,"$50,000 to $74,999",Cost-burdened,2641
+Arlington County,2010,Homeowner,"$50,000 to $74,999",Not cost-burdened,2397
+Arlington County,2010,Homeowner,"$75,000 or more",Cost-burdened,5534
+Arlington County,2010,Homeowner,"$75,000 or more",Not cost-burdened,27501
+Arlington County,2010,Homeowner,"Less than $20,000",Cost-burdened,1278
+Arlington County,2010,Homeowner,"Less than $20,000",Not cost-burdened,156
+Arlington County,2010,Renter,"$20,000 to $34,999",Cost-burdened,4241
+Arlington County,2010,Renter,"$20,000 to $34,999",Not cost-burdened,368
+Arlington County,2010,Renter,"$35,000 to $49,999",Cost-burdened,3612
+Arlington County,2010,Renter,"$35,000 to $49,999",Not cost-burdened,1129
+Arlington County,2010,Renter,"$50,000 to $74,999",Cost-burdened,3827
+Arlington County,2010,Renter,"$50,000 to $74,999",Not cost-burdened,5557
+Arlington County,2010,Renter,"$75,000 or more",Cost-burdened,2006
+Arlington County,2010,Renter,"$75,000 or more",Not cost-burdened,21384
+Arlington County,2010,Renter,"Less than $20,000",Cost-burdened,4347
+Arlington County,2010,Renter,"Less than $20,000",Not cost-burdened,476
+Arlington County,2011,Homeowner,"$20,000 to $34,999",Cost-burdened,1026
+Arlington County,2011,Homeowner,"$20,000 to $34,999",Not cost-burdened,275
+Arlington County,2011,Homeowner,"$35,000 to $49,999",Cost-burdened,1069
+Arlington County,2011,Homeowner,"$35,000 to $49,999",Not cost-burdened,784
+Arlington County,2011,Homeowner,"$50,000 to $74,999",Cost-burdened,2629
+Arlington County,2011,Homeowner,"$50,000 to $74,999",Not cost-burdened,2299
+Arlington County,2011,Homeowner,"$75,000 or more",Cost-burdened,5453
+Arlington County,2011,Homeowner,"$75,000 or more",Not cost-burdened,28198
+Arlington County,2011,Homeowner,"Less than $20,000",Cost-burdened,1187
+Arlington County,2011,Homeowner,"Less than $20,000",Not cost-burdened,97
+Arlington County,2011,Renter,"$20,000 to $34,999",Cost-burdened,4094
+Arlington County,2011,Renter,"$20,000 to $34,999",Not cost-burdened,281
+Arlington County,2011,Renter,"$35,000 to $49,999",Cost-burdened,3799
+Arlington County,2011,Renter,"$35,000 to $49,999",Not cost-burdened,966
+Arlington County,2011,Renter,"$50,000 to $74,999",Cost-burdened,4173
+Arlington County,2011,Renter,"$50,000 to $74,999",Not cost-burdened,4630
+Arlington County,2011,Renter,"$75,000 or more",Cost-burdened,2057
+Arlington County,2011,Renter,"$75,000 or more",Not cost-burdened,23025
+Arlington County,2011,Renter,"Less than $20,000",Cost-burdened,4243
+Arlington County,2011,Renter,"Less than $20,000",Not cost-burdened,532
+Arlington County,2012,Homeowner,"$20,000 to $34,999",Cost-burdened,993
+Arlington County,2012,Homeowner,"$20,000 to $34,999",Not cost-burdened,245
+Arlington County,2012,Homeowner,"$35,000 to $49,999",Cost-burdened,1046
+Arlington County,2012,Homeowner,"$35,000 to $49,999",Not cost-burdened,760
+Arlington County,2012,Homeowner,"$50,000 to $74,999",Cost-burdened,2354
+Arlington County,2012,Homeowner,"$50,000 to $74,999",Not cost-burdened,2253
+Arlington County,2012,Homeowner,"$75,000 or more",Cost-burdened,5470
+Arlington County,2012,Homeowner,"$75,000 or more",Not cost-burdened,28219
+Arlington County,2012,Homeowner,"Less than $20,000",Cost-burdened,1155
+Arlington County,2012,Homeowner,"Less than $20,000",Not cost-burdened,81
+Arlington County,2012,Renter,"$20,000 to $34,999",Cost-burdened,3874
+Arlington County,2012,Renter,"$20,000 to $34,999",Not cost-burdened,394
+Arlington County,2012,Renter,"$35,000 to $49,999",Cost-burdened,3933
+Arlington County,2012,Renter,"$35,000 to $49,999",Not cost-burdened,701
+Arlington County,2012,Renter,"$50,000 to $74,999",Cost-burdened,4216
+Arlington County,2012,Renter,"$50,000 to $74,999",Not cost-burdened,4391
+Arlington County,2012,Renter,"$75,000 or more",Cost-burdened,2058
+Arlington County,2012,Renter,"$75,000 or more",Not cost-burdened,24640
+Arlington County,2012,Renter,"Less than $20,000",Cost-burdened,4380
+Arlington County,2012,Renter,"Less than $20,000",Not cost-burdened,441
+Arlington County,2013,Homeowner,"$20,000 to $34,999",Cost-burdened,949
+Arlington County,2013,Homeowner,"$20,000 to $34,999",Not cost-burdened,220
+Arlington County,2013,Homeowner,"$35,000 to $49,999",Cost-burdened,994
+Arlington County,2013,Homeowner,"$35,000 to $49,999",Not cost-burdened,729
+Arlington County,2013,Homeowner,"$50,000 to $74,999",Cost-burdened,2227
+Arlington County,2013,Homeowner,"$50,000 to $74,999",Not cost-burdened,2118
+Arlington County,2013,Homeowner,"$75,000 or more",Cost-burdened,4971
+Arlington County,2013,Homeowner,"$75,000 or more",Not cost-burdened,29115
+Arlington County,2013,Homeowner,"Less than $20,000",Cost-burdened,1128
+Arlington County,2013,Homeowner,"Less than $20,000",Not cost-burdened,45
+Arlington County,2013,Renter,"$20,000 to $34,999",Cost-burdened,4394
+Arlington County,2013,Renter,"$20,000 to $34,999",Not cost-burdened,303
+Arlington County,2013,Renter,"$35,000 to $49,999",Cost-burdened,3871
+Arlington County,2013,Renter,"$35,000 to $49,999",Not cost-burdened,536
+Arlington County,2013,Renter,"$50,000 to $74,999",Cost-burdened,4216
+Arlington County,2013,Renter,"$50,000 to $74,999",Not cost-burdened,4136
+Arlington County,2013,Renter,"$75,000 or more",Cost-burdened,2509
+Arlington County,2013,Renter,"$75,000 or more",Not cost-burdened,25438
+Arlington County,2013,Renter,"Less than $20,000",Cost-burdened,4381
+Arlington County,2013,Renter,"Less than $20,000",Not cost-burdened,570
+Arlington County,2014,Homeowner,"$20,000 to $34,999",Cost-burdened,1012
+Arlington County,2014,Homeowner,"$20,000 to $34,999",Not cost-burdened,217
+Arlington County,2014,Homeowner,"$35,000 to $49,999",Cost-burdened,1031
+Arlington County,2014,Homeowner,"$35,000 to $49,999",Not cost-burdened,669
+Arlington County,2014,Homeowner,"$50,000 to $74,999",Cost-burdened,1815
+Arlington County,2014,Homeowner,"$50,000 to $74,999",Not cost-burdened,2243
+Arlington County,2014,Homeowner,"$75,000 or more",Cost-burdened,4523
+Arlington County,2014,Homeowner,"$75,000 or more",Not cost-burdened,30368
+Arlington County,2014,Homeowner,"Less than $20,000",Cost-burdened,1081
+Arlington County,2014,Homeowner,"Less than $20,000",Not cost-burdened,53
+Arlington County,2014,Renter,"$20,000 to $34,999",Cost-burdened,4371
+Arlington County,2014,Renter,"$20,000 to $34,999",Not cost-burdened,306
+Arlington County,2014,Renter,"$35,000 to $49,999",Cost-burdened,4037
+Arlington County,2014,Renter,"$35,000 to $49,999",Not cost-burdened,328
+Arlington County,2014,Renter,"$50,000 to $74,999",Cost-burdened,4575
+Arlington County,2014,Renter,"$50,000 to $74,999",Not cost-burdened,3669
+Arlington County,2014,Renter,"$75,000 or more",Cost-burdened,2853
+Arlington County,2014,Renter,"$75,000 or more",Not cost-burdened,26117
+Arlington County,2014,Renter,"Less than $20,000",Cost-burdened,4678
+Arlington County,2014,Renter,"Less than $20,000",Not cost-burdened,489
+Arlington County,2015,Homeowner,"$20,000 to $34,999",Cost-burdened,1080
+Arlington County,2015,Homeowner,"$20,000 to $34,999",Not cost-burdened,202
+Arlington County,2015,Homeowner,"$35,000 to $49,999",Cost-burdened,1035
+Arlington County,2015,Homeowner,"$35,000 to $49,999",Not cost-burdened,718
+Arlington County,2015,Homeowner,"$50,000 to $74,999",Cost-burdened,1675
+Arlington County,2015,Homeowner,"$50,000 to $74,999",Not cost-burdened,2127
+Arlington County,2015,Homeowner,"$75,000 or more",Cost-burdened,4231
+Arlington County,2015,Homeowner,"$75,000 or more",Not cost-burdened,31143
+Arlington County,2015,Homeowner,"Less than $20,000",Cost-burdened,1224
+Arlington County,2015,Homeowner,"Less than $20,000",Not cost-burdened,52
+Arlington County,2015,Renter,"$20,000 to $34,999",Cost-burdened,4625
+Arlington County,2015,Renter,"$20,000 to $34,999",Not cost-burdened,264
+Arlington County,2015,Renter,"$35,000 to $49,999",Cost-burdened,3989
+Arlington County,2015,Renter,"$35,000 to $49,999",Not cost-burdened,332
+Arlington County,2015,Renter,"$50,000 to $74,999",Cost-burdened,4721
+Arlington County,2015,Renter,"$50,000 to $74,999",Not cost-burdened,3882
+Arlington County,2015,Renter,"$75,000 or more",Cost-burdened,3064
+Arlington County,2015,Renter,"$75,000 or more",Not cost-burdened,26888
+Arlington County,2015,Renter,"Less than $20,000",Cost-burdened,4581
+Arlington County,2015,Renter,"Less than $20,000",Not cost-burdened,567
+Arlington County,2016,Homeowner,"$20,000 to $34,999",Cost-burdened,1093
+Arlington County,2016,Homeowner,"$20,000 to $34,999",Not cost-burdened,266
+Arlington County,2016,Homeowner,"$35,000 to $49,999",Cost-burdened,967
+Arlington County,2016,Homeowner,"$35,000 to $49,999",Not cost-burdened,780
+Arlington County,2016,Homeowner,"$50,000 to $74,999",Cost-burdened,1570
+Arlington County,2016,Homeowner,"$50,000 to $74,999",Not cost-burdened,2050
+Arlington County,2016,Homeowner,"$75,000 or more",Cost-burdened,4117
+Arlington County,2016,Homeowner,"$75,000 or more",Not cost-burdened,32067
+Arlington County,2016,Homeowner,"Less than $20,000",Cost-burdened,1343
+Arlington County,2016,Homeowner,"Less than $20,000",Not cost-burdened,49
+Arlington County,2016,Renter,"$20,000 to $34,999",Cost-burdened,4617
+Arlington County,2016,Renter,"$20,000 to $34,999",Not cost-burdened,332
+Arlington County,2016,Renter,"$35,000 to $49,999",Cost-burdened,3848
+Arlington County,2016,Renter,"$35,000 to $49,999",Not cost-burdened,340
+Arlington County,2016,Renter,"$50,000 to $74,999",Cost-burdened,5065
+Arlington County,2016,Renter,"$50,000 to $74,999",Not cost-burdened,3657
+Arlington County,2016,Renter,"$75,000 or more",Cost-burdened,3624
+Arlington County,2016,Renter,"$75,000 or more",Not cost-burdened,27893
+Arlington County,2016,Renter,"Less than $20,000",Cost-burdened,4425
+Arlington County,2016,Renter,"Less than $20,000",Not cost-burdened,475
+Arlington County,2017,Homeowner,"$20,000 to $34,999",Cost-burdened,1078
+Arlington County,2017,Homeowner,"$20,000 to $34,999",Not cost-burdened,278
+Arlington County,2017,Homeowner,"$35,000 to $49,999",Cost-burdened,977
+Arlington County,2017,Homeowner,"$35,000 to $49,999",Not cost-burdened,668
+Arlington County,2017,Homeowner,"$50,000 to $74,999",Cost-burdened,1460
+Arlington County,2017,Homeowner,"$50,000 to $74,999",Not cost-burdened,2107
+Arlington County,2017,Homeowner,"$75,000 or more",Cost-burdened,4089
+Arlington County,2017,Homeowner,"$75,000 or more",Not cost-burdened,33338
+Arlington County,2017,Homeowner,"Less than $20,000",Cost-burdened,1277
+Arlington County,2017,Homeowner,"Less than $20,000",Not cost-burdened,37
+Arlington County,2017,Renter,"$20,000 to $34,999",Cost-burdened,4592
+Arlington County,2017,Renter,"$20,000 to $34,999",Not cost-burdened,203
+Arlington County,2017,Renter,"$35,000 to $49,999",Cost-burdened,3534
+Arlington County,2017,Renter,"$35,000 to $49,999",Not cost-burdened,345
+Arlington County,2017,Renter,"$50,000 to $74,999",Cost-burdened,5208
+Arlington County,2017,Renter,"$50,000 to $74,999",Not cost-burdened,3657
+Arlington County,2017,Renter,"$75,000 or more",Cost-burdened,4033
+Arlington County,2017,Renter,"$75,000 or more",Not cost-burdened,28360
+Arlington County,2017,Renter,"Less than $20,000",Cost-burdened,4166
+Arlington County,2017,Renter,"Less than $20,000",Not cost-burdened,505
+Arlington County,2018,Homeowner,"$20,000 to $34,999",Cost-burdened,1039
+Arlington County,2018,Homeowner,"$20,000 to $34,999",Not cost-burdened,193
+Arlington County,2018,Homeowner,"$35,000 to $49,999",Cost-burdened,842
+Arlington County,2018,Homeowner,"$35,000 to $49,999",Not cost-burdened,738
+Arlington County,2018,Homeowner,"$50,000 to $74,999",Cost-burdened,1474
+Arlington County,2018,Homeowner,"$50,000 to $74,999",Not cost-burdened,1863
+Arlington County,2018,Homeowner,"$75,000 or more",Cost-burdened,4260
+Arlington County,2018,Homeowner,"$75,000 or more",Not cost-burdened,33694
+Arlington County,2018,Homeowner,"Less than $20,000",Cost-burdened,1186
+Arlington County,2018,Homeowner,"Less than $20,000",Not cost-burdened,9
+Arlington County,2018,Renter,"$20,000 to $34,999",Cost-burdened,4316
+Arlington County,2018,Renter,"$20,000 to $34,999",Not cost-burdened,128
+Arlington County,2018,Renter,"$35,000 to $49,999",Cost-burdened,3618
+Arlington County,2018,Renter,"$35,000 to $49,999",Not cost-burdened,309
+Arlington County,2018,Renter,"$50,000 to $74,999",Cost-burdened,5918
+Arlington County,2018,Renter,"$50,000 to $74,999",Not cost-burdened,3435
+Arlington County,2018,Renter,"$75,000 or more",Cost-burdened,4200
+Arlington County,2018,Renter,"$75,000 or more",Not cost-burdened,30570
+Arlington County,2018,Renter,"Less than $20,000",Cost-burdened,4255
+Arlington County,2018,Renter,"Less than $20,000",Not cost-burdened,498
+Arlington County,2019,Homeowner,"$20,000 to $34,999",Cost-burdened,928
+Arlington County,2019,Homeowner,"$20,000 to $34,999",Not cost-burdened,170
+Arlington County,2019,Homeowner,"$35,000 to $49,999",Cost-burdened,902
+Arlington County,2019,Homeowner,"$35,000 to $49,999",Not cost-burdened,623
+Arlington County,2019,Homeowner,"$50,000 to $74,999",Cost-burdened,1391
+Arlington County,2019,Homeowner,"$50,000 to $74,999",Not cost-burdened,1779
+Arlington County,2019,Homeowner,"$75,000 or more",Cost-burdened,4247
+Arlington County,2019,Homeowner,"$75,000 or more",Not cost-burdened,34208
+Arlington County,2019,Homeowner,"Less than $20,000",Cost-burdened,1252
+Arlington County,2019,Homeowner,"Less than $20,000",Not cost-burdened,26
+Arlington County,2019,Renter,"$20,000 to $34,999",Cost-burdened,4050
+Arlington County,2019,Renter,"$20,000 to $34,999",Not cost-burdened,112
+Arlington County,2019,Renter,"$35,000 to $49,999",Cost-burdened,3784
+Arlington County,2019,Renter,"$35,000 to $49,999",Not cost-burdened,292
+Arlington County,2019,Renter,"$50,000 to $74,999",Cost-burdened,6269
+Arlington County,2019,Renter,"$50,000 to $74,999",Not cost-burdened,3261
+Arlington County,2019,Renter,"$75,000 or more",Cost-burdened,4591
+Arlington County,2019,Renter,"$75,000 or more",Not cost-burdened,31987
+Arlington County,2019,Renter,"Less than $20,000",Cost-burdened,4037
+Arlington County,2019,Renter,"Less than $20,000",Not cost-burdened,671
+Arlington County,2020,Homeowner,"$20,000 to $34,999",Cost-burdened,1025
+Arlington County,2020,Homeowner,"$20,000 to $34,999",Not cost-burdened,218
+Arlington County,2020,Homeowner,"$35,000 to $49,999",Cost-burdened,854
+Arlington County,2020,Homeowner,"$35,000 to $49,999",Not cost-burdened,836
+Arlington County,2020,Homeowner,"$50,000 to $74,999",Cost-burdened,1210
+Arlington County,2020,Homeowner,"$50,000 to $74,999",Not cost-burdened,1813
+Arlington County,2020,Homeowner,"$75,000 or more",Cost-burdened,4220
+Arlington County,2020,Homeowner,"$75,000 or more",Not cost-burdened,34760
+Arlington County,2020,Homeowner,"Less than $20,000",Cost-burdened,1017
+Arlington County,2020,Homeowner,"Less than $20,000",Not cost-burdened,28
+Arlington County,2020,Renter,"$20,000 to $34,999",Cost-burdened,4197
+Arlington County,2020,Renter,"$20,000 to $34,999",Not cost-burdened,90
+Arlington County,2020,Renter,"$35,000 to $49,999",Cost-burdened,4071
+Arlington County,2020,Renter,"$35,000 to $49,999",Not cost-burdened,300
+Arlington County,2020,Renter,"$50,000 to $74,999",Cost-burdened,6734
+Arlington County,2020,Renter,"$50,000 to $74,999",Not cost-burdened,2546
+Arlington County,2020,Renter,"$75,000 or more",Cost-burdened,4222
+Arlington County,2020,Renter,"$75,000 or more",Not cost-burdened,33317
+Arlington County,2020,Renter,"Less than $20,000",Cost-burdened,3939
+Arlington County,2020,Renter,"Less than $20,000",Not cost-burdened,715
+Arlington County,2021,Homeowner,"$20,000 to $34,999",Cost-burdened,956
+Arlington County,2021,Homeowner,"$20,000 to $34,999",Not cost-burdened,208
+Arlington County,2021,Homeowner,"$35,000 to $49,999",Cost-burdened,770
+Arlington County,2021,Homeowner,"$35,000 to $49,999",Not cost-burdened,637
+Arlington County,2021,Homeowner,"$50,000 to $74,999",Cost-burdened,1500
+Arlington County,2021,Homeowner,"$50,000 to $74,999",Not cost-burdened,1620
+Arlington County,2021,Homeowner,"$75,000 or more",Cost-burdened,4178
+Arlington County,2021,Homeowner,"$75,000 or more",Not cost-burdened,35157
+Arlington County,2021,Homeowner,"Less than $20,000",Cost-burdened,1009
+Arlington County,2021,Homeowner,"Less than $20,000",Not cost-burdened,46
+Arlington County,2021,Renter,"$20,000 to $34,999",Cost-burdened,4025
+Arlington County,2021,Renter,"$20,000 to $34,999",Not cost-burdened,82
+Arlington County,2021,Renter,"$35,000 to $49,999",Cost-burdened,3896
+Arlington County,2021,Renter,"$35,000 to $49,999",Not cost-burdened,268
+Arlington County,2021,Renter,"$50,000 to $74,999",Cost-burdened,6738
+Arlington County,2021,Renter,"$50,000 to $74,999",Not cost-burdened,2167
+Arlington County,2021,Renter,"$75,000 or more",Cost-burdened,5002
+Arlington County,2021,Renter,"$75,000 or more",Not cost-burdened,34499
+Arlington County,2021,Renter,"Less than $20,000",Cost-burdened,3744
+Arlington County,2021,Renter,"Less than $20,000",Not cost-burdened,677
+Arlington County,2022,Homeowner,"$20,000 to $34,999",Cost-burdened,1023
+Arlington County,2022,Homeowner,"$20,000 to $34,999",Not cost-burdened,190
+Arlington County,2022,Homeowner,"$35,000 to $49,999",Cost-burdened,756
+Arlington County,2022,Homeowner,"$35,000 to $49,999",Not cost-burdened,482
+Arlington County,2022,Homeowner,"$50,000 to $74,999",Cost-burdened,1399
+Arlington County,2022,Homeowner,"$50,000 to $74,999",Not cost-burdened,1625
+Arlington County,2022,Homeowner,"$75,000 or more",Cost-burdened,4411
+Arlington County,2022,Homeowner,"$75,000 or more",Not cost-burdened,35578
+Arlington County,2022,Homeowner,"Less than $20,000",Cost-burdened,1075
+Arlington County,2022,Homeowner,"Less than $20,000",Not cost-burdened,49
+Arlington County,2022,Renter,"$20,000 to $34,999",Cost-burdened,3942
+Arlington County,2022,Renter,"$20,000 to $34,999",Not cost-burdened,138
+Arlington County,2022,Renter,"$35,000 to $49,999",Cost-burdened,3516
+Arlington County,2022,Renter,"$35,000 to $49,999",Not cost-burdened,216
+Arlington County,2022,Renter,"$50,000 to $74,999",Cost-burdened,6271
+Arlington County,2022,Renter,"$50,000 to $74,999",Not cost-burdened,1166
+Arlington County,2022,Renter,"$75,000 or more",Cost-burdened,6623
+Arlington County,2022,Renter,"$75,000 or more",Not cost-burdened,35764
+Arlington County,2022,Renter,"Less than $20,000",Cost-burdened,3580
+Arlington County,2022,Renter,"Less than $20,000",Not cost-burdened,752
+Fairfax County,2010,Homeowner,"$20,000 to $34,999",Cost-burdened,7528
+Fairfax County,2010,Homeowner,"$20,000 to $34,999",Not cost-burdened,2366
+Fairfax County,2010,Homeowner,"$35,000 to $49,999",Cost-burdened,10086
+Fairfax County,2010,Homeowner,"$35,000 to $49,999",Not cost-burdened,5234
+Fairfax County,2010,Homeowner,"$50,000 to $74,999",Cost-burdened,18290
+Fairfax County,2010,Homeowner,"$50,000 to $74,999",Not cost-burdened,13796
+Fairfax County,2010,Homeowner,"$75,000 or more",Cost-burdened,40638
+Fairfax County,2010,Homeowner,"$75,000 or more",Not cost-burdened,168218
+Fairfax County,2010,Homeowner,"Less than $20,000",Cost-burdened,6416
+Fairfax County,2010,Homeowner,"Less than $20,000",Not cost-burdened,701
+Fairfax County,2010,Renter,"$20,000 to $34,999",Cost-burdened,10519
+Fairfax County,2010,Renter,"$20,000 to $34,999",Not cost-burdened,1099
+Fairfax County,2010,Renter,"$35,000 to $49,999",Cost-burdened,11485
+Fairfax County,2010,Renter,"$35,000 to $49,999",Not cost-burdened,3067
+Fairfax County,2010,Renter,"$50,000 to $74,999",Cost-burdened,9828
+Fairfax County,2010,Renter,"$50,000 to $74,999",Not cost-burdened,11976
+Fairfax County,2010,Renter,"$75,000 or more",Cost-burdened,4173
+Fairfax County,2010,Renter,"$75,000 or more",Not cost-burdened,39807
+Fairfax County,2010,Renter,"Less than $20,000",Cost-burdened,9483
+Fairfax County,2010,Renter,"Less than $20,000",Not cost-burdened,1581
+Fairfax County,2011,Homeowner,"$20,000 to $34,999",Cost-burdened,7784
+Fairfax County,2011,Homeowner,"$20,000 to $34,999",Not cost-burdened,2313
+Fairfax County,2011,Homeowner,"$35,000 to $49,999",Cost-burdened,8917
+Fairfax County,2011,Homeowner,"$35,000 to $49,999",Not cost-burdened,5089
+Fairfax County,2011,Homeowner,"$50,000 to $74,999",Cost-burdened,16765
+Fairfax County,2011,Homeowner,"$50,000 to $74,999",Not cost-burdened,13650
+Fairfax County,2011,Homeowner,"$75,000 or more",Cost-burdened,39394
+Fairfax County,2011,Homeowner,"$75,000 or more",Not cost-burdened,171638
+Fairfax County,2011,Homeowner,"Less than $20,000",Cost-burdened,6641
+Fairfax County,2011,Homeowner,"Less than $20,000",Not cost-burdened,628
+Fairfax County,2011,Renter,"$20,000 to $34,999",Cost-burdened,10705
+Fairfax County,2011,Renter,"$20,000 to $34,999",Not cost-burdened,996
+Fairfax County,2011,Renter,"$35,000 to $49,999",Cost-burdened,11359
+Fairfax County,2011,Renter,"$35,000 to $49,999",Not cost-burdened,2391
+Fairfax County,2011,Renter,"$50,000 to $74,999",Cost-burdened,11286
+Fairfax County,2011,Renter,"$50,000 to $74,999",Not cost-burdened,10763
+Fairfax County,2011,Renter,"$75,000 or more",Cost-burdened,4958
+Fairfax County,2011,Renter,"$75,000 or more",Not cost-burdened,44005
+Fairfax County,2011,Renter,"Less than $20,000",Cost-burdened,9919
+Fairfax County,2011,Renter,"Less than $20,000",Not cost-burdened,1355
+Fairfax County,2012,Homeowner,"$20,000 to $34,999",Cost-burdened,7571
+Fairfax County,2012,Homeowner,"$20,000 to $34,999",Not cost-burdened,2130
+Fairfax County,2012,Homeowner,"$35,000 to $49,999",Cost-burdened,8421
+Fairfax County,2012,Homeowner,"$35,000 to $49,999",Not cost-burdened,5055
+Fairfax County,2012,Homeowner,"$50,000 to $74,999",Cost-burdened,15595
+Fairfax County,2012,Homeowner,"$50,000 to $74,999",Not cost-burdened,13237
+Fairfax County,2012,Homeowner,"$75,000 or more",Cost-burdened,36243
+Fairfax County,2012,Homeowner,"$75,000 or more",Not cost-burdened,174595
+Fairfax County,2012,Homeowner,"Less than $20,000",Cost-burdened,6669
+Fairfax County,2012,Homeowner,"Less than $20,000",Not cost-burdened,571
+Fairfax County,2012,Renter,"$20,000 to $34,999",Cost-burdened,12179
+Fairfax County,2012,Renter,"$20,000 to $34,999",Not cost-burdened,771
+Fairfax County,2012,Renter,"$35,000 to $49,999",Cost-burdened,11979
+Fairfax County,2012,Renter,"$35,000 to $49,999",Not cost-burdened,2277
+Fairfax County,2012,Renter,"$50,000 to $74,999",Cost-burdened,12692
+Fairfax County,2012,Renter,"$50,000 to $74,999",Not cost-burdened,10301
+Fairfax County,2012,Renter,"$75,000 or more",Cost-burdened,5390
+Fairfax County,2012,Renter,"$75,000 or more",Not cost-burdened,46812
+Fairfax County,2012,Renter,"Less than $20,000",Cost-burdened,9652
+Fairfax County,2012,Renter,"Less than $20,000",Not cost-burdened,1256
+Fairfax County,2013,Homeowner,"$20,000 to $34,999",Cost-burdened,7516
+Fairfax County,2013,Homeowner,"$20,000 to $34,999",Not cost-burdened,2198
+Fairfax County,2013,Homeowner,"$35,000 to $49,999",Cost-burdened,8445
+Fairfax County,2013,Homeowner,"$35,000 to $49,999",Not cost-burdened,4703
+Fairfax County,2013,Homeowner,"$50,000 to $74,999",Cost-burdened,14862
+Fairfax County,2013,Homeowner,"$50,000 to $74,999",Not cost-burdened,13078
+Fairfax County,2013,Homeowner,"$75,000 or more",Cost-burdened,32282
+Fairfax County,2013,Homeowner,"$75,000 or more",Not cost-burdened,177702
+Fairfax County,2013,Homeowner,"Less than $20,000",Cost-burdened,6880
+Fairfax County,2013,Homeowner,"Less than $20,000",Not cost-burdened,607
+Fairfax County,2013,Renter,"$20,000 to $34,999",Cost-burdened,11762
+Fairfax County,2013,Renter,"$20,000 to $34,999",Not cost-burdened,635
+Fairfax County,2013,Renter,"$35,000 to $49,999",Cost-burdened,11612
+Fairfax County,2013,Renter,"$35,000 to $49,999",Not cost-burdened,2000
+Fairfax County,2013,Renter,"$50,000 to $74,999",Cost-burdened,13713
+Fairfax County,2013,Renter,"$50,000 to $74,999",Not cost-burdened,9666
+Fairfax County,2013,Renter,"$75,000 or more",Cost-burdened,6135
+Fairfax County,2013,Renter,"$75,000 or more",Not cost-burdened,49769
+Fairfax County,2013,Renter,"Less than $20,000",Cost-burdened,9756
+Fairfax County,2013,Renter,"Less than $20,000",Not cost-burdened,1178
+Fairfax County,2014,Homeowner,"$20,000 to $34,999",Cost-burdened,7835
+Fairfax County,2014,Homeowner,"$20,000 to $34,999",Not cost-burdened,2170
+Fairfax County,2014,Homeowner,"$35,000 to $49,999",Cost-burdened,7667
+Fairfax County,2014,Homeowner,"$35,000 to $49,999",Not cost-burdened,4738
+Fairfax County,2014,Homeowner,"$50,000 to $74,999",Cost-burdened,13822
+Fairfax County,2014,Homeowner,"$50,000 to $74,999",Not cost-burdened,13160
+Fairfax County,2014,Homeowner,"$75,000 or more",Cost-burdened,29290
+Fairfax County,2014,Homeowner,"$75,000 or more",Not cost-burdened,180223
+Fairfax County,2014,Homeowner,"Less than $20,000",Cost-burdened,6922
+Fairfax County,2014,Homeowner,"Less than $20,000",Not cost-burdened,522
+Fairfax County,2014,Renter,"$20,000 to $34,999",Cost-burdened,12074
+Fairfax County,2014,Renter,"$20,000 to $34,999",Not cost-burdened,734
+Fairfax County,2014,Renter,"$35,000 to $49,999",Cost-burdened,11093
+Fairfax County,2014,Renter,"$35,000 to $49,999",Not cost-burdened,1642
+Fairfax County,2014,Renter,"$50,000 to $74,999",Cost-burdened,14536
+Fairfax County,2014,Renter,"$50,000 to $74,999",Not cost-burdened,9118
+Fairfax County,2014,Renter,"$75,000 or more",Cost-burdened,6636
+Fairfax County,2014,Renter,"$75,000 or more",Not cost-burdened,53025
+Fairfax County,2014,Renter,"Less than $20,000",Cost-burdened,9882
+Fairfax County,2014,Renter,"Less than $20,000",Not cost-burdened,1237
+Fairfax County,2015,Homeowner,"$20,000 to $34,999",Cost-burdened,7710
+Fairfax County,2015,Homeowner,"$20,000 to $34,999",Not cost-burdened,1899
+Fairfax County,2015,Homeowner,"$35,000 to $49,999",Cost-burdened,7565
+Fairfax County,2015,Homeowner,"$35,000 to $49,999",Not cost-burdened,4553
+Fairfax County,2015,Homeowner,"$50,000 to $74,999",Cost-burdened,13456
+Fairfax County,2015,Homeowner,"$50,000 to $74,999",Not cost-burdened,13060
+Fairfax County,2015,Homeowner,"$75,000 or more",Cost-burdened,26920
+Fairfax County,2015,Homeowner,"$75,000 or more",Not cost-burdened,182520
+Fairfax County,2015,Homeowner,"Less than $20,000",Cost-burdened,6715
+Fairfax County,2015,Homeowner,"Less than $20,000",Not cost-burdened,525
+Fairfax County,2015,Renter,"$20,000 to $34,999",Cost-burdened,12002
+Fairfax County,2015,Renter,"$20,000 to $34,999",Not cost-burdened,766
+Fairfax County,2015,Renter,"$35,000 to $49,999",Cost-burdened,10979
+Fairfax County,2015,Renter,"$35,000 to $49,999",Not cost-burdened,1261
+Fairfax County,2015,Renter,"$50,000 to $74,999",Cost-burdened,14593
+Fairfax County,2015,Renter,"$50,000 to $74,999",Not cost-burdened,8815
+Fairfax County,2015,Renter,"$75,000 or more",Cost-burdened,6980
+Fairfax County,2015,Renter,"$75,000 or more",Not cost-burdened,54785
+Fairfax County,2015,Renter,"Less than $20,000",Cost-burdened,10212
+Fairfax County,2015,Renter,"Less than $20,000",Not cost-burdened,1250
+Fairfax County,2016,Homeowner,"$20,000 to $34,999",Cost-burdened,7270
+Fairfax County,2016,Homeowner,"$20,000 to $34,999",Not cost-burdened,1863
+Fairfax County,2016,Homeowner,"$35,000 to $49,999",Cost-burdened,7424
+Fairfax County,2016,Homeowner,"$35,000 to $49,999",Not cost-burdened,4239
+Fairfax County,2016,Homeowner,"$50,000 to $74,999",Cost-burdened,13176
+Fairfax County,2016,Homeowner,"$50,000 to $74,999",Not cost-burdened,12380
+Fairfax County,2016,Homeowner,"$75,000 or more",Cost-burdened,25756
+Fairfax County,2016,Homeowner,"$75,000 or more",Not cost-burdened,185010
+Fairfax County,2016,Homeowner,"Less than $20,000",Cost-burdened,6724
+Fairfax County,2016,Homeowner,"Less than $20,000",Not cost-burdened,474
+Fairfax County,2016,Renter,"$20,000 to $34,999",Cost-burdened,11803
+Fairfax County,2016,Renter,"$20,000 to $34,999",Not cost-burdened,807
+Fairfax County,2016,Renter,"$35,000 to $49,999",Cost-burdened,10842
+Fairfax County,2016,Renter,"$35,000 to $49,999",Not cost-burdened,1176
+Fairfax County,2016,Renter,"$50,000 to $74,999",Cost-burdened,15258
+Fairfax County,2016,Renter,"$50,000 to $74,999",Not cost-burdened,8305
+Fairfax County,2016,Renter,"$75,000 or more",Cost-burdened,7438
+Fairfax County,2016,Renter,"$75,000 or more",Not cost-burdened,55746
+Fairfax County,2016,Renter,"Less than $20,000",Cost-burdened,9927
+Fairfax County,2016,Renter,"Less than $20,000",Not cost-burdened,1273
+Fairfax County,2017,Homeowner,"$20,000 to $34,999",Cost-burdened,7314
+Fairfax County,2017,Homeowner,"$20,000 to $34,999",Not cost-burdened,1833
+Fairfax County,2017,Homeowner,"$35,000 to $49,999",Cost-burdened,7198
+Fairfax County,2017,Homeowner,"$35,000 to $49,999",Not cost-burdened,4275
+Fairfax County,2017,Homeowner,"$50,000 to $74,999",Cost-burdened,13434
+Fairfax County,2017,Homeowner,"$50,000 to $74,999",Not cost-burdened,11908
+Fairfax County,2017,Homeowner,"$75,000 or more",Cost-burdened,25593
+Fairfax County,2017,Homeowner,"$75,000 or more",Not cost-burdened,187149
+Fairfax County,2017,Homeowner,"Less than $20,000",Cost-burdened,6471
+Fairfax County,2017,Homeowner,"Less than $20,000",Not cost-burdened,473
+Fairfax County,2017,Renter,"$20,000 to $34,999",Cost-burdened,11008
+Fairfax County,2017,Renter,"$20,000 to $34,999",Not cost-burdened,758
+Fairfax County,2017,Renter,"$35,000 to $49,999",Cost-burdened,10590
+Fairfax County,2017,Renter,"$35,000 to $49,999",Not cost-burdened,899
+Fairfax County,2017,Renter,"$50,000 to $74,999",Cost-burdened,15591
+Fairfax County,2017,Renter,"$50,000 to $74,999",Not cost-burdened,6866
+Fairfax County,2017,Renter,"$75,000 or more",Cost-burdened,8065
+Fairfax County,2017,Renter,"$75,000 or more",Not cost-burdened,56295
+Fairfax County,2017,Renter,"Less than $20,000",Cost-burdened,9786
+Fairfax County,2017,Renter,"Less than $20,000",Not cost-burdened,1417
+Fairfax County,2018,Homeowner,"$20,000 to $34,999",Cost-burdened,7313
+Fairfax County,2018,Homeowner,"$20,000 to $34,999",Not cost-burdened,1908
+Fairfax County,2018,Homeowner,"$35,000 to $49,999",Cost-burdened,6735
+Fairfax County,2018,Homeowner,"$35,000 to $49,999",Not cost-burdened,4069
+Fairfax County,2018,Homeowner,"$50,000 to $74,999",Cost-burdened,12781
+Fairfax County,2018,Homeowner,"$50,000 to $74,999",Not cost-burdened,11000
+Fairfax County,2018,Homeowner,"$75,000 or more",Cost-burdened,26863
+Fairfax County,2018,Homeowner,"$75,000 or more",Not cost-burdened,189786
+Fairfax County,2018,Homeowner,"Less than $20,000",Cost-burdened,6310
+Fairfax County,2018,Homeowner,"Less than $20,000",Not cost-burdened,382
+Fairfax County,2018,Renter,"$20,000 to $34,999",Cost-burdened,10954
+Fairfax County,2018,Renter,"$20,000 to $34,999",Not cost-burdened,686
+Fairfax County,2018,Renter,"$35,000 to $49,999",Cost-burdened,10613
+Fairfax County,2018,Renter,"$35,000 to $49,999",Not cost-burdened,930
+Fairfax County,2018,Renter,"$50,000 to $74,999",Cost-burdened,15131
+Fairfax County,2018,Renter,"$50,000 to $74,999",Not cost-burdened,5903
+Fairfax County,2018,Renter,"$75,000 or more",Cost-burdened,8459
+Fairfax County,2018,Renter,"$75,000 or more",Not cost-burdened,56816
+Fairfax County,2018,Renter,"Less than $20,000",Cost-burdened,10316
+Fairfax County,2018,Renter,"Less than $20,000",Not cost-burdened,1314
+Fairfax County,2019,Homeowner,"$20,000 to $34,999",Cost-burdened,7013
+Fairfax County,2019,Homeowner,"$20,000 to $34,999",Not cost-burdened,1904
+Fairfax County,2019,Homeowner,"$35,000 to $49,999",Cost-burdened,7234
+Fairfax County,2019,Homeowner,"$35,000 to $49,999",Not cost-burdened,4117
+Fairfax County,2019,Homeowner,"$50,000 to $74,999",Cost-burdened,12250
+Fairfax County,2019,Homeowner,"$50,000 to $74,999",Not cost-burdened,10317
+Fairfax County,2019,Homeowner,"$75,000 or more",Cost-burdened,26939
+Fairfax County,2019,Homeowner,"$75,000 or more",Not cost-burdened,192096
+Fairfax County,2019,Homeowner,"Less than $20,000",Cost-burdened,5888
+Fairfax County,2019,Homeowner,"Less than $20,000",Not cost-burdened,456
+Fairfax County,2019,Renter,"$20,000 to $34,999",Cost-burdened,10904
+Fairfax County,2019,Renter,"$20,000 to $34,999",Not cost-burdened,774
+Fairfax County,2019,Renter,"$35,000 to $49,999",Cost-burdened,10946
+Fairfax County,2019,Renter,"$35,000 to $49,999",Not cost-burdened,976
+Fairfax County,2019,Renter,"$50,000 to $74,999",Cost-burdened,14817
+Fairfax County,2019,Renter,"$50,000 to $74,999",Not cost-burdened,5063
+Fairfax County,2019,Renter,"$75,000 or more",Cost-burdened,8791
+Fairfax County,2019,Renter,"$75,000 or more",Not cost-burdened,58461
+Fairfax County,2019,Renter,"Less than $20,000",Cost-burdened,10569
+Fairfax County,2019,Renter,"Less than $20,000",Not cost-burdened,1034
+Fairfax County,2020,Homeowner,"$20,000 to $34,999",Cost-burdened,7308
+Fairfax County,2020,Homeowner,"$20,000 to $34,999",Not cost-burdened,1954
+Fairfax County,2020,Homeowner,"$35,000 to $49,999",Cost-burdened,7242
+Fairfax County,2020,Homeowner,"$35,000 to $49,999",Not cost-burdened,4288
+Fairfax County,2020,Homeowner,"$50,000 to $74,999",Cost-burdened,12517
+Fairfax County,2020,Homeowner,"$50,000 to $74,999",Not cost-burdened,9466
+Fairfax County,2020,Homeowner,"$75,000 or more",Cost-burdened,26110
+Fairfax County,2020,Homeowner,"$75,000 or more",Not cost-burdened,196508
+Fairfax County,2020,Homeowner,"Less than $20,000",Cost-burdened,6188
+Fairfax County,2020,Homeowner,"Less than $20,000",Not cost-burdened,381
+Fairfax County,2020,Renter,"$20,000 to $34,999",Cost-burdened,11022
+Fairfax County,2020,Renter,"$20,000 to $34,999",Not cost-burdened,839
+Fairfax County,2020,Renter,"$35,000 to $49,999",Cost-burdened,10695
+Fairfax County,2020,Renter,"$35,000 to $49,999",Not cost-burdened,1152
+Fairfax County,2020,Renter,"$50,000 to $74,999",Cost-burdened,15017
+Fairfax County,2020,Renter,"$50,000 to $74,999",Not cost-burdened,5165
+Fairfax County,2020,Renter,"$75,000 or more",Cost-burdened,8905
+Fairfax County,2020,Renter,"$75,000 or more",Not cost-burdened,57727
+Fairfax County,2020,Renter,"Less than $20,000",Cost-burdened,9633
+Fairfax County,2020,Renter,"Less than $20,000",Not cost-burdened,799
+Fairfax County,2021,Homeowner,"$20,000 to $34,999",Cost-burdened,6519
+Fairfax County,2021,Homeowner,"$20,000 to $34,999",Not cost-burdened,1736
+Fairfax County,2021,Homeowner,"$35,000 to $49,999",Cost-burdened,7438
+Fairfax County,2021,Homeowner,"$35,000 to $49,999",Not cost-burdened,3783
+Fairfax County,2021,Homeowner,"$50,000 to $74,999",Cost-burdened,12048
+Fairfax County,2021,Homeowner,"$50,000 to $74,999",Not cost-burdened,9267
+Fairfax County,2021,Homeowner,"$75,000 or more",Cost-burdened,27999
+Fairfax County,2021,Homeowner,"$75,000 or more",Not cost-burdened,203426
+Fairfax County,2021,Homeowner,"Less than $20,000",Cost-burdened,6263
+Fairfax County,2021,Homeowner,"Less than $20,000",Not cost-burdened,331
+Fairfax County,2021,Renter,"$20,000 to $34,999",Cost-burdened,10455
+Fairfax County,2021,Renter,"$20,000 to $34,999",Not cost-burdened,790
+Fairfax County,2021,Renter,"$35,000 to $49,999",Cost-burdened,10987
+Fairfax County,2021,Renter,"$35,000 to $49,999",Not cost-burdened,1016
+Fairfax County,2021,Renter,"$50,000 to $74,999",Cost-burdened,15443
+Fairfax County,2021,Renter,"$50,000 to $74,999",Not cost-burdened,4058
+Fairfax County,2021,Renter,"$75,000 or more",Cost-burdened,10559
+Fairfax County,2021,Renter,"$75,000 or more",Not cost-burdened,60189
+Fairfax County,2021,Renter,"Less than $20,000",Cost-burdened,9776
+Fairfax County,2021,Renter,"Less than $20,000",Not cost-burdened,916
+Fairfax County,2022,Homeowner,"$20,000 to $34,999",Cost-burdened,6171
+Fairfax County,2022,Homeowner,"$20,000 to $34,999",Not cost-burdened,1201
+Fairfax County,2022,Homeowner,"$35,000 to $49,999",Cost-burdened,6561
+Fairfax County,2022,Homeowner,"$35,000 to $49,999",Not cost-burdened,3133
+Fairfax County,2022,Homeowner,"$50,000 to $74,999",Cost-burdened,10630
+Fairfax County,2022,Homeowner,"$50,000 to $74,999",Not cost-burdened,7905
+Fairfax County,2022,Homeowner,"$75,000 or more",Cost-burdened,29174
+Fairfax County,2022,Homeowner,"$75,000 or more",Not cost-burdened,209048
+Fairfax County,2022,Homeowner,"Less than $20,000",Cost-burdened,6377
+Fairfax County,2022,Homeowner,"Less than $20,000",Not cost-burdened,276
+Fairfax County,2022,Renter,"$20,000 to $34,999",Cost-burdened,9036
+Fairfax County,2022,Renter,"$20,000 to $34,999",Not cost-burdened,809
+Fairfax County,2022,Renter,"$35,000 to $49,999",Cost-burdened,9909
+Fairfax County,2022,Renter,"$35,000 to $49,999",Not cost-burdened,580
+Fairfax County,2022,Renter,"$50,000 to $74,999",Cost-burdened,15100
+Fairfax County,2022,Renter,"$50,000 to $74,999",Not cost-burdened,3379
+Fairfax County,2022,Renter,"$75,000 or more",Cost-burdened,13595
+Fairfax County,2022,Renter,"$75,000 or more",Not cost-burdened,62138
+Fairfax County,2022,Renter,"Less than $20,000",Cost-burdened,9450
+Fairfax County,2022,Renter,"Less than $20,000",Not cost-burdened,860
+Fairfax city,2010,Homeowner,"$20,000 to $34,999",Cost-burdened,120
+Fairfax city,2010,Homeowner,"$20,000 to $34,999",Not cost-burdened,102
+Fairfax city,2010,Homeowner,"$35,000 to $49,999",Cost-burdened,213
+Fairfax city,2010,Homeowner,"$35,000 to $49,999",Not cost-burdened,254
+Fairfax city,2010,Homeowner,"$50,000 to $74,999",Cost-burdened,545
+Fairfax city,2010,Homeowner,"$50,000 to $74,999",Not cost-burdened,352
+Fairfax city,2010,Homeowner,"$75,000 or more",Cost-burdened,944
+Fairfax city,2010,Homeowner,"$75,000 or more",Not cost-burdened,3489
+Fairfax city,2010,Homeowner,"Less than $20,000",Cost-burdened,97
+Fairfax city,2010,Homeowner,"Less than $20,000",Not cost-burdened,16
+Fairfax city,2010,Renter,"$20,000 to $34,999",Cost-burdened,317
+Fairfax city,2010,Renter,"$20,000 to $34,999",Not cost-burdened,35
+Fairfax city,2010,Renter,"$35,000 to $49,999",Cost-burdened,186
+Fairfax city,2010,Renter,"$35,000 to $49,999",Not cost-burdened,89
+Fairfax city,2010,Renter,"$50,000 to $74,999",Cost-burdened,168
+Fairfax city,2010,Renter,"$50,000 to $74,999",Not cost-burdened,274
+Fairfax city,2010,Renter,"$75,000 or more",Cost-burdened,194
+Fairfax city,2010,Renter,"$75,000 or more",Not cost-burdened,774
+Fairfax city,2010,Renter,"Less than $20,000",Cost-burdened,290
+Fairfax city,2010,Renter,"Less than $20,000",Not cost-burdened,22
+Fairfax city,2011,Homeowner,"$20,000 to $34,999",Cost-burdened,145
+Fairfax city,2011,Homeowner,"$20,000 to $34,999",Not cost-burdened,116
+Fairfax city,2011,Homeowner,"$35,000 to $49,999",Cost-burdened,214
+Fairfax city,2011,Homeowner,"$35,000 to $49,999",Not cost-burdened,189
+Fairfax city,2011,Homeowner,"$50,000 to $74,999",Cost-burdened,515
+Fairfax city,2011,Homeowner,"$50,000 to $74,999",Not cost-burdened,355
+Fairfax city,2011,Homeowner,"$75,000 or more",Cost-burdened,746
+Fairfax city,2011,Homeowner,"$75,000 or more",Not cost-burdened,3434
+Fairfax city,2011,Homeowner,"Less than $20,000",Cost-burdened,158
+Fairfax city,2011,Homeowner,"Less than $20,000",Not cost-burdened,0
+Fairfax city,2011,Renter,"$20,000 to $34,999",Cost-burdened,311
+Fairfax city,2011,Renter,"$20,000 to $34,999",Not cost-burdened,20
+Fairfax city,2011,Renter,"$35,000 to $49,999",Cost-burdened,204
+Fairfax city,2011,Renter,"$35,000 to $49,999",Not cost-burdened,74
+Fairfax city,2011,Renter,"$50,000 to $74,999",Cost-burdened,219
+Fairfax city,2011,Renter,"$50,000 to $74,999",Not cost-burdened,258
+Fairfax city,2011,Renter,"$75,000 or more",Cost-burdened,252
+Fairfax city,2011,Renter,"$75,000 or more",Not cost-burdened,813
+Fairfax city,2011,Renter,"Less than $20,000",Cost-burdened,381
+Fairfax city,2011,Renter,"Less than $20,000",Not cost-burdened,17
+Fairfax city,2012,Homeowner,"$20,000 to $34,999",Cost-burdened,154
+Fairfax city,2012,Homeowner,"$20,000 to $34,999",Not cost-burdened,124
+Fairfax city,2012,Homeowner,"$35,000 to $49,999",Cost-burdened,217
+Fairfax city,2012,Homeowner,"$35,000 to $49,999",Not cost-burdened,283
+Fairfax city,2012,Homeowner,"$50,000 to $74,999",Cost-burdened,471
+Fairfax city,2012,Homeowner,"$50,000 to $74,999",Not cost-burdened,370
+Fairfax city,2012,Homeowner,"$75,000 or more",Cost-burdened,697
+Fairfax city,2012,Homeowner,"$75,000 or more",Not cost-burdened,3496
+Fairfax city,2012,Homeowner,"Less than $20,000",Cost-burdened,146
+Fairfax city,2012,Homeowner,"Less than $20,000",Not cost-burdened,0
+Fairfax city,2012,Renter,"$20,000 to $34,999",Cost-burdened,354
+Fairfax city,2012,Renter,"$20,000 to $34,999",Not cost-burdened,23
+Fairfax city,2012,Renter,"$35,000 to $49,999",Cost-burdened,207
+Fairfax city,2012,Renter,"$35,000 to $49,999",Not cost-burdened,71
+Fairfax city,2012,Renter,"$50,000 to $74,999",Cost-burdened,295
+Fairfax city,2012,Renter,"$50,000 to $74,999",Not cost-burdened,322
+Fairfax city,2012,Renter,"$75,000 or more",Cost-burdened,243
+Fairfax city,2012,Renter,"$75,000 or more",Not cost-burdened,710
+Fairfax city,2012,Renter,"Less than $20,000",Cost-burdened,285
+Fairfax city,2012,Renter,"Less than $20,000",Not cost-burdened,15
+Fairfax city,2013,Homeowner,"$20,000 to $34,999",Cost-burdened,155
+Fairfax city,2013,Homeowner,"$20,000 to $34,999",Not cost-burdened,157
+Fairfax city,2013,Homeowner,"$35,000 to $49,999",Cost-burdened,168
+Fairfax city,2013,Homeowner,"$35,000 to $49,999",Not cost-burdened,217
+Fairfax city,2013,Homeowner,"$50,000 to $74,999",Cost-burdened,343
+Fairfax city,2013,Homeowner,"$50,000 to $74,999",Not cost-burdened,363
+Fairfax city,2013,Homeowner,"$75,000 or more",Cost-burdened,566
+Fairfax city,2013,Homeowner,"$75,000 or more",Not cost-burdened,3691
+Fairfax city,2013,Homeowner,"Less than $20,000",Cost-burdened,144
+Fairfax city,2013,Homeowner,"Less than $20,000",Not cost-burdened,8
+Fairfax city,2013,Renter,"$20,000 to $34,999",Cost-burdened,475
+Fairfax city,2013,Renter,"$20,000 to $34,999",Not cost-burdened,18
+Fairfax city,2013,Renter,"$35,000 to $49,999",Cost-burdened,267
+Fairfax city,2013,Renter,"$35,000 to $49,999",Not cost-burdened,58
+Fairfax city,2013,Renter,"$50,000 to $74,999",Cost-burdened,265
+Fairfax city,2013,Renter,"$50,000 to $74,999",Not cost-burdened,347
+Fairfax city,2013,Renter,"$75,000 or more",Cost-burdened,174
+Fairfax city,2013,Renter,"$75,000 or more",Not cost-burdened,733
+Fairfax city,2013,Renter,"Less than $20,000",Cost-burdened,287
+Fairfax city,2013,Renter,"Less than $20,000",Not cost-burdened,20
+Fairfax city,2014,Homeowner,"$20,000 to $34,999",Cost-burdened,133
+Fairfax city,2014,Homeowner,"$20,000 to $34,999",Not cost-burdened,176
+Fairfax city,2014,Homeowner,"$35,000 to $49,999",Cost-burdened,140
+Fairfax city,2014,Homeowner,"$35,000 to $49,999",Not cost-burdened,213
+Fairfax city,2014,Homeowner,"$50,000 to $74,999",Cost-burdened,451
+Fairfax city,2014,Homeowner,"$50,000 to $74,999",Not cost-burdened,372
+Fairfax city,2014,Homeowner,"$75,000 or more",Cost-burdened,501
+Fairfax city,2014,Homeowner,"$75,000 or more",Not cost-burdened,3793
+Fairfax city,2014,Homeowner,"Less than $20,000",Cost-burdened,157
+Fairfax city,2014,Homeowner,"Less than $20,000",Not cost-burdened,8
+Fairfax city,2014,Renter,"$20,000 to $34,999",Cost-burdened,494
+Fairfax city,2014,Renter,"$20,000 to $34,999",Not cost-burdened,0
+Fairfax city,2014,Renter,"$35,000 to $49,999",Cost-burdened,214
+Fairfax city,2014,Renter,"$35,000 to $49,999",Not cost-burdened,17
+Fairfax city,2014,Renter,"$50,000 to $74,999",Cost-burdened,271
+Fairfax city,2014,Renter,"$50,000 to $74,999",Not cost-burdened,298
+Fairfax city,2014,Renter,"$75,000 or more",Cost-burdened,80
+Fairfax city,2014,Renter,"$75,000 or more",Not cost-burdened,762
+Fairfax city,2014,Renter,"Less than $20,000",Cost-burdened,311
+Fairfax city,2014,Renter,"Less than $20,000",Not cost-burdened,19
+Fairfax city,2015,Homeowner,"$20,000 to $34,999",Cost-burdened,149
+Fairfax city,2015,Homeowner,"$20,000 to $34,999",Not cost-burdened,153
+Fairfax city,2015,Homeowner,"$35,000 to $49,999",Cost-burdened,112
+Fairfax city,2015,Homeowner,"$35,000 to $49,999",Not cost-burdened,174
+Fairfax city,2015,Homeowner,"$50,000 to $74,999",Cost-burdened,399
+Fairfax city,2015,Homeowner,"$50,000 to $74,999",Not cost-burdened,376
+Fairfax city,2015,Homeowner,"$75,000 or more",Cost-burdened,451
+Fairfax city,2015,Homeowner,"$75,000 or more",Not cost-burdened,3976
+Fairfax city,2015,Homeowner,"Less than $20,000",Cost-burdened,129
+Fairfax city,2015,Homeowner,"Less than $20,000",Not cost-burdened,6
+Fairfax city,2015,Renter,"$20,000 to $34,999",Cost-burdened,411
+Fairfax city,2015,Renter,"$20,000 to $34,999",Not cost-burdened,0
+Fairfax city,2015,Renter,"$35,000 to $49,999",Cost-burdened,248
+Fairfax city,2015,Renter,"$35,000 to $49,999",Not cost-burdened,17
+Fairfax city,2015,Renter,"$50,000 to $74,999",Cost-burdened,247
+Fairfax city,2015,Renter,"$50,000 to $74,999",Not cost-burdened,284
+Fairfax city,2015,Renter,"$75,000 or more",Cost-burdened,110
+Fairfax city,2015,Renter,"$75,000 or more",Not cost-burdened,852
+Fairfax city,2015,Renter,"Less than $20,000",Cost-burdened,255
+Fairfax city,2015,Renter,"Less than $20,000",Not cost-burdened,7
+Fairfax city,2016,Homeowner,"$20,000 to $34,999",Cost-burdened,156
+Fairfax city,2016,Homeowner,"$20,000 to $34,999",Not cost-burdened,105
+Fairfax city,2016,Homeowner,"$35,000 to $49,999",Cost-burdened,135
+Fairfax city,2016,Homeowner,"$35,000 to $49,999",Not cost-burdened,257
+Fairfax city,2016,Homeowner,"$50,000 to $74,999",Cost-burdened,385
+Fairfax city,2016,Homeowner,"$50,000 to $74,999",Not cost-burdened,390
+Fairfax city,2016,Homeowner,"$75,000 or more",Cost-burdened,454
+Fairfax city,2016,Homeowner,"$75,000 or more",Not cost-burdened,3945
+Fairfax city,2016,Homeowner,"Less than $20,000",Cost-burdened,158
+Fairfax city,2016,Homeowner,"Less than $20,000",Not cost-burdened,7
+Fairfax city,2016,Renter,"$20,000 to $34,999",Cost-burdened,381
+Fairfax city,2016,Renter,"$20,000 to $34,999",Not cost-burdened,0
+Fairfax city,2016,Renter,"$35,000 to $49,999",Cost-burdened,237
+Fairfax city,2016,Renter,"$35,000 to $49,999",Not cost-burdened,0
+Fairfax city,2016,Renter,"$50,000 to $74,999",Cost-burdened,281
+Fairfax city,2016,Renter,"$50,000 to $74,999",Not cost-burdened,279
+Fairfax city,2016,Renter,"$75,000 or more",Cost-burdened,89
+Fairfax city,2016,Renter,"$75,000 or more",Not cost-burdened,864
+Fairfax city,2016,Renter,"Less than $20,000",Cost-burdened,198
+Fairfax city,2016,Renter,"Less than $20,000",Not cost-burdened,9
+Fairfax city,2017,Homeowner,"$20,000 to $34,999",Cost-burdened,238
+Fairfax city,2017,Homeowner,"$20,000 to $34,999",Not cost-burdened,127
+Fairfax city,2017,Homeowner,"$35,000 to $49,999",Cost-burdened,114
+Fairfax city,2017,Homeowner,"$35,000 to $49,999",Not cost-burdened,112
+Fairfax city,2017,Homeowner,"$50,000 to $74,999",Cost-burdened,349
+Fairfax city,2017,Homeowner,"$50,000 to $74,999",Not cost-burdened,372
+Fairfax city,2017,Homeowner,"$75,000 or more",Cost-burdened,494
+Fairfax city,2017,Homeowner,"$75,000 or more",Not cost-burdened,3954
+Fairfax city,2017,Homeowner,"Less than $20,000",Cost-burdened,153
+Fairfax city,2017,Homeowner,"Less than $20,000",Not cost-burdened,19
+Fairfax city,2017,Renter,"$20,000 to $34,999",Cost-burdened,328
+Fairfax city,2017,Renter,"$20,000 to $34,999",Not cost-burdened,0
+Fairfax city,2017,Renter,"$35,000 to $49,999",Cost-burdened,326
+Fairfax city,2017,Renter,"$35,000 to $49,999",Not cost-burdened,0
+Fairfax city,2017,Renter,"$50,000 to $74,999",Cost-burdened,239
+Fairfax city,2017,Renter,"$50,000 to $74,999",Not cost-burdened,140
+Fairfax city,2017,Renter,"$75,000 or more",Cost-burdened,110
+Fairfax city,2017,Renter,"$75,000 or more",Not cost-burdened,969
+Fairfax city,2017,Renter,"Less than $20,000",Cost-burdened,221
+Fairfax city,2017,Renter,"Less than $20,000",Not cost-burdened,7
+Fairfax city,2018,Homeowner,"$20,000 to $34,999",Cost-burdened,319
+Fairfax city,2018,Homeowner,"$20,000 to $34,999",Not cost-burdened,80
+Fairfax city,2018,Homeowner,"$35,000 to $49,999",Cost-burdened,107
+Fairfax city,2018,Homeowner,"$35,000 to $49,999",Not cost-burdened,135
+Fairfax city,2018,Homeowner,"$50,000 to $74,999",Cost-burdened,304
+Fairfax city,2018,Homeowner,"$50,000 to $74,999",Not cost-burdened,307
+Fairfax city,2018,Homeowner,"$75,000 or more",Cost-burdened,549
+Fairfax city,2018,Homeowner,"$75,000 or more",Not cost-burdened,4112
+Fairfax city,2018,Homeowner,"Less than $20,000",Cost-burdened,127
+Fairfax city,2018,Homeowner,"Less than $20,000",Not cost-burdened,10
+Fairfax city,2018,Renter,"$20,000 to $34,999",Cost-burdened,277
+Fairfax city,2018,Renter,"$20,000 to $34,999",Not cost-burdened,0
+Fairfax city,2018,Renter,"$35,000 to $49,999",Cost-burdened,277
+Fairfax city,2018,Renter,"$35,000 to $49,999",Not cost-burdened,0
+Fairfax city,2018,Renter,"$50,000 to $74,999",Cost-burdened,207
+Fairfax city,2018,Renter,"$50,000 to $74,999",Not cost-burdened,40
+Fairfax city,2018,Renter,"$75,000 or more",Cost-burdened,201
+Fairfax city,2018,Renter,"$75,000 or more",Not cost-burdened,973
+Fairfax city,2018,Renter,"Less than $20,000",Cost-burdened,285
+Fairfax city,2018,Renter,"Less than $20,000",Not cost-burdened,8
+Fairfax city,2019,Homeowner,"$20,000 to $34,999",Cost-burdened,252
+Fairfax city,2019,Homeowner,"$20,000 to $34,999",Not cost-burdened,57
+Fairfax city,2019,Homeowner,"$35,000 to $49,999",Cost-burdened,117
+Fairfax city,2019,Homeowner,"$35,000 to $49,999",Not cost-burdened,130
+Fairfax city,2019,Homeowner,"$50,000 to $74,999",Cost-burdened,209
+Fairfax city,2019,Homeowner,"$50,000 to $74,999",Not cost-burdened,333
+Fairfax city,2019,Homeowner,"$75,000 or more",Cost-burdened,558
+Fairfax city,2019,Homeowner,"$75,000 or more",Not cost-burdened,4189
+Fairfax city,2019,Homeowner,"Less than $20,000",Cost-burdened,135
+Fairfax city,2019,Homeowner,"Less than $20,000",Not cost-burdened,8
+Fairfax city,2019,Renter,"$20,000 to $34,999",Cost-burdened,249
+Fairfax city,2019,Renter,"$20,000 to $34,999",Not cost-burdened,0
+Fairfax city,2019,Renter,"$35,000 to $49,999",Cost-burdened,268
+Fairfax city,2019,Renter,"$35,000 to $49,999",Not cost-burdened,0
+Fairfax city,2019,Renter,"$50,000 to $74,999",Cost-burdened,190
+Fairfax city,2019,Renter,"$50,000 to $74,999",Not cost-burdened,54
+Fairfax city,2019,Renter,"$75,000 or more",Cost-burdened,129
+Fairfax city,2019,Renter,"$75,000 or more",Not cost-burdened,1146
+Fairfax city,2019,Renter,"Less than $20,000",Cost-burdened,274
+Fairfax city,2019,Renter,"Less than $20,000",Not cost-burdened,9
+Fairfax city,2020,Homeowner,"$20,000 to $34,999",Cost-burdened,239
+Fairfax city,2020,Homeowner,"$20,000 to $34,999",Not cost-burdened,71
+Fairfax city,2020,Homeowner,"$35,000 to $49,999",Cost-burdened,87
+Fairfax city,2020,Homeowner,"$35,000 to $49,999",Not cost-burdened,147
+Fairfax city,2020,Homeowner,"$50,000 to $74,999",Cost-burdened,204
+Fairfax city,2020,Homeowner,"$50,000 to $74,999",Not cost-burdened,348
+Fairfax city,2020,Homeowner,"$75,000 or more",Cost-burdened,714
+Fairfax city,2020,Homeowner,"$75,000 or more",Not cost-burdened,4053
+Fairfax city,2020,Homeowner,"Less than $20,000",Cost-burdened,230
+Fairfax city,2020,Homeowner,"Less than $20,000",Not cost-burdened,6
+Fairfax city,2020,Renter,"$20,000 to $34,999",Cost-burdened,274
+Fairfax city,2020,Renter,"$20,000 to $34,999",Not cost-burdened,0
+Fairfax city,2020,Renter,"$35,000 to $49,999",Cost-burdened,260
+Fairfax city,2020,Renter,"$35,000 to $49,999",Not cost-burdened,0
+Fairfax city,2020,Renter,"$50,000 to $74,999",Cost-burdened,174
+Fairfax city,2020,Renter,"$50,000 to $74,999",Not cost-burdened,79
+Fairfax city,2020,Renter,"$75,000 or more",Cost-burdened,87
+Fairfax city,2020,Renter,"$75,000 or more",Not cost-burdened,1050
+Fairfax city,2020,Renter,"Less than $20,000",Cost-burdened,305
+Fairfax city,2020,Renter,"Less than $20,000",Not cost-burdened,27
+Fairfax city,2021,Homeowner,"$20,000 to $34,999",Cost-burdened,189
+Fairfax city,2021,Homeowner,"$20,000 to $34,999",Not cost-burdened,92
+Fairfax city,2021,Homeowner,"$35,000 to $49,999",Cost-burdened,109
+Fairfax city,2021,Homeowner,"$35,000 to $49,999",Not cost-burdened,192
+Fairfax city,2021,Homeowner,"$50,000 to $74,999",Cost-burdened,125
+Fairfax city,2021,Homeowner,"$50,000 to $74,999",Not cost-burdened,315
+Fairfax city,2021,Homeowner,"$75,000 or more",Cost-burdened,678
+Fairfax city,2021,Homeowner,"$75,000 or more",Not cost-burdened,4469
+Fairfax city,2021,Homeowner,"Less than $20,000",Cost-burdened,204
+Fairfax city,2021,Homeowner,"Less than $20,000",Not cost-burdened,0
+Fairfax city,2021,Renter,"$20,000 to $34,999",Cost-burdened,385
+Fairfax city,2021,Renter,"$20,000 to $34,999",Not cost-burdened,18
+Fairfax city,2021,Renter,"$35,000 to $49,999",Cost-burdened,298
+Fairfax city,2021,Renter,"$35,000 to $49,999",Not cost-burdened,0
+Fairfax city,2021,Renter,"$50,000 to $74,999",Cost-burdened,219
+Fairfax city,2021,Renter,"$50,000 to $74,999",Not cost-burdened,68
+Fairfax city,2021,Renter,"$75,000 or more",Cost-burdened,108
+Fairfax city,2021,Renter,"$75,000 or more",Not cost-burdened,1022
+Fairfax city,2021,Renter,"Less than $20,000",Cost-burdened,309
+Fairfax city,2021,Renter,"Less than $20,000",Not cost-burdened,0
+Fairfax city,2022,Homeowner,"$20,000 to $34,999",Cost-burdened,166
+Fairfax city,2022,Homeowner,"$20,000 to $34,999",Not cost-burdened,39
+Fairfax city,2022,Homeowner,"$35,000 to $49,999",Cost-burdened,90
+Fairfax city,2022,Homeowner,"$35,000 to $49,999",Not cost-burdened,111
+Fairfax city,2022,Homeowner,"$50,000 to $74,999",Cost-burdened,133
+Fairfax city,2022,Homeowner,"$50,000 to $74,999",Not cost-burdened,336
+Fairfax city,2022,Homeowner,"$75,000 or more",Cost-burdened,680
+Fairfax city,2022,Homeowner,"$75,000 or more",Not cost-burdened,4492
+Fairfax city,2022,Homeowner,"Less than $20,000",Cost-burdened,160
+Fairfax city,2022,Homeowner,"Less than $20,000",Not cost-burdened,0
+Fairfax city,2022,Renter,"$20,000 to $34,999",Cost-burdened,278
+Fairfax city,2022,Renter,"$20,000 to $34,999",Not cost-burdened,20
+Fairfax city,2022,Renter,"$35,000 to $49,999",Cost-burdened,412
+Fairfax city,2022,Renter,"$35,000 to $49,999",Not cost-burdened,0
+Fairfax city,2022,Renter,"$50,000 to $74,999",Cost-burdened,263
+Fairfax city,2022,Renter,"$50,000 to $74,999",Not cost-burdened,39
+Fairfax city,2022,Renter,"$75,000 or more",Cost-burdened,162
+Fairfax city,2022,Renter,"$75,000 or more",Not cost-burdened,1186
+Fairfax city,2022,Renter,"Less than $20,000",Cost-burdened,279
+Fairfax city,2022,Renter,"Less than $20,000",Not cost-burdened,0
+Falls Church city,2010,Homeowner,"$20,000 to $34,999",Cost-burdened,67
+Falls Church city,2010,Homeowner,"$20,000 to $34,999",Not cost-burdened,24
+Falls Church city,2010,Homeowner,"$35,000 to $49,999",Cost-burdened,86
+Falls Church city,2010,Homeowner,"$35,000 to $49,999",Not cost-burdened,86
+Falls Church city,2010,Homeowner,"$50,000 to $74,999",Cost-burdened,195
+Falls Church city,2010,Homeowner,"$50,000 to $74,999",Not cost-burdened,180
+Falls Church city,2010,Homeowner,"$75,000 or more",Cost-burdened,445
+Falls Church city,2010,Homeowner,"$75,000 or more",Not cost-burdened,1833
+Falls Church city,2010,Homeowner,"Less than $20,000",Cost-burdened,79
+Falls Church city,2010,Homeowner,"Less than $20,000",Not cost-burdened,11
+Falls Church city,2010,Renter,"$20,000 to $34,999",Cost-burdened,143
+Falls Church city,2010,Renter,"$20,000 to $34,999",Not cost-burdened,33
+Falls Church city,2010,Renter,"$35,000 to $49,999",Cost-burdened,238
+Falls Church city,2010,Renter,"$35,000 to $49,999",Not cost-burdened,26
+Falls Church city,2010,Renter,"$50,000 to $74,999",Cost-burdened,126
+Falls Church city,2010,Renter,"$50,000 to $74,999",Not cost-burdened,157
+Falls Church city,2010,Renter,"$75,000 or more",Cost-burdened,88
+Falls Church city,2010,Renter,"$75,000 or more",Not cost-burdened,566
+Falls Church city,2010,Renter,"Less than $20,000",Cost-burdened,158
+Falls Church city,2010,Renter,"Less than $20,000",Not cost-burdened,73
+Falls Church city,2011,Homeowner,"$20,000 to $34,999",Cost-burdened,125
+Falls Church city,2011,Homeowner,"$20,000 to $34,999",Not cost-burdened,27
+Falls Church city,2011,Homeowner,"$35,000 to $49,999",Cost-burdened,87
+Falls Church city,2011,Homeowner,"$35,000 to $49,999",Not cost-burdened,63
+Falls Church city,2011,Homeowner,"$50,000 to $74,999",Cost-burdened,112
+Falls Church city,2011,Homeowner,"$50,000 to $74,999",Not cost-burdened,139
+Falls Church city,2011,Homeowner,"$75,000 or more",Cost-burdened,434
+Falls Church city,2011,Homeowner,"$75,000 or more",Not cost-burdened,1905
+Falls Church city,2011,Homeowner,"Less than $20,000",Cost-burdened,61
+Falls Church city,2011,Homeowner,"Less than $20,000",Not cost-burdened,13
+Falls Church city,2011,Renter,"$20,000 to $34,999",Cost-burdened,133
+Falls Church city,2011,Renter,"$20,000 to $34,999",Not cost-burdened,34
+Falls Church city,2011,Renter,"$35,000 to $49,999",Cost-burdened,246
+Falls Church city,2011,Renter,"$35,000 to $49,999",Not cost-burdened,92
+Falls Church city,2011,Renter,"$50,000 to $74,999",Cost-burdened,167
+Falls Church city,2011,Renter,"$50,000 to $74,999",Not cost-burdened,126
+Falls Church city,2011,Renter,"$75,000 or more",Cost-burdened,63
+Falls Church city,2011,Renter,"$75,000 or more",Not cost-burdened,736
+Falls Church city,2011,Renter,"Less than $20,000",Cost-burdened,137
+Falls Church city,2011,Renter,"Less than $20,000",Not cost-burdened,33
+Falls Church city,2012,Homeowner,"$20,000 to $34,999",Cost-burdened,121
+Falls Church city,2012,Homeowner,"$20,000 to $34,999",Not cost-burdened,29
+Falls Church city,2012,Homeowner,"$35,000 to $49,999",Cost-burdened,83
+Falls Church city,2012,Homeowner,"$35,000 to $49,999",Not cost-burdened,53
+Falls Church city,2012,Homeowner,"$50,000 to $74,999",Cost-burdened,148
+Falls Church city,2012,Homeowner,"$50,000 to $74,999",Not cost-burdened,109
+Falls Church city,2012,Homeowner,"$75,000 or more",Cost-burdened,365
+Falls Church city,2012,Homeowner,"$75,000 or more",Not cost-burdened,2043
+Falls Church city,2012,Homeowner,"Less than $20,000",Cost-burdened,58
+Falls Church city,2012,Homeowner,"Less than $20,000",Not cost-burdened,15
+Falls Church city,2012,Renter,"$20,000 to $34,999",Cost-burdened,120
+Falls Church city,2012,Renter,"$20,000 to $34,999",Not cost-burdened,29
+Falls Church city,2012,Renter,"$35,000 to $49,999",Cost-burdened,192
+Falls Church city,2012,Renter,"$35,000 to $49,999",Not cost-burdened,81
+Falls Church city,2012,Renter,"$50,000 to $74,999",Cost-burdened,126
+Falls Church city,2012,Renter,"$50,000 to $74,999",Not cost-burdened,146
+Falls Church city,2012,Renter,"$75,000 or more",Cost-burdened,83
+Falls Church city,2012,Renter,"$75,000 or more",Not cost-burdened,804
+Falls Church city,2012,Renter,"Less than $20,000",Cost-burdened,137
+Falls Church city,2012,Renter,"Less than $20,000",Not cost-burdened,12
+Falls Church city,2013,Homeowner,"$20,000 to $34,999",Cost-burdened,115
+Falls Church city,2013,Homeowner,"$20,000 to $34,999",Not cost-burdened,18
+Falls Church city,2013,Homeowner,"$35,000 to $49,999",Cost-burdened,74
+Falls Church city,2013,Homeowner,"$35,000 to $49,999",Not cost-burdened,36
+Falls Church city,2013,Homeowner,"$50,000 to $74,999",Cost-burdened,166
+Falls Church city,2013,Homeowner,"$50,000 to $74,999",Not cost-burdened,89
+Falls Church city,2013,Homeowner,"$75,000 or more",Cost-burdened,308
+Falls Church city,2013,Homeowner,"$75,000 or more",Not cost-burdened,2117
+Falls Church city,2013,Homeowner,"Less than $20,000",Cost-burdened,45
+Falls Church city,2013,Homeowner,"Less than $20,000",Not cost-burdened,13
+Falls Church city,2013,Renter,"$20,000 to $34,999",Cost-burdened,188
+Falls Church city,2013,Renter,"$20,000 to $34,999",Not cost-burdened,38
+Falls Church city,2013,Renter,"$35,000 to $49,999",Cost-burdened,154
+Falls Church city,2013,Renter,"$35,000 to $49,999",Not cost-burdened,81
+Falls Church city,2013,Renter,"$50,000 to $74,999",Cost-burdened,199
+Falls Church city,2013,Renter,"$50,000 to $74,999",Not cost-burdened,145
+Falls Church city,2013,Renter,"$75,000 or more",Cost-burdened,84
+Falls Church city,2013,Renter,"$75,000 or more",Not cost-burdened,819
+Falls Church city,2013,Renter,"Less than $20,000",Cost-burdened,132
+Falls Church city,2013,Renter,"Less than $20,000",Not cost-burdened,32
+Falls Church city,2014,Homeowner,"$20,000 to $34,999",Cost-burdened,105
+Falls Church city,2014,Homeowner,"$20,000 to $34,999",Not cost-burdened,0
+Falls Church city,2014,Homeowner,"$35,000 to $49,999",Cost-burdened,62
+Falls Church city,2014,Homeowner,"$35,000 to $49,999",Not cost-burdened,11
+Falls Church city,2014,Homeowner,"$50,000 to $74,999",Cost-burdened,150
+Falls Church city,2014,Homeowner,"$50,000 to $74,999",Not cost-burdened,83
+Falls Church city,2014,Homeowner,"$75,000 or more",Cost-burdened,321
+Falls Church city,2014,Homeowner,"$75,000 or more",Not cost-burdened,2148
+Falls Church city,2014,Homeowner,"Less than $20,000",Cost-burdened,38
+Falls Church city,2014,Homeowner,"Less than $20,000",Not cost-burdened,15
+Falls Church city,2014,Renter,"$20,000 to $34,999",Cost-burdened,150
+Falls Church city,2014,Renter,"$20,000 to $34,999",Not cost-burdened,31
+Falls Church city,2014,Renter,"$35,000 to $49,999",Cost-burdened,122
+Falls Church city,2014,Renter,"$35,000 to $49,999",Not cost-burdened,83
+Falls Church city,2014,Renter,"$50,000 to $74,999",Cost-burdened,243
+Falls Church city,2014,Renter,"$50,000 to $74,999",Not cost-burdened,138
+Falls Church city,2014,Renter,"$75,000 or more",Cost-burdened,95
+Falls Church city,2014,Renter,"$75,000 or more",Not cost-burdened,816
+Falls Church city,2014,Renter,"Less than $20,000",Cost-burdened,154
+Falls Church city,2014,Renter,"Less than $20,000",Not cost-burdened,24
+Falls Church city,2015,Homeowner,"$20,000 to $34,999",Cost-burdened,102
+Falls Church city,2015,Homeowner,"$20,000 to $34,999",Not cost-burdened,0
+Falls Church city,2015,Homeowner,"$35,000 to $49,999",Cost-burdened,50
+Falls Church city,2015,Homeowner,"$35,000 to $49,999",Not cost-burdened,4
+Falls Church city,2015,Homeowner,"$50,000 to $74,999",Cost-burdened,143
+Falls Church city,2015,Homeowner,"$50,000 to $74,999",Not cost-burdened,76
+Falls Church city,2015,Homeowner,"$75,000 or more",Cost-burdened,403
+Falls Church city,2015,Homeowner,"$75,000 or more",Not cost-burdened,2226
+Falls Church city,2015,Homeowner,"Less than $20,000",Cost-burdened,27
+Falls Church city,2015,Homeowner,"Less than $20,000",Not cost-burdened,0
+Falls Church city,2015,Renter,"$20,000 to $34,999",Cost-burdened,177
+Falls Church city,2015,Renter,"$20,000 to $34,999",Not cost-burdened,26
+Falls Church city,2015,Renter,"$35,000 to $49,999",Cost-burdened,164
+Falls Church city,2015,Renter,"$35,000 to $49,999",Not cost-burdened,112
+Falls Church city,2015,Renter,"$50,000 to $74,999",Cost-burdened,165
+Falls Church city,2015,Renter,"$50,000 to $74,999",Not cost-burdened,151
+Falls Church city,2015,Renter,"$75,000 or more",Cost-burdened,70
+Falls Church city,2015,Renter,"$75,000 or more",Not cost-burdened,841
+Falls Church city,2015,Renter,"Less than $20,000",Cost-burdened,191
+Falls Church city,2015,Renter,"Less than $20,000",Not cost-burdened,34
+Falls Church city,2016,Homeowner,"$20,000 to $34,999",Cost-burdened,97
+Falls Church city,2016,Homeowner,"$20,000 to $34,999",Not cost-burdened,0
+Falls Church city,2016,Homeowner,"$35,000 to $49,999",Cost-burdened,97
+Falls Church city,2016,Homeowner,"$35,000 to $49,999",Not cost-burdened,13
+Falls Church city,2016,Homeowner,"$50,000 to $74,999",Cost-burdened,134
+Falls Church city,2016,Homeowner,"$50,000 to $74,999",Not cost-burdened,70
+Falls Church city,2016,Homeowner,"$75,000 or more",Cost-burdened,411
+Falls Church city,2016,Homeowner,"$75,000 or more",Not cost-burdened,2304
+Falls Church city,2016,Homeowner,"Less than $20,000",Cost-burdened,36
+Falls Church city,2016,Homeowner,"Less than $20,000",Not cost-burdened,0
+Falls Church city,2016,Renter,"$20,000 to $34,999",Cost-burdened,155
+Falls Church city,2016,Renter,"$20,000 to $34,999",Not cost-burdened,0
+Falls Church city,2016,Renter,"$35,000 to $49,999",Cost-burdened,142
+Falls Church city,2016,Renter,"$35,000 to $49,999",Not cost-burdened,31
+Falls Church city,2016,Renter,"$50,000 to $74,999",Cost-burdened,317
+Falls Church city,2016,Renter,"$50,000 to $74,999",Not cost-burdened,159
+Falls Church city,2016,Renter,"$75,000 or more",Cost-burdened,78
+Falls Church city,2016,Renter,"$75,000 or more",Not cost-burdened,781
+Falls Church city,2016,Renter,"Less than $20,000",Cost-burdened,237
+Falls Church city,2016,Renter,"Less than $20,000",Not cost-burdened,32
+Falls Church city,2017,Homeowner,"$20,000 to $34,999",Cost-burdened,76
+Falls Church city,2017,Homeowner,"$20,000 to $34,999",Not cost-burdened,0
+Falls Church city,2017,Homeowner,"$35,000 to $49,999",Cost-burdened,91
+Falls Church city,2017,Homeowner,"$35,000 to $49,999",Not cost-burdened,10
+Falls Church city,2017,Homeowner,"$50,000 to $74,999",Cost-burdened,168
+Falls Church city,2017,Homeowner,"$50,000 to $74,999",Not cost-burdened,89
+Falls Church city,2017,Homeowner,"$75,000 or more",Cost-burdened,482
+Falls Church city,2017,Homeowner,"$75,000 or more",Not cost-burdened,2214
+Falls Church city,2017,Homeowner,"Less than $20,000",Cost-burdened,48
+Falls Church city,2017,Homeowner,"Less than $20,000",Not cost-burdened,0
+Falls Church city,2017,Renter,"$20,000 to $34,999",Cost-burdened,200
+Falls Church city,2017,Renter,"$20,000 to $34,999",Not cost-burdened,0
+Falls Church city,2017,Renter,"$35,000 to $49,999",Cost-burdened,178
+Falls Church city,2017,Renter,"$35,000 to $49,999",Not cost-burdened,0
+Falls Church city,2017,Renter,"$50,000 to $74,999",Cost-burdened,281
+Falls Church city,2017,Renter,"$50,000 to $74,999",Not cost-burdened,132
+Falls Church city,2017,Renter,"$75,000 or more",Cost-burdened,124
+Falls Church city,2017,Renter,"$75,000 or more",Not cost-burdened,822
+Falls Church city,2017,Renter,"Less than $20,000",Cost-burdened,219
+Falls Church city,2017,Renter,"Less than $20,000",Not cost-burdened,26
+Falls Church city,2018,Homeowner,"$20,000 to $34,999",Cost-burdened,85
+Falls Church city,2018,Homeowner,"$20,000 to $34,999",Not cost-burdened,0
+Falls Church city,2018,Homeowner,"$35,000 to $49,999",Cost-burdened,69
+Falls Church city,2018,Homeowner,"$35,000 to $49,999",Not cost-burdened,30
+Falls Church city,2018,Homeowner,"$50,000 to $74,999",Cost-burdened,145
+Falls Church city,2018,Homeowner,"$50,000 to $74,999",Not cost-burdened,67
+Falls Church city,2018,Homeowner,"$75,000 or more",Cost-burdened,592
+Falls Church city,2018,Homeowner,"$75,000 or more",Not cost-burdened,2220
+Falls Church city,2018,Homeowner,"Less than $20,000",Cost-burdened,35
+Falls Church city,2018,Homeowner,"Less than $20,000",Not cost-burdened,0
+Falls Church city,2018,Renter,"$20,000 to $34,999",Cost-burdened,168
+Falls Church city,2018,Renter,"$20,000 to $34,999",Not cost-burdened,0
+Falls Church city,2018,Renter,"$35,000 to $49,999",Cost-burdened,160
+Falls Church city,2018,Renter,"$35,000 to $49,999",Not cost-burdened,0
+Falls Church city,2018,Renter,"$50,000 to $74,999",Cost-burdened,247
+Falls Church city,2018,Renter,"$50,000 to $74,999",Not cost-burdened,77
+Falls Church city,2018,Renter,"$75,000 or more",Cost-burdened,138
+Falls Church city,2018,Renter,"$75,000 or more",Not cost-burdened,997
+Falls Church city,2018,Renter,"Less than $20,000",Cost-burdened,155
+Falls Church city,2018,Renter,"Less than $20,000",Not cost-burdened,0
+Falls Church city,2019,Homeowner,"$20,000 to $34,999",Cost-burdened,97
+Falls Church city,2019,Homeowner,"$20,000 to $34,999",Not cost-burdened,0
+Falls Church city,2019,Homeowner,"$35,000 to $49,999",Cost-burdened,99
+Falls Church city,2019,Homeowner,"$35,000 to $49,999",Not cost-burdened,22
+Falls Church city,2019,Homeowner,"$50,000 to $74,999",Cost-burdened,125
+Falls Church city,2019,Homeowner,"$50,000 to $74,999",Not cost-burdened,85
+Falls Church city,2019,Homeowner,"$75,000 or more",Cost-burdened,578
+Falls Church city,2019,Homeowner,"$75,000 or more",Not cost-burdened,2168
+Falls Church city,2019,Homeowner,"Less than $20,000",Cost-burdened,30
+Falls Church city,2019,Homeowner,"Less than $20,000",Not cost-burdened,0
+Falls Church city,2019,Renter,"$20,000 to $34,999",Cost-burdened,220
+Falls Church city,2019,Renter,"$20,000 to $34,999",Not cost-burdened,0
+Falls Church city,2019,Renter,"$35,000 to $49,999",Cost-burdened,165
+Falls Church city,2019,Renter,"$35,000 to $49,999",Not cost-burdened,0
+Falls Church city,2019,Renter,"$50,000 to $74,999",Cost-burdened,234
+Falls Church city,2019,Renter,"$50,000 to $74,999",Not cost-burdened,70
+Falls Church city,2019,Renter,"$75,000 or more",Cost-burdened,157
+Falls Church city,2019,Renter,"$75,000 or more",Not cost-burdened,1168
+Falls Church city,2019,Renter,"Less than $20,000",Cost-burdened,166
+Falls Church city,2019,Renter,"Less than $20,000",Not cost-burdened,14
+Falls Church city,2020,Homeowner,"$20,000 to $34,999",Cost-burdened,81
+Falls Church city,2020,Homeowner,"$20,000 to $34,999",Not cost-burdened,0
+Falls Church city,2020,Homeowner,"$35,000 to $49,999",Cost-burdened,73
+Falls Church city,2020,Homeowner,"$35,000 to $49,999",Not cost-burdened,22
+Falls Church city,2020,Homeowner,"$50,000 to $74,999",Cost-burdened,106
+Falls Church city,2020,Homeowner,"$50,000 to $74,999",Not cost-burdened,55
+Falls Church city,2020,Homeowner,"$75,000 or more",Cost-burdened,557
+Falls Church city,2020,Homeowner,"$75,000 or more",Not cost-burdened,2352
+Falls Church city,2020,Homeowner,"Less than $20,000",Cost-burdened,66
+Falls Church city,2020,Homeowner,"Less than $20,000",Not cost-burdened,0
+Falls Church city,2020,Renter,"$20,000 to $34,999",Cost-burdened,213
+Falls Church city,2020,Renter,"$20,000 to $34,999",Not cost-burdened,0
+Falls Church city,2020,Renter,"$35,000 to $49,999",Cost-burdened,93
+Falls Church city,2020,Renter,"$35,000 to $49,999",Not cost-burdened,11
+Falls Church city,2020,Renter,"$50,000 to $74,999",Cost-burdened,318
+Falls Church city,2020,Renter,"$50,000 to $74,999",Not cost-burdened,45
+Falls Church city,2020,Renter,"$75,000 or more",Cost-burdened,162
+Falls Church city,2020,Renter,"$75,000 or more",Not cost-burdened,1349
+Falls Church city,2020,Renter,"Less than $20,000",Cost-burdened,66
+Falls Church city,2020,Renter,"Less than $20,000",Not cost-burdened,8
+Falls Church city,2021,Homeowner,"$20,000 to $34,999",Cost-burdened,72
+Falls Church city,2021,Homeowner,"$20,000 to $34,999",Not cost-burdened,0
+Falls Church city,2021,Homeowner,"$35,000 to $49,999",Cost-burdened,38
+Falls Church city,2021,Homeowner,"$35,000 to $49,999",Not cost-burdened,0
+Falls Church city,2021,Homeowner,"$50,000 to $74,999",Cost-burdened,118
+Falls Church city,2021,Homeowner,"$50,000 to $74,999",Not cost-burdened,57
+Falls Church city,2021,Homeowner,"$75,000 or more",Cost-burdened,519
+Falls Church city,2021,Homeowner,"$75,000 or more",Not cost-burdened,2362
+Falls Church city,2021,Homeowner,"Less than $20,000",Cost-burdened,63
+Falls Church city,2021,Homeowner,"Less than $20,000",Not cost-burdened,0
+Falls Church city,2021,Renter,"$20,000 to $34,999",Cost-burdened,175
+Falls Church city,2021,Renter,"$20,000 to $34,999",Not cost-burdened,0
+Falls Church city,2021,Renter,"$35,000 to $49,999",Cost-burdened,56
+Falls Church city,2021,Renter,"$35,000 to $49,999",Not cost-burdened,109
+Falls Church city,2021,Renter,"$50,000 to $74,999",Cost-burdened,304
+Falls Church city,2021,Renter,"$50,000 to $74,999",Not cost-burdened,43
+Falls Church city,2021,Renter,"$75,000 or more",Cost-burdened,171
+Falls Church city,2021,Renter,"$75,000 or more",Not cost-burdened,1365
+Falls Church city,2021,Renter,"Less than $20,000",Cost-burdened,124
+Falls Church city,2021,Renter,"Less than $20,000",Not cost-burdened,7
+Falls Church city,2022,Homeowner,"$20,000 to $34,999",Cost-burdened,58
+Falls Church city,2022,Homeowner,"$20,000 to $34,999",Not cost-burdened,0
+Falls Church city,2022,Homeowner,"$35,000 to $49,999",Cost-burdened,43
+Falls Church city,2022,Homeowner,"$35,000 to $49,999",Not cost-burdened,20
+Falls Church city,2022,Homeowner,"$50,000 to $74,999",Cost-burdened,106
+Falls Church city,2022,Homeowner,"$50,000 to $74,999",Not cost-burdened,58
+Falls Church city,2022,Homeowner,"$75,000 or more",Cost-burdened,444
+Falls Church city,2022,Homeowner,"$75,000 or more",Not cost-burdened,2399
+Falls Church city,2022,Homeowner,"Less than $20,000",Cost-burdened,63
+Falls Church city,2022,Homeowner,"Less than $20,000",Not cost-burdened,0
+Falls Church city,2022,Renter,"$20,000 to $34,999",Cost-burdened,168
+Falls Church city,2022,Renter,"$20,000 to $34,999",Not cost-burdened,15
+Falls Church city,2022,Renter,"$35,000 to $49,999",Cost-burdened,45
+Falls Church city,2022,Renter,"$35,000 to $49,999",Not cost-burdened,130
+Falls Church city,2022,Renter,"$50,000 to $74,999",Cost-burdened,254
+Falls Church city,2022,Renter,"$50,000 to $74,999",Not cost-burdened,76
+Falls Church city,2022,Renter,"$75,000 or more",Cost-burdened,213
+Falls Church city,2022,Renter,"$75,000 or more",Not cost-burdened,1453
+Falls Church city,2022,Renter,"Less than $20,000",Cost-burdened,137
+Falls Church city,2022,Renter,"Less than $20,000",Not cost-burdened,10
+Loudoun County,2010,Homeowner,"$20,000 to $34,999",Cost-burdened,1764
+Loudoun County,2010,Homeowner,"$20,000 to $34,999",Not cost-burdened,322
+Loudoun County,2010,Homeowner,"$35,000 to $49,999",Cost-burdened,2682
+Loudoun County,2010,Homeowner,"$35,000 to $49,999",Not cost-burdened,1085
+Loudoun County,2010,Homeowner,"$50,000 to $74,999",Cost-burdened,5646
+Loudoun County,2010,Homeowner,"$50,000 to $74,999",Not cost-burdened,2389
+Loudoun County,2010,Homeowner,"$75,000 or more",Cost-burdened,17374
+Loudoun County,2010,Homeowner,"$75,000 or more",Not cost-burdened,43960
+Loudoun County,2010,Homeowner,"Less than $20,000",Cost-burdened,1322
+Loudoun County,2010,Homeowner,"Less than $20,000",Not cost-burdened,80
+Loudoun County,2010,Renter,"$20,000 to $34,999",Cost-burdened,2108
+Loudoun County,2010,Renter,"$20,000 to $34,999",Not cost-burdened,108
+Loudoun County,2010,Renter,"$35,000 to $49,999",Cost-burdened,2083
+Loudoun County,2010,Renter,"$35,000 to $49,999",Not cost-burdened,289
+Loudoun County,2010,Renter,"$50,000 to $74,999",Cost-burdened,1834
+Loudoun County,2010,Renter,"$50,000 to $74,999",Not cost-burdened,2139
+Loudoun County,2010,Renter,"$75,000 or more",Cost-burdened,789
+Loudoun County,2010,Renter,"$75,000 or more",Not cost-burdened,6328
+Loudoun County,2010,Renter,"Less than $20,000",Cost-burdened,1580
+Loudoun County,2010,Renter,"Less than $20,000",Not cost-burdened,107
+Loudoun County,2011,Homeowner,"$20,000 to $34,999",Cost-burdened,1539
+Loudoun County,2011,Homeowner,"$20,000 to $34,999",Not cost-burdened,266
+Loudoun County,2011,Homeowner,"$35,000 to $49,999",Cost-burdened,2462
+Loudoun County,2011,Homeowner,"$35,000 to $49,999",Not cost-burdened,1121
+Loudoun County,2011,Homeowner,"$50,000 to $74,999",Cost-burdened,5512
+Loudoun County,2011,Homeowner,"$50,000 to $74,999",Not cost-burdened,2331
+Loudoun County,2011,Homeowner,"$75,000 or more",Cost-burdened,17202
+Loudoun County,2011,Homeowner,"$75,000 or more",Not cost-burdened,46896
+Loudoun County,2011,Homeowner,"Less than $20,000",Cost-burdened,1292
+Loudoun County,2011,Homeowner,"Less than $20,000",Not cost-burdened,53
+Loudoun County,2011,Renter,"$20,000 to $34,999",Cost-burdened,2132
+Loudoun County,2011,Renter,"$20,000 to $34,999",Not cost-burdened,98
+Loudoun County,2011,Renter,"$35,000 to $49,999",Cost-burdened,2306
+Loudoun County,2011,Renter,"$35,000 to $49,999",Not cost-burdened,454
+Loudoun County,2011,Renter,"$50,000 to $74,999",Cost-burdened,2235
+Loudoun County,2011,Renter,"$50,000 to $74,999",Not cost-burdened,2131
+Loudoun County,2011,Renter,"$75,000 or more",Cost-burdened,1147
+Loudoun County,2011,Renter,"$75,000 or more",Not cost-burdened,7680
+Loudoun County,2011,Renter,"Less than $20,000",Cost-burdened,1512
+Loudoun County,2011,Renter,"Less than $20,000",Not cost-burdened,133
+Loudoun County,2012,Homeowner,"$20,000 to $34,999",Cost-burdened,1538
+Loudoun County,2012,Homeowner,"$20,000 to $34,999",Not cost-burdened,428
+Loudoun County,2012,Homeowner,"$35,000 to $49,999",Cost-burdened,2389
+Loudoun County,2012,Homeowner,"$35,000 to $49,999",Not cost-burdened,1199
+Loudoun County,2012,Homeowner,"$50,000 to $74,999",Cost-burdened,5155
+Loudoun County,2012,Homeowner,"$50,000 to $74,999",Not cost-burdened,2603
+Loudoun County,2012,Homeowner,"$75,000 or more",Cost-burdened,16321
+Loudoun County,2012,Homeowner,"$75,000 or more",Not cost-burdened,50386
+Loudoun County,2012,Homeowner,"Less than $20,000",Cost-burdened,1149
+Loudoun County,2012,Homeowner,"Less than $20,000",Not cost-burdened,78
+Loudoun County,2012,Renter,"$20,000 to $34,999",Cost-burdened,2000
+Loudoun County,2012,Renter,"$20,000 to $34,999",Not cost-burdened,66
+Loudoun County,2012,Renter,"$35,000 to $49,999",Cost-burdened,2783
+Loudoun County,2012,Renter,"$35,000 to $49,999",Not cost-burdened,533
+Loudoun County,2012,Renter,"$50,000 to $74,999",Cost-burdened,2480
+Loudoun County,2012,Renter,"$50,000 to $74,999",Not cost-burdened,2181
+Loudoun County,2012,Renter,"$75,000 or more",Cost-burdened,1069
+Loudoun County,2012,Renter,"$75,000 or more",Not cost-burdened,8780
+Loudoun County,2012,Renter,"Less than $20,000",Cost-burdened,1668
+Loudoun County,2012,Renter,"Less than $20,000",Not cost-burdened,177
+Loudoun County,2013,Homeowner,"$20,000 to $34,999",Cost-burdened,1412
+Loudoun County,2013,Homeowner,"$20,000 to $34,999",Not cost-burdened,524
+Loudoun County,2013,Homeowner,"$35,000 to $49,999",Cost-burdened,2245
+Loudoun County,2013,Homeowner,"$35,000 to $49,999",Not cost-burdened,1277
+Loudoun County,2013,Homeowner,"$50,000 to $74,999",Cost-burdened,4637
+Loudoun County,2013,Homeowner,"$50,000 to $74,999",Not cost-burdened,2993
+Loudoun County,2013,Homeowner,"$75,000 or more",Cost-burdened,15067
+Loudoun County,2013,Homeowner,"$75,000 or more",Not cost-burdened,53293
+Loudoun County,2013,Homeowner,"Less than $20,000",Cost-burdened,1383
+Loudoun County,2013,Homeowner,"Less than $20,000",Not cost-burdened,83
+Loudoun County,2013,Renter,"$20,000 to $34,999",Cost-burdened,2117
+Loudoun County,2013,Renter,"$20,000 to $34,999",Not cost-burdened,114
+Loudoun County,2013,Renter,"$35,000 to $49,999",Cost-burdened,2878
+Loudoun County,2013,Renter,"$35,000 to $49,999",Not cost-burdened,572
+Loudoun County,2013,Renter,"$50,000 to $74,999",Cost-burdened,2649
+Loudoun County,2013,Renter,"$50,000 to $74,999",Not cost-burdened,2049
+Loudoun County,2013,Renter,"$75,000 or more",Cost-burdened,1017
+Loudoun County,2013,Renter,"$75,000 or more",Not cost-burdened,9608
+Loudoun County,2013,Renter,"Less than $20,000",Cost-burdened,1650
+Loudoun County,2013,Renter,"Less than $20,000",Not cost-burdened,163
+Loudoun County,2014,Homeowner,"$20,000 to $34,999",Cost-burdened,1528
+Loudoun County,2014,Homeowner,"$20,000 to $34,999",Not cost-burdened,515
+Loudoun County,2014,Homeowner,"$35,000 to $49,999",Cost-burdened,2437
+Loudoun County,2014,Homeowner,"$35,000 to $49,999",Not cost-burdened,1155
+Loudoun County,2014,Homeowner,"$50,000 to $74,999",Cost-burdened,4252
+Loudoun County,2014,Homeowner,"$50,000 to $74,999",Not cost-burdened,3300
+Loudoun County,2014,Homeowner,"$75,000 or more",Cost-burdened,13451
+Loudoun County,2014,Homeowner,"$75,000 or more",Not cost-burdened,56247
+Loudoun County,2014,Homeowner,"Less than $20,000",Cost-burdened,1443
+Loudoun County,2014,Homeowner,"Less than $20,000",Not cost-burdened,77
+Loudoun County,2014,Renter,"$20,000 to $34,999",Cost-burdened,2352
+Loudoun County,2014,Renter,"$20,000 to $34,999",Not cost-burdened,205
+Loudoun County,2014,Renter,"$35,000 to $49,999",Cost-burdened,3015
+Loudoun County,2014,Renter,"$35,000 to $49,999",Not cost-burdened,625
+Loudoun County,2014,Renter,"$50,000 to $74,999",Cost-burdened,2651
+Loudoun County,2014,Renter,"$50,000 to $74,999",Not cost-burdened,2058
+Loudoun County,2014,Renter,"$75,000 or more",Cost-burdened,1199
+Loudoun County,2014,Renter,"$75,000 or more",Not cost-burdened,10256
+Loudoun County,2014,Renter,"Less than $20,000",Cost-burdened,1729
+Loudoun County,2014,Renter,"Less than $20,000",Not cost-burdened,202
+Loudoun County,2015,Homeowner,"$20,000 to $34,999",Cost-burdened,1623
+Loudoun County,2015,Homeowner,"$20,000 to $34,999",Not cost-burdened,534
+Loudoun County,2015,Homeowner,"$35,000 to $49,999",Cost-burdened,2799
+Loudoun County,2015,Homeowner,"$35,000 to $49,999",Not cost-burdened,1080
+Loudoun County,2015,Homeowner,"$50,000 to $74,999",Cost-burdened,4282
+Loudoun County,2015,Homeowner,"$50,000 to $74,999",Not cost-burdened,3541
+Loudoun County,2015,Homeowner,"$75,000 or more",Cost-burdened,11723
+Loudoun County,2015,Homeowner,"$75,000 or more",Not cost-burdened,59857
+Loudoun County,2015,Homeowner,"Less than $20,000",Cost-burdened,1591
+Loudoun County,2015,Homeowner,"Less than $20,000",Not cost-burdened,112
+Loudoun County,2015,Renter,"$20,000 to $34,999",Cost-burdened,2540
+Loudoun County,2015,Renter,"$20,000 to $34,999",Not cost-burdened,178
+Loudoun County,2015,Renter,"$35,000 to $49,999",Cost-burdened,3042
+Loudoun County,2015,Renter,"$35,000 to $49,999",Not cost-burdened,659
+Loudoun County,2015,Renter,"$50,000 to $74,999",Cost-burdened,2651
+Loudoun County,2015,Renter,"$50,000 to $74,999",Not cost-burdened,1858
+Loudoun County,2015,Renter,"$75,000 or more",Cost-burdened,1215
+Loudoun County,2015,Renter,"$75,000 or more",Not cost-burdened,10784
+Loudoun County,2015,Renter,"Less than $20,000",Cost-burdened,1701
+Loudoun County,2015,Renter,"Less than $20,000",Not cost-burdened,210
+Loudoun County,2016,Homeowner,"$20,000 to $34,999",Cost-burdened,1759
+Loudoun County,2016,Homeowner,"$20,000 to $34,999",Not cost-burdened,625
+Loudoun County,2016,Homeowner,"$35,000 to $49,999",Cost-burdened,2474
+Loudoun County,2016,Homeowner,"$35,000 to $49,999",Not cost-burdened,1053
+Loudoun County,2016,Homeowner,"$50,000 to $74,999",Cost-burdened,4473
+Loudoun County,2016,Homeowner,"$50,000 to $74,999",Not cost-burdened,3940
+Loudoun County,2016,Homeowner,"$75,000 or more",Cost-burdened,10828
+Loudoun County,2016,Homeowner,"$75,000 or more",Not cost-burdened,63172
+Loudoun County,2016,Homeowner,"Less than $20,000",Cost-burdened,1826
+Loudoun County,2016,Homeowner,"Less than $20,000",Not cost-burdened,135
+Loudoun County,2016,Renter,"$20,000 to $34,999",Cost-burdened,2668
+Loudoun County,2016,Renter,"$20,000 to $34,999",Not cost-burdened,187
+Loudoun County,2016,Renter,"$35,000 to $49,999",Cost-burdened,3077
+Loudoun County,2016,Renter,"$35,000 to $49,999",Not cost-burdened,583
+Loudoun County,2016,Renter,"$50,000 to $74,999",Cost-burdened,2904
+Loudoun County,2016,Renter,"$50,000 to $74,999",Not cost-burdened,1819
+Loudoun County,2016,Renter,"$75,000 or more",Cost-burdened,1195
+Loudoun County,2016,Renter,"$75,000 or more",Not cost-burdened,10755
+Loudoun County,2016,Renter,"Less than $20,000",Cost-burdened,1776
+Loudoun County,2016,Renter,"Less than $20,000",Not cost-burdened,174
+Loudoun County,2017,Homeowner,"$20,000 to $34,999",Cost-burdened,1799
+Loudoun County,2017,Homeowner,"$20,000 to $34,999",Not cost-burdened,500
+Loudoun County,2017,Homeowner,"$35,000 to $49,999",Cost-burdened,2492
+Loudoun County,2017,Homeowner,"$35,000 to $49,999",Not cost-burdened,1103
+Loudoun County,2017,Homeowner,"$50,000 to $74,999",Cost-burdened,4371
+Loudoun County,2017,Homeowner,"$50,000 to $74,999",Not cost-burdened,3960
+Loudoun County,2017,Homeowner,"$75,000 or more",Cost-burdened,10237
+Loudoun County,2017,Homeowner,"$75,000 or more",Not cost-burdened,67369
+Loudoun County,2017,Homeowner,"Less than $20,000",Cost-burdened,1979
+Loudoun County,2017,Homeowner,"Less than $20,000",Not cost-burdened,165
+Loudoun County,2017,Renter,"$20,000 to $34,999",Cost-burdened,2435
+Loudoun County,2017,Renter,"$20,000 to $34,999",Not cost-burdened,210
+Loudoun County,2017,Renter,"$35,000 to $49,999",Cost-burdened,2929
+Loudoun County,2017,Renter,"$35,000 to $49,999",Not cost-burdened,427
+Loudoun County,2017,Renter,"$50,000 to $74,999",Cost-burdened,3340
+Loudoun County,2017,Renter,"$50,000 to $74,999",Not cost-burdened,1680
+Loudoun County,2017,Renter,"$75,000 or more",Cost-burdened,1385
+Loudoun County,2017,Renter,"$75,000 or more",Not cost-burdened,11296
+Loudoun County,2017,Renter,"Less than $20,000",Cost-burdened,1767
+Loudoun County,2017,Renter,"Less than $20,000",Not cost-burdened,215
+Loudoun County,2018,Homeowner,"$20,000 to $34,999",Cost-burdened,1824
+Loudoun County,2018,Homeowner,"$20,000 to $34,999",Not cost-burdened,413
+Loudoun County,2018,Homeowner,"$35,000 to $49,999",Cost-burdened,2560
+Loudoun County,2018,Homeowner,"$35,000 to $49,999",Not cost-burdened,1043
+Loudoun County,2018,Homeowner,"$50,000 to $74,999",Cost-burdened,4070
+Loudoun County,2018,Homeowner,"$50,000 to $74,999",Not cost-burdened,3795
+Loudoun County,2018,Homeowner,"$75,000 or more",Cost-burdened,10156
+Loudoun County,2018,Homeowner,"$75,000 or more",Not cost-burdened,71120
+Loudoun County,2018,Homeowner,"Less than $20,000",Cost-burdened,1909
+Loudoun County,2018,Homeowner,"Less than $20,000",Not cost-burdened,160
+Loudoun County,2018,Renter,"$20,000 to $34,999",Cost-burdened,2844
+Loudoun County,2018,Renter,"$20,000 to $34,999",Not cost-burdened,178
+Loudoun County,2018,Renter,"$35,000 to $49,999",Cost-burdened,2981
+Loudoun County,2018,Renter,"$35,000 to $49,999",Not cost-burdened,328
+Loudoun County,2018,Renter,"$50,000 to $74,999",Cost-burdened,3742
+Loudoun County,2018,Renter,"$50,000 to $74,999",Not cost-burdened,1597
+Loudoun County,2018,Renter,"$75,000 or more",Cost-burdened,1593
+Loudoun County,2018,Renter,"$75,000 or more",Not cost-burdened,11784
+Loudoun County,2018,Renter,"Less than $20,000",Cost-burdened,1391
+Loudoun County,2018,Renter,"Less than $20,000",Not cost-burdened,152
+Loudoun County,2019,Homeowner,"$20,000 to $34,999",Cost-burdened,1979
+Loudoun County,2019,Homeowner,"$20,000 to $34,999",Not cost-burdened,474
+Loudoun County,2019,Homeowner,"$35,000 to $49,999",Cost-burdened,2099
+Loudoun County,2019,Homeowner,"$35,000 to $49,999",Not cost-burdened,1096
+Loudoun County,2019,Homeowner,"$50,000 to $74,999",Cost-burdened,3943
+Loudoun County,2019,Homeowner,"$50,000 to $74,999",Not cost-burdened,3634
+Loudoun County,2019,Homeowner,"$75,000 or more",Cost-burdened,9858
+Loudoun County,2019,Homeowner,"$75,000 or more",Not cost-burdened,74917
+Loudoun County,2019,Homeowner,"Less than $20,000",Cost-burdened,1724
+Loudoun County,2019,Homeowner,"Less than $20,000",Not cost-burdened,155
+Loudoun County,2019,Renter,"$20,000 to $34,999",Cost-burdened,3023
+Loudoun County,2019,Renter,"$20,000 to $34,999",Not cost-burdened,131
+Loudoun County,2019,Renter,"$35,000 to $49,999",Cost-burdened,2595
+Loudoun County,2019,Renter,"$35,000 to $49,999",Not cost-burdened,280
+Loudoun County,2019,Renter,"$50,000 to $74,999",Cost-burdened,3496
+Loudoun County,2019,Renter,"$50,000 to $74,999",Not cost-burdened,1683
+Loudoun County,2019,Renter,"$75,000 or more",Cost-burdened,1738
+Loudoun County,2019,Renter,"$75,000 or more",Not cost-burdened,12442
+Loudoun County,2019,Renter,"Less than $20,000",Cost-burdened,1371
+Loudoun County,2019,Renter,"Less than $20,000",Not cost-burdened,135
+Loudoun County,2020,Homeowner,"$20,000 to $34,999",Cost-burdened,1696
+Loudoun County,2020,Homeowner,"$20,000 to $34,999",Not cost-burdened,463
+Loudoun County,2020,Homeowner,"$35,000 to $49,999",Cost-burdened,1771
+Loudoun County,2020,Homeowner,"$35,000 to $49,999",Not cost-burdened,1370
+Loudoun County,2020,Homeowner,"$50,000 to $74,999",Cost-burdened,3927
+Loudoun County,2020,Homeowner,"$50,000 to $74,999",Not cost-burdened,3544
+Loudoun County,2020,Homeowner,"$75,000 or more",Cost-burdened,10517
+Loudoun County,2020,Homeowner,"$75,000 or more",Not cost-burdened,77484
+Loudoun County,2020,Homeowner,"Less than $20,000",Cost-burdened,1615
+Loudoun County,2020,Homeowner,"Less than $20,000",Not cost-burdened,141
+Loudoun County,2020,Renter,"$20,000 to $34,999",Cost-burdened,3136
+Loudoun County,2020,Renter,"$20,000 to $34,999",Not cost-burdened,79
+Loudoun County,2020,Renter,"$35,000 to $49,999",Cost-burdened,2675
+Loudoun County,2020,Renter,"$35,000 to $49,999",Not cost-burdened,331
+Loudoun County,2020,Renter,"$50,000 to $74,999",Cost-burdened,3235
+Loudoun County,2020,Renter,"$50,000 to $74,999",Not cost-burdened,1648
+Loudoun County,2020,Renter,"$75,000 or more",Cost-burdened,1827
+Loudoun County,2020,Renter,"$75,000 or more",Not cost-burdened,13458
+Loudoun County,2020,Renter,"Less than $20,000",Cost-burdened,1530
+Loudoun County,2020,Renter,"Less than $20,000",Not cost-burdened,117
+Loudoun County,2021,Homeowner,"$20,000 to $34,999",Cost-burdened,1681
+Loudoun County,2021,Homeowner,"$20,000 to $34,999",Not cost-burdened,447
+Loudoun County,2021,Homeowner,"$35,000 to $49,999",Cost-burdened,1573
+Loudoun County,2021,Homeowner,"$35,000 to $49,999",Not cost-burdened,1405
+Loudoun County,2021,Homeowner,"$50,000 to $74,999",Cost-burdened,3231
+Loudoun County,2021,Homeowner,"$50,000 to $74,999",Not cost-burdened,3077
+Loudoun County,2021,Homeowner,"$75,000 or more",Cost-burdened,10840
+Loudoun County,2021,Homeowner,"$75,000 or more",Not cost-burdened,80656
+Loudoun County,2021,Homeowner,"Less than $20,000",Cost-burdened,1830
+Loudoun County,2021,Homeowner,"Less than $20,000",Not cost-burdened,66
+Loudoun County,2021,Renter,"$20,000 to $34,999",Cost-burdened,2752
+Loudoun County,2021,Renter,"$20,000 to $34,999",Not cost-burdened,55
+Loudoun County,2021,Renter,"$35,000 to $49,999",Cost-burdened,3061
+Loudoun County,2021,Renter,"$35,000 to $49,999",Not cost-burdened,213
+Loudoun County,2021,Renter,"$50,000 to $74,999",Cost-burdened,3209
+Loudoun County,2021,Renter,"$50,000 to $74,999",Not cost-burdened,1458
+Loudoun County,2021,Renter,"$75,000 or more",Cost-burdened,2145
+Loudoun County,2021,Renter,"$75,000 or more",Not cost-burdened,14571
+Loudoun County,2021,Renter,"Less than $20,000",Cost-burdened,1443
+Loudoun County,2021,Renter,"Less than $20,000",Not cost-burdened,122
+Loudoun County,2022,Homeowner,"$20,000 to $34,999",Cost-burdened,1362
+Loudoun County,2022,Homeowner,"$20,000 to $34,999",Not cost-burdened,382
+Loudoun County,2022,Homeowner,"$35,000 to $49,999",Cost-burdened,1433
+Loudoun County,2022,Homeowner,"$35,000 to $49,999",Not cost-burdened,1188
+Loudoun County,2022,Homeowner,"$50,000 to $74,999",Cost-burdened,2848
+Loudoun County,2022,Homeowner,"$50,000 to $74,999",Not cost-burdened,2665
+Loudoun County,2022,Homeowner,"$75,000 or more",Cost-burdened,11346
+Loudoun County,2022,Homeowner,"$75,000 or more",Not cost-burdened,83741
+Loudoun County,2022,Homeowner,"Less than $20,000",Cost-burdened,1901
+Loudoun County,2022,Homeowner,"Less than $20,000",Not cost-burdened,69
+Loudoun County,2022,Renter,"$20,000 to $34,999",Cost-burdened,2477
+Loudoun County,2022,Renter,"$20,000 to $34,999",Not cost-burdened,43
+Loudoun County,2022,Renter,"$35,000 to $49,999",Cost-burdened,3015
+Loudoun County,2022,Renter,"$35,000 to $49,999",Not cost-burdened,97
+Loudoun County,2022,Renter,"$50,000 to $74,999",Cost-burdened,3209
+Loudoun County,2022,Renter,"$50,000 to $74,999",Not cost-burdened,962
+Loudoun County,2022,Renter,"$75,000 or more",Cost-burdened,2891
+Loudoun County,2022,Renter,"$75,000 or more",Not cost-burdened,15548
+Loudoun County,2022,Renter,"Less than $20,000",Cost-burdened,1679
+Loudoun County,2022,Renter,"Less than $20,000",Not cost-burdened,68
+Manassas Park city,2010,Homeowner,"$20,000 to $34,999",Cost-burdened,112
+Manassas Park city,2010,Homeowner,"$20,000 to $34,999",Not cost-burdened,44
+Manassas Park city,2010,Homeowner,"$35,000 to $49,999",Cost-burdened,330
+Manassas Park city,2010,Homeowner,"$35,000 to $49,999",Not cost-burdened,28
+Manassas Park city,2010,Homeowner,"$50,000 to $74,999",Cost-burdened,569
+Manassas Park city,2010,Homeowner,"$50,000 to $74,999",Not cost-burdened,163
+Manassas Park city,2010,Homeowner,"$75,000 or more",Cost-burdened,608
+Manassas Park city,2010,Homeowner,"$75,000 or more",Not cost-burdened,1029
+Manassas Park city,2010,Homeowner,"Less than $20,000",Cost-burdened,103
+Manassas Park city,2010,Homeowner,"Less than $20,000",Not cost-burdened,0
+Manassas Park city,2010,Renter,"$20,000 to $34,999",Cost-burdened,62
+Manassas Park city,2010,Renter,"$20,000 to $34,999",Not cost-burdened,9
+Manassas Park city,2010,Renter,"$35,000 to $49,999",Cost-burdened,188
+Manassas Park city,2010,Renter,"$35,000 to $49,999",Not cost-burdened,57
+Manassas Park city,2010,Renter,"$50,000 to $74,999",Cost-burdened,108
+Manassas Park city,2010,Renter,"$50,000 to $74,999",Not cost-burdened,284
+Manassas Park city,2010,Renter,"$75,000 or more",Cost-burdened,17
+Manassas Park city,2010,Renter,"$75,000 or more",Not cost-burdened,200
+Manassas Park city,2010,Renter,"Less than $20,000",Cost-burdened,243
+Manassas Park city,2010,Renter,"Less than $20,000",Not cost-burdened,0
+Manassas Park city,2011,Homeowner,"$20,000 to $34,999",Cost-burdened,131
+Manassas Park city,2011,Homeowner,"$20,000 to $34,999",Not cost-burdened,55
+Manassas Park city,2011,Homeowner,"$35,000 to $49,999",Cost-burdened,215
+Manassas Park city,2011,Homeowner,"$35,000 to $49,999",Not cost-burdened,96
+Manassas Park city,2011,Homeowner,"$50,000 to $74,999",Cost-burdened,517
+Manassas Park city,2011,Homeowner,"$50,000 to $74,999",Not cost-burdened,193
+Manassas Park city,2011,Homeowner,"$75,000 or more",Cost-burdened,546
+Manassas Park city,2011,Homeowner,"$75,000 or more",Not cost-burdened,1043
+Manassas Park city,2011,Homeowner,"Less than $20,000",Cost-burdened,64
+Manassas Park city,2011,Homeowner,"Less than $20,000",Not cost-burdened,0
+Manassas Park city,2011,Renter,"$20,000 to $34,999",Cost-burdened,99
+Manassas Park city,2011,Renter,"$20,000 to $34,999",Not cost-burdened,8
+Manassas Park city,2011,Renter,"$35,000 to $49,999",Cost-burdened,143
+Manassas Park city,2011,Renter,"$35,000 to $49,999",Not cost-burdened,35
+Manassas Park city,2011,Renter,"$50,000 to $74,999",Cost-burdened,180
+Manassas Park city,2011,Renter,"$50,000 to $74,999",Not cost-burdened,298
+Manassas Park city,2011,Renter,"$75,000 or more",Cost-burdened,0
+Manassas Park city,2011,Renter,"$75,000 or more",Not cost-burdened,321
+Manassas Park city,2011,Renter,"Less than $20,000",Cost-burdened,254
+Manassas Park city,2011,Renter,"Less than $20,000",Not cost-burdened,0
+Manassas Park city,2012,Homeowner,"$20,000 to $34,999",Cost-burdened,116
+Manassas Park city,2012,Homeowner,"$20,000 to $34,999",Not cost-burdened,82
+Manassas Park city,2012,Homeowner,"$35,000 to $49,999",Cost-burdened,191
+Manassas Park city,2012,Homeowner,"$35,000 to $49,999",Not cost-burdened,75
+Manassas Park city,2012,Homeowner,"$50,000 to $74,999",Cost-burdened,512
+Manassas Park city,2012,Homeowner,"$50,000 to $74,999",Not cost-burdened,199
+Manassas Park city,2012,Homeowner,"$75,000 or more",Cost-burdened,495
+Manassas Park city,2012,Homeowner,"$75,000 or more",Not cost-burdened,1060
+Manassas Park city,2012,Homeowner,"Less than $20,000",Cost-burdened,74
+Manassas Park city,2012,Homeowner,"Less than $20,000",Not cost-burdened,12
+Manassas Park city,2012,Renter,"$20,000 to $34,999",Cost-burdened,119
+Manassas Park city,2012,Renter,"$20,000 to $34,999",Not cost-burdened,0
+Manassas Park city,2012,Renter,"$35,000 to $49,999",Cost-burdened,99
+Manassas Park city,2012,Renter,"$35,000 to $49,999",Not cost-burdened,50
+Manassas Park city,2012,Renter,"$50,000 to $74,999",Cost-burdened,232
+Manassas Park city,2012,Renter,"$50,000 to $74,999",Not cost-burdened,193
+Manassas Park city,2012,Renter,"$75,000 or more",Cost-burdened,0
+Manassas Park city,2012,Renter,"$75,000 or more",Not cost-burdened,460
+Manassas Park city,2012,Renter,"Less than $20,000",Cost-burdened,256
+Manassas Park city,2012,Renter,"Less than $20,000",Not cost-burdened,0
+Manassas Park city,2013,Homeowner,"$20,000 to $34,999",Cost-burdened,182
+Manassas Park city,2013,Homeowner,"$20,000 to $34,999",Not cost-burdened,91
+Manassas Park city,2013,Homeowner,"$35,000 to $49,999",Cost-burdened,266
+Manassas Park city,2013,Homeowner,"$35,000 to $49,999",Not cost-burdened,82
+Manassas Park city,2013,Homeowner,"$50,000 to $74,999",Cost-burdened,409
+Manassas Park city,2013,Homeowner,"$50,000 to $74,999",Not cost-burdened,266
+Manassas Park city,2013,Homeowner,"$75,000 or more",Cost-burdened,253
+Manassas Park city,2013,Homeowner,"$75,000 or more",Not cost-burdened,1156
+Manassas Park city,2013,Homeowner,"Less than $20,000",Cost-burdened,103
+Manassas Park city,2013,Homeowner,"Less than $20,000",Not cost-burdened,17
+Manassas Park city,2013,Renter,"$20,000 to $34,999",Cost-burdened,174
+Manassas Park city,2013,Renter,"$20,000 to $34,999",Not cost-burdened,0
+Manassas Park city,2013,Renter,"$35,000 to $49,999",Cost-burdened,83
+Manassas Park city,2013,Renter,"$35,000 to $49,999",Not cost-burdened,40
+Manassas Park city,2013,Renter,"$50,000 to $74,999",Cost-burdened,192
+Manassas Park city,2013,Renter,"$50,000 to $74,999",Not cost-burdened,174
+Manassas Park city,2013,Renter,"$75,000 or more",Cost-burdened,24
+Manassas Park city,2013,Renter,"$75,000 or more",Not cost-burdened,612
+Manassas Park city,2013,Renter,"Less than $20,000",Cost-burdened,259
+Manassas Park city,2013,Renter,"Less than $20,000",Not cost-burdened,0
+Manassas Park city,2014,Homeowner,"$20,000 to $34,999",Cost-burdened,111
+Manassas Park city,2014,Homeowner,"$20,000 to $34,999",Not cost-burdened,83
+Manassas Park city,2014,Homeowner,"$35,000 to $49,999",Cost-burdened,199
+Manassas Park city,2014,Homeowner,"$35,000 to $49,999",Not cost-burdened,80
+Manassas Park city,2014,Homeowner,"$50,000 to $74,999",Cost-burdened,430
+Manassas Park city,2014,Homeowner,"$50,000 to $74,999",Not cost-burdened,326
+Manassas Park city,2014,Homeowner,"$75,000 or more",Cost-burdened,156
+Manassas Park city,2014,Homeowner,"$75,000 or more",Not cost-burdened,1308
+Manassas Park city,2014,Homeowner,"Less than $20,000",Cost-burdened,181
+Manassas Park city,2014,Homeowner,"Less than $20,000",Not cost-burdened,19
+Manassas Park city,2014,Renter,"$20,000 to $34,999",Cost-burdened,117
+Manassas Park city,2014,Renter,"$20,000 to $34,999",Not cost-burdened,0
+Manassas Park city,2014,Renter,"$35,000 to $49,999",Cost-burdened,120
+Manassas Park city,2014,Renter,"$35,000 to $49,999",Not cost-burdened,39
+Manassas Park city,2014,Renter,"$50,000 to $74,999",Cost-burdened,217
+Manassas Park city,2014,Renter,"$50,000 to $74,999",Not cost-burdened,132
+Manassas Park city,2014,Renter,"$75,000 or more",Cost-burdened,24
+Manassas Park city,2014,Renter,"$75,000 or more",Not cost-burdened,690
+Manassas Park city,2014,Renter,"Less than $20,000",Cost-burdened,270
+Manassas Park city,2014,Renter,"Less than $20,000",Not cost-burdened,12
+Manassas Park city,2015,Homeowner,"$20,000 to $34,999",Cost-burdened,183
+Manassas Park city,2015,Homeowner,"$20,000 to $34,999",Not cost-burdened,71
+Manassas Park city,2015,Homeowner,"$35,000 to $49,999",Cost-burdened,227
+Manassas Park city,2015,Homeowner,"$35,000 to $49,999",Not cost-burdened,60
+Manassas Park city,2015,Homeowner,"$50,000 to $74,999",Cost-burdened,441
+Manassas Park city,2015,Homeowner,"$50,000 to $74,999",Not cost-burdened,381
+Manassas Park city,2015,Homeowner,"$75,000 or more",Cost-burdened,199
+Manassas Park city,2015,Homeowner,"$75,000 or more",Not cost-burdened,1467
+Manassas Park city,2015,Homeowner,"Less than $20,000",Cost-burdened,188
+Manassas Park city,2015,Homeowner,"Less than $20,000",Not cost-burdened,29
+Manassas Park city,2015,Renter,"$20,000 to $34,999",Cost-burdened,104
+Manassas Park city,2015,Renter,"$20,000 to $34,999",Not cost-burdened,0
+Manassas Park city,2015,Renter,"$35,000 to $49,999",Cost-burdened,101
+Manassas Park city,2015,Renter,"$35,000 to $49,999",Not cost-burdened,6
+Manassas Park city,2015,Renter,"$50,000 to $74,999",Cost-burdened,223
+Manassas Park city,2015,Renter,"$50,000 to $74,999",Not cost-burdened,221
+Manassas Park city,2015,Renter,"$75,000 or more",Cost-burdened,16
+Manassas Park city,2015,Renter,"$75,000 or more",Not cost-burdened,569
+Manassas Park city,2015,Renter,"Less than $20,000",Cost-burdened,194
+Manassas Park city,2015,Renter,"Less than $20,000",Not cost-burdened,9
+Manassas Park city,2016,Homeowner,"$20,000 to $34,999",Cost-burdened,199
+Manassas Park city,2016,Homeowner,"$20,000 to $34,999",Not cost-burdened,49
+Manassas Park city,2016,Homeowner,"$35,000 to $49,999",Cost-burdened,235
+Manassas Park city,2016,Homeowner,"$35,000 to $49,999",Not cost-burdened,35
+Manassas Park city,2016,Homeowner,"$50,000 to $74,999",Cost-burdened,396
+Manassas Park city,2016,Homeowner,"$50,000 to $74,999",Not cost-burdened,261
+Manassas Park city,2016,Homeowner,"$75,000 or more",Cost-burdened,177
+Manassas Park city,2016,Homeowner,"$75,000 or more",Not cost-burdened,1601
+Manassas Park city,2016,Homeowner,"Less than $20,000",Cost-burdened,123
+Manassas Park city,2016,Homeowner,"Less than $20,000",Not cost-burdened,36
+Manassas Park city,2016,Renter,"$20,000 to $34,999",Cost-burdened,189
+Manassas Park city,2016,Renter,"$20,000 to $34,999",Not cost-burdened,0
+Manassas Park city,2016,Renter,"$35,000 to $49,999",Cost-burdened,106
+Manassas Park city,2016,Renter,"$35,000 to $49,999",Not cost-burdened,13
+Manassas Park city,2016,Renter,"$50,000 to $74,999",Cost-burdened,219
+Manassas Park city,2016,Renter,"$50,000 to $74,999",Not cost-burdened,278
+Manassas Park city,2016,Renter,"$75,000 or more",Cost-burdened,11
+Manassas Park city,2016,Renter,"$75,000 or more",Not cost-burdened,564
+Manassas Park city,2016,Renter,"Less than $20,000",Cost-burdened,201
+Manassas Park city,2016,Renter,"Less than $20,000",Not cost-burdened,10
+Manassas Park city,2017,Homeowner,"$20,000 to $34,999",Cost-burdened,269
+Manassas Park city,2017,Homeowner,"$20,000 to $34,999",Not cost-burdened,34
+Manassas Park city,2017,Homeowner,"$35,000 to $49,999",Cost-burdened,276
+Manassas Park city,2017,Homeowner,"$35,000 to $49,999",Not cost-burdened,45
+Manassas Park city,2017,Homeowner,"$50,000 to $74,999",Cost-burdened,291
+Manassas Park city,2017,Homeowner,"$50,000 to $74,999",Not cost-burdened,293
+Manassas Park city,2017,Homeowner,"$75,000 or more",Cost-burdened,214
+Manassas Park city,2017,Homeowner,"$75,000 or more",Not cost-burdened,1673
+Manassas Park city,2017,Homeowner,"Less than $20,000",Cost-burdened,88
+Manassas Park city,2017,Homeowner,"Less than $20,000",Not cost-burdened,41
+Manassas Park city,2017,Renter,"$20,000 to $34,999",Cost-burdened,201
+Manassas Park city,2017,Renter,"$20,000 to $34,999",Not cost-burdened,0
+Manassas Park city,2017,Renter,"$35,000 to $49,999",Cost-burdened,134
+Manassas Park city,2017,Renter,"$35,000 to $49,999",Not cost-burdened,0
+Manassas Park city,2017,Renter,"$50,000 to $74,999",Cost-burdened,133
+Manassas Park city,2017,Renter,"$50,000 to $74,999",Not cost-burdened,202
+Manassas Park city,2017,Renter,"$75,000 or more",Cost-burdened,10
+Manassas Park city,2017,Renter,"$75,000 or more",Not cost-burdened,688
+Manassas Park city,2017,Renter,"Less than $20,000",Cost-burdened,135
+Manassas Park city,2017,Renter,"Less than $20,000",Not cost-burdened,8
+Manassas Park city,2018,Homeowner,"$20,000 to $34,999",Cost-burdened,220
+Manassas Park city,2018,Homeowner,"$20,000 to $34,999",Not cost-burdened,20
+Manassas Park city,2018,Homeowner,"$35,000 to $49,999",Cost-burdened,164
+Manassas Park city,2018,Homeowner,"$35,000 to $49,999",Not cost-burdened,40
+Manassas Park city,2018,Homeowner,"$50,000 to $74,999",Cost-burdened,325
+Manassas Park city,2018,Homeowner,"$50,000 to $74,999",Not cost-burdened,201
+Manassas Park city,2018,Homeowner,"$75,000 or more",Cost-burdened,260
+Manassas Park city,2018,Homeowner,"$75,000 or more",Not cost-burdened,1697
+Manassas Park city,2018,Homeowner,"Less than $20,000",Cost-burdened,140
+Manassas Park city,2018,Homeowner,"Less than $20,000",Not cost-burdened,31
+Manassas Park city,2018,Renter,"$20,000 to $34,999",Cost-burdened,170
+Manassas Park city,2018,Renter,"$20,000 to $34,999",Not cost-burdened,0
+Manassas Park city,2018,Renter,"$35,000 to $49,999",Cost-burdened,186
+Manassas Park city,2018,Renter,"$35,000 to $49,999",Not cost-burdened,0
+Manassas Park city,2018,Renter,"$50,000 to $74,999",Cost-burdened,304
+Manassas Park city,2018,Renter,"$50,000 to $74,999",Not cost-burdened,161
+Manassas Park city,2018,Renter,"$75,000 or more",Cost-burdened,0
+Manassas Park city,2018,Renter,"$75,000 or more",Not cost-burdened,625
+Manassas Park city,2018,Renter,"Less than $20,000",Cost-burdened,111
+Manassas Park city,2018,Renter,"Less than $20,000",Not cost-burdened,9
+Manassas Park city,2019,Homeowner,"$20,000 to $34,999",Cost-burdened,228
+Manassas Park city,2019,Homeowner,"$20,000 to $34,999",Not cost-burdened,33
+Manassas Park city,2019,Homeowner,"$35,000 to $49,999",Cost-burdened,153
+Manassas Park city,2019,Homeowner,"$35,000 to $49,999",Not cost-burdened,52
+Manassas Park city,2019,Homeowner,"$50,000 to $74,999",Cost-burdened,291
+Manassas Park city,2019,Homeowner,"$50,000 to $74,999",Not cost-burdened,205
+Manassas Park city,2019,Homeowner,"$75,000 or more",Cost-burdened,230
+Manassas Park city,2019,Homeowner,"$75,000 or more",Not cost-burdened,1794
+Manassas Park city,2019,Homeowner,"Less than $20,000",Cost-burdened,45
+Manassas Park city,2019,Homeowner,"Less than $20,000",Not cost-burdened,28
+Manassas Park city,2019,Renter,"$20,000 to $34,999",Cost-burdened,163
+Manassas Park city,2019,Renter,"$20,000 to $34,999",Not cost-burdened,0
+Manassas Park city,2019,Renter,"$35,000 to $49,999",Cost-burdened,262
+Manassas Park city,2019,Renter,"$35,000 to $49,999",Not cost-burdened,0
+Manassas Park city,2019,Renter,"$50,000 to $74,999",Cost-burdened,251
+Manassas Park city,2019,Renter,"$50,000 to $74,999",Not cost-burdened,144
+Manassas Park city,2019,Renter,"$75,000 or more",Cost-burdened,32
+Manassas Park city,2019,Renter,"$75,000 or more",Not cost-burdened,631
+Manassas Park city,2019,Renter,"Less than $20,000",Cost-burdened,71
+Manassas Park city,2019,Renter,"Less than $20,000",Not cost-burdened,0
+Manassas Park city,2020,Homeowner,"$20,000 to $34,999",Cost-burdened,139
+Manassas Park city,2020,Homeowner,"$20,000 to $34,999",Not cost-burdened,44
+Manassas Park city,2020,Homeowner,"$35,000 to $49,999",Cost-burdened,178
+Manassas Park city,2020,Homeowner,"$35,000 to $49,999",Not cost-burdened,42
+Manassas Park city,2020,Homeowner,"$50,000 to $74,999",Cost-burdened,373
+Manassas Park city,2020,Homeowner,"$50,000 to $74,999",Not cost-burdened,137
+Manassas Park city,2020,Homeowner,"$75,000 or more",Cost-burdened,108
+Manassas Park city,2020,Homeowner,"$75,000 or more",Not cost-burdened,1721
+Manassas Park city,2020,Homeowner,"Less than $20,000",Cost-burdened,34
+Manassas Park city,2020,Homeowner,"Less than $20,000",Not cost-burdened,14
+Manassas Park city,2020,Renter,"$20,000 to $34,999",Cost-burdened,175
+Manassas Park city,2020,Renter,"$20,000 to $34,999",Not cost-burdened,0
+Manassas Park city,2020,Renter,"$35,000 to $49,999",Cost-burdened,238
+Manassas Park city,2020,Renter,"$35,000 to $49,999",Not cost-burdened,0
+Manassas Park city,2020,Renter,"$50,000 to $74,999",Cost-burdened,508
+Manassas Park city,2020,Renter,"$50,000 to $74,999",Not cost-burdened,163
+Manassas Park city,2020,Renter,"$75,000 or more",Cost-burdened,60
+Manassas Park city,2020,Renter,"$75,000 or more",Not cost-burdened,593
+Manassas Park city,2020,Renter,"Less than $20,000",Cost-burdened,56
+Manassas Park city,2020,Renter,"Less than $20,000",Not cost-burdened,0
+Manassas Park city,2021,Homeowner,"$20,000 to $34,999",Cost-burdened,127
+Manassas Park city,2021,Homeowner,"$20,000 to $34,999",Not cost-burdened,24
+Manassas Park city,2021,Homeowner,"$35,000 to $49,999",Cost-burdened,146
+Manassas Park city,2021,Homeowner,"$35,000 to $49,999",Not cost-burdened,32
+Manassas Park city,2021,Homeowner,"$50,000 to $74,999",Cost-burdened,355
+Manassas Park city,2021,Homeowner,"$50,000 to $74,999",Not cost-burdened,255
+Manassas Park city,2021,Homeowner,"$75,000 or more",Cost-burdened,199
+Manassas Park city,2021,Homeowner,"$75,000 or more",Not cost-burdened,1993
+Manassas Park city,2021,Homeowner,"Less than $20,000",Cost-burdened,26
+Manassas Park city,2021,Homeowner,"Less than $20,000",Not cost-burdened,0
+Manassas Park city,2021,Renter,"$20,000 to $34,999",Cost-burdened,238
+Manassas Park city,2021,Renter,"$20,000 to $34,999",Not cost-burdened,0
+Manassas Park city,2021,Renter,"$35,000 to $49,999",Cost-burdened,317
+Manassas Park city,2021,Renter,"$35,000 to $49,999",Not cost-burdened,0
+Manassas Park city,2021,Renter,"$50,000 to $74,999",Cost-burdened,517
+Manassas Park city,2021,Renter,"$50,000 to $74,999",Not cost-burdened,22
+Manassas Park city,2021,Renter,"$75,000 or more",Cost-burdened,80
+Manassas Park city,2021,Renter,"$75,000 or more",Not cost-burdened,771
+Manassas Park city,2021,Renter,"Less than $20,000",Cost-burdened,21
+Manassas Park city,2021,Renter,"Less than $20,000",Not cost-burdened,0
+Manassas Park city,2022,Homeowner,"$20,000 to $34,999",Cost-burdened,54
+Manassas Park city,2022,Homeowner,"$20,000 to $34,999",Not cost-burdened,16
+Manassas Park city,2022,Homeowner,"$35,000 to $49,999",Cost-burdened,238
+Manassas Park city,2022,Homeowner,"$35,000 to $49,999",Not cost-burdened,43
+Manassas Park city,2022,Homeowner,"$50,000 to $74,999",Cost-burdened,320
+Manassas Park city,2022,Homeowner,"$50,000 to $74,999",Not cost-burdened,250
+Manassas Park city,2022,Homeowner,"$75,000 or more",Cost-burdened,260
+Manassas Park city,2022,Homeowner,"$75,000 or more",Not cost-burdened,2055
+Manassas Park city,2022,Homeowner,"Less than $20,000",Cost-burdened,51
+Manassas Park city,2022,Homeowner,"Less than $20,000",Not cost-burdened,0
+Manassas Park city,2022,Renter,"$20,000 to $34,999",Cost-burdened,187
+Manassas Park city,2022,Renter,"$20,000 to $34,999",Not cost-burdened,0
+Manassas Park city,2022,Renter,"$35,000 to $49,999",Cost-burdened,75
+Manassas Park city,2022,Renter,"$35,000 to $49,999",Not cost-burdened,0
+Manassas Park city,2022,Renter,"$50,000 to $74,999",Cost-burdened,708
+Manassas Park city,2022,Renter,"$50,000 to $74,999",Not cost-burdened,0
+Manassas Park city,2022,Renter,"$75,000 or more",Cost-burdened,141
+Manassas Park city,2022,Renter,"$75,000 or more",Not cost-burdened,680
+Manassas Park city,2022,Renter,"Less than $20,000",Cost-burdened,84
+Manassas Park city,2022,Renter,"Less than $20,000",Not cost-burdened,0
+Manassas city,2010,Homeowner,"$20,000 to $34,999",Cost-burdened,430
+Manassas city,2010,Homeowner,"$20,000 to $34,999",Not cost-burdened,109
+Manassas city,2010,Homeowner,"$35,000 to $49,999",Cost-burdened,389
+Manassas city,2010,Homeowner,"$35,000 to $49,999",Not cost-burdened,247
+Manassas city,2010,Homeowner,"$50,000 to $74,999",Cost-burdened,731
+Manassas city,2010,Homeowner,"$50,000 to $74,999",Not cost-burdened,583
+Manassas city,2010,Homeowner,"$75,000 or more",Cost-burdened,756
+Manassas city,2010,Homeowner,"$75,000 or more",Not cost-burdened,4396
+Manassas city,2010,Homeowner,"Less than $20,000",Cost-burdened,287
+Manassas city,2010,Homeowner,"Less than $20,000",Not cost-burdened,14
+Manassas city,2010,Renter,"$20,000 to $34,999",Cost-burdened,695
+Manassas city,2010,Renter,"$20,000 to $34,999",Not cost-burdened,68
+Manassas city,2010,Renter,"$35,000 to $49,999",Cost-burdened,459
+Manassas city,2010,Renter,"$35,000 to $49,999",Not cost-burdened,180
+Manassas city,2010,Renter,"$50,000 to $74,999",Cost-burdened,376
+Manassas city,2010,Renter,"$50,000 to $74,999",Not cost-burdened,432
+Manassas city,2010,Renter,"$75,000 or more",Cost-burdened,52
+Manassas city,2010,Renter,"$75,000 or more",Not cost-burdened,657
+Manassas city,2010,Renter,"Less than $20,000",Cost-burdened,707
+Manassas city,2010,Renter,"Less than $20,000",Not cost-burdened,11
+Manassas city,2011,Homeowner,"$20,000 to $34,999",Cost-burdened,450
+Manassas city,2011,Homeowner,"$20,000 to $34,999",Not cost-burdened,113
+Manassas city,2011,Homeowner,"$35,000 to $49,999",Cost-burdened,409
+Manassas city,2011,Homeowner,"$35,000 to $49,999",Not cost-burdened,225
+Manassas city,2011,Homeowner,"$50,000 to $74,999",Cost-burdened,640
+Manassas city,2011,Homeowner,"$50,000 to $74,999",Not cost-burdened,703
+Manassas city,2011,Homeowner,"$75,000 or more",Cost-burdened,633
+Manassas city,2011,Homeowner,"$75,000 or more",Not cost-burdened,4324
+Manassas city,2011,Homeowner,"Less than $20,000",Cost-burdened,318
+Manassas city,2011,Homeowner,"Less than $20,000",Not cost-burdened,13
+Manassas city,2011,Renter,"$20,000 to $34,999",Cost-burdened,742
+Manassas city,2011,Renter,"$20,000 to $34,999",Not cost-burdened,53
+Manassas city,2011,Renter,"$35,000 to $49,999",Cost-burdened,542
+Manassas city,2011,Renter,"$35,000 to $49,999",Not cost-burdened,169
+Manassas city,2011,Renter,"$50,000 to $74,999",Cost-burdened,335
+Manassas city,2011,Renter,"$50,000 to $74,999",Not cost-burdened,652
+Manassas city,2011,Renter,"$75,000 or more",Cost-burdened,29
+Manassas city,2011,Renter,"$75,000 or more",Not cost-burdened,687
+Manassas city,2011,Renter,"Less than $20,000",Cost-burdened,675
+Manassas city,2011,Renter,"Less than $20,000",Not cost-burdened,11
+Manassas city,2012,Homeowner,"$20,000 to $34,999",Cost-burdened,449
+Manassas city,2012,Homeowner,"$20,000 to $34,999",Not cost-burdened,152
+Manassas city,2012,Homeowner,"$35,000 to $49,999",Cost-burdened,312
+Manassas city,2012,Homeowner,"$35,000 to $49,999",Not cost-burdened,345
+Manassas city,2012,Homeowner,"$50,000 to $74,999",Cost-burdened,709
+Manassas city,2012,Homeowner,"$50,000 to $74,999",Not cost-burdened,741
+Manassas city,2012,Homeowner,"$75,000 or more",Cost-burdened,530
+Manassas city,2012,Homeowner,"$75,000 or more",Not cost-burdened,4177
+Manassas city,2012,Homeowner,"Less than $20,000",Cost-burdened,345
+Manassas city,2012,Homeowner,"Less than $20,000",Not cost-burdened,47
+Manassas city,2012,Renter,"$20,000 to $34,999",Cost-burdened,775
+Manassas city,2012,Renter,"$20,000 to $34,999",Not cost-burdened,85
+Manassas city,2012,Renter,"$35,000 to $49,999",Cost-burdened,565
+Manassas city,2012,Renter,"$35,000 to $49,999",Not cost-burdened,114
+Manassas city,2012,Renter,"$50,000 to $74,999",Cost-burdened,442
+Manassas city,2012,Renter,"$50,000 to $74,999",Not cost-burdened,735
+Manassas city,2012,Renter,"$75,000 or more",Cost-burdened,56
+Manassas city,2012,Renter,"$75,000 or more",Not cost-burdened,739
+Manassas city,2012,Renter,"Less than $20,000",Cost-burdened,565
+Manassas city,2012,Renter,"Less than $20,000",Not cost-burdened,0
+Manassas city,2013,Homeowner,"$20,000 to $34,999",Cost-burdened,387
+Manassas city,2013,Homeowner,"$20,000 to $34,999",Not cost-burdened,130
+Manassas city,2013,Homeowner,"$35,000 to $49,999",Cost-burdened,285
+Manassas city,2013,Homeowner,"$35,000 to $49,999",Not cost-burdened,306
+Manassas city,2013,Homeowner,"$50,000 to $74,999",Cost-burdened,737
+Manassas city,2013,Homeowner,"$50,000 to $74,999",Not cost-burdened,795
+Manassas city,2013,Homeowner,"$75,000 or more",Cost-burdened,420
+Manassas city,2013,Homeowner,"$75,000 or more",Not cost-burdened,4406
+Manassas city,2013,Homeowner,"Less than $20,000",Cost-burdened,332
+Manassas city,2013,Homeowner,"Less than $20,000",Not cost-burdened,50
+Manassas city,2013,Renter,"$20,000 to $34,999",Cost-burdened,819
+Manassas city,2013,Renter,"$20,000 to $34,999",Not cost-burdened,109
+Manassas city,2013,Renter,"$35,000 to $49,999",Cost-burdened,636
+Manassas city,2013,Renter,"$35,000 to $49,999",Not cost-burdened,76
+Manassas city,2013,Renter,"$50,000 to $74,999",Cost-burdened,420
+Manassas city,2013,Renter,"$50,000 to $74,999",Not cost-burdened,662
+Manassas city,2013,Renter,"$75,000 or more",Cost-burdened,58
+Manassas city,2013,Renter,"$75,000 or more",Not cost-burdened,790
+Manassas city,2013,Renter,"Less than $20,000",Cost-burdened,532
+Manassas city,2013,Renter,"Less than $20,000",Not cost-burdened,0
+Manassas city,2014,Homeowner,"$20,000 to $34,999",Cost-burdened,358
+Manassas city,2014,Homeowner,"$20,000 to $34,999",Not cost-burdened,136
+Manassas city,2014,Homeowner,"$35,000 to $49,999",Cost-burdened,328
+Manassas city,2014,Homeowner,"$35,000 to $49,999",Not cost-burdened,258
+Manassas city,2014,Homeowner,"$50,000 to $74,999",Cost-burdened,752
+Manassas city,2014,Homeowner,"$50,000 to $74,999",Not cost-burdened,867
+Manassas city,2014,Homeowner,"$75,000 or more",Cost-burdened,336
+Manassas city,2014,Homeowner,"$75,000 or more",Not cost-burdened,4480
+Manassas city,2014,Homeowner,"Less than $20,000",Cost-burdened,306
+Manassas city,2014,Homeowner,"Less than $20,000",Not cost-burdened,91
+Manassas city,2014,Renter,"$20,000 to $34,999",Cost-burdened,796
+Manassas city,2014,Renter,"$20,000 to $34,999",Not cost-burdened,108
+Manassas city,2014,Renter,"$35,000 to $49,999",Cost-burdened,765
+Manassas city,2014,Renter,"$35,000 to $49,999",Not cost-burdened,98
+Manassas city,2014,Renter,"$50,000 to $74,999",Cost-burdened,390
+Manassas city,2014,Renter,"$50,000 to $74,999",Not cost-burdened,669
+Manassas city,2014,Renter,"$75,000 or more",Cost-burdened,26
+Manassas city,2014,Renter,"$75,000 or more",Not cost-burdened,807
+Manassas city,2014,Renter,"Less than $20,000",Cost-burdened,542
+Manassas city,2014,Renter,"Less than $20,000",Not cost-burdened,0
+Manassas city,2015,Homeowner,"$20,000 to $34,999",Cost-burdened,460
+Manassas city,2015,Homeowner,"$20,000 to $34,999",Not cost-burdened,123
+Manassas city,2015,Homeowner,"$35,000 to $49,999",Cost-burdened,298
+Manassas city,2015,Homeowner,"$35,000 to $49,999",Not cost-burdened,273
+Manassas city,2015,Homeowner,"$50,000 to $74,999",Cost-burdened,673
+Manassas city,2015,Homeowner,"$50,000 to $74,999",Not cost-burdened,955
+Manassas city,2015,Homeowner,"$75,000 or more",Cost-burdened,383
+Manassas city,2015,Homeowner,"$75,000 or more",Not cost-burdened,4452
+Manassas city,2015,Homeowner,"Less than $20,000",Cost-burdened,253
+Manassas city,2015,Homeowner,"Less than $20,000",Not cost-burdened,79
+Manassas city,2015,Renter,"$20,000 to $34,999",Cost-burdened,616
+Manassas city,2015,Renter,"$20,000 to $34,999",Not cost-burdened,115
+Manassas city,2015,Renter,"$35,000 to $49,999",Cost-burdened,668
+Manassas city,2015,Renter,"$35,000 to $49,999",Not cost-burdened,182
+Manassas city,2015,Renter,"$50,000 to $74,999",Cost-burdened,427
+Manassas city,2015,Renter,"$50,000 to $74,999",Not cost-burdened,794
+Manassas city,2015,Renter,"$75,000 or more",Cost-burdened,40
+Manassas city,2015,Renter,"$75,000 or more",Not cost-burdened,981
+Manassas city,2015,Renter,"Less than $20,000",Cost-burdened,462
+Manassas city,2015,Renter,"Less than $20,000",Not cost-burdened,0
+Manassas city,2016,Homeowner,"$20,000 to $34,999",Cost-burdened,424
+Manassas city,2016,Homeowner,"$20,000 to $34,999",Not cost-burdened,83
+Manassas city,2016,Homeowner,"$35,000 to $49,999",Cost-burdened,271
+Manassas city,2016,Homeowner,"$35,000 to $49,999",Not cost-burdened,270
+Manassas city,2016,Homeowner,"$50,000 to $74,999",Cost-burdened,648
+Manassas city,2016,Homeowner,"$50,000 to $74,999",Not cost-burdened,766
+Manassas city,2016,Homeowner,"$75,000 or more",Cost-burdened,369
+Manassas city,2016,Homeowner,"$75,000 or more",Not cost-burdened,4569
+Manassas city,2016,Homeowner,"Less than $20,000",Cost-burdened,215
+Manassas city,2016,Homeowner,"Less than $20,000",Not cost-burdened,74
+Manassas city,2016,Renter,"$20,000 to $34,999",Cost-burdened,583
+Manassas city,2016,Renter,"$20,000 to $34,999",Not cost-burdened,111
+Manassas city,2016,Renter,"$35,000 to $49,999",Cost-burdened,842
+Manassas city,2016,Renter,"$35,000 to $49,999",Not cost-burdened,164
+Manassas city,2016,Renter,"$50,000 to $74,999",Cost-burdened,516
+Manassas city,2016,Renter,"$50,000 to $74,999",Not cost-burdened,645
+Manassas city,2016,Renter,"$75,000 or more",Cost-burdened,35
+Manassas city,2016,Renter,"$75,000 or more",Not cost-burdened,1145
+Manassas city,2016,Renter,"Less than $20,000",Cost-burdened,464
+Manassas city,2016,Renter,"Less than $20,000",Not cost-burdened,12
+Manassas city,2017,Homeowner,"$20,000 to $34,999",Cost-burdened,400
+Manassas city,2017,Homeowner,"$20,000 to $34,999",Not cost-burdened,85
+Manassas city,2017,Homeowner,"$35,000 to $49,999",Cost-burdened,315
+Manassas city,2017,Homeowner,"$35,000 to $49,999",Not cost-burdened,211
+Manassas city,2017,Homeowner,"$50,000 to $74,999",Cost-burdened,595
+Manassas city,2017,Homeowner,"$50,000 to $74,999",Not cost-burdened,675
+Manassas city,2017,Homeowner,"$75,000 or more",Cost-burdened,488
+Manassas city,2017,Homeowner,"$75,000 or more",Not cost-burdened,4889
+Manassas city,2017,Homeowner,"Less than $20,000",Cost-burdened,249
+Manassas city,2017,Homeowner,"Less than $20,000",Not cost-burdened,24
+Manassas city,2017,Renter,"$20,000 to $34,999",Cost-burdened,618
+Manassas city,2017,Renter,"$20,000 to $34,999",Not cost-burdened,64
+Manassas city,2017,Renter,"$35,000 to $49,999",Cost-burdened,849
+Manassas city,2017,Renter,"$35,000 to $49,999",Not cost-burdened,174
+Manassas city,2017,Renter,"$50,000 to $74,999",Cost-burdened,517
+Manassas city,2017,Renter,"$50,000 to $74,999",Not cost-burdened,538
+Manassas city,2017,Renter,"$75,000 or more",Cost-burdened,43
+Manassas city,2017,Renter,"$75,000 or more",Not cost-burdened,1099
+Manassas city,2017,Renter,"Less than $20,000",Cost-burdened,472
+Manassas city,2017,Renter,"Less than $20,000",Not cost-burdened,15
+Manassas city,2018,Homeowner,"$20,000 to $34,999",Cost-burdened,446
+Manassas city,2018,Homeowner,"$20,000 to $34,999",Not cost-burdened,80
+Manassas city,2018,Homeowner,"$35,000 to $49,999",Cost-burdened,354
+Manassas city,2018,Homeowner,"$35,000 to $49,999",Not cost-burdened,242
+Manassas city,2018,Homeowner,"$50,000 to $74,999",Cost-burdened,620
+Manassas city,2018,Homeowner,"$50,000 to $74,999",Not cost-burdened,671
+Manassas city,2018,Homeowner,"$75,000 or more",Cost-burdened,674
+Manassas city,2018,Homeowner,"$75,000 or more",Not cost-burdened,4853
+Manassas city,2018,Homeowner,"Less than $20,000",Cost-burdened,286
+Manassas city,2018,Homeowner,"Less than $20,000",Not cost-burdened,26
+Manassas city,2018,Renter,"$20,000 to $34,999",Cost-burdened,682
+Manassas city,2018,Renter,"$20,000 to $34,999",Not cost-burdened,15
+Manassas city,2018,Renter,"$35,000 to $49,999",Cost-burdened,686
+Manassas city,2018,Renter,"$35,000 to $49,999",Not cost-burdened,157
+Manassas city,2018,Renter,"$50,000 to $74,999",Cost-burdened,585
+Manassas city,2018,Renter,"$50,000 to $74,999",Not cost-burdened,532
+Manassas city,2018,Renter,"$75,000 or more",Cost-burdened,58
+Manassas city,2018,Renter,"$75,000 or more",Not cost-burdened,1004
+Manassas city,2018,Renter,"Less than $20,000",Cost-burdened,534
+Manassas city,2018,Renter,"Less than $20,000",Not cost-burdened,11
+Manassas city,2019,Homeowner,"$20,000 to $34,999",Cost-burdened,376
+Manassas city,2019,Homeowner,"$20,000 to $34,999",Not cost-burdened,66
+Manassas city,2019,Homeowner,"$35,000 to $49,999",Cost-burdened,409
+Manassas city,2019,Homeowner,"$35,000 to $49,999",Not cost-burdened,256
+Manassas city,2019,Homeowner,"$50,000 to $74,999",Cost-burdened,590
+Manassas city,2019,Homeowner,"$50,000 to $74,999",Not cost-burdened,721
+Manassas city,2019,Homeowner,"$75,000 or more",Cost-burdened,691
+Manassas city,2019,Homeowner,"$75,000 or more",Not cost-burdened,5006
+Manassas city,2019,Homeowner,"Less than $20,000",Cost-burdened,367
+Manassas city,2019,Homeowner,"Less than $20,000",Not cost-burdened,10
+Manassas city,2019,Renter,"$20,000 to $34,999",Cost-burdened,715
+Manassas city,2019,Renter,"$20,000 to $34,999",Not cost-burdened,0
+Manassas city,2019,Renter,"$35,000 to $49,999",Cost-burdened,606
+Manassas city,2019,Renter,"$35,000 to $49,999",Not cost-burdened,133
+Manassas city,2019,Renter,"$50,000 to $74,999",Cost-burdened,482
+Manassas city,2019,Renter,"$50,000 to $74,999",Not cost-burdened,432
+Manassas city,2019,Renter,"$75,000 or more",Cost-burdened,60
+Manassas city,2019,Renter,"$75,000 or more",Not cost-burdened,1209
+Manassas city,2019,Renter,"Less than $20,000",Cost-burdened,516
+Manassas city,2019,Renter,"Less than $20,000",Not cost-burdened,9
+Manassas city,2020,Homeowner,"$20,000 to $34,999",Cost-burdened,382
+Manassas city,2020,Homeowner,"$20,000 to $34,999",Not cost-burdened,73
+Manassas city,2020,Homeowner,"$35,000 to $49,999",Cost-burdened,386
+Manassas city,2020,Homeowner,"$35,000 to $49,999",Not cost-burdened,240
+Manassas city,2020,Homeowner,"$50,000 to $74,999",Cost-burdened,529
+Manassas city,2020,Homeowner,"$50,000 to $74,999",Not cost-burdened,732
+Manassas city,2020,Homeowner,"$75,000 or more",Cost-burdened,675
+Manassas city,2020,Homeowner,"$75,000 or more",Not cost-burdened,5619
+Manassas city,2020,Homeowner,"Less than $20,000",Cost-burdened,403
+Manassas city,2020,Homeowner,"Less than $20,000",Not cost-burdened,9
+Manassas city,2020,Renter,"$20,000 to $34,999",Cost-burdened,731
+Manassas city,2020,Renter,"$20,000 to $34,999",Not cost-burdened,0
+Manassas city,2020,Renter,"$35,000 to $49,999",Cost-burdened,547
+Manassas city,2020,Renter,"$35,000 to $49,999",Not cost-burdened,49
+Manassas city,2020,Renter,"$50,000 to $74,999",Cost-burdened,597
+Manassas city,2020,Renter,"$50,000 to $74,999",Not cost-burdened,374
+Manassas city,2020,Renter,"$75,000 or more",Cost-burdened,42
+Manassas city,2020,Renter,"$75,000 or more",Not cost-burdened,1069
+Manassas city,2020,Renter,"Less than $20,000",Cost-burdened,383
+Manassas city,2020,Renter,"Less than $20,000",Not cost-burdened,22
+Manassas city,2021,Homeowner,"$20,000 to $34,999",Cost-burdened,229
+Manassas city,2021,Homeowner,"$20,000 to $34,999",Not cost-burdened,50
+Manassas city,2021,Homeowner,"$35,000 to $49,999",Cost-burdened,347
+Manassas city,2021,Homeowner,"$35,000 to $49,999",Not cost-burdened,230
+Manassas city,2021,Homeowner,"$50,000 to $74,999",Cost-burdened,719
+Manassas city,2021,Homeowner,"$50,000 to $74,999",Not cost-burdened,514
+Manassas city,2021,Homeowner,"$75,000 or more",Cost-burdened,692
+Manassas city,2021,Homeowner,"$75,000 or more",Not cost-burdened,6477
+Manassas city,2021,Homeowner,"Less than $20,000",Cost-burdened,329
+Manassas city,2021,Homeowner,"Less than $20,000",Not cost-burdened,7
+Manassas city,2021,Renter,"$20,000 to $34,999",Cost-burdened,642
+Manassas city,2021,Renter,"$20,000 to $34,999",Not cost-burdened,0
+Manassas city,2021,Renter,"$35,000 to $49,999",Cost-burdened,406
+Manassas city,2021,Renter,"$35,000 to $49,999",Not cost-burdened,47
+Manassas city,2021,Renter,"$50,000 to $74,999",Cost-burdened,574
+Manassas city,2021,Renter,"$50,000 to $74,999",Not cost-burdened,404
+Manassas city,2021,Renter,"$75,000 or more",Cost-burdened,72
+Manassas city,2021,Renter,"$75,000 or more",Not cost-burdened,1328
+Manassas city,2021,Renter,"Less than $20,000",Cost-burdened,346
+Manassas city,2021,Renter,"Less than $20,000",Not cost-burdened,13
+Manassas city,2022,Homeowner,"$20,000 to $34,999",Cost-burdened,235
+Manassas city,2022,Homeowner,"$20,000 to $34,999",Not cost-burdened,50
+Manassas city,2022,Homeowner,"$35,000 to $49,999",Cost-burdened,422
+Manassas city,2022,Homeowner,"$35,000 to $49,999",Not cost-burdened,170
+Manassas city,2022,Homeowner,"$50,000 to $74,999",Cost-burdened,644
+Manassas city,2022,Homeowner,"$50,000 to $74,999",Not cost-burdened,474
+Manassas city,2022,Homeowner,"$75,000 or more",Cost-burdened,816
+Manassas city,2022,Homeowner,"$75,000 or more",Not cost-burdened,7125
+Manassas city,2022,Homeowner,"Less than $20,000",Cost-burdened,291
+Manassas city,2022,Homeowner,"Less than $20,000",Not cost-burdened,0
+Manassas city,2022,Renter,"$20,000 to $34,999",Cost-burdened,446
+Manassas city,2022,Renter,"$20,000 to $34,999",Not cost-burdened,0
+Manassas city,2022,Renter,"$35,000 to $49,999",Cost-burdened,280
+Manassas city,2022,Renter,"$35,000 to $49,999",Not cost-burdened,28
+Manassas city,2022,Renter,"$50,000 to $74,999",Cost-burdened,556
+Manassas city,2022,Renter,"$50,000 to $74,999",Not cost-burdened,143
+Manassas city,2022,Renter,"$75,000 or more",Cost-burdened,139
+Manassas city,2022,Renter,"$75,000 or more",Not cost-burdened,1519
+Manassas city,2022,Renter,"Less than $20,000",Cost-burdened,344
+Manassas city,2022,Renter,"Less than $20,000",Not cost-burdened,13
+Prince William County,2010,Homeowner,"$20,000 to $34,999",Cost-burdened,3346
+Prince William County,2010,Homeowner,"$20,000 to $34,999",Not cost-burdened,954
+Prince William County,2010,Homeowner,"$35,000 to $49,999",Cost-burdened,4649
+Prince William County,2010,Homeowner,"$35,000 to $49,999",Not cost-burdened,1620
+Prince William County,2010,Homeowner,"$50,000 to $74,999",Cost-burdened,8708
+Prince William County,2010,Homeowner,"$50,000 to $74,999",Not cost-burdened,4546
+Prince William County,2010,Homeowner,"$75,000 or more",Cost-burdened,16528
+Prince William County,2010,Homeowner,"$75,000 or more",Not cost-burdened,50013
+Prince William County,2010,Homeowner,"Less than $20,000",Cost-burdened,2541
+Prince William County,2010,Homeowner,"Less than $20,000",Not cost-burdened,237
+Prince William County,2010,Renter,"$20,000 to $34,999",Cost-burdened,4171
+Prince William County,2010,Renter,"$20,000 to $34,999",Not cost-burdened,338
+Prince William County,2010,Renter,"$35,000 to $49,999",Cost-burdened,4243
+Prince William County,2010,Renter,"$35,000 to $49,999",Not cost-burdened,1526
+Prince William County,2010,Renter,"$50,000 to $74,999",Cost-burdened,2680
+Prince William County,2010,Renter,"$50,000 to $74,999",Not cost-burdened,4619
+Prince William County,2010,Renter,"$75,000 or more",Cost-burdened,896
+Prince William County,2010,Renter,"$75,000 or more",Not cost-burdened,8806
+Prince William County,2010,Renter,"Less than $20,000",Cost-burdened,2809
+Prince William County,2010,Renter,"Less than $20,000",Not cost-burdened,268
+Prince William County,2011,Homeowner,"$20,000 to $34,999",Cost-burdened,3302
+Prince William County,2011,Homeowner,"$20,000 to $34,999",Not cost-burdened,1044
+Prince William County,2011,Homeowner,"$35,000 to $49,999",Cost-burdened,4166
+Prince William County,2011,Homeowner,"$35,000 to $49,999",Not cost-burdened,1632
+Prince William County,2011,Homeowner,"$50,000 to $74,999",Cost-burdened,7813
+Prince William County,2011,Homeowner,"$50,000 to $74,999",Not cost-burdened,4714
+Prince William County,2011,Homeowner,"$75,000 or more",Cost-burdened,15496
+Prince William County,2011,Homeowner,"$75,000 or more",Not cost-burdened,53287
+Prince William County,2011,Homeowner,"Less than $20,000",Cost-burdened,2410
+Prince William County,2011,Homeowner,"Less than $20,000",Not cost-burdened,242
+Prince William County,2011,Renter,"$20,000 to $34,999",Cost-burdened,4301
+Prince William County,2011,Renter,"$20,000 to $34,999",Not cost-burdened,264
+Prince William County,2011,Renter,"$35,000 to $49,999",Cost-burdened,4084
+Prince William County,2011,Renter,"$35,000 to $49,999",Not cost-burdened,1212
+Prince William County,2011,Renter,"$50,000 to $74,999",Cost-burdened,3318
+Prince William County,2011,Renter,"$50,000 to $74,999",Not cost-burdened,4051
+Prince William County,2011,Renter,"$75,000 or more",Cost-burdened,991
+Prince William County,2011,Renter,"$75,000 or more",Not cost-burdened,10178
+Prince William County,2011,Renter,"Less than $20,000",Cost-burdened,2962
+Prince William County,2011,Renter,"Less than $20,000",Not cost-burdened,242
+Prince William County,2012,Homeowner,"$20,000 to $34,999",Cost-burdened,3428
+Prince William County,2012,Homeowner,"$20,000 to $34,999",Not cost-burdened,971
+Prince William County,2012,Homeowner,"$35,000 to $49,999",Cost-burdened,4124
+Prince William County,2012,Homeowner,"$35,000 to $49,999",Not cost-burdened,1651
+Prince William County,2012,Homeowner,"$50,000 to $74,999",Cost-burdened,7456
+Prince William County,2012,Homeowner,"$50,000 to $74,999",Not cost-burdened,5027
+Prince William County,2012,Homeowner,"$75,000 or more",Cost-burdened,13178
+Prince William County,2012,Homeowner,"$75,000 or more",Not cost-burdened,55668
+Prince William County,2012,Homeowner,"Less than $20,000",Cost-burdened,2361
+Prince William County,2012,Homeowner,"Less than $20,000",Not cost-burdened,247
+Prince William County,2012,Renter,"$20,000 to $34,999",Cost-burdened,4588
+Prince William County,2012,Renter,"$20,000 to $34,999",Not cost-burdened,244
+Prince William County,2012,Renter,"$35,000 to $49,999",Cost-burdened,4336
+Prince William County,2012,Renter,"$35,000 to $49,999",Not cost-burdened,1012
+Prince William County,2012,Renter,"$50,000 to $74,999",Cost-burdened,3947
+Prince William County,2012,Renter,"$50,000 to $74,999",Not cost-burdened,4134
+Prince William County,2012,Renter,"$75,000 or more",Cost-burdened,1050
+Prince William County,2012,Renter,"$75,000 or more",Not cost-burdened,11512
+Prince William County,2012,Renter,"Less than $20,000",Cost-burdened,2955
+Prince William County,2012,Renter,"Less than $20,000",Not cost-burdened,256
+Prince William County,2013,Homeowner,"$20,000 to $34,999",Cost-burdened,3148
+Prince William County,2013,Homeowner,"$20,000 to $34,999",Not cost-burdened,973
+Prince William County,2013,Homeowner,"$35,000 to $49,999",Cost-burdened,4040
+Prince William County,2013,Homeowner,"$35,000 to $49,999",Not cost-burdened,2024
+Prince William County,2013,Homeowner,"$50,000 to $74,999",Cost-burdened,6465
+Prince William County,2013,Homeowner,"$50,000 to $74,999",Not cost-burdened,5181
+Prince William County,2013,Homeowner,"$75,000 or more",Cost-burdened,11415
+Prince William County,2013,Homeowner,"$75,000 or more",Not cost-burdened,59428
+Prince William County,2013,Homeowner,"Less than $20,000",Cost-burdened,2339
+Prince William County,2013,Homeowner,"Less than $20,000",Not cost-burdened,230
+Prince William County,2013,Renter,"$20,000 to $34,999",Cost-burdened,4945
+Prince William County,2013,Renter,"$20,000 to $34,999",Not cost-burdened,256
+Prince William County,2013,Renter,"$35,000 to $49,999",Cost-burdened,4326
+Prince William County,2013,Renter,"$35,000 to $49,999",Not cost-burdened,820
+Prince William County,2013,Renter,"$50,000 to $74,999",Cost-burdened,4394
+Prince William County,2013,Renter,"$50,000 to $74,999",Not cost-burdened,4628
+Prince William County,2013,Renter,"$75,000 or more",Cost-burdened,1348
+Prince William County,2013,Renter,"$75,000 or more",Not cost-burdened,11656
+Prince William County,2013,Renter,"Less than $20,000",Cost-burdened,3296
+Prince William County,2013,Renter,"Less than $20,000",Not cost-burdened,204
+Prince William County,2014,Homeowner,"$20,000 to $34,999",Cost-burdened,2893
+Prince William County,2014,Homeowner,"$20,000 to $34,999",Not cost-burdened,1040
+Prince William County,2014,Homeowner,"$35,000 to $49,999",Cost-burdened,4179
+Prince William County,2014,Homeowner,"$35,000 to $49,999",Not cost-burdened,2238
+Prince William County,2014,Homeowner,"$50,000 to $74,999",Cost-burdened,6496
+Prince William County,2014,Homeowner,"$50,000 to $74,999",Not cost-burdened,5586
+Prince William County,2014,Homeowner,"$75,000 or more",Cost-burdened,10013
+Prince William County,2014,Homeowner,"$75,000 or more",Not cost-burdened,61723
+Prince William County,2014,Homeowner,"Less than $20,000",Cost-burdened,2211
+Prince William County,2014,Homeowner,"Less than $20,000",Not cost-burdened,197
+Prince William County,2014,Renter,"$20,000 to $34,999",Cost-burdened,4971
+Prince William County,2014,Renter,"$20,000 to $34,999",Not cost-burdened,163
+Prince William County,2014,Renter,"$35,000 to $49,999",Cost-burdened,4468
+Prince William County,2014,Renter,"$35,000 to $49,999",Not cost-burdened,857
+Prince William County,2014,Renter,"$50,000 to $74,999",Cost-burdened,4612
+Prince William County,2014,Renter,"$50,000 to $74,999",Not cost-burdened,4343
+Prince William County,2014,Renter,"$75,000 or more",Cost-burdened,1324
+Prince William County,2014,Renter,"$75,000 or more",Not cost-burdened,12358
+Prince William County,2014,Renter,"Less than $20,000",Cost-burdened,3545
+Prince William County,2014,Renter,"Less than $20,000",Not cost-burdened,203
+Prince William County,2015,Homeowner,"$20,000 to $34,999",Cost-burdened,3156
+Prince William County,2015,Homeowner,"$20,000 to $34,999",Not cost-burdened,987
+Prince William County,2015,Homeowner,"$35,000 to $49,999",Cost-burdened,4189
+Prince William County,2015,Homeowner,"$35,000 to $49,999",Not cost-burdened,2314
+Prince William County,2015,Homeowner,"$50,000 to $74,999",Cost-burdened,6605
+Prince William County,2015,Homeowner,"$50,000 to $74,999",Not cost-burdened,5670
+Prince William County,2015,Homeowner,"$75,000 or more",Cost-burdened,8869
+Prince William County,2015,Homeowner,"$75,000 or more",Not cost-burdened,63294
+Prince William County,2015,Homeowner,"Less than $20,000",Cost-burdened,2171
+Prince William County,2015,Homeowner,"Less than $20,000",Not cost-burdened,243
+Prince William County,2015,Renter,"$20,000 to $34,999",Cost-burdened,5277
+Prince William County,2015,Renter,"$20,000 to $34,999",Not cost-burdened,117
+Prince William County,2015,Renter,"$35,000 to $49,999",Cost-burdened,4831
+Prince William County,2015,Renter,"$35,000 to $49,999",Not cost-burdened,701
+Prince William County,2015,Renter,"$50,000 to $74,999",Cost-burdened,4609
+Prince William County,2015,Renter,"$50,000 to $74,999",Not cost-burdened,4172
+Prince William County,2015,Renter,"$75,000 or more",Cost-burdened,1506
+Prince William County,2015,Renter,"$75,000 or more",Not cost-burdened,12829
+Prince William County,2015,Renter,"Less than $20,000",Cost-burdened,3443
+Prince William County,2015,Renter,"Less than $20,000",Not cost-burdened,269
+Prince William County,2016,Homeowner,"$20,000 to $34,999",Cost-burdened,3184
+Prince William County,2016,Homeowner,"$20,000 to $34,999",Not cost-burdened,1087
+Prince William County,2016,Homeowner,"$35,000 to $49,999",Cost-burdened,4273
+Prince William County,2016,Homeowner,"$35,000 to $49,999",Not cost-burdened,2242
+Prince William County,2016,Homeowner,"$50,000 to $74,999",Cost-burdened,6372
+Prince William County,2016,Homeowner,"$50,000 to $74,999",Not cost-burdened,5920
+Prince William County,2016,Homeowner,"$75,000 or more",Cost-burdened,8490
+Prince William County,2016,Homeowner,"$75,000 or more",Not cost-burdened,63814
+Prince William County,2016,Homeowner,"Less than $20,000",Cost-burdened,2353
+Prince William County,2016,Homeowner,"Less than $20,000",Not cost-burdened,180
+Prince William County,2016,Renter,"$20,000 to $34,999",Cost-burdened,5288
+Prince William County,2016,Renter,"$20,000 to $34,999",Not cost-burdened,100
+Prince William County,2016,Renter,"$35,000 to $49,999",Cost-burdened,5103
+Prince William County,2016,Renter,"$35,000 to $49,999",Not cost-burdened,658
+Prince William County,2016,Renter,"$50,000 to $74,999",Cost-burdened,4582
+Prince William County,2016,Renter,"$50,000 to $74,999",Not cost-burdened,4237
+Prince William County,2016,Renter,"$75,000 or more",Cost-burdened,1490
+Prince William County,2016,Renter,"$75,000 or more",Not cost-burdened,13058
+Prince William County,2016,Renter,"Less than $20,000",Cost-burdened,3794
+Prince William County,2016,Renter,"Less than $20,000",Not cost-burdened,219
+Prince William County,2017,Homeowner,"$20,000 to $34,999",Cost-burdened,3281
+Prince William County,2017,Homeowner,"$20,000 to $34,999",Not cost-burdened,1074
+Prince William County,2017,Homeowner,"$35,000 to $49,999",Cost-burdened,4100
+Prince William County,2017,Homeowner,"$35,000 to $49,999",Not cost-burdened,2106
+Prince William County,2017,Homeowner,"$50,000 to $74,999",Cost-burdened,6118
+Prince William County,2017,Homeowner,"$50,000 to $74,999",Not cost-burdened,6094
+Prince William County,2017,Homeowner,"$75,000 or more",Cost-burdened,8884
+Prince William County,2017,Homeowner,"$75,000 or more",Not cost-burdened,66238
+Prince William County,2017,Homeowner,"Less than $20,000",Cost-burdened,2490
+Prince William County,2017,Homeowner,"Less than $20,000",Not cost-burdened,126
+Prince William County,2017,Renter,"$20,000 to $34,999",Cost-burdened,4786
+Prince William County,2017,Renter,"$20,000 to $34,999",Not cost-burdened,168
+Prince William County,2017,Renter,"$35,000 to $49,999",Cost-burdened,4491
+Prince William County,2017,Renter,"$35,000 to $49,999",Not cost-burdened,573
+Prince William County,2017,Renter,"$50,000 to $74,999",Cost-burdened,4677
+Prince William County,2017,Renter,"$50,000 to $74,999",Not cost-burdened,3733
+Prince William County,2017,Renter,"$75,000 or more",Cost-burdened,1457
+Prince William County,2017,Renter,"$75,000 or more",Not cost-burdened,13176
+Prince William County,2017,Renter,"Less than $20,000",Cost-burdened,3723
+Prince William County,2017,Renter,"Less than $20,000",Not cost-burdened,190
+Prince William County,2018,Homeowner,"$20,000 to $34,999",Cost-burdened,3266
+Prince William County,2018,Homeowner,"$20,000 to $34,999",Not cost-burdened,1093
+Prince William County,2018,Homeowner,"$35,000 to $49,999",Cost-burdened,4006
+Prince William County,2018,Homeowner,"$35,000 to $49,999",Not cost-burdened,2073
+Prince William County,2018,Homeowner,"$50,000 to $74,999",Cost-burdened,6270
+Prince William County,2018,Homeowner,"$50,000 to $74,999",Not cost-burdened,5748
+Prince William County,2018,Homeowner,"$75,000 or more",Cost-burdened,9079
+Prince William County,2018,Homeowner,"$75,000 or more",Not cost-burdened,68220
+Prince William County,2018,Homeowner,"Less than $20,000",Cost-burdened,2400
+Prince William County,2018,Homeowner,"Less than $20,000",Not cost-burdened,170
+Prince William County,2018,Renter,"$20,000 to $34,999",Cost-burdened,4325
+Prince William County,2018,Renter,"$20,000 to $34,999",Not cost-burdened,66
+Prince William County,2018,Renter,"$35,000 to $49,999",Cost-burdened,4822
+Prince William County,2018,Renter,"$35,000 to $49,999",Not cost-burdened,473
+Prince William County,2018,Renter,"$50,000 to $74,999",Cost-burdened,4321
+Prince William County,2018,Renter,"$50,000 to $74,999",Not cost-burdened,3363
+Prince William County,2018,Renter,"$75,000 or more",Cost-burdened,1560
+Prince William County,2018,Renter,"$75,000 or more",Not cost-burdened,13287
+Prince William County,2018,Renter,"Less than $20,000",Cost-burdened,3749
+Prince William County,2018,Renter,"Less than $20,000",Not cost-burdened,199
+Prince William County,2019,Homeowner,"$20,000 to $34,999",Cost-burdened,3555
+Prince William County,2019,Homeowner,"$20,000 to $34,999",Not cost-burdened,1021
+Prince William County,2019,Homeowner,"$35,000 to $49,999",Cost-burdened,3697
+Prince William County,2019,Homeowner,"$35,000 to $49,999",Not cost-burdened,1891
+Prince William County,2019,Homeowner,"$50,000 to $74,999",Cost-burdened,5741
+Prince William County,2019,Homeowner,"$50,000 to $74,999",Not cost-burdened,5040
+Prince William County,2019,Homeowner,"$75,000 or more",Cost-burdened,9667
+Prince William County,2019,Homeowner,"$75,000 or more",Not cost-burdened,70258
+Prince William County,2019,Homeowner,"Less than $20,000",Cost-burdened,2377
+Prince William County,2019,Homeowner,"Less than $20,000",Not cost-burdened,179
+Prince William County,2019,Renter,"$20,000 to $34,999",Cost-burdened,4032
+Prince William County,2019,Renter,"$20,000 to $34,999",Not cost-burdened,149
+Prince William County,2019,Renter,"$35,000 to $49,999",Cost-burdened,4729
+Prince William County,2019,Renter,"$35,000 to $49,999",Not cost-burdened,313
+Prince William County,2019,Renter,"$50,000 to $74,999",Cost-burdened,4446
+Prince William County,2019,Renter,"$50,000 to $74,999",Not cost-burdened,2914
+Prince William County,2019,Renter,"$75,000 or more",Cost-burdened,1697
+Prince William County,2019,Renter,"$75,000 or more",Not cost-burdened,14199
+Prince William County,2019,Renter,"Less than $20,000",Cost-burdened,3679
+Prince William County,2019,Renter,"Less than $20,000",Not cost-burdened,173
+Prince William County,2020,Homeowner,"$20,000 to $34,999",Cost-burdened,3143
+Prince William County,2020,Homeowner,"$20,000 to $34,999",Not cost-burdened,1004
+Prince William County,2020,Homeowner,"$35,000 to $49,999",Cost-burdened,3684
+Prince William County,2020,Homeowner,"$35,000 to $49,999",Not cost-burdened,1631
+Prince William County,2020,Homeowner,"$50,000 to $74,999",Cost-burdened,5991
+Prince William County,2020,Homeowner,"$50,000 to $74,999",Not cost-burdened,5260
+Prince William County,2020,Homeowner,"$75,000 or more",Cost-burdened,9463
+Prince William County,2020,Homeowner,"$75,000 or more",Not cost-burdened,72095
+Prince William County,2020,Homeowner,"Less than $20,000",Cost-burdened,2319
+Prince William County,2020,Homeowner,"Less than $20,000",Not cost-burdened,183
+Prince William County,2020,Renter,"$20,000 to $34,999",Cost-burdened,3498
+Prince William County,2020,Renter,"$20,000 to $34,999",Not cost-burdened,129
+Prince William County,2020,Renter,"$35,000 to $49,999",Cost-burdened,4703
+Prince William County,2020,Renter,"$35,000 to $49,999",Not cost-burdened,308
+Prince William County,2020,Renter,"$50,000 to $74,999",Cost-burdened,5011
+Prince William County,2020,Renter,"$50,000 to $74,999",Not cost-burdened,2820
+Prince William County,2020,Renter,"$75,000 or more",Cost-burdened,1762
+Prince William County,2020,Renter,"$75,000 or more",Not cost-burdened,15532
+Prince William County,2020,Renter,"Less than $20,000",Cost-burdened,3374
+Prince William County,2020,Renter,"Less than $20,000",Not cost-burdened,119
+Prince William County,2021,Homeowner,"$20,000 to $34,999",Cost-burdened,3186
+Prince William County,2021,Homeowner,"$20,000 to $34,999",Not cost-burdened,939
+Prince William County,2021,Homeowner,"$35,000 to $49,999",Cost-burdened,3394
+Prince William County,2021,Homeowner,"$35,000 to $49,999",Not cost-burdened,1769
+Prince William County,2021,Homeowner,"$50,000 to $74,999",Cost-burdened,6384
+Prince William County,2021,Homeowner,"$50,000 to $74,999",Not cost-burdened,4851
+Prince William County,2021,Homeowner,"$75,000 or more",Cost-burdened,10791
+Prince William County,2021,Homeowner,"$75,000 or more",Not cost-burdened,77098
+Prince William County,2021,Homeowner,"Less than $20,000",Cost-burdened,2210
+Prince William County,2021,Homeowner,"Less than $20,000",Not cost-burdened,172
+Prince William County,2021,Renter,"$20,000 to $34,999",Cost-burdened,3601
+Prince William County,2021,Renter,"$20,000 to $34,999",Not cost-burdened,99
+Prince William County,2021,Renter,"$35,000 to $49,999",Cost-burdened,4360
+Prince William County,2021,Renter,"$35,000 to $49,999",Not cost-burdened,295
+Prince William County,2021,Renter,"$50,000 to $74,999",Cost-burdened,5135
+Prince William County,2021,Renter,"$50,000 to $74,999",Not cost-burdened,2333
+Prince William County,2021,Renter,"$75,000 or more",Cost-burdened,2311
+Prince William County,2021,Renter,"$75,000 or more",Not cost-burdened,16376
+Prince William County,2021,Renter,"Less than $20,000",Cost-burdened,2879
+Prince William County,2021,Renter,"Less than $20,000",Not cost-burdened,143
+Prince William County,2022,Homeowner,"$20,000 to $34,999",Cost-burdened,2653
+Prince William County,2022,Homeowner,"$20,000 to $34,999",Not cost-burdened,901
+Prince William County,2022,Homeowner,"$35,000 to $49,999",Cost-burdened,3075
+Prince William County,2022,Homeowner,"$35,000 to $49,999",Not cost-burdened,1603
+Prince William County,2022,Homeowner,"$50,000 to $74,999",Cost-burdened,6018
+Prince William County,2022,Homeowner,"$50,000 to $74,999",Not cost-burdened,3959
+Prince William County,2022,Homeowner,"$75,000 or more",Cost-burdened,11890
+Prince William County,2022,Homeowner,"$75,000 or more",Not cost-burdened,80298
+Prince William County,2022,Homeowner,"Less than $20,000",Cost-burdened,2180
+Prince William County,2022,Homeowner,"Less than $20,000",Not cost-burdened,223
+Prince William County,2022,Renter,"$20,000 to $34,999",Cost-burdened,3436
+Prince William County,2022,Renter,"$20,000 to $34,999",Not cost-burdened,210
+Prince William County,2022,Renter,"$35,000 to $49,999",Cost-burdened,3941
+Prince William County,2022,Renter,"$35,000 to $49,999",Not cost-burdened,267
+Prince William County,2022,Renter,"$50,000 to $74,999",Cost-burdened,5572
+Prince William County,2022,Renter,"$50,000 to $74,999",Not cost-burdened,1405
+Prince William County,2022,Renter,"$75,000 or more",Cost-burdened,3168
+Prince William County,2022,Renter,"$75,000 or more",Not cost-burdened,16667
+Prince William County,2022,Renter,"Less than $20,000",Cost-burdened,2857
+Prince William County,2022,Renter,"Less than $20,000",Not cost-burdened,122

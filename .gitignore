@@ -5,3 +5,6 @@
 .Renviron
 
 /.quarto/
+
+va_od_block.rds
+home-sales.csv
