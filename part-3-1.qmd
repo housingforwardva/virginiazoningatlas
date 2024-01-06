@@ -153,7 +153,8 @@ ggplot(nova_age,
   labs(title = "Change in householders by age",
        subtitle = subtitle_text,
        caption = "**Source:** U.S. Census Bureau, ACS, 5-Year Estimates, Table B25007.") +
-  scale_y_continuous(labels = number_format(big.mark = ",", style_positive = "plus", style_negative = "minus"), limits = c(-10000, 70000), breaks = seq(-10000, 70000, by = 10000)) + 
+  scale_y_continuous(labels = number_format(big.mark = ",", style_positive = "plus", style_negative = "minus"), limits = c(0, 80000), breaks = seq(0, 80000, by = 10000)) + 
+  add_zero_line("y") + # Add darker zero intercept line for emphasis.
   theme(panel.grid.major.y = element_line(color = "white"),
         panel.grid.major.x = element_line(color = "#f5f5f5",size = 0.1)) +
   plot_annotation(
@@ -183,7 +184,7 @@ nova_hhsize <- read_rds("data/nova/nova_hhsize.rds") |> # Read in household size
   mutate(total_chg = sum(change)) |> # Calculate total change in order to order bar chart.
   mutate(NAME = str_remove_all(NAME, " city")) # Remove " city" from all locality names.
   
-subtitle_text <- "<span style = 'Household sizes are growing the most in the counties"
+subtitle_text <- "Household sizes are growing the most in the counties"
   
 ggplot(nova_hhsize,
        aes(x = reorder(NAME, total_chg),
@@ -272,6 +273,8 @@ bps_plot <- ggplot(nova_bps,
 girafe(ggobj = bps_plot,
        height_svg = 4)
 
+# bps_plot
+
 
 ```
 
@@ -343,6 +346,8 @@ price_plot <- ggplot(nova_var_price,
 girafe(ggobj = price_plot,
        height_svg = 4)
 
+price_plot
+
 ```
 
 ```{r}
@@ -392,7 +397,7 @@ dom_plot <- ggplot(nova_var_dom,
   labs(title = "Median days on market in Northern Virginia",
        subtitle = subtitle_text,
        caption = "**Source:** Virginia REALTORS.")  +
-  scale_y_continuous(limits = c(0, 30)) +
+  scale_y_continuous(limits = c(0, 20)) +
   scale_color_hfv() +
   plot_annotation(
     theme = theme(
@@ -406,7 +411,7 @@ dom_plot <- ggplot(nova_var_dom,
 girafe(ggobj = dom_plot,
        height_svg = 4)
   
-
+dom_plot
 
 
 ```
@@ -450,6 +455,8 @@ tenure_plot <- ggplot(nova_tenure,
 
 girafe(ggobj = tenure_plot,
        height_svg = 4)
+
+tenure_plot
 
 
 ```
@@ -503,6 +510,8 @@ rent_plot <- ggplot(nova_rent,
 girafe(ggobj = rent_plot,
        height_svg = 4)
 
+rent_plot
+
 ```
 
 
@@ -538,7 +547,7 @@ vacancy_plot <- ggplot(nova_rv,
 girafe(ggobj = vacancy_plot,
        height_svg = 4)
 
-
+vacancy_plot
 ```
 
 ## Jobs Market
