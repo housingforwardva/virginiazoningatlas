@@ -3,3 +3,5 @@
 .RData
 .Ruserdata
 .Renviron
+home-sales.csv
+va_od_blocks.rds
