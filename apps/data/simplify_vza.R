@@ -1,25 +1,29 @@
 library(sf)
 library(tidyverse)
+library(geojsonsf)
 library(rmapshaper)
 
-hr_vza <- st_read("data/hr/hr_vza_developable.geojson")
+hr_vza <- geojson_sf("data/hr_vza_nza.geojson")
+nova_vza <- geojson_sf("data/nova_vza_nza.geojson")
 
-sparse <- hr_vza |>
-  select(id, type, abbrvname, tooltipnotes, jurisdiction, name, overlay, family1_treatment:family4_treatment,
-         hr_custom_fields_sfd, accessory_treatment, area) |> 
-  filter(overlay == FALSE) |> 
+vza <- rbind(hr_vza, nova_vza)
+
+sparse <- vza |>
+  select(id, type, abbrvname, tooltipnotes, jurisdiction, name, overlay, family1_treatment, family2_treatment, family3_treatment,
+         family4_treatment, customfielddata, accessory_treatment, acres)|> 
+  filter(overlay == 0) |> 
   mutate(Zoning = name,
          Abbreviation = abbrvname,
          Jurisdiction = jurisdiction,
          Notes = tooltipnotes) |> 
   group_by(jurisdiction) |> 
-  mutate(total_area = sum(area)) |> 
+  mutate(total_area = sum(acres)) |> 
   mutate(accessory_treatment = case_when(
     accessory_treatment == "nomention" ~ "prohibited",
     TRUE ~ accessory_treatment
   ))
 
-simple <- ms_simplify(sparse, keep = 0.1, keep_shapes = TRUE)
+simple <- ms_simplify(sparse, keep = 0.3, keep_shapes = TRUE)
 
 write_rds(st_cast(simple, "MULTIPOLYGON"), "apps/hr_vza_simple.rds")
 
