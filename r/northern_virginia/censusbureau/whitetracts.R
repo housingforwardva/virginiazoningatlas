@@ -2,7 +2,7 @@ library(tidycensus)
 library(tidyverse)
 library(mapview)
 
-hr_fips <- c("51073", "51093", "51095","51175", "51181", "51199", "51550", "51620", "51650", "51700", "51710", "51735", "51740", "51800", "51810", "51830")
+nova_fips <- c("51013", "51059", "51107", "51153", "51510", "51600", "51610", "51683", "51685")
 
 b03002_vars <- load_variables(2021, "acs5") |> 
   filter(str_sub(name, end = 6) %in% "B03002")
@@ -27,9 +27,9 @@ b03002_raw <- get_acs(
   geometry = TRUE
 ) |> 
   mutate(fips = substr(GEOID, 1, 5)) |> 
-  subset(fips %in% hr_fips) 
+  subset(fips %in% nova_fips) 
 
-hr_b03002 <- b03002_raw |> 
+nova_b03002 <- b03002_raw |> 
   right_join(b03002_vars_cleaned, by = "variable") |> 
   mutate(race = case_when(
     ethnicity == "Hispanic or Latino" ~ "Hispanic or Latino",
@@ -40,7 +40,10 @@ hr_b03002 <- b03002_raw |>
   group_by(GEOID) |> 
   mutate(percent = estimate/sum(estimate))
 
-hr_race <- hr_b03002 |> 
+local_lookup <- read_csv("data/local_lookup.csv") |> 
+  mutate(fips = as.character(fips_full))
+
+nova_race <- nova_b03002 |> 
   filter(race == "White")|> 
   mutate(whitemaj = case_when(
     percent > .50 ~ "Yes",
@@ -50,7 +53,7 @@ hr_race <- hr_b03002 |>
 
 # What localities have a large BIPOC population?
 
-hr_bipoc <- hr_b03002 |> 
+nova_bipoc <- nova_b03002 |> 
   mutate(fips = substr(GEOID, 1, 5)) |> 
   left_join(local_lookup, by = "fips") |> 
   group_by(fips, name_long, race) |> 
@@ -65,9 +68,9 @@ hr_bipoc <- hr_b03002 |>
   mutate(percent = estimate/sum(estimate)) |> 
   filter(race == "BIPOC")
 
-write_rds(hr_bipoc, "data/hr/hr_bipoc.rds")
+write_rds(nova_bipoc, "data/nova/nova_bipoc.rds")
 
-# mapview(hr_race)
+# mapview(nova_race)
 
-write_rds(hr_race, "data/hr/hr_race_tracts.rds")
-st_write(hr_race, "data/hr/hr_race_tracts.gpkg", driver = "GPKG")
+write_rds(nova_race, "data/nova/nova_race_tracts.rds")
+st_write(nova_race, "data/nova/nova_race_tracts.gpkg", driver = "GPKG")

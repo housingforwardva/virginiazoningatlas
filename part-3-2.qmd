@@ -94,6 +94,8 @@ nova_type_summary <- nova_type |>
   group_by(jurisdiction) |> 
   mutate(pct = acres/sum(acres)) 
 
+write_csv(nova_type_summary, "data/nova/nova_ztype.csv")
+
 nova_summary <- nova_type |> 
   group_by(type) |> 
   summarise(acres = sum(acres)) |> 
@@ -180,6 +182,8 @@ nova_sfd <- read_rds("data/nova/nova_vza_nogeo.rds") |> # Read in the data.
   mutate(total_nova = sum(acres)) |> # Calculate what percentage of total developable acres is SFD.
   filter(sfd == "t") 
 
+write_csv(nova_sfd, "data/nova/nova_sfd.csv")
+
 
 ggplot(nova_sfd,
        aes(x = reorder(jurisdiction, percent),
@@ -206,60 +210,49 @@ ggplot(nova_sfd,
 #| eval: false
 
 
-# Read in data frame 
-# nova_bipoc <- read_rds("data/nova/nova_bipoc.rds") |> 
-#   st_drop_geometry() |> 
-#   arrange(name_long) |> 
-#   mutate(bipoc = percent) |> 
-#   select(fips, name_long, bipoc)
-# 
-# nova_sfd <- read_rds("data/nova/nova_vza_nogeo.rds") |> # Read in the data.
-#   select(jurisdiction, overlay, sfd, acres) |> # Select necessary data fields.
-#   filter(overlay == 0) |> # Remove overlay districts.
-#   mutate(jurisdiction = case_when(
-#     jurisdiction == "Smithfield" ~ "Isle of Wight",
-#     jurisdiction == "Windsor" ~ "Isle of Wight", 
-#     jurisdiction == "Surry (town)" ~ "Surry",
-#     TRUE ~ jurisdiction
-#   )) |> 
-#   group_by(jurisdiction, sfd) |> # Sum the total acres dedicated to single-family detached in each district.
-#   summarise(acres = sum(acres)) |> 
-#   group_by(jurisdiction) |> 
-#   mutate(percent = acres/sum(acres)) |> # Calculate what percentage of total developable acres is SFD.
-#   filter(sfd == "t") |> 
-#   ungroup() |> 
-#   add_row(jurisdiction = "York", sfd = "f", acres = 0, percent = 0)
-# 
-# nova_sfd_arrange <- nova_sfd |> 
-#   arrange(jurisdiction)
-# 
-# sfd_bipoc <- cbind(nova_bipoc, nova_sfd_arrange) |> 
-#   mutate(sfd = percent) |> 
-#   select(jurisdiction, bipoc, sfd)
-# 
-# # |> 
-# #   pivot_longer(4:5,
-# #                names_to = "metric",
-# #                values_to = "pct") |> 
-# #   mutate(metric = case_when(
-# #     metric == "bipoc" ~ "BIPOC population (% of total)",
-# #     metric == "sfd" ~ "Single-family detached only (% of total developable)"
-# #   ))
-#   
-# 
-# ggplot(sfd_bipoc,
-#        aes(x = bipoc,
-#            y = sfd)) +
-#   geom_point() +
-#   geom_smooth(method=lm)
-# 
-# +
-#   coord_flip() +
-#   theme_hfv() +
-#   scale_y_continuous(labels = percent_format(), expand = expansion(mult = c(0, 0.05))) +
-#   theme(legend.position = "top") + 
-#   scale_fill_hfv() +
-#   labs(title = "Percentage of SFD-only land compared to BIPOC population")
+# Read in data frame
+nova_bipoc <- read_rds("data/nova/nova_bipoc.rds") |>
+  st_drop_geometry() |>
+  arrange(name_long) |>
+  mutate(bipoc = percent) |>
+  select(fips, name_long, bipoc)
+
+nova_sfd <- read_rds("data/nova/nova_vza_nogeo.rds") |> # Read in the data.
+  select(county, overlay, sfd, acres)|> # Select necessary data fields.
+  filter(county != "Hillsboro") |> 
+  filter(overlay == 0) |> # Remove overlay districts.
+  group_by(county, sfd) |> # Sum the total acres dedicated to single-family detached in each district.
+  summarise(acres = sum(acres)) |>
+  group_by(county) |>
+  mutate(percent = acres/sum(acres)) |> # Calculate what percentage of total developable acres is SFD.
+  filter(sfd == "t") |>
+  ungroup() 
+
+nova_sfd_arrange <- nova_sfd |>
+  arrange(county)
+
+sfd_bipoc <- cbind(nova_bipoc, nova_sfd_arrange) |>
+  mutate(sfd = percent) |>
+  select(county, bipoc, sfd) |>
+  pivot_longer(4:5,
+               names_to = "metric",
+               values_to = "pct") |>
+  mutate(metric = case_when(
+    metric == "bipoc" ~ "BIPOC population (% of total)",
+    metric == "sfd" ~ "Single-family detached only (% of total developable)"))
+
+
+ggplot(sfd_bipoc,
+       aes(x = fct_reorder2(county, metric, pct),
+           y = pct,
+           fill = metric)) +
+  geom_col(position = "dodge") +
+  theme_hfv() +
+  coord_flip() +
+  scale_y_continuous(labels = percent_format())+
+  theme(legend.position = "top") +
+  scale_fill_hfv() +
+  labs(title = "Percentage of SFD-only land compared to BIPOC population")
 
 
 
@@ -267,14 +260,6 @@ ggplot(nova_sfd,
 
 ### Minimum lot sizes
 
-Making generalizations about minimum lot sizes is difficult due to their variations depending on development context. Smaller lot sizes are more reasonable where public water and sewer infrastructure exist, while large lot sizes are more conducive to private well and septic systems. In some cases, smaller lot sizes can be reached by undertaking cluster development techniques that help preserve open space or a planned residential development.
-
-We focused on the lot requirements for single-family detached homes, as many experts have referenced the importance of reducing lot sizes to promote affordability and reduce impacts on the environment.
-
-::: callout-note
-The following chart focuses on single-family detached only zoning districts.
-
-In order to conduct an analysis with varying minimum lot requirements depending on district context (i.e. connection to public water and sewer, or requirements dependent on predominant lot size), we captured the minimum and maximum value listed. For example, a locality may require a minimum lot acres of 0.69 acres if not connected to public infrastructure, but would require a minimum lot acres of 0.23 if connected. Therefore, we collected the minimum value (0.23 acres) and the maximum value (0.69 acres). We then averaged the minimum value and the maximum value within each jurisdiction.
 
 This provides a general range of the minimum lot acres required for housing in single-family detached only zoning districts.
 :::
@@ -287,7 +272,7 @@ This provides a general range of the minimum lot acres required for housing in s
 # Blank fields should be treated as NA and should not be included in the mean calculation.
 
 
-nova_lots <- read_csv("data/nova/nova_sfd_minlot.csv") |> 
+nova_lots <- read_rds("data/nova/nova_vza_nogeo.rds") |> 
   mutate(min1 = as.numeric(min1),
          max1 = as.numeric(max1)) |> 
   group_by(jurisdiction) |> 
@@ -301,6 +286,8 @@ nova_lots <- read_csv("data/nova/nova_sfd_minlot.csv") |>
     metric == "mean1min" ~ "Minimum value",
     metric == "mean1max" ~ "Maximum value"
   ))
+
+write_csv(nova_lots, "data/nova/nova_min1_lots.csv")
 
 subtitle_text <- "*Average <span style='color:#40c0c0'><b>minimum</span></b> and <span style='color:#011E41'><b>maximum</span></b> in acres*"
   
@@ -317,7 +304,7 @@ lot_plot <- ggplot(nova_lots,
        subtitle = subtitle_text,
        caption = "**Source:** HousingForward Virginia, Virginia Zoning Atlas.") +
   theme_hfv() +
-  scale_y_continuous(breaks = seq(0, 4, 0.5)) +
+  scale_y_continuous(breaks = seq(0, 10, 0.5)) +
   scale_color_hfv() +
   plot_annotation(
     theme = theme(
@@ -370,6 +357,8 @@ nova_byright_tbl <- read_rds("data/nova/nova_vza_nogeo.rds") |>
             family4_byright = percent(sum(family4_pct))
             ) 
 
+write_csv(nova_byright_tbl, "data/nova/nova_byright_table.csv")
+
 
 nova_byright_tbl |>
   kable(col.names = c("Jurisdiction", "Single-family", "2-family", "3-family", "4+-family"), 
@@ -395,8 +384,7 @@ nova_byright <- read_rds("data/nova/nova_vza_nogeo.rds") |>
   group_by(jurisdiction) |> 
   mutate(pct_2plus = acres/total_acres) |> 
   group_by(jurisdiction) |> 
-  summarise(pct_2plus = sum(pct_2plus)) |>
-  add_row(jurisdiction = "Smithfield", pct_2plus = 0)
+  summarise(pct_2plus = sum(pct_2plus)) 
 
 nova_byright_summary <- read_rds("data/nova/nova_vza_nogeo.rds") |> 
   select(jurisdiction, abbrvname, overlay, 6:9, acres) |> # Select data fields.
@@ -405,6 +393,8 @@ nova_byright_summary <- read_rds("data/nova/nova_vza_nogeo.rds") |>
   filter(family2_treatment == "allowed" & family3_treatment == "allowed" & family4_treatment == "allowed") |> 
   mutate(total_2plus = sum(acres)) |> 
   mutate(pct2plus = total_2plus/total_acres)
+
+write_csv(nova_byright, "data/nova/nova_byright_2plus.csv")
 
 ggplot(nova_byright,
        aes(x = reorder(jurisdiction, pct_2plus),
@@ -462,6 +452,8 @@ nova_byright <- read_rds("data/nova/nova_vza_nogeo.rds") |>
   mutate(pct_4plus = acres/total_acres) |> 
   group_by(jurisdiction) |> 
   summarise(pct_4plus = sum(pct_4plus)) 
+
+write_csv(nova_byright, "data/nova/nova_byright_4plus.csv")
 
 nova_byright_summary <- read_rds("data/nova/nova_vza_nogeo.rds") |> 
   select(jurisdiction, abbrvname, overlay, 6:9, acres) |> # Select data fields.
@@ -581,9 +573,9 @@ nova_adu <- read_rds("data/nova/nova_vza_nogeo.rds") |>
   group_by(jurisdiction, total_acres)  |> 
   summarise(acres = sum(acres)) |> 
   mutate(pct = acres/total_acres) |> 
-  ungroup() |> 
-  add_row(jurisdiction = "Surry (town)", total_acres = 0, acres = 0, pct = 0) |> 
-  add_row(jurisdiction = "Williamsburg", total_acres = 0, acres = 0, pct = 0)
+  ungroup()
+
+write_csv(nova_adu, "data/nova/nova_adu.csv")
 
 
 ggplot(nova_adu,
@@ -595,7 +587,7 @@ ggplot(nova_adu,
   coord_flip() +
   theme_hfv() +
   labs(title = "Percent of developable land allowing for ADUs by-right",
-       caption = "**Source: ** HousingForward Virginia, Virginia Zoning Atlas.")  +
+       caption = "**Source:** HousingForward Virginia, Virginia Zoning Atlas.")  +
   scale_y_continuous(labels = percent_format(), expand = expansion(mult = c(0, 0.15))) +
   scale_fill_gradientn(colours = c("#ADDCB1", "#46A88F", "#207A88", "#0F1A4E")) + # Use custom HFV gradient.
   scale_color_gradientn(colours = c("#ADDCB1", "#46A88F", "#207A88", "#0F1A4E")) + # Use custom HFV gradient.
@@ -623,13 +615,9 @@ nova_adu <- read_rds("data/nova/nova_vza_nogeo.rds") |>
   summarise(acres = sum(acres)) |> 
   mutate(pct = acres/total_acres) |> 
   ungroup() |>
-  filter(type == "Primarily Residential") |> 
-  add_row(jurisdiction = "Surry (town)", total_acres = 0, acres = 0, pct = 0) |> 
-  add_row(jurisdiction = "Newport News", total_acres = 0, acres = 0, pct = 0) |> 
-  add_row(jurisdiction = "Chesapeake", total_acres = 0, acres = 0, pct = 0) |> 
-  add_row(jurisdiction = "Windsor", total_acres = 0, acres = 0, pct = 0) |> 
-  add_row(jurisdiction = "Smithfield", total_acres = 0, acres = 0, pct = 0) |> 
-  add_row(jurisdiction = "Williamsburg", total_acres = 0, acres = 0, pct = 0)
+  filter(type == "Primarily Residential") 
+
+write_csv(nova_adu, "data/nova/nova_adu_primary_res.csv")
 
 ggplot(nova_adu,
        aes(x = reorder(jurisdiction, pct),
