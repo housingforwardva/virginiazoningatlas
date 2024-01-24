@@ -129,51 +129,13 @@ girafe(ggobj = type_plot,
 
 ```
 
-Roughly 90 percent of developable land is [Primarily Residential]{.primary-res} . This includes prime agricultural land in the southern parts of Hampton Roads, where the preservation of open space and natural resources is a vital part of the region. Only tnovaee percent of the region's developable land is classified as [Mixed with Residential]{.mixed-res}. Locally, **Williamsburg (22%), York County (17%), and Newport News (13%)** have the **largest proportions of** [Mixed with Residential]{.mixed-res} **zoning types**, while Surry County (0%), Southampton County (0%), and Isle of Wight County (less than 1%) have the least.
-
-***Williamsburg has the greatest percentage of Mixed with Residential zoning in the region.***
-
-![The City of Williamsburg by type of zoning district](img/nova/williamsburg_highlight.png){fig-align="center"}
-
-***Surry County and Southampton County have no zoning districts that allow for a mix of residential and nonresidential uses.***
-
-::: callout-note
-In many rural localities like Surry and Southampton, mixed-use zoning is often implemented within older towns, which have their own zoning authority. Such as the case in the Town of Surry, where 7 percent of zoned land is Mixed with Residential.
-
-Towns have historically been economic and cultural hubs for many rural communities. The [Virginia Main Street Program](https://www.dhcd.virginia.gov/vms) is a resource utilized tnovaoughout the Commonwealth to revitalizing small and mid-sized downtown ares.
-
-More recently, the [Mixed Use on Main Streets (MUMS)](https://virginiamainstreet.com/2022/11/25/announcing-the-mixed-use-on-main-street-mums-program/) pilot program was created as a joint effort between the Industrial Revitalization Fund (IRF) and Virginia Main Street programs to create opportunities for commercial development coupled with housing units.
-:::
-
-![Surry County by type of zoning district](img/nova/surry_highlight.png){fig-align="center"}
-
-![Southampton County by type of zoning district](img/nova/southampton_highlight.png){fig-align="center"}
-
-Walkable, mixed-use communities are [increasingly desirable among all age groups](https://www.strongtowns.org/journal/2023/7/25/realtors-buyers-will-pay-extra-for-walkable-neighborhoods). The ability to reach work, shopping, and leisure activities within walking distance supports healthy communities, but also supports diverse local business and job opportunities (think of acress like like Ghent in Norfolk or the ViBe District in Virginia Beach). These neighborhoods have a mix of zoning districts, as well as single districts that allow for a diverse range of uses.
-
-::: caution-note
-More rural and suburban communities don't need to become a Downtown Norfolk or Virginia Beach Town Center to create walkable, mixed-use communities.
-
-[![Smithfield, Photo Credit: Billy Wilson](img/nova/smithfield_mixed.jpg){fig-align="center" width="334"}](https://www.flickr.com/photos/billy_wilson/52748171708)
-
-Towns like Smithfield, Virginia are a great example of density with a small-town feel.
-:::
-
-![Intersection of Colley Ave and W. 23rd Street in Norfolk](img/nova/colley_23rd_norfolk.png)
-
-Downtown acress in many cities across the nation have seen resurgences in recent years due to investment by local businesses and entrepreneurs. In addition, the construction of new housing or adaptive reuse of older buildings has also spurred the move to downtowns by people of all ages.
-
-While there are constraints to downtown development in places like Newport News, increasing mixed-use zoning can help to create
-
-![Downtown Newport News](img/nova/downtown_newportnews.png)
 
 ## Single-family detached housing
 
-While single-family detached housing is a dream many aspire to, barriers to homeownership are making it difficult for many Hampton Roads residents to purchase a home. The previous section highlighted those challenges with current wages and high rental costs that are further limiting the ability to save for a home purchase. Furthermore, single-family detached only zoning can have major implications on equity and economic opportunity. Allowing for more diverse types of housing in single-family detached only zoning districts can help provide greater access to high opportunity acress for a diverse range of households - both in terms of race and ethnicity, and income.
 
 ```{r}
 #| label: fig-sfd-map
-#| fig-cap: "Single-family detached only zoning in Hampton Roads"
+#| fig-cap: "Single-family detached only zoning in Northern Virginia"
 
 # Create a map that shows where single-family detached only housing districts are in the region.
 
@@ -199,15 +161,6 @@ leaflet() |>
 
 ```
 
-In most Hampton Roads localities, the majority of developable land is dedicated to single-family detached only. Many of these localities are largely rural localities, where single-family detached housing is more appropriate in a rural setting. But even in more urban and suburban acress like Virginia Beach, Hampton, Norfolk, and Newport News, a large proportion of those localities is dedicated to single-family detached only.
-
-:::{.callout-note}
-## Notable Jurisdiction
-
-Isle of Wight County is notable among its neighbors because it allows for two-family housing tnovaoughout many parts of the county, even in acress where single-family detached is predominant. The catch, however, is that it has to go tnovaough the conditional use permit process.
-
-York County allows for single-family attached duplexes in a [Cluster Techniques Open Space Development](https://library.municode.com/va/york_county/codes/code_of_ordinances?nodeId=CD_ORD_CH24.1ZO_ARTIVPESTUS_DIV1REUS_S24.1-402STOPSPDECLTE) tnovaough the special use permit. 
-:::
 
 ```{r}
 #| label: fig-sfd-bar
@@ -217,6 +170,7 @@ York County allows for single-family attached duplexes in a [Cluster Techniques 
 
 nova_sfd <- read_rds("data/nova/nova_vza_nogeo.rds") |> # Read in the data.
   select(jurisdiction, overlay, sfd, acres) |> # Select necessary data fields.
+  filter(jurisdiction != "Hillsboro") |> 
   filter(overlay == 0) |> # Remove overlay districts.
   group_by(jurisdiction, sfd) |> # Sum the total acres dedicated to single-family detached in each district.
   summarise(acres = sum(acres)) |> 
@@ -224,8 +178,7 @@ nova_sfd <- read_rds("data/nova/nova_vza_nogeo.rds") |> # Read in the data.
   mutate(percent = acres/sum(acres)) |> 
   ungroup() |> 
   mutate(total_nova = sum(acres)) |> # Calculate what percentage of total developable acres is SFD.
-  filter(sfd == "t") |> 
-  add_row(jurisdiction = "York", sfd = "t", percent = 0, total_nova = 1406413)
+  filter(sfd == "t") 
 
 
 ggplot(nova_sfd,
