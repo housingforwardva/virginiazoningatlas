@@ -24,7 +24,7 @@ library(janitor)
 
 MAPBOX_ACCESS_TOKEN = Sys.getenv("MAPBOX_ACCESS_TOKEN")
 
-zoning <- readr::read_rds("data/hr_vza_simple.rds") |>
+zoning <- readr::read_rds("data/vza_simple.rds") |>
   st_cast("MULTIPOLYGON") %>%
     dplyr::mutate(fill_color = dplyr::case_when(
       type == "R" ~ "#8B85CA",
@@ -39,13 +39,13 @@ zoning <- readr::read_rds("data/hr_vza_simple.rds") |>
       TRUE ~ "#FFFFFFff"
     )) 
 
-fed <- sf::st_read("data/fed_lands.geojson")
+fed <- sf::st_read("data/protected_lands.geojson")
 
 flood <- sf::st_read("data/flood.geojson")
 
 transit <- sf::st_read("data/hr_transit_all.geojson")
 
-juris <- readr::read_rds("data/hr_boundaries.rds")
+juris <- sf::st_read("data/boundaries.geojson")
 
 type_choices <- c(
   "Prohibited" = "prohibited",
@@ -65,8 +65,6 @@ base_map <- c(
 )
 
 base_selected <- "Light"
-
-
 
 local_list <- sort(unique(zoning$jurisdiction))
 
@@ -310,7 +308,7 @@ server <- function(input, output, session) {
                         get_line_width = 100) |> 
       add_polygon_layer(data = fed, opacity = 0.5, filled = TRUE, get_fill_color = "#A9A9A9", get_polygon = geometry, get_line_color = "#ffffff",
                         get_line_width = 10, pickable = TRUE, auto_highlight = TRUE, highlight_color = "#606060",
-                        tooltip = c(Agency, Name), name = "Federal Land") %>%
+                        tooltip = c(Ownership, Type, Name), name = "Protected Land") %>%
       add_polygon_layer(data = flood, opacity = 0.5, filled = TRUE, get_fill_color = "#5E1914", get_polygon = geometry,
                         get_line_color = "#ffffff", get_line_width = 10, pickable = FALSE, name = "Flood Hazard", id = "flood",
                         visible = FALSE) |> 
@@ -346,9 +344,9 @@ server <- function(input, output, session) {
         accessory_treatment %in% acc_opts,
         jurisdiction %in% locality
       ) |> 
-      dplyr::mutate(selected_area = sum(area)) |> 
+      dplyr::mutate(selected_acres = sum(acres)) |> 
       dplyr::mutate(total_jurisdiction = sum(unique(total_area))) |> 
-      dplyr::mutate(pct = scales::percent(selected_area/total_jurisdiction), accuracy = 0.1)
+      dplyr::mutate(pct = scales::percent(selected_acres/total_jurisdiction), accuracy = 0.1)
 
                          
     
