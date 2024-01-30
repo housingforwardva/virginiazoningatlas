@@ -43,7 +43,7 @@ fed <- sf::st_read("data/protected_lands.geojson")
 
 flood <- sf::st_read("data/flood.geojson")
 
-transit <- sf::st_read("data/hr_transit_all.geojson")
+transit <- sf::st_read("data/transit.geojson")
 
 juris <- sf::st_read("data/boundaries.geojson")
 
@@ -315,7 +315,9 @@ server <- function(input, output, session) {
       add_scatterplot_layer(data = transit, get_position = geometry, name = "Public Transit", 
                             radius_min_pixels = 2, visible = FALSE, 
                             id = "transit_layer", 
-                            get_fill_color = scale_color_category(service, palette = c("#ffd179", "#ff8e91", "#e67a54")))
+                            pickable = TRUE,
+                            get_fill_color = "#ffd179",
+                            tooltip = service)
   })
   
   
