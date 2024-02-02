@@ -6,7 +6,7 @@ library(sf)
 
 # Read in the geojson provided by the NZA, which already has "undevelopable" land removed.
 
-nova_vza <- geojson_sf("data/nova/nova_vza_nza.geojson") 
+nova_vza <- geojson_sf("data/nova/nova_ogr.geojson")
 
 # Data prep
 
@@ -64,7 +64,7 @@ nova_vza_nogeo <- nova_vza_clean_data |>
   st_drop_geometry()
 
 
-
+st_write(nova_vza_clean_data, "data/nova/nova_vza_geo.geojson")
 write_rds(nova_vza_clean_data, "data/nova/nova_vza_geo.rds", compress = "none") 
 write_rds(nova_vza_nogeo, "data/nova/nova_vza_nogeo.rds", compress = "none")
 

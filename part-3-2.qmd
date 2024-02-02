@@ -101,6 +101,8 @@ nova_summary <- nova_type |>
   summarise(acres = sum(acres)) |> 
   mutate(pct = acres/sum(acres)) 
 
+write_csv(nova_summary, "data/nova/nova_ztype_region.csv")
+
 subtitle_text <- "<span style='color:#8B85CA'><b>Primarily Residential</span></b>, <span style='color:#40C0C0'><b>Mixed with Residential</span></b>, and <span style='color:#011E41'><b>Nonresidential</span></b>"
 
 
@@ -116,7 +118,7 @@ type_plot <- ggplot(nova_type_summary,
   scale_fill_hfv() +
   labs(title = "Percent of land by type of zoning district",
        subtitle = subtitle_text,
-       caption = "**Source:** HousingForward Virginia, Virginia Zoning Atlas.") +
+       caption = "**Source:** Mercatus Center at George Mason University & HousingForward Virginia, Virginia Zoning Atlas.") +
   scale_y_continuous(labels = percent_format(), expand = expansion(mult = c(0, 0.01))) +
   plot_annotation(
     theme = theme(
@@ -143,7 +145,7 @@ girafe(ggobj = type_plot,
 
 
 vza_pal <- colorFactor(palette =c("#8B85CA", "#40C0C0", "#011E41"),
-                       levels = c("R", "M", "R"))
+                       levels = c("Primarily Residential", "Mixed with Residential", "Nonresidential"))
 
 nova_sfd_map <- read_rds("data/nova/nova_sfd_only_map.rds")
 
@@ -184,6 +186,11 @@ nova_sfd <- read_rds("data/nova/nova_vza_nogeo.rds") |> # Read in the data.
 
 write_csv(nova_sfd, "data/nova/nova_sfd.csv")
 
+nova_sfd_summary <- nova_sfd |> 
+  group_by(total_nova) |> 
+  summarise(total_sfd = sum(acres)) |> 
+  mutate(pct = total_sfd/total_nova)
+
 
 ggplot(nova_sfd,
        aes(x = reorder(jurisdiction, percent),
@@ -199,7 +206,7 @@ ggplot(nova_sfd,
   scale_fill_gradientn(colours = c("#ADDCB1", "#46A88F", "#207A88", "#0F1A4E")) + # Use custom HFV gradient.
   scale_color_gradientn(colours = c("#ADDCB1", "#46A88F", "#207A88", "#0F1A4E")) + # Use custom HFV gradient.
   labs(title = "Percent of developable land dedicated to single-family detached only",
-       caption = "**Source:** HousingForward Virginia, Virginia Zoning Atlas.") +
+       caption = "**Source:** Mercatus Center at George Mason University & HousingForward Virginia, Virginia Zoning Atlas.") +
   theme(axis.text.x = element_blank())
 
 ```
@@ -258,6 +265,7 @@ ggplot(sfd_bipoc,
 
 ```
 
+
 ### Minimum lot sizes
 
 
@@ -302,7 +310,7 @@ lot_plot <- ggplot(nova_lots,
   coord_flip() +
   labs(title = "Mininum lot requirements in single-family detached only districts",
        subtitle = subtitle_text,
-       caption = "**Source:** HousingForward Virginia, Virginia Zoning Atlas.") +
+       caption = "**Source:** Mercatus Center at George Mason University & HousingForward Virginia, Virginia Zoning Atlas.") +
   theme_hfv() +
   scale_y_continuous(breaks = seq(0, 10, 0.5)) +
   scale_color_hfv() +
@@ -331,7 +339,8 @@ When housing development requires a public hearing process, it can often come up
 
 nova_byright_tbl <- read_rds("data/nova/nova_vza_nogeo.rds") |> 
   select(jurisdiction, abbrvname, overlay, 6:9, acres) |> 
-  filter(overlay == 0) |> 
+  filter(overlay == 0) |>
+  filter(acres != 0) |> 
   group_by(jurisdiction) |> 
   mutate(total_acres = sum(acres)) |> 
   mutate(family1_pct = case_when(
@@ -367,7 +376,6 @@ nova_byright_tbl |>
 
 ```
 
-Overwhelmingly, single-family is welcomed (without a public hearing) in nearly every locality by a wide margin, while 2+ family housing is only allowed by-right by less than seven percent in most localities. acress like Newport News, Norfolk, and Williamsburg stand out as allowing much more than their neighbors. Portsmouth is notable for its allowance of duplexes and triplexes. But overall, only about two percent of developable land in Hampton Roads allows for 2+ family housing by-right.
 
 ```{r}
 #| label: fig-2plus
@@ -409,7 +417,7 @@ ggplot(nova_byright,
   scale_color_gradientn(colours = c("#ADDCB1", "#46A88F", "#207A88", "#0F1A4E")) + # Use custom HFV gradient.
   scale_y_continuous(expand = expansion(mult = c(0, 0.1))) +
   labs(title = "Percent of developable land allowing for 2+ family housing by-right",
-       caption = "**Source:** HousingForward Virginia, Virginia Zoning Atlas.")  +
+       caption = "**Source:** Mercatus Center at George Mason University & HousingForward Virginia, Virginia Zoning Atlas.")  +
   theme(axis.text.x = element_blank())
 
 
@@ -425,16 +433,15 @@ The map below shows the location of zoning districts that allow for 2+ family by
 
 # Create a map that shows where 2 + family housing is allowed by-right in the region.
 
-pal <- colorFactor(palette =c("#8B85CA", "#40C0C0"),levels = c("R", "M"))
+pal <- colorFactor(palette =c("#8B85CA", "#40C0C0"),levels = c("Primarily Residential", "Mixed with Residential"))
 
-nova_byr2 <- read_rds("data/nova/nova_byr_map.rds")
+nova_byr2 <- read_rds("data/nova/byr_map.rds")
 
 nova_byr2 |> 
   addProviderTiles(providers$CartoDB.Positron)
 
 ```
 
-Urban acress like the City of Hampton stand out for the lack of developable land that allows for 4+-Family housing by-right. Although largely built out, there are many opportunities where redevelopment of older commercial strips could be rezoned to include a mix of housing and commercial uses, like acress around the Hampton Convention Center or Peninsula Town Center.
 
 ```{r}
 #| label: fig-4plus
@@ -445,6 +452,7 @@ Urban acress like the City of Hampton stand out for the lack of developable land
 nova_byright <- read_rds("data/nova/nova_vza_nogeo.rds") |> 
   select(jurisdiction, abbrvname, overlay, 6:9, acres) |> # Select data fields.
   filter(overlay == 0) |> # Filter out overlay districts.
+  filter(acres != 0) |> 
   group_by(jurisdiction) |> 
   mutate(total_acres = sum(acres)) |> # Calculate the total acres of zoned land.
   filter(family4_treatment == "allowed") |> 
@@ -463,6 +471,8 @@ nova_byright_summary <- read_rds("data/nova/nova_vza_nogeo.rds") |>
   mutate(total_4plus = sum(acres)) |> 
   mutate(pct4plus = total_4plus/total_acres)
 
+
+
 ggplot(nova_byright,
        aes(x = reorder(jurisdiction, pct_4plus),
            y = pct_4plus,
@@ -476,23 +486,13 @@ ggplot(nova_byright,
   scale_color_gradientn(colours = c("#ADDCB1", "#46A88F", "#207A88", "#0F1A4E")) + # Use custom HFV gradient.
   scale_y_continuous(expand = expansion(mult = c(0, 0.1))) +
   labs(title = "Percent of developable land allowing for 4+ family housing by-right",
-       caption = "**Source:** HousingForward Virginia, Virginia Zoning Atlas.")+
+       caption = "**Source:** Mercatus Center at George Mason University & HousingForward Virginia, Virginia Zoning Atlas.")+
   theme(axis.text.x = element_blank())
-
-
 
 
 ```
 
-![Where 4+-Family is allowed by-right in Hampton](img/nova/hampton_highlight.png)
-
-Virginia Beach also has opportunities along its major corridors like Virginia Beach Boulevard, Princess Anne Road, and Laskin Road.
-
-![Where 4+-Family is allowed by-right in Virginia Beach](img/nova/vb_highlight.png)
-
 ## Other requirements
-
-In Hampton Roads, the additional regulations that localities place on different types of housing vary greatly. It is difficult to make one-to-one comparisons with specific requirements like minimum lot size, setbacks, and lot coverage, even with the National Zoning Atlas Methodology.
 
 ```{r}
 
@@ -500,23 +500,16 @@ In Hampton Roads, the additional regulations that localities place on different 
 
 # Minimum parking requirements for 4+ family in each locality
 
-# There are four localities that have minimum square footage requirements. Highlight those and what they require. Hampton, Poquoson, Franklin (for some), Southampton (for some)
 
 ```
 
 ### Minimum dwelling square footage
 
-Two jurisdictions, the cities of Hampton and Poquoson, have minimum square footage requirements for housing. In Poquoson, the single-family minimum square footage requirement ranges from 950 square feet to 1,300 square feet. These are modest size homes that are typical.
 
-In Hampton, the minimum square footage ranges from 800 to 2,250 square feet. Large square footage requirements of 2,000 or more square feet exist in the R-13, R-22, and R-33 zoning districts (they also exist in the R-43 and R-LL districts, but they are not mapped).
-
-Visit the link [here](https://www.forbes.com/sites/instituteforjustice/2022/05/17/rules-requiring-people-to-buy-big-homes-are-pricing-americans-out-of-the-housing-market/?sh=7a5cd209f358) to learn more about how minimum dwelling sizes are impacting affordability.
 
 ### Parking minimums
 
-When it comes to multifamily housing development, parking requirements can add up, reducing density, [increasing costs](https://www.brookings.edu/articles/parking-requirements-and-foundations-are-driving-up-the-cost-of-multifamily-housing/), and encouraging more frequent personal vehicle travel. Surface parking lots take up valuable developable land, while parking structures are quite costly.
 
-Eliminating or reducing parking minimums has gained [momentum across the nation](https://www.afslaw.com/perspectives/managing-automotive-blog/spaced-out-the-shift-away-minimum-parking-requirements).
 
 The table below shows minimum parking requirements for multifamily housing developments of 4 or more units in each Hampton Roads locality:
 
@@ -533,19 +526,6 @@ nova_parking |>
 
 ```
 
-Many jurisdictions in Hampton Roads adhere to similar off-street parking requirements for multifamily housing developments. Suffolk is notable for having the lowest parking minimums for multifamily housing, but, no jurisdiction has eliminated parking minimums.
-
-::: callout-note
-Some jurisdictions utilize overlay districts to reduce or eliminate parking minimums in certain acress.
-:::
-
-Newport News is notable because they have no parking requirements listed for multifamily buildings other than multiple-family attached buildings (i.e. garden-style apartments)[^part-2-2-1]. Norfolk's parking requirements are wholly dependent on which Character District the zoning district lies within, therefore it ranges from 1.5 to 1.75 spaces.
-
-[^part-2-2-1]: A planner has confirmed that the parking requirement is 1.5/unit.
-
-Planning for housing around public transportation routes can reduce traffic congestion and also increase community vitality. Light rail (like the Tide in Norfolk) or Bus Rapid Transit (BRT) can help make public transportation faster, more efficient, and attractive to a broad range of residents.
-
-Visit the link [here](https://www.planning.org/planning/2018/oct/peopleoverparking/) to hear from a planner's perspective on parking.
 
 ## Accessory dwelling units
 
@@ -690,11 +670,11 @@ The following map shows zoned land that allows for 2+ family housing by-right in
 
 ```{r}
 #| label: fig-transit-map
-#| fig-cap: "Hampton Roads Transit bus stops and zoned land allowing for 2+ family housing by-right"
+#| fig-cap: "Northern Virginia transit stops and zoned land allowing for 2+ family housing by-right"
 
-pal <- colorFactor(palette =c("#8B85CA", "#40C0C0"),levels = c("R", "M"))
+pal <- colorFactor(palette =c("#8B85CA", "#40C0C0"),levels = c("Primarily Residential", "Mixed with Residential"))
 
-transit_pal <-colorFactor(palette = c("#B1005F", "#E0592A", "#FFC658"), levels = c("WATA", "Hampton Roads Transit", "Suffolk Transit"))
+transit_pal <-colorFactor(palette = c("#B1005F", "#E0592A"), levels = c("Bus", "Rail"))
 
 nova_transit_map <- read_rds("data/nova/nova_transit_map.rds")
 
@@ -703,7 +683,7 @@ nova_transit_map |>
 
 ```
 
-This map shows that many 2+ housing options are made available within bus stops, but there are still opportunities to increase transit access tnovaoughout the region by upzoning in strategic acress and/or expanding transit service.
+This map shows that many 2+ housing options are made available within bus stops, but there are still opportunities to increase transit access throughout the region by upzoning in strategic areas and/or expanding transit service.
 
 ## Affordable housing need
 
@@ -718,7 +698,7 @@ The map below shows Census Block Groups where the jobs-housing fit ratio is grea
 housing_needed <- read_rds("data/nova/nova_blk_grps.rds") |> 
   filter(ratio > 2 | is.na(ratio))
 
-pal <- colorFactor(palette =c("#8B85CA", "#40C0C0"),levels = c("R", "M"))
+pal <- colorFactor(palette =c("#8B85CA", "#40C0C0"),levels = c("Primarily Residential", "Mixed with Residential"))
 
 nova_byr4 <- read_rds("data/nova/nova_byr4_map.rds") 
 

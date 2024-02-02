@@ -4,29 +4,37 @@ library(leaflet)
 library(rmapshaper)
 
 
-nova_byright4 <- st_read("data/nova/nova_byright4.geojson")
+byright4 <- read_sf("data/nova/nova_vza_geo.geojson") |> 
+  ms_simplify(keep = 0.1) |> 
+  filter(overlay == 0) |> 
+  filter(family4_treatment == "allowed")
 
-nova_byright4 <- ms_simplify(nova_byright4, keep = 0.3)
+byright4plus <- read_sf("data/nova/nova_vza_geo.geojson") |> 
+  filter(overlay == 0) |> 
+  filter(family4_treatment == "allowed")
+
+st_write(byright4plus, "data/nova/nova_byright4plus.geojson")
 
 
-pal <- colorFactor(palette =c("#8B85CA", "#40C0C0"),levels = c("R", "M"))
 
-nova_byr4_map <- leaflet(nova_byright4) |> 
+pal <- colorFactor(palette =c("#8B85CA", "#40C0C0"),levels = c("Primarily Residential", "M"))
+
+byr4_map <- leaflet(byright4) |> 
   addPolygons(weight = 1,
               color = ~pal(type),
               fillColor = ~pal(type),
               fillOpacity = 0.9,
               popup = paste0("Jurisdiction: ",
-                             nova_byright4$nova_custom_fields_jurisdiction,
+                             byright4$nova_custom_fields_jurisdiction,
                              "<br>",
                              "District: ",
-                             nova_byright4$abbrvname)) |> 
-  addLegend(data = nova_byright4,
+                             byright4$abbrvname)) |> 
+  addLegend(data = byright4,
             labels = c("Primarily Residential", "Mixed with Residential"),
             colors = c("#8B85CA", "#40C0C0"),
             title = "Type of Zoning District") 
 
 
-nova_byr4_map
+byr4_map
 
-write_rds(nova_byr4_map, "data/nova/nova_byr4_map.rds")
+write_rds(byr4_map, "data/nova/byr4_map.rds")

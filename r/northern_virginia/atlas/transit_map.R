@@ -6,13 +6,35 @@ library(leaflet)
 # https://opendata.dc.gov/datasets/e3896b58a4e741d48ddcda03dae9d21b_51/explore?location=38.869191%2C-77.025953%2C11.17
 # https://hub.arcgis.com/datasets/fedmaps::amtrak-rail-stations/explore?location=38.070140%2C-77.278835%2C9.77
 
-transit <- st_read("data/nova/nova_transit_all.geojson")
-transit_buff <- st_read("data/nova/nova_qrtr_buffers.geojson")
-nova_byright2 <- st_read("data/nova/nova_byright2.geojson")
+rail <- st_read("data/nova/nova_rail_stops.geojson") |> 
+  mutate(type = "Rail") |> 
+  select(service, type)
+
+bus <- st_read("data/nova/nova_transit_stops.geojson")|> 
+  pivot_longer(2:7,
+               values_to = "check",
+               names_to = "service") |> 
+  filter(check == "Yes") |> 
+  mutate(service = str_replace_all(service, "_", " ")) |> 
+  mutate(type = "Bus") |> 
+  select(service, type)
+
+rail_buffers <- st_buffer(rail, 402.336)
+bus_buffers <- st_buffer(bus, 402.336)
+
+
+# mapview::mapview(rail_buffers)
+
+transit <- rbind(rail, bus)
+transit_buff <- rbind(rail_buffers, bus_buffers)
+nova_byright2 <- st_read("data/nova/nova_byright2plus.geojson")
 nova_region <- st_read("data/nova/nova_region.geojson")
 
-pal <- colorFactor(palette =c("#8B85CA", "#40C0C0"),levels = c("R", "M"))
-transit_pal <-colorFactor(palette = c("#B1005F", "#E0592A", "#FFC658"), levels = c("WATA", "Hampton Roads Transit", "Suffolk Transit"))
+# st_write(transit, "data/nova/nova_transit.geojson")
+# st_write(transit_buff, "data/nova/nova_transit_buffers.geojson")
+
+pal <- colorFactor(palette =c("#8B85CA", "#40C0C0"),levels = c("Primarily Residential", "Mixed with Residential"))
+transit_pal <-colorFactor(palette = c("#B1005F", "#E0592A"), levels = c("Bus", "Rail"))
 
 nova_transit_map <- leaflet(nova_byright2) |> 
   addPolygons(weight = 1,
@@ -20,10 +42,10 @@ nova_transit_map <- leaflet(nova_byright2) |>
              fillColor = ~pal(type),
              fillOpacity = 0.9) |> 
   addCircleMarkers(data = transit,
-              color = ~transit_pal(service),
+              color = ~transit_pal(type),
               radius = 0.15,
               fillOpacity = 1,
-              fillColor = ~transit_pal(service),
+              fillColor = ~transit_pal(type),
               group = "Transit Stops") |> 
   addPolygons(data = transit_buff,
               color = "white",
@@ -36,21 +58,13 @@ nova_transit_map <- leaflet(nova_byright2) |>
             colors = c("#8B85CA", "#40C0C0"),
             title = "Type of Zoning District") |> 
   addLegend(data = transit,
-            labels = c("WATA", "Hampton Roads Transit", "Suffolk Transit"),
-            color = c("#B1005F", "#E0592A", "#FFC658"),
-            group = "novaT Bus Stop") |> 
+            labels = c("Bus", "Rail"),
+            color = c("#B1005F", "#E0592A"),
+            group = "NOVA Transit") |> 
   addLegend(data = transit_buff,
             labels = "1/4 mile buffer",
             color = "grey",
             group = "1/4 mile buffer") |> 
-  # addPolygons(data = nova_region,
-  #             color = "#011E41",
-  #             weight = 1, 
-  #             fillOpacity = 0) |> 
-  setView(lat = 36.847639, 
-          lng = -75.988382,
-          zoom = 12) |> 
-  # Layers control
   addLayersControl(
     overlayGroups = c("Transit Stops", "1/4 mile buffer"),
     options = layersControlOptions(collapsed = FALSE)

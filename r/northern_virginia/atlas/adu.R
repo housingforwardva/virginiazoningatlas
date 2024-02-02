@@ -3,12 +3,17 @@ library(sf)
 library(leaflet)
 library(rmapshaper)
 
-nova_adu <- st_read("data/nova/nova_adu.geojson")
+nova_adu <- read_sf("data/nova/nova_vza_geo.geojson") |> 
+  filter(accessory_treatment == "allowed") |> 
+  filter(overlay == 0)
+
+st_write(nova_adu, "data/nova/nova_adu_map.geojson")
+
 
 nova_adu <- ms_simplify(nova_adu, keep = 0.3)
 
 
-pal <- colorFactor(palette =c("#8B85CA", "#40C0C0", "#011E41"),levels = c("R", "M", "X"))
+pal <- colorFactor(palette =c("#8B85CA", "#40C0C0", "#011E41"),levels = c("Primarily Residential", "Mixed with Residential", "Nonresidential"))
 
 nova_adu_map <- leaflet(nova_adu) |> 
   addPolygons(weight = 1,
