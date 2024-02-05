@@ -127,6 +127,7 @@ type_plot <- ggplot(nova_type_summary,
         size = 11.5
     )))
 
+
 girafe(ggobj = type_plot,
        height_svg = 4)
 
@@ -190,6 +191,7 @@ nova_sfd_summary <- nova_sfd |>
   group_by(total_nova) |> 
   summarise(total_sfd = sum(acres)) |> 
   mutate(pct = total_sfd/total_nova)
+
 
 
 ggplot(nova_sfd,
@@ -321,6 +323,7 @@ lot_plot <- ggplot(nova_lots,
         size = 11.5
     )))
 
+
 girafe(ggobj = lot_plot,
        height_svg = 4)
 
@@ -367,7 +370,6 @@ nova_byright_tbl <- read_rds("data/nova/nova_vza_nogeo.rds") |>
             ) 
 
 write_csv(nova_byright_tbl, "data/nova/nova_byright_table.csv")
-
 
 nova_byright_tbl |>
   kable(col.names = c("Jurisdiction", "Single-family", "2-family", "3-family", "4+-family"), 
@@ -553,7 +555,9 @@ nova_adu <- read_rds("data/nova/nova_vza_nogeo.rds") |>
   group_by(jurisdiction, total_acres)  |> 
   summarise(acres = sum(acres)) |> 
   mutate(pct = acres/total_acres) |> 
-  ungroup()
+  ungroup() |> 
+  filter(jurisdiction != "Hillsboro") |> 
+  filter(jurisdiction != "Quantico")
 
 write_csv(nova_adu, "data/nova/nova_adu.csv")
 
