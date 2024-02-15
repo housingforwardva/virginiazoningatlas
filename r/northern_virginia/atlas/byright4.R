@@ -17,7 +17,7 @@ st_write(byright4plus, "data/nova/nova_byright4plus.geojson")
 
 
 
-pal <- colorFactor(palette =c("#8B85CA", "#40C0C0"),levels = c("Primarily Residential", "M"))
+pal <- colorFactor(palette =c("#8B85CA", "#40C0C0"),levels = c("Primarily Residential", "Mixed with Residential"))
 
 byr4_map <- leaflet(byright4) |> 
   addPolygons(weight = 1,

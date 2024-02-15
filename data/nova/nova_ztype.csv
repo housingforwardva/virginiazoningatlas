@@ -1,63 +1,62 @@
 jurisdiction,type,acres,pct
-Alexandria,Mixed with Residential,2481.426875474114,0.2549084143756645
-Alexandria,Nonresidential,1692.3257049256779,0.17384677594714942
-Alexandria,Primarily Residential,5560.82947155702,0.571244809677186
-Arlington,Mixed with Residential,6421.181708599451,0.3846461523517373
-Arlington,Nonresidential,134.53294623959536,0.008058887364346267
-Arlington,Primarily Residential,10138.022353422095,0.6072949602839164
-Clifton,Mixed with Residential,8.153410672137234,0.05151146178221561
-Clifton,Nonresidential,0.4418738671073909,0.0027916622544042363
-Clifton,Primarily Residential,149.68814190687124,0.9456968759633801
-Dumfries,Mixed with Residential,64.90857090877095,0.0658938106288076
-Dumfries,Nonresidential,250.9206594223462,0.25472935520442014
-Dumfries,Primarily Residential,669.2188385142758,0.6793768341667723
-Fairfax,Mixed with Residential,9052.185884263012,0.037636605163340046
-Fairfax,Nonresidential,16842.227396259514,0.07002554639163996
-Fairfax,Primarily Residential,214621.05948800172,0.89233784844502
-Fairfax (city),Mixed with Residential,818.1545288784096,0.23690794055252304
-Fairfax (city),Nonresidential,212.92596101231055,0.06165565199858479
-Fairfax (city),Primarily Residential,2422.3897778018177,0.7014364074488922
-Falls Church,Mixed with Residential,205.82350322569346,0.18689004802518655
-Falls Church,Nonresidential,51.066878371512246,0.04636929797508614
-Falls Church,Primarily Residential,844.4176088526406,0.7667406539997272
-Hamilton,Mixed with Residential,13.862889649168602,0.10366131116205024
-Hamilton,Nonresidential,0,0
-Hamilton,Primarily Residential,119.86964270803082,0.8963386888379498
-Haymarket,Mixed with Residential,42.8570123561698,0.11655532928751293
-Haymarket,Nonresidential,123.56907929966823,0.33606250029358825
-Haymarket,Primarily Residential,201.27062901878884,0.5473821704188988
-Herndon,Mixed with Residential,200.9166274719047,0.07343955229607324
-Herndon,Nonresidential,568.523550963765,0.20780816191228932
-Herndon,Primarily Residential,1966.3693573020303,0.7187522857916374
-Leesburg,Mixed with Residential,2904.21529645274,0.35868543310707607
-Leesburg,Nonresidential,1567.838321423899,0.19363604621485184
-Leesburg,Primarily Residential,3624.777277360088,0.4476785206780721
-Loudoun,Mixed with Residential,6977.768730070978,0.02170226025963688
-Loudoun,Nonresidential,28170.687789715674,0.08761648913221655
-Loudoun,Primarily Residential,286374.2165378504,0.8906812506081465
-Lovettsville,Mixed with Residential,112.13947396282038,0.21000536352630977
-Lovettsville,Nonresidential,66.11495972327967,0.12381452900178624
-Lovettsville,Primarily Residential,355.72942310606885,0.6661801074719039
-Manassas,Mixed with Residential,119.2089958240149,0.021651001107194222
-Manassas,Nonresidential,2413.613787476651,0.43836586680204964
-Manassas,Primarily Residential,2973.1118029944682,0.5399831320907561
-Manassas Park,Mixed with Residential,539.4363258916229,0.27975578114983174
-Manassas Park,Nonresidential,873.8039883309253,0.4531613938369971
-Manassas Park,Primarily Residential,514.9998232090046,0.2670828250131712
-Middleburg,Mixed with Residential,67.98414517514293,0.10237157329731164
-Middleburg,Primarily Residential,596.1078774970167,0.8976284267026884
-Occoquan,Mixed with Residential,22.328450031658782,0.20167623316868946
-Occoquan,Nonresidential,6.9560670683683785,0.06282896493165512
-Occoquan,Primarily Residential,81.42981785575536,0.7354948018996554
-Prince William,Mixed with Residential,35783.136082830686,0.16483674955896463
-Prince William,Nonresidential,57063.68402674157,0.26286662440805825
-Prince William,Primarily Residential,124235.45176591452,0.5722966260329772
-Purcellville,Mixed with Residential,60.668888385336594,0.027782035169626188
-Purcellville,Nonresidential,619.5136183677231,0.28369316781011544
-Purcellville,Primarily Residential,1503.5627809811253,0.6885247970202583
-Round Hill,Mixed with Residential,7.752225558142181,0.03275234538985903
-Round Hill,Nonresidential,14.610955003615004,0.06172976278424622
-Round Hill,Primarily Residential,214.32904608233744,0.9055178918258947
-Vienna,Mixed with Residential,139.369152456058,0.05157040146368232
-Vienna,Nonresidential,254.4981856493455,0.09417129525741771
-Vienna,Primarily Residential,2308.6354251163766,0.8542583032789
+Alexandria,Mixed with Residential,1542.08,0.6464578713271821
+Alexandria,Nonresidential,643.93,0.2699429452970743
+Alexandria,Primarily Residential,199.42,0.08359918337574358
+Arlington,Mixed with Residential,2406.17,0.22743831431531347
+Arlington,Nonresidential,81.47,0.007700785674856135
+Arlington,Primarily Residential,8091.8,0.7648609000098303
+Clifton,Mixed with Residential,7.37,0.050897790055248616
+Clifton,Nonresidential,0.43,0.002969613259668508
+Clifton,Primarily Residential,137,0.9461325966850828
+Dumfries,Mixed with Residential,52.38,0.06638110204288539
+Dumfries,Nonresidential,191.31,0.24244690018756018
+Dumfries,Primarily Residential,545.39,0.6911719977695544
+Fairfax,Mixed with Residential,7558.63,0.04423162989626388
+Fairfax,Nonresidential,14841.03,0.08684681565830701
+Fairfax,Primarily Residential,148487.78,0.8689215544454291
+Fairfax (city),Mixed with Residential,786.54,0.24736451466814272
+Fairfax (city),Nonresidential,175.75,0.055272857646052435
+Fairfax (city),Primarily Residential,2217.39,0.6973626276858048
+Falls Church,Mixed with Residential,193.24,0.1885912262723857
+Falls Church,Nonresidential,50.18,0.04897281998731274
+Falls Church,Primarily Residential,781.23,0.7624359537403015
+Hamilton,Mixed with Residential,12.48,0.10657557643040137
+Hamilton,Primarily Residential,104.61999999999999,0.8934244235695986
+Haymarket,Mixed with Residential,28.9,0.10485070565613322
+Haymarket,Nonresidential,110.21000000000001,0.39984762181184924
+Haymarket,Primarily Residential,136.52,0.4953016725320176
+Herndon,Mixed with Residential,156.19,0.072331951744738
+Herndon,Nonresidential,480.90000000000003,0.22270590687012298
+Herndon,Primarily Residential,1522.26,0.704962141385139
+Leesburg,Mixed with Residential,2133.15,0.34439640419252554
+Leesburg,Nonresidential,1319.57,0.21304416617693592
+Leesburg,Primarily Residential,2741.16,0.4425594296305385
+Loudoun,Mixed with Residential,6390.2699999999995,0.021506644026972162
+Loudoun,Nonresidential,17832.47,0.06001570894683016
+Loudoun,Primarily Residential,272907.3,0.9184776470261977
+Lovettsville,Mixed with Residential,87.77,0.20386973892037533
+Lovettsville,Nonresidential,61.65,0.14319892223357797
+Lovettsville,Primarily Residential,281.1,0.6529313388460466
+Manassas,Mixed with Residential,103.97999999999999,0.01996908038140598
+Manassas,Nonresidential,2323.93,0.4463045294360531
+Manassas,Primarily Residential,2779.14,0.533726390182541
+Manassas Park,Mixed with Residential,459.89,0.285670803672369
+Manassas Park,Nonresidential,724.04,0.44975339470512965
+Manassas Park,Primarily Residential,425.93,0.2645758016225014
+Middleburg,Mixed with Residential,57.6,0.09339581340294781
+Middleburg,Primarily Residential,559.13,0.9066041865970521
+Occoquan,Mixed with Residential,14.32,0.1627457665643823
+Occoquan,Nonresidential,6.97,0.07921354699397658
+Occoquan,Primarily Residential,66.7,0.758040686441641
+Prince William,Mixed with Residential,31232.02,0.2064251778277875
+Prince William,Nonresidential,14701.36,0.09716729344788849
+Prince William,Primarily Residential,105366.09,0.696407528724324
+Purcellville,Mixed with Residential,51.82,0.02821809944402394
+Purcellville,Nonresidential,543.8,0.2961212365430378
+Purcellville,Primarily Residential,1240.79,0.6756606640129383
+Round Hill,Mixed with Residential,6.58,0.03256458477679897
+Round Hill,Nonresidential,14.52,0.07185984361080867
+Round Hill,Primarily Residential,180.95999999999998,0.8955755716123923
+Vienna,Mixed with Residential,114.35,0.05231206997511345
+Vienna,Nonresidential,120.5,0.05512553066900893
+Vienna,Primarily Residential,1951.07,0.8925623993558776

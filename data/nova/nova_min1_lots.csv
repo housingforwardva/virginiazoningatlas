@@ -1,11 +1,11 @@
 jurisdiction,max,metric,avg
-Alexandria,NA,Minimum value,0.12
+Alexandria,NA,Minimum value,0.1
 Alexandria,NA,Maximum value,NA
 Arlington,NA,Minimum value,0.3
 Arlington,NA,Maximum value,NA
 Clifton,NA,Minimum value,2.62
 Clifton,NA,Maximum value,NA
-Dumfries,NA,Minimum value,1.43
+Dumfries,NA,Minimum value,1.86
 Dumfries,NA,Maximum value,NA
 Fairfax,NA,Minimum value,3.92
 Fairfax,NA,Maximum value,NA
@@ -13,9 +13,9 @@ Fairfax (city),NA,Minimum value,0.68
 Fairfax (city),NA,Maximum value,NA
 Falls Church,NA,Minimum value,0.61
 Falls Church,NA,Maximum value,NA
-Hamilton,0.92,Minimum value,0.72
+Hamilton,0.92,Minimum value,0.44
 Hamilton,0.92,Maximum value,0.92
-Haymarket,0.18,Minimum value,0.1
+Haymarket,0.18,Minimum value,0.09
 Haymarket,0.18,Maximum value,0.18
 Herndon,0.15,Minimum value,0.15
 Herndon,0.15,Maximum value,0.15
@@ -23,25 +23,23 @@ Hillsboro,NA,Minimum value,3
 Hillsboro,NA,Maximum value,NA
 Leesburg,0.44,Minimum value,0.4
 Leesburg,0.44,Maximum value,0.44
-Loudoun,4.67,Minimum value,1.54
-Loudoun,4.67,Maximum value,4.67
+Loudoun,4.03,Minimum value,1.26
+Loudoun,4.03,Maximum value,4.03
 Lovettsville,0.17,Minimum value,0.15
 Lovettsville,0.17,Maximum value,0.17
 Manassas,NA,Minimum value,0.26
 Manassas,NA,Maximum value,NA
 Manassas Park,0.7,Minimum value,0.41
 Manassas Park,0.7,Maximum value,0.7
-Middleburg,6.75,Minimum value,0.11
+Middleburg,6.75,Minimum value,0.12
 Middleburg,6.75,Maximum value,6.75
 Occoquan,NA,Minimum value,0.15
 Occoquan,NA,Maximum value,NA
-Prince William,1,Minimum value,1.15
+Prince William,1,Minimum value,1.32
 Prince William,1,Maximum value,1
 Purcellville,0.86,Minimum value,0.5
 Purcellville,0.86,Maximum value,0.86
-Quantico,NA,Minimum value,NA
-Quantico,NA,Maximum value,NA
-Round Hill,NA,Minimum value,3.58
+Round Hill,NA,Minimum value,4.25
 Round Hill,NA,Maximum value,NA
 Vienna,NA,Minimum value,0.23
 Vienna,NA,Maximum value,NA

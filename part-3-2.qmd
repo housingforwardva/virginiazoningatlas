@@ -131,6 +131,8 @@ type_plot <- ggplot(nova_type_summary,
 girafe(ggobj = type_plot,
        height_svg = 4)
 
+type_plot
+
 
 ```
 
@@ -210,6 +212,8 @@ ggplot(nova_sfd,
   labs(title = "Percent of developable land dedicated to single-family detached only",
        caption = "**Source:** Mercatus Center at George Mason University & HousingForward Virginia, Virginia Zoning Atlas.") +
   theme(axis.text.x = element_blank())
+
+
 
 ```
 
@@ -327,6 +331,8 @@ lot_plot <- ggplot(nova_lots,
 girafe(ggobj = lot_plot,
        height_svg = 4)
 
+
+lot_plot
 ```
 
 ## By-right housing

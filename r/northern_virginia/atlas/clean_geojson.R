@@ -6,11 +6,25 @@ library(sf)
 
 # Read in the geojson provided by the NZA, which already has "undevelopable" land removed.
 
-nova_vza <- geojson_sf("data/nova/nova_ogr.geojson")
+nova_vza <- geojson_sf("data/nova/nova_ogr.geojson") |> 
+  st_drop_geometry() |> 
+  select(id, customfielddata)
+
+# nova_punched <- geojson_sf("data/nova/nova_punched.geojson") |> 
+#   select(abbrvname = `Abbreviated District Name`, jurisdiction = Jurisdiction, county = County)
+# 
+# nova_punch_join <- nova_punched |> 
+#   left_join(nova_vza, by = c("abbrvname", "jurisdiction", "county"))
+# 
+# st_write(nova_punch_join, "data/nova/nova_punch_join.geojson")
+
+nova_punched <- geojson_sf("data/nova/nova_punched_area.geojson") |> 
+  left_join(nova_vza, by = "id")
+
 
 # Data prep
 
-nova_vza_data <- nova_vza |> 
+nova_vza_data <- nova_punched |> 
   select(id, type, abbrvname, name, overlay, # Select the fields needed for analysis.
          family1_treatment, family2_treatment, family3_treatment, family4_treatment,
          accessory_treatment, plannedresidential_treatment,
