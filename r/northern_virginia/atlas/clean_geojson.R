@@ -6,9 +6,9 @@ library(sf)
 
 # Read in the geojson provided by the NZA, which already has "undevelopable" land removed.
 
-nova_vza <- geojson_sf("data/nova/nova_ogr.geojson") |> 
-  st_drop_geometry() |> 
-  select(id, customfielddata)
+nova_vza <- geojson_sf("data/nova/nova_ogr_no_geo.geojson") |> 
+  st_drop_geometry()
+
 
 # nova_punched <- geojson_sf("data/nova/nova_punched.geojson") |> 
 #   select(abbrvname = `Abbreviated District Name`, jurisdiction = Jurisdiction, county = County)
@@ -19,7 +19,8 @@ nova_vza <- geojson_sf("data/nova/nova_ogr.geojson") |>
 # st_write(nova_punch_join, "data/nova/nova_punch_join.geojson")
 
 nova_punched <- geojson_sf("data/nova/nova_punched_area.geojson") |> 
-  left_join(nova_vza, by = "id")
+  left_join(nova_vza, by = "id",suffix=c("",".y")) %>%
+  select(-ends_with(".y"))
 
 
 # Data prep
@@ -78,7 +79,7 @@ nova_vza_nogeo <- nova_vza_clean_data |>
   st_drop_geometry()
 
 
-st_write(nova_vza_clean_data, "data/nova/nova_vza_geo.geojson")
+st_write(nova_vza_clean_data, "data/nova/nova_vza_geo.geojson", append = FALSE)
 write_rds(nova_vza_clean_data, "data/nova/nova_vza_geo.rds", compress = "none") 
 write_rds(nova_vza_nogeo, "data/nova/nova_vza_nogeo.rds", compress = "none")
 

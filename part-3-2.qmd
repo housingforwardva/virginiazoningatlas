@@ -185,7 +185,8 @@ nova_sfd <- read_rds("data/nova/nova_vza_nogeo.rds") |> # Read in the data.
   mutate(percent = acres/sum(acres)) |> 
   ungroup() |> 
   mutate(total_nova = sum(acres)) |> # Calculate what percentage of total developable acres is SFD.
-  filter(sfd == "t") 
+  filter(sfd == "t") |> 
+  add_row(jurisdiction = "Arlington", sfd = "t", "acres" = 0, percent = 0, total_nova = 658342.5)
 
 write_csv(nova_sfd, "data/nova/nova_sfd.csv")
 
@@ -193,7 +194,6 @@ nova_sfd_summary <- nova_sfd |>
   group_by(total_nova) |> 
   summarise(total_sfd = sum(acres)) |> 
   mutate(pct = total_sfd/total_nova)
-
 
 
 ggplot(nova_sfd,

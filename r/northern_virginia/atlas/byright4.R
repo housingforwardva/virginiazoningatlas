@@ -13,7 +13,7 @@ byright4plus <- read_sf("data/nova/nova_vza_geo.geojson") |>
   filter(overlay == 0) |> 
   filter(family4_treatment == "allowed")
 
-st_write(byright4plus, "data/nova/nova_byright4plus.geojson")
+st_write(byright4plus, "data/nova/nova_byright4plus.geojson", append =FALSE)
 
 
 

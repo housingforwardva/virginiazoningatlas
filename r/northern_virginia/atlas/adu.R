@@ -7,7 +7,7 @@ nova_adu <- read_sf("data/nova/nova_vza_geo.geojson") |>
   filter(accessory_treatment == "allowed") |> 
   filter(overlay == 0)
 
-st_write(nova_adu, "data/nova/nova_adu_map.geojson")
+st_write(nova_adu, "data/nova/nova_adu_map.geojson", append = FALSE)
 
 
 nova_adu <- ms_simplify(nova_adu, keep = 0.3)
