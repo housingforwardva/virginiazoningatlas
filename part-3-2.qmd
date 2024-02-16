@@ -287,6 +287,7 @@ This provides a general range of the minimum lot acres required for housing in s
 
 
 nova_lots <- read_rds("data/nova/nova_vza_nogeo.rds") |> 
+  filter(sfd == "t") |> 
   mutate(min1 = as.numeric(min1),
          max1 = as.numeric(max1)) |> 
   group_by(jurisdiction) |> 
@@ -318,7 +319,7 @@ lot_plot <- ggplot(nova_lots,
        subtitle = subtitle_text,
        caption = "**Source:** Mercatus Center at George Mason University & HousingForward Virginia, Virginia Zoning Atlas.") +
   theme_hfv() +
-  scale_y_continuous(breaks = seq(0, 10, 0.5)) +
+  scale_y_continuous(breaks = seq(0, 20, 1)) +
   scale_color_hfv() +
   plot_annotation(
     theme = theme(

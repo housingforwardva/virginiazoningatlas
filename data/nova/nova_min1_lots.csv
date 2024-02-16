@@ -1,45 +1,37 @@
 jurisdiction,max,metric,avg
-Alexandria,NA,Minimum value,0.1
+Alexandria,NA,Minimum value,NA
 Alexandria,NA,Maximum value,NA
-Arlington,NA,Minimum value,0.3
-Arlington,NA,Maximum value,NA
 Clifton,NA,Minimum value,2.62
 Clifton,NA,Maximum value,NA
-Dumfries,NA,Minimum value,1.86
-Dumfries,NA,Maximum value,NA
-Fairfax,NA,Minimum value,3.92
+Fairfax,NA,Minimum value,5.41
 Fairfax,NA,Maximum value,NA
-Fairfax (city),NA,Minimum value,0.68
+Fairfax (city),NA,Minimum value,0.26
 Fairfax (city),NA,Maximum value,NA
-Falls Church,NA,Minimum value,0.61
+Falls Church,NA,Minimum value,0.26
 Falls Church,NA,Maximum value,NA
-Hamilton,0.92,Minimum value,0.44
+Hamilton,0.92,Minimum value,0.49
 Hamilton,0.92,Maximum value,0.92
-Haymarket,0.18,Minimum value,0.09
-Haymarket,0.18,Maximum value,0.18
-Herndon,0.15,Minimum value,0.15
-Herndon,0.15,Maximum value,0.15
 Hillsboro,NA,Minimum value,3
 Hillsboro,NA,Maximum value,NA
-Leesburg,0.44,Minimum value,0.4
-Leesburg,0.44,Maximum value,0.44
-Loudoun,4.03,Minimum value,1.26
-Loudoun,4.03,Maximum value,4.03
-Lovettsville,0.17,Minimum value,0.15
-Lovettsville,0.17,Maximum value,0.17
+Leesburg,1.17,Minimum value,1.17
+Leesburg,1.17,Maximum value,1.17
+Loudoun,6.89,Minimum value,2.15
+Loudoun,6.89,Maximum value,6.89
+Lovettsville,0.19,Minimum value,0.16
+Lovettsville,0.19,Maximum value,0.19
 Manassas,NA,Minimum value,0.26
 Manassas,NA,Maximum value,NA
-Manassas Park,0.7,Minimum value,0.41
-Manassas Park,0.7,Maximum value,0.7
-Middleburg,6.75,Minimum value,0.12
-Middleburg,6.75,Maximum value,6.75
-Occoquan,NA,Minimum value,0.15
+Manassas Park,1,Minimum value,0.6
+Manassas Park,1,Maximum value,1
+Middleburg,20,Minimum value,0.23
+Middleburg,20,Maximum value,20
+Occoquan,NA,Minimum value,0.23
 Occoquan,NA,Maximum value,NA
-Prince William,1,Minimum value,1.32
+Prince William,1,Minimum value,1.85
 Prince William,1,Maximum value,1
-Purcellville,0.86,Minimum value,0.5
-Purcellville,0.86,Maximum value,0.86
-Round Hill,NA,Minimum value,4.25
+Purcellville,1.21,Minimum value,1.17
+Purcellville,1.21,Maximum value,1.21
+Round Hill,NA,Minimum value,0.38
 Round Hill,NA,Maximum value,NA
-Vienna,NA,Minimum value,0.23
+Vienna,NA,Minimum value,0.3
 Vienna,NA,Maximum value,NA
