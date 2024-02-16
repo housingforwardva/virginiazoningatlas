@@ -5,7 +5,7 @@ library(tidyverse)
 
 
 nova_byright2 <- read_rds("data/nova/nova_vza_nogeo.rds") |> 
-  select(id, jurisdiction, abbrvname, overlay, 6:9, area) |> # Select data fields.
+  select(id, jurisdiction, abbrvname, overlay, 6:9, acres) |> # Select data fields.
   filter(overlay == 0) |> # Filter out overlay districts.
   filter(family2_treatment == "allowed" & family3_treatment == "allowed" & family4_treatment == "allowed")
 
