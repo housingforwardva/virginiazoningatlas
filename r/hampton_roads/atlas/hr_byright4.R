@@ -4,12 +4,16 @@ library(leaflet)
 library(rmapshaper)
 
 
-hr_byright4 <- st_read("data/hr/hr_byright4.geojson")
+hr_byright4 <- geojson_sf("data/hr/hr_vza_geo.geojson") |> 
+  filter(family4_treatment == "allowed") |> 
+  select(abbrvname, type, jurisdiction, county, family1_treatment, family2_treatment, family3_treatment, family4_treatment)
+
 
 hr_byright4 <- ms_simplify(hr_byright4, keep = 0.3)
 
 
-pal <- colorFactor(palette =c("#8B85CA", "#40C0C0"),levels = c("R", "M"))
+pal <- colorFactor(palette =c("#8B85CA", "#40C0C0"),
+                   levels = c("Primarily Residential", "Mixed with Residential"))
 
 hr_byr4_map <- leaflet(hr_byright4) |> 
   addPolygons(weight = 1,

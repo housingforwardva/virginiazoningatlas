@@ -3,12 +3,15 @@ library(sf)
 library(leaflet)
 library(rmapshaper)
 
-hr_adu <- st_read("data/hr/hr_adu.geojson")
+hr_adu <- geojson_sf("data/hr/hr_vza_geo.geojson") |> 
+  filter(accessory_treatment == "allowed") |> 
+  select(abbrvname, type, jurisdiction, county)
 
 hr_adu <- ms_simplify(hr_adu, keep = 0.3)
 
 
-pal <- colorFactor(palette =c("#8B85CA", "#40C0C0", "#011E41"),levels = c("R", "M", "X"))
+pal <- colorFactor(palette =c("#8B85CA", "#40C0C0", "#011E41"),
+                   levels = c("Primarily Residential", "Mixed with Residential", "Nonresidential"))
 
 hr_adu_map <- leaflet(hr_adu) |> 
   addPolygons(weight = 1,

@@ -29,7 +29,7 @@ nova_vza_data <- nova_punched |>
   select(id, type, abbrvname, name, overlay, # Select the fields needed for analysis.
          family1_treatment, family2_treatment, family3_treatment, family4_treatment,
          accessory_treatment, plannedresidential_treatment,
-         accessory_owner_required, accessory_family_required, accessory_elderly_only, accessory_renter_prohibited,
+         accessory_owner_required, accessory_family_required, accessory_elderly_only, accessory_renter_prohibited, area,
          acres, jurisdiction, county, customfielddata) |> 
   mutate(type = case_when( # Correct the labels for Type of Zoning District field.
     type == "X" ~ "Nonresidential",

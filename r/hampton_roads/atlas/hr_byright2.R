@@ -1,10 +1,11 @@
 library(tidyverse)
+library(geojsonsf)
 
 
-hr_byright2 <- read_rds("data/hr/hr_vza_nogeo.rds") |> 
-  select(id, jurisdiction, abbrvname, overlay, 6:9, area) |> # Select data fields.
-  filter(overlay == 0) |> # Filter out overlay districts.
-  filter(family2_treatment == "allowed" & family3_treatment == "allowed" & family4_treatment == "allowed")
+hr_byright2 <- geojson_sf("data/hr/hr_vza_geo.geojson") |> 
+  sf::st_drop_geometry() |> 
+  filter(family2_treatment == "allowed" & family3_treatment == "allowed" & family4_treatment == "allowed") |> 
+  select(abbrvname, type, jurisdiction, county, family1_treatment, family2_treatment, family3_treatment, family4_treatment)
 
 
 write_csv(hr_byright2, "data/hr/hr_byright2.csv")

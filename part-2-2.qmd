@@ -124,19 +124,19 @@ Subjectively, we found that many zoning ordinances had varying degrees of "reada
 # Create a bar chart that shows the percentage of zoned in each locality by type (i.e. primarily residential, mixed with residential, nonresidential)
 
 hr_type <- read_rds("data/hr/hr_vza_nogeo.rds") |> 
-  select(jurisdiction, overlay, type, area) |> 
+  select(jurisdiction, overlay, type, acres) |> 
   filter(overlay == 0)
 
 hr_type_summary <- hr_type |> 
   group_by(jurisdiction, type) |> 
-  summarise(area = sum(area)) |> 
+  summarise(acres = sum(acres)) |> 
   group_by(jurisdiction) |> 
-  mutate(pct = area/sum(area))
+  mutate(pct = acres/sum(acres))
 
 hr_summary <- hr_type |> 
   group_by(type) |> 
-  summarise(area = sum(area)) |> 
-  mutate(pct = area/sum(area)) 
+  summarise(acres = sum(acres)) |> 
+  mutate(pct = acres/sum(acres)) 
 
 subtitle_text <- "<span style='color:#8B85CA'><b>Primarily Residential</span></b>, <span style='color:#40C0C0'><b>Mixed with Residential</span></b>, and <span style='color:#011E41'><b>Nonresidential</span></b>"
 
@@ -168,7 +168,7 @@ girafe(ggobj = type_plot,
 
 ```
 
-Roughly 90 percent of developable land is [Primarily Residential]{.primary-res} . This includes prime agricultural land in the southern parts of Hampton Roads, where the preservation of open space and natural resources is a vital part of the region. Only three percent of the region's developable land is classified as [Mixed with Residential]{.mixed-res}. Locally, **Williamsburg (22%), York County (17%), and Newport News (13%)** have the **largest proportions of** [Mixed with Residential]{.mixed-res} **zoning types**, while Surry County (0%), Southampton County (0%), and Isle of Wight County (less than 1%) have the least.
+Roughly 91 percent of developable land is [Primarily Residential]{.primary-res} . This includes prime agricultural land in the southern parts of Hampton Roads, where the preservation of open space and natural resources is a vital part of the region. Only three percent of the region's developable land is classified as [Mixed with Residential]{.mixed-res}. Locally, **Williamsburg (23%), York County (18%), and Newport News (12%)** have the **largest proportions of** [Mixed with Residential]{.mixed-res} **zoning types**, while Surry County (0%), Southampton County (0%), and Isle of Wight County (less than 1%) have the least.
 
 ***Williamsburg has the greatest percentage of Mixed with Residential zoning in the region.***
 
@@ -218,7 +218,7 @@ While single-family detached housing is a dream many aspire to, barriers to home
 
 
 vza_pal <- colorFactor(palette =c("#8B85CA", "#40C0C0", "#011E41"),
-                       levels = c("R", "M", "R"))
+                       levels = c("Primarily Residential", "Mixed with Residential", "Nonresidential"))
 
 hr_sfd_map <- read_rds("data/hr/hr_sfd_only_map.rds")
 
@@ -255,16 +255,16 @@ York County allows for single-family attached duplexes in a [Cluster Techniques 
 # Create a bar char that shows the percentage of zoned in each locality that is dedicated to single-family detached only housing.
 
 hr_sfd <- read_rds("data/hr/hr_vza_nogeo.rds") |> # Read in the data.
-  select(jurisdiction, overlay, sfd, area) |> # Select necessary data fields.
+  select(jurisdiction, overlay, sfd, acres) |> # Select necessary data fields.
   filter(overlay == 0) |> # Remove overlay districts.
   group_by(jurisdiction, sfd) |> # Sum the total acres dedicated to single-family detached in each district.
-  summarise(area = sum(area)) |> 
+  summarise(acres = sum(acres)) |> 
   group_by(jurisdiction) |> 
-  mutate(percent = area/sum(area)) |> 
+  mutate(percent = acres/sum(acres)) |> 
   ungroup() |> 
-  mutate(total_hr = sum(area)) |> # Calculate what percentage of total developable area is SFD.
+  mutate(total_hr = sum(acres)) |> # Calculate what percentage of total developable area is SFD.
   filter(sfd == "t") |> 
-  add_row(jurisdiction = "York", sfd = "t", percent = 0, total_hr = 1406413)
+  add_row(jurisdiction = "York", sfd = "t", percent = 0, total_hr = 1425279)
 
 
 ggplot(hr_sfd,
@@ -429,24 +429,28 @@ When housing development requires a public hearing process, it can often come up
 # https://frontierinstitute.org/reports/the-montana-zoning-atlas-2-0/ use this as an example 
 
 hr_byright_tbl <- read_rds("data/hr/hr_vza_nogeo.rds") |> 
-  select(jurisdiction, abbrvname, overlay, 6:9, area) |> 
+  select(jurisdiction, abbrvname, overlay, 6:9, acres) |> 
+  mutate(jurisdiction = case_when(
+    jurisdiction == "Isle of Wight - Smithfield" ~ "Smithfield",
+    jurisdiction == "Isle of Wight - Windsor" ~ "Windsor",
+    TRUE ~ jurisdiction)) |> 
   filter(overlay == 0) |> 
   group_by(jurisdiction) |> 
-  mutate(total_area = sum(area)) |> 
+  mutate(total_area = sum(acres)) |> 
   mutate(family1_pct = case_when(
-    family1_treatment == "allowed" ~ area/total_area,
+    family1_treatment == "allowed" ~ acres/total_area,
     TRUE ~ 0
   ))|> 
   mutate(family2_pct = case_when(
-    family2_treatment == "allowed" ~ area/total_area,
+    family2_treatment == "allowed" ~ acres/total_area,
     TRUE ~ 0 
   )) |> 
   mutate(family3_pct = case_when(
-    family3_treatment == "allowed" ~ area/total_area,
+    family3_treatment == "allowed" ~ acres/total_area,
     TRUE ~ 0 
   )) |> 
   mutate(family4_pct = case_when(
-    family4_treatment == "allowed" ~ area/total_area,
+    family4_treatment == "allowed" ~ acres/total_area,
     TRUE ~ 0 
   )) |> 
   group_by(jurisdiction) |> 
@@ -473,23 +477,23 @@ Overwhelmingly, single-family is welcomed (without a public hearing) in nearly e
 # Create a bar graph that shows the total amount of zoned land that welcomes 2+ family housing by-right
 
 hr_byright <- read_rds("data/hr/hr_vza_nogeo.rds") |> 
-  select(jurisdiction, abbrvname, overlay, 6:9, area) |> # Select data fields.
+  select(jurisdiction, abbrvname, overlay, 6:9, acres) |> # Select data fields.
   filter(overlay == 0) |> # Filter out overlay districts.
   group_by(jurisdiction) |> 
-  mutate(total_area = sum(area)) |> # Calculate the total area of zoned land.
+  mutate(total_area = sum(acres)) |> # Calculate the total area of zoned land.
   filter(family2_treatment == "allowed" & family3_treatment == "allowed" & family4_treatment == "allowed") |> 
   group_by(jurisdiction) |> 
-  mutate(pct_2plus = area/total_area) |> 
+  mutate(pct_2plus = acres/total_area) |> 
   group_by(jurisdiction) |> 
   summarise(pct_2plus = sum(pct_2plus)) |>
   add_row(jurisdiction = "Smithfield", pct_2plus = 0)
 
 hr_byright_summary <- read_rds("data/hr/hr_vza_nogeo.rds") |> 
-  select(jurisdiction, abbrvname, overlay, 6:9, area) |> # Select data fields.
+  select(jurisdiction, abbrvname, overlay, 6:9, acres) |> # Select data fields.
   filter(overlay == 0) |> # Filter out overlay districts.
-  mutate(total_area = sum(area)) |> # Calculate the total area of zoned land.
+  mutate(total_area = sum(acres)) |> # Calculate the total area of zoned land.
   filter(family2_treatment == "allowed" & family3_treatment == "allowed" & family4_treatment == "allowed") |> 
-  mutate(total_2plus = sum(area)) |> 
+  mutate(total_2plus = sum(acres)) |> 
   mutate(pct2plus = total_2plus/total_area)
 
 ggplot(hr_byright,
@@ -521,7 +525,7 @@ The map below shows the location of zoning districts that allow for 2+ family by
 
 # Create a map that shows where 2 + family housing is allowed by-right in the region.
 
-pal <- colorFactor(palette =c("#8B85CA", "#40C0C0"),levels = c("R", "M"))
+pal <- colorFactor(palette =c("#8B85CA", "#40C0C0"),levels = c("Primarily Residential", "Mixed with Residential"))
 
 hr_byr2 <- read_rds("data/hr/hr_byr_map.rds")
 
@@ -539,22 +543,22 @@ Urban areas like the City of Hampton stand out for the lack of developable land 
 # Create a bar graph that shows the total amount of zoned land that welcomes 2+ family housing by-right
 
 hr_byright <- read_rds("data/hr/hr_vza_nogeo.rds") |> 
-  select(jurisdiction, abbrvname, overlay, 6:9, area) |> # Select data fields.
+  select(jurisdiction, abbrvname, overlay, 6:9, acres) |> # Select data fields.
   filter(overlay == 0) |> # Filter out overlay districts.
   group_by(jurisdiction) |> 
-  mutate(total_area = sum(area)) |> # Calculate the total area of zoned land.
+  mutate(total_area = sum(acres)) |> # Calculate the total area of zoned land.
   filter(family4_treatment == "allowed") |> 
   group_by(jurisdiction) |> 
-  mutate(pct_4plus = area/total_area) |> 
+  mutate(pct_4plus = acres/total_area) |> 
   group_by(jurisdiction) |> 
   summarise(pct_4plus = sum(pct_4plus)) 
 
 hr_byright_summary <- read_rds("data/hr/hr_vza_nogeo.rds") |> 
-  select(jurisdiction, abbrvname, overlay, 6:9, area) |> # Select data fields.
+  select(jurisdiction, abbrvname, overlay, 6:9, acres) |> # Select data fields.
   filter(overlay == 0) |> # Filter out overlay districts.
-  mutate(total_area = sum(area)) |> # Calculate the total area of zoned land.
+  mutate(total_area = sum(acres)) |> # Calculate the total area of zoned land.
   filter(family4_treatment == "allowed") |> 
-  mutate(total_4plus = sum(area)) |> 
+  mutate(total_4plus = sum(acres)) |> 
   mutate(pct4plus = total_4plus/total_area)
 
 ggplot(hr_byright,
@@ -659,17 +663,21 @@ Remember that the National Zoning Atlas Methodology includes caretaker or watchm
 # https://frontierinstitute.org/reports/the-montana-zoning-atlas-2-0/ use this as an example 
 
 hr_adu <- read_rds("data/hr/hr_vza_nogeo.rds") |> 
-  select(jurisdiction, overlay, accessory_treatment, area) |> 
+  select(jurisdiction, overlay, accessory_treatment, acres) |> 
+    mutate(jurisdiction = case_when(
+    jurisdiction == "Isle of Wight - Smithfield" ~ "Smithfield",
+    jurisdiction == "Isle of Wight - Windsor" ~ "Windsor",
+    TRUE ~ jurisdiction)) |> 
   filter(overlay == 0) |> 
   group_by(jurisdiction) |> 
-  mutate(total_area = sum(area)) |> 
+  mutate(total_area = sum(acres)) |> 
   filter(accessory_treatment == "allowed") |> 
   group_by(jurisdiction, total_area)  |> 
-  summarise(area = sum(area)) |> 
-  mutate(pct = area/total_area) |> 
+  summarise(acres = sum(acres)) |> 
+  mutate(pct = acres/total_area) |> 
   ungroup() |> 
-  add_row(jurisdiction = "Surry (town)", total_area = 0, area = 0, pct = 0) |> 
-  add_row(jurisdiction = "Williamsburg", total_area = 0, area = 0, pct = 0)
+  add_row(jurisdiction = "Surry (town)", total_area = 0, acres = 0, pct = 0) |> 
+  add_row(jurisdiction = "Williamsburg", total_area = 0, acres = 0, pct = 0)
 
 
 ggplot(hr_adu,
@@ -700,22 +708,27 @@ For a more focused understanding, particularly for those who associate ADUs prim
 # https://frontierinstitute.org/reports/the-montana-zoning-atlas-2-0/ use this as an example 
 
 hr_adu <- read_rds("data/hr/hr_vza_nogeo.rds") |> 
-  select(type, jurisdiction, overlay, accessory_treatment, area) |> 
+  select(type, jurisdiction, overlay, accessory_treatment, acres) |> 
+  mutate(jurisdiction = case_when(
+    jurisdiction == "Isle of Wight - Smithfield" ~ "Smithfield",
+    jurisdiction == "Isle of Wight - Windsor" ~ "Windsor",
+    TRUE ~ jurisdiction)) |> 
   filter(overlay == 0) |> 
   group_by(jurisdiction) |> 
-  mutate(total_area = sum(area)) |> 
+  mutate(total_area = sum(acres)) |> 
+  ungroup() |> 
   filter(accessory_treatment == "allowed") |> 
   group_by(jurisdiction, type, total_area)  |> 
-  summarise(area = sum(area)) |> 
-  mutate(pct = area/total_area) |> 
+  summarise(acres = sum(acres)) |> 
+  mutate(pct = acres/total_area) |> 
   ungroup() |>
   filter(type == "Primarily Residential") |> 
-  add_row(jurisdiction = "Surry (town)", total_area = 0, area = 0, pct = 0) |> 
-  add_row(jurisdiction = "Newport News", total_area = 0, area = 0, pct = 0) |> 
-  add_row(jurisdiction = "Chesapeake", total_area = 0, area = 0, pct = 0) |> 
-  add_row(jurisdiction = "Windsor", total_area = 0, area = 0, pct = 0) |> 
-  add_row(jurisdiction = "Smithfield", total_area = 0, area = 0, pct = 0) |> 
-  add_row(jurisdiction = "Williamsburg", total_area = 0, area = 0, pct = 0)
+  add_row(jurisdiction = "Surry (town)", total_area = 0, acres = 0, pct = 0) |> 
+  add_row(jurisdiction = "Newport News", total_area = 0, acres = 0, pct = 0) |> 
+  add_row(jurisdiction = "Chesapeake", total_area = 0, acres = 0, pct = 0) |> 
+  add_row(jurisdiction = "Windsor", total_area = 0, acres = 0, pct = 0) |> 
+  add_row(jurisdiction = "Smithfield", total_area = 0, acres = 0, pct = 0) |> 
+  add_row(jurisdiction = "Williamsburg", total_area = 0, acres = 0, pct = 0)
 
 ggplot(hr_adu,
        aes(x = reorder(jurisdiction, pct),
