@@ -21,7 +21,7 @@ hr_vza_data <- hr_punched |>
          family1_treatment, family2_treatment, family3_treatment, family4_treatment,
          accessory_treatment, plannedresidential_treatment,
          accessory_owner_required, accessory_family_required, accessory_elderly_only, accessory_renter_prohibited,
-         acres, jurisdiction, county, customfielddata) |> 
+         acres, jurisdiction, county, customfielddata, tooltipnotes) |> 
   mutate(type = case_when( # Correct the labels for Type of Zoning District field.
     type == "X" ~ "Nonresidential",
     type == "R" ~ "Primarily Residential",
