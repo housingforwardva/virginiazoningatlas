@@ -27,15 +27,15 @@ MAPBOX_ACCESS_TOKEN = Sys.getenv("MAPBOX_ACCESS_TOKEN")
 zoning <- readr::read_rds("data/vza_simple.rds") |>
   st_cast("MULTIPOLYGON") %>%
     dplyr::mutate(fill_color = dplyr::case_when(
-      type == "R" ~ "#8B85CA",
-      type == "M" ~ "#40C0C0",
-      type == "X" ~ "#011E41",
+      type == "Primarily Residential" ~ "#8B85CA",
+      type == "Mixed with Residential" ~ "#40C0C0",
+      type == "Nonresidential" ~ "#011E41",
       TRUE ~ "#FFFFFF"
     ), 
     highlight_color = dplyr::case_when(
-      type == "R" ~ "#8B85CAff",
-      type == "M" ~ "#40C0C0ff",
-      type == "X" ~ "#011E41ff",
+      type == "Primarily Residential" ~ "#8B85CAff",
+      type == "Mixed with Residential" ~ "#40C0C0ff",
+      type == "Nonresidential" ~ "#011E41ff",
       TRUE ~ "#FFFFFFff"
     )) 
 
@@ -49,13 +49,13 @@ juris <- sf::st_read("data/boundaries.geojson")
 
 type_choices <- c(
   "Prohibited" = "prohibited",
-  "Allowed/Conditional" = "allowed",
+  "Allowed By-Right" = "allowed",
   "Public Hearing" = "hearing"
 )
 
 accessory_choices <- c(
-  "Allowed As of Right" = "allowed",
-  "Allowed Only After Public Hearing" = "hearing",
+  "Allowed By-Right" = "allowed",
+  "Public Hearing" = "hearing",
   "Prohibited" = "prohibited"
 )
 
