@@ -1,0 +1,89 @@
+id,jurisdiction,abbrvname,overlay,family1_treatment,family2_treatment,family3_treatment,family4_treatment,acres
+33323,Occoquan,R-4,0,prohibited,allowed,allowed,allowed,5.040625668610612
+36303,Arlington,RA14-26,0,allowed,allowed,allowed,allowed,756.5745960436636
+32563,Falls Church,T-2,0,prohibited,allowed,allowed,allowed,7.850769515104656
+34883,Alexandria,RM,0,allowed,allowed,allowed,allowed,230.61267898523107
+35256,Loudoun,R-16,0,allowed,allowed,allowed,allowed,1074.7191543250908
+34821,Alexandria,CC,0,allowed,allowed,allowed,allowed,5.6911275217864015
+26524,Purcellville,R-15,0,allowed,allowed,allowed,allowed,16.663343591408328
+44222,Loudoun,CR-3,0,allowed,allowed,allowed,allowed,108.59980984822704
+32565,Falls Church,C-D,0,allowed,allowed,allowed,allowed,19.807908828005296
+34830,Alexandria,CRMUM,0,allowed,allowed,allowed,allowed,56.30156679004248
+34822,Alexandria,CD,0,allowed,allowed,allowed,allowed,92.56823204493848
+34911,Prince William,V,0,hearing,allowed,allowed,allowed,30.06528826353939
+44341,Loudoun,R-24,0,prohibited,allowed,allowed,allowed,248.69771051446793
+40168,Fairfax,R-12,0,allowed,allowed,allowed,allowed,788.9332427846879
+36296,Arlington,R-10,0,allowed,allowed,allowed,allowed,2028.6391284194212
+35057,Manassas,R-5,0,allowed,allowed,allowed,allowed,262.91245155633214
+41899,Haymarket,R-2,0,allowed,allowed,allowed,allowed,60.30979539869303
+38660,Herndon,RM,0,allowed,allowed,allowed,allowed,114.47820278639848
+35074,Manassas Park,PUD,0,allowed,allowed,allowed,allowed,495.874032441097
+44319,Middleburg,R-4,0,allowed,allowed,allowed,allowed,21.186562025886
+35073,Manassas Park,R-2,0,allowed,allowed,allowed,allowed,99.44907081638797
+36323,Arlington,C-TH,0,allowed,allowed,allowed,allowed,6.19899004694894
+26500,Fairfax (city),RT-6,0,allowed,allowed,allowed,allowed,3.9757695666512
+36306,Arlington,RA6-15,0,allowed,allowed,allowed,allowed,386.0200448953544
+34863,Alexandria,OCH,0,allowed,allowed,allowed,allowed,103.1250789357029
+40177,Fairfax,PDH-5,0,allowed,allowed,allowed,allowed,977.916850306377
+40179,Fairfax,PDH-12,0,allowed,allowed,allowed,allowed,1236.4358786430048
+40170,Fairfax,R-20,0,allowed,allowed,allowed,allowed,2542.8395706251795
+34913,Prince William,R-16,0,allowed,allowed,allowed,allowed,2331.8645335466585
+35059,Manassas,R-7,0,allowed,allowed,allowed,allowed,76.94502886003126
+35255,Loudoun,R-8,0,allowed,allowed,allowed,allowed,853.2932171624662
+26501,Fairfax (city),RMF,0,allowed,allowed,allowed,allowed,126.12410150081251
+40171,Fairfax,R-30,0,allowed,allowed,allowed,allowed,315.12061590347304
+35373,Leesburg,PRC,0,allowed,allowed,allowed,allowed,1302.1349921158217
+40195,Fairfax,PTC,0,allowed,allowed,allowed,allowed,336.6866919849723
+40180,Fairfax,PDH-16,0,allowed,allowed,allowed,allowed,568.8826320703155
+34862,Alexandria,OC,0,allowed,allowed,allowed,allowed,18.628062071819866
+36304,Arlington,RA8-18,0,allowed,allowed,allowed,allowed,525.247112012107
+34909,Prince William,PMR,0,allowed,allowed,allowed,allowed,7723.981353003086
+34910,Prince William,RPC,0,allowed,allowed,allowed,allowed,16924.44917433456
+30364,Vienna,C-1A,0,prohibited,allowed,allowed,allowed,26.947767161301584
+35222,Round Hill,B-1,0,allowed,allowed,allowed,allowed,7.752225558142181
+35372,Leesburg,PRN,0,allowed,allowed,allowed,allowed,1217.2070404013243
+44313,Middleburg,C-2,0,allowed,allowed,allowed,allowed,22.84849086059327
+32564,Falls Church,O-D,0,allowed,allowed,allowed,allowed,33.89314742272824
+44312,Middleburg,C-1,0,allowed,allowed,allowed,allowed,17.79217326804585
+35062,Manassas,B-3,0,allowed,allowed,allowed,allowed,35.30779325737066
+36295,Arlington,R-20,0,allowed,allowed,allowed,allowed,250.0436158747588
+30365,Vienna,C-1B,0,prohibited,allowed,allowed,allowed,14.109980804344811
+44221,Loudoun,CR-2,0,allowed,allowed,allowed,allowed,299.60192568620664
+36309,Arlington,RA-H,0,allowed,allowed,allowed,allowed,30.119012236079858
+34851,Alexandria,CDD19,0,allowed,allowed,allowed,allowed,69.81496456289544
+40181,Fairfax,PDH-20,0,allowed,allowed,allowed,allowed,515.5012556261985
+40166,Fairfax,R-5,0,allowed,allowed,allowed,allowed,3088.778774308966
+32558,Falls Church,R-M,0,allowed,allowed,allowed,allowed,67.43892223151316
+34824,Alexandria,CG,0,allowed,allowed,allowed,allowed,181.4581188908848
+30360,Vienna,RM-2,0,allowed,allowed,allowed,allowed,34.199444692766235
+34948,Dumfries,B-2,0,prohibited,allowed,allowed,allowed,64.90857090877095
+40167,Fairfax,R-8,0,allowed,allowed,allowed,allowed,2726.7721504911965
+34816,Lovettsville,RC,0,allowed,allowed,allowed,allowed,21.988945774237443
+40169,Fairfax,R-16,0,allowed,allowed,allowed,allowed,41.37139238560678
+35221,Round Hill,PD-H3,0,hearing,allowed,allowed,allowed,19.166836293429505
+34831,Alexandria,CRMUL,0,allowed,allowed,allowed,allowed,20.618646084069404
+34953,Dumfries,R-3,0,allowed,allowed,allowed,allowed,149.9221304152614
+36325,Arlington,C-R,0,allowed,allowed,allowed,allowed,13.835307447146103
+46067,Alexandria,CSL,0,allowed,allowed,allowed,allowed,56.064200152586835
+40182,Fairfax,PDH-30,0,allowed,allowed,allowed,allowed,204.2252208239688
+30371,Vienna,MAC,0,prohibited,allowed,allowed,allowed,6.61797384743338
+36298,Arlington,R-8,0,allowed,allowed,allowed,allowed,562.2330753527519
+35058,Manassas,R-6,0,allowed,allowed,allowed,allowed,23.713510370495307
+36299,Arlington,R-6,0,allowed,allowed,allowed,allowed,4482.988806310772
+44223,Loudoun,CR-4,0,allowed,allowed,allowed,allowed,48.090774781698194
+40183,Fairfax,PDH-40,0,prohibited,allowed,allowed,allowed,67.27894010595203
+36329,Arlington,CP-FBC,0,allowed,allowed,allowed,allowed,3.486834932945787
+34881,Alexandria,WMU,0,allowed,allowed,allowed,allowed,36.524674322153714
+34829,Alexandria,CRMUH,0,allowed,allowed,allowed,allowed,153.6765720229647
+35357,Leesburg,B-1,0,allowed,allowed,allowed,allowed,95.21014296953523
+32562,Falls Church,T-1,0,allowed,allowed,allowed,allowed,23.852004037173096
+26499,Fairfax (city),RT,0,allowed,allowed,allowed,allowed,70.23267851364196
+36300,Arlington,R-5,0,allowed,allowed,allowed,allowed,491.5974474031942
+30366,Vienna,C-2,0,prohibited,allowed,allowed,allowed,43.045119832836875
+30363,Vienna,C-1,0,prohibited,allowed,allowed,allowed,48.648310810141346
+34825,Alexandria,CL,0,allowed,allowed,allowed,allowed,103.42445832950234
+34852,Alexandria,CDD20,0,prohibited,allowed,allowed,allowed,2.196665959995408
+36351,Leesburg,CD-RM,0,allowed,allowed,allowed,allowed,5.018307784935912
+36310,Arlington,RA-H-3.2,0,allowed,allowed,allowed,allowed,68.86000151301619
+44345,Loudoun,RC,0,allowed,allowed,allowed,allowed,406.000419668426
+40186,Fairfax,PRM,0,allowed,allowed,allowed,allowed,539.2385280290314

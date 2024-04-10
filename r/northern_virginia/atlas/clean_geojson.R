@@ -6,21 +6,7 @@ library(sf)
 
 # Read in the geojson provided by the NZA, which already has "undevelopable" land removed.
 
-nova_vza <- geojson_sf("data/nova/nova_ogr_no_geo.geojson") |> 
-  st_drop_geometry() 
-
-
-# nova_punched <- geojson_sf("data/nova/nova_punched.geojson") |> 
-#   select(abbrvname = `Abbreviated District Name`, jurisdiction = Jurisdiction, county = County)
-# 
-# nova_punch_join <- nova_punched |> 
-#   left_join(nova_vza, by = c("abbrvname", "jurisdiction", "county"))
-# 
-# st_write(nova_punch_join, "data/nova/nova_punch_join.geojson")
-
-nova_punched <- geojson_sf("data/nova/nova_punched_area.geojson") |> 
-  left_join(nova_vza, by = "id",suffix=c(".x","")) %>%
-  select(-ends_with(".x")) 
+nova_punched <- geojson_sf("data/nova/geo/nova_ogr_24_4_10.geojson") 
 
 
 # Data prep
@@ -29,7 +15,7 @@ nova_vza_data <- nova_punched |>
   select(id, type, abbrvname, name, overlay, # Select the fields needed for analysis.
          family1_treatment, family2_treatment, family3_treatment, family4_treatment,
          accessory_treatment, plannedresidential_treatment,
-         accessory_owner_required, accessory_family_required, accessory_elderly_only, accessory_renter_prohibited, area,
+         accessory_owner_required, accessory_family_required, accessory_elderly_only, accessory_renter_prohibited,
          acres, jurisdiction, county, customfielddata, tooltipnotes) |> 
   mutate(type = case_when( # Correct the labels for Type of Zoning District field.
     type == "X" ~ "Nonresidential",
@@ -79,7 +65,7 @@ nova_vza_nogeo <- nova_vza_clean_data |>
   st_drop_geometry() 
 
 
-st_write(nova_vza_clean_data, "data/nova/nova_vza_geo.geojson", append = FALSE)
-write_rds(nova_vza_clean_data, "data/nova/nova_vza_geo.rds", compress = "none") 
-write_rds(nova_vza_nogeo, "data/nova/nova_vza_nogeo.rds", compress = "none")
+st_write(nova_vza_clean_data, "data/nova/geo/nova_vza_geo.geojson", append = FALSE)
+write_rds(nova_vza_clean_data, "data/nova/rds/nova_vza_geo.rds", compress = "none")
+write_rds(nova_vza_nogeo, "data/nova/rds/nova_vza_nogeo.rds", compress = "none")
 

@@ -1,0 +1,118 @@
+fips,year,counttype,value,name_long
+51610,2011,Housing unit estimate,5468,Falls Church City
+51610,2010,Census,5489,Falls Church City
+51610,2012,Housing unit estimate,5464,Falls Church City
+51610,2013,Housing unit estimate,5465,Falls Church City
+51610,2014,Housing unit estimate,5466,Falls Church City
+51610,2015,Housing unit estimate,5983,Falls Church City
+51610,2016,Housing unit estimate,5999,Falls Church City
+51610,2017,Housing unit estimate,6002,Falls Church City
+51610,2018,Housing unit estimate,6007,Falls Church City
+51610,2019,Housing unit estimate,6035,Falls Church City
+51685,2016,Housing unit estimate,4895,Manassas Park City
+51685,2013,Housing unit estimate,4890,Manassas Park City
+51685,2014,Housing unit estimate,4893,Manassas Park City
+51685,2015,Housing unit estimate,4895,Manassas Park City
+51685,2017,Housing unit estimate,4886,Manassas Park City
+51685,2018,Housing unit estimate,4876,Manassas Park City
+51685,2019,Housing unit estimate,4865,Manassas Park City
+51685,2011,Housing unit estimate,4888,Manassas Park City
+51685,2010,Census,4904,Manassas Park City
+51685,2012,Housing unit estimate,4885,Manassas Park City
+51600,2010,Census,8680,Fairfax City
+51600,2011,Housing unit estimate,8678,Fairfax City
+51600,2012,Housing unit estimate,8709,Fairfax City
+51600,2013,Housing unit estimate,8746,Fairfax City
+51600,2014,Housing unit estimate,8778,Fairfax City
+51600,2015,Housing unit estimate,8808,Fairfax City
+51600,2016,Housing unit estimate,8813,Fairfax City
+51600,2017,Housing unit estimate,9056,Fairfax City
+51600,2018,Housing unit estimate,9093,Fairfax City
+51600,2019,Housing unit estimate,9083,Fairfax City
+51683,2010,Census,13123,Manassas City
+51683,2011,Housing unit estimate,13152,Manassas City
+51683,2012,Housing unit estimate,13177,Manassas City
+51683,2013,Housing unit estimate,13246,Manassas City
+51683,2014,Housing unit estimate,13341,Manassas City
+51683,2015,Housing unit estimate,13440,Manassas City
+51683,2016,Housing unit estimate,13550,Manassas City
+51683,2017,Housing unit estimate,13667,Manassas City
+51683,2018,Housing unit estimate,13876,Manassas City
+51683,2019,Housing unit estimate,13934,Manassas City
+51059,2010,Census,407998,Fairfax County
+51059,2011,Housing unit estimate,408247,Fairfax County
+51059,2012,Housing unit estimate,408359,Fairfax County
+51059,2013,Housing unit estimate,409072,Fairfax County
+51059,2014,Housing unit estimate,409356,Fairfax County
+51059,2015,Housing unit estimate,410781,Fairfax County
+51059,2016,Housing unit estimate,412622,Fairfax County
+51059,2017,Housing unit estimate,414395,Fairfax County
+51059,2018,Housing unit estimate,415450,Fairfax County
+51059,2019,Housing unit estimate,416058,Fairfax County
+51107,2010,Census,109442,Loudoun County
+51107,2011,Housing unit estimate,111852,Loudoun County
+51107,2012,Housing unit estimate,114770,Loudoun County
+51107,2013,Housing unit estimate,118417,Loudoun County
+51107,2014,Housing unit estimate,123099,Loudoun County
+51107,2015,Housing unit estimate,126388,Loudoun County
+51107,2016,Housing unit estimate,129791,Loudoun County
+51107,2017,Housing unit estimate,132900,Loudoun County
+51107,2018,Housing unit estimate,136473,Loudoun County
+51107,2019,Housing unit estimate,139974,Loudoun County
+51153,2010,Census,137115,Prince William County
+51153,2011,Housing unit estimate,139482,Prince William County
+51153,2012,Housing unit estimate,140854,Prince William County
+51153,2013,Housing unit estimate,142670,Prince William County
+51153,2014,Housing unit estimate,144745,Prince William County
+51153,2015,Housing unit estimate,145772,Prince William County
+51153,2016,Housing unit estimate,147384,Prince William County
+51153,2017,Housing unit estimate,149072,Prince William County
+51153,2018,Housing unit estimate,150410,Prince William County
+51153,2019,Housing unit estimate,151729,Prince William County
+51510,2010,Census,72376,Alexandria City
+51510,2011,Housing unit estimate,72686,Alexandria City
+51510,2012,Housing unit estimate,73254,Alexandria City
+51510,2013,Housing unit estimate,73440,Alexandria City
+51510,2014,Housing unit estimate,75065,Alexandria City
+51510,2015,Housing unit estimate,76166,Alexandria City
+51510,2016,Housing unit estimate,76161,Alexandria City
+51510,2017,Housing unit estimate,76570,Alexandria City
+51510,2018,Housing unit estimate,76513,Alexandria City
+51510,2019,Housing unit estimate,76415,Alexandria City
+51013,2010,Census,105404,Arlington County
+51013,2011,Housing unit estimate,106105,Arlington County
+51013,2012,Housing unit estimate,107749,Arlington County
+51013,2013,Housing unit estimate,109644,Arlington County
+51013,2014,Housing unit estimate,110281,Arlington County
+51013,2015,Housing unit estimate,112101,Arlington County
+51013,2016,Housing unit estimate,112440,Arlington County
+51013,2017,Housing unit estimate,114005,Arlington County
+51013,2018,Housing unit estimate,116517,Arlington County
+51013,2019,Housing unit estimate,118880,Arlington County
+51013,2020,Housing unit estimate,119183,Arlington County
+51013,2021,Housing unit estimate,119443,Arlington County
+51013,2022,Housing unit estimate,122446,Arlington County
+51059,2020,Housing unit estimate,427500,Fairfax County
+51059,2021,Housing unit estimate,428425,Fairfax County
+51059,2022,Housing unit estimate,429828,Fairfax County
+51107,2020,Housing unit estimate,142770,Loudoun County
+51107,2021,Housing unit estimate,145113,Loudoun County
+51107,2022,Housing unit estimate,147085,Loudoun County
+51153,2020,Housing unit estimate,158846,Prince William County
+51153,2021,Housing unit estimate,160104,Prince William County
+51153,2022,Housing unit estimate,162116,Prince William County
+51510,2020,Housing unit estimate,80440,Alexandria City
+51510,2021,Housing unit estimate,80357,Alexandria City
+51510,2022,Housing unit estimate,80361,Alexandria City
+51600,2020,Housing unit estimate,9328,Fairfax City
+51600,2021,Housing unit estimate,9317,Fairfax City
+51600,2022,Housing unit estimate,9308,Fairfax City
+51610,2020,Housing unit estimate,6253,Falls Church City
+51610,2021,Housing unit estimate,6251,Falls Church City
+51610,2022,Housing unit estimate,6254,Falls Church City
+51683,2020,Housing unit estimate,14386,Manassas City
+51683,2021,Housing unit estimate,14440,Manassas City
+51683,2022,Housing unit estimate,14516,Manassas City
+51685,2020,Housing unit estimate,5523,Manassas Park City
+51685,2021,Housing unit estimate,5516,Manassas Park City
+51685,2022,Housing unit estimate,5522,Manassas Park City

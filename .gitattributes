@@ -1,3 +1,4 @@
 *.geojson filter=lfs diff=lfs merge=lfs -text
 *hr_slides.html filter=lfs diff=lfs merge=lfs -text
 nova_transit_map.rds filter=lfs diff=lfs merge=lfs -text
+nova_adu_map.rds filter=lfs diff=lfs merge=lfs -text

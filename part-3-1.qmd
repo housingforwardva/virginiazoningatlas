@@ -570,7 +570,7 @@ For example, a ratio of 5.0 means that there are five low-wage jobs for every un
 
 # What have employment levels been like? Are jobs declining or growing?
 
-nova_jhf <- read_rds("data/nova/nova_ratio.rds") 
+nova_jhf <- read_rds("data/nova/rds/nova_ratio.rds") 
 
 ggplot(nova_jhf,
        aes(x = reorder(name_long, ratio),
@@ -596,7 +596,7 @@ ggplot(nova_jhf,
 #| label: fig-nova-ratio-map
 #| fig-cap: "Jobs-Housing Fit Ratio in Northern Virginia by Block Group"
 
-nova_blk_grps <- read_rds("data/nova/nova_blk_grps.rds")
+nova_blk_grps <- read_rds("data/nova/rds/nova_blk_grps.rds")
 
 library(RColorBrewer)
 
@@ -645,7 +645,7 @@ leaflet(nova_blk_grps,) |>
 
 library(formattable)
 
-nova_occ <- read_rds("data/nova/nova_occ.rds") |> 
+nova_occ <- read_rds("data/nova/rds/nova_occ.rds") |> 
   select(occ_title, emp = tot_emp_2022, wage = a_median_2022, rent, ho_price) |> 
   mutate(`Total Employment` = label_number(big.mark = ",")(emp),
          `Average Annual Wage` = dollar_format()(wage),
@@ -703,7 +703,7 @@ For homebuyers, we calculated a home price based on a 30-year fixed rate mortgag
 
 # What are renter incomes like? What can a renter afford to rent and buy?
 
-nova_income <- read_rds("data/nova/nova_income.rds") |> 
+nova_income <- read_rds("data/nova/rds/nova_income.rds") |> 
   select(NAME, estimate, rent, ho_price) |> 
   mutate(estimate = dollar_format()(estimate),
          rent = dollar_format()(rent),
@@ -733,7 +733,7 @@ nova_income |>
 
 # What is cost burden like in the region?
 
-nova_cb <- read_rds("data/nova/nova_cb.rds")|> 
+nova_cb <- read_rds("data/nova/rds/nova_cb.rds")|> 
   mutate(income = case_when(
     income == "Less than $20,000" ~ "Less than $35,000",
     income == "$20,000 to $34,999" ~ "Less than $35,000",
@@ -771,7 +771,7 @@ ggplot(nova_cb,
 
 # Should probably consider adding in something about median household income by race in the region?
 
-nova_race_inc <- read_rds("data/nova/nova_b19013.rds") |> 
+nova_race_inc <- read_rds("data/nova/rds/nova_b19013.rds") |> 
   filter(year == 2022)
 
 subtitle_text <- "In 2022, the wealth gap between <span style = 'color:#B1005F'><b>WHITE</b></span> and <span style = 'color:#40C0C0'><b>BLACK</span> households was <b>over $55,000 </b>"
@@ -806,7 +806,7 @@ ggplot(nova_race_inc,
 
 # Should probably consider adding in something about median household income by race in the region?
 
-nova_race_inc <- read_rds("data/nova/nova_b19013.rds") |> 
+nova_race_inc <- read_rds("data/nova/rds/nova_b19013.rds") |> 
   filter(year == 2022) |> 
   select(race, rent, ho_price) |> 
   mutate(rent = dollar(rent),

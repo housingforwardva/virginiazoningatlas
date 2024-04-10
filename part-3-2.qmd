@@ -65,7 +65,7 @@ library(forcats)
 
 # Read in csv of zoning summary for Northern Virginia.
 
-nova_zoning_summary <- read_csv("data/nova/nova_zoning_summary.csv")
+nova_zoning_summary <- read_csv("data/nova/csv/nova_zoning_summary.csv")
 
 nova_zoning_summary |> 
   kbl(col.names = c("Jurisdiction", "County or equivalent", "Government Type", "Date of Zoning Ordinance", "Number of Pages", "Number of base and overlay districts"), align = "lllccc") |> 
@@ -82,7 +82,7 @@ nova_zoning_summary |>
 
 # Create a bar chart that shows the percentage of zoned in each locality by type (i.e. primarily residential, mixed with residential, nonresidential)
 
-nova_type <- read_rds("data/nova/nova_vza_nogeo.rds") |> 
+nova_type <- read_rds("data/nova/rds/nova_vza_nogeo.rds") |> 
   select(jurisdiction, type, acres)
 
 
@@ -94,14 +94,14 @@ nova_type_summary <- nova_type |>
   group_by(jurisdiction) |> 
   mutate(pct = acres/sum(acres)) 
 
-write_csv(nova_type_summary, "data/nova/nova_ztype.csv")
+write_csv(nova_type_summary, "data/nova/csv/nova_ztype.csv")
 
 nova_summary <- nova_type |> 
   group_by(type) |> 
   summarise(acres = sum(acres)) |> 
   mutate(pct = acres/sum(acres)) 
 
-write_csv(nova_summary, "data/nova/nova_ztype_region.csv")
+write_csv(nova_summary, "data/nova/csv/nova_ztype_region.csv")
 
 subtitle_text <- "<span style='color:#8B85CA'><b>Primarily Residential</span></b>, <span style='color:#40C0C0'><b>Mixed with Residential</span></b>, and <span style='color:#011E41'><b>Nonresidential</span></b>"
 
@@ -150,7 +150,7 @@ type_plot
 vza_pal <- colorFactor(palette =c("#8B85CA", "#40C0C0", "#011E41"),
                        levels = c("Primarily Residential", "Mixed with Residential", "Nonresidential"))
 
-nova_sfd_map <- read_rds("data/nova/nova_sfd_only_map.rds")
+nova_sfd_map <- read_rds("data/nova/rds/nova_sfd_only_map.rds")
 
 leaflet() |>
   addProviderTiles(providers$CartoDB.Positron) |> 
@@ -175,9 +175,8 @@ leaflet() |>
 
 # Create a bar char that shows the percentage of zoned in each locality that is dedicated to single-family detached only housing.
 
-nova_sfd <- read_rds("data/nova/nova_vza_nogeo.rds") |> # Read in the data.
+nova_sfd <- read_rds("data/nova/rds/nova_vza_nogeo.rds") |> # Read in the data.
   select(jurisdiction, overlay, sfd, acres) |> # Select necessary data fields.
-  filter(jurisdiction != "Hillsboro") |> 
   filter(overlay == 0) |> # Remove overlay districts.
   group_by(jurisdiction, sfd) |> # Sum the total acres dedicated to single-family detached in each district.
   summarise(acres = sum(acres)) |> 
@@ -186,9 +185,12 @@ nova_sfd <- read_rds("data/nova/nova_vza_nogeo.rds") |> # Read in the data.
   ungroup() |> 
   mutate(total_nova = sum(acres)) |> # Calculate what percentage of total developable acres is SFD.
   filter(sfd == "t") |> 
-  add_row(jurisdiction = "Arlington", sfd = "t", "acres" = 0, percent = 0, total_nova = 658342.5)
+  add_row(jurisdiction = "Arlington", sfd = "t", "acres" = 0, percent = 0, total_nova = 658342.5) |> 
+  add_row(jurisdiction = "Dumfries", sfd = "t", "acres" = 0, percent = 0, total_nova = 658342.5) |> 
+  add_row(jurisdiction = "Haymarket", sfd = "t", "acres" = 0, percent = 0, total_nova = 658342.5) |> 
+  add_row(jurisdiction = "Herndon", sfd = "t", "acres" = 0, percent = 0, total_nova = 658342.5) 
 
-write_csv(nova_sfd, "data/nova/nova_sfd.csv")
+write_csv(nova_sfd, "data/nova/csv/nova_sfd.csv")
 
 nova_sfd_summary <- nova_sfd |> 
   group_by(total_nova) |> 
@@ -224,15 +226,14 @@ ggplot(nova_sfd,
 
 
 # Read in data frame
-nova_bipoc <- read_rds("data/nova/nova_bipoc.rds") |>
+nova_bipoc <- read_rds("data/nova/rds/nova_bipoc.rds") |>
   st_drop_geometry() |>
   arrange(name_long) |>
   mutate(bipoc = percent) |>
   select(fips, name_long, bipoc)
 
-nova_sfd <- read_rds("data/nova/nova_vza_nogeo.rds") |> # Read in the data.
+nova_sfd <- read_rds("data/nova/rds/nova_vza_nogeo.rds") |> # Read in the data.
   select(county, overlay, sfd, acres)|> # Select necessary data fields.
-  filter(county != "Hillsboro") |> 
   filter(overlay == 0) |> # Remove overlay districts.
   group_by(county, sfd) |> # Sum the total acres dedicated to single-family detached in each district.
   summarise(acres = sum(acres)) |>
@@ -286,7 +287,7 @@ This provides a general range of the minimum lot acres required for housing in s
 # Blank fields should be treated as NA and should not be included in the mean calculation.
 
 
-nova_lots <- read_rds("data/nova/nova_vza_nogeo.rds") |> 
+nova_lots <- read_rds("data/nova/rds/nova_vza_nogeo.rds") |> 
   filter(sfd == "t") |> 
   mutate(min1 = as.numeric(min1),
          max1 = as.numeric(max1)) |> 
@@ -302,7 +303,7 @@ nova_lots <- read_rds("data/nova/nova_vza_nogeo.rds") |>
     metric == "mean1max" ~ "Maximum value"
   ))
 
-write_csv(nova_lots, "data/nova/nova_min1_lots.csv")
+write_csv(nova_lots, "data/nova/csv/nova_min1_lots.csv")
 
 subtitle_text <- "*Average <span style='color:#40c0c0'><b>minimum</span></b> and <span style='color:#011E41'><b>maximum</span></b> in acres*"
   
@@ -347,10 +348,9 @@ When housing development requires a public hearing process, it can often come up
 # Create a table that shows the percentage of land that allows for each type of treatment by locality
 # https://frontierinstitute.org/reports/the-montana-zoning-atlas-2-0/ use this as an example 
 
-nova_byright_tbl <- read_rds("data/nova/nova_vza_nogeo.rds") |> 
+nova_byright_tbl <- read_rds("data/nova/rds/nova_vza_nogeo.rds") |> 
   select(jurisdiction, abbrvname, overlay, 6:9, acres) |> 
   filter(overlay == 0) |>
-  filter(acres != 0) |> 
   group_by(jurisdiction) |> 
   mutate(total_acres = sum(acres)) |> 
   mutate(family1_pct = case_when(
@@ -374,9 +374,10 @@ nova_byright_tbl <- read_rds("data/nova/nova_vza_nogeo.rds") |>
             family2_byright = percent(sum(family2_pct)),
             family3_byright = percent(sum(family3_pct)),
             family4_byright = percent(sum(family4_pct))
-            ) 
+            ) |> 
+  filter(jurisdiction != "Quantico")
 
-write_csv(nova_byright_tbl, "data/nova/nova_byright_table.csv")
+write_csv(nova_byright_tbl, "data/nova/csv/nova_byright_table.csv")
 
 nova_byright_tbl |>
   kable(col.names = c("Jurisdiction", "Single-family", "2-family", "3-family", "4+-family"), 
@@ -392,7 +393,7 @@ nova_byright_tbl |>
 
 # Create a bar graph that shows the total amount of zoned land that welcomes 2+ family housing by-right
 
-nova_byright <- read_rds("data/nova/nova_vza_nogeo.rds") |> 
+nova_byright <- read_rds("data/nova/rds/nova_vza_nogeo.rds") |> 
   select(jurisdiction, abbrvname, overlay, 6:9, acres) |> # Select data fields.
   filter(overlay == 0) |> # Filter out overlay districts.
   group_by(jurisdiction) |> 
@@ -401,9 +402,12 @@ nova_byright <- read_rds("data/nova/nova_vza_nogeo.rds") |>
   group_by(jurisdiction) |> 
   mutate(pct_2plus = acres/total_acres) |> 
   group_by(jurisdiction) |> 
-  summarise(pct_2plus = sum(pct_2plus)) 
+  summarise(pct_2plus = sum(pct_2plus)) |> 
+  add_row(jurisdiction = "Clifton", pct_2plus = 0) |> 
+  add_row(jurisdiction = "Hamilton", pct_2plus = 0) 
 
-nova_byright_summary <- read_rds("data/nova/nova_vza_nogeo.rds") |> 
+
+nova_byright_summary <- read_rds("data/nova/rds/nova_vza_nogeo.rds") |> 
   select(jurisdiction, abbrvname, overlay, 6:9, acres) |> # Select data fields.
   filter(overlay == 0) |> # Filter out overlay districts.
   mutate(total_acres = sum(acres)) |> # Calculate the total acres of zoned land.
@@ -411,7 +415,7 @@ nova_byright_summary <- read_rds("data/nova/nova_vza_nogeo.rds") |>
   mutate(total_2plus = sum(acres)) |> 
   mutate(pct2plus = total_2plus/total_acres)
 
-write_csv(nova_byright, "data/nova/nova_byright_2plus.csv")
+write_csv(nova_byright, "data/nova/csv/nova_byright_2plus.csv")
 
 ggplot(nova_byright,
        aes(x = reorder(jurisdiction, pct_2plus),
@@ -444,7 +448,7 @@ The map below shows the location of zoning districts that allow for 2+ family by
 
 pal <- colorFactor(palette =c("#8B85CA", "#40C0C0"),levels = c("Primarily Residential", "Mixed with Residential"))
 
-nova_byr2 <- read_rds("data/nova/byr_map.rds")
+nova_byr2 <- read_rds("data/nova/rds/byr_map.rds")
 
 nova_byr2 |> 
   addProviderTiles(providers$CartoDB.Positron)
@@ -458,7 +462,7 @@ nova_byr2 |>
 
 # Create a bar graph that shows the total amount of zoned land that welcomes 2+ family housing by-right
 
-nova_byright <- read_rds("data/nova/nova_vza_nogeo.rds") |> 
+nova_byright <- read_rds("data/nova/rds/nova_vza_nogeo.rds") |> 
   select(jurisdiction, abbrvname, overlay, 6:9, acres) |> # Select data fields.
   filter(overlay == 0) |> # Filter out overlay districts.
   filter(acres != 0) |> 
@@ -468,11 +472,13 @@ nova_byright <- read_rds("data/nova/nova_vza_nogeo.rds") |>
   group_by(jurisdiction) |> 
   mutate(pct_4plus = acres/total_acres) |> 
   group_by(jurisdiction) |> 
-  summarise(pct_4plus = sum(pct_4plus)) 
+  summarise(pct_4plus = sum(pct_4plus)) |> 
+  add_row(jurisdiction = "Clifton", pct_4plus = 0) |> 
+  add_row(jurisdiction = "Hamilton", pct_4plus = 0) 
 
-write_csv(nova_byright, "data/nova/nova_byright_4plus.csv")
+write_csv(nova_byright, "data/nova/csv/nova_byright_4plus.csv")
 
-nova_byright_summary <- read_rds("data/nova/nova_vza_nogeo.rds") |> 
+nova_byright_summary <- read_rds("data/nova/rds/nova_vza_nogeo.rds") |> 
   select(jurisdiction, abbrvname, overlay, 6:9, acres) |> # Select data fields.
   filter(overlay == 0) |> # Filter out overlay districts.
   mutate(total_acres = sum(acres)) |> # Calculate the total acres of zoned land.
@@ -526,7 +532,7 @@ The table below shows minimum parking requirements for multifamily housing devel
 #| label: tbl-min-parking
 #| tbl-cap: "Minimum parking requirements for 'multifamily' housing in Hampton Roads"
 
-nova_parking <- read_csv("data/nova/nova_vza_parking.csv")
+nova_parking <- read_csv("data/nova/csv/nova_vza_parking.csv")
 
 nova_parking |> 
   kbl(col.names = c("Jurisdiction", "1-Bedroom", "2-Bedroom", "3-Bedroom", "Vistor Space/Unit"),
@@ -553,7 +559,7 @@ Remember that the National Zoning Atlas Methodology includes caretaker or watchm
 # Create a table that shows the percentage of land that allows for ADUs by-right
 # https://frontierinstitute.org/reports/the-montana-zoning-atlas-2-0/ use this as an example 
 
-nova_adu <- read_rds("data/nova/nova_vza_nogeo.rds") |> 
+nova_adu <- read_rds("data/nova/rds/nova_vza_nogeo.rds") |> 
   select(jurisdiction, overlay, accessory_treatment, acres) |> 
   filter(overlay == 0) |> 
   group_by(jurisdiction) |> 
@@ -563,8 +569,9 @@ nova_adu <- read_rds("data/nova/nova_vza_nogeo.rds") |>
   summarise(acres = sum(acres)) |> 
   mutate(pct = acres/total_acres) |> 
   ungroup() |> 
-  filter(jurisdiction != "Hillsboro") |> 
-  filter(jurisdiction != "Quantico")
+  filter(jurisdiction != "Quantico") |> 
+  add_row(jurisdiction = "Clifton", total_acres = 0, acres = 0, pct = 0) 
+
 
 write_csv(nova_adu, "data/nova/nova_adu.csv")
 
@@ -596,7 +603,7 @@ For a more focused understanding, particularly for those who associate ADUs prim
 # Create a table that shows the percentage of land that allows for ADUs by-right
 # https://frontierinstitute.org/reports/the-montana-zoning-atlas-2-0/ use this as an example 
 
-nova_adu <- read_rds("data/nova/nova_vza_nogeo.rds") |> 
+nova_adu <- read_rds("data/nova/rds/nova_vza_nogeo.rds") |> 
   select(type, jurisdiction, overlay, accessory_treatment, acres) |> 
   filter(overlay == 0) |> 
   group_by(jurisdiction) |> 
@@ -645,7 +652,7 @@ The City of Virginia Beach is notable because it has two different instances of 
 # Create a table for the following csv.
 # https://frontierinstitute.org/reports/the-montana-zoning-atlas-2-0/ use this as an example 
 
-nova_adu_summary <- read_csv("data/nova/nova_adu_summary.csv") |> 
+nova_adu_summary <- read_csv("data/nova/csv/nova_adu_summary.csv") |> 
   select(jurisdiction, attached, detached, owner_occupancy, rental_prohibition, elderly_family, admin_permit)
 
 nova_adu_summary |> 
@@ -662,7 +669,7 @@ ADU regulations aren't standard across the region, while some do not even allow 
 #| label: fig-adu-map
 #| fig-cap: "Where ADUs are allowed by-right"
 
-nova_adu_map <- read_rds("data/nova/nova_adu_map.rds")
+nova_adu_map <- read_rds("data/nova/rds/nova_adu_map.rds")
 
 pal <- colorFactor(palette =c("#8B85CA", "#40C0C0", "#011E41"),levels = c("R", "M", "X"))
 
@@ -687,7 +694,7 @@ pal <- colorFactor(palette =c("#8B85CA", "#40C0C0"),levels = c("Primarily Reside
 
 transit_pal <-colorFactor(palette = c("#B1005F", "#E0592A"), levels = c("Bus", "Rail"))
 
-nova_transit_map <- read_rds("data/nova/nova_transit_map.rds")
+nova_transit_map <- read_rds("data/nova/rds/nova_transit_map.rds")
 
 nova_transit_map |> 
   addProviderTiles(providers$CartoDB.Positron)
@@ -706,12 +713,12 @@ The map below shows Census Block Groups where the jobs-housing fit ratio is grea
 #| label: fig-by4-jhf
 #| fig-cap: "Zoning districts allowing for 4+ family by-right and Census Block Groups with a Jobs-Housing Fit above 2.0"
 
-housing_needed <- read_rds("data/nova/nova_blk_grps.rds") |> 
+housing_needed <- read_rds("data/nova/rds/nova_blk_grps.rds") |> 
   filter(ratio > 2 | is.na(ratio))
 
 pal <- colorFactor(palette =c("#8B85CA", "#40C0C0"),levels = c("Primarily Residential", "Mixed with Residential"))
 
-nova_byr4 <- read_rds("data/nova/nova_byr4_map.rds") 
+nova_byr4 <- read_rds("data/nova/rds/nova_byr4_map.rds") 
 
 fit_map <- nova_byr4 |> 
   addPolygons(data = housing_needed,

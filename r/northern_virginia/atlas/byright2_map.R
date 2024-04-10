@@ -3,16 +3,16 @@ library(sf)
 library(leaflet)
 library(rmapshaper)
 
-byright2 <- read_sf("data/nova/nova_vza_geo.geojson") |> 
+byright2 <- read_sf("data/nova/geo/nova_vza_geo.geojson") |> 
   ms_simplify(keep = 0.1) |> 
   filter(overlay == 0) |> 
   filter(family2_treatment == "allowed" & family3_treatment == "allowed" & family4_treatment == "allowed")
 
-byright2plus <- read_sf("data/nova/nova_vza_geo.geojson") |> 
+byright2plus <- read_sf("data/nova/geo/nova_vza_geo.geojson") |> 
   filter(overlay == 0) |> 
   filter(family2_treatment == "allowed" & family3_treatment == "allowed" & family4_treatment == "allowed")
 
-st_write(byright2plus, "data/nova/nova_byright2plus.geojson", append = FALSE)
+st_write(byright2plus, "data/nova/geo/nova_byright2plus.geojson", append = FALSE)
 
 
 pal <- colorFactor(palette =c("#8B85CA", "#40C0C0"),levels = c("Primarily Residential", "Mixed with Residential"))
@@ -33,6 +33,6 @@ byr_map <- leaflet(byright2) |>
             title = "Type of Zoning District") 
 
 
-byr_map
+# byr_map
 
-write_rds(byr_map, "data/nova/byr_map.rds")
+write_rds(byr_map, "data/nova/rds/byr_map.rds")

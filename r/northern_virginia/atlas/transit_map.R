@@ -6,11 +6,11 @@ library(leaflet)
 # https://opendata.dc.gov/datasets/e3896b58a4e741d48ddcda03dae9d21b_51/explore?location=38.869191%2C-77.025953%2C11.17
 # https://hub.arcgis.com/datasets/fedmaps::amtrak-rail-stations/explore?location=38.070140%2C-77.278835%2C9.77
 
-rail <- st_read("data/nova/nova_rail_stops.geojson") |> 
+rail <- st_read("data/nova/geo/nova_rail_stops.geojson") |> 
   mutate(type = "Rail") |> 
   select(service, type)
 
-bus <- st_read("data/nova/nova_transit_stops.geojson")|> 
+bus <- st_read("data/nova/geo/nova_transit_stops.geojson")|> 
   pivot_longer(2:7,
                values_to = "check",
                names_to = "service") |> 
@@ -27,11 +27,11 @@ bus_buffers <- st_buffer(bus, 402.336)
 
 transit <- rbind(rail, bus)
 transit_buff <- rbind(rail_buffers, bus_buffers)
-nova_byright2 <- st_read("data/nova/nova_byright2plus.geojson")
-nova_region <- st_read("data/nova/nova_region.geojson")
+nova_byright2 <- st_read("data/nova/geo/nova_byright2plus.geojson")
+nova_region <- st_read("data/nova/geo/nova_region.geojson")
 
-# st_write(transit, "data/nova/nova_transit.geojson")
-# st_write(transit_buff, "data/nova/nova_transit_buffers.geojson")
+# st_write(transit, "data/nova/geo/nova_transit.geojson")
+# st_write(transit_buff, "data/nova/geo/nova_transit_buffers.geojson")
 
 pal <- colorFactor(palette =c("#8B85CA", "#40C0C0"),levels = c("Primarily Residential", "Mixed with Residential"))
 transit_pal <-colorFactor(palette = c("#B1005F", "#E0592A"), levels = c("Bus", "Rail"))
@@ -70,9 +70,9 @@ nova_transit_map <- leaflet(nova_byright2) |>
     options = layersControlOptions(collapsed = FALSE)
   ) 
 
-nova_transit_map
+# nova_transit_map
 
 
 
-write_rds(nova_transit_map, "data/nova/nova_transit_map.rds")
+write_rds(nova_transit_map, "data/nova/rds/nova_transit_map.rds")
 

@@ -3,11 +3,11 @@ library(sf)
 library(leaflet)
 library(rmapshaper)
 
-nova_adu <- read_sf("data/nova/nova_vza_geo.geojson") |> 
+nova_adu <- read_sf("data/nova/geo/nova_vza_geo.geojson") |> 
   filter(accessory_treatment == "allowed") |> 
   filter(overlay == 0)
 
-st_write(nova_adu, "data/nova/nova_adu_map.geojson", append = FALSE)
+st_write(nova_adu, "data/nova/geo/nova_adu_map.geojson", append = FALSE)
 
 
 nova_adu <- ms_simplify(nova_adu, keep = 0.3)
@@ -33,4 +33,4 @@ nova_adu_map <- leaflet(nova_adu) |>
 
 nova_adu_map
 
-write_rds(nova_adu_map, "data/nova/nova_adu_map.rds")
+write_rds(nova_adu_map, "data/nova/rds/nova_adu_map.rds")
