@@ -11,7 +11,7 @@ hr_vza <- geojson_sf("data/hr_vza_geo.geojson") |>
          acres, jurisdiction, county, sfd) |> 
   mutate(region = "Hampton Roads")
 
-nova_vza <- geojson_sf("data/nova_vza_geo.geojson") |> 
+nova_vza <- geojson_sf("data/nova/geo/nova_vza_geo.geojson") |> 
   select(id, type, abbrvname, name, overlay, # Select the fields needed for analysis.
          family1_treatment, family2_treatment, family3_treatment, family4_treatment,
          accessory_treatment, plannedresidential_treatment, tooltipnotes,
