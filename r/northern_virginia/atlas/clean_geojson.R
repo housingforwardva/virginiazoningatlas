@@ -6,7 +6,7 @@ library(sf)
 
 # Read in the geojson provided by the NZA, which already has "undevelopable" land removed.
 
-nova_punched <- geojson_sf("data/nova/geo/nova_ogr_24_4_10.geojson") 
+nova_punched <- geojson_sf("data/nova/geo/nova_ogr_24_4_23.geojson") 
 
 # Data prep
 
