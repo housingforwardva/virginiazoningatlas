@@ -8,7 +8,6 @@ library(sf)
 
 nova_punched <- geojson_sf("data/nova/geo/nova_ogr_24_4_10.geojson") 
 
-
 # Data prep
 
 nova_vza_data <- nova_punched |> 
@@ -64,6 +63,18 @@ nova_vza_clean_data <- nova_vza_data |>
 
 nova_vza_nogeo <- nova_vza_clean_data |> 
   st_drop_geometry() 
+
+# Filter for Mercatus Center data quality check
+# 
+
+# mercatus_nova <- nova_vza_nogeo |> 
+#   filter(sfd == "f") |> 
+#   filter(family4_treatment == "prohibited") |> 
+#   filter(family3_treatment == "prohibited") |> 
+#   filter(family2_treatment == "prohibited") |> 
+#   filter(family1_treatment == "allowed")
+# 
+# write_csv(mercatus_nova, "data/nova/csv/mercatus_sf.csv")
 
 
 st_write(nova_vza_clean_data, "data/nova/geo/nova_vza_geo.geojson", append = FALSE)
