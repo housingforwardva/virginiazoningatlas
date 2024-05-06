@@ -14,3 +14,4 @@ geo_simple <- ms_simplify(geo, keep = 0.1)
 
 st_write(geo_simple, "apps/data/boundaries.geojson")
   
+q
