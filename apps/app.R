@@ -7,6 +7,8 @@ library(htmltools)
 library(shinyWidgets)
 library(janitor)
 
+# remotes::install_github("walkerke/mapboxapi")
+
 # zoning <- st_read("gloucester_zoning.geojson", quiet = TRUE) |> 
 #   clean_names() %>%
 #   dplyr::mutate(fill_color = dplyr::case_when(
@@ -24,20 +26,23 @@ library(janitor)
 
 MAPBOX_ACCESS_TOKEN = Sys.getenv("MAPBOX_ACCESS_TOKEN")
 
+icon_atlas <- "https://raw.githubusercontent.com/visgl/deck.gl-data/master/website/icon-atlas.png"
+icon_mapping <- jsonlite::fromJSON("https://raw.githubusercontent.com/visgl/deck.gl-data/master/website/icon-atlas.json")
+
 zoning <- readr::read_rds("data/vza_simple.rds") |>
   st_cast("MULTIPOLYGON") %>%
-    dplyr::mutate(fill_color = dplyr::case_when(
-      type == "Primarily Residential" ~ "#8B85CA",
-      type == "Mixed with Residential" ~ "#40C0C0",
-      type == "Nonresidential" ~ "#011E41",
-      TRUE ~ "#FFFFFF"
-    ), 
-    highlight_color = dplyr::case_when(
-      type == "Primarily Residential" ~ "#8B85CAff",
-      type == "Mixed with Residential" ~ "#40C0C0ff",
-      type == "Nonresidential" ~ "#011E41ff",
-      TRUE ~ "#FFFFFFff"
-    )) 
+  dplyr::mutate(fill_color = dplyr::case_when(
+    type == "Primarily Residential" ~ "#8B85CA",
+    type == "Mixed with Residential" ~ "#40C0C0",
+    type == "Nonresidential" ~ "#011E41",
+    TRUE ~ "#FFFFFF"
+  ), 
+  highlight_color = dplyr::case_when(
+    type == "Primarily Residential" ~ "#8B85CAff",
+    type == "Mixed with Residential" ~ "#40C0C0ff",
+    type == "Nonresidential" ~ "#011E41ff",
+    TRUE ~ "#FFFFFFff"
+  )) 
 
 fed <- sf::st_read("data/protected_lands.geojson")
 
@@ -66,7 +71,24 @@ base_map <- c(
 
 base_selected <- "Light"
 
-local_list <- sort(unique(zoning$jurisdiction))
+nova_list <- zoning |> 
+  dplyr::filter(region == "Northern Virginia") |> 
+  dplyr::pull(jurisdiction) |>
+  unique() |> 
+  sort()
+
+hrva_list <- zoning |> 
+  dplyr::filter(region == "Hampton Roads") |> 
+  dplyr::pull(jurisdiction) |>
+  unique() |> 
+  sort()
+
+local_list <- list(
+  "Northern Virginia" = nova_list,
+  "Hampton Roads" = hrva_list
+)
+
+# local_list <- sort(unique(zoning$jurisdiction))
 
 
 # pal <- colorFactor(palette = c("#40C0C0", "#A29DD4", "#999999"),
@@ -170,6 +192,13 @@ ui <- page_fluid(
                   choices = base_map,
                   selected = base_selected)),
     absolutePanel(
+      top = 10,
+      right = 20,
+      width = "150px",
+      class = "floating-panel",
+      htmlOutput("text")
+    ),
+    absolutePanel(
       width = "300px",
       class = "floating-panel",
       top = 20, left = 20, 
@@ -192,73 +221,85 @@ ui <- page_fluid(
       br(),
       br(),
       br(),
-      checkboxInput("single_family", "1-Family Housing"),
-      div(class = "checkbox-opts", 
-          conditionalPanel(
-            condition = "input.single_family == true",
-            checkboxGroupInput("single_family_options",
-                               label = NULL,
-                               choices = type_choices, 
-                               selected = type_choices)
-              )
-          ),
-      style = "font-size: 0.9em",
-      checkboxInput("two_family", "2-Family Housing"),
-      div(class = "checkbox-opts",
-          conditionalPanel(
-            condition = "input.two_family == true",
-            checkboxGroupInput("two_family_options",
-                               label = NULL,
-                               choices = type_choices, 
-                               selected = type_choices)
-          )
-          ),
-      checkboxInput("three_family", "3-Family Housing"),
-      div(class = "checkbox-opts", 
-          conditionalPanel(
-            condition = "input.three_family == true",
-            checkboxGroupInput("three_family_options",
-                               label = NULL,
-                               choices = type_choices, 
-                               selected = type_choices)
-          )
+      bslib::accordion_panel(
+        " Advanced filters", icon = bsicons::bs_icon("chevron-down"), 
+        checkboxInput("single_family", "1-Family Housing"),
+        div(class = "checkbox-opts", 
+            conditionalPanel(
+              condition = "input.single_family == true",
+              checkboxGroupInput("single_family_options",
+                                 label = NULL,
+                                 choices = type_choices, 
+                                 selected = type_choices)
+            )
         ),
-      checkboxInput("four_family", "4+ Family Housing"),
-      div(class = "checkbox-opts", 
-          conditionalPanel(
-            condition = "input.four_family == true",
-            checkboxGroupInput("four_family_options",
-                               label = NULL,
-                               choices = type_choices, 
-                               selected = type_choices)
-          )
-          ),
-      checkboxInput("accessory", "Accessory Dwelling Units"),
-      div(class = "checkbox-opts",
-          conditionalPanel(
-            condition = "input.accessory == true",
-            checkboxGroupInput("accessory_options",
-                               label = NULL,
-                               choices = accessory_choices, 
-                               selected = accessory_choices)
-          )
+        style = "font-size: 0.9em",
+        checkboxInput("two_family", "2-Family Housing"),
+        div(class = "checkbox-opts",
+            conditionalPanel(
+              condition = "input.two_family == true",
+              checkboxGroupInput("two_family_options",
+                                 label = NULL,
+                                 choices = type_choices, 
+                                 selected = type_choices)
+            )
         ),
+        checkboxInput("three_family", "3-Family Housing"),
+        div(class = "checkbox-opts", 
+            conditionalPanel(
+              condition = "input.three_family == true",
+              checkboxGroupInput("three_family_options",
+                                 label = NULL,
+                                 choices = type_choices, 
+                                 selected = type_choices)
+            )
+        ),
+        checkboxInput("four_family", "4+ Family Housing"),
+        div(class = "checkbox-opts", 
+            conditionalPanel(
+              condition = "input.four_family == true",
+              checkboxGroupInput("four_family_options",
+                                 label = NULL,
+                                 choices = type_choices, 
+                                 selected = type_choices)
+            )
+        ),
+        checkboxInput("accessory", "Accessory Dwelling Units"),
+        div(class = "checkbox-opts",
+            conditionalPanel(
+              condition = "input.accessory == true",
+              checkboxGroupInput("accessory_options",
+                                 label = NULL,
+                                 choices = accessory_choices, 
+                                 selected = accessory_choices)
+            )
+        )
+      )
+      ,
       hr(),
-      p("Use the drop down to focus in on a specific jurisdiction or multiple.", style = "font-size: 80%;"),
-      pickerInput("select_juris",
-                  label = "Select Jurisdiction",
-                  multiple = TRUE,
-                  choices = local_list,
-                  selected = local_list),
+      bslib::accordion_panel(
+        "Geographic filters",
+        icon = bsicons::bs_icon("chevron-down"),
+        p("Use the drop down to focus in on a specific jurisdiction or multiple.", style = "font-size: 80%;"),
+        virtualSelectInput("select_juris",
+                           label = "Select Jurisdiction",
+                           multiple = TRUE,
+                           choices = local_list,
+                           selected = unlist(unname(local_list))),
+        mapboxapi::mapboxGeocoderInput("geocode", access_token = MAPBOX_ACCESS_TOKEN,
+                                       placeholder = "Zoom to address",
+                                       proximity = c(-77.43428, 37.53851))
+      ),
+      
       hr(),
       checkboxInput("transit_stops", "Show transit stops", value = FALSE),
       checkboxInput("flood", "Show 1% Annual Flood Hazard", value = FALSE),
       hr(),
       chooseSliderSkin("Flat", color = "#40C0C0"),
       sliderInput("opacity", "Zone opacity", min = 0, max = 100, 
-                  value = 80, ticks = FALSE),
-      br(),
-      textOutput("text")
+                  value = 80, ticks = FALSE)
+      # br(),
+      # textOutput("text")
     ), 
     mainPanel(
       width = 12,
@@ -299,22 +340,22 @@ server <- function(input, output, session) {
     rdeck(map_style = input$basemap, theme = "light",
           initial_bounds = zoning,
           layer_selector = FALSE) %>%
-      add_polygon_layer(data = zoning, get_fill_color = fill_color, opacity = 0.8, 
+      add_polygon_layer(data = zoning, get_fill_color = fill_color, opacity = 0.8,
                         id = "zoning_layer", get_polygon = geometry, get_line_color = "#ffffff",
                         get_line_width = 10, pickable = TRUE, auto_highlight = TRUE, highlight_color = highlight_color,
                         tooltip = c(Abbreviation, Zoning, Jurisdiction, Notes), name = "Zoning") %>%
       add_polygon_layer(data = juris, name = "Jurisdiction", stroked = TRUE, filled = FALSE, pickable = TRUE,
                         auto_highlight = TRUE, get_line_color = "#f2e70a", get_polygon = geometry,
-                        get_line_width = 100) |> 
+                        get_line_width = 100) |>
       add_polygon_layer(data = fed, opacity = 0.5, filled = TRUE, get_fill_color = "#A9A9A9", get_polygon = geometry, get_line_color = "#ffffff",
                         get_line_width = 10, pickable = TRUE, auto_highlight = TRUE, highlight_color = "#606060",
                         tooltip = c(Ownership, Type, Name), name = "Protected Land") %>%
       add_polygon_layer(data = flood, opacity = 0.5, filled = TRUE, get_fill_color = "#5E1914", get_polygon = geometry,
                         get_line_color = "#ffffff", get_line_width = 10, pickable = FALSE, name = "Flood Hazard", id = "flood",
-                        visible = FALSE) |> 
-      add_scatterplot_layer(data = transit, get_position = geometry, name = "Public Transit", 
-                            radius_min_pixels = 2, visible = FALSE, 
-                            id = "transit_layer", 
+                        visible = FALSE) |>
+      add_scatterplot_layer(data = transit, get_position = geometry, name = "Public Transit",
+                            radius_min_pixels = 2, visible = FALSE,
+                            id = "transit_layer",
                             pickable = TRUE,
                             get_fill_color = "#ffd179",
                             tooltip = service)
@@ -324,7 +365,47 @@ server <- function(input, output, session) {
   observeEvent(input$opacity, {
     rdeck_proxy("map") %>%
       update_polygon_layer(id = "zoning_layer",
-                  opacity = input$opacity / 100)
+                           opacity = input$opacity / 100)
+  })
+  
+  
+  geo_outputs <- eventReactive(input$geocode, {
+    loc <- mapboxapi::geocoder_as_sf(input$geocode) %>%
+      dplyr::mutate(icon = "marker",
+                    Address = stringr::str_remove(full_address, ", United States"))
+    
+    loc_buffer <- sf::st_buffer(sf::st_transform(loc, 3968), 2000) |> 
+      sf::st_transform(4326)
+    
+    list(marker = loc,
+         buffer = loc_buffer)
+    
+  })
+  
+  
+  observeEvent(geo_outputs(), {
+    
+    g <- geo_outputs()
+    
+    rdeck_proxy("map", initial_bounds = sf::st_bbox(g$buffer)) %>%
+      add_icon_layer(
+        id = "chosen_location",
+        name = "Selected location",
+        data = g$marker,
+        get_position = sf_column(),
+        size_scale = 30,
+        get_color = "#000000",
+        
+        # icon params
+        get_icon = icon,
+        icon_atlas = icon_atlas,
+        icon_mapping = icon_mapping,
+        
+        # interactivity
+        pickable = TRUE,
+        auto_highlight = TRUE,
+        tooltip = Address
+      )
   })
   
   
@@ -349,8 +430,8 @@ server <- function(input, output, session) {
       dplyr::mutate(selected_acres = sum(acres)) |> 
       dplyr::mutate(total_jurisdiction = sum(unique(total_area))) |> 
       dplyr::mutate(pct = scales::percent(selected_acres/total_jurisdiction), accuracy = 0.1)
-
-                         
+    
+    
     
     output
     
@@ -379,7 +460,10 @@ server <- function(input, output, session) {
   
   observeEvent(zoning_filter(), {
     rdeck_proxy("map") %>%
-      update_polygon_layer(data = zoning_filter(), id = "zoning_layer")
+      add_polygon_layer(data = zoning_filter(), get_fill_color = fill_color, opacity = 0.8,
+                        id = "zoning_layer", get_polygon = geometry, get_line_color = "#ffffff",
+                        get_line_width = 10, pickable = TRUE, auto_highlight = TRUE, highlight_color = highlight_color,
+                        tooltip = c(Abbreviation, Zoning, Jurisdiction, Notes), name = "Zoning")
   })
   
   observeEvent(input$single_family, {
@@ -452,11 +536,11 @@ server <- function(input, output, session) {
   })
   
   output$text <- renderText({
-
+    
     pct_value <- unique(zoning_filter()$pct)
-
-    paste("Percent of total developable land based on selected districts:", pct_value)
-
+    
+    paste("Percent of total developable land based on selected districts: <strong>", pct_value, "</strong>")
+    
   })
   
 }
