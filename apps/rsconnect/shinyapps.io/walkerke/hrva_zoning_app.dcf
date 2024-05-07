@@ -1,0 +1,13 @@
+name: hrva_zoning_app
+title: hrva_zoning_app
+username:
+account: walkerke
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 10165121
+bundleId: 7791803
+url: https://walkerke.shinyapps.io/hrva_zoning_app/
+when: 1697056676.71634
+lastSyncTime: 1697056676.71635
+asMultiple: FALSE
+asStatic: FALSE
