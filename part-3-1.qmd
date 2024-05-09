@@ -1,4 +1,8 @@
-# Population and Housing Trends {#part-2-1}
+# Land Use Regulations in Northern Virginia: A National Zoning Atlas {#part-3-1}
+
+By Eli Kahn, Andrew Crouch, and Emily Hamilton[^part-3-1-1]
+
+[^part-3-1-1]: In addition to the authors, Milica Manojlovic, Micah Perry, Rishab Sardana, and Arthur Wright gathered data for the Northern Virginia Zoning Atlas. Thank you to Yonah Freemark for sharing data on zoning in the DC region that he collected for research at the Urban Institute that served as a useful quality check on our atlas data.
 
 ```{r}
 #| label: setup
@@ -20,7 +24,7 @@ library(ggtext)
 library(readr)
 library(zoo)
 library(patchwork)
-
+library(forcats)
 
 # Describe the Northern Virginia region.
 
@@ -32,6 +36,15 @@ library(patchwork)
 
 ```
 
+Originally published at [Mercatus.](https://www.mercatus.org/)
+
+## Introduction
+
+In recent years, policymakers have sought solutions to the housing shortages plaguing their constituents with increasing urgency. Following decades of research and increasing activist pressure to reduce restrictions on homebuilding, these policymakers and scholars are looking critically at zoning regulations and local rules that shape the type and quantity of housing that is allowed to be built. Local policymakers determine their own zoning rules and permit approval processes, and learning how land use is regulated across places requires consulting zoning ordinances in tens of thousands of jurisdictions in the United States.
+
+The lack of data on zoning regulations in various local jurisdictions where they are enacted has previously limited research on specifically how these rules affect housing construction and prices. The National Zoning Atlas (NZA) is addressing the limited information on zoning rules across the country by compiling data on rules that constrain housing construction across the country. Researchers at the NZA as well as a collaborative of teams across the country have been contributing to the atlas since 2020 with complete data for nearly 3,000 jurisdictions so far. Over the past year, our team added Northern Virginia to the NZA database, creating an in-depth picture of the current regulation of housing in one of the nation’s most prosperous regions.
+
+In this policy brief, we explain the value of collecting data on zoning and the NZA methodology, we detail results from our analysis of regulations in Northern Virginia, and we provide context for our findings.
 
 ```{r}
 #| label: fig-nova-map
@@ -53,216 +66,119 @@ leaflet(nova_region) |>
 
 ```
 
-## Summary
+## Measuring Zoning
 
+The NZA project is an effort to provide granular data on land use regulations for each zone in the country where housing is allowed. After identifying the zoning districts within a jurisdiction, analysts log whether the districts are primarily residential, mixed use including residential, or nonresidential. Primarily residential zones allow housing and may permit limited other uses such as schools, churches, and utilities. Mixed with residential zones generally allow housing as well as retail and/or office development. Non-residential zones include industrial zones which may have health and safety reasons for separation from housing along with commercial zones where housing is not permitted, government zones, and land zoned for open space. 
 
+The atlas also provides detail on whether rules allow for 1, 2, 3, or 4 or more housing units on a lot and how the size and shape of these buildings are restricted. This requires analysts to investigate questions such as: are 2 family structures allowed to be built at all? Are they only allowed after a public hearing? How much land area do they require?
 
-## Population Trends
+For zones that allow for residential construction, the atlas includes data on the following regulations:
 
-```{r}
-#| label: fig-nova-city-pop
-#| fig-cap: "Population change in the Northern Virginia region"
+1.  Minimum lot size
 
-# Create a visualization that shows population change in the region by city. What localities are seeing the most growth? Which ones are seeing decline?
+2.  Front setback
 
-# nova_pop <- read_rds("data/nova/nova_pop.rds") |> 
-#   mutate(year = as.numeric(year)) |> 
-#   filter(year >= 2010) |> 
-#   group_by(name_long) |>
-#   mutate(diff = value - lag(value),
-#          diff = replace_na(diff, 0)) |> 
-#   mutate(run_diff = cumsum(diff))|>  
-#   filter(run_diff != 0) |> 
-#   mutate(year = as.character(year)) |> 
-#   mutate(type = case_when(
-#     str_detect(name_long, "City") ~ "City",
-#     TRUE ~ "County"
-#   )) |> 
-#   filter(year == 2022)
+3.  Side setback
 
-nova_pop_total <- read_rds("data/nova/nova_pop.rds") |> # Load in population data for Northern Virginia.
-  mutate(year = as.numeric(year)) |> # Convert the year column to a number instead of character.
-  filter(year == 2010 | year == 2022) |> # Filter for earliest and latest year.
-  select(name_long, year, value) |> # Select only needed fields.
-  pivot_wider(names_from = year, 
-              values_from = value) |> 
-  mutate(total_2010 = sum(`2010`),
-         total_2022 = sum(`2022`)) |> 
-  mutate(change = total_2022 - total_2010) |> # Calculate change in population for entire region.
-  mutate(pchg = change/total_2010) |> # Calculate percent change in population for entire region.
-  mutate(lpchg = (`2022` - `2010`)/`2010`) |> # Calculate percent change for each locality.
-  mutate(name_long = str_remove(name_long, " City")) |> # Remove " City" from each locality.
-  mutate(name_long = case_when( # Add back in City to James City County.
-    name_long == "Fairfax" ~ "Fairfax City",
-    TRUE ~ name_long
-  ))
-         
-ggplot(nova_pop_total, # Read in the data.
-                  aes(x = reorder(name_long, lpchg), # Plot the x-axis.
-                      y = lpchg, # Plot the y-axis.
-                      fill = lpchg)) + # Set the variable that will be colored.
-  geom_col(position = "dodge") + # Set as a bar chart. 
-  geom_text(aes(label = percent(lpchg, 2), hjust = ifelse(lpchg >= 0, 0, 1), color = lpchg)) +
-  coord_flip() +
-  theme_hfv() + # Apply custom HFV theme.
-  add_zero_line("y") + # Add darker zero intercept line for emphasis.
-  labs(title = "Percent population change in the Northern Virginia region",
-       subtitle = "From 2010 to 2022",
-       caption = "**Source:** U.S. Census Bureau, Population Estimates Program (PEP).") +
-  scale_y_continuous(label = percent_format(), expand = expansion(mult = c(0, 0.1))) + 
-  scale_fill_gradientn(colours = c("#ADDCB1", "#46A88F", "#207A88", "#0F1A4E")) +
-  scale_color_gradientn(colours = c("#ADDCB1", "#46A88F", "#207A88", "#0F1A4E"))
+4.  Rear setback
 
-```
+5.  Maximum lot coverage
 
-```{r}
-#| label: fig-age
-#| fig-cap: "Change in householders by age in Northern Virginia"
+6.  Minimum parking spaces
 
-nova_age <- read_rds("data/nova/nova_b25007.rds") |> # Load in saved data for age of householders in Northern Virginia.
-  mutate(age = case_when( # Create fewer age groupings.
-    age == "Householder 15 to 24 years" ~ "34 years or below",
-    age == "Householder 35 to 44 years" ~ "35 to 44 years",
-    age == "Householder 45 to 54 years" ~ "45 to 64 years",
-    age == "Householder 55 to 59 years" ~ "45 to 64 years",
-    age == "Householder 60 to 64 years" ~ "45 to 64 years",
-    TRUE ~ "65 years and over"
-  )) |> 
-  group_by(year, age) |> # Group by age year and age.
-  summarise(estimate = sum(estimate)) |> # Aggregate.
-  filter(year == 2010 | year == 2022) |> # Filter for latest and earliest year.
-  pivot_wider(names_from = year, # Pivot to calculate the change.
-              values_from = estimate) |> 
-  mutate(chg = `2022` - `2010`) # Caclulate the change from 2010 to 2021.
+7.  Maximum stories
 
-subtitle_text <- "<span style = 'color:#259591'><b>Senior households</b></span> have grown <b>significantly</b> from 2010 to 2022"
+8.  Maximum height
 
-ggplot(nova_age,
-       aes(x = age,
-           y = chg,
-           fill = age)) + 
-  geom_col() +
-  geom_text(aes(label = number_format(big.mark = ",", 
-                                      style_positive = "plus", 
-                                      style_negative = "minus")(chg), 
-                hjust = ifelse(chg >= 0, 0, 1), color = age)) +
-  coord_flip() + 
-  theme_hfv() +
-  scale_fill_hfv() +
-  scale_color_hfv() +
-  labs(title = "Change in householders by age",
-       subtitle = subtitle_text,
-       caption = "**Source:** U.S. Census Bureau, ACS, 5-Year Estimates, Table B25007.") +
-  scale_y_continuous(labels = number_format(big.mark = ",", style_positive = "plus", style_negative = "minus"), limits = c(0, 80000), breaks = seq(0, 80000, by = 10000)) + 
-  add_zero_line("y") + # Add darker zero intercept line for emphasis.
-  theme(panel.grid.major.y = element_line(color = "white"),
-        panel.grid.major.x = element_line(color = "#f5f5f5",size = 0.1)) +
-  plot_annotation(
-    theme = theme(
-    plot.subtitle = element_markdown(
-       margin = margin(b = 0.4, unit = 'cm'),
-        size = 11.5
-    )))
-  
-```
+9.  Maximum floor-to-area ratio
+
+10. Minimum unit size
+
+For 2, 3, and 4+ family housing, the following regulations are added:
+
+1.  Maximum density
+
+2.  Connection to utilities and/or transit (3 and 4+ family only)
+
+3.  Maximum bedrooms (3 and 4+ family only)
+
+4.  Maximum units per building (4+ family only)
+
+The atlas also includes regulations on accessory dwelling units, affordable housing, and planned residential developments. This rich data collection provides value for a range of audiences. While not all atlas teams are making their complete datasets public, many are.
+
+The complete dataset on zoning in Virginia will available at the NZA website with regional teams’ data being added as it’s completed.[^part-3-1-2] This data will provide researchers with the tools to estimate answers to questions like, “What combination of rules makes duplex construction feasible?” or “To what extent do builders choose to provide off-street parking when zoning rules don’t require it?”
+
+[^part-3-1-2]: National Zoning Atlas, “Virginia Zoning Atlas,” https://www.zoningatlas.org/virginia.
+
+Currently, the Wharton Residential Land Use Regulatory Index (WRLURI)[^part-3-1-3], developed in 2006 and updated in 2018, is one of the most widely used tools for comparing zoning regulations across the U.S. The index is derived from survey data collected from a municipal employee or an elected official in U.S. localities. The 2018 survey received partial or full responses in 2,844 localities. 
+
+[^part-3-1-3]: Joseph Gyourko, Jonathan Hartley, and Jacob Krimmel, “The Local Residential Land Use Regulatory Environment Across U.S. Housing Markets: Evidence from a New Wharton Index,” NBER Working Paper No. 26573, National Bureau of Economic Research, 2019. <https://doi.org/10.3386/w26573>
+
+WRLURI questions on land use policy fit into three buckets: 1) permitting processes, 2) rules limiting housing construction (i.e., minimum lot size requirements), and 3) the time that the permitting process requires for different types of residential development. The WRLURI is the first tool that provided researchers with an opportunity to compare the burden of zoning rules across jurisdictions, and together the 2006 and 2018 data are the first measurement of the change in land use regulations across the country over time. Some studies, such as Glaeser, Ward, and Schuetz (2006)[^part-3-1-4] and Ellickson (2020),[^part-3-1-5] use more detailed data on land use restrictions, but they tend to cover small geographical areas.
+
+[^part-3-1-4]: Edward L. Glaeser, Jenny Schuetz, and Bryce Ward, “Regulation and the Rise of Housing Prices in Greater Boston,” Rappaport Institute for Greater Boston and Pioneer Institute for Public Policy Research, January 5, 2006. <https://www.hks.harvard.edu/sites/default/files/centers/rappaport/files/regulation_housingprices_1.pdf>
+
+[^part-3-1-5]: Robert C. Ellickson, “Zoning and the Cost of Housing: Evidence from Silicon Valley, Greater New Haven, and Greater Austin,” Yale Law School, January 13, 2020. <https://ssrn.com/abstract=3472145>
+
+Research using the WRLURI and other proxies for the burden of land-use regulations across regions has shown that these rules have important effects on housing markets and the broader economy. More restrictive land-use regulations are associated with higher housing costs, more residential segregation, reduced income mobility, and even lower fertility rates.[^part-3-1-6]
+
+[^part-3-1-6]: John Myers, Sam Bowman, and Ben Southwood, “The Housing Theory of Everything,” Works in Progress, September 14, 2021 <https://worksinprogress.co/issue/the-housing-theory-of-everything/>
+
+While a growing body of research indicates that local zoning regulations have important effects on housing affordability and economic opportunity, researchers have not had precise data on local zoning rules across the country to study the effects of specific land use regulations. For example, the WRLURI provides data on whether a locality has any large lot zoning, but lacks data on specific lot size requirements across zones. 
+
+The atlas also creates new opportunities for apples-to-apples comparisons of zoning in localities across the U.S., potentially pointing policymakers to zoning reform opportunities that are well-suited to their jurisdictions. Advocates can use the data to see specifically how reform proposals will change what can be built in their state or locality. In the following section we describe the NZA findings in the Northern Virginia atlas for major categories of residential land use restrictions.
+
+## Residential Land Use Rules in Northern Virginia
+
+We have gathered zoning data for the 23 jurisdictions with a total of 534 zones in the Northern Virginia Region.[^part-3-1-7] The region includes four counties—Arlington, Fairfax, Loudoun, and Prince William, and five independent cities—Alexandria, Falls Church, Fairfax City, Manassas, and Manassas Park.  Across all of Northern Virginia, 84% of developable land is categorized as Primarily Residential under the NZA’s typology, encompassing residential districts as well as agricultural districts, which generally permit housing construction by right, but excluding most mixed-use districts. The percentage of land zoned for primarily residential uses varies widely by locality, with Manassas Park being the lowest (26.4%) and Hillsboro being the highest (98.7%). 8% of the land is classified Mixed with Residential, with the remaining 8% Nonresidential.
+
+[^part-3-1-7]: The Virginia Zoning Atlas is broken up into regions determined by the commonwealth’s Regional Cooperation Act, which created associations of local governments. Quantico does not have a publicly available zoning map. We have collected the atlas data on its land use regulations by zone, but we are not able to provide statistics for its regulations by land area below.
 
 ```{r}
-#| label: household-size-data
-#| fig-cap: "Change in household size by tenure in Northern Virginia"
+#| label: fig-housing-type
+#| fig-cap: "Share of Land Dedicated to Residential and Nonresidential Uses"
 
-# Create a visualization that shows the change in household size from 2010 to 2021 in each locality. Describe the trend in household size changes. Where are larger households seeing growth? Smaller households?
+# Create a bar chart that shows the percentage of zoned in each locality by type (i.e. primarily residential, mixed with residential, nonresidential)
 
-nova_hhsize <- read_rds("data/nova/nova_hhsize.rds") |> # Read in household size data.
-  group_by(NAME, year, size) |> # Aggregate to locality, year, and household size.
-  summarise(estimate = sum(estimate)) |> 
-  filter(year == 2010 | year == 2022) |> # Filter for latest and earliest years.
-  mutate(year = as.character(year)) |> # Convert year to a character.
-  pivot_wider(names_from = year,
-              values_from = estimate) |> 
-  mutate(change = `2022` - `2010`) |> # Calculate the change from 2010 to 2022.
-  group_by(NAME) |> # Group by locality. 
-  mutate(total_chg = sum(change)) |> # Calculate total change in order to order bar chart.
-  mutate(NAME = str_remove_all(NAME, " city")) # Remove " city" from all locality names.
-  
-subtitle_text <- "Household sizes are growing the most in the counties"
-  
-ggplot(nova_hhsize,
-       aes(x = reorder(NAME, total_chg),
-           y = change,
-           fill = size)) +
-  geom_col(position = "stack") +
-  theme_hfv() +
-  coord_flip() +
-  facet_wrap(~size, nrow =1) +
-  scale_fill_hfv() +
-  labs(title = "Change in household size in Northern Virginia",
-       subtitle = subtitle_text,
-       caption = "**Source:** U.S. Census Bureau. ACS 5-Year Estimates. Table B25009.") +
-  add_zero_line(axis = "y") +
-  scale_y_continuous(labels = number_format(big.mark = ",", style_positive = "plus")) + 
-  theme(panel.grid.major.y = element_line(color = "white"),
-        panel.grid.major.x = element_line(color = "#f5f5f5",size = 0.1)) +
-  plot_annotation(
-    theme = theme(
-    plot.subtitle = element_markdown(
-       margin = margin(b = 0.4, unit = 'cm'),
-        size = 11.5
-    )))
-
-```
+nova_type <- read_rds("data/nova/rds/nova_vza_nogeo.rds") |> 
+  select(jurisdiction, type, acres)
 
 
-## Housing Market
+nova_type_summary <- nova_type |> 
+  filter(jurisdiction != "Quantico") |> 
+  filter(jurisdiction != "Hillsboro") |> 
+  group_by(jurisdiction, type) |> 
+  summarise(acres = sum(acres)) |> 
+  group_by(jurisdiction) |> 
+  mutate(pct = acres/sum(acres)) |>
+  mutate(jurisdiction = case_when(
+    jurisdiction %in% c("Arlington", "Loudoun", "Prince William", "Fairfax") ~ paste0(jurisdiction, " County"),
+    TRUE ~ jurisdiction))
 
-```{r}
-#| label: fig-bps-nova
-#| fig-cap: "Total new residential building permits issued from 2010 to 2022"
+write_csv(nova_type_summary, "data/nova/csv/nova_ztype.csv")
 
-# Create a visualization that shows where housing is being built. Where is more diverse housing being built? Where is single-family housing being built the most? How does that compare to population growth in those localities?
+nova_summary <- nova_type |> 
+  group_by(type) |> 
+  summarise(acres = sum(acres)) |> 
+  mutate(pct = acres/sum(acres)) 
 
-nova_bps <- read_rds("data/nova/nova_bps.rds") |> # Load in Building Permits Survey data.
-  mutate(type = case_when( # Group "Missing Middle" housing together.
-    type == "2-units" ~ "2-4 units",
-    type == "3-4 units" ~ "2-4 units",
-    TRUE ~ type
-  )) |> 
-  group_by(name_long, type) |> # Aggregate to locality and housing type.
-  summarise(units = sum(units)) |> 
-  group_by(name_long) |> # Group by locality.
-  mutate(total = sum(units)) |> # Calculate the total number of new permits for entire time period.
-  mutate(name_long = str_remove(name_long, " City")) |> # Remove " City" from locality names.
-  mutate(name_long = case_when( # Add "City" back to James City County.
-    name_long == "Fairfax" ~ "Fairfax City",
-    TRUE ~ name_long
-  ))
+subtitle_text <- "<span style='color:#8B85CA'><b>Primarily Residential</span></b>, <span style='color:#40C0C0'><b>Mixed with Residential</span></b>, and <span style='color:#011E41'><b>Nonresidential</span></b>"
 
-# Summarize the percentage of units developed by type for the narrative.
 
-nova_bps_summary <- nova_bps |> 
-  group_by(type) |> # Aggregate by housing type.
-  summarise(units = sum(units)) |> 
-  mutate(pct = units/sum(units)) # Calculate the percentage of type of units for the region.
-
-subtitle_text <- "Few, if any, <span style = 'color:#40C0C0'><b>2-4 unit housing</span> has been built between 2010 to 2022"
-  
-bps_plot <- ggplot(nova_bps,
-       aes(x = reorder(name_long, total),
-           y = units,
-           fill = type,
-           data_id = units,
-           tooltip = number_format(big.mark =",")(units))) + 
+type_plot <- ggplot(nova_type_summary,
+       aes(x = fct_reorder2(jurisdiction, type, pct),
+           y = pct,
+           fill = factor(type, levels = c("Nonresidential", "Mixed with Residential", "Primarily Residential")),
+           data_id = pct,
+           tooltip = percent_format(accuracy = 0.1)(pct))) +
   geom_col_interactive(position = "stack") +
   coord_flip() +
-  facet_wrap(~type) +
-  theme_hfv() + 
+  theme_hfv() +
   scale_fill_hfv() +
-  scale_y_continuous(labels = number_format(big.mark = ",", style_positive = "plus")) +
-  labs(title = "Total new residential building permits issued in Northern Virginia",
-       subtitle = subtitle_text,
-       caption = "**Source:** U.S. Census Bureau. Building Permits Survey.") + 
-  theme(panel.grid.major.y = element_line(color = "white"),
-        panel.grid.major.x = element_line(color = "#f5f5f5",size = 0.1),
-        axis.text.x = element_text(angle = 90)) +
+  labs(subtitle = subtitle_text
+       # caption = "**Source:** Mercatus Center at George Mason University & HousingForward Virginia, Virginia Zoning Atlas."
+       ) +
+  scale_y_continuous(labels = percent_format(), expand = expansion(mult = c(0, 0.01))) +
   plot_annotation(
     theme = theme(
     plot.subtitle = element_markdown(
@@ -270,556 +186,267 @@ bps_plot <- ggplot(nova_bps,
         size = 11.5
     )))
 
-girafe(ggobj = bps_plot,
+
+girafe(ggobj = type_plot,
        height_svg = 4)
 
-# bps_plot
-
 
 ```
 
+Single-family detached houses, the most expensive type of housing, are the only form of housing allowed in many primarily residential districts. In general, once a neighborhood is developed with detached single-family houses, zoning locks this development pattern in place, preventing the neighborhood from accommodating more people even if demand for housing–and house prices–increase markedly.
 
-
-```{r}
-#| label: fig-nova-price
-#| fig-cap: "Median home sales price in Northern Virginia"
-
-# What have home prices been like?
-
-# How to add arrows indicating direction on line segments??
-
-nova_var_price <- read_rds("data/nova/nova_var.rds") |> 
-  select(geography, period, name, adj_price) |> 
-  mutate(year = substr(period, 1, 4)) |> 
-  mutate(year = as.numeric(year)) |> 
-  filter(period == "2023 Q2" | period == "2019 Q2") |> 
-  mutate(period = as.character(period)) |> 
-  select(geography, name, adj_price, period) |> 
-  pivot_wider(names_from = period, 
-              values_from = adj_price) |> 
-  mutate(latest = `2023 Q2`) |> 
-  pivot_longer(3:4,
-               names_to = "period",
-               values_to = "med_price") |> 
-  mutate(name = case_when(
-    name == "Virginia Beach-Norfolk-Newport News MSA" ~ "VB-Norfolk-NN MSA",
-    TRUE ~ name
-  )) |> 
-  mutate(name = str_remove(name, " City"))  |> 
-  mutate(name = case_when(
-    name == "Fairfax" ~ "Fairfax City",
-    TRUE ~ name
-  ))
-  
-subtitle_text <- "In <span style = 'color:#011E41'><b>Q2 2019</b></span> and <span style = 'color:#40C0C0'><b>Q2 2023</span>"
-
-
-price_plot <- ggplot(nova_var_price,
-       aes(x = reorder(name, latest),
-           y = med_price,
-           color  = period)) +
-  theme_hfv() +
-  geom_line(linewidth = 1, color = "grey") +
-  geom_point_interactive(aes(
-           data_id = med_price,
-           tooltip = dollar_format()(med_price))) +
-  geom_text(data = subset(nova_var_price, 
-                          name %in% c("Washington MSA")),
-            aes(label = dollar(med_price),
-                hjust = ifelse(period == "2023 Q2", -0.25, 1.25)), 
-            size = 3) +
-  coord_flip() +
-  labs(title = "Median home sales price in Northern Virginia",
-       subtitle = subtitle_text,
-       caption = "**Source:** Virginia REALTORS, adjusted to Q2 2023 dollars.") +
-  scale_y_continuous(labels = dollar_format(), limits = c(300000, 1100000)) +
-  scale_color_hfv() +
-  plot_annotation(
-    theme = theme(
-    plot.subtitle = element_markdown(
-       margin = margin(b = 0.4, unit = 'cm'),
-        size = 11.5
-    ))) + 
-  theme(panel.grid.major.y = element_line(color = "white"),
-        panel.grid.major.x = element_line(color = "#dadada",size = 0.2))
-  
-girafe(ggobj = price_plot,
-       height_svg = 4)
-
-price_plot
-
-```
+The share of land zoned for exclusively single-family houses similarly varies across jurisdictions. The small towns of Clifton and Hillsboro are zoned almost entirely for single-family detached housing, whereas none of the primarily residential land in Arlington or Alexandria is restricted to single-family detached homes anymore, following 2023 reforms in both localities. Many commercial districts in Arlington, by contrast, still permit single-family detached homes by right while requiring a public hearing process for other residential uses; this is unaffected by the 2023 ordinance, which specifically revised the regulations in what had been single-family-home residential districts. While these commercial zones in Arlington only allow housing through a special exception process, the County Board approves extensive multifamily housing through this process.
 
 ```{r}
-#| label: fig-nova-dom
-#| fig-cap: "Median days on market in Northern Virginia"
+#| label: fig-sfd-map
+#| fig-cap: "Map of Developable Residential or Mixed with Residential Land Where Only Detached Single-Family Housing is Allowed By-Right"
 
-# What has for-sale home supply been like?
-
-# How to add arrows indicating direction on line segments??
-subtitle_text <- "In <span style = 'color:#011E41'><b>Q2 2018</b></span> and <span style = 'color:#40C0C0'><b>Q2 2023</span>"
-
-library(patchwork)
-
-nova_var_dom <- read_rds("data/nova/nova_var.rds") |> 
-  select(geography, name, period, med_dom)  |> 
-  mutate(year = substr(period, 1, 4)) |> 
-  mutate(year = as.numeric(year)) |> 
-  filter(period == "2023 Q2" | period == "2018 Q2") |> 
-  mutate(period = as.character(period)) |> 
-  select(geography, name, med_dom, period) |> 
-  pivot_wider(names_from = period, 
-              values_from = med_dom) |> 
-  mutate(latest = `2023 Q2`) |> 
-  pivot_longer(c(`2023 Q2`, `2018 Q2`),
-               names_to = "period",
-               values_to = "med_dom") |> 
-  mutate(name = str_remove(name, " City"))  |> 
-  mutate(name = case_when(
-    name == "Fairfax" ~ "Fairfax City",
-    TRUE ~ name
-  ))
-
-dom_plot <- ggplot(nova_var_dom,
-       aes(x = reorder(name, -latest),
-           y = med_dom,
-           color = period)) +
-  geom_line(size = 1, color = "grey") +
-  geom_point_interactive(aes(
-    data_id = med_dom,
-    tooltip = med_dom)) +
-  theme_hfv() +
-  geom_text(data = subset(nova_var_dom, 
-                          name %in% c("Washington MSA")), 
-            aes(label = med_dom, hjust = ifelse(period == "2023 Q2", 1.50, -0.5)),
-            size = 3) +
-  coord_flip() +
-  labs(title = "Median days on market in Northern Virginia",
-       subtitle = subtitle_text,
-       caption = "**Source:** Virginia REALTORS.")  +
-  scale_y_continuous(limits = c(0, 20)) +
-  scale_color_hfv() +
-  plot_annotation(
-    theme = theme(
-    plot.subtitle = element_markdown(
-       margin = margin(b = 0.4, unit = 'cm'),
-        size = 11.5
-    ))) + 
-  theme(panel.grid.major.y = element_line(color = "white"),
-        panel.grid.major.x = element_line(color = "#dadada",size = 0.2))
-
-girafe(ggobj = dom_plot,
-       height_svg = 4)
-  
-dom_plot
+# Create a map that shows where single-family detached only housing districts are in the region.
 
 
-```
+vza_pal <- colorFactor(palette =c("#8B85CA", "#40C0C0", "#011E41"),
+                       levels = c("Primarily Residential", "Mixed with Residential", "Nonresidential"))
 
-```{r}
-#| label: fig-pct-renter
-#| fig-cap: "Percent of renter households in Northern Virginia"
+nova_sfd_map <- read_rds("data/nova/rds/nova_sfd_only_map.rds")
 
-nova_tenure <- read_rds("data/nova/nova_b25003.rds") |> 
-  filter(year == 2010 | year == 2022) |> 
-  filter(tenure == "Renter") |> 
-  mutate(year = as.character(year)) |> 
-  mutate(NAME = str_remove(NAME, " city"))
-
-subtitle_text <- "In <span style = 'color:#011E41'><b>2010</b></span> and <span style = 'color:#40C0C0'><b>2022</span>"
-
-tenure_plot <- ggplot(nova_tenure,
-       aes(x = reorder(NAME, pct),
-           y = pct,
-           color = year)) +
-  geom_line(size = 1, color = "grey") +
-  geom_point_interactive(aes(color = year,
-                             data_id = pct,
-                             tooltip = percent_format(accuracy = 1)(pct)), 
-                         size = 2) +
-  coord_flip() +
-  theme_hfv() +
-  scale_y_continuous(labels = percent_format()) +
-  labs(title = "Percent of renter households in Northern Virginia",
-       subtitle = subtitle_text,
-       caption = "**Source:** U.S. Census Bureau, ACS, 5-Year Estimates, Table B25003.") +
-  scale_color_hfv() +
-  plot_annotation(
-    theme = theme(
-    plot.subtitle = element_markdown(
-       margin = margin(b = 0.4, unit = 'cm'),
-        size = 11.5
-    ))) + 
-  theme(panel.grid.major.y = element_line(color = "white"),
-        panel.grid.major.x = element_line(color = "#dadada",size = 0.1))
-
-girafe(ggobj = tenure_plot,
-       height_svg = 4)
-
-tenure_plot
-
-
-```
-
-
-```{r}
-#| label: fig-nova-rent
-#| fig-cap: "Average asking rent in Northern Virginia"
-
-# What has rent been like in Northern Virginia?
-
-nova_rent <- read_rds("data/nova/nova_costar.rds") |> 
-  select(period, rent, adj_price) |> 
-  mutate(quarters = as.yearqtr(period)) |> 
-  pivot_longer(2:3,
-               names_to = "rent",
-               values_to = "dollars")
-
-subtitle_text <- "In <span style = 'color:#011E41'><b>Q4 2023 dollars</b></span> and <span style = 'color:#40C0C0'><b>current dollars</span>"
-
-rent_plot <- ggplot(nova_rent,
-       aes(x = quarters,
-           y = dollars,
-           color = rent,
-           linetype = rent)) +
-  geom_line() +
-  geom_point_interactive(aes(
-    data_id = dollars,
-    tooltip = dollar_format()(dollars)
-  )) +
-  theme_hfv() +
-  scale_y_continuous(labels = dollar_format()) +
-  scale_x_yearqtr(breaks = seq(from = min(nova_rent$quarters), 
-                               to = max(nova_rent$quarters), 
-                               by = 1),format = '%Y-Q%q') +
-  theme(axis.text.x = element_text(angle = 90)) +
-  labs(title = "Average asking rent in Northern Virginia",
-       subtitle = subtitle_text,
-       caption = "**Source:** CoStar Group, Inc.") +
-  scale_color_hfv()  +
-  plot_annotation(
-    theme = theme(
-    plot.subtitle = element_markdown(
-       margin = margin(b = 0.4, unit = 'cm'),
-        size = 11.5
-    ))) + 
-  theme(panel.grid.major.y = element_line(color = "#dadada", size = 0.1),
-        panel.grid.major.x = element_line(color = "#dadada",size = 0.1))
-  # scale_color_gradientn(colours = c("#ADDCB1", "#46A88F", "#207A88", "#0F1A4E"))
-
-girafe(ggobj = rent_plot,
-       height_svg = 4)
-
-rent_plot
-
-```
-
-
-```{r}
-#| label: fig-nova-rv
-#| fig-cap: "Rental vacancy in Northern Virginia"
-
-
-# What has rental vacancy been like?
-
-nova_rv <- read_rds("data/nova/nova_costar.rds") |> 
-  select(period, vacancy_rate) |> 
-  mutate(quarters = as.yearqtr(period))
-
-vacancy_plot <- ggplot(nova_rv,
-       aes(x = quarters,
-           y = vacancy_rate,
-           color = vacancy_rate)) +
-  geom_line() +
-  geom_point_interactive(aes(
-    data_id = vacancy_rate,
-    tooltip = percent_format(accuracy = 0.01)(vacancy_rate)
-  )) +
-  theme_hfv() +
-  scale_y_continuous(labels = percent_format()) +
-  scale_x_yearqtr(breaks = seq(from = min(nova_rv$quarters), to = max(nova_rv$quarters), by = 1),
-                  format = '%Y-Q%q') +
-  theme(axis.text.x = element_text(angle = 90)) +
-  labs(title = "Rental vacancy rate in Northern Virginia",
-       caption = "**Source:** CoStar Group, Inc.") + 
-  scale_color_gradientn(colours = c("#ADDCB1", "#46A88F", "#207A88", "#0F1A4E"))
-
-girafe(ggobj = vacancy_plot,
-       height_svg = 4)
-
-vacancy_plot
-```
-
-## Jobs Market
-
-The importance of affordable housing to a thriving economy cannot be overstated, as it directly impacts various facets of economic well-being. By providing stable living conditions and reducing the financial burden on households, affordable housing enhances workforce productivity and stability, ensuring that employees can live close to their workplaces. This proximity not only reduces commuting times but also supports local businesses and stimulates economic growth. Moreover, affordable housing fosters economic mobility, allowing individuals and families to invest in education, job training, and entrepreneurship, ultimately leading to higher incomes and reduced reliance on social services. Affordable housing is an economic catalyst that promotes financial security, encourages consumer spending, and contributes to a more equitable and thriving economy for all.
-
-A Jobs-Housing Fit ratio helps measure the imbalance between low-wage jobs and housing that is affordable to those jobs. 
-
--   The ratio is calculated by dividing the number of low-wage jobs by the number of housing units that are affordable at that wage level.
--   A ratio of 1.0 would mean a perfect fit: one low-wage job for each affordable housing unit, assuming one worker per household.
--   Ratios closer to 1.0 or 2.0 are generally considered more balanced. They indicate that the local housing market is better suited to meet the needs of low-wage earners.
--   High ratios, such as 5.0, indicate an imbalance. In this case, there are five low-wage jobs for every one unit of affordable housing, suggesting that many workers may have to commute from other areas or choose housing that is unaffordable to them.
-
-For example, a ratio of 5.0 means that there are five low-wage jobs for every unit of housing that is affordable at that wage. Ratios closer to 1.0 or 2.0 offer more balance assuming that there is only one worker per household. When ratios are high, this means that more low-wage workers need to commute in for work, putting additional pressure on Northern Virginia traffic. But keep in mind that these ratios are at the jurisdiction-level.
-
-```{r}
-#| label: fig-jobs-housing
-#| fig-cap: "Jobs-Housing Fit in Northern Virginia"
-
-
-# What have employment levels been like? Are jobs declining or growing?
-
-nova_jhf <- read_rds("data/nova/rds/nova_ratio.rds") 
-
-ggplot(nova_jhf,
-       aes(x = reorder(name_long, ratio),
-           y = ratio,
-           fill = ratio)) +
-  geom_col(position = "dodge") +
-  geom_text(aes(label = round(ratio, 2), color = ratio), hjust = -0.1) +
-  coord_flip() + 
-  theme_hfv() +
-  scale_y_continuous(expand = expansion(mult = c(0, 0.1))) +
-  labs(title = "Jobs-Housing Fit in Northern Virginia.",
-       caption = "**Source:** U.S. Census Bureau. Longitudinal Employer-Household Dynamics & ACS, 5-Year Estimates, Table B25056 and B25061.") + 
-  scale_fill_gradientn(colours = c("#ADDCB1", "#46A88F", "#207A88", "#0F1A4E")) + 
-  scale_color_gradientn(colours = c("#ADDCB1", "#46A88F", "#207A88", "#0F1A4E"))
-
-
-
-```
-
-
-
-```{r}
-#| label: fig-nova-ratio-map
-#| fig-cap: "Jobs-Housing Fit Ratio in Northern Virginia by Block Group"
-
-nova_blk_grps <- read_rds("data/nova/rds/nova_blk_grps.rds")
-
-library(RColorBrewer)
-
-rc1 <- colorRampPalette(colors = c("#8B85CA", "#ADDCB1"), space = "Lab")(10)
-
-## Make vector of colors for values larger than 0 (180 colors)
-rc2 <- colorRampPalette(colors = c("#ADDCB1", "#011E41"), space = "Lab")(30)
-
-## Combine the two color palettes
-rampcols <- c(rc1, rc2)
-
-ratio_bins <- c(0, 0.5, 1, 2, 5, 10, 50, 100, 550)
-
-pal <- colorBin(palette = rampcols, bins = ratio_bins, domain = (nova_blk_grps$ratio), na.color = "#011E41")
-
-leaflet(nova_blk_grps,) |> 
-  addPolygons(
-              fillColor = ~pal(ratio),
-              fillOpacity = 0.8,
-              color = "white",
+leaflet() |>
+  addProviderTiles(providers$CartoDB.Positron) |> 
+  addPolygons(data = nova_sfd_map,
+              color = ~vza_pal(type),
               weight = 1,
-              popup = paste0(
-                "Jurisdiction: ",
-                nova_blk_grps$name_long,
-                "<br>",
-                "Ratio: ", nova_blk_grps$label
-              )
-              ) |> 
-  addTiles() |> 
-  addLegend(title = "Jobs-Housing Fit",
-            "bottomright", 
-            pal = pal, 
-            values = ~ratio,
-            opacity = 1
+              fillOpacity = 0.80,
+              popup = paste0("Jurisdiction: ", nova_sfd_map$jurisdiction,
+                             "<br>",
+                             "District Abbreviation: ", nova_sfd_map$abbrvname)) |>
+  addLegend(labels = c("Primarily Residential", "Mixed with Residential", "Nonresidential"),
+            colors = c("#8B85CA", "#40C0C0", "#011E41"),
+            title = "Type of Zoning District")
+
+
+```
+
+```{r}
+#| label: fig-sfd-bar
+#| fig-cap: "Percent of Developable Residential or Mixed with Residential Land Where Only Detached Single-Family Housing is Allowed By-Right"
+
+# Create a bar char that shows the percentage of zoned in each locality that is dedicated to single-family detached only housing.
+
+nova_sfd <- read_rds("data/nova/rds/nova_vza_nogeo.rds") |> # Read in the data.
+  select(jurisdiction, overlay, sfd, acres) |> # Select necessary data fields.
+  filter(overlay == 0) |> # Remove overlay districts.
+  group_by(jurisdiction, sfd) |> # Sum the total acres dedicated to single-family detached in each district.
+  summarise(acres = sum(acres)) |> 
+  group_by(jurisdiction) |> 
+  mutate(percent = acres/sum(acres)) |> 
+  ungroup() |> 
+  mutate(total_nova = sum(acres)) |> # Calculate what percentage of total developable acres is SFD.
+  filter(sfd == "t") |> 
+  add_row(jurisdiction = "Haymarket", sfd = "t", "acres" = 0, percent = 0, total_nova = 662819.8) |>
+  add_row(jurisdiction = "Alexandria", sfd = "t", "acres" = 0, percent = 0, total_nova = 662819.8) |>
+  mutate(jurisdiction = case_when(
+    jurisdiction %in% c("Arlington", "Loudoun", "Prince William", "Fairfax") ~ paste0(jurisdiction, " County"),
+    TRUE ~ jurisdiction))
+
+
+nova_sfd_summary <- nova_sfd |> 
+  group_by(total_nova) |> 
+  summarise(total_sfd = sum(acres)) |> 
+  mutate(pct = total_sfd/total_nova)
+
+
+ggplot(nova_sfd,
+       aes(x = reorder(jurisdiction, percent),
+           y = percent,
+           fill = percent)) +
+  geom_col(position = "dodge") +
+  geom_col_interactive(position = "dodge") +
+  geom_text(aes(label = percent(percent, 1), color = percent),
+    hjust = -0.2) +
+  theme_hfv() +
+  coord_flip() +
+  scale_y_continuous(expand = expansion(mult = c(0, 0.1))) +
+  scale_fill_gradientn(colours = c("#ADDCB1", "#46A88F", "#207A88", "#0F1A4E")) + # Use custom HFV gradient.
+  scale_color_gradientn(colours = c("#ADDCB1", "#46A88F", "#207A88", "#0F1A4E")) + # Use custom HFV gradient.
+  # labs(caption = "**Source:** Mercatus Center at George Mason University & HousingForward Virginia, Virginia Zoning Atlas.") +
+  theme(axis.text.x = element_blank())
+
+
+
+```
+
+While single-family zoning as a category rightly receives much focus from advocates and policymakers, the cost and density of single-family development varies widely. Minimum lot size regulations determine how much land is required for each single-family house. The requirements for lot size in a given zone often vary depending on whether sewer and water infrastructure or other public services are available. In order to compare minimum lot size requirements across jurisdictions, we calculate each locality’s average minimum lot size required for land where only detached single-family housing is allowed by-right, assuming that any infrastructure needed for the smallest required lot size is in place. Of the 20 jurisdictions, 13 have an average of less than 1 acre. Lottesville has the smallest average minimum lot size of 0.16 acres, while Round Hill has by far the largest with 5.24. Nationally, the median new-construction house has a lot size of about 0.18 acres.[^part-3-1-8]
+
+[^part-3-1-8]: US Census Bureau, Characteristics of New Housing, Lot Size, Single Family Completed, https://www.census.gov/construction/chars/current.html.
+
+```{r}
+#| label: fig-sfd-min
+#| fig-cap: "Minimum Lot Size Requirements in Zones  Where Only Detached Single-Family Housing is Allowed By-Right"
+
+# What is the average minimum lot size for each type of treatment? 
+# Blank fields should be treated as NA and should not be included in the mean calculation.
+
+
+nova_lots <- read_rds("data/nova/rds/nova_vza_nogeo.rds") |> 
+  filter(sfd == "t") |> 
+  mutate(min1 = as.numeric(min1)) |> 
+  group_by(jurisdiction) |> 
+  summarise(mean1min = round(mean(min1, na.rm = TRUE), 2)) |> 
+  pivot_longer(cols = mean1min,
+               names_to = "metric",
+               values_to = "avg") |> 
+  mutate(metric = "Minimum value") |>
+  mutate(jurisdiction = case_when(
+    jurisdiction %in% c("Arlington", "Loudoun", "Prince William", "Fairfax") ~ paste0(jurisdiction, " County"),
+    TRUE ~ jurisdiction))
+
+
+
+subtitle_text <- "*Average <span style='color:#40c0c0'><b>minimum</span></b> in acres*"
+
+lot_plot <- ggplot(nova_lots,
+                   aes(x = reorder(jurisdiction, avg),
+                       y = avg,
+                       data_id = avg,
+                       tooltip = avg)) +
+  geom_point_interactive(color = "#40c0c0") +  # Change point color to #40c0c0
+  coord_flip() +
+  labs(subtitle = subtitle_text,
+       caption = "<b>Note:</b> Haymarket and Alexandria are not pictured because they do not have any zones where detached single-family housing is the only housing allowed by-right.") +
+  theme_hfv() +
+  scale_y_continuous(breaks = seq(0, 20, 1)) +
+  plot_annotation(
+    theme = theme(
+      plot.subtitle = element_markdown(
+        margin = margin(b = 0.4, unit = 'cm'),
+        size = 11.5)))
+
+
+
+girafe(ggobj = lot_plot,
+       height_svg = 4)
+
+```
+
+Land where buildings with four or more units are allowed is a very small amount of land overall. In most Northern Virginia jurisdictions, multifamily construction is mostly confined to downtown or other commercial areas. It also varies significantly across jurisdictions, with 73% of Arlington allowing for these buildings and none of Clifton, Hamilton, or Hillsboro allowing for them. (While Arlington reformed its single-family residential districts to permit multifamily housing, single-family detached homes are still the only form of housing permitted by right in some commercial districts.)
+
+```{r}
+#| label: fig-4plus
+#| fig-cap: "Percent of Developable Residential Land Zoned for 4+ Units per Lot" 
+
+# Create a bar graph that shows the total amount of zoned land that welcomes 2+ family housing by-right
+
+nova_byright <- read_rds("data/nova/rds/nova_vza_nogeo.rds") |> 
+  select(jurisdiction, abbrvname, overlay, 6:9, acres) |> # Select data fields.
+  filter(overlay == 0) |> # Filter out overlay districts.
+  filter(acres != 0) |> 
+  group_by(jurisdiction) |> 
+  mutate(total_acres = sum(acres)) |> # Calculate the total acres of zoned land.
+  filter(family4_treatment == "allowed") |> 
+  group_by(jurisdiction) |> 
+  mutate(pct_4plus = acres/total_acres) |> 
+  group_by(jurisdiction) |> 
+  summarise(pct_4plus = sum(pct_4plus)) |> 
+  add_row(jurisdiction = "Clifton", pct_4plus = 0) |> 
+  add_row(jurisdiction = "Hamilton", pct_4plus = 0) |>
+  add_row(jurisdiction = "Hillsboro", pct_4plus = 0) |>
+  mutate(jurisdiction = case_when(
+    jurisdiction %in% c("Arlington", "Loudoun", "Prince William", "Fairfax") ~ paste0(jurisdiction, " County"),
+    TRUE ~ jurisdiction))
+
+
+nova_byright_summary <- read_rds("data/nova/rds/nova_vza_nogeo.rds") |> 
+  select(jurisdiction, abbrvname, overlay, 6:9, acres) |> # Select data fields.
+  filter(overlay == 0) |> # Filter out overlay districts.
+  mutate(total_acres = sum(acres)) |> # Calculate the total acres of zoned land.
+  filter(family4_treatment == "allowed") |> 
+  mutate(total_4plus = sum(acres)) |> 
+  mutate(pct4plus = total_4plus/total_acres)
+
+
+ggplot(nova_byright,
+       aes(x = reorder(jurisdiction, pct_4plus),
+           y = pct_4plus,
+           fill = pct_4plus)) +
+  geom_col() +
+  geom_text(aes(label = percent(pct_4plus, 1), color = pct_4plus),
+    hjust = -0.2) +
+  coord_flip() +
+  theme_hfv() +
+  scale_fill_gradientn(colours = c("#ADDCB1", "#46A88F", "#207A88", "#0F1A4E")) + # Use custom HFV gradient.
+  scale_color_gradientn(colours = c("#ADDCB1", "#46A88F", "#207A88", "#0F1A4E")) + # Use custom HFV gradient.
+  scale_y_continuous(expand = expansion(mult = c(0, 0.1))) +
+  labs(caption = "**Source:** Mercatus Center at George Mason University & HousingForward Virginia, Virginia Zoning Atlas.")+
+  theme(axis.text.x = element_blank())
+
+
+```
+
+Accessory dwelling units (ADUs) have emerged as one of the most popular tools to fight the housing shortage. ADUs are secondary housing units on a piece of land zoned for another use. They are most commonly built on single-family lots as basement apartments, backyard cottages, or converted garages. They offer a means to increase the number of housing units available for occupancy without dramatically changing the built environment (or in some cases, without changing the built environment at all). On 65% of the developable land in Northern Virginia, ADU’s are allowed by-right, including on 77% of land zoned exclusively for single family detached housing.
+
+```{r}
+#| label: fig-adu-map
+#| fig-cap: "Land Where Accessory Dwelling Units are allowed by-right in Northern Virginia by Zoning Type"
+
+nova_adu_map <- read_rds("data/nova/rds/nova_adu_map.rds")
+nova_boundary <- st_read("data/nova/geo/nova_region.geojson")
+
+
+pal <- colorFactor(palette =c("#8B85CA", "#40C0C0", "#011E41"),levels = c("R", "M", "X"))
+
+nova_adu_map |> 
+  addProviderTiles(providers$CartoDB.Positron) |>
+  setView(lng = -77.42, lat = 38.92, zoom = 9.25) |>
+  addPolygons(data = nova_boundary,
+              weight = 2,
+              color = 'black',
+              fillOpacity = 0)
+
+```
+
+However, even where ADUs are allowed to be built, common regulations can dramatically limit their feasibility. These rules include limits on who can live in the ADU—such as age or employment restrictions—requiring parking for the ADU, or requiring the property owner to live in either the primary dwelling unit or the ADU for the ADU to be rented.[^part-3-1-9] No jurisdictions in Northern Virginia allow homeowners to build ADUs without at least one of these restrictions, severely limiting their feasibility.
+
+[^part-3-1-9]: Emily Hamilton and Abigail Houseal, “Legalizing Accessory Dwelling Units at the State
+    Level: A New Hampshire Case Study,” Mercatus Center, March 30, 2023. <https://www.mercatus.org/research/policy-briefs/new-hampshire-adu>
+
+In addition to ADUs, allowing moderately more primary housing units to be built in single-family neighborhoods than current zoning allows is another popular pathway for zoning reform. This approach is referred to as “missing middle housing,” “gentle density,” or “light-touch density."[^part-3-1-10] These reforms include changes to single-family zones to allow duplexes, triplexes, or fourplexes. They can also include allowing denser development of single-family homes, such as by decreasing minimum lot sizes or legalizing townhouses. We measured the amount of land in Northern Virginia that meets any of the following criteria: zoning allows for two- or three-family housing or allows for single family housing, including townhouses, on lots less than 2,500 square feet. The resulting area is 20.8% of the total land.
+
+[^part-3-1-10]: Alex Baca, Patrick McAnaney, and Jenny Schuetz, “‘Gentle’ Density Can Save Our Neighborhoods,” Brookings, December 4, 2019. <https://www.brookings.edu/articles/gentle-density-can-save-our-neighborhoods/>
+
+```{r}
+
+nova_vza_geo <- read_rds("data/nova/rds/nova_vza_geo.rds")
+nova_boundary <- st_read("data/nova/geo/nova_region.geojson")
+
+gentle_density_geo <- nova_vza_geo |>
+  filter(
+    family2_treatment == "allowed" |
+      family3_treatment == "allowed" |
+      (family1_treatment == "allowed" & (min1 == "" | as.numeric(min1) < 0.06))
   )
 
+pal <- colorFactor(palette =c("#8B85CA", "#40C0C0"),levels = c("Primarily Residential", "Mixed with Residential"))
+
+gentle_density_map <- leaflet(gentle_density_geo) |>
+  addProviderTiles("CartoDB") |>
+  addPolygons(weight = 1,
+              color = ~pal(type),
+              fillColor = ~pal(type),
+              fillOpacity = 0.9,
+              popup = paste0("Jurisdiction: ",
+                             gentle_density_geo$jurisdiction,
+                             "<br>",
+                             "District: ",
+                             gentle_density_geo$abbrvname)) |>
+  addPolygons(data = nova_boundary,
+              weight = 2,
+              color = 'black',
+              fillOpacity = 0) |>
+  addLegend(labels = c("Primarily Residential", "Mixed With Residential"),
+            colors = c("#8B85CA", "#40C0C0"),
+            title = "Type of Zoning District",
+            opacity = 0.9) |>
+  setView(lng = -77.42, lat = 38.92, zoom = 9.25)
+
+gentle_density_map
 
 ```
-
-
-```{r}
-#| label: tbl-local-wages
-#| tbl-cap: "Top 5 occupations in Northern Virginia in 2022"
-
-# What can current wages afford in Northern Virginia?
-
-library(formattable)
-
-nova_occ <- read_rds("data/nova/rds/nova_occ.rds") |> 
-  select(occ_title, emp = tot_emp_2022, wage = a_median_2022, rent, ho_price) |> 
-  mutate(`Total Employment` = label_number(big.mark = ",")(emp),
-         `Average Annual Wage` = dollar_format()(wage),
-         `Affordable Rent` = dollar_format()(rent),
-         `Affordable Home Price` = dollar_format()(ho_price)) |> 
-  select(Industry = occ_title, `Total Employment`, `Average Annual Wage`, `Affordable Rent`, `Affordable Home Price`)
-         
-
-nova_occ_tbl <- nova_occ |> 
-  kable(col.names = c(
-    "Industry",
-    "Total Employment",
-    "Annual Median Wage",
-    "Affordable Rent",
-    "Affordable Home Price"),
-    align = "lcccc"
-  ) |> 
-  kableExtra::kable_styling(
-    bootstrap_options = c("hover", "condensed", "responsive", "striped")
-    )
-
-nova_occ_tbl
-
-# unit.scale = function(x) (x - min(x)) / (max(x) - min(x))
-# 
-# occ_table <- formattable(
-#   nova_occ,
-#   align = c("l", "c", "c", "c", "c"),
-#   list(
-#     Industry = formatter("span", style = ~style(color = "grey", font.weight = "bold")), 
-#        `Total Employment` = color_bar("#ADDCB1", fun = unit.scale)))
-# 
-# 
-# occ_table
-
-```
-
-::: callout-note
-
-### Measuring affordability
-
-Determining what is affordable to a person can depend on a multitude of factors, but for the purposes of this analysis we made several assumptions to make informed estimates.
-
-For renters, we calculated what a monthly rent at 30 percent of an individual's gross income. This is based on the Department of Housing and Urban Development's (HUD) definition of affordable housing.
-
-For homebuyers, we calculated a home price based on a 30-year fixed rate mortgage at 7.18% (which was the U.S. weekly average as of August 31, 2023), a 3% minimum down payment, and a monthly tax and insurance of \$250. In addition, we assumed that a household would pay no more than 28 percent of their gross income due to lender preference for the [28/36 rule](https://www.businessinsider.com/personal-finance/28-36-rule-mortgages).
-
-:::
-
-
-```{r}
-#| label: tbl-renter-income
-#| tbl-cap: "What can the typical renter afford in Northern Virginia?"
-
-
-# What are renter incomes like? What can a renter afford to rent and buy?
-
-nova_income <- read_rds("data/nova/rds/nova_income.rds") |> 
-  select(NAME, estimate, rent, ho_price) |> 
-  mutate(estimate = dollar_format()(estimate),
-         rent = dollar_format()(rent),
-         ho_price = dollar_format()(ho_price)) |> 
-  mutate(NAME = str_remove(NAME, ", Virginia"),
-         NAME = str_remove(NAME, " city")) |> 
-  arrange(desc(estimate))
-
-nova_income |> 
-  kable(col.names = c(
-    "Jurisdiction",
-    "Median Renter Household Income",
-    "Affordable Rent",
-    "Affordable Home Price"),
-    align = "lccc"
-  ) |> 
-  kableExtra::kable_styling(
-    bootstrap_options = c("hover", "condensed", "responsive", "striped")
-    ) 
-  
-
-```
-
-```{r}
-#| label: fig-nova-cb
-#| fig-cap: "Cost burden by income and tenure in Northern Virginia"
-
-# What is cost burden like in the region?
-
-nova_cb <- read_rds("data/nova/rds/nova_cb.rds")|> 
-  mutate(income = case_when(
-    income == "Less than $20,000" ~ "Less than $35,000",
-    income == "$20,000 to $34,999" ~ "Less than $35,000",
-    TRUE ~ income
-  )) |> 
-  group_by(year, tenure, income, cb) |> 
-  summarise(estimate = sum(estimate)) |> 
-  group_by(year, tenure) |> 
-  mutate(pct = estimate/sum(estimate)) |> 
-  filter(cb == "Cost-burdened") |> 
-  mutate(year = as.character(year))
-
-
-ggplot(nova_cb,
-       aes(x = year,
-           y = pct, 
-           fill = (factor(income, levels = c("Less than $35,000", "$35,000 to $49,999", "$50,000 to $74,999", "$75,000 or more"))))) +
-  geom_col(position = position_stack(reverse = TRUE)) +
-  facet_wrap(~tenure) +
-  labs(title = "Cost burden by income in Northern Virginia",
-       subtitle = "*Percent of total households by tenure*",
-       caption = "**Source:** U.S. Census Bureau, ACS, 5-Year Estimates, Table B25106.") +
-  theme_hfv() +
-  scale_fill_hfv() +
-  scale_y_continuous(labels = percent_format(), breaks = seq(0, 0.6, by = .10), limits = c(0, 0.6)) +
-  theme(legend.position = "right",
-        axis.text.x = element_text(angle = 90, vjust = 0.5))
-  
-
-```
-
-```{r}
-#| label: fig-race-inc
-#| fig-cap: "Median household income by race and ethnicity in Northern Virginia"
-
-# Should probably consider adding in something about median household income by race in the region?
-
-nova_race_inc <- read_rds("data/nova/rds/nova_b19013.rds") |> 
-  filter(year == 2022)
-
-subtitle_text <- "In 2022, the wealth gap between <span style = 'color:#B1005F'><b>WHITE</b></span> and <span style = 'color:#40C0C0'><b>BLACK</span> households was <b>over $55,000 </b>"
-
-ggplot(nova_race_inc,
-       aes(x = reorder(race, estimate),
-           y = estimate,
-           fill = race)) +
-  geom_col(position = "dodge") +
-  theme_hfv() +
-  scale_fill_hfv() +
-  coord_flip() +
-  scale_y_continuous(labels = dollar_format(), expand = expansion(mult = c(0, 0.1))) + 
-  theme(panel.grid.major.y = element_line(color = "white"),
-        panel.grid.major.x = element_line(color = "#f5f5f5",size = 0.1)) +
-  labs(title = "Median household income by race and ethnicity",
-       subtitle = subtitle_text,
-       caption = "**Source:** U.S. Census Bureau, ACS, 5-Year Estimates, Table B19013B-H.") +
-  plot_annotation(
-    theme = theme(
-    plot.subtitle = element_markdown(
-       margin = margin(b = 0.4, unit = 'cm'),
-        size = 11.5
-    )))
-
-```
-
-
-```{r}
-#| label: fig-race-afford
-#| fig-cap: "Housing affordability by race and ethnicity"
-
-# Should probably consider adding in something about median household income by race in the region?
-
-nova_race_inc <- read_rds("data/nova/rds/nova_b19013.rds") |> 
-  filter(year == 2022) |> 
-  select(race, rent, ho_price) |> 
-  mutate(rent = dollar(rent),
-         ho_price = dollar(ho_price))
-
-nova_race_inc <- nova_race_inc[order(nova_race_inc$rent, decreasing = TRUE),]
-
-nova_race_inc |> 
-  kable(row.names = FALSE,
-        col.names = c("Household Race/Ethnicity", "Affordable Rent", "Affordable Home Price"),
-        align = "lcc") |> 
-  kableExtra::kable_styling(
-    bootstrap_options = c("hover", "condensed", "responsive", "striped")
-    )
-```
-
