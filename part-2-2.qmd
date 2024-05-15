@@ -63,7 +63,7 @@ It is the intent of the Virginia Zoning Atlas to track major changes to zoning o
 ## Key findings
 
 -   [Mixed with Residential]{.mixed-res} zoning districts **make up only 3 percent (3%) of total developable land in the region.**
--   **Sixty-nine percent (69%) of land in Hampton Roads is dedicated to single-family detached only housing zoning districts.** In many localities, the percentage is much higher.
+-   **Seventy-one percent (71%) of land in Hampton Roads is dedicated to single-family detached only housing zoning districts.** In many localities, the percentage is much higher.
     -   Minimum lot sizes for single-family detached housing are highest in Gloucster, Windsor, and Poquoson, but many jurisdictions in Hampton Roads have a minimum lot size between 0.5 to 1.0 acre.
 -   **The percent of land that you can build 2+ family housing is but a fraction of total developable land in most localities in Hampton Roads.** Newport News (12%), Norfolk (11%), and Williamsburg (9%) stand out among their neighbors, but not by much.
 -   Two jurisdictions --- **Hampton and Poquoson --- employ minimum square footage requirements for housing**.
@@ -266,6 +266,10 @@ hr_sfd <- read_rds("data/hr/hr_vza_nogeo.rds") |> # Read in the data.
   filter(sfd == "t") |> 
   add_row(jurisdiction = "York", sfd = "t", percent = 0, total_hr = 1425279)
 
+hr_sfd_summary <- hr_sfd |> 
+  group_by(total_hr) |> 
+  summarise(total_sfd = sum(acres)) |> 
+  mutate(pct = total_sfd/total_hr)
 
 ggplot(hr_sfd,
        aes(x = reorder(jurisdiction, percent),

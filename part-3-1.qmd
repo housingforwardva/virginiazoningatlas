@@ -155,7 +155,6 @@ nova_type_summary <- nova_type |>
     jurisdiction %in% c("Arlington", "Loudoun", "Prince William", "Fairfax") ~ paste0(jurisdiction, " County"),
     TRUE ~ jurisdiction))
 
-write_csv(nova_type_summary, "data/nova/csv/nova_ztype.csv")
 
 nova_summary <- nova_type |> 
   group_by(type) |> 
