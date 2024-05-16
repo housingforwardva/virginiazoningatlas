@@ -50,7 +50,20 @@ sparse <- vza |>
   mutate(accessory_treatment = case_when(
     accessory_treatment == "nomention" ~ "prohibited",
     TRUE ~ accessory_treatment
-  ))
+  )) |>
+  st_cast("MULTIPOLYGON") %>%
+  mutate(fill_color = case_when(
+    type == "Primarily Residential" ~ "#8B85CA",
+    type == "Mixed with Residential" ~ "#40C0C0",
+    type == "Nonresidential" ~ "#011E41",
+    TRUE ~ "#FFFFFF"
+  ), 
+  highlight_color = case_when(
+    type == "Primarily Residential" ~ "#8B85CAff",
+    type == "Mixed with Residential" ~ "#40C0C0ff",
+    type == "Nonresidential" ~ "#011E41ff",
+    TRUE ~ "#FFFFFFff"
+  )) 
 
 
 

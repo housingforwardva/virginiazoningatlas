@@ -29,20 +29,7 @@ MAPBOX_ACCESS_TOKEN = Sys.getenv("MAPBOX_ACCESS_TOKEN")
 icon_atlas <- "https://raw.githubusercontent.com/visgl/deck.gl-data/master/website/icon-atlas.png"
 icon_mapping <- jsonlite::fromJSON("https://raw.githubusercontent.com/visgl/deck.gl-data/master/website/icon-atlas.json")
 
-zoning <- readr::read_rds("data/vza_simple.rds") |>
-  st_cast("MULTIPOLYGON") %>%
-  dplyr::mutate(fill_color = dplyr::case_when(
-    type == "Primarily Residential" ~ "#8B85CA",
-    type == "Mixed with Residential" ~ "#40C0C0",
-    type == "Nonresidential" ~ "#011E41",
-    TRUE ~ "#FFFFFF"
-  ), 
-  highlight_color = dplyr::case_when(
-    type == "Primarily Residential" ~ "#8B85CAff",
-    type == "Mixed with Residential" ~ "#40C0C0ff",
-    type == "Nonresidential" ~ "#011E41ff",
-    TRUE ~ "#FFFFFFff"
-  )) 
+zoning <- readr::read_rds("data/vza_simple.rds") 
 
 fed <- sf::st_read("data/protected_lands.geojson")
 
