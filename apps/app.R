@@ -29,15 +29,16 @@ MAPBOX_ACCESS_TOKEN = Sys.getenv("MAPBOX_ACCESS_TOKEN")
 icon_atlas <- "https://raw.githubusercontent.com/visgl/deck.gl-data/master/website/icon-atlas.png"
 icon_mapping <- jsonlite::fromJSON("https://raw.githubusercontent.com/visgl/deck.gl-data/master/website/icon-atlas.json")
 
-zoning <- readr::read_rds("data/vza_simple.rds") 
+zoning <- readr::read_rds("data/vza_simple.rds")
+sfd <- dplyr::filter(zoning, sfd == "t")
 
-fed <- sf::st_read("data/protected_lands.geojson")
+fed <- readr::read_rds("data/protected_lands.rds")
 
-flood <- sf::st_read("data/flood.geojson")
+flood <- readr::read_rds("data/flood.rds")
 
-transit <- sf::st_read("data/transit.geojson")
+transit <- readr::read_rds("data/transit.rds")
 
-juris <- sf::st_read("data/boundaries.geojson")
+juris <- readr::read_rds("data/boundaries.rds")
 
 type_choices <- c(
   "Prohibited" = "prohibited",
@@ -58,17 +59,16 @@ base_map <- c(
 
 base_selected <- "Light"
 
-nova_list <- zoning |> 
-  dplyr::filter(region == "Northern Virginia") |> 
-  dplyr::pull(jurisdiction) |>
-  unique() |> 
-  sort()
+nova_list <- c("Alexandria", "Arlington", "Clifton", "Dumfries", "Fairfax", 
+               "Fairfax (city)", "Falls Church", "Hamilton", "Haymarket", "Herndon", 
+               "Hillsboro", "Leesburg", "Loudoun", "Lovettsville", "Manassas", 
+               "Manassas Park", "Middleburg", "Occoquan", "Prince William", 
+               "Purcellville", "Round Hill", "Vienna")
 
-hrva_list <- zoning |> 
-  dplyr::filter(region == "Hampton Roads") |> 
-  dplyr::pull(jurisdiction) |>
-  unique() |> 
-  sort()
+hrva_list <- c("Chesapeake", "Franklin (city)", "Gloucester", "Hampton", "Isle of Wight", 
+               "James City", "Newport News", "Norfolk", "Poquoson", "Portsmouth", 
+               "Smithfield", "Southampton", "Suffolk", "Surry", "Surry (town)", 
+               "Virginia Beach", "Williamsburg", "Windsor", "York")
 
 local_list <- list(
   "Northern Virginia" = nova_list,
@@ -81,17 +81,17 @@ local_list <- list(
 # pal <- colorFactor(palette = c("#40C0C0", "#A29DD4", "#999999"),
 #                    levels = c("Primarily Residential", "Mixed with Residential", "Nonresidential"))
 
-ui <- page_fluid(
+ui <- bslib::page_fluid(
   
-  tags$head(
+  shiny::tags$head(
     
     # Add Google Analytics script (https://shiny.posit.co/r/articles/build/google-analytics/)
     
-    includeHTML("vza-google-analytics.html"),
+    # includeHTML("vza-google-analytics.html"),
     
     # Ensure the content takes the full width and height of the screen
     
-    tags$style(HTML("
+    shiny::tags$style(HTML("
       /* Full-screen map styling */
       #map {
         background-color: #e5e5e5; /* Placeholder background color for the map */
@@ -169,29 +169,30 @@ ui <- page_fluid(
       
     "))
   ),
-  fluidRow( 
+  shiny::fluidRow( 
     style = "height: 100%", 
-    absolutePanel(
+    shiny::absolutePanel(
       width = "150px",
       class = "floating-panel",
       bottom = 50, right = 20, 
       selectInput("basemap", "Choose basemap",
                   choices = base_map,
                   selected = base_selected)),
-    absolutePanel(
+    shiny::absolutePanel(
       top = 10,
       right = 20,
       width = "150px",
       class = "floating-panel",
       htmlOutput("text")
     ),
-    absolutePanel(
+    shiny::absolutePanel(
       width = "300px",
       class = "floating-panel",
       top = 20, left = 20, 
-      img(src = "hfv_logo.png", style = "width: 150px;"),
-      p("This interactive map shows how outdated zoning laws make it hard to build diverse, affordable housing."),
-      p("Use checkboxes below to filter zoning districts in the map.", style = "font-size: 80%;"),
+      shiny::img(src = "hfv_logo.png", style = "width: 150px;"),
+      p("Explore zoning in Virginia with the menu options below."),
+      # p("This interactive map shows how outdated zoning laws make it hard to build diverse, affordable housing."),
+      # p("Use checkboxes below to filter zoning districts in the map.", style = "font-size: 80%;"),
       p("Type of Zoning District", style = "color: gray; font-weight: bold; margin-bottom: 5px;"),
       div(class = "my-legend",
           HTML(
@@ -206,8 +207,29 @@ ui <- page_fluid(
             "
           )),
       br(),
-      br(),
-      br(),
+      hr(),
+      bslib::accordion_panel(
+        "Geographic filters",
+        icon = bsicons::bs_icon("chevron-down"),
+        p("Use the drop down to focus in on a specific jurisdiction or multiple.", style = "font-size: 80%;"),
+        virtualSelectInput("select_juris",
+                           label = "Select Jurisdiction",
+                           multiple = TRUE,
+                           choices = local_list,
+                           selected = unlist(unname(local_list))),
+        mapboxapi::mapboxGeocoderInput("geocode", access_token = MAPBOX_ACCESS_TOKEN,
+                                       placeholder = "Zoom to address",
+                                       proximity = c(-77.43428, 37.53851))
+      ),
+      hr(),
+      bslib::accordion_panel(
+        "Show me where people can build", icon = bsicons::bs_icon("chevron-down"),
+        shinyWidgets::prettySwitch("sf_switch", "Single-family detached only"),
+        shinyWidgets::prettySwitch("apt_switch", "Apartments (4+ units)"),
+        shinyWidgets::prettySwitch("adu_switch", "Accessory Dwelling Units"),
+        shinyWidgets::prettySwitch("msm_switch", "Missing Middle Housing")
+      ),
+      hr(),
       bslib::accordion_panel(
         " Advanced filters", icon = bsicons::bs_icon("chevron-down"), 
         checkboxInput("single_family", "1-Family Housing"),
@@ -264,21 +286,6 @@ ui <- page_fluid(
       )
       ,
       hr(),
-      bslib::accordion_panel(
-        "Geographic filters",
-        icon = bsicons::bs_icon("chevron-down"),
-        p("Use the drop down to focus in on a specific jurisdiction or multiple.", style = "font-size: 80%;"),
-        virtualSelectInput("select_juris",
-                           label = "Select Jurisdiction",
-                           multiple = TRUE,
-                           choices = local_list,
-                           selected = unlist(unname(local_list))),
-        mapboxapi::mapboxGeocoderInput("geocode", access_token = MAPBOX_ACCESS_TOKEN,
-                                       placeholder = "Zoom to address",
-                                       proximity = c(-77.43428, 37.53851))
-      ),
-      
-      hr(),
       checkboxInput("transit_stops", "Show transit stops", value = FALSE),
       checkboxInput("flood", "Show 1% Annual Flood Hazard", value = FALSE),
       hr(),
@@ -307,16 +314,6 @@ server <- function(input, output, session) {
              type = "warning",
              html = TRUE)
   
-  shinyalert("Beta Version", 
-             "The following iteration of the Virginia Zoning Atlas is a beta version. The final iteration of the 
-             Virginia Zoning Atlas will seek to employ additional functionality and information not currently 
-             presented.<br>
-             
-             For example, what you see does not currently account for zoning district overlays, which in some localities 
-             impacts building requirements.", 
-             type = "info",
-             html = TRUE)
-  
   shinyalert("Best Viewing Experience", 
              "The Virginia Zoning Atlas is best viewed on a desktop, laptop, or tablet.", 
              type = "info",
@@ -332,12 +329,12 @@ server <- function(input, output, session) {
                         get_line_width = 10, pickable = TRUE, auto_highlight = TRUE, highlight_color = highlight_color,
                         tooltip = c(Abbreviation, Zoning, Jurisdiction, Notes), name = "Zoning") %>%
       add_polygon_layer(data = juris, name = "Jurisdiction", stroked = TRUE, filled = FALSE, pickable = TRUE,
-                        auto_highlight = TRUE, get_line_color = "#f2e70a", get_polygon = geometry,
+                        auto_highlight = TRUE, get_line_color = "#f2e70a", get_polygon = geom,
                         get_line_width = 100) |>
       add_polygon_layer(data = fed, opacity = 0.5, filled = TRUE, get_fill_color = "#A9A9A9", get_polygon = geometry, get_line_color = "#ffffff",
                         get_line_width = 10, pickable = TRUE, auto_highlight = TRUE, highlight_color = "#606060",
                         tooltip = c(Ownership, Type, Name), name = "Protected Land") %>%
-      add_polygon_layer(data = flood, opacity = 0.5, filled = TRUE, get_fill_color = "#5E1914", get_polygon = geometry,
+      add_polygon_layer(data = flood, opacity = 0.5, filled = TRUE, get_fill_color = "#5E1914", get_polygon = geom,
                         get_line_color = "#ffffff", get_line_width = 10, pickable = FALSE, name = "Flood Hazard", id = "flood",
                         visible = FALSE) |>
       add_scatterplot_layer(data = transit, get_position = geometry, name = "Public Transit",
@@ -345,7 +342,12 @@ server <- function(input, output, session) {
                             id = "transit_layer",
                             pickable = TRUE,
                             get_fill_color = "#ffd179",
-                            tooltip = service)
+                            tooltip = Service) %>%
+      add_polygon_layer(data = sfd, get_fill_color = fill_color, opacity = 0.8,
+                        id = "sfd", get_polygon = geometry, get_line_color = "#ffffff",
+                        get_line_width = 10, pickable = TRUE, auto_highlight = TRUE, highlight_color = highlight_color,
+                        tooltip = c(Abbreviation, Zoning, Jurisdiction, Notes), name = "Zoning", 
+                        visible = FALSE) 
   })
   
   
@@ -495,6 +497,20 @@ server <- function(input, output, session) {
       updateCheckboxGroupInput(session, "accessory_options", selected = selected_values)
     } else {
       updateCheckboxGroupInput(session, "accessory_options", selected = type_choices)
+    }
+  })
+  
+  observeEvent(input$sf_switch, {
+    proxy <- rdeck_proxy("map")
+    
+    if (input$sf_switch) {
+      proxy %>%
+        update_polygon_layer(id = "zoning_layer", visible = FALSE) %>%
+        update_polygon_layer(id = "sfd", visible = TRUE)
+    } else {
+      proxy %>%
+        update_polygon_layer(id = "zoning_layer", visible = TRUE) %>%
+        update_polygon_layer(id = "sfd", visible = FALSE)
     }
   })
   
