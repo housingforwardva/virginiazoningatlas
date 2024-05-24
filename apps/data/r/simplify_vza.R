@@ -7,7 +7,6 @@ hr_vza <- geojson_sf("apps/data/raw/hr_vza_geo.geojson") |>
   select(id, type, abbrvname, name, overlay, # Select the fields needed for analysis.
          family1_treatment, family2_treatment, family3_treatment, family4_treatment,
          accessory_treatment, plannedresidential_treatment, tooltipnotes,
-         accessory_owner_required, accessory_family_required, accessory_elderly_only, accessory_renter_prohibited,
          acres, jurisdiction, county, sfd) |> 
   mutate(region = "Hampton Roads")
 
@@ -15,7 +14,6 @@ nova_vza <- geojson_sf("apps/data/raw/nova_vza_geo.geojson") |>
   select(id, type, abbrvname, name, overlay, # Select the fields needed for analysis.
          family1_treatment, family2_treatment, family3_treatment, family4_treatment,
          accessory_treatment, plannedresidential_treatment, tooltipnotes,
-         accessory_owner_required, accessory_family_required, accessory_elderly_only, accessory_renter_prohibited,
          acres, jurisdiction, county, sfd) |> 
   mutate(region = "Northern Virginia")
 
@@ -64,7 +62,6 @@ sparse <- vza |>
     type == "Nonresidential" ~ "#011E41ff",
     TRUE ~ "#FFFFFFff"
   )) 
-
 
 
 simple <- ms_simplify(sparse, keep = 0.1, keep_shapes = TRUE)
