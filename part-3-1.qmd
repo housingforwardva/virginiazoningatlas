@@ -189,7 +189,9 @@ type_plot <- ggplot(nova_type_summary,
 girafe(ggobj = type_plot,
        height_svg = 4)
 
-write_csv()
+# write_csv(nova_summary, "data/nova/csv/nova_ztype_region.csv")
+# write_csv(nova_type_summary, "data/nova/csv/nova_ztype.csv")
+
 
 
 ```
@@ -272,6 +274,11 @@ ggplot(nova_sfd,
   theme(axis.text.x = element_blank())
 
 
+# write_csv(nova_sfd, "data/nova/csv/nova_sfd.csv")
+# write_csv(nova_sfd_summary, "data/nova/csv/nova_sfd_region.csv")
+
+
+
 
 ```
 
@@ -325,6 +332,10 @@ lot_plot <- ggplot(nova_lots,
 
 girafe(ggobj = lot_plot,
        height_svg = 4)
+
+
+write_csv(nova_lots, "data/nova/csv/nova_min_lot.csv")
+
 
 ```
 
@@ -388,6 +399,11 @@ ggplot(nova_byright,
   scale_y_continuous(expand = expansion(mult = c(0, 0.1))) +
   labs(caption = "**Source:** Mercatus Center at George Mason University & HousingForward Virginia, Virginia Zoning Atlas.")+
   theme(axis.text.x = element_blank())
+
+
+# write_csv(nova_byright_summary, "data/nova/csv/nova_byright_4plus.csv")
+# write_csv(nova_byright2_summary, "data/nova/csv/nova_byright_2plus.csv")
+# write_csv(nova_summary, "data/nova/csv/nova_byright_table.csv")
 
 
 ```
