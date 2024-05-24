@@ -52,7 +52,7 @@ In this policy brief, we explain the value of collecting data on zoning and the 
 
 # The following is a map of Northern Virginia localities including towns.
 
-nova_region <- read_rds("data/nova/nova_region.rds") # Load in Northern Virginia geojson as rds.
+nova_region <- read_rds("data/nova/rds/nova_region.rds") # Load in Northern Virginia geojson as rds.
 
 # Map in leaflet.
 
@@ -141,7 +141,7 @@ We have gathered zoning data for the 23 jurisdictions with a total of 534 zones 
 # Create a bar chart that shows the percentage of zoned in each locality by type (i.e. primarily residential, mixed with residential, nonresidential)
 
 nova_type <- read_rds("data/nova/rds/nova_vza_nogeo.rds") |> 
-  select(jurisdiction, type, acres)
+  select(jurisdiction, type, acres) 
 
 
 nova_type_summary <- nova_type |> 
@@ -189,6 +189,8 @@ type_plot <- ggplot(nova_type_summary,
 girafe(ggobj = type_plot,
        height_svg = 4)
 
+write_csv()
+
 
 ```
 
@@ -232,7 +234,7 @@ leaflet() |>
 
 nova_sfd <- read_rds("data/nova/rds/nova_vza_nogeo.rds") |> # Read in the data.
   select(jurisdiction, overlay, sfd, acres) |> # Select necessary data fields.
-  filter(overlay == 0) |> # Remove overlay districts.
+  filter(overlay == FALSE) |> # Remove overlay districts.
   group_by(jurisdiction, sfd) |> # Sum the total acres dedicated to single-family detached in each district.
   summarise(acres = sum(acres)) |> 
   group_by(jurisdiction) |> 
@@ -336,7 +338,7 @@ Land where buildings with four or more units are allowed is a very small amount 
 
 nova_byright <- read_rds("data/nova/rds/nova_vza_nogeo.rds") |> 
   select(jurisdiction, abbrvname, overlay, 6:9, acres) |> # Select data fields.
-  filter(overlay == 0) |> # Filter out overlay districts.
+  filter(overlay == FALSE) |> # Filter out overlay districts.
   filter(acres != 0) |> 
   group_by(jurisdiction) |> 
   mutate(total_acres = sum(acres)) |> # Calculate the total acres of zoned land.
@@ -352,14 +354,24 @@ nova_byright <- read_rds("data/nova/rds/nova_vza_nogeo.rds") |>
     jurisdiction %in% c("Arlington", "Loudoun", "Prince William", "Fairfax") ~ paste0(jurisdiction, " County"),
     TRUE ~ jurisdiction))
 
-
+# This calculates the total developable land in NOVA that allows for 4+ housing by-right.
 nova_byright_summary <- read_rds("data/nova/rds/nova_vza_nogeo.rds") |> 
   select(jurisdiction, abbrvname, overlay, 6:9, acres) |> # Select data fields.
-  filter(overlay == 0) |> # Filter out overlay districts.
+  filter(overlay == FALSE) |> # Filter out overlay districts.
   mutate(total_acres = sum(acres)) |> # Calculate the total acres of zoned land.
   filter(family4_treatment == "allowed") |> 
   mutate(total_4plus = sum(acres)) |> 
   mutate(pct4plus = total_4plus/total_acres)
+
+
+# This calculates the total developable land in NOVA that allows for 2+ housing by-right.
+nova_byright2_summary <- read_rds("data/nova/rds/nova_vza_nogeo.rds") |> 
+  select(jurisdiction, abbrvname, overlay, 6:9, acres) |> # Select data fields.
+  filter(overlay == FALSE) |> # Filter out overlay districts.
+  mutate(total_acres = sum(acres)) |> # Calculate the total acres of zoned land.
+  filter(family4_treatment == "allowed" & family2_treatment == "allowed" & family3_treatment == "allowed") |> 
+  mutate(total_2plus = sum(acres)) |> 
+  mutate(pct2plus = total_2plus/total_acres)
 
 
 ggplot(nova_byright,

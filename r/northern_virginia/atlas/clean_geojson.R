@@ -6,7 +6,7 @@ library(sf)
 
 # Read in the geojson provided by the NZA, which already has "undevelopable" land removed.
 
-nova_punched <- geojson_sf("data/nova/geo/nova_ogr_24_4_23.geojson") 
+nova_punched <- geojson_sf("data/nova/geo/nova_ogr_24_5_24.geojson") 
 
 # Data prep
 
@@ -14,15 +14,14 @@ nova_vza_data <- nova_punched |>
   select(id, type, abbrvname, name, overlay, # Select the fields needed for analysis.
          family1_treatment, family2_treatment, family3_treatment, family4_treatment,
          accessory_treatment, plannedresidential_treatment,
-         accessory_owner_required, accessory_family_required, accessory_elderly_only, accessory_renter_prohibited,
+         # accessory_owner_required, accessory_family_required, accessory_elderly_only, accessory_renter_prohibited,
          acres, jurisdiction, county, customfielddata, tooltipnotes, expired) |> 
-  filter(is.na(expired)) |> 
   mutate(type = case_when( # Correct the labels for Type of Zoning District field.
-    type == "X" ~ "Nonresidential",
-    type == "R" ~ "Primarily Residential",
-    type == "M" ~ "Mixed with Residential",
-    type == "O" ~ "Overlay Not Affecting Use"
-  )) |>  
+    type == "Non-Residential" ~ "Nonresidential",
+    type == "Residential" ~ "Primarily Residential",
+    type == "Mixed" ~ "Mixed with Residential",
+    type == "Overlay Not Affecting Use" ~ "Overlay Not Affecting Use"
+  )) |>
   mutate(jurisdiction = case_when( # Reformat town names.
     jurisdiction == "Prince William - Dumfries" ~ "Dumfries",
     jurisdiction == "Prince William - Occoquan" ~ "Occoquan",
@@ -39,7 +38,8 @@ nova_vza_data <- nova_punched |>
     jurisdiction == "Loudoun - Middleburg" ~ "Middleburg",
     TRUE ~ jurisdiction
   )) |> 
-  filter(overlay == 0) # Remove overlay districts from the analysis.
+  filter(overlay == FALSE) |> # Remove overlay districts from the analysis.
+  mutate(acres = as.numeric(acres))
 
 # Parse the custom field data which is provided within a single column.
 
