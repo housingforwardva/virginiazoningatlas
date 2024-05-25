@@ -576,6 +576,7 @@ server <- function(input, output, session) {
   
   
   # Write a zoning filter that talks to all of the different options
+  # 
   # zoning_filter <- shiny::reactive({
   #   sf_opts <- input$single_family_options
   #   f2_opts <- input$two_family_options
@@ -608,10 +609,6 @@ server <- function(input, output, session) {
   #       dplyr::mutate(pct = scales::percent(selected_acres/total_jurisdiction), accuracy = 0.1)
   #   }
   # 
-  # 
-  # 
-  # 
-  # 
   #   output
   # 
   # })
@@ -623,6 +620,8 @@ server <- function(input, output, session) {
   #                       get_line_width = 10, pickable = TRUE, auto_highlight = TRUE, highlight_color = highlight_color,
   #                       tooltip = c(Abbreviation, Zoning, Jurisdiction, Notes), name = "Zoning")
   # })
+  
+  
   
   shiny::observeEvent(input$single_family, {
     if (input$single_family) {
@@ -668,6 +667,9 @@ server <- function(input, output, session) {
       shiny::updateCheckboxGroupInput(session, "accessory_options", selected = type_choices)
     }
   })
+  
+  
+  ## This section turns on and off different zoning layers based on the toggle selectors ##
   
   shiny::observe({
     proxy <- rdeck::rdeck_proxy("map")
@@ -839,6 +841,8 @@ server <- function(input, output, session) {
     }
   })
   
+## The below section of code only allows one toggle switch to be turned on at a time. ##
+
   shiny::observeEvent(input$sf_switch, {
     if (input$sf_switch) {
       # Modify the switches
@@ -878,6 +882,8 @@ server <- function(input, output, session) {
     
   })
   
+  ## This section adds transit stops ##
+  
   shiny::observeEvent(input$transit_stops, {
     proxy <- rdeck::rdeck_proxy("map")
     
@@ -906,7 +912,9 @@ server <- function(input, output, session) {
                                         get_radius = 1)
     }
   })
-  # 
+  
+  ## This section adds the 100-year flood plain layer ##
+  
   shiny::observeEvent(input$flood, {
     proxy <- rdeck::rdeck_proxy("map")
     
@@ -941,6 +949,8 @@ server <- function(input, output, session) {
     }
   })
   
+  ## This section adds jurisdictional boundaries ##
+  
   shiny::observeEvent(input$locality_boundaries, {
     proxy <- rdeck::rdeck_proxy("map")
     
@@ -974,6 +984,8 @@ server <- function(input, output, session) {
         )
     }
   })
+  
+  ## This section adds protected lands (i.e. undevelopable lands) ##
   
   shiny::observeEvent(input$protected, {
     proxy <- rdeck::rdeck_proxy("map")
@@ -1012,9 +1024,13 @@ server <- function(input, output, session) {
     }
   })
   
+  ## This section updates the basemap ##
+
+  
   observeEvent(input$basemap, {
     rdeck::rdeck_proxy("map", map_style = input$basemap)
   })
+  
   # 
   #   output$text <- renderText({
   # 
