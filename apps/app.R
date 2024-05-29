@@ -368,11 +368,11 @@ server <- function(input, output, session) {
   #            type = "info",
   #            html = TRUE)
   
-  shinyalert::shinyalert("Best Viewing Experience",
-                         "The Virginia Zoning Atlas is best viewed on a desktop, laptop, or tablet.",
-                         type = "info",
-                         html = TRUE, 
-                         inputId = "best_viewing")
+  # shinyalert::shinyalert("Best Viewing Experience",
+  #                        "The Virginia Zoning Atlas is best viewed on a desktop, laptop, or tablet.",
+  #                        type = "info",
+  #                        html = TRUE, 
+  #                        inputId = "best_viewing")
   
   
   output$map <- rdeck::renderRdeck({
@@ -1112,7 +1112,7 @@ server <- function(input, output, session) {
   
   text_calc <- reactive({
     # Don't calculate until second button has been clicked
-    req(input$best_viewing)
+    req(input$disclaimer)
     
     cur <- current_layer()
     
