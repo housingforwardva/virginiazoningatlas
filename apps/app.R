@@ -347,12 +347,10 @@ ui <- bslib::page_fluid(
 server <- function(input, output, session) {
   
   shinyalert::shinyalert("Disclaimer",
-                         "<b>HousingForward Virginia</b> created the Virginia Zoning Atlas for public informational purposes only.
-             Given the huge amount of info it contains and the possibility of changing conditions (in zoning codes,
-             parcel/jurisdiction boundaries, & state laws), here's our disclaimer!: We hereby present this map
-             without any warranty, either express or implied, about its validity or accuracy, or its suitability
-             for legal, engineering, or land survey purposes. As we all know, zoning is fluid. If you notice an error,
-             we encourage you to <a href = 'mailto:eric@housingforwardva.org?subject = Virginia Zoning Atlas'> contact us </a>.",
+                         "<b>HousingForward Virginia</b> created the Virginia Zoning Atlas for public informational purposes only. 
+                         We hereby present this map without any warranty, either express or implied, about its validity or accuracy, 
+                         or its suitabilityfor legal, engineering, or land survey purposes. As we all know, zoning is fluid. If you 
+                         notice an error, we encourage you to <a href = 'mailto:eric@housingforwardva.org?subject = Virginia Zoning Atlas'> contact us </a>.",
                          type = "warning",
                          html = TRUE, 
                          inputId = "disclaimer"
@@ -988,7 +986,7 @@ server <- function(input, output, session) {
           id = "transit_layer",
           pickable = TRUE,
           get_fill_color = "#ffd179",
-          tooltip = service
+          tooltip = Service
         ) 
     } else {
       proxy %>%
