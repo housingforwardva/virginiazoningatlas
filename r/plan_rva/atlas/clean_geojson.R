@@ -6,11 +6,18 @@ library(sf)
 
 # Read in the geojson provided by the NZA, which already has "undevelopable" land removed.
 
-rva_punched <- geojson_sf("data/rva/geo/xxx.geojson") 
+rva_punched <- geojson_sf("data/planrva/geo/rva_vza.geojson") 
+
+rva_cfd <- read_csv("data/planrva/csv/planrva_cfd.csv") |> 
+  select(fid, id, customfielddata)
+
+rva_punched_cfd <- rva_punched |> 
+  left_join(rva_cfd,
+            by = c("fid", "id"))
 
 # Data prep
 
-rva_vza_data <- rva_punched |> 
+rva_vza_data <- rva_punched_cfd |> 
   select(id, type, abbrvname, name, overlay, # Select the fields needed for analysis.
          family1_treatment, family2_treatment, family3_treatment, family4_treatment,
          accessory_treatment, plannedresidential_treatment,
