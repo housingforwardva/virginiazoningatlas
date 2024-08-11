@@ -1,0 +1,128 @@
+```{r}
+#| label: setup
+
+# Load necessary packages.
+
+library(tidycensus)
+library(hdatools)
+library(ggiraph)
+library(scales)
+library(patchwork)
+library(ggtext)
+
+
+# Use data from the VZA to summarize the number of districts involved, number of zoning ordinance pages read, and other interesting metrics.
+
+
+```
+
+
+
+```{r}
+#| label: fig-housing-type
+#| fig-cap: "Share of Land Dedicated to Residential and Nonresidential Uses"
+
+# Create a bar chart that shows the percentage of zoned in each locality by type (i.e. primarily residential, mixed with residential, nonresidential)
+
+type <- read_rds("data/planrva/rds/rva_vza_nogeo.rds") |> 
+  select(jurisdiction, type, acres) 
+
+
+type_summary <- type |> 
+  group_by(jurisdiction, type) |> 
+  summarise(acres = sum(acres)) |> 
+  group_by(jurisdiction) |> 
+  mutate(pct = acres/sum(acres)) 
+
+rva_summary <- type |> 
+  group_by(type) |> 
+  summarise(acres = sum(acres)) |> 
+  mutate(pct = acres/sum(acres)) 
+
+subtitle_text <- "<span style='color:#8B85CA'><b>Primarily Residential</span></b>, <span style='color:#40C0C0'><b>Mixed with Residential</span></b>, and <span style='color:#011E41'><b>Nonresidential</span></b>"
+
+
+type_plot <- ggplot(type_summary,
+       aes(x = fct_reorder2(jurisdiction, type, pct),
+           y = pct,
+           fill = factor(type, levels = c("Nonresidential", "Mixed with Residential", "Primarily Residential")),
+           data_id = pct,
+           tooltip = percent_format(accuracy = 0.1)(pct))) +
+  geom_col_interactive(position = "stack") +
+  coord_flip() +
+  theme_hfv() +
+  scale_fill_hfv() +
+  labs(subtitle = subtitle_text
+       # caption = "**Source:** Mercatus Center at George Mason University & HousingForward Virginia, Virginia Zoning Atlas."
+       ) +
+  scale_y_continuous(labels = percent_format(), expand = expansion(mult = c(0, 0.01))) +
+  plot_annotation(
+    theme = theme(
+    plot.subtitle = element_markdown(
+       margin = margin(b = 0.4, unit = 'cm'),
+        size = 11.5
+    )))
+
+
+girafe(ggobj = type_plot,
+       height_svg = 4)
+
+type_plot
+
+# write_csv(nova_summary, "data/nova/csv/nova_ztype_region.csv")
+# write_csv(nova_type_summary, "data/nova/csv/nova_ztype.csv")
+
+
+
+```
+
+
+```{r}
+#| label: fig-sfd-bar
+#| fig-cap: "Percent of Developable Residential or Mixed with Residential Land Where Only Detached Single-Family Housing is Allowed By-Right"
+
+# Create a bar char that shows the percentage of zoned in each locality that is dedicated to single-family detached only housing.
+
+sfd <- read_rds("data/planrva/rds/rva_vza_nogeo.rds") |> # Read in the data.
+  select(jurisdiction, sfd, acres) 
+
+|> # Select necessary data fields.
+  group_by(jurisdiction, sfd) |> # Sum the total acres dedicated to single-family detached in each district.
+  summarise(acres = sum(acres)) |> 
+  group_by(jurisdiction) |> 
+  mutate(percent = acres/sum(acres)) |> 
+  ungroup() |> 
+  mutate(total_rva = sum(acres)) |> # Calculate what percentage of total developable acres is SFD.
+  filter(sfd == "t") 
+
+
+sfd_summary <- sfd |> 
+  group_by(total_rva) |> 
+  summarise(total_sfd = sum(acres)) |> 
+  mutate(pct = total_sfd/total_rva)
+
+
+ggplot(sfd,
+       aes(x = reorder(jurisdiction, percent),
+           y = percent,
+           fill = percent)) +
+  geom_col(position = "dodge") +
+  geom_col_interactive(position = "dodge") +
+  geom_text(aes(label = percent(percent, 1), color = percent),
+    hjust = -0.2) +
+  theme_hfv() +
+  coord_flip() +
+  scale_y_continuous(expand = expansion(mult = c(0, 0.1))) +
+  scale_fill_gradientn(colours = c("#ADDCB1", "#46A88F", "#207A88", "#0F1A4E")) + # Use custom HFV gradient.
+  scale_color_gradientn(colours = c("#ADDCB1", "#46A88F", "#207A88", "#0F1A4E")) + # Use custom HFV gradient.
+  # labs(caption = "**Source:** Mercatus Center at George Mason University & HousingForward Virginia, Virginia Zoning Atlas.") +
+  theme(axis.text.x = element_blank())
+
+
+# write_csv(nova_sfd, "data/nova/csv/nova_sfd.csv")
+# write_csv(nova_sfd_summary, "data/nova/csv/nova_sfd_region.csv")
+
+
+
+
+```

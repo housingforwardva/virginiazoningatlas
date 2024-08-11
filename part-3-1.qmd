@@ -24,7 +24,6 @@ library(ggtext)
 library(readr)
 library(zoo)
 library(patchwork)
-library(forcats)
 
 # Describe the Northern Virginia region.
 
