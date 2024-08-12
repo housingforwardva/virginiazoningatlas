@@ -8,15 +8,6 @@ library(sf)
 
 rva_punched <- geojson_sf("data/planrva/geo/rva_vza.geojson") 
 
-rva_custom <- geojson_sf("data/planrva/geo/rva_vza_customdata.geojson") |> 
-  janitor::clean_names() |> 
-  select(abbrvname = abbreviated_district_name, jurisdiction, county, customfielddata) |> 
-  st_drop_geometry()
-
-
-rva_custom_punched <- rva_punched |> 
-  left_join(rva_custom, by = c("abbrvname", "jurisdiction", "county"))
-
 rva_cfd <- read_csv("data/planrva/csv/planrva_cfd.csv") |> 
   janitor::clean_names() |> 
   select(abbrvname = abbreviated_district_name, jurisdiction, county, customfielddata) |>  
@@ -40,14 +31,7 @@ rva_cfd <- read_csv("data/planrva/csv/planrva_cfd.csv") |>
 
 rva_punched_cfd <- rva_punched |> 
   inner_join(rva_cfd,
-            by = c("abbrvname", "jurisdiction"))
-
-
-head <- head(rva_punched_cfd, 5)
-
-# Data prep
-
-rva_vza_data <- rva_punched_cfd |> 
+            by = c("abbrvname", "jurisdiction")) |> 
   select(id, type, abbrvname, name, overlay, # Select the fields needed for analysis.
          family1_treatment, family2_treatment, family3_treatment, family4_treatment,
          accessory_treatment, plannedresidential_treatment,
@@ -65,6 +49,11 @@ rva_vza_data <- rva_punched_cfd |>
   filter(overlay == 0) |> # Remove overlay districts from the analysis.
   mutate(acres = as.numeric(acres))
 
+
+head <- head(rva_punched_cfd, 5)
+
+
+
 # write_csv(data, "data/planrva/csv/rva_vza.csv")
 
 # Parse the custom field data which is provided within a single column.
@@ -72,11 +61,11 @@ rva_vza_data <- rva_punched_cfd |>
 
 five <- head(rva_vza_clean_data, 20)
 
-rva_vza_nogeo <- rva_vza_clean_data |> 
+rva_vza_nogeo <- rva_punched_cfd |> 
   st_drop_geometry() 
 
 
-st_write(rva_vza_clean_data, "data/planrva/geo/rva_vza_geo.geojson", append = FALSE)
-write_rds(rva_vza_clean_data, "data/planrva/rds/rva_vza_geo.rds", compress = "none")
+st_write(rva_vza_data, "data/planrva/geo/rva_vza_geo.geojson", append = FALSE)
+write_rds(rva_vza_data, "data/planrva/rds/rva_vza_geo.rds", compress = "none")
 write_rds(rva_vza_nogeo, "data/planrva/rds/rva_vza_nogeo.rds", compress = "none")
 

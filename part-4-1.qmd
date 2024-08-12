@@ -4,11 +4,13 @@
 # Load necessary packages.
 
 library(tidycensus)
+library(tidyverse)
 library(hdatools)
 library(ggiraph)
 library(scales)
 library(patchwork)
 library(ggtext)
+library(kableExtra)
 
 
 # Use data from the VZA to summarize the number of districts involved, number of zoning ordinance pages read, and other interesting metrics.
@@ -84,31 +86,114 @@ type_plot
 # Create a bar char that shows the percentage of zoned in each locality that is dedicated to single-family detached only housing.
 
 sfd <- read_rds("data/planrva/rds/rva_vza_nogeo.rds") |> # Read in the data.
-  select(jurisdiction, sfd, acres) 
-
-|> # Select necessary data fields.
-  group_by(jurisdiction, sfd) |> # Sum the total acres dedicated to single-family detached in each district.
+  select(jurisdiction, abbrvname, type, sfd, acres) |> 
+  filter(type == "Mixed with Residential" | type == "Primarily Residential") |> # Filter for only land that allows for housing?
+  mutate(acres = as.numeric(acres)) |> 
+  group_by(jurisdiction, sfd) |> 
   summarise(acres = sum(acres)) |> 
-  group_by(jurisdiction) |> 
-  mutate(percent = acres/sum(acres)) |> 
   ungroup() |> 
-  mutate(total_rva = sum(acres)) |> # Calculate what percentage of total developable acres is SFD.
-  filter(sfd == "t") 
+  group_by(jurisdiction) |> 
+  mutate(total = sum(acres)) |> 
+  mutate(pct = acres/total) 
 
 
+# Total acres is 1151289
+# 
 sfd_summary <- sfd |> 
-  group_by(total_rva) |> 
-  summarise(total_sfd = sum(acres)) |> 
-  mutate(pct = total_sfd/total_rva)
+  group_by(sfd) |> 
+  summarise(acres = sum(acres)) |> 
+  mutate(pct_area = acres/1151289)
+
+sfd_locality <- sfd |> 
+  ungroup() |> 
+  filter(sfd == "t") |> 
+  select(jurisdiction, pct) |> 
+  add_row(jurisdiction = "Charles City", pct = 0) |> 
+  add_row(jurisdiction = "Chesterfield", pct = 0 )
 
 
-ggplot(sfd,
-       aes(x = reorder(jurisdiction, percent),
-           y = percent,
-           fill = percent)) +
+sfd_explore <- read_rds("data/planrva/rds/rva_vza_nogeo.rds") |> # Read in the data.
+  select(jurisdiction, abbrvname, type, sfd, acres, family1_treatment) |> 
+  filter(type == "Mixed with Residential" | type == "Primarily Residential") |> # Select necessary data fields.
+  mutate(acres = as.numeric(acres)) |> 
+  group_by(jurisdiction, sfd, family1_treatment) |> 
+  summarise(acres = sum(acres)) |> 
+  ungroup() |> 
+  group_by(jurisdiction) |> 
+  mutate(total = sum(acres)) |> 
+  mutate(pct = acres/total) 
+
+
+
+ggplot(sfd_locality,
+       aes(x = reorder(jurisdiction, pct),
+           y = pct,
+           fill = pct)) +
   geom_col(position = "dodge") +
   geom_col_interactive(position = "dodge") +
-  geom_text(aes(label = percent(percent, 1), color = percent),
+  geom_text(aes(label = percent(pct, 1), color = pct),
+    hjust = -0.2) +
+  theme_hfv() +
+  coord_flip() +
+  scale_y_continuous(expand = expansion(mult = c(0, 0.1))) +
+  scale_fill_gradientn(colours = c("#ADDCB1", "#46A88F", "#207A88", "#0F1A4E")) + # Use custom HFV gradient.
+  scale_color_gradientn(colours = c("#ADDCB1", "#46A88F", "#207A88", "#0F1A4E")) + # Use custom HFV gradient.
+  # labs(caption = "**Source:** Mercatus Center at George Mason University & HousingForward Virginia, Virginia Zoning Atlas.") +
+  theme(axis.text.x = element_blank())
+
+
+# write_csv(nova_sfd, "data/nova/csv/nova_sfd.csv")
+# write_csv(nova_sfd_summary, "data/nova/csv/nova_sfd_region.csv")
+# 
+# 
+
+
+```
+
+```{r}
+#| label: fig-sfd-bar
+#| fig-cap: "Percent of Developable Residential or Mixed with Residential Land Where Only Detached Single-Family Housing is Allowed By-Right"
+
+# Create a bar char that shows the percentage of zoned in each locality that is dedicated to single-family detached only housing.
+
+
+treatment <- read_rds("data/planrva/rds/rva_vza_nogeo.rds") |> # Read in the data.
+  select(jurisdiction, abbrvname, type, family1_treatment, family2_treatment,
+         family3_treatment, family4_treatment, acres) |> 
+  mutate(acres = as.numeric(acres)) |> 
+  group_by(jurisdiction) |> 
+  mutate(total_acres = sum(acres)) 
+
+|> 
+  ungroup() |> 
+  group_by(jurisdiction) |> 
+  mutate(total = sum(acres)) |> 
+  mutate(pct = acres/total) 
+
+# Total acres is 1151289
+# 
+sfd_summary <- sfd |> 
+  group_by(sfd) |> 
+  summarise(acres = sum(acres)) |> 
+  mutate(pct_area = acres/1151289)
+
+sfd_locality <- sfd |> 
+  ungroup() |> 
+  filter(sfd == "t")
+  
+  select(jurisdiction, pct) |> 
+  add_row(jurisdiction = "Charles City", pct = 0) |> 
+  add_row(jurisdiction = "Chesterfield", pct = 0 )
+
+
+
+ggplot(sfd_locality,
+       aes(x = reorder(jurisdiction, pct),
+           y = pct,
+           fill = pct)) +
+  geom_col(position = "dodge") +
+  geom_col_interactive(position = "dodge") +
+  geom_text(aes(label = percent(pct, 1), color = pct),
     hjust = -0.2) +
   theme_hfv() +
   coord_flip() +
@@ -123,6 +208,380 @@ ggplot(sfd,
 # write_csv(nova_sfd_summary, "data/nova/csv/nova_sfd_region.csv")
 
 
+```
 
+
+
+```{r}
+#| label: tbl-hearing
+#| tbl-cap: "Percent of developable land that forces housing through a public hearing process"
+
+# Create a table that shows the percentage of land that allows for each type of treatment by locality
+# https://frontierinstitute.org/reports/the-montana-zoning-atlas-2-0/ use this as an example 
+
+hearing_tbl <- read_rds("data/planrva/rds/rva_vza_nogeo.rds") |> 
+  select(jurisdiction, abbrvname, overlay, 6:9, acres) |> 
+  filter(overlay == 0) |> 
+  group_by(jurisdiction) |> 
+  mutate(total_area = sum(acres)) |> 
+  mutate(family1_pct = case_when(
+    family1_treatment == "hearing" ~ acres/total_area,
+    TRUE ~ 0
+  ))|> 
+  mutate(family2_pct = case_when(
+    family2_treatment == "hearing" ~ acres/total_area,
+    TRUE ~ 0 
+  )) |> 
+  mutate(family3_pct = case_when(
+    family3_treatment == "hearing" ~ acres/total_area,
+    TRUE ~ 0 
+  )) |> 
+  mutate(family4_pct = case_when(
+    family4_treatment == "hearing" ~ acres/total_area,
+    TRUE ~ 0 
+  )) |> 
+  group_by(jurisdiction) |> 
+  summarise(family1_hearing = percent(sum(family1_pct)),
+            family2_hearing = percent(sum(family2_pct)),
+            family3_hearing = percent(sum(family3_pct)),
+            family4_hearing = percent(sum(family4_pct))
+            ) 
+
+hearing_tbl |>
+  kable(col.names = c("Jurisdiction", "Single-family", "2-family", "3-family", "4+-family"), 
+        align = "lcccc") |> 
+  kable_styling(bootstrap_options = c("striped", "condensed"))
+
+```
+
+
+```{r}
+#| label: tbl-hearing-3
+#| tbl-cap: "Percent of developable land that forces housing through a public hearing process"
+
+# Create a table that shows the percentage of land that allows for each type of treatment by locality
+# https://frontierinstitute.org/reports/the-montana-zoning-atlas-2-0/ use this as an example 
+
+# treatment_tbl <- read_rds("data/planrva/rds/rva_vza_nogeo.rds") |> 
+#   select(jurisdiction, abbrvname, overlay, 6:9, acres) |> 
+#   filter(overlay == 0) |> 
+#   group_by(jurisdiction) |> 
+#   mutate(total_area = sum(acres)) |> 
+#   mutate(family1_pct = case_when(
+#     family1_treatment == "prohibited" ~ acres/total_area,
+#     TRUE ~ 0
+#   ))|> 
+#   mutate(family2_pct = case_when(
+#     family2_treatment == "prohibited" ~ acres/total_area,
+#     TRUE ~ 0 
+#   )) |> 
+#   mutate(family3_pct = case_when(
+#     family3_treatment == "prohibited" ~ acres/total_area,
+#     TRUE ~ 0 
+#   )) |> 
+#   mutate(family4_pct = case_when(
+#     family4_treatment == "prohibited" ~ acres/total_area,
+#     TRUE ~ 0 
+#   )) |> 
+#   group_by(jurisdiction) |>
+#   mutate(family1_prohibited = (sum(family1_pct)),
+#             family2_prohibited = (sum(family2_pct)),
+#             family3_prohibited = (sum(family3_pct)),
+#             family4_prohibited = (sum(family4_pct))
+#             ) |> 
+#   mutate(family1_pct = case_when(
+#     family1_treatment == "hearing" ~ acres/total_area,
+#     TRUE ~ 0
+#   ))|> 
+#   mutate(family2_pct = case_when(
+#     family2_treatment == "hearing" ~ acres/total_area,
+#     TRUE ~ 0 
+#   )) |> 
+#   mutate(family3_pct = case_when(
+#     family3_treatment == "hearing" ~ acres/total_area,
+#     TRUE ~ 0 
+#   )) |> 
+#   mutate(family4_pct = case_when(
+#     family4_treatment == "hearing" ~ acres/total_area,
+#     TRUE ~ 0 
+#   )) |> 
+#   group_by(jurisdiction) |> 
+#   mutate(family1_hearing = (sum(family1_pct)),
+#             family2_hearing = (sum(family2_pct)),
+#             family3_hearing = (sum(family3_pct)),
+#             family4_hearing = (sum(family4_pct))
+#             ) |> 
+#     mutate(family1_pct = case_when(
+#     family1_treatment == "allowed" ~ acres/total_area,
+#     TRUE ~ 0
+#   ))|> 
+#   mutate(family2_pct = case_when(
+#     family2_treatment == "allowed" ~ acres/total_area,
+#     TRUE ~ 0 
+#   )) |> 
+#   mutate(family3_pct = case_when(
+#     family3_treatment == "allowed" ~ acres/total_area,
+#     TRUE ~ 0 
+#   )) |> 
+#   mutate(family4_pct = case_when(
+#     family4_treatment == "allowed" ~ acres/total_area,
+#     TRUE ~ 0 
+#   )) |> 
+#   group_by(jurisdiction) |> 
+#   mutate(family1_byright = (sum(family1_pct)),
+#             family2_byright = (sum(family2_pct)),
+#             family3_byright = (sum(family3_pct)),
+#             family4_byright = (sum(family4_pct))
+#             ) |> 
+#   select(jurisdiction, 14:25) |> 
+#   distinct() |> 
+#   pivot_longer(2:13,
+#                names_to = "treatment",
+#                values_to = "pct") |> 
+#   separate(treatment, into = c("type", "treatment"), sep = "_") |> 
+#   mutate(type = case_when(
+#     type == "family1" ~ "Single-family", 
+#     type == "family2" ~ "2-family",
+#     type == "family3" ~ "3-family",
+#     type == "family4" ~ "4+-family"
+#   )) 
+# 
+# write_rds(treatment_tbl, "data/planrva/rds/treatment_tbl.rds")
+
+treatment_tbl <- read_rds("data/planrva/rds/treatment_tbl.rds") |> 
+  filter(jurisdiction == "Chesterfield" | jurisdiction == "Henrico" | jurisdiction == "Richmond (city)")
+
+treatment_tbl$treatment <- factor(treatment_tbl$treatment, levels = c("prohibited", "hearing", "byright"))
+x_axis_order <- c("Single-family", "2-family", "3-family", "4+-family")
+treatment_tbl$type <- factor(treatment_tbl$type, levels = x_axis_order)
+
+subtitle_text <- "Percent of developable land that allows for housing<span style='color:#40C0C0'><b>By-right</span></b>, <span style='color:#8B85CA'><b>through a public hearing</span></b>, or <span style='color:grey'><b>prohibits it</span></b>"
+
+
+ggplot(treatment_tbl,
+       aes(x = type,
+           y = pct,
+           fill = treatment)) +
+  geom_col(position = "stack") +
+  facet_grid(~jurisdiction) +
+  scale_fill_manual(values = c("byright" = "#40C0C0", "hearing" = "#8B85CA", "prohibited" = "grey")) +
+  theme_hfv() +
+  theme(axis.text.x = element_text(angle = 90)) +
+  scale_y_continuous(labels = label_percent()) +
+  labs(title = "Treatment of housing types",
+       subtitle = subtitle_text)
+
+
+
+```
+
+```{r}
+#| label: tbl-hearing-4
+#| tbl-cap: "Percent of developable land that forces housing through a public hearing process"
+
+treatment_tbl <- read_rds("data/planrva/rds/treatment_tbl.rds") |> 
+  filter(jurisdiction == "Ashland" | jurisdiction == "Charles City" | jurisdiction == "Hanover" | jurisdiction == "New Kent"| jurisdiction == "Powhatan")
+
+treatment_tbl$treatment <- factor(treatment_tbl$treatment, levels = c("prohibited", "hearing", "byright"))
+x_axis_order <- c("Single-family", "2-family", "3-family", "4+-family")
+treatment_tbl$type <- factor(treatment_tbl$type, levels = x_axis_order)
+
+subtitle_text <- "Percent of developable land that allows for housing<span style='color:#40C0C0'><b>By-right</span></b>, <span style='color:#8B85CA'><b>through a public hearing</span></b>, or <span style='color:grey'><b>prohibits it</span></b>"
+
+ggplot(treatment_tbl,
+       aes(x = type,
+           y = pct,
+           fill = treatment)) +
+  geom_col(position = "stack") +
+  facet_grid(~jurisdiction) +
+  scale_fill_manual(values = c("byright" = "#40C0C0", "hearing" = "#8B85CA", "prohibited" = "grey")) +
+  theme_hfv() +
+  theme(axis.text.x = element_text(angle = 90)) +
+  scale_y_continuous(labels = label_percent()) +
+  labs(title = "Treatment of housing types",
+       subtitle = subtitle_text)
+
+```
+
+
+
+
+```{r}
+#| label: fig-2plus
+#| fig-cap: "Percent of developable land allowing for Missing Middle (2-6 units) housing by-right" 
+
+# Create a bar graph that shows the total amount of zoned land that welcomes 2+ family housing by-right
+
+byright <- read_rds("data/planrva/rds/rva_vza_nogeo.rds") |> 
+  select(jurisdiction, abbrvname, overlay, 6:9, acres) |> # Select data fields.
+  filter(overlay == 0) |> # Filter out overlay districts.
+  group_by(jurisdiction) |> 
+  mutate(total_area = sum(acres)) |> # Calculate the total area of zoned land.
+  filter(family2_treatment == "allowed" & family3_treatment == "allowed" & family4_treatment == "allowed") |> 
+  group_by(jurisdiction) |> 
+  mutate(pct_2plus = acres/total_area) |> 
+  group_by(jurisdiction) |> 
+  summarise(pct_2plus = sum(pct_2plus)) |> 
+  add_row(jurisdiction = "Chesterfield", pct_2plus = 0) |> 
+  add_row(jurisdiction = "Goochland", pct_2plus = 0) 
+
+
+byright_summary <- read_rds("data/planrva/rds/rva_vza_nogeo.rds") |> 
+  select(jurisdiction, abbrvname, overlay, 6:9, acres) |> # Select data fields.
+  filter(overlay == 0) |> # Filter out overlay districts.
+  mutate(total_area = sum(acres)) |> # Calculate the total area of zoned land.
+  filter(family2_treatment == "allowed" & family3_treatment == "allowed" & family4_treatment == "allowed") |> 
+  mutate(total_2plus = sum(acres)) |> 
+  mutate(pct2plus = total_2plus/total_area)
+
+ggplot(byright,
+       aes(x = reorder(jurisdiction, pct_2plus),
+           y = pct_2plus,
+           fill = pct_2plus)) +
+  geom_col() +
+  geom_text(aes(label = percent(pct_2plus, 1), color = pct_2plus),
+    hjust = -0.2) +
+  coord_flip() +
+  theme_hfv() +
+  # scale_fill_gradientn(colours = c("#ADDCB1", "#46A88F", "#207A88", "#0F1A4E")) + # Use custom HFV gradient.
+  # scale_color_gradientn(colours = c("#ADDCB1", "#46A88F", "#207A88", "#0F1A4E")) + # Use custom HFV gradient.
+  scale_y_continuous(expand = expansion(mult = c(0, 0.1))) +
+  labs(title = "Missing Middle Housing",
+       caption = "**Source:** HousingForward Virginia, Virginia Zoning Atlas.")  +
+  theme(axis.text.x = element_blank())
+
+
+```
+
+```{r}
+#| label: fig-4plus
+#| fig-cap: "Percent of developable land allowing for 4+ family housing by-right" 
+
+# Create a bar graph that shows the total amount of zoned land that welcomes 2+ family housing by-right
+
+byright <- read_rds("data/planrva/rds/rva_vza_nogeo.rds") |> 
+  select(jurisdiction, abbrvname, overlay, 6:9, acres) |> # Select data fields.
+  filter(overlay == 0) |> # Filter out overlay districts.
+  group_by(jurisdiction) |> 
+  mutate(total_area = sum(acres)) |> # Calculate the total area of zoned land.
+  filter(family4_treatment == "allowed") |> 
+  group_by(jurisdiction) |> 
+  mutate(pct_4plus = acres/total_area) |> 
+  group_by(jurisdiction) |> 
+  summarise(pct_4plus = sum(pct_4plus)) |> 
+  add_row(jurisdiction = "Goochland", pct_4plus = 0)
+
+byright_summary <- read_rds("data/planrva/rds/rva_vza_nogeo.rds") |> 
+  select(jurisdiction, abbrvname, overlay, 6:9, acres) |> # Select data fields.
+  filter(overlay == 0) |> # Filter out overlay districts.
+  mutate(total_area = sum(acres)) |> # Calculate the total area of zoned land.
+  filter(family4_treatment == "allowed") |> 
+  mutate(total_4plus = sum(acres)) |> 
+  mutate(pct4plus = total_4plus/total_area) 
+
+ggplot(byright,
+       aes(x = reorder(jurisdiction, pct_4plus),
+           y = pct_4plus,
+           fill = pct_4plus)) +
+  geom_col() +
+  geom_text(aes(label = percent(pct_4plus, 1), color = pct_4plus),
+    hjust = -0.2) +
+  coord_flip() +
+  theme_hfv() +
+  scale_fill_gradientn(colours = c("#ADDCB1", "#46A88F", "#207A88", "#0F1A4E")) + # Use custom HFV gradient.
+  scale_color_gradientn(colours = c("#ADDCB1", "#46A88F", "#207A88", "#0F1A4E")) + # Use custom HFV gradient.
+  scale_y_continuous(expand = expansion(mult = c(0, 0.1))) +
+  labs(title = "Percent of developable land allowing for 4+ family housing by-right",
+       caption = "**Source:** HousingForward Virginia, Virginia Zoning Atlas.")+
+  theme(axis.text.x = element_blank())
+
+
+
+```
+
+```{r}
+#| label: fig-hr-adus
+#| fig-cap: "Percent of developable land that allows for ADUs by-right"
+
+# Create a table that shows the percentage of land that allows for ADUs by-right
+# https://frontierinstitute.org/reports/the-montana-zoning-atlas-2-0/ use this as an example 
+
+# adu <- read_rds("data/planrva/rds/rva_vza_nogeo.rds") |> 
+#   select(jurisdiction, abbrvname, overlay, accessory_treatment, acres) 
+# 
+# write_csv(adu, "data/planrva/csv/adu.csv")
+
+adu <- read_csv("data/planrva/csv/adu.csv") |> 
+  select(jurisdiction, abbrvname, adu_detached, adu_attached, area = acres)
+
+
+type <- read_rds("data/planrva/rds/rva_vza_nogeo.rds") |> 
+  select(jurisdiction, abbrvname, type, acres) |> 
+  left_join(adu, by = c("jurisdiction", "abbrvname")) |> 
+  pivot_longer(adu_detached:adu_attached,
+               values_to = "treatment",
+               names_to = "adutype") |> 
+  ungroup() |> 
+  group_by(jurisdiction, adutype, treatment) |> 
+  summarise(adu_area = sum(area)) |> 
+  ungroup() |> 
+  group_by(jurisdiction, adutype) |> 
+  mutate(total_area = sum(adu_area)) |> 
+  mutate(adu_pct = adu_area/total_area) |> 
+  mutate(adutype = case_when(
+    adutype == "adu_detached" ~ "Detached ADU",
+    adutype == "adu_attached" ~ "Attached ADU"
+  ))
+
+condition <- adu_detached$treatment %in% c("allowed", "hearing")
+
+adu_detached <- type |> 
+  filter(adutype == "Detached ADU") |> 
+  group_by(jurisdiction) %>%
+  mutate(
+    total_pct = sum(adu_pct, na.rm = TRUE),
+    allowed_hearing_pcts = sum(adu_pct[treatment %in% c("allowed", "hearing")], na.rm = TRUE),
+    prohibited_pct = sum(adu_pct[treatment == "prohibited"], na.rm = TRUE)
+  ) 
+
+adu_attached <- type |> 
+  filter(adutype == "Attached ADU") |> 
+  group_by()
+
+adu_detached$treatment <- factor(adu_detached$treatment, levels = c("prohibited", "hearing", "allowed"))
+
+my_colors <- c("prohibited" = "#e2e4e3",
+               "allowed" = "#40C0C0",
+               "hearing" = "#8B85CA",
+               "nomention" = "#6f7b75")
+
+
+ggplot(adu_detached,
+       aes(x = reorder(jurisdiction, allowed_hearing_pcts),
+           y = adu_pct,
+           fill = treatment)) +
+  geom_col() +
+  coord_flip() +
+  theme_hfv()  +
+  scale_y_continuous(labels = percent_format()) +
+  theme(legend.position = "right") +
+  scale_fill_manual(values = my_colors)  # Add this line
+
+
+ggplot(hr_adu,
+       aes(x = reorder(jurisdiction, pct),
+           y = pct,
+           fill = pct)) +
+  geom_col() +
+  geom_text(aes(label = percent(pct, accuracy = 0.1), color = pct, hjust = -0.2)) +
+  coord_flip() +
+  theme_hfv() +
+  labs(title = "Percent of developable land allowing for ADUs by-right",
+       caption = "**Source: ** HousingForward Virginia, Virginia Zoning Atlas.")  +
+  scale_y_continuous(labels = percent_format(), expand = expansion(mult = c(0, 0.15))) +
+  scale_fill_gradientn(colours = c("#ADDCB1", "#46A88F", "#207A88", "#0F1A4E")) + # Use custom HFV gradient.
+  scale_color_gradientn(colours = c("#ADDCB1", "#46A88F", "#207A88", "#0F1A4E")) + # Use custom HFV gradient.
+  theme(axis.text.x = element_blank())
+  
 
 ```

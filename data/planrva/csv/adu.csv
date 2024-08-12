@@ -1,0 +1,204 @@
+jurisdiction,abbrvname,overlay,adu_detached,adu_attached,acres
+Ashland,B-1,0,prohibited,prohibited,43.05121297182398
+Ashland,B-2,0,prohibited,prohibited,418.2359064513988
+Ashland,B-4,0,hearing,hearing,15.900784474902776
+Ashland,HE,0,prohibited,prohibited,105.59744618985924
+Ashland,M-1,0,prohibited,prohibited,1059.1093737128404
+Ashland,M-2,0,prohibited,prohibited,83.71608700999643
+Ashland,PMH,0,prohibited,prohibited,52.869478166246765
+Ashland,POB,0,prohibited,prohibited,33.0327185
+Ashland,PSC,0,hearing,hearing,71.47699909023558
+Ashland,PUD,0,prohibited,prohibited,123.13677788619223
+Ashland,R-1,0,hearing,hearing,144.47891772763646
+Ashland,R-2,0,hearing,hearing,561.9923713736938
+Ashland,R-3,0,hearing,hearing,84.15666317290503
+Ashland,R-4,0,hearing,hearing,3.802399303027036
+Ashland,R-5,0,hearing,hearing,67.80559329
+Ashland,RO-1,0,prohibited,prohibited,2.113441775937849
+Ashland,RR-1,0,hearing,hearing,1026.0100683003948
+Ashland,RRC,0,hearing,hearing,76.75827337901268
+Charles City,A-1,0,prohibited,prohibited,98235.86274994416
+Charles City,A-20,0,prohibited,prohibited,118.12881463051312
+Charles City,B-1,0,prohibited,prohibited,295.7698649407279
+Charles City,B-2,0,prohibited,prohibited,78.04077193545358
+Charles City,B-3,0,prohibited,prohibited,47.2975876
+Charles City,M-1,0,prohibited,prohibited,2065.5104769817735
+Charles City,M-2,0,prohibited,prohibited,850.8107058528515
+Charles City,PD-IP,0,prohibited,prohibited,555.9646393472663
+Charles City,R-1,0,prohibited,prohibited,125.2765446459114
+Charles City,R-2,0,prohibited,prohibited,7.825174386858726
+Chesterfield,A,0,allowed,allowed,121181.86989806236
+Chesterfield,C-1,0,allowed,allowed,4.5042521998904235
+Chesterfield,C-2,0,allowed,allowed,1018.6926924883062
+Chesterfield,C-3,0,allowed,allowed,4117.214109573759
+Chesterfield,C-4,0,allowed,allowed,973.3042596128339
+Chesterfield,C-5,0,allowed,allowed,2139.141771036339
+Chesterfield,I-1,0,prohibited,prohibited,4066.371838866879
+Chesterfield,I-2,0,prohibited,prohibited,6601.390803840046
+Chesterfield,I-3,0,prohibited,prohibited,6212.788331336019
+Chesterfield,MH-1,0,prohibited,prohibited,253.6889401527951
+Chesterfield,MH-2,0,prohibited,prohibited,104.64587335837858
+Chesterfield,O-1,0,allowed,allowed,27.617523039559465
+Chesterfield,O-2,0,allowed,allowed,1977.265978829117
+Chesterfield,R-12,0,allowed,allowed,11974.806804863276
+Chesterfield,R-15,0,allowed,allowed,17751.237325279064
+Chesterfield,R-25,0,allowed,allowed,9712.610327
+Chesterfield,R-40,0,allowed,allowed,4748.314168533901
+Chesterfield,R-7,0,allowed,allowed,21343.061459239536
+Chesterfield,R-88,0,allowed,allowed,6474.435303298645
+Chesterfield,R-9,0,allowed,allowed,10177.774603148137
+Chesterfield,R-MF,0,prohibited,prohibited,1344.727083317593
+Chesterfield,R-TH,0,prohibited,prohibited,2754.495059858029
+Goochland,A-1,0,hearing,allowed,100130.72126090009
+Goochland,A-2,0,hearing,allowed,53689.86106445979
+Goochland,B-1,0,prohibited,prohibited,918.2652472410138
+Goochland,B-3,0,prohibited,prohibited,3.325549031106531
+Goochland,B-N,0,prohibited,prohibited,26.56832599636796
+Goochland,M-1,0,prohibited,prohibited,2812.7943193228066
+Goochland,M-2,0,prohibited,prohibited,2241.654583159776
+Goochland,MPUD,0,prohibited,prohibited,41.81506641388037
+Goochland,R-1,0,hearing,allowed,2990.7235689491563
+Goochland,R-2,0,prohibited,prohibited,1.8083781158543355
+Goochland,R-3,0,hearing,allowed,871.3997265947737
+Goochland,R-MH,0,prohibited,prohibited,11.220548164755996
+Goochland,R-N,0,hearing,allowed,133.78228468140247
+Goochland,R-O,0,hearing,allowed,84.69623030210143
+Goochland,R-P,0,hearing,allowed,1783.1521910108356
+Goochland,RPUD,0,prohibited,prohibited,1964.5821635129648
+Goochland,R-R,0,hearing,allowed,6182.1197429731565
+Hanover,A-1,0,hearing,hearing,242902.66223091708
+Hanover,AR-1,0,prohibited,prohibited,877.2154967071486
+Hanover,AR-2,0,prohibited,prohibited,1424.8985465602532
+Hanover,AR-6,0,hearing,hearing,5536.730160912102
+Hanover,B-1,0,prohibited,prohibited,424.33234391261806
+Hanover,B-2,0,prohibited,prohibited,454.5504965911813
+Hanover,B-3,0,prohibited,prohibited,1745.4918210231276
+Hanover,B-O,0,prohibited,prohibited,59.07420789
+Hanover,M-1,0,prohibited,prohibited,1152.7971165893823
+Hanover,M-2,0,prohibited,prohibited,4227.400962251286
+Hanover,M-3,0,prohibited,prohibited,2620.7573725998523
+Hanover,MX,0,prohibited,prohibited,132.26337300981209
+Hanover,OS,0,prohibited,prohibited,78.04577749
+Hanover,R-1,0,prohibited,prohibited,5519.1514837448085
+Hanover,R-2,0,prohibited,prohibited,3585.7103073788853
+Hanover,R-3,0,prohibited,prohibited,821.5954692
+Hanover,R-4,0,prohibited,prohibited,424.5672725379206
+Hanover,R-5,0,prohibited,prohibited,150.02436818241443
+Hanover,R-6,0,prohibited,prohibited,57.935558621575346
+Hanover,RC,0,hearing,hearing,7225.202702464117
+Hanover,RM,0,hearing,hearing,182.4346052611949
+Hanover,RS,0,hearing,hearing,1768.8252342171347
+Henrico,A-1,0,hearing,hearing,54581.95382407513
+Henrico,B-1,0,prohibited,prohibited,389.9839102401227
+Henrico,B-2,0,prohibited,prohibited,1553.9443082406392
+Henrico,B-3,0,prohibited,prohibited,2386.1255329781216
+Henrico,C-1,0,prohibited,prohibited,6428.776889383518
+Henrico,CMU,0,hearing,hearing,60.574216378248224
+Henrico,M-1,0,prohibited,prohibited,5057.530156570128
+Henrico,M-2,0,prohibited,prohibited,6627.198645274845
+Henrico,M-3,0,prohibited,prohibited,130.20325078239924
+Henrico,O/S,0,prohibited,prohibited,320.5187008600831
+Henrico,O-1,0,prohibited,prohibited,101.94395464472056
+Henrico,O-2,0,prohibited,prohibited,578.5784987895026
+Henrico,O-3,0,prohibited,prohibited,847.6878503504133
+Henrico,PMD,0,prohibited,prohibited,6.339577194810553
+Henrico,R-0,0,hearing,hearing,962.8861367164235
+Henrico,R-1,0,hearing,hearing,2730.0982798163654
+Henrico,R-1A,0,hearing,hearing,270.9922980675028
+Henrico,R-2,0,hearing,hearing,4354.778890293012
+Henrico,R-2A,0,hearing,hearing,6572.633386989899
+Henrico,R-3,0,hearing,hearing,13194.92315081494
+Henrico,R-3A,0,hearing,hearing,1893.2366260690217
+Henrico,R-4,0,hearing,hearing,5662.078440374419
+Henrico,R-4A,0,hearing,hearing,274.3731870759532
+Henrico,R-5,0,prohibited,prohibited,3379.9886156203725
+Henrico,R-5A,0,prohibited,prohibited,1328.8470632508363
+Henrico,R-6,0,prohibited,prohibited,1456.7558911438744
+Henrico,RTH,0,prohibited,prohibited,2137.128332282013
+Henrico,SMX-PD,0,hearing,hearing,261.25116891148366
+Henrico,UMU-PD,0,hearing,hearing,2439.776347225659
+New Kent,A-1,0,allowed,allowed,93124.11240908566
+New Kent,BUS,0,prohibited,prohibited,954.5640050167565
+New Kent,C-1,0,prohibited,prohibited,1972.5850724483223
+New Kent,CHDD,0,allowed,allowed,210.18719509561797
+New Kent,EO,0,prohibited,prohibited,4563.646600754824
+New Kent,IND,0,prohibited,prohibited,3325.0863381743693
+New Kent,PUD,0,hearing,hearing,6244.614002894719
+New Kent,R-1,0,allowed,allowed,3321.0396680801914
+New Kent,R-2,0,allowed,allowed,503.4368032101732
+New Kent,R-3,0,allowed,allowed,1.8970493788426597
+New Kent,R-OA,0,allowed,allowed,415.8122939600876
+Powhatan,A-10,0,allowed,allowed,126918.8767014034
+Powhatan,A-C,0,prohibited,allowed,503.7453345
+Powhatan,C,0,prohibited,prohibited,329.7716879578958
+Powhatan,CC,0,prohibited,prohibited,692.8477245820442
+Powhatan,CC-PD,0,prohibited,prohibited,14.309058984276405
+Powhatan,CHSC,0,prohibited,prohibited,17.704503277890197
+Powhatan,CR,0,prohibited,allowed,4.052144724049515
+Powhatan,I-1,0,prohibited,prohibited,289.6512509149721
+Powhatan,I-2,0,prohibited,prohibited,175.68695448908767
+Powhatan,M,0,prohibited,prohibited,475.9630638279935
+Powhatan,O,0,prohibited,prohibited,6.874070003182852
+Powhatan,R-2,0,prohibited,allowed,9086.619067653472
+Powhatan,RR,0,prohibited,allowed,6122.754452272867
+Powhatan,RR-5,0,prohibited,allowed,6471.975884672829
+Powhatan,R-U,0,prohibited,prohibited,4067.9541939168535
+Powhatan,VC,0,prohibited,prohibited,28.109691039154484
+Powhatan,VC-PD,0,prohibited,hearing,73.38938121068433
+Powhatan,VR-PD,0,prohibited,hearing,0.2415898357889893
+Richmond (city),B-1,0,prohibited,prohibited,19.22888875138488
+Richmond (city),B-2,0,prohibited,prohibited,269.03838296281646
+Richmond (city),B-3,0,prohibited,prohibited,834.4978085555225
+Richmond (city),B-4,0,prohibited,prohibited,301.8770677926665
+Richmond (city),B-5,0,prohibited,prohibited,130.4296206737346
+Richmond (city),B-6,0,prohibited,prohibited,108.40833580859868
+Richmond (city),B-7,0,prohibited,prohibited,450.1936306670487
+Richmond (city),Community Unit Plan: Beaufont Oaks,0,prohibited,prohibited,66.20264277
+Richmond (city),Community Unit Plan: Bellemeade,0,prohibited,prohibited,52.9162631
+Richmond (city),Community Unit Plan: Chippenham Forest Square,0,prohibited,prohibited,63.583304315259106
+Richmond (city),Community Unit Plan: Church Hill North Revitalization Plan,0,prohibited,prohibited,9.374698460622685
+Richmond (city),Community Unit Plan: Creighton Court Redevelopment Preliminary CUP,0,prohibited,prohibited,30.668728994086695
+Richmond (city),Community Unit Plan: Fay Towers/Gilpin Court,0,prohibited,prohibited,16.68253732032966
+Richmond (city),Community Unit Plan: Fulton,0,prohibited,prohibited,61.05435945799616
+Richmond (city),Community Unit Plan: Ginter Place,0,prohibited,prohibited,16.251753001992313
+Richmond (city),Community Unit Plan: Governor's Retreat,0,prohibited,prohibited,19.67332072475048
+Richmond (city),Community Unit Plan: Gresham Woods,0,prohibited,prohibited,119.20451603917115
+Richmond (city),Community Unit Plan: Hartshorn Town House Community,0,prohibited,prohibited,12.579135507395252
+Richmond (city),Community Unit Plan: Highland Grove Preliminary CUP,0,prohibited,prohibited,20.217151443077384
+Richmond (city),Community Unit Plan: James River Commons,0,prohibited,prohibited,14.835586865532749
+Richmond (city),Community Unit Plan: Kanawha Trace,0,prohibited,prohibited,21.19803105633192
+Richmond (city),Community Unit Plan: Lockegreen,0,prohibited,prohibited,48.65251798147063
+Richmond (city),Community Unit Plan: Malvern Manor,0,prohibited,prohibited,16.554599390041197
+Richmond (city),Community Unit Plan: Martin's Grant,0,prohibited,prohibited,17.092380608602134
+Richmond (city),Community Unit Plan: Mosby Court,0,prohibited,prohibited,45.82310218899887
+Richmond (city),Community Unit Plan: Randolph,0,prohibited,prohibited,54.71389426041705
+Richmond (city),Community Unit Plan: Shops at Stratford Hills,0,prohibited,prohibited,65.50381645493842
+Richmond (city),Community Unit Plan: Stony Point - North & South,0,prohibited,prohibited,425.76434369919946
+Richmond (city),DCC,0,prohibited,prohibited,26.741434128322393
+Richmond (city),I,0,prohibited,prohibited,373.7538178204762
+Richmond (city),M-1,0,prohibited,prohibited,2090.644556456037
+Richmond (city),M-2,0,prohibited,prohibited,2370.592077519898
+Richmond (city),OS,0,prohibited,prohibited,97.19738059
+Richmond (city),R-1,0,allowed,allowed,2642.7854371150574
+Richmond (city),R-2,0,allowed,allowed,3264.141143499135
+Richmond (city),R-3,0,allowed,allowed,2904.4215596993417
+Richmond (city),R-4,0,allowed,allowed,3262.7102563344115
+Richmond (city),R-43,0,allowed,allowed,339.83839033608587
+Richmond (city),R-48,0,allowed,allowed,685.7550817625804
+Richmond (city),R-5,0,allowed,allowed,4152.060702376801
+Richmond (city),R-53,0,allowed,allowed,611.7566143318925
+Richmond (city),R-6,0,allowed,allowed,1454.7007349308508
+Richmond (city),R-63,0,allowed,allowed,237.64742950062475
+Richmond (city),R-7,0,allowed,allowed,241.55322194464733
+Richmond (city),R-73,0,allowed,allowed,133.3675104660807
+Richmond (city),R-8,0,allowed,allowed,109.16359533808996
+Richmond (city),RF-1,0,prohibited,prohibited,11.269486390713578
+Richmond (city),RF-2,0,prohibited,prohibited,39.62800611
+Richmond (city),R-MH,0,prohibited,prohibited,44.72469366065664
+Richmond (city),RO-1,0,allowed,allowed,62.47160062914626
+Richmond (city),RO-2,0,allowed,allowed,77.02098406427149
+Richmond (city),RO-3,0,prohibited,prohibited,44.69752699497061
+Richmond (city),RP,0,prohibited,prohibited,99.85843697621267
+Richmond (city),TOD-1,0,prohibited,prohibited,442.5154644280117
+Richmond (city),UB,0,prohibited,prohibited,99.85935363234435
+Richmond (city),UB-2,0,prohibited,prohibited,38.021844379508096
