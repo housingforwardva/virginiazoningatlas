@@ -697,6 +697,7 @@ server <- function(input, output, session) {
     full_locality <- dplyr::filter(zoning, jurisdiction %in% input$select_juris)
 
     pct_value <- cur_locality %>%
+      dplyr::group_by() |> 
       dplyr::mutate(selected_acres = sum(acres)) |>
       dplyr::mutate(total_jurisdiction = sum(unique(full_locality$total_area))) |>
       dplyr::mutate(pct = scales::percent(selected_acres/total_jurisdiction), accuracy = 0.1) %>%

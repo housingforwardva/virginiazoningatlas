@@ -5,7 +5,7 @@ library(shinyWidgets)
 library(shinyjs)
 useShinyjs()
 
-MAPBOX_ACCESS_TOKEN = Sys.getenv("MAPBOX_ACCESS_TOKEN")
+MAPBOX_ACCESS_TOKEN <- Sys.getenv("MAPBOX_ACCESS_TOKEN")
 
 zoning <- readr::read_rds("data/vza_simple.rds")
 # Get a merged layer that is zoning with geometries dissolved across the possible filter groups to display when zoomed out (TBD)
@@ -54,9 +54,13 @@ hrva_list <- c("Chesapeake", "Franklin (city)", "Gloucester", "Hampton", "Isle o
                "Smithfield", "Southampton", "Suffolk", "Surry", "Surry (town)", 
                "Virginia Beach", "Williamsburg", "Windsor", "York")
 
+rva_list <- c("Ashland", "Charles City", "Chesterfield", "Goochland", "Hanover",
+              "Henrico", "New Kent", "Powhatan", "Richmond (city)")
+
 local_list <- list(
   "Northern Virginia" = nova_list,
-  "Hampton Roads" = hrva_list
+  "Hampton Roads" = hrva_list,
+  "PlanRVA" = rva_list
 )
 
 ui <- bslib::page_fluid(
@@ -383,7 +387,7 @@ server <- function(input, output, session) {
   bounds <- as.vector(sf::st_bbox(zoning))
   
   output$map <- mapgl::renderMapboxgl({
-    mapgl::mapboxgl(style = "mapbox://styles/kwalkertcu/clzk73n2h001801nv0d948xk8/draft", 
+    mapgl::mapboxgl(style = "mapbox://styles/ericvmai/clzu65lrv00qc01pd1her0smz/draft", 
                     bounds = bounds, 
                     access_token = MAPBOX_ACCESS_TOKEN) %>%
       mapgl::add_fill_layer(
@@ -693,6 +697,7 @@ server <- function(input, output, session) {
     full_locality <- dplyr::filter(zoning, jurisdiction %in% input$select_juris)
     
     pct_value <- cur_locality %>%
+      dplyr::group_by() |> 
       dplyr::mutate(selected_acres = sum(acres)) |>
       dplyr::mutate(total_jurisdiction = sum(unique(full_locality$total_area))) |>
       dplyr::mutate(pct = scales::percent(selected_acres/total_jurisdiction), accuracy = 0.1) %>%
