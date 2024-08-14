@@ -8,23 +8,27 @@ hr_vza <- geojson_sf("apps/data/raw/hr_vza_geo.geojson") |>
          family1_treatment, family2_treatment, family3_treatment, family4_treatment,
          accessory_treatment, plannedresidential_treatment, tooltipnotes,
          acres, jurisdiction, county, sfd) |> 
-  mutate(region = "Hampton Roads")
+  mutate(region = "Hampton Roads") |> 
+  ms_simplify(keep = 0.1, keep_shapes = TRUE)
+  
 
 nova_vza <- geojson_sf("apps/data/raw/nova_vza_geo.geojson") |> 
   select(id, type, abbrvname, name, overlay, # Select the fields needed for analysis.
          family1_treatment, family2_treatment, family3_treatment, family4_treatment,
          accessory_treatment, plannedresidential_treatment, tooltipnotes,
          acres, jurisdiction, county, sfd) |> 
-  mutate(region = "Northern Virginia")
+  mutate(region = "Northern Virginia") |> 
+  ms_simplify(keep = 0.1, keep_shapes = TRUE)
 
-rva_vza <- geojson_sf("apps/data/raw/nova_vza_geo.geojson") |> 
+rva_vza <- geojson_sf("apps/data/raw/rva_vza_geo.geojson") |> 
   select(id, type, abbrvname, name, overlay, # Select the fields needed for analysis.
          family1_treatment, family2_treatment, family3_treatment, family4_treatment,
          accessory_treatment, plannedresidential_treatment, tooltipnotes,
          acres, jurisdiction, county, sfd) |> 
-  mutate(region = "Northern Virginia")
+  mutate(region = "PlanRVA") |> 
+  ms_simplify(keep = 0.1, keep_shapes = TRUE)
 
-vza <- rbind(hr_vza, nova_vza) 
+vza <- rbind(hr_vza, nova_vza, rva_vza) 
 
 sparse <- vza |>
   mutate(jurisdiction = case_when( # Reformat town names.
@@ -71,9 +75,9 @@ sparse <- vza |>
   )) 
 
 
-simple <- ms_simplify(sparse, keep = 0.1, keep_shapes = TRUE)
+# simple <- ms_simplify(sparse, keep = 0.1, keep_shapes = TRUE)
 
-write_rds(st_cast(simple, "MULTIPOLYGON"), "apps/data/vza_simple.rds")
+write_rds(st_cast(sparse, "MULTIPOLYGON"), "apps/data/vza_simple.rds")
 
 # st_write(st_cast(simple, "MULTIPOLYGON"), "apps/data/vza_simple.geojson", append = FALSE)
 # 

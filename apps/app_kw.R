@@ -54,9 +54,13 @@ hrva_list <- c("Chesapeake", "Franklin (city)", "Gloucester", "Hampton", "Isle o
                "Smithfield", "Southampton", "Suffolk", "Surry", "Surry (town)", 
                "Virginia Beach", "Williamsburg", "Windsor", "York")
 
+rva_list <- c("Ashland", "Charles City", "Chesterfield", "Goochland", "Hanover",
+              "Henrico", "New Kent", "Powhatan", "Richmond (city")
+
 local_list <- list(
   "Northern Virginia" = nova_list,
-  "Hampton Roads" = hrva_list
+  "Hampton Roads" = hrva_list,
+  "PlanRVA" = rva_list
 )
 
 ui <- bslib::page_fluid(
