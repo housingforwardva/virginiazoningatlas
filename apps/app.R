@@ -1,26 +1,28 @@
 library(magrittr)
 library(sf)
-library(rdeck)
+library(mapgl)
 library(shinyWidgets)
 library(shinyjs)
 useShinyjs()
 
 MAPBOX_ACCESS_TOKEN = Sys.getenv("MAPBOX_ACCESS_TOKEN")
-options(rdeck.mapbox_access_token = MAPBOX_ACCESS_TOKEN)
-
-# remotes::install_github("walkerke/mapboxapi")
-
-icon_atlas <- "https://raw.githubusercontent.com/visgl/deck.gl-data/master/website/icon-atlas.png"
-icon_mapping <- jsonlite::fromJSON("https://raw.githubusercontent.com/visgl/deck.gl-data/master/website/icon-atlas.json")
-
 
 zoning <- readr::read_rds("data/vza_simple.rds")
-sfd <- dplyr::filter(zoning, sfd == "t")
-apts <- dplyr::filter(zoning, family4_treatment == "allowed")
-adus <- dplyr::filter(zoning, type == "Primarily Residential", accessory_treatment == "allowed")
-missmiddle <- dplyr::filter(zoning, family2_treatment == "allowed", family3_treatment == "allowed", family4_treatment == "allowed")
-hidden_layer <- readr::read_rds("data/hidden_layer.rds")
+# Get a merged layer that is zoning with geometries dissolved across the possible filter groups to display when zoomed out (TBD)
 
+# Construct the tooltip column
+zoning$tooltip <- paste0(
+  '<div style="padding: 3px; font-size: 10px;">',  # Set width and smaller font size
+  '<div><strong>Abbreviation </strong><span style="float: right;">', zoning$Abbreviation, '</span></div>',
+  '<div><strong>Zoning </strong><span style="float: right;">', zoning$Zoning, '</span></div>',
+  '<div><strong>Jurisdiction </strong><span style="float: right;">', zoning$Jurisdiction, '</span></div>',
+  '<div><strong>Notes </strong></div>',
+  '<div>', zoning$Notes, '</div>',
+  '</div>'
+)
+
+
+# Refactor - this shouldn't be needed as we can use set_filter()
 
 type_choices <- c(
   "Prohibited" = "prohibited",
@@ -35,8 +37,8 @@ accessory_choices <- c(
 )
 
 base_map <- c(
-  "Light" = rdeck::mapbox_light(),
-  "Satellite" = rdeck::mapbox_satellite()
+  "Light" = mapbox_style("light"),
+  "Satellite" = mapbox_style("satellite")
 )
 
 base_selected <- "Light"
@@ -158,13 +160,13 @@ ui <- bslib::page_fluid(
   ),
   shiny::fluidRow( 
     style = "height: 100%;", 
-    shiny::absolutePanel(
-      width = "150px",
-      class = "sub-panel",
-      bottom = 50, right = 20, 
-      shiny::selectInput("basemap", "Choose basemap",
-                         choices = base_map,
-                         selected = base_selected)),
+    # shiny::absolutePanel(
+    #   width = "150px",
+    #   class = "sub-panel",
+    #   bottom = 50, right = 20, 
+    #   shiny::selectInput("basemap", "Choose basemap",
+    #               choices = base_map,
+    #               selected = base_selected)),
     shiny::absolutePanel(
       top = 10,
       right = 20,
@@ -221,31 +223,31 @@ ui <- bslib::page_fluid(
           shinyWidgets::prettySwitch("sf_switch", "Single-family detached only"),
           bslib::tooltip(
             bsicons::bs_icon("info-circle"),
-            "Where you can build only single-family detached housing"
+            "Where you can build only single family detached housing"
           )
         ),
         span(
           style = "display: flex; align-items: center;",
-          shinyWidgets::prettySwitch("apt_switch", "By-Right Apartments (4+ units)"),
+          shinyWidgets::prettySwitch("apt_switch", "Apartments (4+ units)"),
           bslib::tooltip(
             bsicons::bs_icon("info-circle"),
-            "Where you can build larger apartments (4+ units) without a public hearing process"
+            "Where you can build larger apartments by-right or through a public hearing"
           )
         ),
         span(
           style = "display: flex; align-items: center;",
-          shinyWidgets::prettySwitch("adu_switch", "By-Right Accessory Dwelling Units"),
+          shinyWidgets::prettySwitch("adu_switch", "Accessory Dwelling Units"),
           bslib::tooltip(
             bsicons::bs_icon("info-circle"),
-            "Where you can build ADUs in primarily residential zoning districts without a public hearing process"
+            "Where you can build ADUs in primarily residential zoning districts"
           )
         ),
         span(
           style = "display: flex; align-items: center;",
-          shinyWidgets::prettySwitch("msm_switch", "By-Right Missing Middle Housing"),
+          shinyWidgets::prettySwitch("msm_switch", "Missing Middle Housing"),
           bslib::tooltip(
             bsicons::bs_icon("info-circle"),
-            "Where you can build 2-4 unit housing without a public hearing process"
+            "Where you can build 2-4 unit housing by-right or through a public hearing"
           )
         )
       ),
@@ -339,7 +341,7 @@ ui <- bslib::page_fluid(
     ), 
     shiny::mainPanel(
       width = 12,
-      rdeck::rdeckOutput("map", width = "99%", height = "100%")
+      mapgl::mapboxglOutput("map", width = "99%", height = "100%")
     )
   )
 )
@@ -347,10 +349,12 @@ ui <- bslib::page_fluid(
 server <- function(input, output, session) {
   
   shinyalert::shinyalert("Disclaimer",
-                         "<b>HousingForward Virginia</b> created the Virginia Zoning Atlas for public informational purposes only. 
-                         We hereby present this map without any warranty, either express or implied, about its validity or accuracy, 
-                         or its suitabilityfor legal, engineering, or land survey purposes. As we all know, zoning is fluid. If you 
-                         notice an error, we encourage you to <a href = 'mailto:eric@housingforwardva.org?subject = Virginia Zoning Atlas'> contact us </a>.",
+                         "<b>HousingForward Virginia</b> created the Virginia Zoning Atlas for public informational purposes only.
+             Given the huge amount of info it contains and the possibility of changing conditions (in zoning codes,
+             parcel/jurisdiction boundaries, & state laws), here's our disclaimer!: We hereby present this map
+             without any warranty, either express or implied, about its validity or accuracy, or its suitability
+             for legal, engineering, or land survey purposes. As we all know, zoning is fluid. If you notice an error,
+             we encourage you to <a href = 'mailto:eric@housingforwardva.org?subject = Virginia Zoning Atlas'> contact us </a>.",
                          type = "warning",
                          html = TRUE, 
                          inputId = "disclaimer"
@@ -367,161 +371,47 @@ server <- function(input, output, session) {
   #            html = TRUE)
   
   # shinyalert::shinyalert("Best Viewing Experience",
-  #                        "The Virginia Zoning Atlas is best viewed on a desktop, laptop, or tablet.",
-  #                        type = "info",
-  #                        html = TRUE, 
-  #                        inputId = "best_viewing")
+  #            "The Virginia Zoning Atlas is best viewed on a desktop, laptop, or tablet.",
+  #            type = "info",
+  #            html = TRUE, 
+  #            inputId = "best_viewing")
   
   
-  output$map <- rdeck::renderRdeck({
-    rdeck::rdeck(map_style = mapbox_light(), theme = "light",
-                 initial_bounds = zoning,
-                 layer_selector = FALSE) 
+  # Let's try initializing the data on map load
+  # The issue with this is how `set_style()` works within the proxy - I wonder if 
+  # we need to change `fit_bounds()`
+  bounds <- as.vector(sf::st_bbox(zoning))
+  
+  output$map <- mapgl::renderMapboxgl({
+    mapgl::mapboxgl(style = "mapbox://styles/kwalkertcu/clzk73n2h001801nv0d948xk8/draft", 
+                    bounds = bounds, 
+                    access_token = MAPBOX_ACCESS_TOKEN) %>%
+      mapgl::add_fill_layer(
+        id = "zoning",
+        source = zoning,
+        fill_opacity = 0.8,
+        fill_color = get_column("fill_color"),
+        fill_outline_color = "white",
+        tooltip = "tooltip",
+        slot = "middle",
+        hover_options = list(
+          fill_opacity = 1
+        )
+      ) %>%
+      mapgl::add_navigation_control()
   })
   
-  zoning_layer <- reactive({
-    check <- dplyr::filter(zoning, jurisdiction %in% input$select_juris)
-    
-    if (nrow(check) > 0) {
-      check
-    } else {
-      hidden_layer
-    }
-    
-  })
-  
-  sfd_layer <- reactive({
-    
-    check <- dplyr::filter(sfd, jurisdiction %in% input$select_juris)
-    
-    if (nrow(check) > 0) {
-      check
-    } else {
-      hidden_layer
-    }
-    
-  })
-  
-  apts_layer <- reactive({
-    check <- dplyr::filter(apts, jurisdiction %in% input$select_juris)
-    
-    if (nrow(check) > 0) {
-      check
-    } else {
-      hidden_layer
-    }
-  })
-  
-  adus_layer <- reactive({
-    check <- dplyr::filter(adus, jurisdiction %in% input$select_juris)
-    
-    if (nrow(check) > 0) {
-      check
-    } else {
-      hidden_layer
-    }
-  })
-  
-  missmiddle_layer <- reactive({
-    check <- dplyr::filter(missmiddle, jurisdiction %in% input$select_juris)
-    
-    if (nrow(check) > 0) {
-      check
-    } else {
-      hidden_layer
-    }
-  })
-  
-  shiny::observeEvent(input$disclaimer, {
-    rdeck::rdeck_proxy("map") %>%
-      rdeck::add_polygon_layer(
-        data = zoning_layer(),
-        get_fill_color = fill_color,
-        opacity = 0.8,
-        id = "zoning_layer",
-        get_polygon = geometry,
-        get_line_color = "#ffffff",
-        get_line_width = 10,
-        pickable = TRUE,
-        auto_highlight = TRUE,
-        highlight_color = highlight_color,
-        tooltip = c(Abbreviation, Zoning, Jurisdiction, Notes),
-        name = "Zoning",
-        visible = TRUE
-      )   # %>%
-    # rdeck::add_polygon_layer(
-    #   data = sfd_layer(),
-    #   get_fill_color = fill_color,
-    #   opacity = 0.8,
-    #   id = "sfd",
-    #   get_polygon = geometry,
-    #   get_line_color = "#ffffff",
-    #   get_line_width = 10,
-    #   pickable = TRUE,
-    #   auto_highlight = TRUE,
-    #   highlight_color = highlight_color,
-    #   tooltip = c(Abbreviation, Zoning, Jurisdiction, Notes),
-    #   name = "Zoning",
-    #   visible = FALSE
-    # ) %>%
-    # rdeck::add_polygon_layer(
-    #   data = adus_layer(),
-    #   get_fill_color = fill_color,
-    #   opacity = 0.8,
-    #   id = "adus",
-    #   get_polygon = geometry,
-    #   get_line_color = "#ffffff",
-    #   get_line_width = 10,
-    #   pickable = TRUE,
-    #   auto_highlight = TRUE,
-    #   highlight_color = highlight_color,
-    #   tooltip = c(Abbreviation, Zoning, Jurisdiction, Notes),
-    #   name = "Zoning",
-    #   visible = FALSE
-    # ) %>%
-    # rdeck::add_polygon_layer(
-    #   data = apts_layer(),
-    #   get_fill_color = fill_color,
-    #   opacity = 0.8,
-    #   id = "apts",
-    #   get_polygon = geometry,
-    #   get_line_color = "#ffffff",
-    #   get_line_width = 10,
-    #   pickable = TRUE,
-    #   auto_highlight = TRUE,
-    #   highlight_color = highlight_color,
-    #   tooltip = c(Abbreviation, Zoning, Jurisdiction, Notes),
-    #   name = "Zoning",
-    #   visible = FALSE
-    # ) %>%
-    # rdeck::add_polygon_layer(
-    #   data = missmiddle_layer(),
-    #   get_fill_color = fill_color,
-    #   opacity = 0.8,
-    #   id = "missmiddle",
-    #   get_polygon = geometry,
-    #   get_line_color = "#ffffff",
-    #   get_line_width = 10,
-    #   pickable = TRUE,
-    #   auto_highlight = TRUE,
-    #   highlight_color = highlight_color,
-    #   tooltip = c(Abbreviation, Zoning, Jurisdiction, Notes),
-    #   name = "Zoning",
-    #   visible = FALSE
-    # )
-  })
-  
-  
+  # Adjust opacity with set_paint_property
   shiny::observeEvent(input$opacity, {
-    rdeck::rdeck_proxy("map") %>%
-      rdeck::update_polygon_layer(id = current_layer(),
-                                  opacity = input$opacity / 100,
-                                  get_fill_color = fill_color, ,
-                                  get_polygon = geometry, get_line_color = "#ffffff",
-                                  get_line_width = 10, get_elevation = 1000)
+    mapgl::mapboxgl_proxy("map") %>%
+      set_paint_property(
+        layer = "zoning",
+        name = "fill-opacity",
+        value = input$opacity / 100
+      )
   })
   
-  
+  # Handle the geocoder with new mapgl features
   geo_outputs <- shiny::eventReactive(input$geocode, {
     loc <- mapboxapi::geocoder_as_sf(input$geocode) %>%
       dplyr::mutate(icon = "marker",
@@ -540,397 +430,19 @@ server <- function(input, output, session) {
     
     g <- geo_outputs()
     
-    rdeck::rdeck_proxy("map", initial_bounds = sf::st_bbox(g$buffer)) %>%
-      rdeck::add_icon_layer(
-        id = "chosen_location",
-        name = "Selected location",
+    mapgl::mapboxgl_proxy("map") %>%
+      mapgl::clear_markers() %>%
+      mapgl::fit_bounds(g$buffer, animate = TRUE) %>%
+      mapgl::add_markers(
         data = g$marker,
-        get_position = sf_column(),
-        size_scale = 30,
-        get_color = "#000000",
-        
-        # icon params
-        get_icon = icon,
-        icon_atlas = icon_atlas,
-        icon_mapping = icon_mapping,
-        
-        # interactivity
-        pickable = TRUE,
-        auto_highlight = TRUE,
-        tooltip = Address
+        color = "black",
+        popup = "Address", 
+        draggable = TRUE
       )
+    
   })
   
-  
-  # Write a zoning filter that talks to all of the different options
-  # zoning_filter <- shiny::reactive({
-  #   sf_opts <- input$single_family_options
-  #   f2_opts <- input$two_family_options
-  #   f3_opts <- input$three_family_options
-  #   f4_opts <- input$four_family_options
-  #   acc_opts <- input$accessory_options
-  #   locality <- input$select_juris
-  # 
-  #   if (input$sf_switch) {
-  #     output <- zoning %>%
-  #       dplyr::filter(
-  #         sfd == "t",
-  #         jurisdiction %in% locality
-  #       ) |>
-  #       dplyr::mutate(selected_acres = sum(acres)) |>
-  #       dplyr::mutate(total_jurisdiction = sum(unique(total_area))) |>
-  #       dplyr::mutate(pct = scales::percent(selected_acres/total_jurisdiction), accuracy = 0.1)
-  #   } else {
-  #     output <- zoning %>%
-  #       dplyr::filter(
-  #         family1_treatment %in% sf_opts,
-  #         family2_treatment %in% f2_opts,
-  #         family3_treatment %in% f3_opts,
-  #         family4_treatment %in% f4_opts,
-  #         accessory_treatment %in% acc_opts,
-  #         jurisdiction %in% locality
-  #       ) |>
-  #       dplyr::mutate(selected_acres = sum(acres)) |>
-  #       dplyr::mutate(total_jurisdiction = sum(unique(total_area))) |>
-  #       dplyr::mutate(pct = scales::percent(selected_acres/total_jurisdiction), accuracy = 0.1)
-  #   }
-  # 
-  # 
-  # 
-  # 
-  # 
-  #   output
-  # 
-  # })
-  # 
-  # shiny::observeEvent(zoning_filter(), {
-  #   rdeck::rdeck_proxy("map") %>%
-  #     rdeck::add_polygon_layer(data = zoning_filter(), get_fill_color = fill_color, opacity = 0.8,
-  #                       id = "zoning_layer", get_polygon = geometry, get_line_color = "#ffffff",
-  #                       get_line_width = 10, pickable = TRUE, auto_highlight = TRUE, highlight_color = highlight_color,
-  #                       tooltip = c(Abbreviation, Zoning, Jurisdiction, Notes), name = "Zoning")
-  # })
-  
-  # shiny::observeEvent(input$single_family, {
-  #   if (input$single_family) {
-  #     selected_values <- setdiff(input$single_family_options, "prohibited")
-  #     shiny::updateCheckboxGroupInput(session, "single_family_options", selected = selected_values)
-  #   } else {
-  #     shiny::updateCheckboxGroupInput(session, "single_family_options", selected = type_choices)
-  #   }
-  # })
-  # 
-  # shiny::observeEvent(input$two_family, {
-  #   if (input$two_family) {
-  #     selected_values <- setdiff(input$two_family_options, "prohibited")
-  #     shiny::updateCheckboxGroupInput(session, "two_family_options", selected = selected_values)
-  #   } else {
-  #     shiny::updateCheckboxGroupInput(session, "two_family_options", selected = type_choices)
-  #   }
-  # })
-  # 
-  # shiny::observeEvent(input$three_family, {
-  #   if (input$three_family) {
-  #     selected_values <- setdiff(input$three_family_options, "prohibited")
-  #     shiny::updateCheckboxGroupInput(session, "three_family_options", selected = selected_values)
-  #   } else {
-  #     shiny::updateCheckboxGroupInput(session, "three_family_options", selected = type_choices)
-  #   }
-  # })
-  # 
-  # shiny::observeEvent(input$four_family, {
-  #   if (input$four_family) {
-  #     selected_values <- setdiff(input$four_family_options, "prohibited")
-  #     shiny::updateCheckboxGroupInput(session, "four_family_options", selected = selected_values)
-  #   } else {
-  #     shiny::updateCheckboxGroupInput(session, "four_family_options", selected = type_choices)
-  #   }
-  # })
-  # 
-  # shiny::observeEvent(input$accessory, {
-  #   if (input$accessory) {
-  #     selected_values <- setdiff(input$accessory_options, "prohibited")
-  #     shiny::updateCheckboxGroupInput(session, "accessory_options", selected = selected_values)
-  #   } else {
-  #     shiny::updateCheckboxGroupInput(session, "accessory_options", selected = type_choices)
-  #   }
-  # })
-  
-  current_layer <- shiny::reactiveVal("zoning_layer")
-  
-  # If a locality is modified, then modify the underlying layer
-  shiny::observeEvent(input$select_juris, {
-    proxy <- rdeck::rdeck_proxy("map")
-    
-    cur <- current_layer()
-    
-    if (cur == "zoning_layer") {
-      cur_locality <- zoning_layer()
-    } else if (cur == "sfd") {
-      cur_locality <- sfd_layer()
-    } else if (cur == "apts") {
-      cur_locality <- apts_layer()
-    } else if (cur == "adus") {
-      cur_locality <- adus_layer()
-    } else if (cur == "missmiddle") {
-      cur_locality <- missmiddle_layer()
-    }
-    
-    proxy %>%
-      rdeck::add_polygon_layer(data = cur_locality,
-                               get_fill_color = fill_color,
-                               opacity = input$opacity / 100,
-                               id = cur,
-                               get_polygon = geometry,
-                               get_line_color = "#ffffff",
-                               get_line_width = 10,
-                               get_elevation = 1000,
-                               pickable = TRUE,
-                               auto_highlight = TRUE,
-                               highlight_color = highlight_color,
-                               tooltip = c(Abbreviation, Zoning, Jurisdiction, Notes),
-                               name = "Zoning",
-                               visible = TRUE)
-    
-    
-    
-  }, ignoreInit = TRUE)
-  
-  shiny::observe({
-    proxy <- rdeck::rdeck_proxy("map")
-    
-    cur <- current_layer()
-    
-    if (cur == "zoning_layer") {
-      cur_locality <- zoning_layer()
-    } else if (cur == "sfd") {
-      cur_locality <- sfd_layer()
-    } else if (cur == "apts") {
-      cur_locality <- apts_layer()
-    } else if (cur == "adus") {
-      cur_locality <- adus_layer()
-    } else if (cur == "missmiddle") {
-      cur_locality <- missmiddle_layer()
-    }
-    
-    if (nrow(cur_locality) > 0) {
-      if (input$sf_switch) {
-        proxy %>%
-          rdeck::update_polygon_layer(id = "zoning_layer", visible = FALSE,
-                                      get_fill_color = fill_color,
-                                      get_polygon = geometry,
-                                      get_line_color = "#ffffff",
-                                      get_line_width = 10,
-                                      get_elevation = 1000) %>%
-          rdeck::add_polygon_layer(id = "sfd", visible = TRUE,
-                                   data = sfd_layer(),
-                                   get_polygon = geometry,
-                                   opacity = input$opacity / 100,
-                                   get_fill_color = fill_color,
-                                   get_line_color = "#ffffff",
-                                   get_line_width = 10,
-                                   get_elevation = 1000,
-                                   pickable = TRUE,
-                                   auto_highlight = TRUE,
-                                   highlight_color = highlight_color,
-                                   tooltip = c(Abbreviation, Zoning, Jurisdiction, Notes),
-                                   name = "Zoning") %>%
-          rdeck::update_polygon_layer(id = "apts", visible = FALSE,
-                                      get_fill_color = fill_color,
-                                      get_polygon = geometry,
-                                      get_line_color = "#ffffff",
-                                      get_line_width = 10,
-                                      get_elevation = 1000) %>%
-          rdeck::update_polygon_layer(id = "adus", visible = FALSE,
-                                      get_fill_color = fill_color,
-                                      get_polygon = geometry,
-                                      get_line_color = "#ffffff",
-                                      get_line_width = 10,
-                                      get_elevation = 1000) %>%
-          rdeck::update_polygon_layer(id = "missmiddle", visible = FALSE,
-                                      get_fill_color = fill_color,
-                                      get_polygon = geometry,
-                                      get_line_color = "#ffffff",
-                                      get_line_width = 10,
-                                      get_elevation = 1000)
-        
-        current_layer("sfd")
-        
-      } else if (input$apt_switch) {
-        proxy %>%
-          rdeck::update_polygon_layer(id = "zoning_layer", visible = FALSE,
-                                      get_fill_color = fill_color,
-                                      get_polygon = geometry,
-                                      get_line_color = "#ffffff",
-                                      get_line_width = 10,
-                                      get_elevation = 1000) %>%
-          rdeck::update_polygon_layer(id = "sfd", visible = FALSE,
-                                      get_fill_color = fill_color,
-                                      get_polygon = geometry,
-                                      get_line_color = "#ffffff",
-                                      get_line_width = 10,
-                                      get_elevation = 1000) %>%
-          rdeck::add_polygon_layer(id = "apts", visible = TRUE,
-                                   data = apts_layer(),
-                                   opacity = input$opacity / 100,
-                                   get_polygon = geometry,
-                                   get_fill_color = fill_color,
-                                   get_line_color = "#ffffff",
-                                   get_line_width = 10,
-                                   get_elevation = 1000,
-                                   pickable = TRUE,
-                                   auto_highlight = TRUE,
-                                   highlight_color = highlight_color,
-                                   tooltip = c(Abbreviation, Zoning, Jurisdiction, Notes),
-                                   name = "Zoning") %>%
-          rdeck::update_polygon_layer(id = "adus", visible = FALSE,
-                                      get_fill_color = fill_color,
-                                      get_polygon = geometry,
-                                      get_line_color = "#ffffff",
-                                      get_line_width = 10,
-                                      get_elevation = 1000) %>%
-          rdeck::update_polygon_layer(id = "missmiddle", visible = FALSE,
-                                      get_fill_color = fill_color,
-                                      get_polygon = geometry,
-                                      get_line_color = "#ffffff",
-                                      get_line_width = 10,
-                                      get_elevation = 1000)
-        
-        current_layer("apts")
-        
-        
-      } else if (input$adu_switch) {
-        proxy %>%
-          rdeck::update_polygon_layer(id = "zoning_layer", visible = FALSE,
-                                      get_fill_color = fill_color,
-                                      get_polygon = geometry,
-                                      get_line_color = "#ffffff",
-                                      get_line_width = 10,
-                                      get_elevation = 1000) %>%
-          rdeck::update_polygon_layer(id = "sfd", visible = FALSE,
-                                      get_fill_color = fill_color,
-                                      get_polygon = geometry,
-                                      get_line_color = "#ffffff",
-                                      get_line_width = 10,
-                                      get_elevation = 1000) %>%
-          rdeck::update_polygon_layer(id = "apts", visible = FALSE,
-                                      get_fill_color = fill_color,
-                                      get_polygon = geometry,
-                                      get_line_color = "#ffffff",
-                                      get_line_width = 10,
-                                      get_elevation = 1000) %>%
-          rdeck::add_polygon_layer(id = "adus", visible = TRUE,
-                                   data = adus_layer(),
-                                   opacity = input$opacity / 100,
-                                   get_polygon = geometry,
-                                   get_fill_color = fill_color,
-                                   get_line_color = "#ffffff",
-                                   get_line_width = 10,
-                                   get_elevation = 1000,
-                                   pickable = TRUE,
-                                   auto_highlight = TRUE,
-                                   highlight_color = highlight_color,
-                                   tooltip = c(Abbreviation, Zoning, Jurisdiction, Notes),
-                                   name = "Zoning") %>%
-          rdeck::update_polygon_layer(id = "missmiddle", visible = FALSE,
-                                      get_fill_color = fill_color,
-                                      get_polygon = geometry,
-                                      get_line_color = "#ffffff",
-                                      get_line_width = 10,
-                                      get_elevation = 1000)
-        
-        current_layer("adus")
-        
-        
-      } else if (input$msm_switch) {
-        proxy %>%
-          rdeck::update_polygon_layer(id = "zoning_layer", visible = FALSE,
-                                      get_fill_color = fill_color,
-                                      get_polygon = geometry,
-                                      get_line_color = "#ffffff",
-                                      get_line_width = 10,
-                                      get_elevation = 1000) %>%
-          rdeck::update_polygon_layer(id = "sfd", visible = FALSE,
-                                      get_fill_color = fill_color,
-                                      get_polygon = geometry,
-                                      get_line_color = "#ffffff",
-                                      get_line_width = 10,
-                                      get_elevation = 1000) %>%
-          rdeck::update_polygon_layer(id = "apts", visible = FALSE,
-                                      get_fill_color = fill_color,
-                                      get_polygon = geometry,
-                                      get_line_color = "#ffffff",
-                                      get_line_width = 10,
-                                      get_elevation = 1000) %>%
-          rdeck::update_polygon_layer(id = "adus", visible = FALSE,
-                                      get_fill_color = fill_color,
-                                      get_polygon = geometry,
-                                      get_line_color = "#ffffff",
-                                      get_line_width = 10,
-                                      get_elevation = 1000) %>%
-          rdeck::add_polygon_layer(id = "missmiddle", visible = TRUE,
-                                   data = missmiddle_layer(),
-                                   get_polygon = geometry,
-                                   opacity = input$opacity / 100,
-                                   get_fill_color = fill_color,
-                                   get_line_color = "#ffffff",
-                                   get_line_width = 10,
-                                   get_elevation = 1000,
-                                   pickable = TRUE,
-                                   auto_highlight = TRUE,
-                                   highlight_color = highlight_color,
-                                   tooltip = c(Abbreviation, Zoning, Jurisdiction, Notes),
-                                   name = "Zoning")
-        
-        current_layer("missmiddle")
-        
-        
-      } else {
-        proxy %>%
-          rdeck::add_polygon_layer(id = "zoning_layer", visible = TRUE,
-                                   data = zoning_layer(),
-                                   get_polygon = geometry,
-                                   opacity = input$opacity / 100,
-                                   get_fill_color = fill_color,
-                                   get_line_color = "#ffffff",
-                                   get_line_width = 10,
-                                   get_elevation = 1000,
-                                   pickable = TRUE,
-                                   auto_highlight = TRUE,
-                                   highlight_color = highlight_color,
-                                   tooltip = c(Abbreviation, Zoning, Jurisdiction, Notes),
-                                   name = "Zoning") %>%
-          rdeck::update_polygon_layer(id = "sfd", visible = FALSE,
-                                      get_fill_color = fill_color,
-                                      get_polygon = geometry,
-                                      get_line_color = "#ffffff",
-                                      get_line_width = 10,
-                                      get_elevation = 1000) %>%
-          rdeck::update_polygon_layer(id = "apts", visible = FALSE,
-                                      get_fill_color = fill_color,
-                                      get_polygon = geometry,
-                                      get_line_color = "#ffffff",
-                                      get_line_width = 10,
-                                      get_elevation = 1000) %>%
-          rdeck::update_polygon_layer(id = "adus", visible = FALSE,
-                                      get_fill_color = fill_color,
-                                      get_polygon = geometry,
-                                      get_line_color = "#ffffff",
-                                      get_line_width = 10,
-                                      get_elevation = 1000) %>%
-          rdeck::update_polygon_layer(id = "missmiddle", visible = FALSE,
-                                      get_fill_color = fill_color,
-                                      get_polygon = geometry,
-                                      get_line_color = "#ffffff",
-                                      get_line_width = 10,
-                                      get_elevation = 1000)
-        
-        current_layer("zoning_layer")
-        
-      }
-    }
-  })
-  
+  # Handle the switches
   shiny::observeEvent(input$sf_switch, {
     if (input$sf_switch) {
       # Modify the switches
@@ -970,143 +482,195 @@ server <- function(input, output, session) {
     
   })
   
+  # Observer that handles the jurisdiction and switch filters
+  current_layer <- shiny::reactiveVal("zoning_layer")
+  
+  shiny::observe({
+    proxy <- mapgl::mapboxgl_proxy("map") 
+    
+    if (length(input$select_juris) > 0) {
+      
+      proxy %>%
+        set_layout_property(
+          "zoning",
+          "visibility",
+          "visible"
+        )
+      
+      if (input$sf_switch) {
+        
+        proxy %>%
+          set_filter(
+            "zoning",
+            list("all",
+                 c("==", "sfd", "t"),
+                 c("in", "Jurisdiction", input$select_juris)
+            )
+            
+          )
+        
+        current_layer("sfd")
+        
+      } else if (input$apt_switch) {
+        
+        proxy %>%
+          set_filter(
+            "zoning",
+            list("all",
+                 c("in", "family4_treatment", "allowed", "hearing"),
+                 c("in", "Jurisdiction", input$select_juris)
+            )
+          )
+        
+        current_layer("apts")
+        
+        
+      } else if (input$adu_switch) {
+        
+        proxy %>%
+          set_filter(
+            "zoning",
+            list("all",
+                 c("==", "type", "Primarily Residential"),
+                 c("!=", "accessory_treatment", "prohibited"),
+                 c("in", "Jurisdiction", input$select_juris)
+            )
+          )
+        
+        current_layer("adus")
+        
+      } else if (input$msm_switch) {
+        
+        proxy %>%
+          set_filter(
+            "zoning",
+            list("all",
+                 c("!=", "family2_treatment", "prohibited"),
+                 c("!=", "family3_treatment", "prohibited"),
+                 c("!=", "family4_treatment", "prohibited"),
+                 c("in", "Jurisdiction", input$select_juris)
+            )
+          )
+        
+        current_layer("missmiddle")
+        
+        
+      } else {
+        
+        proxy %>%
+          set_filter(
+            "zoning",
+            list("all",
+                 c("in", "Jurisdiction", input$select_juris)
+            )
+          )
+        
+        current_layer("zoning_layer")
+        
+      }
+    } else {
+      proxy %>%
+        set_layout_property(
+          "zoning",
+          "visibility",
+          "none"
+        )
+    }
+  })
+  
   shiny::observeEvent(input$transit_stops, {
-    proxy <- rdeck::rdeck_proxy("map")
+    proxy <- mapgl::mapboxgl_proxy("map")
     
     transit <- readr::read_rds("data/transit.rds")
     
     if (input$transit_stops) {
       proxy %>%
-        rdeck::add_scatterplot_layer(
-          data = transit,
-          get_position = geometry,
-          name = "Public Transit",
-          radius_min_pixels = 2,
-          visible = TRUE,
+        mapgl::add_circle_layer(
           id = "transit_layer",
-          pickable = TRUE,
-          get_fill_color = "#ffd179",
-          tooltip = Service
-        ) 
+          source = transit,
+          circle_color = "#ffd179",
+          tooltip = "service",
+          circle_radius = interpolate(
+            property = "zoom",
+            values = c(9, 16),
+            stops = c(1, 10)
+          )
+        )
+      
     } else {
       proxy %>%
-        rdeck::update_scatterplot_layer(id = "transit_layer", visible = FALSE,
-                                        get_position = geometry, 
-                                        get_fill_color = "#ffd179",
-                                        get_line_color = "#000000ff",
-                                        get_line_width = 1,
-                                        get_radius = 1)
+        mapgl::clear_layer("transit_layer")
     }
   })
-  # 
+  
   shiny::observeEvent(input$flood, {
-    proxy <- rdeck::rdeck_proxy("map")
+    proxy <- mapgl::mapboxgl_proxy("map")
     
     flood <- readr::read_rds("data/flood.rds")
     
     if (input$flood) {
+      
       proxy %>%
-        rdeck::add_polygon_layer(
-          data = flood,
-          opacity = 0.5,
-          filled = TRUE,
-          get_fill_color = "#5E1914",
-          get_polygon = geometry,
-          get_line_color = "#ffffff",
-          get_line_width = 10,
-          pickable = FALSE,
-          name = "Flood Hazard",
+        add_fill_layer(
           id = "flood",
-          visible = TRUE
+          source = flood,
+          fill_color = "#5E1914",
+          fill_opacity = 0.5
         )
+      
     } else {
       proxy %>%
-        rdeck::update_polygon_layer(
-          id = "flood",
-          visible = FALSE,
-          get_fill_color = "#5E1914",
-          get_polygon = geometry,
-          get_line_color = "#ffffff",
-          get_line_width = 10,
-          get_elevation = 1000
-        )
+        clear_layer("flood")
     }
   })
   
   shiny::observeEvent(input$locality_boundaries, {
-    proxy <- rdeck::rdeck_proxy("map")
+    proxy <- mapgl::mapboxgl_proxy("map")
     
-    juris <- readr::read_rds("data/boundaries.rds")
+    juris <- readr::read_rds("data/boundaries.rds") %>%
+      sf::st_cast("MULTILINESTRING")
     
     if (input$locality_boundaries) {
       proxy %>%
-        rdeck::add_polygon_layer(
-          data = juris,
-          name = "Jurisdiction",
+        mapgl::add_line_layer(
           id = "juris",
-          stroked = TRUE,
-          filled = FALSE,
-          pickable = TRUE,
-          auto_highlight = TRUE,
-          get_line_color = "#f2e70a",
-          get_polygon = geometry,
-          get_line_width = 100,
-          visible = TRUE
+          source = juris,
+          line_color = "#f2e70a",
+          line_width = 2
         )
     } else {
       proxy %>%
-        rdeck::update_polygon_layer(
-          id = "juris",
-          visible = FALSE,
-          get_polygon = geometry,
-          get_fill_color = "#ffffff",
-          get_line_color = "#f2e70a",
-          get_line_width = 10,
-          get_elevation = 1000
-        )
+        mapgl::clear_layer("juris")
     }
   })
   
   shiny::observeEvent(input$protected, {
-    proxy <- rdeck::rdeck_proxy("map")
+    proxy <- mapgl::mapboxgl_proxy("map")
     
     fed <- readr::read_rds("data/protected_lands.rds")
     
     if (input$protected) {
       proxy %>%
-        rdeck::add_polygon_layer(
-          data = fed,
-          opacity = 0.5,
-          filled = TRUE,
-          get_fill_color = "#A9A9A9",
-          get_polygon = geometry,
-          get_line_color = "#ffffff",
-          get_line_width = 10,
-          pickable = TRUE,
-          auto_highlight = TRUE,
-          highlight_color = "#606060",
-          tooltip = c(Ownership, Type, Name),
-          name = "Protected Land",
+        mapgl::add_fill_layer(
           id = "fed",
-          visible = TRUE
+          source = fed,
+          fill_color = "#A9A9A9",
+          tooltip = "Name",
+          hover_options = list(
+            fill_color = "#606060"
+          )
         )
+      
     } else {
       proxy %>%
-        rdeck::update_polygon_layer(
-          id = "fed",
-          visible = FALSE,
-          get_polygon = geometry,
-          get_fill_color = "#A9A9A9",
-          get_line_color = "#ffffff",
-          get_line_width = 10,
-          get_elevation = 1000
-        )
+        mapgl::clear_layer("fed")
     }
   })
   
-  observeEvent(input$basemap, {
-    rdeck::rdeck_proxy("map", map_style = input$basemap)
-  })
+  # TODO: figure out the basemap switcher, doesn't currently work the way I want because
+  # of the way `setStyle()` works - it always re-draws the map.
+  # I'd need to identify the currently-active filter and persist that.
+  
   
   text_calc <- reactive({
     # Don't calculate until second button has been clicked
@@ -1117,13 +681,13 @@ server <- function(input, output, session) {
     if (cur == "zoning_layer") {
       cur_locality <- dplyr::filter(zoning, jurisdiction %in% input$select_juris)
     } else if (cur == "sfd") {
-      cur_locality <- dplyr::filter(sfd, jurisdiction %in% input$select_juris)
+      cur_locality <- dplyr::filter(zoning, jurisdiction %in% input$select_juris, sfd == "t")
     } else if (cur == "apts") {
-      cur_locality <- dplyr::filter(apts, jurisdiction %in% input$select_juris)
+      cur_locality <- dplyr::filter(zoning, jurisdiction %in% input$select_juris, family4_treatment %in% c("allowed", "hearing"))
     } else if (cur == "adus") {
-      cur_locality <- dplyr::filter(adus, jurisdiction %in% input$select_juris)
+      cur_locality <- dplyr::filter(zoning, jurisdiction %in% input$select_juris, type == "Primarily Residential", accessory_treatment != "prohibited")
     } else if (cur == "missmiddle") {
-      cur_locality <- dplyr::filter(missmiddle, jurisdiction %in% input$select_juris)
+      cur_locality <- dplyr::filter(zoning, jurisdiction %in% input$select_juris, family2_treatment != "prohibited", family3_treatment != "prohibited", family4_treatment != "prohibited")
     }
     
     full_locality <- dplyr::filter(zoning, jurisdiction %in% input$select_juris)
@@ -1136,7 +700,7 @@ server <- function(input, output, session) {
       unique()
     
     # pct_value <- unique(zoning_filter()$pct)
-    # 
+    #
     paste("Percent of total developable land based on selected districts: <strong>", pct_value, "</strong>")
   })
   

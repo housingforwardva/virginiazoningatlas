@@ -4,7 +4,7 @@ library(rmapshaper)
 
 
 regions <- read_csv("data/boundaries.csv") |> 
-  filter(pdc == "Hampton Roads" | pdc == "Northern Virginia")
+  filter(pdc == "Hampton Roads" | pdc == "Northern Virginia" | pdc == "PlanRVA")
 
 geo <- st_read("data/va_boundaries_clean.gpkg") |> 
   select(jurisdiction = Jurisdiction) |> 

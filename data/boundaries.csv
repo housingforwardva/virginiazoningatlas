@@ -1,324 +1,324 @@
 pdc,jurisdiction,county,type
-Northern Virginia,Alexandria,Alexandria,city
-Mount Rogers,Bristol,Bristol,city
-Central Shenandoah,Buena Vista,Buena Vista,city
-Thomas Jefferson,Charlottesville,Charlottesville,city
-Hampton Roads,Chesapeake,Chesapeake,city
-Crater,Colonial Heights,Colonial Heights,city
-Roanoke Valley-Alleghany,Covington,Covington,city
-West Piedmont,Danville,Danville,city
-Crater,Emporia,Emporia,city
-Northern Virginia,Fairfax (city),Fairfax (city),city
-Northern Virginia,Falls Church,Falls Church,city
-Hampton Roads,Franklin (city),Franklin (city),city
-George Washington,Fredericksburg,Fredericksburg,city
-Mount Rogers,Galax,Galax,city
-Hampton Roads,Hampton,Hampton,city
-Central Shenandoah,Harrisonburg,Harrisonburg,city
-Crater,Hopewell,Hopewell,city
-Central Shenandoah,Lexington,Lexington,city
-Central Virginia,Lynchburg,Lynchburg,city
-Northern Virginia,Manassas,Manassas,city
-Northern Virginia,Manassas Park,Manassas Park,city
-West Piedmont,Martinsville,Martinsville,city
-Hampton Roads,Newport News,Newport News,city
-Hampton Roads,Norfolk,Norfolk,city
-Lenowisco,Norton city,Norton city,city
-Crater,Petersburg,Petersburg,city
-Hampton Roads,Poquoson,Poquoson,city
-Hampton Roads,Portsmouth,Portsmouth,city
-New River Valley,Radford city,Radford city,city
-PlanRVA,Richmond (city),Richmond (city),city
-Roanoke Valley-Alleghany,Roanoke,Roanoke,city
-Roanoke Valley-Alleghany,Salem,Salem,city
-Central Shenandoah,Staunton,Staunton,city
-Hampton Roads,Suffolk,Suffolk,city
-Hampton Roads,Virginia Beach,Virginia Beach,city
-Central Shenandoah,Waynesboro,Waynesboro,city
-Hampton Roads,Williamsburg,Williamsburg,city
-Northern Shenandoah,Winchester,Winchester,city
 Accomack-Northampton,Accomack,Accomack County,county
-Thomas Jefferson,Albemarle,Albemarle County,county
-Roanoke Valley-Alleghany,Alleghany,Alleghany County,county
-Commonwealth Regional Council,Amelia,Amelia County,county
-Central Virginia,Amherst,Amherst County,county
-Central Virginia,Appomattox,Appomattox County,county
-Northern Virginia,Arlington,Arlington County,county
-Central Shenandoah,Augusta,Augusta County,county
-Central Shenandoah,Bath,Bath County,county
-Central Virginia,Bedford,Bedford County,county
-Mount Rogers,Bland,Bland County,county
-Roanoke Valley-Alleghany,Botetourt,Botetourt County,county
-Southside,Brunswick,Brunswick County,county
-Cumberland Plateau,Buchanan,Buchanan County,county
-Commonwealth Regional Council,Buckingham,Buckingham County,county
-Central Virginia,Campbell,Campbell County,county
-George Washington,Caroline,Caroline County,county
-Mount Rogers,Carroll,Carroll County,county
-Crater/Plan RVA,Charles City,Charles City County,county
-Commonwealth Regional Council,Charlotte,Charlotte County,county
-Crater/Plan RVA,Chesterfield,Chesterfield County,county
-Northern Shenandoah,Clarke,Clarke County,county
-Roanoke Valley-Alleghany,Craig,Craig County,county
-Rappahannock-Rapidan,Culpeper,Culpeper County,county
-Commonwealth Regional Council,Cumberland,Cumberland County,county
-Cumberland Plateau,Dickenson,Dickenson County,county
-Crater,Dinwiddie,Dinwiddie County,county
-Middle Peninsula,Essex,Essex County,county
-Northern Virginia,Fairfax,Fairfax County,county
-Rappahannock-Rapidan,Fauquier,Fauquier County,county
-New River Valley,Floyd,Floyd County,county
-Thomas Jefferson,Fluvanna,Fluvanna County,county
-Roanoke Valley-Alleghany/West Piedmont,Franklin,Franklin County,county
-Northern Shenandoah,Frederick,Frederick County,county
-New River Valley,Giles,Giles County,county
-Hampton Roads,Gloucester,Gloucester County,county
-PlanRVA,Goochland,Goochland County,county
-Mount Rogers,Grayson,Grayson County,county
-Thomas Jefferson,Greene,Greene County,county
-Crater,Greensville,Greensville County,county
-Southside,Halifax,Halifax County,county
-PlanRVA,Hanover,Hanover County,county
-PlanRVA,Henrico,Henrico County,county
-West Piedmont,Henry,Henry County,county
-Central Shenandoah,Highland,Highland County,county
-Hampton Roads,Isle of Wight,Isle of Wight County,county
-Hampton Roads,James City,James City County,county
-Middle Peninsula,King and Queen,King and Queen County,county
-George Washington,King George,King George County,county
-Middle Peninsula,King William,King William County,county
-Northern Neck,Lancaster,Lancaster County,county
-Lenowisco,Leesburg,Lee County,county
-Northern Virginia,Loudoun,Loudoun County,county
-Thomas Jefferson,Louisa,Louisa County,county
-Commonwealth Regional Council,Lunenburg,Lunenburg County,county
-Rappahannock-Rapidan,Madison,Madison County,county
-Middle Peninsula,Mathews,Mathews County,county
-Southside,Mecklenburg,Mecklenburg County,county
-Middle Peninsula,Middlesex,Middlesex County,county
-New River Valley,Montgomery,Montgomery County,county
-Thomas Jefferson,Nelson,Nelson County,county
-PlanRVA,New Kent,New Kent County,county
 Accomack-Northampton,Northampton,Northampton County,county
-Northern Neck,Northumberland,Northumberland County,county
-Commonwealth Regional Council,Nottoway,Nottoway County,county
-Rappahannock-Rapidan,Orange,Orange County,county
-Northern Shenandoah,Page,Page County,county
-West Piedmont,Patrick,Patrick County,county
-West Piedmont,Pittsylvania,Pittsylvania County,county
-PlanRVA,Powhatan,Powhatan County,county
-Commonwealth Regional Council,Prince Edward,Prince Edward County,county
-Crater,Prince George,Prince George County,county
-Northern Virginia,Prince William,Prince William County,county
-New River Valley,Pulaski,Pulaski County,county
-Rappahannock-Rapidan,Rappahannock,Rappahannock County,county
-Northern Neck,Richmond,Richmond County,county
-Roanoke Valley-Alleghany,Roanoke,Roanoke County,county
-Central Shenandoah,Rockbridge,Rockbridge County,county
-Central Shenandoah,Rockingham,Rockingham County,county
-Cumberland Plateau,Russell,Russell County,county
-Lenowisco,Scott,Scott County,county
-Northern Shenandoah,Shenandoah,Shenandoah County,county
-Mount Rogers,Smyth,Smyth County,county
-Hampton Roads,Southampton,Southampton County,county
-George Washington,Spotsylvania,Spotsylvania County,county
-George Washington,Stafford,Stafford County,county
-Hampton Roads,Surry,Surry County,county
-Crater,Sussex,Sussex County,county
-Cumberland Plateau,Tazewell,Tazewell County,county
-Northern Shenandoah,Warren,Warren County,county
-Mount Rogers,Washington,Washington County,county
-Northern Neck,Westmoreland,Westmoreland County,county
-Lenowisco,Wise town,Wise County,county
-Mount Rogers,Wythe,Wythe County,county
-Hampton Roads,York,York County,county
-Mount Rogers,Abingdon,Washington County,town
 Accomack-Northampton,Accomac,Accomack County,town
-Southside,Alberta,Brunswick County,town
-Central Virginia,Altavista,Campbell County,town
-Central Virginia,Amherst,Amherst County,town
-Lenowisco,Appalachia,Wise County,town
-Central Virginia,Appomattox (town),Appomattox County,town
-PlanRVA,Ashland,Hanover County,town
-Central Virginia,Bedford (town),Bedford County,town
 Accomack-Northampton,Belle Haven,Northampton County,town
-Northern Shenandoah,Berryville,Clarke County,town
-Lenowisco,Big Stone Gap,Wise County,town
-New River Valley,Blacksburg,Montgomery County,town
-Commonwealth Regional Council,Blackstone,Nottoway County,town
 Accomack-Northampton,Bloxom,Accomack County,town
-Cumberland Plateau,Bluefield,Tazewell County,town
-Roanoke Valley-Alleghany/West Piedmont,Boones Mill,Franklin County,town
-George Washington,Bowling Green,Caroline County,town
-Northern Shenandoah,Boyce,Clarke County,town
-Southside,Boydton,Mecklenburg County,town
-Hampton Roads,Boykins,Southampton County,town
-Hampton Roads,Branchville,Southampton County,town
-Central Shenandoah,Bridgewater,Rockingham County,town
-Central Shenandoah,Broadway,Rockingham County,town
-Southside,Brodnax,Brunswick County,town
-Central Virginia,Brookneal,Campbell County,town
-Roanoke Valley-Alleghany,Buchanan (town),Botetourt County,town
-Commonwealth Regional Council,Burkeville,Nottoway County,town
 Accomack-Northampton,Cape Charles,Northampton County,town
-Hampton Roads,Capron,Southampton County,town
-Cumberland Plateau,Cedar Bluff,Tazewell County,town
-Commonwealth Regional Council,Charlotte Court House,Charlotte County,town
-Southside,Chase City,Mecklenburg County,town
-West Piedmont,Chatham,Pittsylvania County,town
 Accomack-Northampton,Cheriton,Northampton County,town
-Mount Rogers,Chilhowie,Smyth County,town
 Accomack-Northampton,Chincoteague,Accomack County,town
-New River Valley,Christiansburg,Montgomery County,town
-Hampton Roads,Claremont,Surry County,town
-Southside,Clarksville,Mecklenburg County,town
-Cumberland Plateau,Cleveland,Russell County,town
-Northern Virginia,Clifton,Fairfax County,town
-Roanoke Valley-Alleghany,Clifton Forge,Alleghany County,town
-Cumberland Plateau,Clinchco,Dickenson County,town
-Lenowisco,Clinchport,Scott County,town
-Cumberland Plateau,Clintwood,Dickenson County,town
-Lenowisco,Coeburn,Wise County,town
-Northern Neck,Colonial Beach,Westmoreland County,town
-Hampton Roads,Courtland,Southampton County,town
-Central Shenandoah,Craigsville,Augusta County,town
-Commonwealth Regional Council,Crewe,Nottoway County,town
-Rappahannock-Rapidan,Culpeper (town),Culpeper County,town
-Mount Rogers,Damascus,Washington County,town
-Central Shenandoah,Dayton,Rockingham County,town
-Hampton Roads,Dendron,Surry County,town
-Commonwealth Regional Council,Dillwyn,Buckingham County,town
-Commonwealth Regional Council,Drakes Branch,Charlotte County,town
-New River Valley,Dublin,Pulaski County,town
-Lenowisco,Duffield,Scott County,town
-Northern VIrginia,Dumfries,Prince William County,town
-Lenowisco,Dungannon,Scott County,town
 Accomack-Northampton,Eastville,Northampton County,town
-Northern Shenandoah,Edinburg,Shenandoah County,town
-Central Shenandoah,Elkton,Rockingham County,town
 Accomack-Northampton,Exmore,Northampton County,town
-Commonwealth Regional Council,Farmville,Prince Edward County,town
-Roanoke Valley-Alleghany,Fincastle,Botetourt County,town
-New River Valley,Floyd (town),Floyd County,town
-Mount Rogers,Fries,Grayson County,town
-Northern Shenandoah,Front Roya,Warren County,town
-Lenowisco,Gate City,Scott County,town
-Mount Rogers,Glade Spring,Washington County,town
-Central Shenandoah,Glasgow,Rockbridge County,town
-New River Valley,Glen Lyn,Giles County,town
-Rappahannock-Rapidan,Gordonsville,Orange County,town
-Central Shenandoah,Goshen,Rockbridge County,town
-West Piedmont,Gretna,Pittsylvania County,town
-Central Shenandoah,Grottoes,Rockingham County,town
-Cumberland Plateau,Grundy,Buchanan County,town
-Southside,Halifax (town),Halifax County,town
 Accomack-Northampton,Hallwood,Accomack County,town
-Northern Virginia,Hamilton,Loudoun County,town
-Northern VIrginia,Haymarket,Prince William County,town
-Cumberland Plateau,Haysi,Dickenson County,town
-Northern Virginia,Herndon,Fairfax County,town
-Northern Virginia,Hillsboro,Loudoun County,town
-Mount Rogers,Hillsville,Carroll County,town
-Cumberland Plateau,Honaker,Russell County,town
-West Piedmont,Hurt,Pittsylvania County,town
-Mount Rogers,Independence,Grayson County,town
-Roanoke Valley-Alleghany,Iron Gate,Alleghany County,town
-Northern Neck,Irvington,Lancaster County,town
-Hampton Roads,Ivor,Southampton County,town
-Crater,Jarratt,Greensville County,town
-Lenowisco,Jonesville,Lee County,town
 Accomack-Northampton,Keller,Accomack County,town
-Commonwealth Regional Council,Kenbridge,Lunenburg County,town
-Commonwealth Regional Council,Keysville,Charlotte County,town
-Northern Neck,Kilmarnock,Lancaster County,town
-Southside,La Crosse,Mecklenburg County,town
-Southside,Lawrenceville,Brunswick County,town
-Cumberland Plateau,Lebanon,Russell County,town
-Northern Virginia,Leesburg,Loudoun County,town
-Thomas Jefferson,Louisa (town),Louisa County,town
-Northern Virginia,Lovettsville,Loudoun County,town
-Northern Shenandoah,Luray,Page County,town
-Rappahannock-Rapidan,Madison (town),Madison County,town
-Mount Rogers,Marion,Smyth County,town
-Crater,McKenney,Dinwiddie County,town
 Accomack-Northampton,Melfa,Accomack County,town
-Northern Virginia,Middleburg,Loudoun County,town
-Northern Shenandoah,Middletown,Frederick County,town
-Thomas Jefferson,Mineral,Louisa County,town
-Central Shenandoah,Monterey,Highland County,town
-Northern Neck,Montross,Westmoreland County,town
-Central Shenandoah,Mount Crawford,Rockingham County,town
-Northern Shenandoah,Mount Jackson,Shenandoah County,town
-New River Valley,Narrows,Giles County,town
 Accomack-Northampton,Nassawadox,Northampton County,town
-Roanoke Valley-Alleghany,New Castle,Craig County,town
-Northern Shenandoah,New Market,Shenandoah County,town
-Hampton Roads,Newsoms,Southampton County,town
-Lenowisco,Nickelsville,Scott County,town
-Northern VIrginia,Occoquan,Prince William County,town
 Accomack-Northampton,Onancock,Accomack County,town
 Accomack-Northampton,Onley,Accomack County,town
-Rappahannock-Rapidan,Orange (town),Orange County,town
 Accomack-Northampton,Painter,Accomack County,town
-Central Virginia,Pamplin City,Appomattox County,town
 Accomack-Northampton,Parksley,Accomack County,town
-New River Valley,Pearisburg,Giles County,town
-New River Valley,Pembroke,Giles County,town
-Lenowisco,Pennington Gap,Lee County,town
-Commonwealth Regional Council,Phenix,Charlotte County,town
-Cumberland Plateau,Pocahontas,Tazewell County,town
-George Washington,Port Royal,Caroline County,town
-Lenowisco,Pound,Wise County,town
-New River Valley,Pulaski (town),Pulaski County,town
-Northern Virginia,Purcellville,Loudoun County,town
-Northern VIrginia,Quantico,Prince William County,town
-Rappahannock-Rapidan,Remington,Fauquier County,town
-New River Valley,Rich Creek,Giles County,town
-Cumberland Plateau,Richlands,Tazewell County,town
-West Piedmont,Ridgeway,Henry County,town
-Roanoke Valley-Alleghany/West Piedmont,Rocky Mount,Franklin County,town
-Northern Virginia,Round Hill,Loudoun County,town
-Mount Rogers,Rural Retreat,Wythe County,town
-Mount Rogers,Saltville,Smyth County,town
 Accomack-Northampton,Saxis,Accomack County,town
-Southside,Scottsburg,Halifax County,town
-Thomas Jefferson,Scottsville,Albemarle County,town
-Northern Shenandoah,Shenandoah (town),Page County,town
+Accomack-Northampton,Tangier,Accomack County,town
+Accomack-Northampton,Wachapreague,Accomack County,town
+Central Shenandoah,Buena Vista,Buena Vista,city
+Central Shenandoah,Harrisonburg,Harrisonburg,city
+Central Shenandoah,Lexington,Lexington,city
+Central Shenandoah,Staunton,Staunton,city
+Central Shenandoah,Waynesboro,Waynesboro,city
+Central Shenandoah,Augusta,Augusta County,county
+Central Shenandoah,Bath,Bath County,county
+Central Shenandoah,Highland,Highland County,county
+Central Shenandoah,Rockbridge,Rockbridge County,county
+Central Shenandoah,Rockingham,Rockingham County,county
+Central Shenandoah,Bridgewater,Rockingham County,town
+Central Shenandoah,Broadway,Rockingham County,town
+Central Shenandoah,Craigsville,Augusta County,town
+Central Shenandoah,Dayton,Rockingham County,town
+Central Shenandoah,Elkton,Rockingham County,town
+Central Shenandoah,Glasgow,Rockbridge County,town
+Central Shenandoah,Goshen,Rockbridge County,town
+Central Shenandoah,Grottoes,Rockingham County,town
+Central Shenandoah,Monterey,Highland County,town
+Central Shenandoah,Mount Crawford,Rockingham County,town
+Central Shenandoah,Timberville,Rockingham County,town
+Central Virginia,Lynchburg,Lynchburg,city
+Central Virginia,Amherst,Amherst County,county
+Central Virginia,Appomattox,Appomattox County,county
+Central Virginia,Bedford,Bedford County,county
+Central Virginia,Campbell,Campbell County,county
+Central Virginia,Altavista,Campbell County,town
+Central Virginia,Amherst,Amherst County,town
+Central Virginia,Appomattox (town),Appomattox County,town
+Central Virginia,Bedford (town),Bedford County,town
+Central Virginia,Brookneal,Campbell County,town
+Central Virginia,Pamplin City,Appomattox County,town
+Commonwealth Regional Council,Amelia,Amelia County,county
+Commonwealth Regional Council,Buckingham,Buckingham County,county
+Commonwealth Regional Council,Charlotte,Charlotte County,county
+Commonwealth Regional Council,Cumberland,Cumberland County,county
+Commonwealth Regional Council,Lunenburg,Lunenburg County,county
+Commonwealth Regional Council,Nottoway,Nottoway County,county
+Commonwealth Regional Council,Prince Edward,Prince Edward County,county
+Commonwealth Regional Council,Blackstone,Nottoway County,town
+Commonwealth Regional Council,Burkeville,Nottoway County,town
+Commonwealth Regional Council,Charlotte Court House,Charlotte County,town
+Commonwealth Regional Council,Crewe,Nottoway County,town
+Commonwealth Regional Council,Dillwyn,Buckingham County,town
+Commonwealth Regional Council,Drakes Branch,Charlotte County,town
+Commonwealth Regional Council,Farmville,Prince Edward County,town
+Commonwealth Regional Council,Kenbridge,Lunenburg County,town
+Commonwealth Regional Council,Keysville,Charlotte County,town
+Commonwealth Regional Council,Phenix,Charlotte County,town
+Commonwealth Regional Council,Victoria,Lunenburg County,town
+Crater,Colonial Heights,Colonial Heights,city
+Crater,Emporia,Emporia,city
+Crater,Hopewell,Hopewell,city
+Crater,Petersburg,Petersburg,city
+Crater,Dinwiddie,Dinwiddie County,county
+Crater,Greensville,Greensville County,county
+Crater,Prince George,Prince George County,county
+Crater,Sussex,Sussex County,county
+Crater,Jarratt,Greensville County,town
+Crater,McKenney,Dinwiddie County,town
+Crater,Stony Creek,Sussex County,town
+Crater,Wakefield,Sussex County,town
+Crater,Waverly,Sussex County,town
+PlanRVA,Charles City,Charles City County,county
+PlanRVA,Chesterfield,Chesterfield County,county
+Cumberland Plateau,Buchanan,Buchanan County,county
+Cumberland Plateau,Dickenson,Dickenson County,county
+Cumberland Plateau,Russell,Russell County,county
+Cumberland Plateau,Tazewell,Tazewell County,county
+Cumberland Plateau,Bluefield,Tazewell County,town
+Cumberland Plateau,Cedar Bluff,Tazewell County,town
+Cumberland Plateau,Cleveland,Russell County,town
+Cumberland Plateau,Clinchco,Dickenson County,town
+Cumberland Plateau,Clintwood,Dickenson County,town
+Cumberland Plateau,Grundy,Buchanan County,town
+Cumberland Plateau,Haysi,Dickenson County,town
+Cumberland Plateau,Honaker,Russell County,town
+Cumberland Plateau,Lebanon,Russell County,town
+Cumberland Plateau,Pocahontas,Tazewell County,town
+Cumberland Plateau,Richlands,Tazewell County,town
+Cumberland Plateau,Tazewell,Tazewell County,town
+George Washington,Fredericksburg,Fredericksburg,city
+George Washington,Caroline,Caroline County,county
+George Washington,King George,King George County,county
+George Washington,Spotsylvania,Spotsylvania County,county
+George Washington,Stafford,Stafford County,county
+George Washington,Bowling Green,Caroline County,town
+George Washington,Port Royal,Caroline County,town
+Hampton Roads,Chesapeake,Chesapeake,city
+Hampton Roads,Franklin (city),Franklin (city),city
+Hampton Roads,Hampton,Hampton,city
+Hampton Roads,Newport News,Newport News,city
+Hampton Roads,Norfolk,Norfolk,city
+Hampton Roads,Poquoson,Poquoson,city
+Hampton Roads,Portsmouth,Portsmouth,city
+Hampton Roads,Suffolk,Suffolk,city
+Hampton Roads,Virginia Beach,Virginia Beach,city
+Hampton Roads,Williamsburg,Williamsburg,city
+Hampton Roads,Gloucester,Gloucester County,county
+Hampton Roads,Isle of Wight,Isle of Wight County,county
+Hampton Roads,James City,James City County,county
+Hampton Roads,Southampton,Southampton County,county
+Hampton Roads,Surry,Surry County,county
+Hampton Roads,York,York County,county
+Hampton Roads,Boykins,Southampton County,town
+Hampton Roads,Branchville,Southampton County,town
+Hampton Roads,Capron,Southampton County,town
+Hampton Roads,Claremont,Surry County,town
+Hampton Roads,Courtland,Southampton County,town
+Hampton Roads,Dendron,Surry County,town
+Hampton Roads,Ivor,Southampton County,town
+Hampton Roads,Newsoms,Southampton County,town
 Hampton Roads,Smithfield,Isle of Wight County,town
-Southside,South Boston,Halifax County,town
-Southside,South Hill,Mecklenburg County,town
+Hampton Roads,Surry (town),Surry County,town
+Hampton Roads,Windsor,Isle of Wight County,town
+Lenowisco,Norton city,Norton city,city
+Lenowisco,Leesburg,Lee County,county
+Lenowisco,Scott,Scott County,county
+Lenowisco,Wise town,Wise County,county
+Lenowisco,Appalachia,Wise County,town
+Lenowisco,Big Stone Gap,Wise County,town
+Lenowisco,Clinchport,Scott County,town
+Lenowisco,Coeburn,Wise County,town
+Lenowisco,Duffield,Scott County,town
+Lenowisco,Dungannon,Scott County,town
+Lenowisco,Gate City,Scott County,town
+Lenowisco,Jonesville,Lee County,town
+Lenowisco,Nickelsville,Scott County,town
+Lenowisco,Pennington Gap,Lee County,town
+Lenowisco,Pound,Wise County,town
 Lenowisco,St. Charles,Lee County,town
 Lenowisco,St. Paul,Wise County,town
-Thomas Jefferson,Stanardsville,Greene County,town
+Lenowisco,Weber City,Scott County,town
+Lenowisco,Wise (town),Wise County,town
+Middle Peninsula,Essex,Essex County,county
+Middle Peninsula,King and Queen,King and Queen County,county
+Middle Peninsula,King William,King William County,county
+Middle Peninsula,Mathews,Mathews County,county
+Middle Peninsula,Middlesex,Middlesex County,county
+Middle Peninsula,Tappahannock,Essex County,town
+Middle Peninsula,Urbanna,Middlesex County,town
+Middle Peninsula,West Point,King William County,town
+Mount Rogers,Bristol,Bristol,city
+Mount Rogers,Galax,Galax,city
+Mount Rogers,Bland,Bland County,county
+Mount Rogers,Carroll,Carroll County,county
+Mount Rogers,Grayson,Grayson County,county
+Mount Rogers,Smyth,Smyth County,county
+Mount Rogers,Washington,Washington County,county
+Mount Rogers,Wythe,Wythe County,county
+Mount Rogers,Abingdon,Washington County,town
+Mount Rogers,Chilhowie,Smyth County,town
+Mount Rogers,Damascus,Washington County,town
+Mount Rogers,Fries,Grayson County,town
+Mount Rogers,Glade Spring,Washington County,town
+Mount Rogers,Hillsville,Carroll County,town
+Mount Rogers,Independence,Grayson County,town
+Mount Rogers,Marion,Smyth County,town
+Mount Rogers,Rural Retreat,Wythe County,town
+Mount Rogers,Saltville,Smyth County,town
+Mount Rogers,Troutdale,Grayson County,town
+Mount Rogers,Wytheville,Wythe County,town
+New River Valley,Radford city,Radford city,city
+New River Valley,Floyd,Floyd County,county
+New River Valley,Giles,Giles County,county
+New River Valley,Montgomery,Montgomery County,county
+New River Valley,Pulaski,Pulaski County,county
+New River Valley,Blacksburg,Montgomery County,town
+New River Valley,Christiansburg,Montgomery County,town
+New River Valley,Dublin,Pulaski County,town
+New River Valley,Floyd (town),Floyd County,town
+New River Valley,Glen Lyn,Giles County,town
+New River Valley,Narrows,Giles County,town
+New River Valley,Pearisburg,Giles County,town
+New River Valley,Pembroke,Giles County,town
+New River Valley,Pulaski (town),Pulaski County,town
+New River Valley,Rich Creek,Giles County,town
+Northern Neck,Lancaster,Lancaster County,county
+Northern Neck,Northumberland,Northumberland County,county
+Northern Neck,Richmond,Richmond County,county
+Northern Neck,Westmoreland,Westmoreland County,county
+Northern Neck,Colonial Beach,Westmoreland County,town
+Northern Neck,Irvington,Lancaster County,town
+Northern Neck,Kilmarnock,Lancaster County,town
+Northern Neck,Montross,Westmoreland County,town
+Northern Neck,Warsaw,Richmond County,town
+Northern Neck,White Stone,Lancaster County,town
+Northern Shenandoah,Winchester,Winchester,city
+Northern Shenandoah,Clarke,Clarke County,county
+Northern Shenandoah,Frederick,Frederick County,county
+Northern Shenandoah,Page,Page County,county
+Northern Shenandoah,Shenandoah,Shenandoah County,county
+Northern Shenandoah,Warren,Warren County,county
+Northern Shenandoah,Berryville,Clarke County,town
+Northern Shenandoah,Boyce,Clarke County,town
+Northern Shenandoah,Edinburg,Shenandoah County,town
+Northern Shenandoah,Front Roya,Warren County,town
+Northern Shenandoah,Luray,Page County,town
+Northern Shenandoah,Middletown,Frederick County,town
+Northern Shenandoah,Mount Jackson,Shenandoah County,town
+Northern Shenandoah,New Market,Shenandoah County,town
+Northern Shenandoah,Shenandoah (town),Page County,town
 Northern Shenandoah,Stanley,Page County,town
 Northern Shenandoah,Stephens City,Frederick County,town
-Crater,Stony Creek,Sussex County,town
 Northern Shenandoah,Strasburg,Shenandoah County,town
-West Piedmont,Stuart,Patrick County,town
-Hampton Roads,Surry (town),Surry County,town
-Accomack-Northampton,Tangier,Accomack County,town
-Middle Peninsula,Tappahannock,Essex County,town
-Cumberland Plateau,Tazewell,Tazewell County,town
-Rappahannock-Rapidan,The Plains,Fauquier County,town
-Central Shenandoah,Timberville,Rockingham County,town
 Northern Shenandoah,Toms Brook,Shenandoah County,town
-Mount Rogers,Troutdale,Grayson County,town
-Roanoke Valley-Alleghany,Troutville,Botetourt County,town
-Middle Peninsula,Urbanna,Middlesex County,town
-Commonwealth Regional Council,Victoria,Lunenburg County,town
-Northern Virginia,Vienna,Fairfax County,town
-Roanoke Valley-Alleghany,Vinton,Roanoke County,town
-Southside,Virgilina,Halifax County,town
-Accomack-Northampton,Wachapreague,Accomack County,town
-Crater,Wakefield,Sussex County,town
-Rappahannock-Rapidan,Warrenton,Fauquier County,town
-Northern Neck,Warsaw,Richmond County,town
-Rappahannock-Rapidan,Washington (town),Rappahannock County,town
-Crater,Waverly,Sussex County,town
-Lenowisco,Weber City,Scott County,town
-Middle Peninsula,West Point,King William County,town
-Northern Neck,White Stone,Lancaster County,town
-Hampton Roads,Windsor,Isle of Wight County,town
-Lenowisco,Wise (town),Wise County,town
 Northern Shenandoah,Woodstock,Shenandoah County,town
-Mount Rogers,Wytheville,Wythe County,town
+Northern Virginia,Alexandria,Alexandria,city
+Northern Virginia,Fairfax (city),Fairfax (city),city
+Northern Virginia,Falls Church,Falls Church,city
+Northern Virginia,Manassas,Manassas,city
+Northern Virginia,Manassas Park,Manassas Park,city
+Northern Virginia,Arlington,Arlington County,county
+Northern Virginia,Fairfax,Fairfax County,county
+Northern Virginia,Loudoun,Loudoun County,county
+Northern Virginia,Prince William,Prince William County,county
+Northern Virginia,Clifton,Fairfax County,town
+Northern VIrginia,Dumfries,Prince William County,town
+Northern Virginia,Hamilton,Loudoun County,town
+Northern VIrginia,Haymarket,Prince William County,town
+Northern Virginia,Herndon,Fairfax County,town
+Northern Virginia,Hillsboro,Loudoun County,town
+Northern Virginia,Leesburg,Loudoun County,town
+Northern Virginia,Lovettsville,Loudoun County,town
+Northern Virginia,Middleburg,Loudoun County,town
+Northern VIrginia,Occoquan,Prince William County,town
+Northern Virginia,Purcellville,Loudoun County,town
+Northern VIrginia,Quantico,Prince William County,town
+Northern Virginia,Round Hill,Loudoun County,town
+Northern Virginia,Vienna,Fairfax County,town
+PlanRVA,Richmond (city),Richmond (city),city
+PlanRVA,Goochland,Goochland County,county
+PlanRVA,Hanover,Hanover County,county
+PlanRVA,Henrico,Henrico County,county
+PlanRVA,New Kent,New Kent County,county
+PlanRVA,Powhatan,Powhatan County,county
+PlanRVA,Ashland,Hanover County,town
+Rappahannock-Rapidan,Culpeper,Culpeper County,county
+Rappahannock-Rapidan,Fauquier,Fauquier County,county
+Rappahannock-Rapidan,Madison,Madison County,county
+Rappahannock-Rapidan,Orange,Orange County,county
+Rappahannock-Rapidan,Rappahannock,Rappahannock County,county
+Rappahannock-Rapidan,Culpeper (town),Culpeper County,town
+Rappahannock-Rapidan,Gordonsville,Orange County,town
+Rappahannock-Rapidan,Madison (town),Madison County,town
+Rappahannock-Rapidan,Orange (town),Orange County,town
+Rappahannock-Rapidan,Remington,Fauquier County,town
+Rappahannock-Rapidan,The Plains,Fauquier County,town
+Rappahannock-Rapidan,Warrenton,Fauquier County,town
+Rappahannock-Rapidan,Washington (town),Rappahannock County,town
+Roanoke Valley-Alleghany,Covington,Covington,city
+Roanoke Valley-Alleghany,Roanoke,Roanoke,city
+Roanoke Valley-Alleghany,Salem,Salem,city
+Roanoke Valley-Alleghany,Alleghany,Alleghany County,county
+Roanoke Valley-Alleghany,Botetourt,Botetourt County,county
+Roanoke Valley-Alleghany,Craig,Craig County,county
+Roanoke Valley-Alleghany,Roanoke,Roanoke County,county
+Roanoke Valley-Alleghany,Buchanan (town),Botetourt County,town
+Roanoke Valley-Alleghany,Clifton Forge,Alleghany County,town
+Roanoke Valley-Alleghany,Fincastle,Botetourt County,town
+Roanoke Valley-Alleghany,Iron Gate,Alleghany County,town
+Roanoke Valley-Alleghany,New Castle,Craig County,town
+Roanoke Valley-Alleghany,Troutville,Botetourt County,town
+Roanoke Valley-Alleghany,Vinton,Roanoke County,town
+Roanoke Valley-Alleghany/West Piedmont,Franklin,Franklin County,county
+Roanoke Valley-Alleghany/West Piedmont,Boones Mill,Franklin County,town
+Roanoke Valley-Alleghany/West Piedmont,Rocky Mount,Franklin County,town
+Southside,Brunswick,Brunswick County,county
+Southside,Halifax,Halifax County,county
+Southside,Mecklenburg,Mecklenburg County,county
+Southside,Alberta,Brunswick County,town
+Southside,Boydton,Mecklenburg County,town
+Southside,Brodnax,Brunswick County,town
+Southside,Chase City,Mecklenburg County,town
+Southside,Clarksville,Mecklenburg County,town
+Southside,Halifax (town),Halifax County,town
+Southside,La Crosse,Mecklenburg County,town
+Southside,Lawrenceville,Brunswick County,town
+Southside,Scottsburg,Halifax County,town
+Southside,South Boston,Halifax County,town
+Southside,South Hill,Mecklenburg County,town
+Southside,Virgilina,Halifax County,town
+Thomas Jefferson,Charlottesville,Charlottesville,city
+Thomas Jefferson,Albemarle,Albemarle County,county
+Thomas Jefferson,Fluvanna,Fluvanna County,county
+Thomas Jefferson,Greene,Greene County,county
+Thomas Jefferson,Louisa,Louisa County,county
+Thomas Jefferson,Nelson,Nelson County,county
+Thomas Jefferson,Louisa (town),Louisa County,town
+Thomas Jefferson,Mineral,Louisa County,town
+Thomas Jefferson,Scottsville,Albemarle County,town
+Thomas Jefferson,Stanardsville,Greene County,town
+West Piedmont,Danville,Danville,city
+West Piedmont,Martinsville,Martinsville,city
+West Piedmont,Henry,Henry County,county
+West Piedmont,Patrick,Patrick County,county
+West Piedmont,Pittsylvania,Pittsylvania County,county
+West Piedmont,Chatham,Pittsylvania County,town
+West Piedmont,Gretna,Pittsylvania County,town
+West Piedmont,Hurt,Pittsylvania County,town
+West Piedmont,Ridgeway,Henry County,town
+West Piedmont,Stuart,Patrick County,town

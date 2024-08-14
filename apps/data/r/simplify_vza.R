@@ -17,6 +17,13 @@ nova_vza <- geojson_sf("apps/data/raw/nova_vza_geo.geojson") |>
          acres, jurisdiction, county, sfd) |> 
   mutate(region = "Northern Virginia")
 
+rva_vza <- geojson_sf("apps/data/raw/nova_vza_geo.geojson") |> 
+  select(id, type, abbrvname, name, overlay, # Select the fields needed for analysis.
+         family1_treatment, family2_treatment, family3_treatment, family4_treatment,
+         accessory_treatment, plannedresidential_treatment, tooltipnotes,
+         acres, jurisdiction, county, sfd) |> 
+  mutate(region = "Northern Virginia")
+
 vza <- rbind(hr_vza, nova_vza) 
 
 sparse <- vza |>

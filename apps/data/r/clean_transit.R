@@ -20,6 +20,9 @@ nova_rail <- geojson_sf("apps/data/raw/nova_rail_stops.geojson") |>
   mutate(type = "Rail") |> 
   select(service, type)
 
+
+grt
+
 transit <- rbind(hr_transit_all, nova_bus, nova_rail) |> 
   rename(Service = service)
 
