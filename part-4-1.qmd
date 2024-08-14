@@ -11,14 +11,367 @@ library(scales)
 library(patchwork)
 library(ggtext)
 library(kableExtra)
-
+library(leaflet)
 
 # Use data from the VZA to summarize the number of districts involved, number of zoning ordinance pages read, and other interesting metrics.
 
+```
+
+```{r}
+#| label: fig-rva-map
+#| fig-cap: "PlanRVA"
+
+# The following is a map of PlanRVA jurisdictions.
+
+region <- read_rds("data/planrva/rds/rva_region.rds") 
+
+# Map in leaflet.
+
+leaflet(region) |> 
+  addProviderTiles(providers$CartoDB.Positron) |> # Add basemap
+  addPolygons(fillColor = "#011E41", # Set polygon fill color.
+              weight = 1, # Set polygon outline weight.
+              color = "white", # Set polygon outline color.
+              fillOpacity = 0.8, # Set polygon fill color transparency.
+              popup = region$Jurisdiction) # Set pop-up to jurisdiction name.
 
 ```
 
+```{r}
 
+summary_tbl <- read_csv("data/planrva/csv/rva_summary.csv") |> 
+  kbl(col.names = c("Jurisdiction", "Last Comprehensive Rewrite", "Number of Pages", "Number of base and overlay districts"), align = "lccc") |> 
+  kable_styling(bootstrap_options = c("striped", "condensed"))
+
+summary_tbl
+
+```
+
+```{r}
+#| label: fig-bps
+#| fig-cap: "Total new residential building permits issued from 2000 to 2022"
+
+# Create a visualization that shows where housing is being built. Where is more diverse housing being built? Where is single-family housing being built the most? How does that compare to population growth in those localities?
+
+bps <- read_rds("data/planrva/rds/rva_bps.rds") |> # Load in Building Permits Survey data.
+  mutate(type = case_when( # Group "Missing Middle" housing together.
+    type == "2-units" ~ "2-4 units",
+    type == "3-4 units" ~ "2-4 units",
+    TRUE ~ type
+  )) |> 
+  group_by(name_long, year, type) |> # Aggregate to locality and housing type.
+  summarise(units = sum(units)) |> 
+  group_by(name_long) |> # Group by locality.
+  mutate(total = sum(units)) # Calculate the total number of new permits for entire time period.
+
+
+# Summarize the percentage of units developed by type for the narrative.
+
+bps_summary <- bps |> 
+  group_by(type) |> # Aggregate by housing type.
+  summarise(units = sum(units)) |> 
+  mutate(pct = units/sum(units)) # Calculate the percentage of type of units for the region.
+
+
+subtitle_text <- "Few <span style = 'color:#40C0C0'><b>2-4 unit housing</span> has been built between 2000 to 2023"
+  
+bps_plot <- ggplot(bps,
+       aes(x = year,
+           y = units,
+           fill = type,
+           data_id = units,
+           tooltip = number_format(big.mark =",")(units))) + 
+  geom_col_interactive(position = "stack") +
+  facet_wrap(~type) +
+  theme_hfv(base_size = 10) + 
+  scale_fill_hfv() +
+  scale_y_continuous(labels = number_format(big.mark = ",", style_positive = "plus")) +
+  labs(title = "Total new residential building permits issued in the PlanRVA region",
+       subtitle = subtitle_text,
+       caption = "**Source:** U.S. Census Bureau. Building Permits Survey.") + 
+  theme(panel.grid.major.y = element_line(color = "white"),
+        panel.grid.major.x = element_line(color = "#f5f5f5",size = 0.1),
+        axis.text.x = element_text(angle = 90)) +
+  plot_annotation(
+    theme = theme(
+    plot.subtitle = element_markdown(
+       margin = margin(b = 0.4, unit = 'cm'),
+        size = 11.5
+    )))
+
+# girafe(ggobj = bps_plot,
+#        height_svg = 4)
+
+bps_plot
+
+```
+```{r}
+#| label: fig-bps
+#| fig-cap: "Total new 2+ residential building permits issued from 2000 to 2022"
+
+# Create a visualization that shows where 2+ housing is being built. Where is more diverse housing being built? 
+
+density <- c("Hanover", "Henrico", "Chesterfield", "Richmond")
+
+bps <- read_rds("data/planrva/rds/rva_bps.rds") |> # Load in Building Permits Survey data.
+  mutate(type = case_when( # Group "Missing Middle" housing together.
+    type == "2-units" ~ "2-4 units",
+    type == "3-4 units" ~ "2-4 units",
+    TRUE ~ type
+  )) |> 
+  group_by(name_long, year, type) |> # Aggregate to locality and housing type.
+  summarise(units = sum(units)) |> 
+  group_by(name_long) |> # Group by locality.
+  mutate(total = sum(units)) |> # Calculate the total number of new permits for entire time period.
+  filter(type != "1-unit") |> 
+  filter(name_long %in% density)
+
+
+subtitle_text <- "Few <span style = 'color:#40C0C0'><b>2-4 unit housing</span> has been built between 2000 to 2023"
+  
+bps_plot <- ggplot(bps,
+       aes(x = reorder(name_long, units),
+           y = units,
+           fill = type,
+           data_id = units,
+           tooltip = number_format(big.mark =",")(units))) + 
+  geom_col_interactive(position = "stack") +
+  facet_wrap(~type) +
+  theme_hfv(base_size = 10) + 
+  scale_fill_hfv() +
+  scale_y_continuous(labels = number_format(big.mark = ",", style_positive = "plus")) +
+  labs(title = "Total new residential building permits issued in the PlanRVA region",
+       subtitle = subtitle_text,
+       caption = "**Source:** U.S. Census Bureau. Building Permits Survey.") + 
+  theme(panel.grid.major.y = element_line(color = "white"),
+        panel.grid.major.x = element_line(color = "#f5f5f5",size = 0.1),
+        axis.text.x = element_text(angle = 90)) +
+  plot_annotation(
+    theme = theme(
+    plot.subtitle = element_markdown(
+       margin = margin(b = 0.4, unit = 'cm'),
+        size = 11.5
+    )))
+
+# girafe(ggobj = bps_plot,
+#        height_svg = 4)
+
+bps_plot
+
+```
+
+```{r}
+#| label: fig-bps
+#| fig-cap: "Total new 2+ residential building permits issued from 2000 to 2022"
+
+# Create a visualization that shows where 2+ housing is being built. Where is more diverse housing being built? 
+
+density <- c("Hanover", "Henrico", "Chesterfield", "Richmond")
+
+bps <- read_rds("data/planrva/rds/rva_bps.rds") |> # Load in Building Permits Survey data.
+  mutate(type = case_when( # Group "Missing Middle" housing together.
+    type == "2-units" ~ "2-4 units",
+    type == "3-4 units" ~ "2-4 units",
+    TRUE ~ type
+  )) |> 
+  group_by(name_long, year, type) |> # Aggregate to locality and housing type.
+  summarise(units = sum(units)) |> 
+  group_by(name_long) |> # Group by locality.
+  mutate(total = sum(units)) |> # Calculate the total number of new permits for entire time period.
+  filter(type == "1-unit") 
+
+
+# subtitle_text <- "Few <span style = 'color:#40C0C0'><b>2-4 unit housing</span> has been built between 2000 to 2023"
+  
+bps_plot <- ggplot(bps,
+       aes(x = reorder(name_long, units),
+           y = units,
+           fill = type,
+           data_id = units,
+           tooltip = number_format(big.mark =",")(units))) + 
+  geom_col_interactive(position = "stack") +
+  theme_hfv(base_size = 10) + 
+  scale_fill_hfv() +
+  scale_y_continuous(labels = number_format(big.mark = ",", style_positive = "plus")) +
+  labs(title = "Total new 1-unit residential building permits issued in the PlanRVA region",
+       caption = "**Source:** U.S. Census Bureau. Building Permits Survey.") + 
+  theme(panel.grid.major.y = element_line(color = "white"),
+        panel.grid.major.x = element_line(color = "#f5f5f5",size = 0.1),
+        axis.text.x = element_text(angle = 90)) +
+  plot_annotation(
+    theme = theme(
+    plot.subtitle = element_markdown(
+       margin = margin(b = 0.4, unit = 'cm'),
+        size = 11.5
+    )))
+
+# girafe(ggobj = bps_plot,
+#        height_svg = 4)
+
+bps_plot
+
+```
+
+```{r}
+#| label: fig-pct-renter
+#| fig-cap: "Percent of renter households in the PlanRVA region"
+
+tenure <- read_rds("data/planrva/rds/b25003.rds") |> 
+  filter(year == 2010 | year == 2022) |> 
+  filter(tenure == "Renter") |> 
+  mutate(year = as.character(year)) 
+
+subtitle_text <- "In <span style = 'color:#011E41'><b>2010</b></span> and <span style = 'color:#40C0C0'><b>2022</span>"
+
+# tenure_plot <- 
+  
+ggplot(tenure,
+       aes(x = reorder(NAME, pct),
+           y = pct,
+           color = year)) +
+  geom_line(size = 1, color = "grey") +
+  geom_point_interactive(aes(color = year,
+                             data_id = pct,
+                             tooltip = percent_format(accuracy = 1)(pct)), 
+                         size = 2) +
+  coord_flip() +
+  theme_hfv() +
+  scale_y_continuous(labels = percent_format()) +
+  labs(title = "Percent of renter households in Hampton Roads",
+       subtitle = subtitle_text,
+       caption = "**Source:** U.S. Census Bureau, ACS, 5-Year Estimates, Table B25003.") +
+  scale_color_hfv() +
+  plot_annotation(
+    theme = theme(
+    plot.subtitle = element_markdown(
+       margin = margin(b = 0.4, unit = 'cm'),
+        size = 11.5
+    ))) + 
+  theme(panel.grid.major.y = element_line(color = "white"),
+        panel.grid.major.x = element_line(color = "#dadada",size = 0.1))
+
+girafe(ggobj = tenure_plot,
+       height_svg = 4)
+
+
+```
+```{r}
+#| label: fig-pct-homeowner
+#| fig-cap: "Homeownership in the PlanRVA region"
+
+tenure <- read_rds("data/planrva/rds/b25003.rds") |>
+  group_by(year, NAME, tenure) |> 
+  summarise(estimate = sum(estimate)) |> 
+  ungroup() |> 
+  group_by(year, NAME) |> 
+  mutate(total = sum(estimate)) |> 
+  mutate(pct = estimate/total) |> 
+  filter(tenure == "Homeowner") |> 
+  filter(year == 2010 | year == 2022) |> 
+  mutate(year = as.character(year)) 
+
+
+subtitle_text <- "In <span style = 'color:#011E41'><b>2010</b></span> and <span style = 'color:#40C0C0'><b>2022</span>"
+
+# tenure_plot <- 
+  
+ggplot(tenure,
+       aes(x = reorder(NAME, pct),
+           y = pct,
+           color = year)) +
+  geom_line(size = 1, color = "grey") +
+  geom_point_interactive(aes(color = year,
+                             data_id = pct,
+                             tooltip = percent_format(accuracy = 1)(pct)), 
+                         size = 2) +
+  coord_flip() +
+  theme_hfv() +
+  scale_y_continuous(labels = percent_format(), limits = c(.35, 1)) +
+  labs(title = "Homeownership rate in the PlanRVA region",
+       subtitle = subtitle_text,
+       caption = "**Source:** U.S. Census Bureau, ACS, 5-Year Estimates, Table B25003.") +
+  scale_color_hfv() +
+  plot_annotation(
+    theme = theme(
+    plot.subtitle = element_markdown(
+       margin = margin(b = 0.4, unit = 'cm'),
+        size = 11.5
+    ))) + 
+  theme(panel.grid.major.y = element_line(color = "white"),
+        panel.grid.major.x = element_line(color = "#dadada",size = 0.1))
+
+  
+girafe(ggobj = tenure_plot,
+       height_svg = 4)
+
+```
+```{r}
+#| label: fig-rva-price
+#| fig-cap: "Median home sales price in Hampton Roads"
+
+# What have home prices been like?
+
+# How to add arrows indicating direction on line segments??
+
+hr_var_price <- read_rds("data/plan/hr_var.rds") |> 
+  select(geography, period, name, adj_price) |> 
+  mutate(year = substr(period, 1, 4)) |> 
+  mutate(year = as.numeric(year)) |> 
+  filter(period == "2023 Q2" | period == "2019 Q2") |> 
+  mutate(period = as.character(period)) |> 
+  select(geography, name, adj_price, period) |> 
+  pivot_wider(names_from = period, 
+              values_from = adj_price) |> 
+  mutate(latest = `2023 Q2`) |> 
+  pivot_longer(3:4,
+               names_to = "period",
+               values_to = "med_price") |> 
+  mutate(name = case_when(
+    name == "Virginia Beach-Norfolk-Newport News MSA" ~ "VB-Norfolk-NN MSA",
+    TRUE ~ name
+  )) |> 
+  mutate(name = str_remove(name, " City"))  |> 
+  mutate(name = case_when(
+    name == "James County" ~ "James City County",
+    TRUE ~ name
+  ))
+  
+subtitle_text <- "In <span style = 'color:#011E41'><b>Q2 2019</b></span> and <span style = 'color:#40C0C0'><b>Q2 2023</span>"
+
+
+price_plot <- ggplot(hr_var_price,
+       aes(x = reorder(name, latest),
+           y = med_price,
+           color  = period)) +
+  theme_hfv() +
+  geom_line(linewidth = 1, color = "grey") +
+  geom_point_interactive(aes(
+           data_id = med_price,
+           tooltip = dollar_format()(med_price))) +
+  geom_text(data = subset(hr_var_price, 
+                          name %in% c("James City County",  "VB-Norfolk-NN MSA", "Portsmouth")),
+            aes(label = dollar(med_price),
+                hjust = ifelse(period == "2023 Q2", -0.25, 1.25)), 
+            size = 3) +
+  coord_flip() +
+  labs(title = "Median home sales price in Hampton Roads",
+       subtitle = subtitle_text,
+       caption = "**Source:** Virginia REALTORS, adjusted to Q2 2023 dollars.") +
+  scale_y_continuous(labels = dollar_format(), limits = c(100000, 500000)) +
+  scale_color_hfv() +
+  plot_annotation(
+    theme = theme(
+    plot.subtitle = element_markdown(
+       margin = margin(b = 0.4, unit = 'cm'),
+        size = 11.5
+    ))) + 
+  theme(panel.grid.major.y = element_line(color = "white"),
+        panel.grid.major.x = element_line(color = "#dadada",size = 0.2))
+  
+girafe(ggobj = price_plot,
+       height_svg = 4)
+
+```
 
 ```{r}
 #| label: fig-housing-type
@@ -77,6 +430,8 @@ type_plot
 
 
 ```
+
+
 
 
 ```{r}
@@ -223,7 +578,9 @@ hearing_tbl <- read_rds("data/planrva/rds/rva_vza_nogeo.rds") |>
   select(jurisdiction, abbrvname, overlay, 6:9, acres) |> 
   filter(overlay == 0) |> 
   group_by(jurisdiction) |> 
-  mutate(total_area = sum(acres)) |> 
+  mutate(total_area = sum(acres)) 
+
+|> 
   mutate(family1_pct = case_when(
     family1_treatment == "hearing" ~ acres/total_area,
     TRUE ~ 0
@@ -546,17 +903,34 @@ adu_detached <- type |>
 
 adu_attached <- type |> 
   filter(adutype == "Attached ADU") |> 
-  group_by()
+  group_by(jurisdiction) %>%
+  mutate(
+    total_pct = sum(adu_pct, na.rm = TRUE),
+    allowed_hearing_pcts = sum(adu_pct[treatment %in% c("allowed", "hearing")], na.rm = TRUE),
+    prohibited_pct = sum(adu_pct[treatment == "prohibited"], na.rm = TRUE)
+  ) 
 
 adu_detached$treatment <- factor(adu_detached$treatment, levels = c("prohibited", "hearing", "allowed"))
+adu_attached$treatment <- factor(adu_attached$treatment, levels = c("prohibited", "hearing", "allowed"))
+
 
 my_colors <- c("prohibited" = "#e2e4e3",
                "allowed" = "#40C0C0",
-               "hearing" = "#8B85CA",
-               "nomention" = "#6f7b75")
+               "hearing" = "#8B85CA")
 
 
-ggplot(adu_detached,
+d_plot <- ggplot(adu_detached,
+       aes(x = reorder(jurisdiction, allowed_hearing_pcts),
+           y = adu_pct,
+           fill = treatment)) +
+  geom_col() +
+  coord_flip() +
+  theme_hfv()  +
+  scale_y_continuous(labels = percent_format()) +
+  scale_fill_manual(values = my_colors)  +
+  labs(title = "Detached ADUs")
+
+a_plot <- ggplot(adu_attached,
        aes(x = reorder(jurisdiction, allowed_hearing_pcts),
            y = adu_pct,
            fill = treatment)) +
@@ -565,23 +939,68 @@ ggplot(adu_detached,
   theme_hfv()  +
   scale_y_continuous(labels = percent_format()) +
   theme(legend.position = "right") +
-  scale_fill_manual(values = my_colors)  # Add this line
+  scale_fill_manual(values = my_colors)   +
+  labs(title = "Attached ADUs")
+
+d_plot + a_plot
 
 
-ggplot(hr_adu,
-       aes(x = reorder(jurisdiction, pct),
-           y = pct,
-           fill = pct)) +
-  geom_col() +
-  geom_text(aes(label = percent(pct, accuracy = 0.1), color = pct, hjust = -0.2)) +
-  coord_flip() +
-  theme_hfv() +
-  labs(title = "Percent of developable land allowing for ADUs by-right",
-       caption = "**Source: ** HousingForward Virginia, Virginia Zoning Atlas.")  +
-  scale_y_continuous(labels = percent_format(), expand = expansion(mult = c(0, 0.15))) +
-  scale_fill_gradientn(colours = c("#ADDCB1", "#46A88F", "#207A88", "#0F1A4E")) + # Use custom HFV gradient.
-  scale_color_gradientn(colours = c("#ADDCB1", "#46A88F", "#207A88", "#0F1A4E")) + # Use custom HFV gradient.
-  theme(axis.text.x = element_blank())
+```
+
+
+```{r}
+
+transit_map <- read_rds("data/planrva/rds/transit_map.rds")
+region <- read_rds("data/planrva/rds/rva_region.rds")
+
+
+transit_map |> 
+  addProviderTiles(providers$CartoDB.Positron) 
+
   
+
+
+```
+
+```{r}
+
+# Determine how much total land allows for 4+ family housing either by-right or through
+# public hearing.
+
+type <- read_rds("data/planrva/rds/rva_vza_nogeo.rds") |> 
+  select(jurisdiction, type, family4_treatment, acres) |> 
+  filter(family4_treatment == 'allowed' | family4_treatment == 'hearing') |> 
+  group_by(jurisdiction) |> 
+  summarise(total_area = sum(acres)) |> 
+  mutate(total_area = format(total_area, scientific = FALSE))
+
+# Calculate how much developable land that allows for 4+ family housing within a
+# quarter mile of transit stops allow for that housing by-right
+
+transit_area <- geojson_sf("data/planrva/geo/byright4_w_qtr_mile.geojson") |> 
+  st_drop_geometry() |> 
+  group_by(jurisdiction) |> 
+  summarise(area = sum(update_area)) |> 
+  mutate(total_area = case_when(
+    jurisdiction == "Richmond (city)" ~ 6061.756499,
+    jurisdiction == "Chesterfield" ~ 138095.271176,
+    jurisdiction == "Henrico" ~ 14065.528323)) |> 
+  ungroup() |> 
+  group_by(jurisdiction) |> 
+  summarise(pct = area/total_area)
+
+# Create a plot to show the percentage of land where you can build 4+ housing within
+# quarter mile of transit stops.
+
+
+ggplot(transit_area,
+       aes(x = jurisdiction,
+           y = pct)) +
+  geom_col(fill = "#40C0C0") +
+  theme_hfv(base_size = 10) +
+  scale_y_continuous(labels = percent_format(), limits = c(0,1)) +
+  labs(title = "Multifamily housing near transit",
+       subtitle = "Percent of multifamily zoned land that permits it by-right")
+
 
 ```

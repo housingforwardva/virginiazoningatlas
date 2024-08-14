@@ -12,9 +12,9 @@ rva_cfd <- read_csv("data/planrva/csv/planrva_cfd.csv") |>
   janitor::clean_names() |> 
   select(abbrvname = abbreviated_district_name, jurisdiction, county, customfielddata) |>  
   separate(customfielddata, into = c("min1", "min2", "min3", "min4", "max1", "max2", "max3", "max4", "sfd", "thonly", "adu_def"), sep = ',') |> 
-  mutate(across(.fns = ~str_remove_all(.x, '"')),
-         across(.fns = ~str_remove_all(.x, "\\{")),
-         across(.fns = ~str_remove_all(.x, "\\}"))) |> 
+  mutate(across(min1:adu_def,.fns = ~str_remove_all(.x, '"')),
+         across(min1:adu_def,.fns = ~str_remove_all(.x, "\\{")),
+         across(min1:adu_def,.fns = ~str_remove_all(.x, "\\}"))) |> 
   mutate(across(min1:adu_def,.fns = ~str_remove_all(.x, "41_116:")),
          across(min1:adu_def,.fns = ~str_remove_all(.x, '41_117:')),
          across(min1:adu_def,.fns = ~str_remove_all(.x, '41_118:')),
@@ -47,10 +47,21 @@ rva_punched_cfd <- rva_punched |>
     jurisdiction == "Hanover - Ashland" ~ "Ashland",
     TRUE ~ jurisdiction)) |> 
   filter(overlay == 0) |> # Remove overlay districts from the analysis.
-  mutate(acres = as.numeric(acres))
+  mutate(acres = as.numeric(acres)) |> 
+  mutate(type = case_when(
+    jurisdiction == "Richmond (city)" & abbrvname == "B-1" ~ "Mixed with Residential",
+    jurisdiction == "Richmond (city)" & abbrvname == "B-2" ~ "Mixed with Residential",
+    jurisdiction == "Richmond (city)" & abbrvname == "B-3" ~ "Mixed with Residential",
+    jurisdiction == "Richmond (city)" & abbrvname == "B-4" ~ "Mixed with Residential",
+    jurisdiction == "Richmond (city)" & abbrvname == "B-5" ~ "Mixed with Residential",
+    jurisdiction == "Richmond (city)" & abbrvname == "B-6" ~ "Mixed with Residential",
+    jurisdiction == "Richmond (city)" & abbrvname == "B-7" ~ "Mixed with Residential",
+    jurisdiction == "Richmond (city)" & abbrvname == "RP" ~ "Mixed with Residential",
+    TRUE ~ type
+  ))
 
 
-head <- head(rva_punched_cfd, 5)
+
 
 
 
@@ -65,7 +76,7 @@ rva_vza_nogeo <- rva_punched_cfd |>
   st_drop_geometry() 
 
 
-st_write(rva_vza_data, "data/planrva/geo/rva_vza_geo.geojson", append = FALSE)
-write_rds(rva_vza_data, "data/planrva/rds/rva_vza_geo.rds", compress = "none")
+st_write(rva_punched_cfd, "data/planrva/geo/rva_vza_geo.geojson", append = FALSE)
+write_rds(rva_punched_cfd, "data/planrva/rds/rva_vza_geo.rds", compress = "none")
 write_rds(rva_vza_nogeo, "data/planrva/rds/rva_vza_nogeo.rds", compress = "none")
 
