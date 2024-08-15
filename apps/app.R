@@ -235,7 +235,7 @@ ui <- bslib::page_fluid(
           shinyWidgets::prettySwitch("apt_switch", "Apartments (4+ units)"),
           bslib::tooltip(
             bsicons::bs_icon("info-circle"),
-            "Where you can build larger apartments by-right or through a public hearing"
+            "Where you can build larger apartments by-right"
           )
         ),
         span(
@@ -243,7 +243,7 @@ ui <- bslib::page_fluid(
           shinyWidgets::prettySwitch("adu_switch", "Accessory Dwelling Units"),
           bslib::tooltip(
             bsicons::bs_icon("info-circle"),
-            "Where you can build ADUs in primarily residential zoning districts"
+            "Where you can build ADUs in primarily residential zoning districts by-right"
           )
         ),
         span(
@@ -251,7 +251,7 @@ ui <- bslib::page_fluid(
           shinyWidgets::prettySwitch("msm_switch", "Missing Middle Housing"),
           bslib::tooltip(
             bsicons::bs_icon("info-circle"),
-            "Where you can build 2-4 unit housing by-right or through a public hearing"
+            "Where you can build 2-4 unit housing by-right"
           )
         )
       ),
@@ -521,7 +521,7 @@ server <- function(input, output, session) {
           set_filter(
             "zoning",
             list("all",
-                 c("in", "family4_treatment", "allowed", "hearing"),
+                 c("in", "family4_treatment", "allowed"),
                  c("in", "Jurisdiction", input$select_juris)
             )
           )
@@ -536,7 +536,7 @@ server <- function(input, output, session) {
             "zoning",
             list("all",
                  c("==", "type", "Primarily Residential"),
-                 c("!=", "accessory_treatment", "prohibited"),
+                 c("==", "accessory_treatment", "allowed"),
                  c("in", "Jurisdiction", input$select_juris)
             )
           )
@@ -549,9 +549,9 @@ server <- function(input, output, session) {
           set_filter(
             "zoning",
             list("all",
-                 c("!=", "family2_treatment", "prohibited"),
-                 c("!=", "family3_treatment", "prohibited"),
-                 c("!=", "family4_treatment", "prohibited"),
+                 c("==", "family2_treatment", "allowed"),
+                 c("==", "family3_treatment", "allowed"),
+                 c("==", "family4_treatment", "allowed"),
                  c("in", "Jurisdiction", input$select_juris)
             )
           )
@@ -639,7 +639,7 @@ server <- function(input, output, session) {
         mapgl::add_line_layer(
           id = "juris",
           source = juris,
-          line_color = "#f2e70a",
+          line_color = "#808080",
           line_width = 2
         )
     } else {

@@ -1,13 +1,12 @@
 name: va_zoning_atlas_stage
-title: va_zoning_atlas_stage
+title: apps
 username: housingforwardva
 account: housingforwardva
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 12456260
-bundleId: 8984374
+bundleId: 8984549
 url: https://housingforwardva.shinyapps.io/va_zoning_atlas_stage/
 version: 1
 asMultiple: FALSE
 asStatic: FALSE
-ignoredFiles: app_kw.R
