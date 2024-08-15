@@ -442,7 +442,7 @@ type_plot
 
 sfd <- read_rds("data/planrva/rds/rva_vza_nogeo.rds") |> # Read in the data.
   select(jurisdiction, abbrvname, type, sfd, acres) |> 
-  filter(type == "Mixed with Residential" | type == "Primarily Residential") |> # Filter for only land that allows for housing?
+  # filter(type == "Mixed with Residential" | type == "Primarily Residential") |> # Filter for only land that allows for housing?
   mutate(acres = as.numeric(acres)) |> 
   group_by(jurisdiction, sfd) |> 
   summarise(acres = sum(acres)) |> 
