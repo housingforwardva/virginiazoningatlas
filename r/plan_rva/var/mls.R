@@ -16,7 +16,7 @@ rva_var <- rva_var |>
   mutate(year = as.numeric(year))
 
 cpi_ls <- fredr(
-  series_id = "CUSR0000SEHC"
+  series_id = "CUUR0000SA0L2"
 ) %>% 
   select(date, value) %>% 
   mutate(date = as.Date(date)) %>% 
@@ -30,5 +30,5 @@ rva_var <- rva_var |>
   left_join(cpi_ls, by = "period") |> 
   transform(adj_price = (284.16933/cpi)*med_price) 
 
-write_rds(rva_var, "data/nova/nova_var.rds")
+write_rds(rva_var, "data/planrva/rds/rva_var.rds")
 
