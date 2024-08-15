@@ -238,6 +238,11 @@ ui <- bslib::page_fluid(
             "Where you can build larger apartments by-right"
           )
         ),
+        conditionalPanel(
+          condition = "input.apt_switch == true",
+          checkboxInput("apt_option1", "By-Right"),
+          checkboxInput("apt_option2", "Public Hearing")
+        ),
         span(
           style = "display: flex; align-items: center;",
           shinyWidgets::prettySwitch("adu_switch", "Accessory Dwelling Units"),
@@ -618,7 +623,7 @@ server <- function(input, output, session) {
         add_fill_layer(
           id = "flood",
           source = flood,
-          fill_color = "#5E1914",
+          fill_color = "#a9d1c9",
           fill_opacity = 0.5
         )
       
@@ -687,11 +692,11 @@ server <- function(input, output, session) {
     } else if (cur == "sfd") {
       cur_locality <- dplyr::filter(zoning, jurisdiction %in% input$select_juris, sfd == "t")
     } else if (cur == "apts") {
-      cur_locality <- dplyr::filter(zoning, jurisdiction %in% input$select_juris, family4_treatment %in% c("allowed", "hearing"))
+      cur_locality <- dplyr::filter(zoning, jurisdiction %in% input$select_juris, family4_treatment == "allowed")
     } else if (cur == "adus") {
-      cur_locality <- dplyr::filter(zoning, jurisdiction %in% input$select_juris, type == "Primarily Residential", accessory_treatment != "prohibited")
+      cur_locality <- dplyr::filter(zoning, jurisdiction %in% input$select_juris, type == "Primarily Residential", accessory_treatment == "allowed")
     } else if (cur == "missmiddle") {
-      cur_locality <- dplyr::filter(zoning, jurisdiction %in% input$select_juris, family2_treatment != "prohibited", family3_treatment != "prohibited", family4_treatment != "prohibited")
+      cur_locality <- dplyr::filter(zoning, jurisdiction %in% input$select_juris, family2_treatment == "allowed", family3_treatment == "allowed", family4_treatment == "allowed")
     }
     
     full_locality <- dplyr::filter(zoning, jurisdiction %in% input$select_juris)
