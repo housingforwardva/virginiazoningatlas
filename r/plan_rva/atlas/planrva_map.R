@@ -3,6 +3,7 @@ library(tidyverse)
 library(rmapshaper)
 library(geojsonsf)
 library(leaflet)
+library(mapgl)
 
 # Upload geojson for PlanRVA boundaries and write to RDS.
 
@@ -57,11 +58,12 @@ byright4 <- geojson_sf("data/planrva/geo/rva_vza_geo.geojson") |>
   filter(family4_treatment == "allowed") |> 
   select(abbrvname, type, jurisdiction, county, family1_treatment, family2_treatment, family3_treatment, family4_treatment)
 
-byright4 <- ms_simplify(byright2, keep = 0.3)
+byright4 <- ms_simplify(byright4, keep = 0.3)
 
 
 pal <- colorFactor(palette =c("#8B85CA", "#40C0C0"),
                    levels = c("Primarily Residential", "Mixed with Residential"))
+
 
 
 byr4_map <- leaflet(byright4) |>
@@ -75,11 +77,11 @@ byr4_map <- leaflet(byright4) |>
               fillColor = ~pal(type),
               fillOpacity = 0.9,
               popup = paste0("Jurisdiction: ",
-                             byright2$jurisdiction,
+                             byright4$jurisdiction,
                              "<br>",
                              "District: ",
-                             byright2$abbrvname)) |> 
-  addLegend(data = byright2,
+                             byright4$abbrvname)) |> 
+  addLegend(data = byright4,
             labels = c("Primarily Residential", "Mixed with Residential"),
             colors = c("#8B85CA", "#40C0C0"),
             title = "Type of Zoning District") 

@@ -1,3 +1,8 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
 ```{r}
 #| label: setup
 
@@ -342,6 +347,62 @@ girafe(ggobj = price_plot,
        height_svg = 4)
 
 ```
+
+```{r}
+#| label: fig-rva-price
+#| fig-cap: "Median home sales price in Hampton Roads"
+
+# What have home prices been like?
+
+# How to add arrows indicating direction on line segments??
+
+rva_var_price <- read_rds("data/planrva/rds/rva_var.rds") |> 
+  filter(name == "Richmond MSA")
+  
+  
+subtitle_text <- "In <span style = 'color:#011E41'><b>Q2 2019</b></span> and <span style = 'color:#40C0C0'><b>Q2 2024</span>"
+
+
+price_plot <- ggplot(rva_var_price,
+                     aes(x = quarter,
+                         y = adj_price, 
+                         group = 1)) + 
+  geom_line(stat = "identity")
+  
+  theme_hfv() +
+  geom_line(linewidth = 1, color = "grey") +
+  geom_point_interactive(aes(
+           data_id = med_price,
+           tooltip = dollar_format()(med_price))) +
+  geom_text(data = subset(rva_var_price,
+  name %in% c("Goochland County",  "Richmond MSA")),
+  aes(label = dollar(med_price),
+      hjust = ifelse(period == "2024 Q2", -0.25, 1.25)),
+  size = 3) +
+  coord_flip() +
+  labs(title = "Median home sales price in Richmond region",
+       subtitle = subtitle_text,
+       caption = "**Source:** Virginia REALTORS, adjusted to Q2 2024 dollars.") +
+  scale_y_continuous(labels = dollar_format(), limits = c(100000, 700000)) +
+  scale_color_hfv() +
+  plot_annotation(
+    theme = theme(
+    plot.subtitle = element_markdown(
+       margin = margin(b = 0.4, unit = 'cm'),
+        size = 11.5
+    ))) + 
+  theme(panel.grid.major.y = element_line(color = "white"),
+        panel.grid.major.x = element_line(color = "#dadada",size = 0.2))
+
+price_plot
+  
+girafe(ggobj = price_plot,
+       height_svg = 4)
+
+```
+
+
+
 ```{r}
 #| label: fig-rva-dom
 #| fig-cap: "Median days on market in the Richmond region"

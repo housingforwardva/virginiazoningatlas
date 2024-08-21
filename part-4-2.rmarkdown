@@ -1,0 +1,744 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+#| label: setup
+
+# Load necessary packages.
+
+library(tidycensus)
+library(tidyverse)
+library(hdatools)
+library(ggiraph)
+library(scales)
+library(patchwork)
+library(ggtext)
+library(kableExtra)
+library(leaflet)
+
+# Use data from the VZA to summarize the number of districts involved, number of zoning ordinance pages read, and other interesting metrics.
+
+```
+
+
+The [PlanRVA](https://www.planrva.org/) region is comprised of 9 local governments, including one independent city, seven counties, and the Town of Ashland.
+
+
+```{r}
+#| label: fig-rva-map
+#| fig-cap: "PlanRVA"
+
+# The following is a map of PlanRVA jurisdictions.
+
+region <- read_rds("data/planrva/rds/rva_region.rds") 
+
+# Map in leaflet.
+
+leaflet(region) |> 
+  addProviderTiles(providers$CartoDB.Positron) |> # Add basemap
+  addPolygons(fillColor = "#011E41", # Set polygon fill color.
+              weight = 1, # Set polygon outline weight.
+              color = "white", # Set polygon outline color.
+              fillOpacity = 0.8, # Set polygon fill color transparency.
+              popup = region$Jurisdiction) # Set pop-up to jurisdiction name.
+
+```
+
+
+## Zoning in the Richmond Region
+
+All jurisdictions within the PlanRVA region implement zoning to regulate and restrict housing in their respective communities. At the time of this analysis, the Chesterfield County and the City of Richmond were undergoing comprehensive modernizations of their zoning ordinances.
+
+
+```{r}
+#| label: tbl-summary
+#| tbl-cap: "Zoning Ordinance Summary"
+
+summary_tbl <- read_csv("data/planrva/csv/rva_summary.csv") |> 
+  kbl(col.names = c("Jurisdiction", "Last Comprehensive Rewrite", "Number of Pages", "Number of base and overlay districts"), align = "lccc") |> 
+  kable_styling(bootstrap_options = c("striped", "condensed"))
+
+summary_tbl
+
+```
+
+
+HousingForward Virginia analyzed 261 individual base and overlay zoning districts in the region. The analysis that follows excludes overlay districts because they often had no impact on how a residential use was treated. The following analysis involves 203 zoning districts across nine jurisdictions. In order to calculate developable land, Land Use Atlas, Inc. and HousingForward Virginia processed geospatial data to exclude protected lands and rights-of-way from the analysis utilizing PAD-US data, NHDPlus High Res data, and Regrid parcel data. 
+
+The results of our analysis are based on the zoning ordinances and zoning maps of each jurisdiction. It is important to note that restrictive covenants, proffered conditions, and parcel-level changes through special exceptions or special use permits also impact the ability to build housing, but they are outside the scope of this analysis.
+
+
+## Type of Zoning
+
+Like other regions in Virginia, the Richmond region is compromised mainly of primarily residential zoning districts - 91 percent of developable land. Only three percent of land in the region allows for a mix of residential and other uses, while the remaining six percent is dedicated to nonresidential uses like conservation lands or industrial uses. The City of Richmond, unsurprisingly, contains the most Mixed with Residential zoning type (14%), but is followed by New Kent County at 10 percent. New Kent County's permissiveness around mixed-use zoning is related to its use of Planned Unit Developments, which theoretically allow for a mix of uses, but does not necessarily mean that a mixed-use development will be built.
+
+
+```{r}
+#| label: fig-housing-type
+#| fig-cap: "Share of Land Dedicated to Residential and Nonresidential Uses"
+
+# Create a bar chart that shows the percentage of zoned in each locality by type (i.e. primarily residential, mixed with residential, nonresidential)
+
+type <- read_rds("data/planrva/rds/rva_vza_nogeo.rds") |> 
+  select(jurisdiction, type, acres) 
+
+
+type_summary <- type |> 
+  group_by(jurisdiction, type) |> 
+  summarise(acres = sum(acres)) |> 
+  group_by(jurisdiction) |> 
+  mutate(pct = acres/sum(acres)) 
+
+rva_summary <- type |> 
+  group_by(type) |> 
+  summarise(acres = sum(acres)) |> 
+  mutate(pct = acres/sum(acres)) 
+
+subtitle_text <- "<span style='color:#8B85CA'><b>Primarily Residential</span></b>, <span style='color:#40C0C0'><b>Mixed with Residential</span></b>, and <span style='color:#011E41'><b>Nonresidential</span></b>"
+
+
+type_plot <- ggplot(type_summary,
+       aes(x = fct_reorder2(jurisdiction, type, pct),
+           y = pct,
+           fill = factor(type, levels = c("Nonresidential", "Mixed with Residential", "Primarily Residential")),
+           data_id = pct,
+           tooltip = percent_format(accuracy = 0.1)(pct))) +
+  geom_col_interactive(position = "stack") +
+  coord_flip() +
+  theme_hfv() +
+  scale_fill_hfv() +
+  labs(subtitle = subtitle_text
+       # caption = "**Source:** Mercatus Center at George Mason University & HousingForward Virginia, Virginia Zoning Atlas."
+       ) +
+  scale_y_continuous(labels = percent_format(), expand = expansion(mult = c(0, 0.01))) +
+  plot_annotation(
+    theme = theme(
+    plot.subtitle = element_markdown(
+       margin = margin(b = 0.4, unit = 'cm'),
+        size = 11.5
+    )))
+
+
+girafe(ggobj = type_plot,
+       height_svg = 4)
+
+type_plot
+
+# write_csv(nova_summary, "data/nova/csv/nova_ztype_region.csv")
+# write_csv(nova_type_summary, "data/nova/csv/nova_ztype.csv")
+
+```
+
+
+Richmond's percentage of land dedicated to a mixed-use zoning is high for the region and also high when compared to jurisdictions in the Hampton Roads region. But the City falls behind jurisdictions in Northern Virginia, where a fifth or more of land allows for a more intense mix of uses. The increasing importance of mixed-use zoning should not be understated. By allowing for more diverse uses close to housing, communities can increase their environmental sustainability and promote more walkable communities. Mixed-use zoning also can have impacts on affordability by reducing a household's second largest expense after housing - transportation.
+
+## Residential Zoning in the Richmond Region
+
+The dominance of single-family detached housing development has contributed to the lack of mixed-use development in the region. In the region, 60 percent of land is dedicated to only single-family detached housing, the most expensive type of housing. Both Hampton Roads and Northern Virginia have higher percentages of land dedicated to this type of housing - 71 percent and 74 percent, respectively. But it is important to note the key difference in the Richmond region.
+
+
+
+```{r}
+#| label: fig-sfd-bar
+#| fig-cap: "Percent of Developable Residential or Mixed with Residential Land Where Only Detached Single-Family Housing is Allowed By-Right"
+
+# Create a bar char that shows the percentage of zoned in each locality that is dedicated to single-family detached only housing.
+
+sfd <- read_rds("data/planrva/rds/rva_vza_nogeo.rds") |> # Read in the data.
+  select(jurisdiction, abbrvname, type, sfd, acres) |> 
+  # filter(type == "Mixed with Residential" | type == "Primarily Residential") |> # Filter for only land that allows for housing?
+  mutate(acres = as.numeric(acres)) |> 
+  group_by(jurisdiction, sfd) |> 
+  summarise(acres = sum(acres)) |> 
+  ungroup() |> 
+  group_by(jurisdiction) |> 
+  mutate(total = sum(acres)) |> 
+  mutate(pct = acres/total) 
+
+
+# Total acres is 1151289
+# 
+sfd_summary <- sfd |> 
+  group_by(sfd) |> 
+  summarise(acres = sum(acres)) |> 
+  mutate(pct_area = acres/1151289)
+
+sfd_locality <- sfd |> 
+  ungroup() |> 
+  filter(sfd == "t") |> 
+  select(jurisdiction, pct) |> 
+  add_row(jurisdiction = "Charles City", pct = 0) |> 
+  add_row(jurisdiction = "Chesterfield", pct = 0 )
+
+
+sfd_explore <- read_rds("data/planrva/rds/rva_vza_nogeo.rds") |> # Read in the data.
+  select(jurisdiction, abbrvname, type, sfd, acres, family1_treatment) |> 
+  filter(type == "Mixed with Residential" | type == "Primarily Residential") |> # Select necessary data fields.
+  mutate(acres = as.numeric(acres)) |> 
+  group_by(jurisdiction, sfd, family1_treatment) |> 
+  summarise(acres = sum(acres)) |> 
+  ungroup() |> 
+  group_by(jurisdiction) |> 
+  mutate(total = sum(acres)) |> 
+  mutate(pct = acres/total) 
+
+
+
+ggplot(sfd_locality,
+       aes(x = reorder(jurisdiction, pct),
+           y = pct,
+           fill = pct)) +
+  geom_col(position = "dodge") +
+  geom_col_interactive(position = "dodge") +
+  geom_text(aes(label = percent(pct, 1), color = pct),
+    hjust = -0.2) +
+  theme_hfv() +
+  coord_flip() +
+  scale_y_continuous(expand = expansion(mult = c(0, 0.1))) +
+  scale_fill_gradientn(colours = c("#ADDCB1", "#46A88F", "#207A88", "#0F1A4E")) + # Use custom HFV gradient.
+  scale_color_gradientn(colours = c("#ADDCB1", "#46A88F", "#207A88", "#0F1A4E")) + # Use custom HFV gradient.
+  # labs(caption = "**Source:** Mercatus Center at George Mason University & HousingForward Virginia, Virginia Zoning Atlas.") +
+  theme(axis.text.x = element_blank())
+
+
+# write_csv(nova_sfd, "data/nova/csv/nova_sfd.csv")
+# write_csv(nova_sfd_summary, "data/nova/csv/nova_sfd_region.csv")
+# 
+# 
+
+
+```
+
+
+It may surprise many that Chesterfield and Charles City County dedicate zero percent of land to single-family detached only housing. But Chesterfield County allows for higher density in districts that are predominantly single-family detached through a public hearing process, and Charles City County allows for the development of 2-family housing by-right in their agricultural and residential districts. The following tables provide a better understanding of this nuance in the larger jurisdictions in the region. While Chesterfield may technically allow for more housing throughout more of its boundaries than other localities, it requires much of that housing to go through a public hearing process. Meanwhile, Henrico and Richmond allow for less housing, but allow more of it by-right.
+
+
+
+```{r}
+#| label: tbl-hearing
+#| tbl-cap: "Percent of developable land that forces housing through a public hearing process"
+#| eval: false
+
+# Create a table that shows the percentage of land that allows for each type of treatment by locality
+# https://frontierinstitute.org/reports/the-montana-zoning-atlas-2-0/ use this as an example 
+
+hearing_tbl <- read_rds("data/planrva/rds/rva_vza_nogeo.rds") |> 
+  select(jurisdiction, abbrvname, overlay, 6:9, acres) |> 
+  filter(overlay == 0) |> 
+  group_by(jurisdiction) |> 
+  mutate(total_area = sum(acres)) |> 
+  mutate(family1_pct = case_when(
+    family1_treatment == "hearing" ~ acres/total_area,
+    TRUE ~ 0
+  ))|> 
+  mutate(family2_pct = case_when(
+    family2_treatment == "hearing" ~ acres/total_area,
+    TRUE ~ 0 
+  )) |> 
+  mutate(family3_pct = case_when(
+    family3_treatment == "hearing" ~ acres/total_area,
+    TRUE ~ 0 
+  )) |> 
+  mutate(family4_pct = case_when(
+    family4_treatment == "hearing" ~ acres/total_area,
+    TRUE ~ 0 
+  )) |> 
+  group_by(jurisdiction) |> 
+  summarise(family1_hearing = percent(sum(family1_pct)),
+            family2_hearing = percent(sum(family2_pct)),
+            family3_hearing = percent(sum(family3_pct)),
+            family4_hearing = percent(sum(family4_pct))
+            ) 
+
+hearing_tbl |>
+  kable(col.names = c("Jurisdiction", "Single-family", "2-family", "3-family", "4+-family"), 
+        align = "lcccc") |> 
+  kable_styling(bootstrap_options = c("striped", "condensed"))
+
+```
+
+```{r}
+#| label: tbl-hearing-3
+#| tbl-cap: "Percent of developable land that forces housing through a public hearing process"
+
+# Create a table that shows the percentage of land that allows for each type of treatment by locality
+# https://frontierinstitute.org/reports/the-montana-zoning-atlas-2-0/ use this as an example 
+
+# treatment_tbl <- read_rds("data/planrva/rds/rva_vza_nogeo.rds") |> 
+#   select(jurisdiction, abbrvname, overlay, 6:9, acres) |> 
+#   filter(overlay == 0) |> 
+#   group_by(jurisdiction) |> 
+#   mutate(total_area = sum(acres)) |> 
+#   mutate(family1_pct = case_when(
+#     family1_treatment == "prohibited" ~ acres/total_area,
+#     TRUE ~ 0
+#   ))|> 
+#   mutate(family2_pct = case_when(
+#     family2_treatment == "prohibited" ~ acres/total_area,
+#     TRUE ~ 0 
+#   )) |> 
+#   mutate(family3_pct = case_when(
+#     family3_treatment == "prohibited" ~ acres/total_area,
+#     TRUE ~ 0 
+#   )) |> 
+#   mutate(family4_pct = case_when(
+#     family4_treatment == "prohibited" ~ acres/total_area,
+#     TRUE ~ 0 
+#   )) |> 
+#   group_by(jurisdiction) |>
+#   mutate(family1_prohibited = (sum(family1_pct)),
+#             family2_prohibited = (sum(family2_pct)),
+#             family3_prohibited = (sum(family3_pct)),
+#             family4_prohibited = (sum(family4_pct))
+#             ) |> 
+#   mutate(family1_pct = case_when(
+#     family1_treatment == "hearing" ~ acres/total_area,
+#     TRUE ~ 0
+#   ))|> 
+#   mutate(family2_pct = case_when(
+#     family2_treatment == "hearing" ~ acres/total_area,
+#     TRUE ~ 0 
+#   )) |> 
+#   mutate(family3_pct = case_when(
+#     family3_treatment == "hearing" ~ acres/total_area,
+#     TRUE ~ 0 
+#   )) |> 
+#   mutate(family4_pct = case_when(
+#     family4_treatment == "hearing" ~ acres/total_area,
+#     TRUE ~ 0 
+#   )) |> 
+#   group_by(jurisdiction) |> 
+#   mutate(family1_hearing = (sum(family1_pct)),
+#             family2_hearing = (sum(family2_pct)),
+#             family3_hearing = (sum(family3_pct)),
+#             family4_hearing = (sum(family4_pct))
+#             ) |> 
+#     mutate(family1_pct = case_when(
+#     family1_treatment == "allowed" ~ acres/total_area,
+#     TRUE ~ 0
+#   ))|> 
+#   mutate(family2_pct = case_when(
+#     family2_treatment == "allowed" ~ acres/total_area,
+#     TRUE ~ 0 
+#   )) |> 
+#   mutate(family3_pct = case_when(
+#     family3_treatment == "allowed" ~ acres/total_area,
+#     TRUE ~ 0 
+#   )) |> 
+#   mutate(family4_pct = case_when(
+#     family4_treatment == "allowed" ~ acres/total_area,
+#     TRUE ~ 0 
+#   )) |> 
+#   group_by(jurisdiction) |> 
+#   mutate(family1_byright = (sum(family1_pct)),
+#             family2_byright = (sum(family2_pct)),
+#             family3_byright = (sum(family3_pct)),
+#             family4_byright = (sum(family4_pct))
+#             ) |> 
+#   select(jurisdiction, 14:25) |> 
+#   distinct() |> 
+#   pivot_longer(2:13,
+#                names_to = "treatment",
+#                values_to = "pct") |> 
+#   separate(treatment, into = c("type", "treatment"), sep = "_") |> 
+#   mutate(type = case_when(
+#     type == "family1" ~ "Single-family", 
+#     type == "family2" ~ "2-family",
+#     type == "family3" ~ "3-family",
+#     type == "family4" ~ "4+-family"
+#   )) 
+# 
+# write_rds(treatment_tbl, "data/planrva/rds/treatment_tbl.rds")
+
+treatment_tbl <- read_rds("data/planrva/rds/treatment_tbl.rds") |> 
+  filter(jurisdiction == "Chesterfield" | jurisdiction == "Henrico" | jurisdiction == "Richmond (city)")
+
+treatment_tbl$treatment <- factor(treatment_tbl$treatment, levels = c("prohibited", "hearing", "byright"))
+x_axis_order <- c("Single-family", "2-family", "3-family", "4+-family")
+treatment_tbl$type <- factor(treatment_tbl$type, levels = x_axis_order)
+
+subtitle_text <- "Percent of developable land that allows for housing<span style='color:#40C0C0'><b>By-right</span></b>, <span style='color:#8B85CA'><b>through a public hearing</span></b>, or <span style='color:grey'><b>prohibits it</span></b>"
+
+
+ggplot(treatment_tbl,
+       aes(x = type,
+           y = pct,
+           fill = treatment)) +
+  geom_col(position = "stack") +
+  facet_grid(~jurisdiction) +
+  scale_fill_manual(values = c("byright" = "#40C0C0", "hearing" = "#8B85CA", "prohibited" = "grey")) +
+  theme_hfv() +
+  theme(axis.text.x = element_text(angle = 90)) +
+  scale_y_continuous(labels = label_percent()) +
+  labs(title = "Treatment of housing types",
+       subtitle = subtitle_text)
+
+
+
+```
+
+
+In other parts of the region, single-family housing (both attached and detached) significantly dominates zoning ordinances. However, places like Charles City, Goochland, and New Kent do allow for 2-family housing - albeit with varying degrees of ease. Meanwhile, multifamily housing (3+) is highly limited in the more rural jurisdictions. The need to protect rural character and the high cost of infrastructure expansion contributes to the limiting of density in areas like these. But the need for diverse housing options is not solely an urban and suburban issue.
+
+
+```{r}
+#| label: tbl-hearing-4
+#| tbl-cap: "Percent of developable land that forces housing through a public hearing process"
+
+treatment_tbl <- read_rds("data/planrva/rds/treatment_tbl.rds") |> 
+  filter(jurisdiction == "Ashland" | jurisdiction == "Charles City" | jurisdiction == "Hanover" | jurisdiction == "New Kent"| jurisdiction == "Powhatan" | jurisdiction == "Goochland")
+
+treatment_tbl$treatment <- factor(treatment_tbl$treatment, levels = c("prohibited", "hearing", "byright"))
+x_axis_order <- c("Single-family", "2-family", "3-family", "4+-family")
+treatment_tbl$type <- factor(treatment_tbl$type, levels = x_axis_order)
+
+subtitle_text <- "Percent of developable land that allows for housing<span style='color:#40C0C0'><b>By-right</span></b>, <span style='color:#8B85CA'><b>through a public hearing</span></b>, or <span style='color:grey'><b>prohibits it</span></b>"
+
+ggplot(treatment_tbl,
+       aes(x = type,
+           y = pct,
+           fill = treatment)) +
+  geom_col(position = "stack") +
+  facet_grid(~jurisdiction) +
+  scale_fill_manual(values = c("byright" = "#40C0C0", "hearing" = "#8B85CA", "prohibited" = "grey")) +
+  theme_hfv() +
+  theme(axis.text.x = element_text(angle = 90)) +
+  scale_y_continuous(labels = label_percent()) +
+  labs(title = "Treatment of housing types",
+       subtitle = subtitle_text)
+
+```
+
+
+Large minimum lot sizes for single-family housing also contribute to decreasing affordability. By requiring a large amount of land for a single home, builders and developers look to maximize home square footage and other features to meet a return on their investment. In turn, homes on large lots are often outside the range of affordability for many households in the region. The chart below showcases the average of minimum lot sizes for single-family housing in each jurisdiction. The more rural jurisdictions like Hanover have lot sizes well over one acre, with Charles City and Powhatan have lot minimums closer to four acres per single-family home. Lot sizes are often influenced by historical development patterns, but those same patterns have also contributed to the supply crunch we continue to face. By eliminating lot minimums or decreasing them, jurisdictions can open more opportunities for residential development. In rural communities, smaller lot sizes in strategic areas can serve as a way to preserve rural character and open space.
+
+
+```{r}
+#| label: fig-sfd-min
+#| fig-cap: "Minimum Lot Size Requirements for Single-Family Housing"
+
+# What is the average minimum lot size for each type of treatment? 
+# Blank fields should be treated as NA and should not be included in the mean calculation.
+
+
+rva_lots <- read_rds("data/planrva/rds/rva_vza_nogeo.rds") |> 
+  filter(family1_treatment == "allowed") |> 
+  mutate(min1 = as.numeric(min1)) |> 
+  group_by(jurisdiction) |> 
+  summarise(mean1min = round(mean(min1, na.rm = TRUE), 2)) |> 
+  pivot_longer(cols = mean1min,
+               names_to = "metric",
+               values_to = "avg") |> 
+  mutate(metric = "Minimum value") 
+
+
+
+subtitle_text <- "*Average <span style='color:#40c0c0'><b>minimum</span></b> in acres*"
+
+lot_plot <- ggplot(rva_lots,
+                   aes(x = reorder(jurisdiction, avg),
+                       y = avg,
+                       data_id = avg,
+                       tooltip = avg)) +
+  geom_point_interactive(color = "#40c0c0") +  # Change point color to #40c0c0
+  coord_flip() +
+  labs(subtitle = subtitle_text) +
+  theme_hfv() +
+  scale_y_continuous(breaks = seq(0, 20, 1)) +
+  plot_annotation(
+    theme = theme(
+      plot.subtitle = element_markdown(
+        margin = margin(b = 0.4, unit = 'cm'),
+        size = 11.5)))
+
+
+
+girafe(ggobj = lot_plot,
+       height_svg = 4)
+
+
+```
+
+
+Our bifurcated building pattern of single-family or apartment housing has also contributed to the housing challenges we see today. The small-scale multifamily housing that we see so often throughout historic neighborhoods, like The Fan, has been zoned out in many communities. This type of development includes duplexes, triplexes, and other building layouts, where multiple households live on a single lot in a single building. This type of housing often provides 'gentle density' in predominantly single-family detached neighborhoods and provides opportunities for households that cannot typically afford homeownership an opportunity to live in these neighborhoods. 
+The term Missing Middle has been used to describe this type of housing and has also gained traction across the nation. For the purposes of this analysis, zoning districts that allowed for 2 or more housing units by-right on a single lot were deemed to allow Missing Middle housing. Richmond leads the region in this type of zoning at 18 percent of developable land. Henrico follows but at a significantly lower percentage of three percent and all other jurisdictions are one percent or lower.
+
+
+```{r}
+#| label: fig-2plus
+#| fig-cap: "Percent of developable land allowing for Missing Middle (2-6 units) housing by-right" 
+
+# Create a bar graph that shows the total amount of zoned land that welcomes 2+ family housing by-right
+
+byright <- read_rds("data/planrva/rds/rva_vza_nogeo.rds") |> 
+  select(jurisdiction, abbrvname, overlay, 6:9, acres) |> # Select data fields.
+  filter(overlay == 0) |> # Filter out overlay districts.
+  group_by(jurisdiction) |> 
+  mutate(total_area = sum(acres)) |> # Calculate the total area of zoned land.
+  filter(family2_treatment == "allowed" & family3_treatment == "allowed" & family4_treatment == "allowed") |> 
+  group_by(jurisdiction) |> 
+  mutate(pct_2plus = acres/total_area) |> 
+  group_by(jurisdiction) |> 
+  summarise(pct_2plus = sum(pct_2plus)) |> 
+  add_row(jurisdiction = "Chesterfield", pct_2plus = 0) |> 
+  add_row(jurisdiction = "Goochland", pct_2plus = 0) 
+
+
+byright_summary <- read_rds("data/planrva/rds/rva_vza_nogeo.rds") |> 
+  select(jurisdiction, abbrvname, overlay, 6:9, acres) |> # Select data fields.
+  filter(overlay == 0) |> # Filter out overlay districts.
+  mutate(total_area = sum(acres)) |> # Calculate the total area of zoned land.
+  filter(family2_treatment == "allowed" & family3_treatment == "allowed" & family4_treatment == "allowed") |> 
+  mutate(total_2plus = sum(acres)) |> 
+  mutate(pct2plus = total_2plus/total_area)
+
+ggplot(byright,
+       aes(x = reorder(jurisdiction, pct_2plus),
+           y = pct_2plus,
+           fill = pct_2plus)) +
+  geom_col() +
+  geom_text(aes(label = percent(pct_2plus, 1), color = pct_2plus),
+    hjust = -0.2) +
+  coord_flip() +
+  theme_hfv() +
+  scale_fill_gradientn(colours = c("#ADDCB1", "#46A88F", "#207A88", "#0F1A4E")) + # Use custom HFV gradient.
+  scale_color_gradientn(colours = c("#ADDCB1", "#46A88F", "#207A88", "#0F1A4E")) + # Use custom HFV gradient.
+  scale_y_continuous(expand = expansion(mult = c(0, 0.1))) +
+  labs(title = "Missing Middle Housing",
+       caption = "**Source:** HousingForward Virginia, Virginia Zoning Atlas.")  +
+  theme(axis.text.x = element_blank())
+
+
+```
+
+
+The region has seen a significant amount of multifamily development in recent years, but the demand for rental housing still remains high. The allowance of multifamily housing by-right contributes substantially to shortening development timelines and decreasing costs, while forcing multifamily housing through a public hearing process further stalls much needed housing or in some cases prohibits it. Richmond exceeds all jurisdictions in the amount of land that is zoned for 4+-family housing by-right. Henrico follows Richmond at nine percent, while all other jurisdictions fall at three percent or below, with some jurisdictions not allowing for any of this housing by-right.
+
+
+```{r}
+#| label: fig-4plus
+#| fig-cap: "Percent of developable land allowing for 4+ family housing by-right" 
+
+# Create a bar graph that shows the total amount of zoned land that welcomes 2+ family housing by-right
+
+byright <- read_rds("data/planrva/rds/rva_vza_nogeo.rds") |> 
+  select(jurisdiction, abbrvname, overlay, 6:9, acres) |> # Select data fields.
+  filter(overlay == 0) |> # Filter out overlay districts.
+  group_by(jurisdiction) |> 
+  mutate(total_area = sum(acres)) |> # Calculate the total area of zoned land.
+  filter(family4_treatment == "allowed") |> 
+  group_by(jurisdiction) |> 
+  mutate(pct_4plus = acres/total_area) |> 
+  group_by(jurisdiction) |> 
+  summarise(pct_4plus = sum(pct_4plus)) |> 
+  add_row(jurisdiction = "Goochland", pct_4plus = 0)
+
+byright_summary <- read_rds("data/planrva/rds/rva_vza_nogeo.rds") |> 
+  select(jurisdiction, abbrvname, overlay, 6:9, acres) |> # Select data fields.
+  filter(overlay == 0) |> # Filter out overlay districts.
+  mutate(total_area = sum(acres)) |> # Calculate the total area of zoned land.
+  filter(family4_treatment == "allowed") |> 
+  mutate(total_4plus = sum(acres)) |> 
+  mutate(pct4plus = total_4plus/total_area) 
+
+ggplot(byright,
+       aes(x = reorder(jurisdiction, pct_4plus),
+           y = pct_4plus,
+           fill = pct_4plus)) +
+  geom_col() +
+  geom_text(aes(label = percent(pct_4plus, 1), color = pct_4plus),
+    hjust = -0.2) +
+  coord_flip() +
+  theme_hfv() +
+  scale_fill_gradientn(colours = c("#ADDCB1", "#46A88F", "#207A88", "#0F1A4E")) + # Use custom HFV gradient.
+  scale_color_gradientn(colours = c("#ADDCB1", "#46A88F", "#207A88", "#0F1A4E")) + # Use custom HFV gradient.
+  scale_y_continuous(expand = expansion(mult = c(0, 0.1))) +
+  labs(title = "Percent of developable land allowing for 4+ family housing by-right",
+       caption = "**Source:** HousingForward Virginia, Virginia Zoning Atlas.")+
+  theme(axis.text.x = element_blank())
+
+```
+
+
+## Accessory Dwelling Units
+
+Accessory dwelling units have been positioned as another tool in the toolbox to address our supply challenges. These backyard housing units are seen as a way for homeowners to house an aging parent or adult child. ADUs can also provide homeowners with a source of additional income, by allowing them to rent the ADU or even the primary dwelling while they live in the ADU. However, local regulations can limit the size and use of ADUs in a way that can make ADU development unfeasible or undesirable.
+
+The National Zoning Atlas utilizes a broad definition of ADUs to include housing that is an accessory use to commercial and other non-residential uses. This means that ADUs in the zoning atlas also includes watchmen' This 
+Many jurisdictions in the region treat detached and attached ADUs differently - often with attached ADUs being more permissive. The below chart shows how much developable land in each jurisdiction allows for attached and detached ADUs. 
+
+
+```{r}
+#| label: fig-hr-adus
+#| fig-cap: "Percent of developable land that allows for ADUs by-right"
+
+# Create a table that shows the percentage of land that allows for ADUs by-right
+# https://frontierinstitute.org/reports/the-montana-zoning-atlas-2-0/ use this as an example 
+
+# adu <- read_rds("data/planrva/rds/rva_vza_nogeo.rds") |> 
+#   select(jurisdiction, abbrvname, overlay, accessory_treatment, acres) 
+# 
+# write_csv(adu, "data/planrva/csv/adu.csv")
+
+adu <- read_csv("data/planrva/csv/adu.csv") |> 
+  select(jurisdiction, abbrvname, adu_detached, adu_attached, area = acres)
+
+
+type <- read_rds("data/planrva/rds/rva_vza_nogeo.rds") |> 
+  select(jurisdiction, abbrvname, type, acres) |> 
+  left_join(adu, by = c("jurisdiction", "abbrvname")) |> 
+  pivot_longer(adu_detached:adu_attached,
+               values_to = "treatment",
+               names_to = "adutype") |> 
+  ungroup() |> 
+  group_by(jurisdiction, adutype, treatment) |> 
+  summarise(adu_area = sum(area)) |> 
+  ungroup() |> 
+  group_by(jurisdiction, adutype) |> 
+  mutate(total_area = sum(adu_area)) |> 
+  mutate(adu_pct = adu_area/total_area) |> 
+  mutate(adutype = case_when(
+    adutype == "adu_detached" ~ "Detached ADU",
+    adutype == "adu_attached" ~ "Attached ADU"
+  ))
+
+condition <- adu_detached$treatment %in% c("allowed", "hearing")
+
+adu_detached <- type |> 
+  filter(adutype == "Detached ADU") |> 
+  group_by(jurisdiction) %>%
+  mutate(
+    total_pct = sum(adu_pct, na.rm = TRUE),
+    allowed_hearing_pcts = sum(adu_pct[treatment %in% c("allowed", "hearing")], na.rm = TRUE),
+    prohibited_pct = sum(adu_pct[treatment == "prohibited"], na.rm = TRUE)
+  )
+
+adu_attached <- type |> 
+  filter(adutype == "Attached ADU") |> 
+  group_by(jurisdiction) %>%
+  mutate(
+    total_pct = sum(adu_pct, na.rm = TRUE),
+    allowed_hearing_pcts = sum(adu_pct[treatment %in% c("allowed", "hearing")], na.rm = TRUE),
+    prohibited_pct = sum(adu_pct[treatment == "prohibited"], na.rm = TRUE)
+  ) 
+
+adu_detached$treatment <- factor(adu_detached$treatment, levels = c("prohibited", "hearing", "allowed"))
+adu_attached$treatment <- factor(adu_attached$treatment, levels = c("prohibited", "hearing", "allowed"))
+
+
+my_colors <- c("prohibited" = "#e2e4e3",
+               "allowed" = "#40C0C0",
+               "hearing" = "#8B85CA")
+
+
+d_plot <- ggplot(adu_detached,
+       aes(x = reorder(jurisdiction, allowed_hearing_pcts),
+           y = adu_pct,
+           fill = treatment)) +
+  geom_col() +
+  coord_flip() +
+  theme_hfv()  +
+  scale_y_continuous(labels = percent_format()) +
+  scale_fill_manual(values = my_colors)  +
+  labs(title = "Detached ADUs")
+
+a_plot <- ggplot(adu_attached,
+       aes(x = reorder(jurisdiction, allowed_hearing_pcts),
+           y = adu_pct,
+           fill = treatment)) +
+  geom_col() +
+  coord_flip() +
+  theme_hfv()  +
+  scale_y_continuous(labels = percent_format()) +
+  theme(legend.position = "right") +
+  scale_fill_manual(values = my_colors)   +
+  labs(title = "Attached ADUs")
+
+d_plot + a_plot
+
+
+```
+
+```{r}
+#| label: tbl-adu-summary
+#| tbl-cap: "ADU Ordinance Summary"
+
+adu_tbl <- read_csv("data/planrva/csv/adu_summary.csv") |> 
+  select(juris, allowed, term, admin, form, approval, allowance, size_restrict,
+         owner_occ, occ_restrict_detail, bedroom_restrict, park_req) |> 
+  kbl(col.names = c("Jurisdiction", "Treatment", "Term", "Administration", "Form", "Approval Process", "Extent", "Size Restrictions", "Owner Occupancy", "Occupancy Restrictions", "Bedroom Restrictions", "Parking Requirements"), align = "lccccccccccc") |> 
+  kable_styling(bootstrap_options = c("striped", "condensed"))
+
+adu_tbl
+
+```
+
+
+The only jurisdiction in the region that prohibits ADUs is Charles City County. All other jurisdictions allow ADUs to some degree. 
+
+
+
+
+
+## Zoning for Housing Near Transit
+
+
+```{r}
+
+transit_map <- read_rds("data/planrva/rds/transit_map.rds")
+region <- read_rds("data/planrva/rds/rva_region.rds")
+
+
+transit_map |> 
+  addProviderTiles(providers$CartoDB.Positron) 
+
+
+
+```
+
+```{r}
+
+# Determine how much total land allows for 4+ family housing either by-right or through
+# public hearing.
+
+type <- read_rds("data/planrva/rds/rva_vza_nogeo.rds") |> 
+  select(jurisdiction, type, family4_treatment, acres) |> 
+  filter(family4_treatment == 'allowed' | family4_treatment == 'hearing') |> 
+  group_by(jurisdiction) |> 
+  summarise(total_area = sum(acres)) |> 
+  mutate(total_area = format(total_area, scientific = FALSE))
+
+# Calculate how much developable land that allows for 4+ family housing within a
+# quarter mile of transit stops allow for that housing by-right
+
+transit_area <- geojson_sf("data/planrva/geo/byright4_w_qtr_mile.geojson") |> 
+  st_drop_geometry() |> 
+  group_by(jurisdiction) |> 
+  summarise(area = sum(update_area)) |> 
+  mutate(total_area = case_when(
+    jurisdiction == "Richmond (city)" ~ 6061.756499,
+    jurisdiction == "Chesterfield" ~ 138095.271176,
+    jurisdiction == "Henrico" ~ 14065.528323)) |> 
+  ungroup() |> 
+  group_by(jurisdiction) |> 
+  summarise(pct = area/total_area)
+
+# Create a plot to show the percentage of land where you can build 4+ housing within
+# quarter mile of transit stops.
+
+
+ggplot(transit_area,
+       aes(x = jurisdiction,
+           y = pct)) +
+  geom_col(fill = "#40C0C0") +
+  theme_hfv(base_size = 10) +
+  scale_y_continuous(labels = percent_format(), limits = c(0,1)) +
+  labs(title = "Multifamily housing near transit",
+       subtitle = "Percent of multifamily zoned land that permits it by-right")
+
+
+```
+
