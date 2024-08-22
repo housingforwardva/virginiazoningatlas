@@ -38,7 +38,7 @@ The [Hampton Roads Planning District Commission](https://www.hrpdcva.gov/) is co
 
 # The following is a map of Hampton Roads localities including towns.
 
-hr_region <- read_rds("data/hr/hr_region.rds") # Load in Hampton Roads geojson as rds.
+hr_region <- read_rds("data/hr/rds/hr_region.rds") # Load in Hampton Roads geojson as rds.
 
 # Map in leaflet.
 
@@ -83,7 +83,7 @@ From 2010 to 2022, Hampton Roads has grown by over 85,000 new people (a five per
 #   )) |> 
 #   filter(year == 2022)
 
-hr_pop_total <- read_rds("data/hr/hr_pop.rds") |> # Load in population data for Hampton Roads.
+hr_pop_total <- read_rds("data/hr/rds/hr_pop.rds") |> # Load in population data for Hampton Roads.
   mutate(year = as.numeric(year)) |> # Convert the year column to a number instead of character.
   filter(year == 2010 | year == 2022) |> # Filter for earliest and latest year.
   select(name_long, year, value) |> # Select only needed fields.
@@ -126,7 +126,7 @@ Households are also aging in Hampton Roads. From 2010 to 2021, there was an incr
 #| label: fig-age
 #| fig-cap: "Change in householders by age in Hampton Roads"
 
-hr_age <- read_rds("data/hr/hr_b25007.rds") |> # Load in saved data for age of householders in Hampton Roads.
+hr_age <- read_rds("data/hr/rds/hr_b25007.rds") |> # Load in saved data for age of householders in Hampton Roads.
   mutate(age = case_when( # Create fewer age groupings.
     age == "Householder 15 to 24 years" ~ "34 years or below",
     age == "Householder 35 to 44 years" ~ "35 to 44 years",
@@ -178,7 +178,7 @@ ggplot(hr_age,
 
 # Create a visualization that shows the change in household size from 2010 to 2021 in each locality. Describe the trend in household size changes. Where are larger households seeing growth? Smaller households?
 
-hr_hhsize <- read_rds("data/hr/hr_hhsize.rds") |> # Read in household size data.
+hr_hhsize <- read_rds("data/hr/rds/hr_hhsize.rds") |> # Read in household size data.
   group_by(NAME, year, size) |> # Aggregate to locality, year, and household size.
   summarise(estimate = sum(estimate)) |> 
   filter(year == 2010 | year == 2021) |> # Filter for latest and earliest years.
@@ -231,7 +231,7 @@ These trends among many others are drive housing demand. As you read further, it
 
 # Create a visualization that shows where housing is being built. Where is more diverse housing being built? Where is single-family housing being built the most? How does that compare to population growth in those localities?
 
-hr_bps <- read_rds("data/hr/hr_bps.rds") |> # Load in Building Permits Survey data.
+hr_bps <- read_rds("data/hr/rds/hr_bps.rds") |> # Load in Building Permits Survey data.
   mutate(type = case_when( # Group "Missing Middle" housing together.
     type == "2-units" ~ "2-4 units",
     type == "3-4 units" ~ "2-4 units",
@@ -301,7 +301,7 @@ As of Q2 2023, the median home price in the region sits at \$335,000. The bigges
 
 # How to add arrows indicating direction on line segments??
 
-hr_var_price <- read_rds("data/hr/hr_var.rds") |> 
+hr_var_price <- read_rds("data/hr/rds/hr_var.rds") |> 
   select(geography, period, name, adj_price) |> 
   mutate(year = substr(period, 1, 4)) |> 
   mutate(year = as.numeric(year)) |> 
@@ -374,7 +374,7 @@ subtitle_text <- "In <span style = 'color:#011E41'><b>Q2 2019</b></span> and <sp
 
 library(patchwork)
 
-hr_var_dom <- read_rds("data/hr/hr_var.rds") |> 
+hr_var_dom <- read_rds("data/hr/rds/hr_var.rds") |> 
   select(geography, name, period, med_dom)  |> 
   mutate(year = substr(period, 1, 4)) |> 
   mutate(year = as.numeric(year)) |> 
@@ -438,7 +438,7 @@ With increasing challenges to homeownership, the percentage of renters has been 
 #| label: fig-pct-renter
 #| fig-cap: "Percent of renter households in Hampton Roads"
 
-hr_tenure <- read_rds("data/hr/hr_b25003.rds") |> 
+hr_tenure <- read_rds("data/hr/rds/hr_b25003.rds") |> 
   filter(year == 2010 | year == 2021) |> 
   filter(tenure == "Renter") |> 
   mutate(year = as.character(year)) |> 
@@ -487,7 +487,7 @@ The Hampton Roads rental market experienced stark changes during the COVID-19 pa
 
 # What has rent been like in Hampton Roads?
 
-hr_rent <- read_rds("data/hr/hr_costar.rds") |> 
+hr_rent <- read_rds("data/hr/rds/hr_costar.rds") |> 
   select(period, rent, adj_price) |> 
   mutate(quarters = as.yearqtr(period)) |> 
   pivot_longer(2:3,
@@ -540,7 +540,7 @@ The rising rental prices are a sign of increasing demand. Subsequently, rental v
 
 # What has rental vacancy been like?
 
-hr_rv <- read_rds("data/hr/hr_costar.rds") |> 
+hr_rv <- read_rds("data/hr/rds/hr_costar.rds") |> 
   select(period, vacancy_rate) |> 
   mutate(quarters = as.yearqtr(period))
 
@@ -588,7 +588,7 @@ For example, a ratio of 5.0 means that there are five low-wage jobs for every un
 
 # What have employment levels been like? Are jobs declining or growing?
 
-hr_jhf <- read_rds("data/hr/hr_ratio.rds") 
+hr_jhf <- read_rds("data/hr/rds/hr_ratio.rds") 
 
 ggplot(hr_jhf,
        aes(x = reorder(name_long, ratio),
@@ -624,7 +624,7 @@ Many localities in Hampton Roads seemingly have a balanced ratio as a whole, but
 #| label: fig-hr-ratio-map
 #| fig-cap: "Jobs-Housing Fit Ratio in Hampton Roads by Block Group"
 
-hr_blk_grps <- read_rds("data/hr/hr_blk_grps.rds")
+hr_blk_grps <- read_rds("data/hr/rds/hr_blk_grps.rds")
 
 library(RColorBrewer)
 
@@ -674,7 +674,7 @@ Four of the top five industry occupations in the region have an annual median wa
 
 library(formattable)
 
-hr_occ <- read_rds("data/hr/hr_occ.rds") |> 
+hr_occ <- read_rds("data/hr/rds/hr_occ.rds") |> 
   select(occ_title, emp = tot_emp_2022, wage = a_median_2022, rent, ho_price) |> 
   mutate(`Total Employment` = label_number(big.mark = ",")(emp),
          `Average Annual Wage` = dollar_format()(wage),
@@ -732,7 +732,7 @@ For homebuyers, we calculated a home price based on a 30-year fixed rate mortgag
 
 # What are renter incomes like? What can a renter afford to rent and buy?
 
-hr_income <- read_rds("data/hr/hr_income.rds") |> 
+hr_income <- read_rds("data/hr/rds/hr_income.rds") |> 
   select(NAME, estimate, rent, ho_price) |> 
   mutate(estimate = dollar_format()(estimate),
          rent = dollar_format()(rent),
@@ -768,7 +768,7 @@ This places downward pressure on market affordable rental housing, forcing lower
 
 # What is cost burden like in the region?
 
-hr_cb <- read_rds("data/hr/hr_cb.rds")|> 
+hr_cb <- read_rds("data/hr/rds/hr_cb.rds")|> 
   mutate(income = case_when(
     income == "Less than $20,000" ~ "Less than $35,000",
     income == "$20,000 to $34,999" ~ "Less than $35,000",
@@ -807,7 +807,7 @@ Housing affordability in Hampton Roads is also an issue of racial equity. In the
 
 # Should probably consider adding in something about median household income by race in the region?
 
-hr_race_inc <- read_rds("data/hr/hr_b19013.rds") |> 
+hr_race_inc <- read_rds("data/hr/rds/hr_b19013.rds") |> 
   filter(year == 2021)
 
 subtitle_text <- "In 2021, the wealth gap between <span style = 'color:#B1005F'><b>WHITE</b></span> and <span style = 'color:#40C0C0'><b>BLACK</span> households was <b>over $33,000 </b>"
@@ -842,7 +842,7 @@ Based on these median household incomes, what a typical Black household could af
 
 # Should probably consider adding in something about median household income by race in the region?
 
-hr_race_inc <- read_rds("data/hr/hr_b19013.rds") |> 
+hr_race_inc <- read_rds("data/hr/rds/hr_b19013.rds") |> 
   filter(year == 2021) |> 
   select(race, rent, ho_price) |> 
   mutate(rent = dollar(rent),

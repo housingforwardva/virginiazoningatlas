@@ -102,7 +102,7 @@ Overlay districts, which are districts that may change the regulations of a base
 
 # Read in csv of zoning summary for Hampton Roads.
 
-hr_zoning_summary <- read_csv("data/hr/hr_zoning_summary.csv")
+hr_zoning_summary <- read_csv("data/hr/csv/hr_zoning_summary.csv")
 
 hr_zoning_summary |> 
   kbl(col.names = c("Jurisdiction", "County or equivalent", "Government Type", "Date of Zoning Ordinance", "Number of Pages", "Number of base and overlay districts"), align = "lllccc") |> 
@@ -123,7 +123,7 @@ Subjectively, we found that many zoning ordinances had varying degrees of "reada
 
 # Create a bar chart that shows the percentage of zoned in each locality by type (i.e. primarily residential, mixed with residential, nonresidential)
 
-hr_type <- read_rds("data/hr/hr_vza_nogeo.rds") |> 
+hr_type <- read_rds("data/hr/rds/hr_vza_nogeo.rds") |> 
   select(jurisdiction, overlay, type, acres) |> 
   filter(overlay == 0)
 
@@ -220,7 +220,7 @@ While single-family detached housing is a dream many aspire to, barriers to home
 vza_pal <- colorFactor(palette =c("#8B85CA", "#40C0C0", "#011E41"),
                        levels = c("Primarily Residential", "Mixed with Residential", "Nonresidential"))
 
-hr_sfd_map <- read_rds("data/hr/hr_sfd_only_map.rds")
+hr_sfd_map <- read_rds("data/hr/rds/hr_sfd_only_map.rds")
 
 leaflet() |>
   addProviderTiles(providers$CartoDB.Positron) |> 
@@ -254,7 +254,7 @@ York County allows for single-family attached duplexes in a [Cluster Techniques 
 
 # Create a bar char that shows the percentage of zoned in each locality that is dedicated to single-family detached only housing.
 
-hr_sfd <- read_rds("data/hr/hr_vza_nogeo.rds") |> # Read in the data.
+hr_sfd <- read_rds("data/hr/rds/hr_vza_nogeo.rds") |> # Read in the data.
   select(jurisdiction, overlay, sfd, acres) |> # Select necessary data fields.
   filter(overlay == 0) |> # Remove overlay districts.
   group_by(jurisdiction, sfd) |> # Sum the total acres dedicated to single-family detached in each district.
@@ -377,7 +377,7 @@ This provides a general range of the minimum lot area required for housing in si
 # Blank fields should be treated as NA and should not be included in the mean calculation.
 
 
-hr_lots <- read_csv("data/hr/hr_sfd_minlot.csv") |> 
+hr_lots <- read_csv("data/hr/csv/hr_sfd_minlot.csv") |> 
   mutate(min1 = as.numeric(min1),
          max1 = as.numeric(max1)) |> 
   group_by(jurisdiction) |> 
@@ -432,7 +432,7 @@ When housing development requires a public hearing process, it can often come up
 # Create a table that shows the percentage of land that allows for each type of treatment by locality
 # https://frontierinstitute.org/reports/the-montana-zoning-atlas-2-0/ use this as an example 
 
-hr_byright_tbl <- read_rds("data/hr/hr_vza_nogeo.rds") |> 
+hr_byright_tbl <- read_rds("data/hr/rds/hr_vza_nogeo.rds") |> 
   select(jurisdiction, abbrvname, overlay, 6:9, acres) |> 
   mutate(jurisdiction = case_when(
     jurisdiction == "Isle of Wight - Smithfield" ~ "Smithfield",
@@ -480,7 +480,7 @@ Overwhelmingly, single-family is welcomed (without a public hearing) in nearly e
 
 # Create a bar graph that shows the total amount of zoned land that welcomes 2+ family housing by-right
 
-hr_byright <- read_rds("data/hr/hr_vza_nogeo.rds") |> 
+hr_byright <- read_rds("data/hr/rds/hr_vza_nogeo.rds") |> 
   select(jurisdiction, abbrvname, overlay, 6:9, acres) |> # Select data fields.
   filter(overlay == 0) |> # Filter out overlay districts.
   group_by(jurisdiction) |> 
@@ -492,7 +492,7 @@ hr_byright <- read_rds("data/hr/hr_vza_nogeo.rds") |>
   summarise(pct_2plus = sum(pct_2plus)) |>
   add_row(jurisdiction = "Smithfield", pct_2plus = 0)
 
-hr_byright_summary <- read_rds("data/hr/hr_vza_nogeo.rds") |> 
+hr_byright_summary <- read_rds("data/hr/rds/hr_vza_nogeo.rds") |> 
   select(jurisdiction, abbrvname, overlay, 6:9, acres) |> # Select data fields.
   filter(overlay == 0) |> # Filter out overlay districts.
   mutate(total_area = sum(acres)) |> # Calculate the total area of zoned land.
@@ -531,7 +531,7 @@ The map below shows the location of zoning districts that allow for 2+ family by
 
 pal <- colorFactor(palette =c("#8B85CA", "#40C0C0"),levels = c("Primarily Residential", "Mixed with Residential"))
 
-hr_byr2 <- read_rds("data/hr/hr_byr_map.rds")
+hr_byr2 <- read_rds("data/hr/rds/hr_byr_map.rds")
 
 hr_byr2 |> 
   addProviderTiles(providers$CartoDB.Positron)
@@ -546,7 +546,7 @@ Urban areas like the City of Hampton stand out for the lack of developable land 
 
 # Create a bar graph that shows the total amount of zoned land that welcomes 2+ family housing by-right
 
-hr_byright <- read_rds("data/hr/hr_vza_nogeo.rds") |> 
+hr_byright <- read_rds("data/hr/rds/hr_vza_nogeo.rds") |> 
   select(jurisdiction, abbrvname, overlay, 6:9, acres) |> # Select data fields.
   filter(overlay == 0) |> # Filter out overlay districts.
   group_by(jurisdiction) |> 
@@ -557,7 +557,7 @@ hr_byright <- read_rds("data/hr/hr_vza_nogeo.rds") |>
   group_by(jurisdiction) |> 
   summarise(pct_4plus = sum(pct_4plus)) 
 
-hr_byright_summary <- read_rds("data/hr/hr_vza_nogeo.rds") |> 
+hr_byright_summary <- read_rds("data/hr/rds/hr_vza_nogeo.rds") |> 
   select(jurisdiction, abbrvname, overlay, 6:9, acres) |> # Select data fields.
   filter(overlay == 0) |> # Filter out overlay districts.
   mutate(total_area = sum(acres)) |> # Calculate the total area of zoned land.
@@ -626,7 +626,7 @@ The table below shows minimum parking requirements for multifamily housing devel
 #| label: tbl-min-parking
 #| tbl-cap: "Minimum parking requirements for 'multifamily' housing in Hampton Roads"
 
-hr_parking <- read_csv("data/hr/hr_vza_parking.csv")
+hr_parking <- read_csv("data/hr/csv/hr_vza_parking.csv")
 
 hr_parking |> 
   kbl(col.names = c("Jurisdiction", "1-Bedroom", "2-Bedroom", "3-Bedroom", "Vistor Space/Unit"),
@@ -666,7 +666,7 @@ Remember that the National Zoning Atlas Methodology includes caretaker or watchm
 # Create a table that shows the percentage of land that allows for ADUs by-right
 # https://frontierinstitute.org/reports/the-montana-zoning-atlas-2-0/ use this as an example 
 
-hr_adu <- read_rds("data/hr/hr_vza_nogeo.rds") |> 
+hr_adu <- read_rds("data/hr/rds/hr_vza_nogeo.rds") |> 
   select(jurisdiction, overlay, accessory_treatment, acres) |> 
     mutate(jurisdiction = case_when(
     jurisdiction == "Isle of Wight - Smithfield" ~ "Smithfield",
@@ -711,7 +711,7 @@ For a more focused understanding, particularly for those who associate ADUs prim
 # Create a table that shows the percentage of land that allows for ADUs by-right
 # https://frontierinstitute.org/reports/the-montana-zoning-atlas-2-0/ use this as an example 
 
-hr_adu <- read_rds("data/hr/hr_vza_nogeo.rds") |> 
+hr_adu <- read_rds("data/hr/rds/hr_vza_nogeo.rds") |> 
   select(type, jurisdiction, overlay, accessory_treatment, acres) |> 
   mutate(jurisdiction = case_when(
     jurisdiction == "Isle of Wight - Smithfield" ~ "Smithfield",
@@ -769,7 +769,7 @@ The City of Virginia Beach is notable because it has two different instances of 
 # Create a table for the following csv.
 # https://frontierinstitute.org/reports/the-montana-zoning-atlas-2-0/ use this as an example 
 
-hr_adu_summary <- read_csv("data/hr/hr_adu_summary.csv") |> 
+hr_adu_summary <- read_csv("data/hr/csv/hr_adu_summary.csv") |> 
   select(jurisdiction, attached, detached, owner_occupancy, rental_prohibition, elderly_family, admin_permit)
 
 hr_adu_summary |> 
@@ -786,7 +786,7 @@ ADU regulations aren't standard across the region, while some do not even allow 
 #| label: fig-adu-map
 #| fig-cap: "Where ADUs are allowed by-right"
 
-hr_adu_map <- read_rds("data/hr/hr_adu_map.rds")
+hr_adu_map <- read_rds("data/hr/rds/hr_adu_map.rds")
 
 pal <- colorFactor(palette =c("#8B85CA", "#40C0C0", "#011E41"),levels = c("R", "M", "X"))
 
@@ -811,7 +811,7 @@ pal <- colorFactor(palette =c("#8B85CA", "#40C0C0"),levels = c("R", "M"))
 
 transit_pal <-colorFactor(palette = c("#B1005F", "#E0592A", "#FFC658"), levels = c("WATA", "Hampton Roads Transit", "Suffolk Transit"))
 
-hr_transit_map <- read_rds("data/hr/hr_transit_map.rds")
+hr_transit_map <- read_rds("data/hr/rds/hr_transit_map.rds")
 
 hr_transit_map |> 
   addProviderTiles(providers$CartoDB.Positron)
@@ -830,12 +830,12 @@ The map below shows Census Block Groups where the jobs-housing fit ratio is grea
 #| label: fig-by4-jhf
 #| fig-cap: "Zoning districts allowing for 4+ family by-right and Census Block Groups with a Jobs-Housing Fit above 2.0"
 
-housing_needed <- read_rds("data/hr/hr_blk_grps.rds") |> 
+housing_needed <- read_rds("data/hr/rds/hr_blk_grps.rds") |> 
   filter(ratio > 2 | is.na(ratio))
 
 pal <- colorFactor(palette =c("#8B85CA", "#40C0C0"),levels = c("R", "M"))
 
-hr_byr4 <- read_rds("data/hr/hr_byr4_map.rds") 
+hr_byr4 <- read_rds("data/hr/rds/hr_byr4_map.rds") 
 
 fit_map <- hr_byr4 |> 
   addPolygons(data = housing_needed,

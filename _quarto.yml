@@ -48,6 +48,10 @@ book:
       chapters:
         - part-2-1.qmd # Summary
         - part-2-2.qmd # Findings
+    - part: "Northern Virginia"
+      chapters:
+        - part-3-1.qmd # Findings
+        - part-3-2.qmd # Context
   # - part: "Appendix"
 
 knitr:

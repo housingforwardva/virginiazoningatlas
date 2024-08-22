@@ -18,6 +18,8 @@ library(ggtext)
 library(patchwork)
 library(forcats)
 library(fredr)
+library(zoo)
+
 # Summarize the key findings from the analysis below.
 
 # Describe the housing market in relation to population growth and household trends in the region. 
@@ -44,13 +46,13 @@ library(fredr)
 
 ```
 
-In the following section we describe Northern Virginia’s housing market under these land use rules and compare Northern Virginia to peer regions.
+The following section describes Northern Virginia’s housing market under these land use rules and compares Northern Virginia to peer regions.
 
-While land-use regulations across Northern Virginia limit housing construction and drive up its costs, the commonwealth’s population is growing faster than the U.S. as a whole. Relative to some high-demand parts of the country, Virginia’s regulatory burden is lighter. The slowest growing jurisdiction (Fairfax County) grew 5.23% from 2010 to 2022, the median jurisdiction (Manassas) grew 12.75%, and the fastest growing jurisdiction (Loudoun County) grew 38.35%. As a point of comparison, California grew only 4.6% over this time period and has lost population in the most recent years as land use regulations have prevented new construction in the face of high house prices.
+Although land use regulations across Northern Virginia limit housing construction and drive up its costs, the commonwealth’s population is growing faster than the United States’ as a whole. Relative to some high-demand parts of the country, Virginia’s regulatory burden is lighter. The slowestgrowing jurisdiction (Fairfax County) grew 5.23 percent from 2010 to 2022, the median jurisdiction (Manassas) grew 12.75 percent, and the fastest-growing jurisdiction (Loudoun County) grew 38.35 percent (Figure 7.1). As a point of comparison, California grew only 4.6 percent over this time and has lost population in the most recent years.
 
 ```{r}
 #| label: fig-nova-city-pop
-#| fig-cap: "Population Growth across Northern Virginia from 2010 to 2022"
+#| fig-cap: "Population Growth Across Northern Virginia from 2010 to 2022"
 
 # Create a visualization that shows population change in the region by city. What localities are seeing the most growth? Which ones are seeing decline?
 
@@ -69,7 +71,7 @@ While land-use regulations across Northern Virginia limit housing construction a
 #   )) |> 
 #   filter(year == 2022)
 
-nova_pop_total <- read_rds("data/nova/nova_pop.rds") |> # Load in population data for Northern Virginia.
+nova_pop_total <- read_rds("data/nova/rds/nova_pop.rds") |> # Load in population data for Northern Virginia.
   mutate(year = as.numeric(year)) |> # Convert the year column to a number instead of character.
   filter(year == 2010 | year == 2022) |> # Filter for earliest and latest year.
   select(name_long, year, value) |> # Select only needed fields.
@@ -95,15 +97,14 @@ ggplot(nova_pop_total, # Read in the data.
   coord_flip() +
   theme_hfv() + # Apply custom HFV theme.
   add_zero_line("y") + # Add darker zero intercept line for emphasis.
-  labs(subtitle = "From 2010 to 2022",
-       caption = "**Source:** U.S. Census Bureau, Population Estimates Program (PEP).") +
+  labs(caption = "**Source:** U.S. Census Bureau, Population Estimates Program (PEP).") +
   scale_y_continuous(label = percent_format(), expand = expansion(mult = c(0, 0.1))) + 
   scale_fill_gradientn(colours = c("#ADDCB1", "#46A88F", "#207A88", "#0F1A4E")) +
   scale_color_gradientn(colours = c("#ADDCB1", "#46A88F", "#207A88", "#0F1A4E"))
 
 ```
 
-In spite of Virginia’s relative accommodation of population growth, house prices have increased here as well. Between 2019 and 2023, the greater D.C. area saw an increase of roughly 13% after adjusting for inflation. Out of 9 jurisdictions, only 2, Arlington County and Falls Church, saw a decline in the median sale price during this time period.
+In spite of Northern Virginia’s relative accommodation of population growth, house prices have increased as well (Figure 7.2). Between 2019 and 2023, the greater Washington, DC, area saw an increase of roughly 13 percent after adjusting for inflation. Out of nine jurisdictions, only two, Arlington County and Falls Church, saw a decline in the median sale price during this period.
 
 ```{r}
 #| label: fig-nova-price
@@ -113,28 +114,7 @@ In spite of Virginia’s relative accommodation of population growth, house pric
 
 # How to add arrows indicating direction on line segments??
 
-nova_var_price <- read_rds("data/nova/nova_var.rds") |> 
-  select(geography, period, name, adj_price) |> 
-  mutate(year = substr(period, 1, 4)) |> 
-  mutate(year = as.numeric(year)) |> 
-  filter(period == "2023 Q2" | period == "2019 Q2") |> 
-  mutate(period = as.character(period)) |> 
-  select(geography, name, adj_price, period) |> 
-  pivot_wider(names_from = period, 
-              values_from = adj_price) |> 
-  mutate(latest = `2023 Q2`) |> 
-  pivot_longer(3:4,
-               names_to = "period",
-               values_to = "med_price") |> 
-  mutate(name = case_when(
-    name == "Virginia Beach-Norfolk-Newport News MSA" ~ "VB-Norfolk-NN MSA",
-    TRUE ~ name
-  )) |> 
-  mutate(name = str_remove(name, " City"))  |> 
-  mutate(name = case_when(
-    name == "Fairfax" ~ "Fairfax City",
-    TRUE ~ name
-  ))
+nova_var_price <- read_rds("data/nova/rds/nova_var_price.rds")
   
 subtitle_text <- "In <span style = 'color:#011E41'><b>Q2 2019</b></span> and <span style = 'color:#40C0C0'><b>Q2 2023</span>"
 
@@ -154,8 +134,7 @@ price_plot <- ggplot(nova_var_price,
                 hjust = ifelse(period == "2023 Q2", -0.25, 1.25)), 
             size = 3) +
   coord_flip() +
-  labs(title = "Median home sales price in Northern Virginia",
-       subtitle = subtitle_text,
+  labs(subtitle = subtitle_text,
        caption = "**Source:** Virginia REALTORS, adjusted to Q2 2023 dollars.") +
   scale_y_continuous(labels = dollar_format(), limits = c(300000, 1100000)) +
   scale_color_hfv() +
@@ -173,7 +152,7 @@ girafe(ggobj = price_plot,
 
 ```
 
-Since 2010, average rents in Northern Virginia have climbed almost \$200 after adjusting for inflation; the vacancy rate has been consistently lower than the national rate, with an exception for the depths of the pandemic.
+Since 2010, average rents in Northern Virginia have climbed almost \$200 a month after adjusting for inflation (Figure 7.3); the vacancy rate has been consistently lower than the national rate, with an exception for the depths of the pandemic (Figure 7.4).
 
 ```{r}
 #| label: fig-nova-rent
@@ -237,7 +216,7 @@ girafe(ggobj = rent_plot,
 
 # What has rental vacancy been like?
 
-nova_rv <- read_rds("data/nova/nova_costar.rds") |> 
+nova_rv <- read_rds("data/nova/rds/nova_costar.rds") |> 
   select(period, vacancy_rate) |> 
   mutate(quarters = as.yearqtr(period))
 
@@ -263,19 +242,19 @@ girafe(ggobj = vacancy_plot,
 
 ```
 
-Across the country, local governments use similar types of rules to restrict housing construction, but the extent of these restrictions varies widely. The substantial affordability challenges caused by land use regulations in Northern Virginia and the DC area notwithstanding, this region is more open to housing construction than other metropolitan coastal regions. For example, during the construction of rail transit in Arlington, the county upzoned nearby areas, allowing for more multifamily construction.[^part-3-2-1] Fairfax County adopted a transit-oriented development plan in Tysons, allowing a large increase in multifamily construction. Loudoun County is the region’s fastest growing municipality due in large part to greenfield construction, but its growth includes substantial townhouse and multifamily construction as well as detached single-family construction.
+Across the country, local governments use similar types of rules to restrict housing construction, but the extent of these restrictions varies widely. The substantial affordability challenges caused by land use regulations in Northern Virginia and the DC metropolitan area notwithstanding, this region is more open to housing construction than many other metropolitan coastal regions are. For example, during the construction of rail transit in Arlington, the county upzoned nearby areas, allowing for more multifamily construction.[^part-3-2-1] Fairfax County adopted a transit-oriented development plan in Tysons, allowing a large increase in multifamily construction. Loudoun County is the region’s fastest-growing municipality owing in large part to greenfield construction, but its growth includes substantial townhouse and multifamily construction along with detached single-family construction.
 
-[^part-3-2-1]: Emily Hamilton, “How DC Densified,” Works in Progress, May 23, 2023. <https://worksinprogress.co/issue/how-dc-densified/>
+[^part-3-2-1]: Emily Hamilton, “How DC Densified,” Works in Progress 11 (2023).
 
-In contrast, the suburbs of other high-income coastal regions such as the Bay Area, Boston, Los Angeles, and New York City have allowed much less multifamily construction. Some of Boston’s suburbs lie in New Hampshire, a state with a completed zoning atlas. 93% of New Hampshire’s developable land is restricted to exclusively detached single-family zoning, compared to 71% in Northern Virginia. In New Hampshire, single-family houses on lots less than one acre are only allowed on 15% of developable land, while 75% of Northern Virginia districts that allow for residential construction have a plausible minimum lot size requirement of less than one acre.
+In contrast, the suburbs of other high-income coastal regions, such as San Francisco, Boston, Los Angeles, and New York City, have allowed much less multifamily construction. Some of Boston’s suburbs lie in New Hampshire, a state with a completed zoning atlas. Some 93 percent of New Hampshire’s developable land is restricted to exclusively detached single-family zoning, compared with 71 percent in Northern Virginia. In New Hampshire, single-family houses on lots less than one acre are allowed on only 15 percent of developable land, whereas 69 percent of Northern Virginia’s developable land allows for plausible single-family construction on less than an acre of land.
 
-The price of housing in the Northern Virginia area is above the national average, but the D.C. metropolitan area is far less expensive than comparable regions that permit less housing construction. Since the turn of the millennium, while D.C.’s prices have been between 47% and 115% higher than national prices, Boston’s have been 77% to 118% higher, New York’s 80% to 140%, Los Angeles’ prices 85% to 192% higher, and San Francisco’s 141% to 309% higher. As our atlas data shows, policymakers in Northern Virginia have ample opportunities to reduce the barrier of local land use regulations. However, the problems caused by housing supply constraints are more severe in more heavily regulated peer regions.
+The price of housing in the Northern Virginia area is above the national average, but the DC metropolitan area is far less expensive than comparable regions that permit less housing construction (Figure 7.5). Since the turn of the millennium, while DC’s prices have been between 47 percent and 115 percent higher than national prices, Boston’s have been 77 percent to 118 percent higher; New York’s, 80 percent to 140 percent higher; Los Angeles’s, 85 percent to 192 percent higher; and San Francisco’s, 141 percent to 309 percent higher. As the atlas data show, policymakers in Northern Virginia have ample opportunities to reduce the barriers of local land use regulations. The problems caused by housing supply constraints, however, are far worse in more heavily regulated peer regions.
 
 ```{r}
 #| label: fig-natl-prices
 #| fig-cap: "Median Home Values in Select High-Income Coastal Regions as a Multiple of the U.S. Median"
 
-metro_prices <- read_csv("data/nova/zvhi.csv")
+metro_prices <- read_csv("data/nova/csv/zvhi.csv")
 
 city_names <- c("United States", 
                 "Washington, DC", 
@@ -327,7 +306,7 @@ metro_prices_img <- ggplot(metro_prices,
 
 ## Conclusion
 
-The NZA data provides an important new tool for advocates of zoning reform and opens up new opportunities for researchers to study the effects of specific zoning rules and combinations of rules. We find that in spite of high demand to live in Northern Virginia, a majority of the land cannot be developed with more than one detached housing unit and requirements for large lots are pervasive. Nonetheless, we can see in many peer regions of the country, barriers to housing construction are higher, corresponding with more severe affordability problems. Northern Virginia already has a successful blueprint for reforming exclusionary zoning with examples like Arlington’s transit corridors. The zoning atlas provides details on the rules that are facilitating construction across the region, pointing to reforms that could address the housing shortage in the large parts of the region where development is currently locked out.
+The NZA data provide an important new tool for advocates of zoning reform and open up new opportunities for researchers to study the effects of specific zoning rules and combinations of rules. We find that in spite of high demand to live in Northern Virginia, a majority of the land cannot be developed with more than one detached housing unit, and requirements for large lots are pervasive. Nonetheless, in many peer regions of the country, barriers to housing construction are higher, corresponding with more severe affordability problems. Northern Virginia already has a successful blueprint for reforming exclusionary zoning with examples such as Arlington’s transit corridors. The zoning atlas provides details on the rules facilitating construction across the region, pointing to reforms that could address the housing shortage in the large parts of the region where development is currently locked out.
 
 ```{r}
 #| label: fig-2plus
@@ -346,3 +325,15 @@ nova_byright_summary <- read_rds("data/nova/rds/nova_vza_nogeo.rds") |>
   mutate(pct4plus = total_4plus/total_area)
 
 ```
+
+## Acknowledgments
+
+In addition to the authors, Milica Manojlovic, Micah Perry, Rishab Sardana, and Arthur Wright gathered data for the Northern Virginia Zoning Atlas. Thank you to Eric Mai for sharing the code used to create these charts and maps and to him and Housing Forward Virginia for creating an interactive map of the Northern Virginia data available at https://housingforwardva.org/focused-initiatives/zoning/atlas/. Thank you to Yonah Freemark for sharing the data on zoning in the DC region that he collected for research at the Urban Institute. These data formed the basis of our geospatial data collection and served as a useful quality check on our zoning code analysis.
+
+## About the Authors
+
+Eli Kahn is a research assistant at the Mercatus Center’s Urbanity project, supporting the center’s scholarship in housing supply. He holds a master’s degree in public policy from the University of California, Berkeley, where he studied housing, transportation, and environmental policy.
+
+Andrew Crouch is a second-year MA student in economics at George Mason University. He earned a bachelor’s degree in economics from George Mason University, and his research interests include urban economics and housing policy.
+
+Emily Hamilton is a research fellow at the Mercatus Center at George Mason University. Her research focuses on urban economics and land use policy. Hamilton has testified before several state legislatures as well as the US House of Representatives. Hamilton serves on the advisory boards of Up for Growth and Cityscape, a journal published by the Department of Housing and Urban Development.

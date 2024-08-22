@@ -551,10 +551,10 @@ HousingForward Virginia recently began an ADU ordinance landscape scan in Virgin
 
 ADUs associated with single-family housing have been an increasing policy issue across the nation. And in order to contribute to the policy discussion, HFV has sought to gather additional information on this specific type of ADU. It is the intent of HFV to leverage the zoning atlas to better quantify permissiveness of ADUs across the Commonwealth.
 
-The data visualization below takes advantage of HFV's scan and the Virginia Zoning Atlas to showcase the amount of land that allows for two different forms of ADUs
 :::
 
-Many jurisdictions in the region treat detached and attached ADUs differently - often with attached ADUs being more permissive. The below chart shows how much developable land in each jurisdiction allows for attached and detached ADUs.
+Many jurisdictions in the region treat detached and attached ADUs differently - often with attached ADUs being more permissive. The data visualization below takes advantage of HFV's scan and the Virginia Zoning Atlas to showcase the amount of land that allows for two different forms of ADUs.
+
 
 ```{r}
 #| label: fig-hr-adus
@@ -646,6 +646,8 @@ d_plot + a_plot
 
 
 ```
+
+The table highlights the different restrictions imposed on ADUs throughout the region. Restrictions vary 
 
 ```{r}
 #| label: tbl-adu-summary

@@ -1,0 +1,20 @@
+﻿jurisdiction,adu_defined,attached,detached,owner_occupancy,rental_prohibition,elderly_family,employment,size_restrictions,admin_permit
+Chesapeake,Not defined,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+Franklin (city),Defined,Not mentioned,Allowed,Yes,No,No,No,Yes,No
+Gloucester,Defined,Allowed,Allowed,No,No,No,No,Yes,No
+Hampton,Defined,Not mentioned,Allowed,Yes,No,No,No,Yes,No
+Isle of Wight,Defined,Allowed,Allowed,Yes,No,No,No,Yes,No
+James City County,Defined,Allowed,Allowed,"Yes, for detached",No,No,No,Yes,No
+Newport News,Not defined,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+Norfolk,Defined,Allowed,Allowed,Yes,No,No,No,Yes,No
+Poquoson city,Defined,Allowed,Allowed,Yes,No,Yes,No,Yes,Yes
+Portsmouth,Defined,Allowed,Allowed,No,No,No,No,Yes,No
+Smithfield,Defined,Allowed,No,Yes,Yes,Yes,No,Yes,Yes
+Southampton,Defined,Allowed,Allowed,Yes,No,No,No,Yes,No
+Suffolk,Defined,Allowed,Allowed,No,No,No,No,Yes,Yes
+Surry,Defined,Allowed,Dependent on district,No,No,No,No,Yes,No
+Surry (town),Not defined,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+Virginia Beach,Defined*,Allowed,Allowed*,Yes*,No,Yes*,No,Yes,Yes*
+Williamsburg,Defined,Allowed,No,Yes,Yes,Yes,No,Yes,Yes
+Windsor,Defined,Allowed,No,Yes,No,Yes,No,Yes,No
+York,Defined,Allowed,Allowed,Yes,Yes,Yes,Yes,Yes,No

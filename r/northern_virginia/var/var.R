@@ -33,3 +33,28 @@ nova_var <- nova_var |>
 write_rds(nova_var, "data/nova/nova_var.rds")
 write_csv(nova_var, "data/nova/nova_var.csv")
 
+nova_var_price <- read_rds("data/nova/rds/nova_var.rds") |> 
+  select(geography, period, name, adj_price) |> 
+  mutate(year = substr(period, 1, 4)) |> 
+  mutate(year = as.numeric(year)) |> 
+  filter(period == "2023 Q2" | period == "2019 Q2") |> 
+  mutate(period = as.character(period)) |> 
+  select(geography, name, adj_price, period)|> 
+  pivot_wider(names_from = period, 
+              values_from = adj_price) |> 
+  janitor::clean_names() |> 
+  mutate(latest = x2023_q2)|> 
+  pivot_longer(3:4,
+               names_to = "period",
+               values_to = "med_price") |> 
+  mutate(name = str_remove(name, " City"))  |> 
+  mutate(name = case_when(
+    name == "Fairfax" ~ "Fairfax City",
+    TRUE ~ name
+  )) |> 
+  mutate(period = case_when(
+    period == "x2023_q2" ~ "2023 Q2",
+    TRUE ~ "2019 Q2"
+  ))
+
+write_rds(nova_var_price, "data/nova/rds/nova_var_price.rds")
