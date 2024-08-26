@@ -15,8 +15,8 @@ rva_var <- rva_var |>
   mutate(year = substr(period, 1, 4)) |> 
   mutate(year = as.numeric(year))
 
-hpi <- fredr(
-  series_id = "CSUSHPISA"
+gdp <- fredr(
+  series_id = "A011RE1Q156NBEA"
 ) %>% 
   select(date, value) %>% 
   mutate(date = as.Date(date)) %>% 
@@ -24,11 +24,11 @@ hpi <- fredr(
   mutate(year = year(date)) |> 
   mutate(period = as.yearqtr(date, format = "%Y Q%q", frac = 1)) |> 
   group_by(period) |> 
-  summarise(hpi = mean(value, na.rm = TRUE))
+  summarise(gdp = mean(value, na.rm = TRUE))
 
 rva_var <- rva_var |> 
-  left_join(hpi, by = "period") |> 
-  transform(adj_price = (319.73500/hpi)*med_price) 
+  left_join(gdp, by = "period") |> 
+  transform(adj_price = (4.0/gdp)*med_price) 
 
 write_rds(rva_var, "data/planrva/rds/rva_var.rds")
 

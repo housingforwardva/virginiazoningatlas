@@ -3,6 +3,7 @@ output: html_document
 editor_options: 
   chunk_output_type: console
 ---
+
 ```{r}
 #| label: setup
 
@@ -22,7 +23,9 @@ library(leaflet)
 
 Richmond Magazine's ["It Takes More Than A Village"](https://richmondmagazine.com/news/features/it-takes-more-than-a-village/) article recently highlighted the challenges the Richmond regional housing market continues to face. Housing costs - both for rental and homeownership - are up significantly from where they were over a decade ago and the abundant supply has dwindled to a trickle.
 
-The Census Building Permit Survey from 2000 to 2022 shows that single-family construction starts have been on the way to recovery since the Great Recession. But they still pale in comparison to pre-Recession numbers. The market shift to multifamily in the past few years speaks to not only growing preferences among households, but also the challenges residents face in accessing the homeownership market (e.g., interest rates, increasing debt, competition with cash buyers, etc.).
+The Census Building Permit Survey from 2000 to 2022 shows that single-family construction starts have been on the way to recovery since the Great Recession.[^part-4-1-1] But they still pale in comparison to pre-Recession numbers. The market shift to multifamily in the past few years speaks to not only growing preferences among households, but also the challenges residents face in accessing the homeownership market (e.g., interest rates, increasing debt, competition with cash buyers, etc.).
+
+[^part-4-1-1]: Adam Pagnucco, a writer on state and local politics, has written about the potential pitfalls of Census Building Permit Survey in accurately accounting for building starts in his piece [This Mess Must Be Fixed](https://montgomeryperspective.com/2023/06/29/this-mess-must-be-fixed/). To that end, it must be noted that BPS relies on localities to voluntarily submit accurate data to the Census Bureau. Estimates shown may not be completely accurate depending on the locality and their participation in the survey. In lieu of data directly from the locality, BPS often serves as the sole source of this information.
 
 The region, not unlike others in the Commonwealth, is very much lacking in the construction of smaller two to four unit buildings, so often seen in the historic neighborhoods of Richmond. This "Missing Middle" is literally missing in the market.
 
@@ -84,7 +87,8 @@ bps_plot <- ggplot(bps,
 bps_plot
 
 ```
-Observing variations across jurisdictions, it may surprise many that Chesterfield County exceeds the City of Richmond in 2-4 unit and 5 or more unit construction starts. 
+
+Observing variations across jurisdictions, it may surprise many that Chesterfield County exceeds the City of Richmond in 2-4 unit and 5 or more unit construction starts.
 
 ```{r}
 #| label: fig-bps
@@ -234,6 +238,7 @@ ggplot(tenure,
 
 
 ```
+
 ```{r}
 #| label: fig-pct-homeowner
 #| fig-cap: "Homeownership in the PlanRVA region"
@@ -280,12 +285,11 @@ ggplot(tenure,
   theme(panel.grid.major.y = element_line(color = "white"),
         panel.grid.major.x = element_line(color = "#dadada",size = 0.1))
 
-  
-girafe(ggobj = tenure_plot,
-       height_svg = 4)
+#   
+# girafe(ggobj = tenure_plot,
+#        height_svg = 4)
 
 ```
-
 
 ```{r}
 #| label: fig-rva-price
@@ -297,9 +301,22 @@ girafe(ggobj = tenure_plot,
 
 rva_var_price <- read_rds("data/planrva/rds/rva_var.rds") |> 
   select(geography, period, name, adj_price) |> 
+  filter(geography == "MSA")
+
+
+ggplot(rva_var_price,
+       aes(x = period,
+           y= adj_price)) +
+  geom_line() +
+  geom_point(stat = "identity") +
+  theme_hfv(base_size = 20) +
+  scale_y_continuous(labels = dollar_format())
+  
+
+
   mutate(year = substr(period, 1, 4)) |> 
   mutate(year = as.numeric(year)) |> 
-  filter(period == "2024 Q2" | period == "2019 Q2") |> 
+  filter(period == "2024 Q2" | period == "2014 Q2") |> 
   mutate(period = as.character(period)) |> 
   select(geography, name, adj_price, period) |> 
   pivot_wider(names_from = period, 
@@ -309,7 +326,7 @@ rva_var_price <- read_rds("data/planrva/rds/rva_var.rds") |>
                names_to = "period",
                values_to = "med_price")
   
-subtitle_text <- "In <span style = 'color:#011E41'><b>Q2 2019</b></span> and <span style = 'color:#40C0C0'><b>Q2 2024</span>"
+subtitle_text <- "In <span style = 'color:#011E41'><b>Q2 2014</b></span> and <span style = 'color:#40C0C0'><b>Q2 2024</span>"
 
 
 price_plot <- ggplot(rva_var_price,
@@ -400,8 +417,6 @@ girafe(ggobj = price_plot,
        height_svg = 4)
 
 ```
-
-
 
 ```{r}
 #| label: fig-rva-dom
@@ -512,6 +527,7 @@ girafe(ggobj = rent_plot,
        height_svg = 4)
 
 ```
+
 ```{r}
 #| label: fig-rva-rv
 #| fig-cap: "Rental vacancy in Richmond region"
@@ -543,5 +559,3 @@ girafe(ggobj = vacancy_plot,
 
 
 ```
-
-
