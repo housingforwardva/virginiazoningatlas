@@ -300,17 +300,28 @@ ggplot(tenure,
 # How to add arrows indicating direction on line segments??
 
 rva_var_price <- read_rds("data/planrva/rds/rva_var.rds") |> 
-  select(geography, period, name, adj_price) |> 
-  filter(geography == "MSA")
+  select(geography, period, name, med_price) |> 
+  filter(geography == "MSA") |> 
+  group_by(name) |> 
+  mutate(
+    prev_year_price = lag(med_price, n = 4),
+    yoy_change = (med_price - prev_year_price) / prev_year_price
+  ) |> 
+  filter(name == "Richmond MSA") |> 
+  mutate(quarter = quarter(period)) |> 
+  mutate(year = year(period)) |> 
+  filter(year >= 2015)
 
 
-ggplot(rva_var_price,
+
+ ggplot(rva_var_price,
        aes(x = period,
-           y= adj_price)) +
-  geom_line() +
-  geom_point(stat = "identity") +
+           y = yoy_change,
+           fill = quarter)) +
+  geom_col(position = "dodge") +
   theme_hfv(base_size = 20) +
-  scale_y_continuous(labels = dollar_format())
+  scale_y_continuous(labels = percent_format()) +
+  theme(legend.position = "top")
   
 
 

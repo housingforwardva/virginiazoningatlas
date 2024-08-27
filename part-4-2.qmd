@@ -18,12 +18,14 @@ library(patchwork)
 library(ggtext)
 library(kableExtra)
 library(leaflet)
+library(sf)
+library(geojsonsf)
 
 # Use data from the VZA to summarize the number of districts involved, number of zoning ordinance pages read, and other interesting metrics.
 
 ```
 
-The [PlanRVA](https://www.planrva.org/) region is comprised of 9 local governments, including one independent city, seven counties, and the Town of Ashland.
+The [PlanRVA](https://www.planrva.org/) region (Figure 9.1) is comprised of 9 local governments, including one independent city, seven counties, and the Town of Ashland.
 
 ```{r}
 #| label: fig-rva-map
@@ -512,7 +514,28 @@ byright <- read_rds("data/planrva/rds/rva_vza_nogeo.rds") |>
   mutate(pct_4plus = acres/total_area) |> 
   group_by(jurisdiction) |> 
   summarise(pct_4plus = sum(pct_4plus)) |> 
-  add_row(jurisdiction = "Goochland", pct_4plus = 0)
+  add_row(jurisdiction = "Goochland County", pct_4plus = 0) |> 
+  mutate(percent = percent(pct_4plus))
+
+byright_county <- read_rds("data/planrva/rds/rva_vza_nogeo.rds") |> 
+  select(county, abbrvname, overlay, 6:9, acres) |> # Select data fields.
+  filter(overlay == 0) |> # Filter out overlay districts.
+  group_by(county) |> 
+  mutate(total_area = sum(acres)) |> # Calculate the total area of zoned land.
+  filter(family4_treatment == "allowed") |> 
+  group_by(county) |> 
+  mutate(pct_4plus = acres/total_area) |> 
+  group_by(county) |> 
+  summarise(pct_4plus = sum(pct_4plus)) |> 
+  add_row(county = "Goochland County", pct_4plus = 0) |> 
+  mutate(percent = percent(pct_4plus)) |> 
+  mutate(county = case_when(
+    county == "Richmond city" ~ "Richmond City",
+    TRUE ~ county
+  )) |> 
+  left_join(rva_bipoc, by = "county") |> 
+  select(county, multifamily = percent.x, bipoc = percent.y) |> 
+  mutate(bipoc = percent(bipoc))
 
 byright_summary <- read_rds("data/planrva/rds/rva_vza_nogeo.rds") |> 
   select(jurisdiction, abbrvname, overlay, 6:9, acres) |> # Select data fields.
@@ -550,11 +573,9 @@ The National Zoning Atlas utilizes a broad definition of ADUs to include housing
 HousingForward Virginia recently began an ADU ordinance landscape scan in Virginia, focusing on ADUs associated with single-family housing. This analysis takes into account the different treatments of attached and detached ADUs and seeks to quantify the permissiveness of regulations.
 
 ADUs associated with single-family housing have been an increasing policy issue across the nation. And in order to contribute to the policy discussion, HFV has sought to gather additional information on this specific type of ADU. It is the intent of HFV to leverage the zoning atlas to better quantify permissiveness of ADUs across the Commonwealth.
-
 :::
 
 Many jurisdictions in the region treat detached and attached ADUs differently - often with attached ADUs being more permissive. The data visualization below takes advantage of HFV's scan and the Virginia Zoning Atlas to showcase the amount of land that allows for two different forms of ADUs.
-
 
 ```{r}
 #| label: fig-hr-adus
@@ -647,7 +668,7 @@ d_plot + a_plot
 
 ```
 
-The table highlights the different restrictions imposed on ADUs throughout the region. Restrictions vary 
+The table highlights the different restrictions imposed on ADUs throughout the region. Restrictions vary, but the only jurisdiction in the region that prohibits ADUs is Charles City County. All other jurisdictions allow ADUs to some degree. Goochland County is the only jurisdiction that does not impose a size restriction on ADUs. The City of Richmond, Town of Ashland, Hanover County, and Powhatan County place no restrictions on occupancy of the ADU, while all other jurisdictions prohibit rental of the ADU to some degree.
 
 ```{r}
 #| label: tbl-adu-summary
@@ -663,9 +684,13 @@ adu_tbl
 
 ```
 
-The only jurisdiction in the region that prohibits ADUs is Charles City County. All other jurisdictions allow ADUs to some degree.
+No jurisdiction in the region is a complete haven for ADUs, as there are restrictions in place within each jurisdiction that may make ADUs difficult to develop or not viable in most cases.
 
 ## Zoning for Housing Near Transit
+
+The Greater Richmond Transit Company (GRTC) operates the region's public transportation system within the City of Richmond and has expanded service into Henrico and Chesterfield counties in recent years. Transit-oriented Development (TOD) was a prominent strategy referenced through the Richmond 300 Master Plan. TOD aims to create compact, mixed-use communities near public transportation. These communities provide residents of all incomes with a multi-modal friendly environment that provides easy access to jobs, services, and other amenities.
+
+Zoning for more dense mixed-use options near public transportation impacts more than low-income households. By reducing dependency on personal vehicles, communities can contribute to environmental sustainability and provide greater economic opportunities for all residents. The map below shows the location of GRTC bus stops and where multifamily housing (4+ units) can be developed without a public hearing.
 
 ```{r}
 #| label: transit-map
@@ -678,9 +703,15 @@ region <- read_rds("data/planrva/rds/rva_region.rds")
 transit_map |> 
   addProviderTiles(providers$CartoDB.Positron) 
 
-
-
 ```
+
+The map clearly shows that there are opportunities both to expand GRTC service to reach multifamily zoned land, but also opportunities to upzone and diversify areas along transit corridors, especially Route 1 and Midlothian Turnpike.
+
+A quarter mile distance from transit stops is often seen as a comfortable walking distance for most people in the United States.[^part-4-2-1] Where multifamily housing is allowed in the region, there are stark differences in the relationship between multifamily zoned land and transit stop location.
+
+[^part-4-2-1]: Walker, Jarrett. (2011). "basics: walking distance to transit." Human Transit.
+
+The prevalence of public transit stops in the City of Richmond has undoubtedly contributed to the fact that out of all multifamily zoned land, nearly 80 percent of that land is within a quarter mile of a transit stop. That percentage drops significantly in the counties where GRTC operates. In Henrico, only 32 percent of multifamily zoned land is within a reasonable walking distance of public transportation. In Chesterfield County, that figure is below one percent.
 
 ```{r}
 
@@ -724,3 +755,64 @@ ggplot(transit_area,
 
 
 ```
+
+::: callout-note
+## Strategies for Transit-Oriented Development
+
+The U.S. Department of Housing and Urban Development (HUD) have helped to compile research and information on best practices and successful strategies to support affordable housing development. Their Office of Policy Development and Research (PD&R) has several articles about transit-oriented development in support of affordable housing.
+
+See below:
+
+[**Housing Affordability in Transit-Oriented Developments**](https://www.huduser.gov/portal/pdredge/pdr-edge-trending-051722.html)
+
+[**Making Transit and Affordable Housing Work Together**](https://www.huduser.gov/portal/pdredge/pdr-edge-featd-article-061323.html)
+:::
+
+## Zoning for Equity
+
+```{r}
+
+rva_tracts <- st_read("data/planrva/geo/rva_race_tracts_22.gpkg") |> 
+  st_transform(4326) |> 
+  filter(percent >= 0.7)
+
+by4 <- st_read("data/planrva/geo/byright4_map.gpkg") |> 
+  st_transform(4326)
+
+region <- read_rds("data/planrva/rds/rva_region.rds") 
+
+
+
+leaflet() |> 
+  addProviderTiles(providers$CartoDB.Positron) |> 
+  addPolygons(data = by4,
+              fillColor = "#B1005F",
+              fillOpacity = 1,
+              color = "white",
+              weight = 1) |> 
+  addPolygons(data = rva_tracts,
+              fillColor = "#40C0C0",
+              color = "grey",
+              weight = 1,
+              fillOpacity = 0.2,
+              popup = rva_tracts$name_long) |> 
+  addPolygons(data = region,
+              color = "#66788d", # Set polygon fill color.
+              weight = 1, # Set polygon outline weight.
+              fillOpacity = 0, # Set polygon fill color transparency.
+              popup = region$Jurisdiction) |> # Set pop-up to jurisdiction name.
+  addLegend(data = rva_tracts,
+            labels = "70% or more white, non-hispanic census tract",
+            color = "#40C0C0",
+            group = "70% or more white") |> 
+  addLegend(data = by4,
+            labels = "Multifamily (4+) By-Right",
+            color = "#B1005F",
+            group = "Multifamily (4+) zoning") 
+
+  
+
+
+```
+
+

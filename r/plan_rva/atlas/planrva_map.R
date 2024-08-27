@@ -10,12 +10,35 @@ library(mapgl)
 # rva_region <- read_sf("data/planrva/geo/rva_region.geojson")
 # 
 # write_rds(rva_region, "data/planrva/rds/rva_region.rds")
+# 
+
+one <- geojson_sf("data/planrva/geo/rva_vza_geo.geojson") |> 
+  ms_simplify(keep = 0.3) |> 
+  filter(family1_treatment == "allowed") |> 
+  filter(family2_treatment == "prohibited") |> 
+  filter(family3_treatment == "prohibited") |> 
+  filter(family4_treatment == "prohibited") 
+  
+
+st_write(one, "data/planrva/geo/one_only_map_update.gpkg", driver = "GPKG")
+
+diverse <- geojson_sf("data/planrva/geo/rva_vza_geo.geojson") |> 
+  ms_simplify(keep = 0.3) |> 
+  filter(family1_treatment == "allowed") |> 
+  filter(family2_treatment == "allowed") |> 
+  filter(family3_treatment == "allowed") |> 
+  filter(family4_treatment == "allowed") 
+
+
+st_write(diverse, "data/planrva/geo/diverse_map.gpkg", driver = "GPKG")
 
 # Write RDS for Single-family only detached districts.
 
 sfd <- geojson_sf("data/planrva/geo/rva_vza_geo.geojson") |> 
   ms_simplify(keep = 0.3) |> 
   filter(sfd == "t")
+
+st_write(sfd, "data/planrva/geo/sfd_only_map.gpkg", driver = "GPKG")
 
 write_rds(sfd, "data/planrva/rds/rva_sfd_only_map.rds")
 
@@ -59,6 +82,9 @@ byright4 <- geojson_sf("data/planrva/geo/rva_vza_geo.geojson") |>
   select(abbrvname, type, jurisdiction, county, family1_treatment, family2_treatment, family3_treatment, family4_treatment)
 
 byright4 <- ms_simplify(byright4, keep = 0.3)
+
+st_write(byright4, "data/planrva/geo/byright4_map.gpkg", driver = "GPKG")
+
 
 
 pal <- colorFactor(palette =c("#8B85CA", "#40C0C0"),
