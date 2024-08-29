@@ -50,7 +50,7 @@ df <- df |> mutate(period = as.yearqtr(period, format = "%Y Q%q"), frac = 1)
 
 rva_var <- rva_var |> 
   left_join(df, by = "period") |> 
-  transform(adj_price = (396.29/index_sa)*med_price) 
+  transform(adj_price = (396.29/index_nsa)*med_price) 
 
 write_rds(rva_var, "data/planrva/rds/rva_var.rds")
 

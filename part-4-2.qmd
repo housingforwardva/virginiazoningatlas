@@ -1,8 +1,3 @@
----
-output: html_document
-editor_options: 
-  chunk_output_type: console
----
 
 ```{r}
 #| label: setup
@@ -770,18 +765,35 @@ See below:
 
 ## Zoning for Equity
 
+The undersupply of housing impacts households regardless of income, but the impact is felt hardest by low- and moderate-income households. Rising demand for housing in the region is leading to significant price increases in rental and homeownership. Based on the median household income different racial and ethnic groups in the Richmond Metropolitan Area, the typical household within each group can largely afford the typical rent. 
+
+But when it comes to homeownership, Black and Hispanic households 
+
 ```{r}
 
-rva_tracts <- st_read("data/planrva/geo/rva_race_tracts_22.gpkg") |> 
-  st_transform(4326) |> 
-  filter(percent >= 0.7)
+b19013 <- read_rds("data/planrva/rds/rva_b19013.rds") |> 
+  select(race, income = estimate, rent, ho_price) |> 
+  mutate(income = dollar(income)) |> 
+  mutate(rent = dollar(rent)) |> 
+  mutate(ho_price = dollar(ho_price))
+
+b19013 |> kbl(col.names = c("Race or Ethnicity", "Median Household Income", "Affordable Rent", "Affordable Homeownership"), align = "lccc") |> 
+  kable_styling(bootstrap_options = c("striped", "condensed"))
+
+```
+
+```{r}
+
+rva_tracts <- st_read("data/planrva/geo/home_value_white_tracts.gpkg") |> 
+  st_transform(4326) 
 
 by4 <- st_read("data/planrva/geo/byright4_map.gpkg") |> 
   st_transform(4326)
 
 region <- read_rds("data/planrva/rds/rva_region.rds") 
 
-
+breaks <- classInt::classIntervals(rva_tracts$value, n = 5, style = "jenks")$brks
+pal <- colorBin("Blues", domain = rva_tracts$value, bins = breaks)
 
 leaflet() |> 
   addProviderTiles(providers$CartoDB.Positron) |> 
@@ -790,28 +802,25 @@ leaflet() |>
               fillOpacity = 1,
               color = "white",
               weight = 1) |> 
-  addPolygons(data = rva_tracts,
-              fillColor = "#40C0C0",
-              color = "grey",
-              weight = 1,
-              fillOpacity = 0.2,
-              popup = rva_tracts$name_long) |> 
   addPolygons(data = region,
               color = "#66788d", # Set polygon fill color.
               weight = 1, # Set polygon outline weight.
-              fillOpacity = 0, # Set polygon fill color transparency.
-              popup = region$Jurisdiction) |> # Set pop-up to jurisdiction name.
+              fillOpacity = 0) |> 
+  addPolygons(data = rva_tracts,
+              fillColor = ~pal(value),
+              weight = 1,
+              color = ~pal(value),
+              fillOpacity = 0.5,
+              popup = rva_tracts$value) |> 
   addLegend(data = rva_tracts,
-            labels = "70% or more white, non-hispanic census tract",
-            color = "#40C0C0",
-            group = "70% or more white") |> 
+            title = "Median Home Value",
+            labels = "Median Home Value",
+            pal = pal,
+            values = ~value) |> 
   addLegend(data = by4,
-            labels = "Multifamily (4+) By-Right",
+            title = "Multifamily (4+) Zoning",
             color = "#B1005F",
-            group = "Multifamily (4+) zoning") 
-
-  
-
+            labels = "Allowed By-Right") 
 
 ```
 

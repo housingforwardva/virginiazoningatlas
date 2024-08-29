@@ -18,6 +18,7 @@ library(patchwork)
 library(ggtext)
 library(kableExtra)
 library(leaflet)
+library(zoo)
 
 ```
 
@@ -31,7 +32,7 @@ The region, not unlike others in the Commonwealth, is very much lacking in the c
 
 ```{r}
 #| label: fig-bps
-#| fig-cap: "Total new residential building permits issued from 2000 to 2022"
+#| fig-cap: "Total new residential building permits issued from 2000 to 2023"
 
 # Create a visualization that shows where housing is being built. Where is more diverse housing being built? Where is single-family housing being built the most? How does that compare to population growth in those localities?
 
@@ -70,6 +71,60 @@ bps_plot <- ggplot(bps,
   scale_y_continuous(labels = number_format(big.mark = ",", style_positive = "plus")) +
   labs(title = "Total new residential building permits issued in the PlanRVA region",
        subtitle = subtitle_text,
+       caption = "**Source:** U.S. Census Bureau. Building Permits Survey.") + 
+  theme(panel.grid.major.y = element_line(color = "white"),
+        panel.grid.major.x = element_line(color = "#f5f5f5",size = 0.1),
+        axis.text.x = element_text(angle = 90)) +
+  plot_annotation(
+    theme = theme(
+    plot.subtitle = element_markdown(
+       margin = margin(b = 0.4, unit = 'cm'),
+        size = 11.5
+    )))
+
+# girafe(ggobj = bps_plot,
+#        height_svg = 4)
+
+bps_plot
+
+```
+
+Single-family construction starts (which includes single-family attached housing) are high in the largest counties in the region, where greenfield development opportunities are numerous. Infill development opportunities in the City of Richmond limit the ability for substantial new supply, but opportunities still exist for resale and redevelopment.
+
+```{r}
+#| label: fig-bps
+#| fig-cap: "Total new single-family residential building permits issued from 2000 to 2023"
+
+# Create a visualization that shows where 2+ housing is being built. Where is more diverse housing being built? 
+
+density <- c("Hanover", "Henrico", "Chesterfield", "Richmond")
+
+bps <- read_rds("data/planrva/rds/rva_bps.rds") |> # Load in Building Permits Survey data.
+  mutate(type = case_when( # Group "Missing Middle" housing together.
+    type == "2-units" ~ "2-4 units",
+    type == "3-4 units" ~ "2-4 units",
+    TRUE ~ type
+  )) |> 
+  group_by(name_long, year, type) |> # Aggregate to locality and housing type.
+  summarise(units = sum(units)) |> 
+  group_by(name_long) |> # Group by locality.
+  mutate(total = sum(units)) |> # Calculate the total number of new permits for entire time period.
+  filter(type == "1-unit") 
+
+
+# subtitle_text <- "Few <span style = 'color:#40C0C0'><b>2-4 unit housing</span> has been built between 2000 to 2023"
+  
+bps_plot <- ggplot(bps,
+       aes(x = reorder(name_long, units),
+           y = units,
+           fill = type,
+           data_id = units,
+           tooltip = number_format(big.mark =",")(units))) + 
+  geom_col_interactive(position = "stack") +
+  theme_hfv(base_size = 10) + 
+  scale_fill_hfv() +
+  scale_y_continuous(labels = number_format(big.mark = ",", style_positive = "plus")) +
+  labs(title = "Total new 1-unit residential building permits issued in the PlanRVA region",
        caption = "**Source:** U.S. Census Bureau. Building Permits Survey.") + 
   theme(panel.grid.major.y = element_line(color = "white"),
         panel.grid.major.x = element_line(color = "#f5f5f5",size = 0.1),
@@ -145,57 +200,7 @@ bps_plot
 
 ```
 
-```{r}
-#| label: fig-bps
-#| fig-cap: "Total new 2+ residential building permits issued from 2000 to 2022"
 
-# Create a visualization that shows where 2+ housing is being built. Where is more diverse housing being built? 
-
-density <- c("Hanover", "Henrico", "Chesterfield", "Richmond")
-
-bps <- read_rds("data/planrva/rds/rva_bps.rds") |> # Load in Building Permits Survey data.
-  mutate(type = case_when( # Group "Missing Middle" housing together.
-    type == "2-units" ~ "2-4 units",
-    type == "3-4 units" ~ "2-4 units",
-    TRUE ~ type
-  )) |> 
-  group_by(name_long, year, type) |> # Aggregate to locality and housing type.
-  summarise(units = sum(units)) |> 
-  group_by(name_long) |> # Group by locality.
-  mutate(total = sum(units)) |> # Calculate the total number of new permits for entire time period.
-  filter(type == "1-unit") 
-
-
-# subtitle_text <- "Few <span style = 'color:#40C0C0'><b>2-4 unit housing</span> has been built between 2000 to 2023"
-  
-bps_plot <- ggplot(bps,
-       aes(x = reorder(name_long, units),
-           y = units,
-           fill = type,
-           data_id = units,
-           tooltip = number_format(big.mark =",")(units))) + 
-  geom_col_interactive(position = "stack") +
-  theme_hfv(base_size = 10) + 
-  scale_fill_hfv() +
-  scale_y_continuous(labels = number_format(big.mark = ",", style_positive = "plus")) +
-  labs(title = "Total new 1-unit residential building permits issued in the PlanRVA region",
-       caption = "**Source:** U.S. Census Bureau. Building Permits Survey.") + 
-  theme(panel.grid.major.y = element_line(color = "white"),
-        panel.grid.major.x = element_line(color = "#f5f5f5",size = 0.1),
-        axis.text.x = element_text(angle = 90)) +
-  plot_annotation(
-    theme = theme(
-    plot.subtitle = element_markdown(
-       margin = margin(b = 0.4, unit = 'cm'),
-        size = 11.5
-    )))
-
-# girafe(ggobj = bps_plot,
-#        height_svg = 4)
-
-bps_plot
-
-```
 
 ```{r}
 #| label: fig-pct-renter
@@ -291,69 +296,96 @@ ggplot(tenure,
 
 ```
 
+The median home sales price in the Richmond Metropolitan Area has reached \$400,000 as of the second quarter of 2024. This is a far cry from 2014 when the median price was under \$200,000. And while it is important to note that the value of the dollar has changed over time, everyday people interpret home prices based on their experience at the time. For that reason, we present the median home sales price in nominal dollars (i.e. what the price was at that time). 
+
 ```{r}
 #| label: fig-rva-price
-#| fig-cap: "Median home sales price in Hampton Roads"
+#| fig-cap: "Median home sales price in Richmond MSA"
 
 # What have home prices been like?
 
-# How to add arrows indicating direction on line segments??
 
 rva_var_price <- read_rds("data/planrva/rds/rva_var.rds") |> 
-  select(geography, period, name, med_price) |> 
-  filter(geography == "MSA") |> 
-  group_by(name) |> 
-  mutate(
-    prev_year_price = lag(med_price, n = 4),
-    yoy_change = (med_price - prev_year_price) / prev_year_price
-  ) |> 
-  filter(name == "Richmond MSA") |> 
-  mutate(quarter = quarter(period)) |> 
-  mutate(year = year(period)) |> 
-  filter(year >= 2015)
+  select(geography, period, name, med_price, adj_price) |> 
+  pivot_longer(4:5,
+               names_to = "type",
+               values_to = "price") |> 
+  mutate(type = case_when(
+    type == "adj_price" ~ "Adjusted Price",
+    type == "med_price" ~ "Nominal Price"
+  )) |> 
+  filter(type == "Nominal Price") |> 
+  filter(name == "Richmond MSA") 
 
-
+subtitle_text <- "In <span style = 'color:#011E41'><b>nominal dollars</b></span>"
 
  ggplot(rva_var_price,
        aes(x = period,
-           y = yoy_change,
-           fill = quarter)) +
-  geom_col(position = "dodge") +
-  theme_hfv(base_size = 20) +
-  scale_y_continuous(labels = percent_format()) +
-  theme(legend.position = "top")
+           y = price,
+           color = name,
+           linetype = type)) +
+  geom_line() +
+  geom_point() +
+  theme_hfv(base_size = 10) +
+  scale_color_hfv() +
+  scale_y_continuous(labels = dollar_format()) +
+  # theme(legend.position = "top") +
+  labs(subtitle = subtitle_text)
+ 
+```
+
+
+```{r}
   
-
-
+rva_var_price <- read_rds("data/planrva/rds/rva_var.rds") |> 
+  select(geography, period, name, med_price, adj_price) |> 
   mutate(year = substr(period, 1, 4)) |> 
   mutate(year = as.numeric(year)) |> 
-  filter(period == "2024 Q2" | period == "2014 Q2") |> 
+  filter(period == "2024 Q1" | period == "2014 Q1") |> 
   mutate(period = as.character(period)) |> 
-  select(geography, name, adj_price, period) |> 
+  select(geography, name, med_price, adj_price, period) |> 
+  pivot_longer(3:4,
+               names_to = "type",
+               values_to = "price") |> 
+  mutate(name = case_when(
+    name == "Virginia Beach-Norfolk-Newport News MSA" ~ "VB-Norfolk-NN MSA",
+    TRUE ~ name
+  ))
+
+ggplot(rva_var_price,
+       aes(x = type,
+           y = price,
+           fill = period)) +
+  geom_col(position = "dodge") +
+  facet_wrap(~name)
+  
+
+|> 
   pivot_wider(names_from = period, 
-              values_from = adj_price) |> 
-  mutate(latest = `2024 Q2`) |> 
+              values_from = med_price) |> 
+  mutate(latest = `2024 Q1`) 
+
+|> 
   pivot_longer(3:4,
                names_to = "period",
-               values_to = "med_price")
+               values_to = "med_price") |> 
+  mutate(name = case_when(
+    name == "Virginia Beach-Norfolk-Newport News MSA" ~ "VB-Norfolk-NN MSA",
+    TRUE ~ name
+  ))
   
-subtitle_text <- "In <span style = 'color:#011E41'><b>Q2 2014</b></span> and <span style = 'color:#40C0C0'><b>Q2 2024</span>"
+subtitle_text <- "In <span style = 'color:#011E41'><b>Q1 2014</b></span> and <span style = 'color:#40C0C0'><b>Q1 2024</span>"
 
 
 price_plot <- ggplot(rva_var_price,
        aes(x = reorder(name, latest),
            y = med_price,
            color  = period)) +
-  theme_hfv() +
+  theme_hfv(base_size = 10) +
   geom_line(linewidth = 1, color = "grey") +
   geom_point_interactive(aes(
            data_id = med_price,
            tooltip = dollar_format()(med_price))) +
-  geom_text(data = subset(rva_var_price,
-  name %in% c("Goochland County",  "Richmond MSA")),
-  aes(label = dollar(med_price),
-      hjust = ifelse(period == "2024 Q2", -0.25, 1.25)),
-  size = 3) +
   coord_flip() +
   labs(title = "Median home sales price in Richmond region",
        subtitle = subtitle_text,
@@ -376,58 +408,7 @@ girafe(ggobj = price_plot,
 
 ```
 
-```{r}
-#| label: fig-rva-price
-#| fig-cap: "Median home sales price in Hampton Roads"
 
-# What have home prices been like?
-
-# How to add arrows indicating direction on line segments??
-
-rva_var_price <- read_rds("data/planrva/rds/rva_var.rds") |> 
-  filter(name == "Richmond MSA")
-  
-  
-subtitle_text <- "In <span style = 'color:#011E41'><b>Q2 2019</b></span> and <span style = 'color:#40C0C0'><b>Q2 2024</span>"
-
-
-price_plot <- ggplot(rva_var_price,
-                     aes(x = quarter,
-                         y = adj_price, 
-                         group = 1)) + 
-  geom_line(stat = "identity")
-  
-  theme_hfv() +
-  geom_line(linewidth = 1, color = "grey") +
-  geom_point_interactive(aes(
-           data_id = med_price,
-           tooltip = dollar_format()(med_price))) +
-  geom_text(data = subset(rva_var_price,
-  name %in% c("Goochland County",  "Richmond MSA")),
-  aes(label = dollar(med_price),
-      hjust = ifelse(period == "2024 Q2", -0.25, 1.25)),
-  size = 3) +
-  coord_flip() +
-  labs(title = "Median home sales price in Richmond region",
-       subtitle = subtitle_text,
-       caption = "**Source:** Virginia REALTORS, adjusted to Q2 2024 dollars.") +
-  scale_y_continuous(labels = dollar_format(), limits = c(100000, 700000)) +
-  scale_color_hfv() +
-  plot_annotation(
-    theme = theme(
-    plot.subtitle = element_markdown(
-       margin = margin(b = 0.4, unit = 'cm'),
-        size = 11.5
-    ))) + 
-  theme(panel.grid.major.y = element_line(color = "white"),
-        panel.grid.major.x = element_line(color = "#dadada",size = 0.2))
-
-price_plot
-  
-girafe(ggobj = price_plot,
-       height_svg = 4)
-
-```
 
 ```{r}
 #| label: fig-rva-dom
@@ -502,7 +483,7 @@ rva_rent <- read_rds("data/planrva/rds/rva_costar.rds") |>
                names_to = "rent",
                values_to = "dollars")
 
-subtitle_text <- "In <span style = 'color:#011E41'><b>Q2 2024 dollars</b></span> and <span style = 'color:#40C0C0'><b>current dollars</span>"
+subtitle_text <- "In <span style = 'color:#011E41'><b>Q2 2024 dollars</b></span> and <span style = 'color:#40C0C0'><b>nominal dollars</span>"
 
 rent_plot <- ggplot(rva_rent,
        aes(x = quarters,
@@ -567,6 +548,5 @@ vacancy_plot <- ggplot(rva_rv,
 
 girafe(ggobj = vacancy_plot,
        height_svg = 4)
-
 
 ```
