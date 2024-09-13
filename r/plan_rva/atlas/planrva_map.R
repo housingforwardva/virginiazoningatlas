@@ -18,7 +18,8 @@ one <- geojson_sf("data/planrva/geo/rva_vza_geo.geojson") |>
   filter(family2_treatment == "prohibited") |> 
   filter(family3_treatment == "prohibited") |> 
   filter(family4_treatment == "prohibited") 
-  
+
+write_rds(one, "data/planrva/rds/one_only.rds")
 
 st_write(one, "data/planrva/geo/one_only_map_update.gpkg", driver = "GPKG")
 

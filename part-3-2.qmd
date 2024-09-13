@@ -292,7 +292,7 @@ metro_prices_img <- ggplot(metro_prices,
   geom_line() +
   geom_line(data = filter(metro_prices, RegionName == "Washington, DC"), 
             aes(x = Date, y = relative_price), 
-            size = 1.5) + 
+            linewidth = 1.5) + 
   scale_color_hfv() +
   scale_x_date(breaks = "4 years",
                date_labels = "%Y") +
@@ -300,6 +300,8 @@ metro_prices_img <- ggplot(metro_prices,
   theme(axis.title.x = element_blank(),
         axis.title.y = element_blank(),
         legend.position = "right")
+
+metro_prices_img
 
 
 ```

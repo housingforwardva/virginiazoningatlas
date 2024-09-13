@@ -60,13 +60,16 @@ b19013_msa <- b19013_raw_msa |>
 
 int_rate <- 0.0646 # U.S. weekly averages as of 08/22/2024
 dwn_payment <- 0.03
+dwn_payment20 <- 0.2
 
 b19013_msa <- b19013_msa |> 
   mutate(third = (estimate * .3),
          third_ho = (estimate * .28)) |> 
   mutate(rent = (third/12)) |> 
   mutate(ho = (third_ho/12) - 250) |> 
-  mutate(ho_price = abs(pv(int_rate/12, 360, 0, ho, 0)))
+  mutate(ho_price = abs(pv(int_rate/12, 360, 0, ho, 0)/(1 - dwn_payment))) |> 
+  mutate(ho_price_20d = abs(pv(int_rate/12, 360, 0, ho, 0)/(1 - dwn_payment20)))
+
 
 
 write_rds(b19013_msa, "data/planrva/rds/rva_b19013.rds")

@@ -98,7 +98,7 @@ type_plot <- ggplot(type_summary,
            tooltip = percent_format(accuracy = 0.1)(pct))) +
   geom_col_interactive(position = "stack") +
   coord_flip() +
-  theme_hfv() +
+  theme_hfv(base_size = 15) +
   scale_fill_hfv() +
   labs(subtitle = subtitle_text
        # caption = "**Source:** Mercatus Center at George Mason University & HousingForward Virginia, Virginia Zoning Atlas."
@@ -143,15 +143,16 @@ sfd <- read_rds("data/planrva/rds/rva_vza_nogeo.rds") |> # Read in the data.
   ungroup() |> 
   group_by(jurisdiction) |> 
   mutate(total = sum(acres)) |> 
-  mutate(pct = acres/total) 
+  mutate(pct = acres/total) |> 
+  ungroup() |> 
+  mutate(total_area = sum(unique(total)))
 
+# Total acres is 1221754
 
-# Total acres is 1151289
-# 
 sfd_summary <- sfd |> 
   group_by(sfd) |> 
   summarise(acres = sum(acres)) |> 
-  mutate(pct_area = acres/1151289)
+  mutate(pct_area = acres/1221754)
 
 sfd_locality <- sfd |> 
   ungroup() |> 
@@ -176,18 +177,17 @@ sfd_explore <- read_rds("data/planrva/rds/rva_vza_nogeo.rds") |> # Read in the d
 
 ggplot(sfd_locality,
        aes(x = reorder(jurisdiction, pct),
-           y = pct,
-           fill = pct)) +
-  geom_col(position = "dodge") +
-  geom_col_interactive(position = "dodge") +
-  geom_text(aes(label = percent(pct, 1), color = pct),
+           y = pct)) +
+  geom_col_interactive(position = "dodge", fill = "#40c0c0") +
+  geom_text(aes(label = percent(pct, 1)), color = "#40c0c0",
     hjust = -0.2) +
-  theme_hfv() +
+  theme_hfv(base_size = 15) +
   coord_flip() +
   scale_y_continuous(expand = expansion(mult = c(0, 0.1))) +
-  scale_fill_gradientn(colours = c("#ADDCB1", "#46A88F", "#207A88", "#0F1A4E")) + # Use custom HFV gradient.
-  scale_color_gradientn(colours = c("#ADDCB1", "#46A88F", "#207A88", "#0F1A4E")) + # Use custom HFV gradient.
-  # labs(caption = "**Source:** Mercatus Center at George Mason University & HousingForward Virginia, Virginia Zoning Atlas.") +
+  # scale_fill_gradientn(colours = c("#ADDCB1", "#46A88F", "#207A88", "#0F1A4E")) + # Use custom HFV gradient.
+  # scale_color_gradientn(colours = c("#ADDCB1", "#46A88F", "#207A88", "#0F1A4E")) + # Use custom HFV gradient.
+  labs(title = "Developable land where only single-family detached housing can be built",
+       caption = "**Source:** Mercatus Center at George Mason University & HousingForward Virginia, Virginia Zoning Atlas.") +
   theme(axis.text.x = element_blank())
 
 
@@ -606,7 +606,6 @@ type <- read_rds("data/planrva/rds/rva_vza_nogeo.rds") |>
     adutype == "adu_attached" ~ "Attached ADU"
   ))
 
-condition <- adu_detached$treatment %in% c("allowed", "hearing")
 
 adu_detached <- type |> 
   filter(adutype == "Detached ADU") |> 
@@ -688,7 +687,7 @@ The Greater Richmond Transit Company (GRTC) operates the region's public transpo
 Zoning for more dense mixed-use options near public transportation impacts more than low-income households. By reducing dependency on personal vehicles, communities can contribute to environmental sustainability and provide greater economic opportunities for all residents. The map below shows the location of GRTC bus stops and where multifamily housing (4+ units) can be developed without a public hearing.
 
 ```{r}
-#| label: transit-map
+#| label: fig-transit-map
 #| fig-cap: "GRTC Stops and By-Right Multifamily Zoning"
 
 transit_map <- read_rds("data/planrva/rds/transit_map.rds")
@@ -709,6 +708,8 @@ A quarter mile distance from transit stops is often seen as a comfortable walkin
 The prevalence of public transit stops in the City of Richmond has undoubtedly contributed to the fact that out of all multifamily zoned land, nearly 80 percent of that land is within a quarter mile of a transit stop. That percentage drops significantly in the counties where GRTC operates. In Henrico, only 32 percent of multifamily zoned land is within a reasonable walking distance of public transportation. In Chesterfield County, that figure is below one percent.
 
 ```{r}
+#| label: fig-transit-apt
+#| fig-cap: "Multifamily Zoning w/in a Quarter Mile of GRTC Stops"
 
 # Determine how much total land allows for 4+ family housing either by-right or through
 # public hearing.
@@ -746,7 +747,7 @@ ggplot(transit_area,
   theme_hfv(base_size = 10) +
   scale_y_continuous(labels = percent_format(), limits = c(0,1)) +
   labs(title = "Multifamily housing near transit",
-       subtitle = "Percent of multifamily zoned land that permits it by-right")
+       subtitle = "Percent of multifamily zoned land that permits it by-right w/in a quarter mile of transit stops")
 
 
 ```
@@ -765,24 +766,34 @@ See below:
 
 ## Zoning for Equity
 
-The undersupply of housing impacts households regardless of income, but the impact is felt hardest by low- and moderate-income households. Rising demand for housing in the region is leading to significant price increases in rental and homeownership. Based on the median household income different racial and ethnic groups in the Richmond Metropolitan Area, the typical household within each group can largely afford the typical rent. 
+The undersupply of housing impacts households regardless of income, but the impact is felt hardest by low- and moderate-income households. And too often, the disparities in income also fall along racial and ethnic lines. In the Richmond region, Black and Hispanic households make a fraction of what their white and Asian counterparts make. 
 
-But when it comes to homeownership, Black and Hispanic households 
+Based on the median household income of different racial and ethnic groups in the Richmond Metropolitan Area, the typical household within each group can largely afford the typical rent in the PlanRVA region (\$1,459). But when it comes to homeownership, Black and Hispanic households have a more difficult time affording the median home sales price - even with a 20 percent down payment.
 
 ```{r}
+#| label: tbl-income
+#| tbl-cap: "Income and Affordability by Race in the Region"
 
 b19013 <- read_rds("data/planrva/rds/rva_b19013.rds") |> 
-  select(race, income = estimate, rent, ho_price) |> 
+  select(race, income = estimate, rent, ho_price, ho_price_20d) |> 
   mutate(income = dollar(income)) |> 
   mutate(rent = dollar(rent)) |> 
-  mutate(ho_price = dollar(ho_price))
+  mutate(ho_price = dollar(ho_price)) |> 
+  mutate(ho_price_20d = dollar(ho_price_20d))
 
-b19013 |> kbl(col.names = c("Race or Ethnicity", "Median Household Income", "Affordable Rent", "Affordable Homeownership"), align = "lccc") |> 
-  kable_styling(bootstrap_options = c("striped", "condensed"))
+b19013 |> kbl(col.names = c("Race or Ethnicity", "Median Household Income", "Affordable Rent (30% of Income)", "Affordable Homeownership (3% down)", "Affordable Homeownership (20% down)"), align = "lcccc") |> 
+  kable_styling(bootstrap_options = c("striped", "condensed")) |> 
+  add_footnote("Note: Purchase assumes a 30-Year Fixed Rate Mortage at 6.46%, $250 monthly insurance, and a household pays no more than 28% on housing.") 
 
 ```
 
+While there are numerous historical and contemporary factors that continue to disadvantage people of color in the housing market, a major factor is also the the lack of diverse and abundant housing supply. With homeownership being a challenge for most households, the rental housing market is surging --- further locking in households to renting and locking them out of opportunities to build equity.
+
+And while the region is building more multifamily housing than it ever has, it is still not enough to meet the demand. Most by-right multifamily housing is relegated to the City of Richmond and the median home value in census tracts where the overwhelming majority of the population is white (70 percent or more) is simply out of reach for most Black and Hispanic households. These areas cannot even be easily diversified because zoning does not easily allow for the development of housing that more diverse communities can afford.
+
 ```{r}
+#| label: fig-race-map
+#| fig-cap: "Majority White (70% or more) Census Tracts versus By-Right Multifamily"
 
 rva_tracts <- st_read("data/planrva/geo/home_value_white_tracts.gpkg") |> 
   st_transform(4326) 
@@ -824,4 +835,78 @@ leaflet() |>
 
 ```
 
+The map above shows where multifamily housing (4+ units) is allowed by-right and the location of majority white (70 percent or more) census tracts are and the median home value in those areas. Homeownership is largely out-of-reach for most Black and Hispanic households in those areas. And worse yet, traditional rental opportunities are not permitted there. These factors contribute to continued economic and racial segregation. Less diverse housing options also means less diverse communities.
+
+Researchers from the University of Richmond and Virginia Commonwealth University previously highlighted housing segregation and its connection to educational inequality in ["Confronting School and Housing Segregation in the Richmond Region: Can We Learn and Live Together?"](https://scholarship.richmond.edu/spcs-faculty-publications/74/). Their research showed that low opportunity neighborhoods are significantly tied to segregated, high poverty schools and that affordable housing opportunities are not in close proximity to high opportunity schools. The map below shows the location of schools wherein the percentage of Black and Latino students is lower than 40 percent. The grey dots represent schools where the percentage of Black and Latino is greater than or equal to 40 percent. The region's diverse schools are concentrated in the the City of Richmond, eastern Henrico, and Chesterfield along the Route One corridor. 
+
+```{r}
+#| label: fig-school-map
+#| fig-cap: "School Diversity in the Region"
+
+
+region <- read_rds("data/planrva/rds/rva_region.rds") 
+
+schools <- read_rds("data/planrva/rds/schools_data.rds")
+
+school_pal <- colorNumeric(palette = "viridis", domain = schools$per_blk_la)
+
+
+leaflet() |> 
+  addProviderTiles(providers$CartoDB.Positron) |> 
+  addPolygons(data = region,
+              color = "#66788d",
+              weight = 1,
+              fillOpacity = 0.2) |> 
+    # addPolygons(data = by4,
+    #           fillColor = "#B1005F",
+    #           fillOpacity = 1,
+    #           color = "white",
+    #           weight = 1) |> 
+  addCircleMarkers(data = schools,
+                   color = ~school_pal(per_blk_la),
+                   radius = 5,
+                   fillOpacity = 0.8,
+                   stroke = FALSE,
+                   popup = ~paste("School:", name, "<br>Black and Latino Students (%):", per_blk_la)) |>
+  # addCircleMarkers(data = schools_below,
+  #                  color = "grey",
+  #                  radius = 5,
+  #                  fillOpacity = 0.8,
+  #                  stroke = FALSE,
+  #                  popup = ~paste("School:", name, "<br>Black and Latino Students (%):", per_blk_la)) |>
+  addLegend(position = "topright",
+            title = "Black/Latino <br> Students (%)",
+            pal = school_pal,
+            values = schools$per_blk_la,
+            opacity = 0.7)
+
+```
+
+With the Virginia Zoning Atlas we can investigate zoning around schools based on their diversity. While school districts cover many miles, the presence of affordable housing in close proximity to schools can lead to greater opportunity for minority students. But the ability to build affordable housing near high opportunity schools can be stifled by zoning. The chart below looks at zoned, developable land within a one-mile buffer around white majority schools (less than 40 percent Black and Latino) and diverse schools (40 percent or more Black and Latino) in relation to where apartments (4+ unit housing) are allowed.
+
+```{r}
+#| label: fig-school-bar
+#| fig-cap: "Multifamily (4+) zoning near schools"
+
+schools <- read_rds("data/planrva/rds/apt_zoning_schools.rds") |> 
+  filter(county != "Powhatan County") |> 
+  filter(county != "New Kent County")
+  
+subtitle_text <- "Within one mile of <span style='color:#011E41'><b>diverse schools</span></b> and <span style='color:#40C0C0'><b>white majority schools</span></b>"
+
+ggplot(schools,
+       aes(x = reorder(county, -pct),
+           y = pct,
+           fill = type)) +
+  geom_col(position = "dodge") +
+  theme_hfv() +
+  scale_fill_hfv() +
+  scale_y_continuous(labels = percent_format()) +
+  labs(title = "Percent of developable land that allows for multifamily by-right",
+       subtitle = subtitle_text,
+       caption = "Note: Results for Powhatan were below zero. Goochland County has no zoning <br> districts that allow for apartments by-right. New Kent has no diverse schools.")
+
+```
+
+In the City of Richmond there is a stark difference around zoning and school diversity. Whiter schools in the city have less opportunities for housing diversity around them. Twelve percent of developable land around white majority schools allows for multifamily housing, compared to 21 percent around more diverse schools. In Henrico, there is greater apartment zoning around whiter schools, which are largely located in the western part of the county. This part of the county sees more high-end multifamily development, while the eastern part of the county is much more rural. Hanover County sees a similar relationship as in Henrico, but this is due in part to the location of schools along major corridors like Chamberlayne Road and Mechanicsville Turnpike. The percentage of developable land around Chesterfield County schools that allows for apartments by-right is significantly low - both for its diverse and non-diverse schools. In other parts of the region, the relationship is not as clear due to the lack of diverse schools.
 

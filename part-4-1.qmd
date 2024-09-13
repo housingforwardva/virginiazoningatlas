@@ -1,9 +1,3 @@
----
-output: html_document
-editor_options: 
-  chunk_output_type: console
----
-
 ```{r}
 #| label: setup
 
@@ -89,7 +83,7 @@ bps_plot
 
 ```
 
-Single-family construction starts (which includes single-family attached housing) are high in the largest counties in the region, where greenfield development opportunities are numerous. Infill development opportunities in the City of Richmond limit the ability for substantial new supply, but opportunities still exist for resale and redevelopment.
+Single-family construction starts (which includes single-family attached housing) are high in the largest counties in the region, where greenfield development opportunities are numerous. Infill development opportunities in the City of Richmond limit the ability for substantial new supply of homeownership, but opportunities still exist for resale and redevelopment.
 
 ```{r}
 #| label: fig-bps
@@ -143,7 +137,7 @@ bps_plot
 
 ```
 
-Observing variations across jurisdictions, it may surprise many that Chesterfield County exceeds the City of Richmond in 2-4 unit and 5 or more unit construction starts.
+Observing variations across jurisdictions, it may surprise many that Chesterfield County exceeds the City of Richmond in 2-4 unit and 5 or more unit construction starts. Henrico County also exceeds Richmond in terms of the number of 2-4 unit residential buildings. As noted previously in a footnote, building permit data from the Census Bureau should be taken with caution. But generally, the region continues to underbuild in the face of a rising population. The [University of Virginia's Weldon Cooper Center](https://www.coopercenter.org/) noted that between 2020 and 2023, the Richmond region saw the greatest increase in new residents (+40,000). The relative affordability of the region compared to other major metros along the Mid-Atlantic and the continued proliferation of remote work opportunities has continued to bring residents --- often with higher incomes --- to the region. 
 
 ```{r}
 #| label: fig-bps
@@ -164,7 +158,8 @@ bps <- read_rds("data/planrva/rds/rva_bps.rds") |> # Load in Building Permits Su
   group_by(name_long) |> # Group by locality.
   mutate(total = sum(units)) |> # Calculate the total number of new permits for entire time period.
   filter(type != "1-unit") |> 
-  filter(name_long %in% density)
+  filter(name_long %in% density) |> 
+  filter(name_long != "Goochland")
 
 
 subtitle_text <- "Few <span style = 'color:#40C0C0'><b>2-4 unit housing</span> has been built between 2000 to 2023"
@@ -200,49 +195,6 @@ bps_plot
 
 ```
 
-
-
-```{r}
-#| label: fig-pct-renter
-#| fig-cap: "Percent of renter households in the PlanRVA region"
-#| eval: false
-
-tenure <- read_rds("data/planrva/rds/b25003.rds") |> 
-  filter(year == 2010 | year == 2022) |> 
-  filter(tenure == "Renter") |> 
-  mutate(year = as.character(year)) 
-
-subtitle_text <- "In <span style = 'color:#011E41'><b>2010</b></span> and <span style = 'color:#40C0C0'><b>2022</span>"
-
-# tenure_plot <- 
-  
-ggplot(tenure,
-       aes(x = reorder(NAME, pct),
-           y = pct,
-           color = year)) +
-  geom_line(size = 1, color = "grey") +
-  geom_point_interactive(aes(color = year,
-                             data_id = pct,
-                             tooltip = percent_format(accuracy = 1)(pct)), 
-                         size = 2) +
-  coord_flip() +
-  theme_hfv() +
-  scale_y_continuous(labels = percent_format()) +
-  labs(title = "Percent of renter households in Hampton Roads",
-       subtitle = subtitle_text,
-       caption = "**Source:** U.S. Census Bureau, ACS, 5-Year Estimates, Table B25003.") +
-  scale_color_hfv() +
-  plot_annotation(
-    theme = theme(
-    plot.subtitle = element_markdown(
-       margin = margin(b = 0.4, unit = 'cm'),
-        size = 11.5
-    ))) + 
-  theme(panel.grid.major.y = element_line(color = "white"),
-        panel.grid.major.x = element_line(color = "#dadada",size = 0.1))
-
-
-```
 
 ```{r}
 #| label: fig-pct-homeowner
@@ -296,7 +248,7 @@ ggplot(tenure,
 
 ```
 
-The median home sales price in the Richmond Metropolitan Area has reached \$400,000 as of the second quarter of 2024. This is a far cry from 2014 when the median price was under \$200,000. And while it is important to note that the value of the dollar has changed over time, everyday people interpret home prices based on their experience at the time. For that reason, we present the median home sales price in nominal dollars (i.e. what the price was at that time). 
+The demand from new residents and the undersupply of housing has contributed to significant price increases in recent years. The median home sales price in the Richmond Metropolitan Area has reached \$400,000 as of the second quarter of 2024. This is a far cry from 2014 when the median price was under \$200,000. And while it is important to note that the value of the dollar has changed over time, everyday people interpret home prices based on their experience at the time. For that reason, we present the median home sales price in nominal dollars (i.e. what the price was at that time) and real dollars (i.e., what the price is in current dollars).
 
 ```{r}
 #| label: fig-rva-price
@@ -314,15 +266,15 @@ rva_var_price <- read_rds("data/planrva/rds/rva_var.rds") |>
     type == "adj_price" ~ "Adjusted Price",
     type == "med_price" ~ "Nominal Price"
   )) |> 
-  filter(type == "Nominal Price") |> 
+  # filter(type == "Nominal Price") |> 
   filter(name == "Richmond MSA") 
 
-subtitle_text <- "In <span style = 'color:#011E41'><b>nominal dollars</b></span>"
+subtitle_text <- "In <span style = 'color:#011E41'><b>real dollars</b></span> and <span style = 'color:#40C0C0'><b>nominal dollars</span>"
 
  ggplot(rva_var_price,
        aes(x = period,
            y = price,
-           color = name,
+           color = type,
            linetype = type)) +
   geom_line() +
   geom_point() +
@@ -334,89 +286,14 @@ subtitle_text <- "In <span style = 'color:#011E41'><b>nominal dollars</b></span>
  
 ```
 
-
-```{r}
-  
-rva_var_price <- read_rds("data/planrva/rds/rva_var.rds") |> 
-  select(geography, period, name, med_price, adj_price) |> 
-  mutate(year = substr(period, 1, 4)) |> 
-  mutate(year = as.numeric(year)) |> 
-  filter(period == "2024 Q1" | period == "2014 Q1") |> 
-  mutate(period = as.character(period)) |> 
-  select(geography, name, med_price, adj_price, period) |> 
-  pivot_longer(3:4,
-               names_to = "type",
-               values_to = "price") |> 
-  mutate(name = case_when(
-    name == "Virginia Beach-Norfolk-Newport News MSA" ~ "VB-Norfolk-NN MSA",
-    TRUE ~ name
-  ))
-
-ggplot(rva_var_price,
-       aes(x = type,
-           y = price,
-           fill = period)) +
-  geom_col(position = "dodge") +
-  facet_wrap(~name)
-  
-
-|> 
-  pivot_wider(names_from = period, 
-              values_from = med_price) |> 
-  mutate(latest = `2024 Q1`) 
-
-|> 
-  pivot_longer(3:4,
-               names_to = "period",
-               values_to = "med_price") |> 
-  mutate(name = case_when(
-    name == "Virginia Beach-Norfolk-Newport News MSA" ~ "VB-Norfolk-NN MSA",
-    TRUE ~ name
-  ))
-  
-subtitle_text <- "In <span style = 'color:#011E41'><b>Q1 2014</b></span> and <span style = 'color:#40C0C0'><b>Q1 2024</span>"
-
-
-price_plot <- ggplot(rva_var_price,
-       aes(x = reorder(name, latest),
-           y = med_price,
-           color  = period)) +
-  theme_hfv(base_size = 10) +
-  geom_line(linewidth = 1, color = "grey") +
-  geom_point_interactive(aes(
-           data_id = med_price,
-           tooltip = dollar_format()(med_price))) +
-  coord_flip() +
-  labs(title = "Median home sales price in Richmond region",
-       subtitle = subtitle_text,
-       caption = "**Source:** Virginia REALTORS, adjusted to Q2 2024 dollars.") +
-  scale_y_continuous(labels = dollar_format(), limits = c(100000, 700000)) +
-  scale_color_hfv() +
-  plot_annotation(
-    theme = theme(
-    plot.subtitle = element_markdown(
-       margin = margin(b = 0.4, unit = 'cm'),
-        size = 11.5
-    ))) + 
-  theme(panel.grid.major.y = element_line(color = "white"),
-        panel.grid.major.x = element_line(color = "#dadada",size = 0.2))
-
-price_plot
-  
-girafe(ggobj = price_plot,
-       height_svg = 4)
-
-```
-
-
+The days on market for homes has decreased across the Commonwealth as buyers compete for the little supply that exists out there. The median days on market has remained below 30 days along the I-95/I-64 corridor. In the Richmond region, the median days on market has barely risen above 10 days since the onset of the pandemic and is on par with the competition and demand seen in the DC Metro Area.
 
 ```{r}
 #| label: fig-rva-dom
-#| fig-cap: "Median days on market in the Richmond region"
-
+#| fig-cap: "Median days on market in the Urban Crescent"
 
 # How to add arrows indicating direction on line segments??
-subtitle_text <- "In <span style = 'color:#011E41'><b>Q2 2019</b></span> and <span style = 'color:#40C0C0'><b>Q2 2024</span>"
+subtitle_text <- "In the <span style = 'color:#011E41'><b>Richmond MSA</b></span>, <span style = 'color:#40C0C0'><b>VB-Norfolk-NN MSA</span>, and <span style = 'color:#8B85CA'><b>Washington, D.C. MSA</span>"
 
 library(patchwork)
 
@@ -424,34 +301,62 @@ rva_var_dom <- read_rds("data/planrva/rds/rva_var.rds") |>
   select(geography, name, period, med_dom)  |> 
   mutate(year = substr(period, 1, 4)) |> 
   mutate(year = as.numeric(year)) |> 
-  filter(period == "2024 Q2" | period == "2019 Q2") |> 
-  mutate(period = as.character(period)) |> 
-  select(geography, name, med_dom, period) |> 
-  pivot_wider(names_from = period, 
-              values_from = med_dom) |> 
-  mutate(latest = `2019 Q2`) |> 
-  pivot_longer(c(`2024 Q2`, `2019 Q2`),
-               names_to = "period",
-               values_to = "med_dom") 
+  filter(geography == "MSA")
 
 dom_plot <- ggplot(rva_var_dom,
-       aes(x = reorder(name, latest),
-           y = med_dom,
-           color = period)) +
+                   aes(x = period,
+                       y = med_dom, 
+                       color = name, 
+                       tooltip = med_dom)) +
+  geom_line() +
+  geom_line(data = filter(rva_var_dom, name == "Richmond MSA"), 
+            aes(x = period, y = med_dom),
+            linewidth = 1.5) +
+  geom_point_interactive(aes(color = name,
+                             data_id = med_dom,
+                             tooltip = paste0(med_dom, " ", "days"),
+                             group = 1)) +
+  theme_hfv(base_size = 10) +
+  scale_color_hfv() + 
+  labs(subtitle = subtitle_text) +
+  scale_y_continuous(breaks = seq(0, 70, 10))
+  
+girafe(ggobj = dom_plot,
+       height_svg = 4)
+
+
+```
+
+With home prices continuing to rise in the region, it is no surprise that the share of renters has increased. Those increases from 2010 to 2022, were most prevalent in Henrico and Goochland. But overall, every locality other than Powhatan and New Kent have seen an increase in their share of renters. The demand for rental continues to rise in the region as homeownership becomes more and more out-of-reach even for middle-income households.
+
+```{r}
+#| label: fig-pct-renter
+#| fig-cap: "Percent of renter households in the PlanRVA region"
+
+tenure <- read_rds("data/planrva/rds/b25003.rds") |> 
+  filter(year == 2010 | year == 2022) |> 
+  filter(tenure == "Renter") |> 
+  mutate(year = as.character(year)) 
+
+subtitle_text <- "In <span style = 'color:#011E41'><b>2010</b></span> and <span style = 'color:#40C0C0'><b>2022</span>"
+
+# tenure_plot <- 
+  
+ggplot(tenure,
+       aes(x = reorder(NAME, pct),
+           y = pct,
+           color = year)) +
   geom_line(size = 1, color = "grey") +
-  geom_point_interactive(aes(
-    data_id = med_dom,
-    tooltip = med_dom)) +
-  theme_hfv() +
-  # geom_text(data = subset(rva_var_dom, 
-  #                         name %in% c("Williamsburg",  "VB-Norfolk-NN MSA", "Surry County")), 
-  #           aes(label = med_dom, hjust = ifelse(period == "2023 Q2", 1.50, -0.5)),
-  #           size = 3) +
+  geom_point_interactive(aes(color = year,
+                             data_id = pct,
+                             tooltip = percent_format(accuracy = 1)(pct)), 
+                         size = 2) +
   coord_flip() +
-  labs(title = "Median days on market in the Richmond region",
+  theme_hfv() +
+  scale_y_continuous(labels = percent_format()) +
+  labs(title = "Percent of renter households in Hampton Roads",
        subtitle = subtitle_text,
-       caption = "**Source:** Virginia REALTORS.")  +
-  scale_y_continuous(limits = c(0, 35)) +
+       caption = "**Source:** U.S. Census Bureau, ACS, 5-Year Estimates, Table B25003.") +
   scale_color_hfv() +
   plot_annotation(
     theme = theme(
@@ -460,25 +365,25 @@ dom_plot <- ggplot(rva_var_dom,
         size = 11.5
     ))) + 
   theme(panel.grid.major.y = element_line(color = "white"),
-        panel.grid.major.x = element_line(color = "#dadada",size = 0.2))
-
-girafe(ggobj = dom_plot,
-       height_svg = 4)
-  
-
+        panel.grid.major.x = element_line(color = "#dadada",size = 0.1))
 
 
 ```
+
+Rents saw major nominal jumps in 2021. Increased rental demand amid COVID protections led to less unit turnover and even less available supply. T
+
+
+
+
 
 ```{r}
 #| label: fig-rva-rent
 #| fig-cap: "Average asking rent in Richmond region"
 
 
-
 rva_rent <- read_rds("data/planrva/rds/rva_costar.rds") |> 
   select(period, rent, adj_price) |> 
-  mutate(quarters = as.yearqtr(period)) |> 
+  mutate(quarters = zoo::as.yearqtr(period)) |> 
   pivot_longer(2:3,
                names_to = "rent",
                values_to = "dollars")
@@ -497,7 +402,7 @@ rent_plot <- ggplot(rva_rent,
   )) +
   theme_hfv() +
   scale_y_continuous(labels = dollar_format()) +
-  scale_x_yearqtr(breaks = seq(from = min(rva_rent$quarters), 
+  zoo::scale_x_yearqtr(breaks = seq(from = min(rva_rent$quarters), 
                                to = max(rva_rent$quarters), 
                                by = 1),format = '%Y-Q%q') +
   theme(axis.text.x = element_text(angle = 90)) +
