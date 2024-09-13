@@ -5,9 +5,9 @@ account: housingforwardva
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 10165491
-bundleId: 8685028
+bundleId: 9097439
 url: https://housingforwardva.shinyapps.io/va_zoning_atlas/
 version: 1
 asMultiple: FALSE
 asStatic: FALSE
-ignoredFiles: app_kw.R|hidden_layer.R
+ignoredFiles: hidden_layer.R

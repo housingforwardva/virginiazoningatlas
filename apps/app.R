@@ -7,7 +7,7 @@ useShinyjs()
 
 MAPBOX_ACCESS_TOKEN <- Sys.getenv("MAPBOX_ACCESS_TOKEN")
 
-zoning <- readr::read_rds("data/vza_simple.rds")
+zoning <- readr::read_rds("data/vza_simple.rds") |> dplyr::ungroup()
 # Get a merged layer that is zoning with geometries dissolved across the possible filter groups to display when zoomed out (TBD)
 
 # Construct the tooltip column
@@ -49,18 +49,18 @@ nova_list <- c("Alexandria", "Arlington", "Clifton", "Dumfries", "Fairfax",
                "Manassas Park", "Middleburg", "Occoquan", "Prince William", 
                "Purcellville", "Round Hill", "Vienna")
 
+rva_list <- c("Ashland", "Charles City", "Chesterfield", "Goochland", "Hanover", 
+              "Henrico", "New Kent", "Powhatan", "Richmond (city)")
+
 hrva_list <- c("Chesapeake", "Franklin (city)", "Gloucester", "Hampton", "Isle of Wight", 
                "James City", "Newport News", "Norfolk", "Poquoson", "Portsmouth", 
                "Smithfield", "Southampton", "Suffolk", "Surry", "Surry (town)", 
                "Virginia Beach", "Williamsburg", "Windsor", "York")
 
-rva_list <- c("Ashland", "Charles City", "Chesterfield", "Goochland", "Hanover",
-              "Henrico", "New Kent", "Powhatan", "Richmond (city)")
-
 local_list <- list(
   "Northern Virginia" = nova_list,
-  "Hampton Roads" = hrva_list,
-  "PlanRVA" = rva_list
+  "PlanRVA" = rva_list,
+  "Hampton Roads" = hrva_list
 )
 
 ui <- bslib::page_fluid(
@@ -235,30 +235,28 @@ ui <- bslib::page_fluid(
           shinyWidgets::prettySwitch("apt_switch", "Apartments (4+ units)"),
           bslib::tooltip(
             bsicons::bs_icon("info-circle"),
-            "Where you can build larger apartments by-right"
+            "Where you can build larger apartments by-right or through a public hearing"
           )
         ),
-        conditionalPanel(
-          condition = "input.apt_switch == true",
-          checkboxInput("apt_option1", "By-Right"),
-          checkboxInput("apt_option2", "Public Hearing")
-        ),
+        uiOutput("apartment_options"),
         span(
           style = "display: flex; align-items: center;",
           shinyWidgets::prettySwitch("adu_switch", "Accessory Dwelling Units"),
           bslib::tooltip(
             bsicons::bs_icon("info-circle"),
-            "Where you can build ADUs in primarily residential zoning districts by-right"
+            "Where you can build ADUs in primarily residential zoning districts"
           )
         ),
+        uiOutput("adu_options"),
         span(
           style = "display: flex; align-items: center;",
           shinyWidgets::prettySwitch("msm_switch", "Missing Middle Housing"),
           bslib::tooltip(
             bsicons::bs_icon("info-circle"),
-            "Where you can build 2-4 unit housing by-right"
+            "Where you can build 2-4 unit housing by-right or through a public hearing"
           )
-        )
+        ), 
+        uiOutput("msm_options")
       ),
       shiny::hr(),
       # bslib::accordion_panel(
@@ -319,6 +317,8 @@ ui <- bslib::page_fluid(
       # shiny::hr(),
       bslib::accordion_panel(
         "Additional layers",
+        id = "additional_layers",
+        value = "additional_layers_accordion",
         icon = bsicons::bs_icon("chevron-down"),
         shiny::checkboxInput(
           "transit_stops", 
@@ -395,12 +395,18 @@ server <- function(input, output, session) {
     mapgl::mapboxgl(style = "mapbox://styles/ericvmai/clzu65lrv00qc01pd1her0smz/draft", 
                     bounds = bounds, 
                     access_token = MAPBOX_ACCESS_TOKEN) %>%
+      # Here, we adjust the source layer's tolerance (for demonstration)
+      mapgl::add_source(
+        id = "zoning-source",
+        data = zoning,
+        tolerance = 0.1
+      ) %>%
       mapgl::add_fill_layer(
         id = "zoning",
-        source = zoning,
+        source = "zoning-source",
         fill_opacity = 0.8,
         fill_color = get_column("fill_color"),
-        fill_outline_color = "white",
+        # fill_outline_color = "white",
         tooltip = "tooltip",
         slot = "middle",
         hover_options = list(
@@ -451,6 +457,14 @@ server <- function(input, output, session) {
     
   })
   
+  # If input$geocode goes to NULL, remove the marker
+  shiny::observe({
+    if (is.null(input$geocode)) {
+      mapgl::mapboxgl_proxy("map") %>%
+        mapgl::clear_markers()
+    }
+  })
+  
   # Handle the switches
   shiny::observeEvent(input$sf_switch, {
     if (input$sf_switch) {
@@ -468,7 +482,6 @@ server <- function(input, output, session) {
       shinyWidgets::updatePrettySwitch(inputId = "apt_switch", value = FALSE)
       shinyWidgets::updatePrettySwitch(inputId = "msm_switch", value = FALSE)
     }
-    
   })
   
   shiny::observeEvent(input$apt_switch, {
@@ -478,7 +491,6 @@ server <- function(input, output, session) {
       shinyWidgets::updatePrettySwitch(inputId = "adu_switch", value = FALSE)
       shinyWidgets::updatePrettySwitch(inputId = "msm_switch", value = FALSE)
     }
-    
   })
   
   shiny::observeEvent(input$msm_switch, {
@@ -488,11 +500,107 @@ server <- function(input, output, session) {
       shinyWidgets::updatePrettySwitch(inputId = "apt_switch", value = FALSE)
       shinyWidgets::updatePrettySwitch(inputId = "adu_switch", value = FALSE)
     }
-    
+  })
+  
+  # Render apartment options
+  output$apartment_options <- renderUI({
+    req(input$apt_switch)
+    if (input$apt_switch) {
+      tagList(
+        div(
+          style = "margin-left: 20px;",
+          checkboxInput("apt_by_right", "By-Right", value = TRUE),
+          checkboxInput("apt_public_hearing", "Public Hearing", value = TRUE)
+        )
+      )
+    }
+  })
+  
+  # Render ADU options
+  output$adu_options <- renderUI({
+    req(input$adu_switch)
+    if (input$adu_switch) {
+      tagList(
+        div(
+          style = "margin-left: 20px;",
+          checkboxInput("adu_by_right", "By-Right", value = TRUE),
+          checkboxInput("adu_public_hearing", "Public Hearing", value = TRUE)
+        )
+      )
+    }
+  })
+  
+  # Render missing middle options
+  output$msm_options <- renderUI({
+    req(input$msm_switch)
+    if (input$msm_switch) {
+      tagList(
+        div(
+          style = "margin-left: 20px;",
+          checkboxInput("msm_by_right", "By-Right", value = TRUE),
+          checkboxInput("msm_public_hearing", "Public Hearing", value = TRUE)
+        )
+      )
+    }
   })
   
   # Observer that handles the jurisdiction and switch filters
   current_layer <- shiny::reactiveVal("zoning_layer")
+  
+  # Set up the filter value logic for apartments, ADUs, and missing middle
+  get_filter_values <- function(by_right, public_hearing) {
+    values <- c()
+    if (isTRUE(by_right)) values <- c(values, "allowed")
+    if (isTRUE(public_hearing)) values <- c(values, "hearing")
+    return(values)
+  }
+  
+  # Reactive expression for the apartment filter
+  apartment_filter <- reactive({
+    if (!is.null(input$apt_switch) && isTRUE(input$apt_switch)) {
+      filter_values <- get_filter_values(input$apt_by_right, input$apt_public_hearing)
+      if (length(filter_values) > 0) {
+        return(c("in", "family4_treatment", filter_values))
+      } else {
+        return(c("in", "family4_treatment", "blank"))
+      }
+    }
+    return(NULL)
+  })
+  
+  # Reactive expression for the ADU filter
+  adu_filter <- reactive({
+    if (!is.null(input$adu_switch) && isTRUE(input$adu_switch)) {
+      filter_values <- get_filter_values(input$adu_by_right, input$adu_public_hearing)
+      if (length(filter_values) > 0) {
+        return(c("in", "accessory_treatment", filter_values))
+      } else {
+        return(c("in", "accessory_treatment", "blank"))
+      }
+    }
+    return(NULL)
+  })
+  
+  # Reactive expression for the missing middle filter
+  msm_filter <- reactive({
+    if (!is.null(input$msm_switch) && isTRUE(input$msm_switch)) {
+      filter_values <- get_filter_values(input$msm_by_right, input$msm_public_hearing)
+      if (length(filter_values) > 0) {
+        return(list(
+          c("in", "family2_treatment", filter_values),
+          c("in", "family3_treatment", filter_values),
+          c("in", "family4_treatment", filter_values)
+        ))
+      } else {
+        return(list(
+          c("in", "family2_treatment", "blank"),
+          c("in", "family3_treatment", "blank"),
+          c("in", "family4_treatment", "blank")
+        ))
+      }
+    }
+    return(NULL)
+  })
   
   shiny::observe({
     proxy <- mapgl::mapboxgl_proxy("map") 
@@ -515,54 +623,65 @@ server <- function(input, output, session) {
                  c("==", "sfd", "t"),
                  c("in", "Jurisdiction", input$select_juris)
             )
-            
           )
         
         current_layer("sfd")
         
       } else if (input$apt_switch) {
         
+        filters <- list("all",
+                        apartment_filter(),
+                        c("in", "Jurisdiction", input$select_juris))
+        
+        # Remove NULL elements from the filters list
+        filters <- filters[!sapply(filters, is.null)]
+        
         proxy %>%
           set_filter(
             "zoning",
-            list("all",
-                 c("in", "family4_treatment", "allowed"),
-                 c("in", "Jurisdiction", input$select_juris)
-            )
+            filters
           )
         
         current_layer("apts")
         
-        
       } else if (input$adu_switch) {
+        
+        filters <- list("all",
+                        c("==", "type", "Primarily Residential"),
+                        adu_filter(),
+                        c("in", "Jurisdiction", input$select_juris))
+        
+        # Remove NULL elements from the filters list
+        filters <- filters[!sapply(filters, is.null)]
         
         proxy %>%
           set_filter(
             "zoning",
-            list("all",
-                 c("==", "type", "Primarily Residential"),
-                 c("==", "accessory_treatment", "allowed"),
-                 c("in", "Jurisdiction", input$select_juris)
-            )
+            filters
           )
         
         current_layer("adus")
         
       } else if (input$msm_switch) {
         
+        msm_filters <- msm_filter()
+        
+        filters <- c(
+          list("all"),
+          msm_filters,
+          list(c("in", "Jurisdiction", input$select_juris))
+        )
+        
+        # Remove NULL elements from the filters list
+        filters <- filters[!sapply(filters, is.null)]
+        
         proxy %>%
           set_filter(
             "zoning",
-            list("all",
-                 c("==", "family2_treatment", "allowed"),
-                 c("==", "family3_treatment", "allowed"),
-                 c("==", "family4_treatment", "allowed"),
-                 c("in", "Jurisdiction", input$select_juris)
-            )
+            filters
           )
         
         current_layer("missmiddle")
-        
         
       } else {
         
@@ -692,17 +811,22 @@ server <- function(input, output, session) {
     } else if (cur == "sfd") {
       cur_locality <- dplyr::filter(zoning, jurisdiction %in% input$select_juris, sfd == "t")
     } else if (cur == "apts") {
-      cur_locality <- dplyr::filter(zoning, jurisdiction %in% input$select_juris, family4_treatment == "allowed")
+      apt_filter_values <- get_filter_values(input$apt_by_right, input$apt_public_hearing)
+      cur_locality <- dplyr::filter(zoning, jurisdiction %in% input$select_juris, family4_treatment %in% apt_filter_values)
     } else if (cur == "adus") {
-      cur_locality <- dplyr::filter(zoning, jurisdiction %in% input$select_juris, type == "Primarily Residential", accessory_treatment == "allowed")
+      adu_filter_values <- get_filter_values(input$adu_by_right, input$adu_public_hearing)
+      cur_locality <- dplyr::filter(zoning, jurisdiction %in% input$select_juris, type == "Primarily Residential", accessory_treatment %in% adu_filter_values)
     } else if (cur == "missmiddle") {
-      cur_locality <- dplyr::filter(zoning, jurisdiction %in% input$select_juris, family2_treatment == "allowed", family3_treatment == "allowed", family4_treatment == "allowed")
+      msm_filter_values <- get_filter_values(input$msm_by_right, input$msm_public_hearing)
+      cur_locality <- dplyr::filter(zoning, jurisdiction %in% input$select_juris, 
+                                    family2_treatment %in% msm_filter_values, 
+                                    family3_treatment %in% msm_filter_values, 
+                                    family4_treatment %in% msm_filter_values)
     }
     
     full_locality <- dplyr::filter(zoning, jurisdiction %in% input$select_juris)
     
     pct_value <- cur_locality %>%
-      dplyr::group_by() |> 
       dplyr::mutate(selected_acres = sum(acres)) |>
       dplyr::mutate(total_jurisdiction = sum(unique(full_locality$total_area))) |>
       dplyr::mutate(pct = scales::percent(selected_acres/total_jurisdiction), accuracy = 0.1) %>%
