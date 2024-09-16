@@ -327,7 +327,7 @@ girafe(ggobj = dom_plot,
 
 ```
 
-With home prices continuing to rise in the region, it is no surprise that the share of renters has increased. Those increases from 2010 to 2022, were most prevalent in Henrico and Goochland. But overall, every locality other than Powhatan and New Kent have seen an increase in their share of renters. The demand for rental continues to rise in the region as homeownership becomes more and more out-of-reach even for middle-income households.
+With home prices continuing to rise in the region, it is no surprise that the share of renters has increased. Those increases from 2010 to 2022 were most prevalent in Henrico and Goochland. But overall, every locality other than Powhatan and New Kent have seen an increase in their share of renters. The demand for rental continues to rise in the region as homeownership becomes more and more out-of-reach even for middle-income households.
 
 ```{r}
 #| label: fig-pct-renter
@@ -371,10 +371,6 @@ ggplot(tenure,
 ```
 
 Rents saw major nominal jumps in 2021. Increased rental demand amid COVID protections led to less unit turnover and even less available supply. T
-
-
-
-
 
 ```{r}
 #| label: fig-rva-rent
