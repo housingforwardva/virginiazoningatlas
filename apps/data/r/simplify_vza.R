@@ -72,7 +72,8 @@ sparse <- vza |>
     type == "Mixed with Residential" ~ "#40C0C0ff",
     type == "Nonresidential" ~ "#011E41ff",
     TRUE ~ "#FFFFFFff"
-  )) 
+  )) |> 
+  st_make_valid()
 
 
 # simple <- ms_simplify(sparse, keep = 0.1, keep_shapes = TRUE)
