@@ -1,3 +1,8 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
 ```{r}
 #| label: setup
 
@@ -311,14 +316,15 @@ dom_plot <- ggplot(rva_var_dom,
   geom_line() +
   geom_line(data = filter(rva_var_dom, name == "Richmond MSA"), 
             aes(x = period, y = med_dom),
-            linewidth = 1.5) +
+            linewidth = 1.2) +
   geom_point_interactive(aes(color = name,
                              data_id = med_dom,
                              tooltip = paste0(med_dom, " ", "days"),
                              group = 1)) +
   theme_hfv(base_size = 10) +
   scale_color_hfv() + 
-  labs(subtitle = subtitle_text) +
+  labs(title = "Median days on market",
+       subtitle = subtitle_text) +
   scale_y_continuous(breaks = seq(0, 70, 10))
   
 girafe(ggobj = dom_plot,
@@ -370,7 +376,7 @@ ggplot(tenure,
 
 ```
 
-Rents saw major nominal jumps in 2021. Increased rental demand amid COVID protections led to less unit turnover and even less available supply. T
+Rents saw major nominal jumps in 2021. Increased rental demand amid COVID protections led to less unit turnover and even less available supply, leading to subsequent rent increases. Recent data from CoStar Group, Inc. estimates that the average asking rent in the region is just over \$1,400. For a household to not be rent cost-burdened, they would have to make approximately \$56,000 annually. This figure is about \$18,000 more than the median renter household income in the Richmond Metropolitan Statistical Area - \$48,171 in 2022. Based on these estimates, more than half of renters in the entire metro area could not afford rent in the Richmond region. 
 
 ```{r}
 #| label: fig-rva-rent
@@ -420,6 +426,8 @@ girafe(ggobj = rent_plot,
        height_svg = 4)
 
 ```
+
+A healthy rental vacancy rate is dependent on various factors, including location and economic conditions. But generally, a rate between 5 and 7 percent 
 
 ```{r}
 #| label: fig-rva-rv
