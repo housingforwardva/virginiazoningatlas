@@ -90,3 +90,12 @@ mapview(rva_race)
 
 write_rds(rva_race, "data/planrva/rds/rva_race_tracts.rds")
 st_write(rva_race, "data/planrva/geo/rva_race_tracts_22.gpkg", driver = "GPKG")
+
+
+library(geojsonsf)
+library(sf)
+
+rva_tracts <- st_read("data/planrva/geo/home_value_white_tracts.gpkg") |> 
+  st_transform(4326) 
+  
+write_rds(rva_tracts, "data/planrva/rds/race_tracts.rds")

@@ -85,6 +85,7 @@ byright4 <- geojson_sf("data/planrva/geo/rva_vza_geo.geojson") |>
 byright4 <- ms_simplify(byright4, keep = 0.3)
 
 st_write(byright4, "data/planrva/geo/byright4_map.gpkg", driver = "GPKG")
+write_rds(byright4, "data/planrva/rds/byright4_map.rds")
 
 
 
