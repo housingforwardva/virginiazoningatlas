@@ -91,7 +91,7 @@ bps_plot
 Single-family construction starts (which includes single-family attached housing) are high in the largest counties in the region, where greenfield development opportunities are numerous. Infill development opportunities in the City of Richmond limit the ability for substantial new supply of homeownership, but opportunities still exist for resale and redevelopment.
 
 ```{r}
-#| label: fig-bps
+#| label: fig-bps-1
 #| fig-cap: "Total new single-family residential building permits issued from 2000 to 2023"
 
 # Create a visualization that shows where 2+ housing is being built. Where is more diverse housing being built? 
@@ -145,7 +145,7 @@ bps_plot
 Observing variations across jurisdictions, it may surprise many that Chesterfield County exceeds the City of Richmond in 2-4 unit and 5 or more unit construction starts. Henrico County also exceeds Richmond in terms of the number of 2-4 unit residential buildings. As noted previously in a footnote, building permit data from the Census Bureau should be taken with caution. But generally, the region continues to underbuild in the face of a rising population. The [University of Virginia's Weldon Cooper Center](https://www.coopercenter.org/) noted that between 2020 and 2023, the Richmond region saw the greatest increase in new residents (+40,000). The relative affordability of the region compared to other major metros along the Mid-Atlantic and the continued proliferation of remote work opportunities has continued to bring residents --- often with higher incomes --- to the region. 
 
 ```{r}
-#| label: fig-bps
+#| label: fig-bps-2
 #| fig-cap: "Total new 2+ residential building permits issued from 2000 to 2023"
 
 # Create a visualization that shows where 2+ housing is being built. Where is more diverse housing being built? 
@@ -427,7 +427,9 @@ girafe(ggobj = rent_plot,
 
 ```
 
-A healthy rental vacancy rate is dependent on various factors, including location and economic conditions. But generally, a rate between 5 and 7 percent 
+A healthy rental vacancy rate is dependent on various factors, including location and economic conditions. Generally, a rate between 5 and 10 percent is considered balanced between supply and demand. Before the pandemic, the rental vacancy rate in the region sat between 6 and 8 percent. During the pandemic, that rate dropped below 5 percent, before climbing to a record 9 percent in the last quarter of 2023. According to the Virginia REALTORS, "the rise in vacancy rates is attributed to the apartment construction boom of 2022 as builders attempted to meet the need for more housing."
+
+While this may indicate an oversupply, lease up will continue to occur as new inventory hits the market and vacancy rates will trend down in the coming quarters. Rent growth may slow as more units are continuously added to the region, but one fact remains, the income for many renters is not keeping pace.
 
 ```{r}
 #| label: fig-rva-rv
@@ -459,3 +461,7 @@ girafe(ggobj = vacancy_plot,
        height_svg = 4)
 
 ```
+
+## Conclusions
+
+The Richmond region's for-sale market has continued to see major increases in sales prices, while rents follow albeit at a slower pace. But the fact remains that more diverse types of housing are needed in both the for-sale and rental markets. Zoning can act as an artificial limiter on the housing supply and as we will see in the next section, there are dozens of opportunities to increase supply in all parts of the region.
