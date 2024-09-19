@@ -1,4 +1,3 @@
-
 ```{r}
 #| label: setup
 
@@ -49,8 +48,9 @@ All jurisdictions within the PlanRVA region implement zoning to regulate and res
 ```{r}
 #| label: tbl-summary
 #| tbl-cap: "Zoning Ordinance Summary"
+#| eval: false
 
-summary_tbl <- read_csv("data/planrva/csv/rva_summary.csv") |> 
+summary_tbl <- read_csv("data/planrva/csv/rva_summary.csv")|> 
   kbl(col.names = c("Jurisdiction", "Last Comprehensive Rewrite", "Number of Pages", "Number of base and overlay districts"), align = "lccc") |> 
   kable_styling(bootstrap_options = c("striped", "condensed"))
 
@@ -58,7 +58,9 @@ summary_tbl
 
 ```
 
-HousingForward Virginia analyzed 261 individual base and overlay zoning districts in the region. The analysis that follows excludes overlay districts because they often had no impact on how a residential use was treated. The following analysis involves 203 zoning districts across nine jurisdictions. In order to calculate developable land, Land Use Atlas, Inc. and HousingForward Virginia processed geospatial data to exclude protected lands and rights-of-way from the analysis utilizing PAD-US data, NHDPlus High Res data, and Regrid parcel data.
+HousingForward Virginia analyzed over 200 individual base and overlay zoning districts in the region. The analysis that follows excludes overlay districts because they often had no impact on how a residential use was treated. The following analysis involves 203 zoning districts across nine jurisdictions.[^part-4-2-1] In order to calculate developable land, Land Use Atlas, Inc. and HousingForward Virginia processed geospatial data to exclude protected lands and rights-of-way from the analysis utilizing PAD-US data, NHDPlus High Res data, and Regrid parcel data.
+
+[^part-4-2-1]: This includes 21 individual Community Unit Plan districts in the City of Richmond. The City of Richmond treats Community Unit Plans (CUPs) as Planned Unit Developments (PUDs) that replace the base zoning districts. If a CUP is not implemented, the base zoning district prevails. There were 21 CUPs in the City of Richmond whose status was listed as active.
 
 The results of our analysis are based on the zoning ordinances and zoning maps of each jurisdiction. It is important to note that restrictive covenants, proffered conditions, and parcel-level changes through special exceptions or special use permits also impact the ability to build housing, but they are outside the scope of this analysis.
 
@@ -701,9 +703,9 @@ transit_map |>
 
 The map clearly shows that there are opportunities both to expand GRTC service to reach multifamily zoned land, but also opportunities to upzone and diversify areas along transit corridors, especially Route 1 and Midlothian Turnpike.
 
-A quarter mile distance from transit stops is often seen as a comfortable walking distance for most people in the United States.[^part-4-2-1] Where multifamily housing is allowed in the region, there are stark differences in the relationship between multifamily zoned land and transit stop location.
+A quarter mile distance from transit stops is often seen as a comfortable walking distance for most people in the United States.[^part-4-2-2] Where multifamily housing is allowed in the region, there are stark differences in the relationship between multifamily zoned land and transit stop location.
 
-[^part-4-2-1]: Walker, Jarrett. (2011). "basics: walking distance to transit." Human Transit.
+[^part-4-2-2]: Walker, Jarrett. (2011). "basics: walking distance to transit." Human Transit.
 
 The prevalence of public transit stops in the City of Richmond has undoubtedly contributed to the fact that out of all multifamily zoned land, nearly 80 percent of that land is within a quarter mile of a transit stop. That percentage drops significantly in the counties where GRTC operates. In Henrico, only 32 percent of multifamily zoned land is within a reasonable walking distance of public transportation. In Chesterfield County, that figure is below one percent.
 
@@ -766,7 +768,7 @@ See below:
 
 ## Zoning for Equity
 
-The undersupply of housing impacts households regardless of income, but the impact is felt hardest by low- and moderate-income households. And too often, the disparities in income also fall along racial and ethnic lines. In the Richmond region, Black and Hispanic households make a fraction of what their white and Asian counterparts make. 
+The undersupply of housing impacts households regardless of income, but the impact is felt hardest by low- and moderate-income households. And too often, the disparities in income also fall along racial and ethnic lines. In the Richmond region, Black and Hispanic households make a fraction of what their white and Asian counterparts make.
 
 Based on the median household income of different racial and ethnic groups in the Richmond Metropolitan Area, the typical household within each group can largely afford the typical rent in the PlanRVA region (\$1,459). But when it comes to homeownership, Black and Hispanic households have a more difficult time affording the median home sales price - even with a 20 percent down payment.
 
@@ -837,7 +839,7 @@ leaflet() |>
 
 The map above shows where multifamily housing (4+ units) is allowed by-right and the location of majority white (70 percent or more) census tracts are and the median home value in those areas. Homeownership is largely out-of-reach for most Black and Hispanic households in those areas. And worse yet, traditional rental opportunities are not permitted there. These factors contribute to continued economic and racial segregation. Less diverse housing options also means less diverse communities.
 
-Researchers from the University of Richmond and Virginia Commonwealth University previously highlighted housing segregation and its connection to educational inequality in ["Confronting School and Housing Segregation in the Richmond Region: Can We Learn and Live Together?"](https://scholarship.richmond.edu/spcs-faculty-publications/74/). Their research showed that low opportunity neighborhoods are significantly tied to segregated, high poverty schools and that affordable housing opportunities are not in close proximity to high opportunity schools. The map below shows the location of schools wherein the percentage of Black and Latino students is lower than 40 percent. The grey dots represent schools where the percentage of Black and Latino is greater than or equal to 40 percent. The region's diverse schools are concentrated in the the City of Richmond, eastern Henrico, and Chesterfield along the Route One corridor. 
+Researchers from the University of Richmond and Virginia Commonwealth University previously highlighted housing segregation and its connection to educational inequality in ["Confronting School and Housing Segregation in the Richmond Region: Can We Learn and Live Together?"](https://scholarship.richmond.edu/spcs-faculty-publications/74/). Their research showed that low opportunity neighborhoods are significantly tied to segregated, high poverty schools and that affordable housing opportunities are not in close proximity to high opportunity schools. The map below shows the location of schools wherein the percentage of Black and Latino students is lower than 40 percent. The grey dots represent schools where the percentage of Black and Latino is greater than or equal to 40 percent. The region's diverse schools are concentrated in the the City of Richmond, eastern Henrico, and Chesterfield along the Route One corridor.
 
 ```{r}
 #| label: fig-school-map
@@ -910,3 +912,10 @@ ggplot(schools,
 
 In the City of Richmond there is a stark difference around zoning and school diversity. Whiter schools in the city have less opportunities for housing diversity around them. Twelve percent of developable land around white majority schools allows for multifamily housing, compared to 21 percent around more diverse schools. In Henrico, there is greater apartment zoning around whiter schools, which are largely located in the western part of the county. This part of the county sees more high-end multifamily development, while the eastern part of the county is much more rural. Hanover County sees a similar relationship as in Henrico, but this is due in part to the location of schools along major corridors like Chamberlayne Road and Mechanicsville Turnpike. The percentage of developable land around Chesterfield County schools that allows for apartments by-right is significantly low - both for its diverse and non-diverse schools. In other parts of the region, the relationship is not as clear due to the lack of diverse schools.
 
+## Conclusions
+
+In comparison to its peers along the I-64/I-95 corridor, the PlanRVA region zones more similarly to the Hampton Roads region than the Northern Virginia region in terms of types of zoning districts. But when looking at the ability to develop different types of housing, more communities in the Hampton Roads and Northern Virginia regions allow for more diverse housing. Undoubtedly, the presence of more independent urban cities in those planning district regions relates to more diverse housing.
+
+However, the influx of new residents to the Richmond region continues to put pressure on the existing housing market, most impacting low- and moderate-income residents already living in the region. With demand only increasing, it will be important for the region - not just one or two individual jurisdictions - to consider how reforming their zoning can contribute to a more vibrant and sustainable region for both new and existing residents.
+
+As noted previously, the Virginia Zoning Atlas provides a new resource for advocates of zoning reform and opportunities to investigate the intersection of housing and its many intersecting issue areas. From transportation to education, the Virginia Zoning Atlas can lead to more informed decisions about zoning and land use policy in the Richmond region and beyond.
