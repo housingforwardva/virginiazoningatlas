@@ -2,8 +2,7 @@ library(magrittr)
 library(sf)
 library(mapgl)
 library(shinyWidgets)
-library(shinyjs)
-useShinyjs()
+sf::sf_use_s2(FALSE)
 
 MAPBOX_ACCESS_TOKEN <- Sys.getenv("MAPBOX_ACCESS_TOKEN")
 
@@ -106,6 +105,13 @@ ui <- bslib::page_fluid(
           margin-bottom: 2px; /* Adjust this value as desired */
       }
       
+      .vscomp-wrapper {
+        z-index: 1001 !important;
+      }
+      .vscomp-dropdown {
+        z-index: 1002 !important;
+      }
+      
       .checkbox-opts .shiny-options-group {
         margin-left: 10px;  /* Adjust as needed for indentation */
         font-size: 0.8em;   /* Adjust as needed for font size */
@@ -160,6 +166,20 @@ ui <- bslib::page_fluid(
         font-size: 0.8em;
       } 
       
+       ")),
+    tags$script(HTML("
+      $(document).on('click', '.vscomp-wrapper', function() {
+        if ($(this).hasClass('show-dropdown')) {
+          $('.pretty').css('pointer-events', 'none');
+        } else {
+          $('.pretty').css('pointer-events', 'auto');
+        }
+      });
+      $(document).on('click', function(event) {
+        if (!$(event.target).closest('.vscomp-wrapper').length) {
+          $('.pretty').css('pointer-events', 'auto');
+        }
+      });
     "))
   ),
   shiny::fluidRow( 
@@ -259,62 +279,6 @@ ui <- bslib::page_fluid(
         uiOutput("msm_options")
       ),
       shiny::hr(),
-      # bslib::accordion_panel(
-      #   " Advanced filters", icon = bsicons::bs_icon("chevron-down"), id = "advanced_filters", value = "advanced_filters",
-      #   checkboxInput("single_family", "1-Family Housing"),
-      #   shiny::div(class = "checkbox-opts", 
-      #              shiny::conditionalPanel(
-      #         condition = "input.single_family == true",
-      #         checkboxGroupInput("single_family_options",
-      #                            label = NULL,
-      #                            choices = type_choices, 
-      #                            selected = type_choices)
-      #       )
-      #   ),
-      #   style = "font-size: 0.9em",
-      #   shiny::checkboxInput("two_family", "2-Family Housing"),
-      #   shiny::div(class = "checkbox-opts",
-      #              shiny::conditionalPanel(
-      #         condition = "input.two_family == true",
-      #         shiny::checkboxGroupInput("two_family_options",
-      #                            label = NULL,
-      #                            choices = type_choices, 
-      #                            selected = type_choices)
-      #       )
-      #   ),
-      #   shiny::checkboxInput("three_family", "3-Family Housing"),
-      #   shiny::div(class = "checkbox-opts", 
-      #       shiny::conditionalPanel(
-      #         condition = "input.three_family == true",
-      #         shiny::checkboxGroupInput("three_family_options",
-      #                            label = NULL,
-      #                            choices = type_choices, 
-      #                            selected = type_choices)
-      #       )
-      #   ),
-      #   shiny::checkboxInput("four_family", "4+ Family Housing"),
-      #   shiny::div(class = "checkbox-opts", 
-      #              shiny::conditionalPanel(
-      #         condition = "input.four_family == true",
-      #         shiny::checkboxGroupInput("four_family_options",
-      #                            label = NULL,
-      #                            choices = type_choices, 
-      #                            selected = type_choices)
-      #       )
-      #   ),
-      #   shiny::checkboxInput("accessory", "Accessory Dwelling Units"),
-      #   shiny::div(class = "checkbox-opts",
-      #              shiny::conditionalPanel(
-      #         condition = "input.accessory == true",
-      #         shiny::checkboxGroupInput("accessory_options",
-      #                            label = NULL,
-      #                            choices = accessory_choices, 
-      #                            selected = accessory_choices)
-      #       )
-      #   )
-      # )
-      # ,
-      # shiny::hr(),
       bslib::accordion_panel(
         "Additional layers",
         id = "additional_layers",
@@ -359,11 +323,9 @@ server <- function(input, output, session) {
   
   shinyalert::shinyalert("Disclaimer",
                          "<b>HousingForward Virginia</b> created the Virginia Zoning Atlas for public informational purposes only.
-             Given the huge amount of info it contains and the possibility of changing conditions (in zoning codes,
-             parcel/jurisdiction boundaries, & state laws), here's our disclaimer!: We hereby present this map
-             without any warranty, either express or implied, about its validity or accuracy, or its suitability
-             for legal, engineering, or land survey purposes. As we all know, zoning is fluid. If you notice an error,
-             we encourage you to <a href = 'mailto:eric@housingforwardva.org?subject = Virginia Zoning Atlas'> contact us </a>.",
+                         We hereby present this map without any warranty, either express or implied, about its validity or accuracy, 
+                         or its suitability for legal, engineering, or land survey purposes. 
+                         As we all know, zoning is fluid. If you notice an error, we encourage you to <a href = 'mailto:eric@housingforwardva.org?subject = Virginia Zoning Atlas'> contact us </a>.",
                          type = "warning",
                          html = TRUE, 
                          inputId = "disclaimer"
@@ -413,7 +375,7 @@ server <- function(input, output, session) {
           fill_opacity = 1
         )
       ) %>%
-      mapgl::add_navigation_control()
+      mapgl::add_navigation_control(position = "bottom-right")
   })
   
   # Adjust opacity with set_paint_property
@@ -424,6 +386,13 @@ server <- function(input, output, session) {
         name = "fill-opacity",
         value = input$opacity / 100
       )
+  })
+  
+  shiny::observeEvent(input$select_juris, {
+    selected_locs <- dplyr::filter(zoning, jurisdiction %in% input$select_juris)
+    
+    mapgl::mapboxgl_proxy("map") %>%
+      fit_bounds(selected_locs, animate = TRUE)
   })
   
   # Handle the geocoder with new mapgl features
@@ -799,6 +768,23 @@ server <- function(input, output, session) {
   # of the way `setStyle()` works - it always re-draws the map.
   # I'd need to identify the currently-active filter and persist that.
   
+  # Reactive for currently visible areas
+  visible_areas <- reactive({
+    req(input$disclaimer)
+    req(input$map_bbox)
+    
+    box <- input$map_bbox |>
+      unlist() |> 
+      st_bbox(crs = st_crs(4326)) |> 
+      st_as_sfc() |> 
+      st_sf()
+    
+    locs <- dplyr::filter(zoning, jurisdiction %in% input$select_juris)
+    
+    sf::st_filter(locs, box)
+    
+  })
+  
   
   text_calc <- reactive({
     # Don't calculate until second button has been clicked
@@ -806,6 +792,9 @@ server <- function(input, output, session) {
     
     cur <- current_layer()
     
+    viz <- visible_areas()
+    
+    # Currently _selected_ locality
     if (cur == "zoning_layer") {
       cur_locality <- dplyr::filter(zoning, jurisdiction %in% input$select_juris)
     } else if (cur == "sfd") {
@@ -818,14 +807,15 @@ server <- function(input, output, session) {
       cur_locality <- dplyr::filter(zoning, jurisdiction %in% input$select_juris, type == "Primarily Residential", accessory_treatment %in% adu_filter_values)
     } else if (cur == "missmiddle") {
       msm_filter_values <- get_filter_values(input$msm_by_right, input$msm_public_hearing)
-      cur_locality <- dplyr::filter(zoning, jurisdiction %in% input$select_juris, 
-                                    family2_treatment %in% msm_filter_values, 
-                                    family3_treatment %in% msm_filter_values, 
+      cur_locality <- dplyr::filter(zoning, jurisdiction %in% input$select_juris,
+                                    family2_treatment %in% msm_filter_values,
+                                    family3_treatment %in% msm_filter_values,
                                     family4_treatment %in% msm_filter_values)
     }
     
     full_locality <- dplyr::filter(zoning, jurisdiction %in% input$select_juris)
     
+    # This represents the current _locality_
     pct_value <- cur_locality %>%
       dplyr::mutate(selected_acres = sum(acres)) |>
       dplyr::mutate(total_jurisdiction = sum(unique(full_locality$total_area))) |>
@@ -833,9 +823,76 @@ server <- function(input, output, session) {
       dplyr::pull(pct) %>%
       unique()
     
-    # pct_value <- unique(zoning_filter()$pct)
-    #
-    paste("Percent of total developable land based on selected districts: <strong>", pct_value, "</strong>")
+    # All of Virginia
+    if (cur == "zoning_layer") {
+      all_va <- zoning
+    } else if (cur == "sfd") {
+      all_va <- dplyr::filter(zoning, sfd == "t")
+    } else if (cur == "apts") {
+      apt_filter_values <- get_filter_values(input$apt_by_right, input$apt_public_hearing)
+      all_va <- dplyr::filter(zoning, family4_treatment %in% apt_filter_values)
+    } else if (cur == "adus") {
+      adu_filter_values <- get_filter_values(input$adu_by_right, input$adu_public_hearing)
+      all_va <- dplyr::filter(zoning, type == "Primarily Residential", accessory_treatment %in% adu_filter_values)
+    } else if (cur == "missmiddle") {
+      msm_filter_values <- get_filter_values(input$msm_by_right, input$msm_public_hearing)
+      all_va <- dplyr::filter(zoning,
+                              family2_treatment %in% msm_filter_values,
+                              family3_treatment %in% msm_filter_values,
+                              family4_treatment %in% msm_filter_values)
+    }
+    
+    full_va <- zoning
+    
+    pct_value_va <- all_va %>%
+      dplyr::mutate(selected_acres = sum(acres)) |>
+      dplyr::mutate(total_jurisdiction = sum(unique(full_va$total_area))) |>
+      dplyr::mutate(pct = scales::percent(selected_acres/total_jurisdiction), accuracy = 0.1) %>%
+      dplyr::pull(pct) %>%
+      unique()
+    
+    # Current view
+    
+    if (cur == "zoning_layer") {
+      cur_viz <- viz
+    } else if (cur == "sfd") {
+      cur_viz <- dplyr::filter(viz, sfd == "t")
+    } else if (cur == "apts") {
+      apt_filter_values <- get_filter_values(input$apt_by_right, input$apt_public_hearing)
+      cur_viz <- dplyr::filter(viz, family4_treatment %in% apt_filter_values)
+    } else if (cur == "adus") {
+      adu_filter_values <- get_filter_values(input$adu_by_right, input$adu_public_hearing)
+      cur_viz <- dplyr::filter(viz, type == "Primarily Residential", accessory_treatment %in% adu_filter_values)
+    } else if (cur == "missmiddle") {
+      msm_filter_values <- get_filter_values(input$msm_by_right, input$msm_public_hearing)
+      cur_viz <- dplyr::filter(viz,
+                               family2_treatment %in% msm_filter_values,
+                               family3_treatment %in% msm_filter_values,
+                               family4_treatment %in% msm_filter_values)
+    }
+    
+    full_viz <- viz
+    
+    pct_value_viz <- cur_viz %>%
+      dplyr::mutate(selected_acres = sum(acres)) |>
+      dplyr::mutate(total_jurisdiction = sum(unique(full_viz$acres))) |>
+      dplyr::mutate(pct = scales::percent(selected_acres/total_jurisdiction), accuracy = 0.1) %>%
+      dplyr::pull(pct) %>%
+      unique()
+    
+    # Debug
+    
+    
+    paste(
+      "<strong>Percent of total developable land based on:</strong>",
+      "<hr style='margin-top: 5px; margin-bottom: 5px;'>",
+      "<div style='font-size: 0.9em;'>",  # Add this line to reduce font size
+      "Current view: <br> <strong>",  pct_value_viz, "</strong><br>",
+      "Selected localities:<br> <strong>", pct_value, "</strong><br>",
+      "All of Virginia: <br> <strong>", pct_value_va, "</strong>"
+    )
+    
+    
   })
   
   output$text <- renderText({
