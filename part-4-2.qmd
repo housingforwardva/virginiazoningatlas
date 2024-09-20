@@ -164,16 +164,16 @@ sfd_locality <- sfd |>
   add_row(jurisdiction = "Chesterfield", pct = 0 )
 
 
-sfd_explore <- read_rds("data/planrva/rds/rva_vza_nogeo.rds") |> # Read in the data.
-  select(jurisdiction, abbrvname, type, sfd, acres, family1_treatment) |> 
-  filter(type == "Mixed with Residential" | type == "Primarily Residential") |> # Select necessary data fields.
-  mutate(acres = as.numeric(acres)) |> 
-  group_by(jurisdiction, sfd, family1_treatment) |> 
-  summarise(acres = sum(acres)) |> 
-  ungroup() |> 
-  group_by(jurisdiction) |> 
-  mutate(total = sum(acres)) |> 
-  mutate(pct = acres/total) 
+# sfd_explore <- read_rds("data/planrva/rds/rva_vza_nogeo.rds") |> # Read in the data.
+#   select(jurisdiction, abbrvname, type, sfd, acres, family1_treatment) |> 
+#   filter(type == "Mixed with Residential" | type == "Primarily Residential") |> # Select necessary data fields.
+#   mutate(acres = as.numeric(acres)) |> 
+#   group_by(jurisdiction, sfd, family1_treatment) |> 
+#   summarise(acres = sum(acres)) |> 
+#   ungroup() |> 
+#   group_by(jurisdiction) |> 
+#   mutate(total = sum(acres)) |> 
+#   mutate(pct = acres/total) 
 
 
 
@@ -466,13 +466,13 @@ byright <- read_rds("data/planrva/rds/rva_vza_nogeo.rds") |>
   add_row(jurisdiction = "Goochland", pct_2plus = 0) 
 
 
-byright_summary <- read_rds("data/planrva/rds/rva_vza_nogeo.rds") |> 
-  select(jurisdiction, abbrvname, overlay, 6:9, acres) |> # Select data fields.
-  filter(overlay == 0) |> # Filter out overlay districts.
-  mutate(total_area = sum(acres)) |> # Calculate the total area of zoned land.
-  filter(family2_treatment == "allowed" & family3_treatment == "allowed" & family4_treatment == "allowed") |> 
-  mutate(total_2plus = sum(acres)) |> 
-  mutate(pct2plus = total_2plus/total_area)
+# byright_summary <- read_rds("data/planrva/rds/rva_vza_nogeo.rds") |> 
+#   select(jurisdiction, abbrvname, overlay, 6:9, acres) |> # Select data fields.
+#   filter(overlay == 0) |> # Filter out overlay districts.
+#   mutate(total_area = sum(acres)) |> # Calculate the total area of zoned land.
+#   filter(family2_treatment == "allowed" & family3_treatment == "allowed" & family4_treatment == "allowed") |> 
+#   mutate(total_2plus = sum(acres)) |> 
+#   mutate(pct2plus = total_2plus/total_area)
 
 ggplot(byright,
        aes(x = reorder(jurisdiction, pct_2plus),
@@ -514,25 +514,6 @@ byright <- read_rds("data/planrva/rds/rva_vza_nogeo.rds") |>
   add_row(jurisdiction = "Goochland County", pct_4plus = 0) |> 
   mutate(percent = percent(pct_4plus))
 
-byright_county <- read_rds("data/planrva/rds/rva_vza_nogeo.rds") |> 
-  select(county, abbrvname, overlay, 6:9, acres) |> # Select data fields.
-  filter(overlay == 0) |> # Filter out overlay districts.
-  group_by(county) |> 
-  mutate(total_area = sum(acres)) |> # Calculate the total area of zoned land.
-  filter(family4_treatment == "allowed") |> 
-  group_by(county) |> 
-  mutate(pct_4plus = acres/total_area) |> 
-  group_by(county) |> 
-  summarise(pct_4plus = sum(pct_4plus)) |> 
-  add_row(county = "Goochland County", pct_4plus = 0) |> 
-  mutate(percent = percent(pct_4plus)) |> 
-  mutate(county = case_when(
-    county == "Richmond city" ~ "Richmond City",
-    TRUE ~ county
-  )) |> 
-  left_join(rva_bipoc, by = "county") |> 
-  select(county, multifamily = percent.x, bipoc = percent.y) |> 
-  mutate(bipoc = percent(bipoc))
 
 byright_summary <- read_rds("data/planrva/rds/rva_vza_nogeo.rds") |> 
   select(jurisdiction, abbrvname, overlay, 6:9, acres) |> # Select data fields.
@@ -606,7 +587,7 @@ type <- read_rds("data/planrva/rds/rva_vza_nogeo.rds") |>
   mutate(adutype = case_when(
     adutype == "adu_detached" ~ "Detached ADU",
     adutype == "adu_attached" ~ "Attached ADU"
-  ))
+  )) 
 
 
 adu_detached <- type |> 
@@ -616,7 +597,8 @@ adu_detached <- type |>
     total_pct = sum(adu_pct, na.rm = TRUE),
     allowed_hearing_pcts = sum(adu_pct[treatment %in% c("allowed", "hearing")], na.rm = TRUE),
     prohibited_pct = sum(adu_pct[treatment == "prohibited"], na.rm = TRUE)
-  )
+  ) |> 
+  mutate(across(treatment, .fns = (~str_to_title(.x))))
 
 adu_attached <- type |> 
   filter(adutype == "Attached ADU") |> 
@@ -625,15 +607,16 @@ adu_attached <- type |>
     total_pct = sum(adu_pct, na.rm = TRUE),
     allowed_hearing_pcts = sum(adu_pct[treatment %in% c("allowed", "hearing")], na.rm = TRUE),
     prohibited_pct = sum(adu_pct[treatment == "prohibited"], na.rm = TRUE)
-  ) 
+  ) |> 
+  mutate(across(treatment, .fns = (~str_to_title(.x))))
 
-adu_detached$treatment <- factor(adu_detached$treatment, levels = c("prohibited", "hearing", "allowed"))
-adu_attached$treatment <- factor(adu_attached$treatment, levels = c("prohibited", "hearing", "allowed"))
+adu_detached$treatment <- factor(adu_detached$treatment, levels = c("Prohibited", "Hearing", "Allowed"))
+adu_attached$treatment <- factor(adu_attached$treatment, levels = c("Prohibited", "Hearing", "Allowed"))
 
 
-my_colors <- c("prohibited" = "#e2e4e3",
-               "allowed" = "#40C0C0",
-               "hearing" = "#8B85CA")
+my_colors <- c("Prohibited" = "#e2e4e3",
+               "Allowed" = "#40C0C0",
+               "Hearing" = "#8B85CA")
 
 
 d_plot <- ggplot(adu_detached,
@@ -797,11 +780,9 @@ And while the region is building more multifamily housing than it ever has, it i
 #| label: fig-race-map
 #| fig-cap: "Majority White (70% or more) Census Tracts versus By-Right Multifamily"
 
-rva_tracts <- st_read("data/planrva/geo/home_value_white_tracts.gpkg") |> 
-  st_transform(4326) 
+rva_tracts <- read_rds("data/planrva/rds/race_tracts.rds") 
 
-by4 <- st_read("data/planrva/geo/byright4_map.gpkg") |> 
-  st_transform(4326)
+by4 <- read_rds("data/planrva/rds/byright4_map.rds") 
 
 region <- read_rds("data/planrva/rds/rva_region.rds") 
 
