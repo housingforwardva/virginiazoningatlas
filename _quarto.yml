@@ -52,6 +52,10 @@ book:
       chapters:
         - part-3-1.qmd # Findings
         - part-3-2.qmd # Context
+    - part: "PlanRVA"
+      chapters:
+        - part-4-1.qmd # Summary
+        - part-4-2.qmd # Findings
   # - part: "Appendix"
 
 knitr:
