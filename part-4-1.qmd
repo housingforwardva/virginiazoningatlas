@@ -1,8 +1,5 @@
----
-output: html_document
-editor_options: 
-  chunk_output_type: console
----
+# Housing in the PlanRVA Region {#part-4-1}
+
 ```{r}
 #| label: setup
 
@@ -276,7 +273,7 @@ rva_var_price <- read_rds("data/planrva/rds/rva_var.rds") |>
 
 subtitle_text <- "In <span style = 'color:#011E41'><b>real dollars</b></span> and <span style = 'color:#40C0C0'><b>nominal dollars</span>"
 
- ggplot(rva_var_price,
+var_plot <- ggplot(rva_var_price,
        aes(x = period,
            y = price,
            color = type,
@@ -287,7 +284,15 @@ subtitle_text <- "In <span style = 'color:#011E41'><b>real dollars</b></span> an
   scale_color_hfv() +
   scale_y_continuous(labels = dollar_format()) +
   # theme(legend.position = "top") +
-  labs(subtitle = subtitle_text)
+  labs(subtitle = subtitle_text,
+       title = "Median home price in the Richmond region",
+       caption = "**Source:** Virginia REALTORS") +
+  theme(panel.grid.major.y = element_line(color = "#dadada", size = 0.1),
+        panel.grid.major.x = element_line(color = "#dadada",size = 0.1))
+ 
+girafe(ggobj = var_plot,
+       height_svg = 4)
+
  
 ```
 
@@ -324,7 +329,8 @@ dom_plot <- ggplot(rva_var_dom,
   theme_hfv(base_size = 10) +
   scale_color_hfv() + 
   labs(title = "Median days on market",
-       subtitle = subtitle_text) +
+       subtitle = subtitle_text,
+       caption = "**Source:** Virginia REALTORS") +
   scale_y_continuous(breaks = seq(0, 70, 10))
   
 girafe(ggobj = dom_plot,
@@ -342,13 +348,12 @@ With home prices continuing to rise in the region, it is no surprise that the sh
 tenure <- read_rds("data/planrva/rds/b25003.rds") |> 
   filter(year == 2010 | year == 2022) |> 
   filter(tenure == "Renter") |> 
-  mutate(year = as.character(year)) 
+  mutate(year = as.character(year)) |> 
+  mutate(NAME = str_remove(NAME, "County"))
 
 subtitle_text <- "In <span style = 'color:#011E41'><b>2010</b></span> and <span style = 'color:#40C0C0'><b>2022</span>"
 
-# tenure_plot <- 
-  
-ggplot(tenure,
+tenure_plot <- ggplot(tenure,
        aes(x = reorder(NAME, pct),
            y = pct,
            color = year)) +
@@ -373,6 +378,8 @@ ggplot(tenure,
   theme(panel.grid.major.y = element_line(color = "white"),
         panel.grid.major.x = element_line(color = "#dadada",size = 0.1))
 
+girafe(ggobj = tenure_plot,
+       height_svg = 4)
 
 ```
 
