@@ -97,3 +97,43 @@ oneonly_nearwhiteschools<- geojson_sf("data/planrva/geo/white_buffer_zoning.geoj
 
 
 write_rds(oneonly_nearschools, "data/planrva/rds/singlefamily_only_nearschoolds.rds")
+
+by4_highprov<- geojson_sf("data/planrva/geo/prov_10_more.geojson") |> 
+  clean_names() 
+
+|> 
+  st_drop_geometry() |> 
+  mutate(area = as.numeric(buffer_area)) |> 
+  group_by(county) |> 
+  mutate(total_area = sum(area)) |> 
+  filter(family4_treatment == "allowed") |> 
+  group_by(county, total_area) |> 
+  summarise(area = sum(area)) |> 
+  mutate(pct = area/total_area)
+
+by4_lowprov<- geojson_sf("data/planrva/geo/prov_less_10.geojson") |> 
+  clean_names() |> 
+  st_drop_geometry() |> 
+  mutate(area = as.numeric(buffer_area)) |> 
+  group_by(county) |> 
+  mutate(total_area = sum(area)) |> 
+  filter(family4_treatment == "allowed") |> 
+  group_by(county, total_area) |> 
+  summarise(area = sum(area)) |> 
+  mutate(pct = area/total_area)
+
+by4_schools <- by4_highprov |> 
+  left_join(by4_lowprov, by = "county") |> 
+  select(county, total_area_high = total_area.x, byright4_high = area.x, pct_high = pct.x, 
+         total_area_low = total_area.y, byright4_low = area.y, pct_low = pct.y) |> 
+  mutate(across(everything(), ~replace_na(., 0))) |> 
+  select(county, pct_high, pct_low) |> 
+  pivot_longer(2:3,
+               names_to = "type",
+               values_to = "pct") |> 
+  mutate(type = case_when(
+    type == "pct_high" ~ "High Provisional Teacher Percentage (10% or more)",
+    type == "pct_low" ~ "Low Provisional Teacher Percentage (Less than 10%)"
+  ))
+
+

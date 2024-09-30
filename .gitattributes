@@ -4,4 +4,3 @@ nova_transit_map.rds filter=lfs diff=lfs merge=lfs -text
 nova_adu_map.rds filter=lfs diff=lfs merge=lfs -text
 part-4-2.qmd filter=lfs diff=lfs merge=lfs -text
 html.json filter=lfs diff=lfs merge=lfs -text
-part-4-2.html filter=lfs diff=lfs merge=lfs -text
