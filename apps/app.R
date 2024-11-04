@@ -168,18 +168,46 @@ ui <- bslib::page_fluid(
       
        ")),
     tags$script(HTML("
+    $(document).ready(function() {
+      // Function to disable pointer events on radio buttons
+      function disableRadioButtons() {
+        $('.pretty').css('pointer-events', 'none');
+      }
+
+      // Function to enable pointer events on radio buttons
+      function enableRadioButtons() {
+        $('.pretty').css('pointer-events', 'auto');
+      }
+
+      // Handle vscomp wrapper
       $(document).on('click', '.vscomp-wrapper', function() {
         if ($(this).hasClass('show-dropdown')) {
-          $('.pretty').css('pointer-events', 'none');
+          disableRadioButtons();
         } else {
-          $('.pretty').css('pointer-events', 'auto');
+          enableRadioButtons();
         }
       });
+
+      // Handle Mapbox geocoder
+      $(document).on('click', '.mapboxgl-ctrl-geocoder', function() {
+        disableRadioButtons();
+      });
+
+      // Re-enable radio buttons when clicking outside
       $(document).on('click', function(event) {
-        if (!$(event.target).closest('.vscomp-wrapper').length) {
-          $('.pretty').css('pointer-events', 'auto');
+        if (!$(event.target).closest('.vscomp-wrapper').length &&
+            !$(event.target).closest('.mapboxgl-ctrl-geocoder').length) {
+          enableRadioButtons();
         }
       });
+
+      // Additional handler for Mapbox geocoder results
+      $(document).on('click', '.mapboxgl-ctrl-geocoder--suggestion', function() {
+        disableRadioButtons();
+        // Add a small delay before re-enabling to ensure the click is processed
+        setTimeout(enableRadioButtons, 100);
+      });
+    });
     "))
   ),
   shiny::fluidRow( 
